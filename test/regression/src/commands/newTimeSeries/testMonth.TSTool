@@ -1,0 +1,4 @@
+# setOutputPeriod(2002-01,2002-12)
+TS x = newTimeSeries(NewTSID="loc.source.datatype.Month.scenario~InputType~InputName",Description="Example Description",SetStart="2002-01",SetEnd="2002-12",Units="CFS",InitialValue=20)
+writeDateValue(OutputFile="testMonthOutput.dv")
+compareFiles(InputFile1="testMonthOutput.dv",InputFile2="ExpectedResultMonth.dv",WarnIfDifferent=True)

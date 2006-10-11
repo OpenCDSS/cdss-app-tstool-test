@@ -1,0 +1,4 @@
+# Example to compare files.  Since they are different, a warning will be generated.
+readDateValue("RawData1.dv")
+readDateValue("RawData1Scaled.dv")
+compareTimeSeries(Precision=2,WarnIfDifferent=True)

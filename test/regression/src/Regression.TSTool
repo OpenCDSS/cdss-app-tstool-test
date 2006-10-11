@@ -1,0 +1,4 @@
+startLog(LogFile="Regression.log",Suffix="Date")
+runCommands(InputFile="commands\newTimeSeries\testMonth.TSTool")
+runCommands(InputFile="commands\newTimeSeries\testDay.TSTool")
+runCommands(InputFile="commands\newTimeSeries\testHour.TSTool")
