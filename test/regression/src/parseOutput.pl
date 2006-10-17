@@ -122,7 +122,7 @@ while(<FILE>)
 ### print the totals ###
 print OUT "\n TOTALS \n"; 
 print OUT "-------------------------------------------------------------------------------------------------------------\n";
-print OUT "| $command_count |\tN/A\     \t\t|\tN/A      \t|\t$totalCmds\t\t\t|\t$totalTime\t|\t$numPass/$numFail    \t|\n";
+print OUT "| $command_count |\tN/A\     \t|\tN/A      \t|\t$totalCmds\t\t\t|\t$totalTime\t|\t$numPass/$numFail    \t|\n";
 print OUT "-------------------------------------------------------------------------------------------------------------\n";
 
 close(OUT);
