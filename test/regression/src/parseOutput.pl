@@ -36,9 +36,10 @@ $numPass = 0;
 $totalCmds = 0;
 $totalTime = 0;
 
-print "\n-------------------------------------------------------------------------------------------------------------\n";
-print "| # |\tSECTION  \t|\tTEST NAME\t|\tNUM CMDS\t|\tTIME\t|\tRESULT\t|\n";
-print "-------------------------------------------------------------------------------------------------------------\n";
+open(OUT, ">../results/ParsedOutput.log") or die "cannot open file to write to because $! \n";
+print OUT "\n-------------------------------------------------------------------------------------------------------------\n";
+print OUT "| # |\tSECTION  \t\t|\tTEST NAME\t|\tNUM CMDS\t|\tTIME\t|\tRESULT\t|\n";
+print OUT "-------------------------------------------------------------------------------------------------------------\n";
 
 open(FILE, "$fname") or die "cannot open file:$fname because $!\n";
 while(<FILE>)
@@ -58,13 +59,13 @@ while(<FILE>)
 			@r_values = getCommandName($line);
 			$section = $r_values[1];
 			$cmd_name = $r_values[0];
-			print "| $command_count |";
+			print OUT "| $command_count |";
 			$len = length($cmd_name);
 			if($len < 8)
 			{
 				$cmd_name = "$cmd_name" . "  ";
 			}
-			print "\t$section\t|\t$cmd_name\t"; 
+			print OUT "\t$section\t|\t$cmd_name\t"; 
 		}
 
 		### find out how many commands and time taken to
@@ -75,7 +76,7 @@ while(<FILE>)
 			{
 				$time = getTime($line);		
 				$totalTime += $time;	
-				print "|\t$time\t";
+				print OUT "|\t$time\t";
 				
 				### increment pass/fail ratios
 				if($outcome =~ /FAIL/i)
@@ -87,14 +88,14 @@ while(<FILE>)
 					$numPass++;
 				}
 				
-				print "|\t$outcome\t|\n";
-				print "-------------------------------------------------------------------------------------------------------------\n";
+				print OUT "|\t$outcome\t|\n";
+				print OUT "-------------------------------------------------------------------------------------------------------------\n";
 			}
 			else		# number of commands
 			{
 				$num_cmds = getNumCommands($line);	
 				$totalCmds += $num_cmds;		
-				print "|	$num_cmds		";
+				print OUT "|\t$num_cmds\t\t\t";
 			}
 		}
 
@@ -119,13 +120,13 @@ while(<FILE>)
 }
 
 ### print the totals ###
-print "\n TOTALS \n"; 
-print "-------------------------------------------------------------------------------------------------------------\n";
-print "| $command_count |\tN/A     \t|\tN/A     \t|\t$totalCmds\t\t|\t$totalTime\t|\t$numPass/$numFail\t|\n";
-print "-------------------------------------------------------------------------------------------------------------\n";
+print OUT "\n TOTALS \n"; 
+print OUT "-------------------------------------------------------------------------------------------------------------\n";
+print OUT "| $command_count |\tN/A\     \t\t|\tN/A      \t|\t$totalCmds\t\t\t|\t$totalTime\t|\t$numPass/$numFail    \t|\n";
+print OUT "-------------------------------------------------------------------------------------------------------------\n";
 
+close(OUT);
 close(FILE);
-
 
 
 #########################################
