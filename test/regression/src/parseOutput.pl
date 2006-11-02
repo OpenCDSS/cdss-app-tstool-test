@@ -27,6 +27,17 @@
 $year+=1900;
 $mon+=1;
 
+if($mon < 10)
+{
+	$mon = "0" . "$mon";
+}
+
+if($mday < 10)
+{
+	$mday = "0" . "$mday";
+}
+
+
 $fname = "../results/Regression." . "$year" . "$mon" . "$mday" . ".log";
 $flag = 0;
 $command_count = 0;
@@ -55,7 +66,7 @@ td {background-color:#F0F0F0; color:black}
 <th> Number </th>
 <th> Section </th>
 <th> Test Case </th>
-<th> Num Commands</th>
+<th> Num Nested Cmds</th>
 <th> Time </th>
 <th> Result </th>
 </tr>
