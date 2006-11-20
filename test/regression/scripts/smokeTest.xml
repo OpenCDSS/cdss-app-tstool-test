@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AWTTestScript desc="smokeTest2.xml">
+  <component class="DWR.DMI.HydroBaseDMI.SelectHydroBaseJDialog" id="Select HydroBase" parent="TSTool - no commands saved" title="Select HydroBase" />
+  <component class="RTi.Util.GUI.ResponseJDialog" id="Exit TSTool" parent="TSTool - no commands saved" title="Exit TSTool" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance" index="1" parent="JRootPane Instance" window="Exit TSTool" />
+  <component class="javax.swing.JPanel" id="JPanel Instance" index="0" parent="JLayeredPane Instance" window="Exit TSTool" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 2" index="1" parent="JPanel Instance" window="Exit TSTool" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 3" index="0" parent="JPanel Instance 2" window="Exit TSTool" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance" index="0" parent="Exit TSTool" />
+  <component class="RTi.Util.Message.DiagnosticsJFrame" id="TSTool - Diagnostics" root="true" title="TSTool - Diagnostics" />
+  <component class="DWR.DMI.tstool.TSTool_JFrame" id="TSTool - no commands saved" root="true" title="TSTool - no commands saved" />
+  <component class="RTi.Util.GUI.SimpleJButton" id="Yes" index="0" parent="JPanel Instance 3" text="Yes" window="Exit TSTool" />
+  <component class="RTi.Util.GUI.SimpleJButton" id="OK" index="3" parent="Select HydroBase" text="OK" window="Select HydroBase" />
+  <launch args="[-home,test/operational/CDSS]" class="DWR.DMI.tstool.tstool" classpath=".;dist/TSTool_142.jar;externals/HydroBaseDM/HydroBaseDMI_142.jar;externals/SatmonSysDMI/SatmonSysDMI_142.jar;externals/Microsoft_SQL_Server_Java_ODBC_Driver/mssqlall.jar;externals/RiversideDB_DMI/RiversideDB_DMI_142.jar;externals/RTi_Common/RTi_Common_142.jar;externals/StateCU/StateCU_142.jar;externals/StateMod/StateMod_142.jar;externals/shellcon/shellcon.exe;externals/TS_Services/TS_Services_142.jar;externals/NWSRFS_DMI/NWSRFS_DMI_142.jar" method="main" />
+  <wait args="Select HydroBase" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+  <action args="OK" class="javax.swing.AbstractButton" method="actionClick" />
+  <sequence>
+    <action args="TSTool - no commands saved" class="java.awt.Window" method="actionClose" />
+    <wait args="Exit TSTool" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <action args="Yes" class="javax.swing.AbstractButton" method="actionClick" />
+  </sequence>
+  <terminate />
+</AWTTestScript>
+
