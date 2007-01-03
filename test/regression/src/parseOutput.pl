@@ -131,11 +131,10 @@ while(<FILE>)
 				#print OUT "|\t$outcome\t|\n";
 				#print OUT "-------------------------------------------------------------------------------------------------------------\n";
 			}
-			else		# number of commands
+			if($line =~ /commands\.\./)		# number of commands
 			{
 				$num_cmds = getNumCommands($line);	
 				$totalCmds += $num_cmds;
-				
 				print OUT "<td> $num_cmds </td> \n";		
 				#print OUT "|\t$num_cmds\t\t\t";
 			}
@@ -234,6 +233,7 @@ sub getCommandName()
 sub getNumCommands()
 {
 	my $param = $_;
+	chomp $param;
 	my $result = (split(/ /, $param))[2];
 
 	## trim whitespace 

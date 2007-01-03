@@ -1,1 +1,0 @@
-compareFiles(InputFile1="A1.txt",InputFile2="B1.txt",WarnIfDifferent=True)

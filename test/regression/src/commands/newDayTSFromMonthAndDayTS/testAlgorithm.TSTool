@@ -1,7 +1,0 @@
-setOutputPeriod(2002-11-01,2002-11-30)
-TS month = newTimeSeries(NewTSID="loc.source.datatype.month.scenario~InputType~InputName",Description="Example Description",SetStart="2002-11",SetEnd="2002-11",Units="CFS",InitialValue=20)
-TS day = newTimeSeries(NewTSID="loc.source.datatype.day.scenario~InputType~InputName",Description="Example Description",SetStart="2002-11-01",SetEnd="2002-11-30",Units="CFS",InitialValue=20)
-TS newDay = newDayTSFromMonthAndDayTS(new..xx.Day, month, day)
-selectTimeSeries(TSID="newDay")
-writeDateValue(OutputFile="testAlgorithmOutput.dv", TSList="SelectedTS")
-compareFiles(InputFile1="testAlgorithmOutput.dv",InputFile2="ExpectedResultAlgorithm.dv",WarnIfDifferent=True)

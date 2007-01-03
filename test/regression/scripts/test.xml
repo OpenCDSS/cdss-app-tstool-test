@@ -23,7 +23,6 @@
     <action args="Get Time Series List" class="javax.swing.AbstractButton" method="actionClick" />
     <action args="JWorksheet Instance,&quot;BOXHUDCO&quot;" class="javax.swing.JTable" method="actionSelectCell" />
   </sequence>
-  <sample component="JWorksheet_Header Instance" method="getTable" property="YOUR PROPERTY NAME HERE" />
   <terminate />
 </AWTTestScript>
 

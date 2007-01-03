@@ -1,5 +1,0 @@
-# 06753990 - LONETREE CREEK NEAR GREELEY, CO.
-06753990.USGS.Streamflow.Day~HydroBase
-# 06756995 - SOUTH PLATTE RIVER AT MASTERS, CO.
-06756995.USGS.Streamflow.Day~HydroBase
-compareTimeSeries(MatchLocation=False,MatchDataType=False,DiffFlag="x",WarnIfDifferent=True)
