@@ -14,3 +14,5 @@ runCommands(InputFile="..\..\data\commands\compareTimeSeries\MonthDifferent.TSTo
 runCommands(InputFile="..\..\data\commands\compareTimeSeries\MonthSame.TSTool")
 runCommands(InputFile="..\..\data\commands\compareTimeSeries\DayDifferent.TSTool")
 runCommands(InputFile="..\..\data\commands\compareTimeSeries\DaySame.TSTool")
+runCommands(InputFile="..\..\data\commands\readStateCU\Read_v10_CDSFile.TSTool")
+runCommands(InputFile="..\..\data\commands\readStateCU\Read_v12_CDSFile.TSTool")
