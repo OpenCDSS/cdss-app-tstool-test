@@ -1,0 +1,2 @@
+readStateCU(InputFile="../readStateCU/simple_v12.cds")
+writeStateCU("../../../output/v12CDS_toSTM.stm")

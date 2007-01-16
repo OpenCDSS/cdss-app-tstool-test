@@ -1,0 +1,2 @@
+readStateCU(InputFile="../readStateCU/simple_v10.ipy")
+writeStateCU("../../../output/v10IPY_toSTM.stm")
