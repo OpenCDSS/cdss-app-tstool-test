@@ -1,0 +1,8 @@
+# 570501 - BASIN DITCH
+570501.DWR.DivTotal.Month~HydroBase
+570501.DWR.DivTotal.Day~HydroBase
+fillUsingDiversionComments(TSID="*",RecalcLimits=False,FillFlag=Auto)
+570501.DWR.DivTotal.Month~HydroBase
+570501.DWR.DivTotal.Day~HydroBase
+# 570501 - BASIN DITCH
+570501.DWR.DivComment.Year~HydroBase

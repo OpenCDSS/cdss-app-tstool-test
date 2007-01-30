@@ -1,0 +1,5 @@
+# 010501 - EMPIRE DITCH
+010501.DWR.DivTotal.Month~HydroBase
+# 010503 - RIVERSIDE CANAL
+010503.DWR.DivTotal.Month~HydroBase
+fillUsingDiversionComments(TSID="*",FillStart="1995-01",FillEnd="1998-12",RecalcLimits=False)
