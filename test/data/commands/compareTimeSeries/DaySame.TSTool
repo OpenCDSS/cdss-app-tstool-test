@@ -1,4 +1,0 @@
-# 06753990 - LONETREE CREEK NEAR GREELEY, CO.
-06753990.USGS.Streamflow.Day~HydroBase
-06753990.USGS.Streamflow.Day~HydroBase
-compareTimeSeries(MatchLocation=True,MatchDataType=True,DiffFlag="x",WarnIfDifferent=True)

@@ -1,9 +1,0 @@
-# 0100506 - PUTNAM DITCH
-0100506.DWR.DivTotal.Month~HydroBase
-# 0100504 - ILLINOIS DITCH
-0100504.DWR.DivTotal.Month~HydroBase
-# 0100503 - RIVERSIDE CANAL
-0100503.DWR.DivTotal.Month~HydroBase
-# 0100501 - EMPIRE DITCH
-0100501.DWR.DivTotal.Month~HydroBase
-fillUsingDiversionComments(TSID="*",RecalcLimits=False)

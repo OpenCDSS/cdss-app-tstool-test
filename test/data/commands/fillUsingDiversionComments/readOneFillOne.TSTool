@@ -1,5 +1,0 @@
-# Set the date to cause comments NOT to automatically extend the period.
-# setOutputPeriod(1950-01,1980-12)
-# 0100713 - PIONEER DITCH
-0100713.DWR.DivTotal.Month~HydroBase
-fillUsingDiversionComments(TSID="*",FillFlag="Auto",RecalcLimits=True)
