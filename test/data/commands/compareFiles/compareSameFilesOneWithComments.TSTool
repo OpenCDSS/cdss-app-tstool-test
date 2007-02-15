@@ -1,0 +1,2 @@
+startLog(LogFile="CompareSameFilesOneWithComments.log")
+compareFiles(InputFile1="A1.txt",InputFile2="A2.txt",WarnIfDifferent=True)

@@ -1,3 +1,4 @@
+startLog(logFile="forMonthFromHydroBase.log")
 # 08235700 - ALAMOSA RIVER BELOW CASTLEMAN GULCH NEAR JASPER
 08235700.DWR.Streamflow.Month~HydroBase
 setDataValue(08235700.DWR.Streamflow.Month,1950-01,550)
