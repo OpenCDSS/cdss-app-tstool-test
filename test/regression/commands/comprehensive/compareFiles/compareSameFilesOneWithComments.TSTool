@@ -1,2 +1,2 @@
 startLog(LogFile="CompareSameFilesOneWithComments.log")
-compareFiles(InputFile1="A1.txt",InputFile2="A2.txt",WarnIfDifferent=True)
+compareFiles(InputFile1="../data/A1.txt",InputFile2="../data/A2.txt",WarnIfDifferent=True)

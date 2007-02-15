@@ -11,7 +11,7 @@ startLog(LogFile="CreateDateValueFiles.log")
 06759500.USGS.Streamflow.Month~HydroBase
 # 06759910 - SOUTH PLATTE RIVER AT COOPER BRIDGE NEAR BALZAC
 06759910.DWR.Streamflow.Month~HydroBase
-writeDateValue(OutputFile="RawData1.dv")
-writeDateValue(OutputFile="RawData1Copy.dv")
+writeDateValue(OutputFile="../output/RawData1.dv")
+writeDateValue(OutputFile="../output/RawData1Copy.dv")
 scale(TSID="*",ScaleValue=1.1)
-writeDateValue(OutputFile="RawData1Scaled.dv")
+writeDateValue(OutputFile="../output/RawData1Scaled.dv")

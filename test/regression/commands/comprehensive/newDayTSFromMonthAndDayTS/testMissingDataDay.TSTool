@@ -6,5 +6,5 @@ TS month = newTimeSeries(NewTSID="loc.source.datatype.month.scenario~InputType~I
 TS day = newTimeSeries(NewTSID="loc.source.datatype.day.scenario~InputType~InputName",Description="Example Description",SetStart="2002-11-01",SetEnd="2002-11-30",Units="CFS",InitialValue=-999)
 TS newDay = newDayTSFromMonthAndDayTS(new..xx.Day, month, day)
 selectTimeSeries(TSID="newDay")
-writeDateValue(OutputFile="testMissingDataDayOutput.dv", TSList="SelectedTS")
-compareFiles(InputFile1="testMissingDataDayOutput.dv",InputFile2="ExpectedResultMissingDataDay.dv",WarnIfDifferent=True)
+writeDateValue(OutputFile="../output/testMissingDataDayOutput.dv", TSList="SelectedTS")
+compareFiles(InputFile1="../output/testMissingDataDayOutput.dv",InputFile2="../data/ExpectedResultMissingDataDay.dv",WarnIfDifferent=True)

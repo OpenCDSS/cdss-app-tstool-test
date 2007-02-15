@@ -1,2 +1,2 @@
 startLog(logFile="Read_v12_IPYFile.log")
-readStateCU(InputFile="simple_v12.ipy")
+readStateCU(InputFile="../data/simple_v12.ipy")
