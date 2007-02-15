@@ -1,0 +1,3 @@
+startLog(logFile="read_v10CDSFile_writeSTM.log")
+readStateCU(InputFile="../readStateCU/simple_v10.cds")
+writeStateCU("../../../output/v10CDS_toSTM.stm")

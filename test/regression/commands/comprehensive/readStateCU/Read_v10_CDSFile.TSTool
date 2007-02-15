@@ -1,0 +1,2 @@
+startLog(logFile="Read_v10_CDSFile.log")
+readStateCU(InputFile="simple_v10.cds")
