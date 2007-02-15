@@ -1,2 +1,0 @@
-startLog(logFile="Read_v12_CDSFile.log")
-readStateCU(InputFile="simple_v12.cds")

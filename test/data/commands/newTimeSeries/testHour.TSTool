@@ -1,5 +1,0 @@
-startLog(LogFile="testHour.log")
-# setOutputPeriod(2002-11,2002-12)
-TS x = newTimeSeries(NewTSID="loc.source.datatype.Hour.scenario~InputType~InputName",Description="Example Description",SetStart="2002-11",SetEnd="2002-12",Units="CFS",InitialValue=20)
-writeDateValue(OutputFile="testHourOutput.dv")
-compareFiles(InputFile1="testHourOutput.dv",InputFile2="ExpectedResultHour.dv",WarnIfDifferent=True)

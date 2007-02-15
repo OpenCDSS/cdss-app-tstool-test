@@ -1,3 +1,0 @@
-startLog(LogFile="CompareDifferentFiles.log")
-compareFiles(InputFile1="A1.txt",InputFile2="B1.txt",WarnIfDifferent=False)
-compareFiles(InputFile1="A2.txt",InputFile2="B1.txt",WarnIfDifferent=False)
