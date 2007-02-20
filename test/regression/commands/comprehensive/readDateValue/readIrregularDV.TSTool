@@ -1,2 +1,0 @@
-startLog(logFile="readIrregularDV.log")
-readDateValue("..\..\Data_DateValue\08251500.DWR.Streamflow.IRREGULAR.dv")

@@ -1,3 +1,0 @@
-startLog(logFile="read_v10IPYFile_writeSTM.log")
-readStateCU(InputFile="../data/simple_v10.ipy")
-writeStateCU("../output/v10IPY_toSTM.stm")

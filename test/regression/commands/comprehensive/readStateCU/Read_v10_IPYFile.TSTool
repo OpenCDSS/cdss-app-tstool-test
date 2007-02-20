@@ -1,2 +1,0 @@
-startLog(logFile="Read_v10_IPYFile.log")
-readStateCU(InputFile="../data/simple_v10.ipy")
