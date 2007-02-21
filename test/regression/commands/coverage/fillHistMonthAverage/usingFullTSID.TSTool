@@ -1,0 +1,4 @@
+startLog(LogFile="usingFullTSID.log")
+# 06611200 - BUFFALO CREEK NEAR HEBRON, CO.
+06611200.USGS.Streamflow.Month~HydroBase
+fillHistMonthAverage(06611200.USGS.Streamflow.Month)

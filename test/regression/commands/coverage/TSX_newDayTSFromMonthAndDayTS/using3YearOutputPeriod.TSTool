@@ -1,0 +1,11 @@
+startLog(LogFile="using3YearOutputPeriod.log")
+setOutputPeriod(1976-01,1979-12)
+# 06611200 - BUFFALO CREEK NEAR HEBRON, CO.
+06611200.USGS.Streamflow.Month~HydroBase
+# 06611300 - GRIZZLY CREEK NEAR HEBRON, CO.
+06611300.USGS.Streamflow.Month~HydroBase
+# 06611200 - BUFFALO CREEK NEAR HEBRON, CO.
+06611200.USGS.Streamflow.Day~HydroBase
+# 06611300 - GRIZZLY CREEK NEAR HEBRON, CO.
+06611300.USGS.Streamflow.Day~HydroBase
+TS newday = newDayTSFromMonthAndDayTS(new..xx.Day,06611300.USGS.Streamflow.Month,06611200.USGS.Streamflow.Day)

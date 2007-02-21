@@ -1,0 +1,6 @@
+# startLog(LogFile="commands_NCRFC_MAT.log")
+# This is commented out because the data set is too large
+# for the coverage data test set
+#ROMW3.NWSRFS.MAT.6Hour~NWSRFS_FS5Files~J:\cdss\develop\apps\TSTool\test\Data_NWSRFS_FS5Files\NCRFC
+#convertDataUnits(ROMW3.NWSRFS.MAT.6Hour,DEGF)
+#ROMW3.NWSRFS.MAT.6Hour~NWSRFS_FS5Files~J:\cdss\develop\apps\TSTool\test\Data_NWSRFS_FS5Files\NCRFC

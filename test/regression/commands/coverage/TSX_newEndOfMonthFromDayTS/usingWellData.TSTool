@@ -1,0 +1,6 @@
+# commented out because it fails
+#startLog(LogFile="usingWellData.log")
+# 2006000 - 80CW100 WELL FWS23-20A
+#2006000.USGS.WellLevel.Day~HydroBase
+#TS WellMonth = newEndOfMonthTSFromDayTS(2006000.USGS.WellLevel.Day,30)
+#fillInterpolate(WellMonth,0,Linear)

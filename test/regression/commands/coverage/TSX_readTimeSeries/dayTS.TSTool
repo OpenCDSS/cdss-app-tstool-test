@@ -1,0 +1,2 @@
+startLog(LogFile="dayTS.log")
+TS Alamosa = readTimeSeries("08235350.USGS.Streamflow.Day~HydroBase")

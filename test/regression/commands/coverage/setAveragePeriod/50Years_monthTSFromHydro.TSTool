@@ -1,0 +1,4 @@
+startLog(LogFile="50Years_monthTSFromHydro.log")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Month~HydroBase
+setAveragePeriod(1950-01,2002-12)

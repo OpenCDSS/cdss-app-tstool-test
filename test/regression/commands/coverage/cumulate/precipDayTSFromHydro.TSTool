@@ -1,0 +1,6 @@
+startLog(LogFile="precipDayTSFromHydro.log")
+# 1458 - CENTER 4 SSW
+1458.NOAA.Precip.Day~HydroBase
+# 2184 - DEL NORTE 2 E
+2184.NOAA.Precip.Day~HydroBase
+cumulate(TSID="*",HandleMissingHow=CarryForwardIfMissing,Reset="Date 1-1")

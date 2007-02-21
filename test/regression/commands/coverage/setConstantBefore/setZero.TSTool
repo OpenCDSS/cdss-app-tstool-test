@@ -1,0 +1,6 @@
+# This command is commented because it was obseleted by
+# setConstant
+#startLog(LogFile="setZero.log")
+# 08235700 - ALAMOSA RIVER BELOW CASTLEMAN GULCH NEAR JASPER
+#08235700.DWR.Streamflow.Month~HydroBase
+#setConstantBefore(08235700.DWR.Streamflow.Month,0,1950-01)

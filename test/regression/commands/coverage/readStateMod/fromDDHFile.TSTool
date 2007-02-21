@@ -1,0 +1,2 @@
+startLog(LogFile="fromDDHFile.log")
+readStateMod("../data/ym2004.ddh")

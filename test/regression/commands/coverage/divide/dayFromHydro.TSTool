@@ -1,0 +1,8 @@
+startLog(LogFile="dayFromHydro.log")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Day~HydroBase
+# 06753500 - LONETREE CREEK NEAR NUNN, CO.
+06753500.USGS.Streamflow.Day~HydroBase
+divide(06754000.DWR.Streamflow.Day,06753500.USGS.Streamflow.Day)
+writeDateValue(OutputFile="../output/dayOutput.dv")
+compareFiles(InputFile1="dayExpected.dv",InputFile2="../output/dayOutput.dv",WarnIfDifferent=True)

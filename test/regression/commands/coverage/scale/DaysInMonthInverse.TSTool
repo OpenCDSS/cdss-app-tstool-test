@@ -1,0 +1,6 @@
+startLog(LogFile="DaysInMonthInverse.log")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Month~HydroBase
+scale(TSID="06754000.DWR.Streamflow.Month",ScaleValue=.5042)
+scale(TSID="06754000.DWR.Streamflow.Month",ScaleValue=DaysInMonthInverse,NewUnits="CFS")
+06754000.DWR.Streamflow.Month~HydroBase

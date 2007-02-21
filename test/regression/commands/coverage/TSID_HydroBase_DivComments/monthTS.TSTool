@@ -1,0 +1,5 @@
+startLog(LogFile="monthTS.log")
+# setInputPeriod(InputStart="1980-01",InputEnd="1992-12")
+# 0102029 - BIJOU CREEK RECHARGE A
+0102029.DWR.DivTotal.Day~HydroBase
+0102029.DWR.DivTotal.Month~HydroBase

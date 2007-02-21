@@ -1,0 +1,6 @@
+startLog(LogFile="month_ignoreMissingData.log")
+# 0100501 - EMPIRE DITCH
+0100501.DWR.DivTotal.Month~HydroBase
+# 0100503 - RIVERSIDE CANAL
+0100503.DWR.DivTotal.Month~HydroBase
+subtract(TSID="0100501.DWR.DivTotal.Month",TSList="SpecifiedTS",SubtractTSID="0100503.DWR.DivTotal.Month",HandleMissingHow=IgnoreMissing)

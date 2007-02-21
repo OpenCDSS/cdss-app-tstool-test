@@ -1,0 +1,4 @@
+startLog(LogFile="OldMonth.log")
+# 08213500 - RIO GRANDE RIVER AT THIRTY MILE BRIDGE NEAR CREEDE
+08213500.DWR.Streamflow.Month~HydroBase
+writeRiverWare("../output/08213500.Month.Old.RiverWare",*,1,,)

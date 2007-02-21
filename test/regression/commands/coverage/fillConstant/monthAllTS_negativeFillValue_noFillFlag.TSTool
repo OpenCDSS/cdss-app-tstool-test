@@ -1,0 +1,6 @@
+startLog(LogFile="monthAllTS_negativeFillValue_noFillFlag.log")
+# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR
+08236500.DWR.Streamflow.Month~HydroBase
+fillConstant(TSList=AllTS,ConstantValue=-999)
+writeDateValue(OutputFile="../output/monthAllTS_negativeFillValue_noFillFlagOutput.dv")
+compareFiles(InputFile1="monthAllTS_negativeFillValue_noFillFlagExpected.dv",InputFile2="../output/monthAllTS_negativeFillValue_noFillFlagOutput.dv",WarnIfDifferent=True)

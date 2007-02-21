@@ -1,0 +1,4 @@
+startLog(LogFile="fromDDHandDDMFiles.log")
+statemodMax("../data/whiteT.ddh","../data/whiteTB.ddm")
+setOutputYearType(Water)
+writeStateMod("../output/max.stm",*)

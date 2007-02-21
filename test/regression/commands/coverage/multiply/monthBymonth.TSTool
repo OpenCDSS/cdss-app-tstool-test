@@ -1,0 +1,8 @@
+startLog(LogFile="monthBymonth.log")
+# 2184 - DEL NORTE 2 E
+2184.NOAA.TempMean.Month~HydroBase
+# 5706 - MONTE VISTA 2 W
+5706.NOAA.TempMean.Month~HydroBase
+multiply(2184.NOAA.TempMean.Month,5706.NOAA.TempMean.Month)
+writeDateValue(OutputFile="../output/monthBymonthOutput.dv")
+compareFiles(InputFile1="monthBymonthExpected.dv",InputFile2="../output/monthBymonthOutput.dv",WarnIfDifferent=True)

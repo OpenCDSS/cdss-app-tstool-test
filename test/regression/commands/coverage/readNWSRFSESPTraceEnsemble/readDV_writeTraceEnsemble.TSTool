@@ -1,0 +1,2 @@
+startLog(LogFile="readDV_writeTraceEnsemble.log")
+readDateValue("../data/FRANH.ESP.SQME.1HOUR.QPF1.TRACE2001_NEW")

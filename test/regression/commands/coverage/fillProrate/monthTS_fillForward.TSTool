@@ -1,0 +1,7 @@
+startLog(LogFile="monthTS_fillForward.log")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Month~HydroBase
+# 06694700 - FOURMILE CREEK NEAR FAIRPLAY, CO.
+06694700.USGS.Streamflow.Month~HydroBase
+fillProrate(TSID="06754000.DWR.Streamflow.Month",IndependentTSID="06694700.USGS.Streamflow.Month",FillDirection=Forward)
+06754000.DWR.Streamflow.Month~HydroBase

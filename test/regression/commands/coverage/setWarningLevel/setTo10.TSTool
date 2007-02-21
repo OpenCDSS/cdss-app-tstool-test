@@ -1,0 +1,2 @@
+startLog(LogFile="setTo10.log")
+setWarningLevel(1,10)

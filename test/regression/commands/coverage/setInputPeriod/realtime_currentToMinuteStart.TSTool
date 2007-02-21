@@ -1,0 +1,4 @@
+startLog(LogFile="realtime_currentToMinuteStart.log")
+setInputPeriod(InputStart="CurrentToMinute - 14Day",InputEnd="InputStart + 7Day")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow-DISCHRG.Irregular~HydroBase

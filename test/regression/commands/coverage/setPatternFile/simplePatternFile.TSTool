@@ -1,0 +1,2 @@
+startLog(LogFile="simplePatternFile.log")
+setPatternFile("../data/fill.pat")

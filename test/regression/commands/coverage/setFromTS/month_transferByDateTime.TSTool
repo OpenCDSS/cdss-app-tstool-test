@@ -1,0 +1,6 @@
+startLog(LogFile="month_transferByDateTime.log")
+# 08241000 - TRINCHERA CREEK ABOVE MOUNTAIN HOME RESERVOIR
+08241000.DWR.Streamflow.Month~HydroBase
+# 08240500 - TRINCHERA CREEK ABOVE TURNER'S RANCH
+08240500.DWR.Streamflow.Month~HydroBase
+setFromTS(08241000.DWR.Streamflow.Month,08240500.DWR.Streamflow.Month,*,*,TransferData=ByDateTime)

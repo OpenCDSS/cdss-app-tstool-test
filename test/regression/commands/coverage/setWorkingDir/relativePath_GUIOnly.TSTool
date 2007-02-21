@@ -1,0 +1,2 @@
+startLog(LogFile="relativePath_GUIOnly.log")
+setWorkingDir("../",GUIOnly)

@@ -1,0 +1,2 @@
+startLog(LogFile="readMonthTS.log")
+readDateValue("../newTimeSeries/ExpectedResultMonth.dv")

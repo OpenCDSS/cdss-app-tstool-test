@@ -1,0 +1,4 @@
+startLog(LogFile="yearTS.log")
+# setDebugLevel(0,30)
+# 0100500 - HOOVER DITCH
+0100500.DWR.DivComment.Year~HydroBase

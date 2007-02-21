@@ -1,0 +1,8 @@
+startLog(LogFile="dayByday.log")
+# 06753400 - LONETREE CREEK AT CARR, CO.
+06753400.USGS.Streamflow.Day~HydroBase
+# 06756500 - CROW CREEK NEAR BARNSVILLE, CO.
+06756500.USGS.Streamflow.Day~HydroBase
+multiply(06753400.USGS.Streamflow.Day,06756500.USGS.Streamflow.Day)
+writeDateValue(OutputFile="../output/dayBydayOutput.dv")
+compareFiles(InputFile1="dayBydayExpected.dv",InputFile2="../output/dayBydayOutput.dv",WarnIfDifferent=True)
