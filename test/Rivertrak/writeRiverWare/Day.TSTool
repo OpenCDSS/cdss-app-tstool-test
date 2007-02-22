@@ -1,4 +1,0 @@
-startLog(LogFile="Day.log")
-# 08213500 - RIO GRANDE RIVER AT THIRTY MILE BRIDGE NEAR CREEDE
-08213500.DWR.Streamflow.Day~HydroBase
-writeRiverWare(TSList=AllTS,OutputFile="../output/08213500.Day.RiverWare",Precision=2)

@@ -1,2 +1,0 @@
-startLog(LogFile="readFromGWFile.log")
-readMODSIM("../data/CALIB42.GW")
