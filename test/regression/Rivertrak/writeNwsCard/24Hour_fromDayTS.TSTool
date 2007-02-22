@@ -1,0 +1,4 @@
+startLog(LogFile="24Hour_fromDayTS.log")
+# 0130 - ALAMOSA SAN LUIS VALLEY RGNL
+0130.NOAA.Precip.Day~HydroBase
+writeNwsCard("../output/Alamosa.NOAA.PTPX.24Hour")

@@ -1,0 +1,2 @@
+# startLog(LogFile="fromRESFile.log")
+#TS x = readMODSIM("../data/BIGTOM17.RES","GREELEYCBT..STOR_TRG..",*,*,*)

@@ -1,0 +1,7 @@
+startLog(LogFile="Year.log")
+setOutputPeriod(1970,2000)
+# 0103333 - GASP REPL
+0103333.DWR.ResEOY.Year~HydroBase
+# 0103339 - BIJOU REPL
+0103339.DWR.ResEOY.Year~HydroBase
+writeRiverWare(TSList=AllTS,OutputFile="../output/Year.RiverWare")
