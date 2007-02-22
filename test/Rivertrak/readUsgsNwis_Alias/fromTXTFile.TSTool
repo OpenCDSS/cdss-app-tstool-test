@@ -1,0 +1,2 @@
+# startLog(LogFile="fromTXTFile.log")
+#TS ts1 = readUsgsNwis("G03451500.txt",*,*)
