@@ -1,0 +1,6 @@
+# This command is commented because it was obseleted by
+# setConstant
+#startLog(LogFile="setPositiveValue.log")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+#06754000.DWR.Streamflow.Month~HydroBase
+#setConstantBefore(06754000.DWR.Streamflow.Month,50,1950-01)

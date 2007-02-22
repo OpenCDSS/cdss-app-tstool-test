@@ -1,0 +1,17 @@
+startLog(LogFile="CreateDateValueFiles.log")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Month~HydroBase
+# 06756995 - SOUTH PLATTE RIVER AT MASTERS, CO.
+06756995.USGS.Streamflow.Month~HydroBase
+# 06757000 - SOUTH PLATTE RIVER AT SUBLETTE, CO.
+06757000.USGS.Streamflow.Month~HydroBase
+# 06758500 - SOUTH PLATTE RIVER NEAR WELDONA
+06758500.DWR.Streamflow.Month~HydroBase
+# 06759500 - SOUTH PLATTE RIVER AT FORT MORGAN
+06759500.USGS.Streamflow.Month~HydroBase
+# 06759910 - SOUTH PLATTE RIVER AT COOPER BRIDGE NEAR BALZAC
+06759910.DWR.Streamflow.Month~HydroBase
+writeDateValue(OutputFile="../output/RawData1.dv")
+writeDateValue(OutputFile="../output/RawData1Copy.dv")
+scale(TSID="*",ScaleValue=1.1)
+writeDateValue(OutputFile="../output/RawData1Scaled.dv")

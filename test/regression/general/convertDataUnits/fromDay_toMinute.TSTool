@@ -1,0 +1,6 @@
+startLog(LogFile="fromDay_toMinute.log")
+# 2593 - ELBERT
+2593.NOAA.FrostDateF28F.Year~HydroBase
+convertDataUnits(2593.NOAA.FrostDateF28F.Year,MIN)
+writeDateValue(OutputFile="../output/fromDaytoMinuteOutput.dv")
+compareFiles(InputFile1="fromDaytoMinuteExpected.dv",InputFile2="../output/fromDaytoMinuteOutput.dv",WarnIfDifferent=True)

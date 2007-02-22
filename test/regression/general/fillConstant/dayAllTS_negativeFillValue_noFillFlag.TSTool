@@ -1,0 +1,6 @@
+startLog(LogFile="dayAllTS_negativeFillValue_noFillFlag.log")
+# 06753500 - LONETREE CREEK NEAR NUNN, CO.
+06753500.USGS.Streamflow.Day~HydroBase
+fillConstant(TSList=AllTS,ConstantValue=-999)
+writeDateValue(OutputFile="../output/dayAllTS_negativeFillValue_noFillFlagOutput.dv")
+compareFiles(InputFile1="dayAllTS_negativeFillValue_noFillFlagExpected.dv",InputFile2="../output/dayAllTS_negativeFillValue_noFillFlagOutput.dv",WarnIfDifferent=True)

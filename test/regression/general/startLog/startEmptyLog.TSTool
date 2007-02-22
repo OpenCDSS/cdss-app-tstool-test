@@ -1,0 +1,7 @@
+startLog(LogFile="startEmptyLog.log")
+startLog(LogFile="../output/startLogExample.log")
+# 06753400 - LONETREE CREEK AT CARR, CO.
+#06753400.USGS.Streamflow.Month~HydroBase
+# 1179 - BYERS 5 ENE
+#1179.NOAA.Precip.Month~HydroBase
+#add(TSID="06753400.USGS.Streamflow.Month",TSList="AllTS",HandleMissingHow=IgnoreMissing)

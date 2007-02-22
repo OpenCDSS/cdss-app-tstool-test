@@ -1,0 +1,10 @@
+startLog(LogFile="dayFillSeveralWithFloatValue.log")
+# 07107900 - GREENHORN CREEK NEAR RYE
+07107900.USGS.Streamflow.Day~HydroBase
+# 06753990 - LONETREE CREEK NEAR GREELEY, CO.
+06753990.USGS.Streamflow.Day~HydroBase
+# 06756500 - CROW CREEK NEAR BARNSVILLE, CO.
+06756500.USGS.Streamflow.Day~HydroBase
+fillConstant(TSList=AllTS,ConstantValue=22.55,FillFlag="C")
+writeDateValue(OutputFile="../output/dayFillSeveralWithFloatValueOutput.dv")
+compareFiles(InputFile1="dayFillSeveralWithFloatValueExpected.dv",InputFile2="../output/dayFillSeveralWithFloatValueOutput.dv",WarnIfDifferent=True)

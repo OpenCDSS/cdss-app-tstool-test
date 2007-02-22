@@ -1,0 +1,4 @@
+startLog(LogFile="fromHydro_monthCFSD.log")
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
+08236000.DWR.Streamflow.Month~HydroBase
+convertDataUnits(08236000.DWR.Streamflow.Month,CFSD)

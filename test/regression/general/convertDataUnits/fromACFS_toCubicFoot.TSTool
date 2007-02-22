@@ -1,0 +1,6 @@
+startLog(LogFile="fromACFS_toCubicFoot.log")
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
+08236000.DWR.Streamflow.Month~HydroBase
+convertDataUnits(08236000.DWR.Streamflow.Month,FT3)
+writeDateValue(OutputFile="../output/toCubicFootOutput.dv")
+compareFiles(InputFile1="toCubicFootExpected.dv",InputFile2="../output/toCubicFootOutput.dv",WarnIfDifferent=True)

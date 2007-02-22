@@ -1,0 +1,6 @@
+startLog(LogFile="year_withLargeNumber.log")
+# 0100507 - BIJOU CANAL
+0100507.DWR.DivTotal.Year~HydroBase
+scale(TSID="0100507.DWR.DivTotal.Year",ScaleValue=97999975)
+writeDateValue(OutputFile="../output/year_withLargeNumberOutput.dv")
+compareFiles(InputFile1="year_withLargeNumberExpected.dv",InputFile2="../output/year_withLargeNumberOutput.dv",WarnIfDifferent=True)

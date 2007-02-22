@@ -1,0 +1,10 @@
+startLog(LogFile="testMissingDataDay.log")
+setOutputPeriod(2002-11-01,2002-11-30)
+TS month = newTimeSeries(NewTSID="loc.source.datatype.month.scenario~InputType~InputName",Description="Example Description",SetStart="2002-11",SetEnd="2002-11",Units="CFS",InitialValue=20)
+
+# make this TS full on missing values
+TS day = newTimeSeries(NewTSID="loc.source.datatype.day.scenario~InputType~InputName",Description="Example Description",SetStart="2002-11-01",SetEnd="2002-11-30",Units="CFS",InitialValue=-999)
+TS newDay = newDayTSFromMonthAndDayTS(new..xx.Day, month, day)
+selectTimeSeries(TSID="newDay")
+writeDateValue(OutputFile="../output/testMissingDataDayOutput.dv", TSList="SelectedTS")
+compareFiles(InputFile1="../output/testMissingDataDayOutput.dv",InputFile2="../data/ExpectedResultMissingDataDay.dv",WarnIfDifferent=True)

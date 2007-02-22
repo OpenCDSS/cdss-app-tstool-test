@@ -1,0 +1,2 @@
+startLog(LogFile="readIrregularDV.log")
+readDateValue("irregular.dv")

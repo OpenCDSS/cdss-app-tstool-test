@@ -1,0 +1,4 @@
+startLog(LogFile="dayTS_6hours.log")
+# 08223000 - RIO GRANDE RIVER AT ALAMOSA
+TS DayTS = readTimeSeries("08223000.DWR.Streamflow.Day~HydroBase")
+TS HourTS = disaggregate(DayTS,Ormsbee,6Hour,*,*)

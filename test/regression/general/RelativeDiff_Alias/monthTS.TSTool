@@ -1,0 +1,7 @@
+startLog(LogFile="monthTS.log")
+setOutputPeriod(01/1912,12/1998)
+# (1912-1998) RIO GRANDE AT ALAMOSA, CO.  DWR  Streamflow  Monthly
+TS Alamosa = readTimeSeries("08223000.DWR.Streamflow.Month~HydroBase")
+# (1890-1998) RIO GRANDE NEAR DEL NORTE, CO.  DWR  Streamflow  Monthly
+TS DelNorte = readTimeSeries("08220000.USGS.Streamflow.Month~HydroBase")
+TS RelativeDiff = relativeDiff(DelNorte,Alamosa,DivideByTS1)

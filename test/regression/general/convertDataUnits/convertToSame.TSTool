@@ -1,0 +1,6 @@
+startLog(LogFile="convertToSame.log")
+# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
+08236000.DWR.Streamflow.Month~HydroBase
+convertDataUnits(08236000.DWR.Streamflow.Month,ACFT)
+writeDateValue(OutputFile="../output/toACREOutput.dv")
+compareFiles(InputFile1="toACREExpected.dv",InputFile2="../output/toACREOutput.dv",WarnIfDifferent=True)

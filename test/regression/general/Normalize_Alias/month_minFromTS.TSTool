@@ -1,0 +1,4 @@
+startLog(LogFile="month_minFromTS.log")
+# 06730500 - BOULDER CREEK AT MOUTH, NEAR LONGMONT, CO.
+06730500.USGS.Streamflow.Month~HydroBase
+TS NormalizedTS = normalize(06730500.USGS.Streamflow.Month,MinFromTS,0.0,1.0)

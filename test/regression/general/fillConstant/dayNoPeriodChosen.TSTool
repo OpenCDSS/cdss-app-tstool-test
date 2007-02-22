@@ -1,0 +1,6 @@
+startLog(LogFile="dayNoPeriodChosen.log")
+# 06753500 - LONETREE CREEK NEAR NUNN, CO.
+06753500.USGS.Streamflow.Day~HydroBase
+fillConstant(TSList=AllMatchingTSID,TSID="06753500.USGS.Streamflow.Day~HydroBase",ConstantValue=0,FillFlag="C")
+writeDateValue(OutputFile="../output/dayNoPeriodChosenOutput.dv")
+compareFiles(InputFile1="dayNoPeriodChosenExpected.dv",InputFile2="../output/dayNoPeriodChosenOutput.dv",WarnIfDifferent=True)

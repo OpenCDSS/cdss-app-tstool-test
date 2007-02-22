@@ -1,0 +1,6 @@
+startLog(LogFile="month_withZero.log")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
+06754000.DWR.Streamflow.Month~HydroBase
+scale(TSID="06754000.DWR.Streamflow.Month",ScaleValue=0)
+writeDateValue(OutputFile="../output/month_withZeroOutput.dv")
+compareFiles(InputFile1="month_withZeroExpected.dv",InputFile2="../output/month_withZeroOutput.dv",WarnIfDifferent=True)

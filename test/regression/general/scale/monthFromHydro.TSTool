@@ -1,0 +1,4 @@
+startLog(LogFile="monthFromHydro.log")
+# 1458 - CENTER 4 SSW
+1458.NOAA.Precip.Month~HydroBase
+scale(TSID="1458.NOAA.Precip.Month",ScaleValue=3.5)

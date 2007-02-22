@@ -1,0 +1,2 @@
+startLog(LogFile="setToTrue.log")
+setIgnoreLEZero(True)

@@ -1,0 +1,7 @@
+startLog(LogFile="Test_AllSame.log")
+# Commands file to make sure that warnings are generated for different data.
+readDateValue("../data/RawData1.dv")
+readDateValue("../data/RawData1Copy.dv")
+# A warning should only be generated if the files are different.
+# Since the files are the same, this will be a software coding error.
+compareTimeSeries(WarnIfDifferent=True)
