@@ -1,4 +1,0 @@
-# startLog(LogFile="commands_NCRFC.log")
-# This is commented out because the data set was too large for the
-# simple coverage data set
-# TS x = readNWSRFSFS5Files(TSID="ROMW3.NWSRFS.MAP.6Hour~NWSRFS_FS5Files~J:\cdss\develop\apps\TSTool\test\Data_NWSRFS_FS5Files\NCRFC\",Units="IN")

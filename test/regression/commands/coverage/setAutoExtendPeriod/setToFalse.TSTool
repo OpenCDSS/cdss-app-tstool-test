@@ -1,2 +1,0 @@
-startLog(LogFile="setToFalse.log")
-setAutoExtendPeriod(False)

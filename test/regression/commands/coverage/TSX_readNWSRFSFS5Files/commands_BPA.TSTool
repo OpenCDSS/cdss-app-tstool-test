@@ -1,5 +1,0 @@
-# startLog(LogFile="commands_BPA.log")
-# This is commented out because the data set is too large to have in the
-# coverage data set
-#DWRI1IU.NWSRFS.MAP.6Hour~NWSRFS_FS5Files~J:\CDSS\develop\Apps\TSTool\test\Data_NWSRFS_FS5Files\BPA
-#TS x = readNWSRFSFS5Files(TSID="DWRI1IU.NWSRFS.MAP.6Hour~NWSRFS_FS5Files~J:\CDSS\develop\Apps\TSTool\test\Data_NWSRFS_FS5Files\BPA",Units="IN")

@@ -1,2 +1,0 @@
-startLog(LogFile="commands.log")
-#TS TS_ARMA = readDateValue("../data/TS_ARMA.out",*,*,*,*)

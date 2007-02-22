@@ -1,6 +1,0 @@
-startLog(LogFile="monthWithFillFlag.log")
-# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR
-08236500.DWR.Streamflow.Month~HydroBase
-fillConstant(TSList=AllMatchingTSID,TSID="08236500.DWR.Streamflow.Month",ConstantValue=500,FillStart="1970-02",FillEnd="1970-10",FillFlag="C")
-writeDateValue(OutputFile="../output/monthWithFillFlagOutput.dv")
-compareFiles(InputFile1="monthWithFillFlagExpected.dv",InputFile2="../output/monthWithFillFlagOutput.dv",WarnIfDifferent=True)

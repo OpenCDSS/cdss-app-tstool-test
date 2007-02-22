@@ -1,5 +1,0 @@
-startLog(LogFile="dayShift.log")
-# 08213500 - RIO GRANDE RIVER AT THIRTY MILE BRIDGE NEAR CREEDE
-08213500.DWR.Streamflow.Day~HydroBase
-shiftTimeByInterval(08213500.DWR.Streamflow.Day,-1,1)
-08213500.DWR.Streamflow.Day~HydroBase

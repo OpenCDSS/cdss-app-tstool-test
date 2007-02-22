@@ -1,6 +1,0 @@
-startLog(LogFile="fromHydroBase.log")
-# 0100501 - EMPIRE DITCH
-0100501.DWR.DivTotal.Month~HydroBase
-# 0100503 - RIVERSIDE CANAL
-0100503.DWR.DivTotal.Month~HydroBase
-add(TSID="0100501.DWR.DivTotal.Month",TSList="SpecifiedTS",AddTSID="0100503.DWR.DivTotal.Month",HandleMissingHow=IgnoreMissing)

@@ -1,2 +1,0 @@
-startLog(LogFile="setTo10.log")
-setDebugLevel(0,10)

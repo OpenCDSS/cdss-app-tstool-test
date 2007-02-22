@@ -1,6 +1,0 @@
-startLog(LogFile="day_withNegative.log")
-# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
-06754000.DWR.Streamflow.Day~HydroBase
-scale(TSID="06754000.DWR.Streamflow.Day",ScaleValue=-954)
-writeDateValue(OutputFile="../output/day_withNegativeOutput.dv")
-compareFiles(InputFile1="day_withNegativeExpected.dv",InputFile2="../output/day_withNegativeOutput.dv",WarnIfDifferent=True)

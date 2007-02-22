@@ -1,4 +1,0 @@
-startLog(LogFile="fromMonthDataValue.log")
-09129600...MONTH~DateValue~../data/09129600.dv
-09132500...MONTH~DateValue~../data/09132500.dv
-analyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="../output/analyzePattern2.pat")

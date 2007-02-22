@@ -1,6 +1,0 @@
-startLog(LogFile="readFromHydro_doSimpleReplace.log")
-# 08235700 - ALAMOSA RIVER BELOW CASTLEMAN GULCH NEAR JASPER
-08235700.DWR.Streamflow.Month~HydroBase
-replaceValue(08235700.DWR.Streamflow.Month,-100000,0,0,*,*)
-writeDateValue(OutputFile="../output/negativesToZeroOutput.dv")
-compareFiles(InputFile1="negativesToZeroExpected.dv",InputFile2="../output/negativesToZeroOutput.dv",WarnIfDifferent=True)

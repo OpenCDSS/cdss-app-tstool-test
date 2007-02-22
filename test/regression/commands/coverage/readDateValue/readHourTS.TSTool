@@ -1,2 +1,0 @@
-startLog(LogFile="readHourTS.log")
-readDateValue("../newTimeSeries/ExpectedResultHour.dv")

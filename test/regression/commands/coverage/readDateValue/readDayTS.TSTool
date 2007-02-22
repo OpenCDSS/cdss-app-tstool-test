@@ -1,2 +1,0 @@
-startLog(LogFile="readDayTS.log")
-readDateValue("../newTimeSeries/ExpectedResultDay.dv")

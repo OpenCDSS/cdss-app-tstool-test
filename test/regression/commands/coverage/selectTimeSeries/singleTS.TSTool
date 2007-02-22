@@ -1,3 +1,0 @@
-startLog(LogFile="singleTS.log")
-06753400.USGS.Streamflow.Month~HydroBase
-selectTimeSeries(TSID="067*",DeselectAllFirst="True")

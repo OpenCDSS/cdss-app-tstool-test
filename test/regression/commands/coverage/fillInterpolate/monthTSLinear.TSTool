@@ -1,4 +1,0 @@
-startLog(LogFile="monthTSLinear.log")
-# 06707500 - SOUTH PLATTE RIVER AT SOUTH PLATTE
-06707500.DWR.Streamflow.Month~HydroBase
-fillInterpolate(06707500.DWR.Streamflow.Month,3,Linear)

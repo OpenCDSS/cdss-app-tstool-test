@@ -1,3 +1,0 @@
-startLog(LogFile="usingTSIDWildcard.log")
-0100501.DWR.DivTotal.Month~HydroBase
-free(TSID="01005*")

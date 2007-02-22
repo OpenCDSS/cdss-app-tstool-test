@@ -1,4 +1,0 @@
-startLog(LogFile="fillForward.log")
-# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR
-08236500.DWR.Streamflow.Month~HydroBase
-fillRepeat(TSID="08236500.DWR.Streamflow.Month",FillDirection=Forward)

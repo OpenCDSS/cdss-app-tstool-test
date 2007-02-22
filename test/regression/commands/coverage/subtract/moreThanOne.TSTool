@@ -1,8 +1,0 @@
-startLog(LogFile="moreThanOne.log")
-# 06611200 - BUFFALO CREEK NEAR HEBRON, CO.
-06611200.USGS.Streamflow.Month~HydroBase
-# 06611300 - GRIZZLY CREEK NEAR HEBRON, CO.
-06611300.USGS.Streamflow.Month~HydroBase
-# 06611500 - GRIZZLY CREEK NEAR WALDEN, CO.
-06611500.USGS.Streamflow.Month~HydroBase
-subtract(06611200.USGS.Streamflow.Month,IgnoreMissing,06611300.USGS.Streamflow.Month,06611500.USGS.Streamflow.Month)

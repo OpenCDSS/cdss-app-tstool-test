@@ -1,4 +1,0 @@
-startLog(LogFile="testDay.log")
-# 2003536 - CONTINENTAL RES
-2003536.DWR.ResMeasStorage.Day~HydroBase
-addConstant(2003536.DWR.ResMeasStorage.Day,5000,*,*)
