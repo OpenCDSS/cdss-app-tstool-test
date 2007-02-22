@@ -1,6 +1,0 @@
-startLog(LogFile="Hydro_WIS_fromSeveralWDIDs.log")
-stat:06754000.DWR.WISPointFlow.Day.District 1~HydroBase
-wdid:0100501.DWR.WISPointFlow.Day.District 1~HydroBase
-wdid:0100688.DWR.WISPointFlow.Day.District 1~HydroBase
-wdid:0100711.DWR.WISPointFlow.Day.District 1~HydroBase
-wdid:0100829.DWR.WISPointFlow.Day.District 1~HydroBase

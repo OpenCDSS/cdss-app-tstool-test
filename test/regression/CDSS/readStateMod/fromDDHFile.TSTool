@@ -1,2 +1,0 @@
-startLog(LogFile="fromDDHFile.log")
-readStateMod("../data/rg2004.ddh")
