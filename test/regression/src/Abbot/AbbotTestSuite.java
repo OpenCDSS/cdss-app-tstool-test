@@ -1,5 +1,4 @@
 import java.io.File;
-
 import junit.extensions.abbot.ScriptFixture;
 import junit.extensions.abbot.ScriptTestSuite;
 import junit.extensions.abbot.TestHelper;
