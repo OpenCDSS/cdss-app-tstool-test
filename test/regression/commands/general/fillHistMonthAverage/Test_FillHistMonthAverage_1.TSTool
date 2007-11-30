@@ -1,0 +1,10 @@
+StartLog(LogFile="Results/Test_FillHistMonthAverage_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillHistMonthAverage_1_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2007-05",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Month",Description="test data 1",SetStart="2002-01",SetEnd="2007-07",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+FillHistMonthAverage(TSList=AllMatchingTSID,TSID="ts1",FillStart="2001-01",FillEnd="2005-11",FillFlag="A")
+FillHistMonthAverage(TSList=AllMatchingTSID,TSID="ts2",FillStart="2003-01",FillEnd="2007-11",FillFlag="B")
+# Uncomment the following command to regenerate expected results.
+WriteDateValue(OutputFile="ExpectedResults/Test_FillHistMonthAverage_1_out.dv")
+WriteDateValue(OutputFile="Results/Test_FillHistMonthAverage_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_FillHistMonthAverage_1_out.dv",InputFile2="Results/Test_FillHistMonthAverage_1_out.dv",WarnIfDifferent=True)
