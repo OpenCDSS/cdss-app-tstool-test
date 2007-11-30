@@ -1,0 +1,8 @@
+StartLog(LogFile="Results/Test_Copy_1.TSTool.log")
+RemoveFile(InputFile="Results\Test_Copy_1_out.dv",WarnIfMissing=False)
+TS Original = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+TS Copy = Copy(TSID="Original",NewTSID="a...Day")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_Copy_1_out.dv")
+WriteDateValue(OutputFile="Results\Test_Copy_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_Copy_1_out.dv",InputFile2="Results\Test_Copy_1_out.dv",WarnIfDifferent=True)
