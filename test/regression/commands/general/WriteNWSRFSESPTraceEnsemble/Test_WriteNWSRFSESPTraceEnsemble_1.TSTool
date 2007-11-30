@@ -1,0 +1,16 @@
+StartLog(LogFile="Results/Test_WriteNWSRFSESPTraceEnsemble_1.TSTool.log")
+# RemoveFile(InputFile="Results/Test.1.SQIN.06.CS",WarnIfMissing=False)
+RemoveFile(InputFile="Results/Test_WriteNWSRFSESPTraceEnsemble_1_out.dv",WarnIfMissing=True)
+readNWSRFSESPTraceEnsemble(InputFile="Data/CSCI.CSCI2.SQIN.06.CS")
+# Uncomment the following line to regenerate the expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteNWSRFSESPTraceEnsemble_1_out.dv")
+WriteDateValue(OutputFile="Results/Test_WriteNWSRFSESPTraceEnsemble_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_WriteNWSRFSESPTraceEnsemble_1_out.dv",InputFile2="Results/Test_WriteNWSRFSESPTraceEnsemble_1_out.dv",WarnIfDifferent=True)
+/*
+# The following does not work because the trace files have the date, etc.
+# different.  Use DateValue files as per below so that dynamic header information
+# is ignored.
+# WriteNWSRFSESPTraceEnsemble(OutputFile="ExpectedResults/Test.1.SQIN.06.CS")
+WriteNWSRFSESPTraceEnsemble(OutputFile="Results/Test.1.SQIN.06.CS")
+CompareFiles(InputFile1="ExpectedResults/Test.1.SQIN.06.CS",InputFile2="Results/Test.1.SQIN.06.CS",WarnIfDifferent=True)
+*/
