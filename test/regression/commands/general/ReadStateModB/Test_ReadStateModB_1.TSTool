@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_ReadStateModB_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadStateModB_1_out.dv",WarnIfMissing=False)
+ReadStateModB(InputFile="Data\rg2007H.b43",TSID="200812*")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateModB_1_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadStateModB_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadStateModB_1_out.dv",InputFile2="Results\Test_ReadStateModB_1_out.dv",WarnIfDifferent=True)
