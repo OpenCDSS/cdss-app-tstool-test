@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_CreateFromList_1.TSTool.log")
+RemoveFile(InputFile="Results\Test_CreateFromList_1_out.dv",WarnIfMissing=False)
+CreateFromList(ListFile="Data\Test_CreateFromList_1.txt",IDCol=1,DataSource=DWR,DataType="DivTotal",Interval=Month,InputType=HydroBase,HandleMissingTSHow=IgnoreMissingTS)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_CreateFromList_1_out.dv")
+WriteDateValue(OutputFile="Results\Test_CreateFromList_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_CreateFromList_1_out.dv",InputFile2="Results\Test_CreateFromList_1_out.dv",WarnIfDifferent=True)
