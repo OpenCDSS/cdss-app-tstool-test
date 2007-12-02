@@ -1,0 +1,8 @@
+StartLog(LogFile="Results/Test_CreateTraces_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_CreateTraces_1_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,3,5,6,25,10,8,5,1")
+CreateTraces(ts1,1Year,,ShiftToReference)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_CreateTraces_1_out.dv")
+WriteDateValue(OutputFile="Results/Test_CreateTraces_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_CreateTraces_1_out.dv",InputFile2="Results/Test_CreateTraces_1_out.dv",WarnIfDifferent=True)
