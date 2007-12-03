@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",WarnIfMissing=False)
+TS ts1 = ReadHydroBase(TSID="2000812.DWR.DivTotal.Month~HydroBase")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",InputFile2="Results/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",WarnIfDifferent=True)
