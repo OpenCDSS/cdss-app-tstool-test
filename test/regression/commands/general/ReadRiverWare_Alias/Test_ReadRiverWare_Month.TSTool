@@ -1,7 +1,7 @@
 StartLog(LogFile="Results/Test_ReadRiverWare_Day.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadRiverWare_Day_out.dv",WarnIfMissing=True)
+RemoveFile(InputFile="Results/Test_ReadRiverWare_Month_out.dv",WarnIfMissing=False)
 TS rw_month = ReadRiverWare("Data_Riverware_Month\UtahTarSands1.Total_Diversion_Requested",*,*,*)
 # Uncomment the following to regenerate the expected results...
-WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiverWare_Month_out.dv")
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiverWare_Month_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadRiverWare_Month_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_ReadRiverWare_Month_out.dv",InputFile2="Results/Test_ReadRiverWare_Month_out.dv",WarnIfDifferent=True)
