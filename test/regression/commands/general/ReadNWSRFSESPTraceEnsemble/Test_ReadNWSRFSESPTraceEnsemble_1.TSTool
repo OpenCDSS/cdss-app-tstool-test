@@ -1,6 +1,6 @@
 StartLog(LogFile="Results/Test_ReadNWSRFSESPTraceEnsemble_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadNWSRFSESPTraceEnsemble_1_out.dv",WarnIfMissing=False)
-readNWSRFSESPTraceEnsemble(InputFile="Data/CSCI.CSCI2.SQIN.06.CS")
+ReadNwsrfsEspTraceEnsemble(InputFile="Data/CSCI.CSCI2.SQIN.06.CS",EnsembleID="CSCI_Ensemble")
 # Uncomment the following line to regenerate the expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNWSRFSESPTraceEnsemble_1_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNWSRFSESPTraceEnsemble_1_out.dv")
