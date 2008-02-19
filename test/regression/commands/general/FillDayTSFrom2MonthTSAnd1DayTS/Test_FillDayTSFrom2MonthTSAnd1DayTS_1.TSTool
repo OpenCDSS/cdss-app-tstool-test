@@ -7,6 +7,6 @@ TS ts2_month = NewPatternTimeSeries(NewTSID="ts2...Month",Description="test data
 FillDayTSFrom2MonthTSAnd1DayTS(ts1_day,ts1_month,ts2_month,ts2_day)
 SelectTimeSeries(TSID="*.*.*.Day.*",DeselectAllFirst="True")
 # Uncomment the following command to regenerate expected results.
-# WriteDateValue(TSList=SelectedTS,OutputFile="ExpectedResults/Test_FillDayTSFrom2MonthTSAnd1DayTS_1_out.dv",TSList="SelectedTS")
-WriteDateValue(TSList=SelectedTS,OutputFile="Results/Test_FillDayTSFrom2MonthTSAnd1DayTS_1_out.dv",TSList="SelectedTS")
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillDayTSFrom2MonthTSAnd1DayTS_1_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results/Test_FillDayTSFrom2MonthTSAnd1DayTS_1_out.dv",TSList=SelectedTS)
 CompareFiles(InputFile1="ExpectedResults/Test_FillDayTSFrom2MonthTSAnd1DayTS_1_out.dv",InputFile2="Results/Test_FillDayTSFrom2MonthTSAnd1DayTS_1_out.dv",WarnIfDifferent=True)

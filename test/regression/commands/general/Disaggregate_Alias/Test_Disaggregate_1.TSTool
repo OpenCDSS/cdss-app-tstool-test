@@ -4,6 +4,6 @@ TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetS
 TS ts1_disaggregated = Disaggregate(ts1,Ormsbee,6Hour,*,*)
 SelectTimeSeries(TSID="ts1",DeselectAllFirst="True")
 # Uncomment the following command to regenerate expected results.
-# WriteDateValue(TSList=SelectedTS,OutputFile="ExpectedResults/Test_Disaggregate_1_out.dv",TSList="SelectedTS")
-WriteDateValue(TSList=SelectedTS,OutputFile="Results/Test_Disaggregate_1_out.dv",TSList="SelectedTS")
+# WriteDateValue(OutputFile="ExpectedResults/Test_Disaggregate_1_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results/Test_Disaggregate_1_out.dv",TSList=SelectedTS)
 CompareFiles(InputFile1="ExpectedResults/Test_Disaggregate_1_out.dv",InputFile2="Results/Test_Disaggregate_1_out.dv",WarnIfDifferent=True)
