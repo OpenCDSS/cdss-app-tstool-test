@@ -5,6 +5,6 @@ SetOutputPeriod(OutputStart="1950-01-01",OutputEnd="1951-03-31")
 TS tsout = NewEndOfMonthTSFromDayTS(ts1_day,15)
 SelectTimeSeries(TSID="tsout",DeselectAllFirst="True")
 # Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(TSList=SelectedTS,OutputFile="ExpectedResults\Test_NewEndOfMonthTSFromDayTS_1_out.dv",TSList="SelectedTS")
-WriteDateValue(TSList=SelectedTS,OutputFile="Results\Test_NewEndOfMonthTSFromDayTS_1_out.dv",TSList="SelectedTS")
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewEndOfMonthTSFromDayTS_1_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_NewEndOfMonthTSFromDayTS_1_out.dv",TSList=SelectedTS)
 CompareFiles(InputFile1="ExpectedResults\Test_NewEndOfMonthTSFromDayTS_1_out.dv",InputFile2="Results\Test_NewEndOfMonthTSFromDayTS_1_out.dv",WarnIfDifferent=True)
