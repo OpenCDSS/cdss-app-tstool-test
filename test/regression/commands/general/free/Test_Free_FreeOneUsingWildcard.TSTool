@@ -1,7 +1,7 @@
 TS Alias1 = NewPatternTimeSeries(NewTSID="MyLoc1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 # Setup test by opening log and removing old output.
 StartLog(LogFile="Results/Test_Free_FreeOneUsingWildcard.TSTool.log")
-RemoveFile(InputFile="Results/Test_Free_FreeOneUsingWildcard_out.dv")
+RemoveFile(InputFile="Results/Test_Free_FreeOneUsingWildcard_out.dv",WarnIfMissing=False)
 # Create new output
 TS Alias2abc = NewPatternTimeSeries(NewTSID="MyLoc2..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="10,20,24,26,150")
 Free(TSID="Alias2*")

@@ -1,7 +1,7 @@
 StartLog(LogFile="Results/Test_FillRepeat_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_FillRepeat_1_out.dv",WarnIfMissing=False)
 TS ts1_day = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
-FillRepeat(TSID="*",FillDirection=Forward)
+FillRepeat(TSList=AllMatchingTSID,TSID="*",FillDirection=Forward)
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_FillRepeat_1_out.dv")
 WriteDateValue(OutputFile="Results/Test_FillRepeat_1_out.dv")
