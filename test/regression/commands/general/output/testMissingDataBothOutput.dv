@@ -4,7 +4,7 @@
 # user:      sam
 # date:      Wed Nov 21 17:30:15 MST 2007
 # host:      SOPRIS
-# directory: C:\Develop\TSTool_SourceBuild\TSTool\test\regression\commands\general\newTimeSeries
+# directory: C:\Develop\TSTool_SourceBuild\TSTool\test\regression\commands\general\newDayTSFromMonthAndDayTS
 # command:   TSTool -home test/operational/CDSS 
 #-----------------------------------------------------------------------
 # Last command file: "C:\Develop\TSTool_SourceBuild\TSTool\test\regression\TestSuites\commands_general\run\RunRegressionTest_commands_general.TSTool"
@@ -32,52 +32,50 @@
 #
 Delimiter   = " "
 NumTS       = 1
-TSID        = "loc.source.datatype.Day.scenario"
-Alias       = "x"
-Description = "Example Description, constant=20.000"
-DataType    = "datatype"
+TSID        = "new..xx.Day"
+Alias       = "newDay"
+Description = ""
+DataType    = "xx"
 Units       = "CFS"
 MissingVal  = -999.0000
 Start       = 2002-11-01
-End         = 2002-12-01
+End         = 2002-11-30
 #
 # Time series comments/histories:
 #
 #
-# Creation history for time series 1 TSID=loc.source.datatype.Day.scenario Alias=x):
+# Time series 1 (TSID=new..xx.Day Alias=newDay) has no comments or history
 #
-#   Set 2002-11-01 to 2002-12-01 to constant 20.000.
 #
 #EndHeader
-Date "loc.source.datatype.Day.scenario, CFS"
-2002-11-01 20.0000
-2002-11-02 20.0000
-2002-11-03 20.0000
-2002-11-04 20.0000
-2002-11-05 20.0000
-2002-11-06 20.0000
-2002-11-07 20.0000
-2002-11-08 20.0000
-2002-11-09 20.0000
-2002-11-10 20.0000
-2002-11-11 20.0000
-2002-11-12 20.0000
-2002-11-13 20.0000
-2002-11-14 20.0000
-2002-11-15 20.0000
-2002-11-16 20.0000
-2002-11-17 20.0000
-2002-11-18 20.0000
-2002-11-19 20.0000
-2002-11-20 20.0000
-2002-11-21 20.0000
-2002-11-22 20.0000
-2002-11-23 20.0000
-2002-11-24 20.0000
-2002-11-25 20.0000
-2002-11-26 20.0000
-2002-11-27 20.0000
-2002-11-28 20.0000
-2002-11-29 20.0000
-2002-11-30 20.0000
-2002-12-01 20.0000
+Date "new..xx.Day, CFS"
+2002-11-01 -999.0000
+2002-11-02 -999.0000
+2002-11-03 -999.0000
+2002-11-04 -999.0000
+2002-11-05 -999.0000
+2002-11-06 -999.0000
+2002-11-07 -999.0000
+2002-11-08 -999.0000
+2002-11-09 -999.0000
+2002-11-10 -999.0000
+2002-11-11 -999.0000
+2002-11-12 -999.0000
+2002-11-13 -999.0000
+2002-11-14 -999.0000
+2002-11-15 -999.0000
+2002-11-16 -999.0000
+2002-11-17 -999.0000
+2002-11-18 -999.0000
+2002-11-19 -999.0000
+2002-11-20 -999.0000
+2002-11-21 -999.0000
+2002-11-22 -999.0000
+2002-11-23 -999.0000
+2002-11-24 -999.0000
+2002-11-25 -999.0000
+2002-11-26 -999.0000
+2002-11-27 -999.0000
+2002-11-28 -999.0000
+2002-11-29 -999.0000
+2002-11-30 -999.0000
