@@ -1,6 +1,6 @@
 # Setup test...
 StartLog(LogFile="Results/Test_SortTimeSeries_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_SortTimeSeries_1_out.dv")
+RemoveFile(InputFile="Results/Test_SortTimeSeries_1_out.dv",WarnIfMissing=False)
 TS TS2 = NewPatternTimeSeries(NewTSID="MyLoc2..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 TS TS1 = NewPatternTimeSeries(NewTSID="MyLoc1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 TS TS3 = NewPatternTimeSeries(NewTSID="MyLoc3..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")

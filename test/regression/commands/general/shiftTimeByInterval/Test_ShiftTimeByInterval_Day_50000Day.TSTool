@@ -1,0 +1,9 @@
+StartLog(LogFile="Results/Test_ShiftTimeByInterval_Day_50000Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_ShiftTimeByInterval_Day_50000Day_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...6Hour",Description="test data 1",SetStart="1900-01-01 00",SetEnd="2003-05-13 18",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5,3,6,7,8,9,5,3,4")
+TS ts1_copy = Copy(TSID="ts1",NewTSID="ts1_copy...Day")
+ShiftTimeByInterval(TSList=AllMatchingTSID,TSID="ts1",ShiftData="-50000,1.0")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ShiftTimeByInterval_Day_50000Day_out.dv")
+WriteDateValue(OutputFile="Results/Test_ShiftTimeByInterval_Day_50000Day_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ShiftTimeByInterval_Day_50000Day_out.dv",InputFile2="Results/Test_ShiftTimeByInterval_Day_50000Day_out.dv",WarnIfDifferent=True)

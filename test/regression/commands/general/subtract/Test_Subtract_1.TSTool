@@ -2,7 +2,7 @@ StartLog(LogFile="Results/Test_Subtract_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_Subtract_1_out.dv",WarnIfMissing=False)
 TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1")
 TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Day",Description="test data 2",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="2")
-Subtract(TSID="ts1",TSList="SpecifiedTS",SubtractTSID="ts2",HandleMissingHow=IgnoreMissing)
+Subtract(TSID="ts1",SubtractTSList=SpecifiedTSID,SubtractTSID="ts2",HandleMissingHow="IgnoreMissing")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_Subtract_1_out.dv")
 WriteDateValue(OutputFile="Results/Test_Subtract_1_out.dv")
