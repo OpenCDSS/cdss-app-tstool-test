@@ -10,6 +10,6 @@ CompareFiles(InputFile1="ExpectedResults/Test_WriteNWSRFSESPTraceEnsemble_1_out.
 # different.  Use DateValue files as per below so that dynamic header information
 # is ignored.
 # WriteNWSRFSESPTraceEnsemble(OutputFile="ExpectedResults/Test.1.SQIN.06.CS")
-WriteNWSRFSESPTraceEnsemble(OutputFile="Results/Test.1.SQIN.06.CS")
+WriteNwsrfsEspTraceEnsemble(OutputFile="Results/Test.1.SQIN.06.CS")
 CompareFiles(InputFile1="ExpectedResults/Test.1.SQIN.06.CS",InputFile2="Results/Test.1.SQIN.06.CS",WarnIfDifferent=True)
 */

@@ -1,14 +1,13 @@
 # Test setup...
 StartLog(LogFile="Results/Test_WriteStateCU_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_WriteStateCU_1_out.stm",WarnIfMissing=True)
+RemoveFile(InputFile="Results/Test_WriteStateCU_1_out.stm",WarnIfMissing=False)
 TS s28 = NewPatternTimeSeries(NewTSID="ts1..FrostDateL28S.Year",Description="Test data",SetStart="1950",SetEnd="1954",Units="Day",PatternValues="90,150,128")
 TS s32 = NewPatternTimeSeries(NewTSID="ts2..FrostDateL32S.Year",Description="Test data",SetStart="1950",SetEnd="1954",Units="Day",PatternValues="95,155,128")
 TS f32 = NewPatternTimeSeries(NewTSID="ts1..FrostDateF32F.Year",Description="Test data",SetStart="1950",SetEnd="1954",Units="Day",PatternValues="300,250,280")
 TS f28 = NewPatternTimeSeries(NewTSID="ts1..FrostDateF28F.Year",Description="Test data",SetStart="1950",SetEnd="1954",Units="Day",PatternValues="305,250,282")
 # Uncomment the following command to regenerate the expected results file.
-writeStateCU("ExpectedResults/Test_WriteStateCU_1_out.stm")
+# writeStateCU("ExpectedResults/Test_WriteStateCU_1_out.stm")
 # Generate new output...
 writeStateCU("Results/Test_WriteStateCU_1_out.stm")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_WriteStateCU_1_out.stm",InputFile2="Results/Test_WriteStateCU_1_out.stm",WarnIfDifferent=True)
-# Cleanup...
