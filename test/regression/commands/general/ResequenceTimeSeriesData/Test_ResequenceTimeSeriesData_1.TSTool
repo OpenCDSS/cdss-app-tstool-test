@@ -1,0 +1,12 @@
+# Test setup...
+StartLog(LogFile="Results/Test_ResequenceTimeSeriesData_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_ResequenceTimeSeriesData_1_out.dv",WarnIfMissing=False)
+ReadTableFromDelimitedFile(TableID="KNN_Years",InputFile="Data\flow_sequence_dataset_1.csv",SkipRows="1",HeaderRows="2")
+ReadStateMod(InputFile="Data\gm2004x.xbm")
+ResequenceTimeSeriesData(TSList=AllTS,TableID="KNN_Years",TableColumn="1",OutputStart="1908",NewScenario="KNN01")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ResequenceTimeSeriesData_1_out.dv")
+# Generate new output...
+WriteDateValue(OutputFile="Results/Test_ResequenceTimeSeriesData_1_out.dv")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_ResequenceTimeSeriesData_1_out.dv",InputFile2="Results/Test_ResequenceTimeSeriesData_1_out.dv",WarnIfDifferent=True)
