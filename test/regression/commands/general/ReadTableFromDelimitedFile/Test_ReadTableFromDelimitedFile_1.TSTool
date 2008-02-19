@@ -1,10 +1,8 @@
 # Test setup...
 StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_1.TSTool.log")
-# RemoveFile(InputFile="Results/Test_WriteDateValue_1_out.dv",WarnIfMissing=False)
-ReadTableFromDelimitedFile(InputFile="Data\flow_sequence_dataset_1.csv")
+RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_1_out.dv",WarnIfMissing=True)
+ReadTableFromDelimitedFile(TableID="KNN_Aspinall",InputFile="Data\flow_sequence_dataset_1.csv",SkipRows="1",HeaderRows="2")
 # Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_WriteDateValue_1_out.dv")
 # Generate new output...
-# WriteDateValue(OutputFile="Results/Test_WriteDateValue_1_out.dv")
 # Do regression comparison...
-# CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_1_out.dv",InputFile2="Results/Test_WriteDateValue_1_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadTableFromDelimitedFile_1_out.dv",InputFile2="Results/Test_ReadTableFromDelimitedFile_1_out.dv",WarnIfDifferent=True)

@@ -4,6 +4,6 @@ TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test da
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_1_out.dv")
 Free(TSID="*")
-ReadDateValue("ExpectedResults\Test_ReadDateValue_1_out.dv")
+ReadDateValue(InputFile="ExpectedResults\Test_ReadDateValue_1_out.dv")
 WriteDateValue(OutputFile="Results\Test_ReadDateValue_1_out.dv")
 CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_1_out.dv",InputFile2="Results\Test_ReadDateValue_1_out.dv",WarnIfDifferent=True)
