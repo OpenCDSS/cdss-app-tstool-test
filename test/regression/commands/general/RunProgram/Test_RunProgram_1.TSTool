@@ -1,7 +1,8 @@
 StartLog(LogFile="Results/Test_RunProgram_1.TSTool.log")
 RemoveFile(InputFile="Results\Test_RunProgram_1_out.txt",WarnIfMissing=True)
-# RunProgram(CommandLine="dir $WorkingDir > $WorkingDir\Results\Test_RunProgram_1_out.txt")
-RunProgram(CommandLine="echo Hello > $WorkingDir/Results/Test_RunProgram_1_out.txt")
 # Uncomment the following command to regenerate the expected results file.
 # RunProgram(CommandLine="echo Hello > $WorkingDir/ExpectedResults/Test_RunProgram_1_out.txt")
+# Generate the output
+# RunProgram(CommandLine="dir ${WorkingDir} > ${WorkingDir}\Results\Test_RunProgram_1_out.txt")
+RunProgram(CommandLine="echo Hello > ${WorkingDir}/Results/Test_RunProgram_1_out.txt")
 CompareFiles(InputFile1="ExpectedResults\Test_RunProgram_1_out.txt",InputFile2="Results\Test_RunProgram_1_out.txt",WarnIfDifferent=True)

@@ -1,0 +1,6 @@
+StartLog(LogFile="Results/Test_RunPython_1.TSTool.log")
+RemoveFile(InputFile="Results\Test_RunPython_1_out.txt",WarnIfMissing=True)
+RunPython(InputFile="Data/Test_RunPython_1.py")
+# RunProgram(CommandLine="dir $WorkingDir > $WorkingDir\Results\Test_RunProgram_1_out.txt")
+# Uncomment the following command to regenerate the expected results file.
+CompareFiles(InputFile1="ExpectedResults\Test_RunPython_1_out.txt",InputFile2="Results\Test_RunPython_1_out.txt",WarnIfDifferent=True)
