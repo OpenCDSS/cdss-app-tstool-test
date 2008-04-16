@@ -1,7 +1,7 @@
-startLog(LogFile="Test_AllDifferent.log")
+StartLog(LogFile="Results/Test_AllDifferent.log")
 # Commands file to make sure that warnings are generated for different data.
-readDateValue("../data/RawData1.dv")
-readDateValue("../data/RawData1Scaled.dv")
+ReadDateValue(InputFile="../data/RawData1.dv")
+ReadDateValue(InputFile="../data/RawData1Scaled.dv")
 # Generate an error if the files are the same.
 # Since the files are different this would indicate a coding error.
-compareTimeSeries(WarnIfSame=True)
+CompareTimeSeries(WarnIfSame=True)

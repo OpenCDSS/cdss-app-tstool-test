@@ -1,5 +1,5 @@
 # Test setup...
-StartLog(LogFile="Test_SetOutputYearType_1.TSTool.log")
+StartLog(LogFile="Results/Test_SetOutputYearType_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetOutputYearType_1_out.txt",WarnIfMissing=False)
 SetOutputYearType(Calendar)
 # Uncomment the following two commands to regenerate the expected results file.

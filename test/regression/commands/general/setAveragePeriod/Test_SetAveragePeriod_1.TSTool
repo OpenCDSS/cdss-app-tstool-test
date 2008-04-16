@@ -1,5 +1,5 @@
 # Test setup...
-StartLog(LogFile="Test_SetAveragePeriod_1.TSTool.log")
+StartLog(LogFile="Results/Test_SetAveragePeriod_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetAveragePeriod_1_out.txt",WarnIfMissing=False)
 SetAveragePeriod(1901-01-01,2007-12-31)
 # Uncomment the following two commands to regenerate the expected results file.

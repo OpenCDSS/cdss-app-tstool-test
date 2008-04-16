@@ -1,5 +1,5 @@
 # Test setup...
-StartLog(LogFile="Test_SetIgnoreLEZero_1.TSTool.log")
+StartLog(LogFile="Results/Test_SetIgnoreLEZero_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetIgnoreLEZero_1_out.txt",WarnIfMissing=False)
 SetIgnoreLEZero(True)
 # Uncomment the following two commands to regenerate the expected results file.

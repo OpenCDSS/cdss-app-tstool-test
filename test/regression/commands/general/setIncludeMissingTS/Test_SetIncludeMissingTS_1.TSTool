@@ -1,5 +1,5 @@
 # Test setup...
-StartLog(LogFile="Test_SetIncludeMissingTS_1.TSTool.log")
+StartLog(LogFile="Results/Test_SetIncludeMissingTS_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetIncludeMissingTS_1_out.txt",WarnIfMissing=False)
 SetIncludeMissingTS(True)
 # Uncomment the following two commands to regenerate the expected results file.

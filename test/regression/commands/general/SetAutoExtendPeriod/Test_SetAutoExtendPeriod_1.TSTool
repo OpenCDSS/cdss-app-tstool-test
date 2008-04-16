@@ -1,5 +1,5 @@
 # Test setup...
-StartLog(LogFile="Test_SetAutoExtendPeriod_1.TSTool.log")
+StartLog(LogFile="Results/Test_SetAutoExtendPeriod_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetAutoExtendPeriod_1_out.txt",WarnIfMissing=False)
 SetAutoExtendPeriod(False)
 # Uncomment the following two commands to regenerate the expected results file.
