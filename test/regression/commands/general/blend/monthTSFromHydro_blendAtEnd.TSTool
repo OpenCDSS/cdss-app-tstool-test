@@ -1,8 +1,0 @@
-startLog(LogFile="monthTSFromHydro_blendAtEnd.log")
-# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
-08236000.DWR.Streamflow.Month~HydroBase
-# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR
-08236500.DWR.Streamflow.Month~HydroBase
-blend(08236000.DWR.Streamflow.Month,08236500.DWR.Streamflow.Month,BlendAtEnd)
-writeDateValue(OutputFile="../output/blendAtEndOutput.dv")
-compareFiles(InputFile1="blendAtEndExpected.dv",InputFile2="../output/blendAtEndOutput.dv",WarnIfDifferent=True,WarnIfSame=False)

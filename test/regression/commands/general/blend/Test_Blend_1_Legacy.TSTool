@@ -1,0 +1,11 @@
+# DO NOT SAVE THIS IN TSTOOL BECAUSE IT WILL CHANGE THE LEGACY COMMAND
+# THE Blend() COMMAND SHOULD NOT CHANGE BECAUSE IT REPRESENTS A LEGACY FEATURE
+StartLog(LogFile="Results/Test_Blend_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_Blend_1_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,5,6,7,15,7,3,1,0.5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Day",Description="test data 1",SetStart="2003-06-01",SetEnd="2006-05-13",PatternValues="2,4,6,10,12,14,30,14,6,2,1")
+blend(ts1,ts2,BlendAtEnd)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_Blend_1_out.dv")
+WriteDateValue(OutputFile="Results/Test_Blend_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_Blend_1_out.dv",InputFile2="Results/Test_Blend_1_out.dv",WarnIfDifferent=True)
