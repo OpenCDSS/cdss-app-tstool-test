@@ -1,0 +1,8 @@
+StartLog(LogFile="Results/Test_CreateEnsemble_2.TSTool.log")
+RemoveFile(InputFile="Results/Test_CreateEnsemble_2_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2007-05-13",PatternValues="1,2,4,3,5,6,25,10,8,5,1")
+CreateEnsemble(TSID="ts1",TraceLength=1Year,EnsembleID="TestEnsemble",ReferenceDate="2000-01-01",ShiftDataHow=ShiftToReference)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_CreateEnsemble_2_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+WriteDateValue(OutputFile="Results/Test_CreateEnsemble_2_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+CompareFiles(InputFile1="ExpectedResults/Test_CreateEnsemble_2_out.dv",InputFile2="Results/Test_CreateEnsemble_2_out.dv",WarnIfDifferent=True)
