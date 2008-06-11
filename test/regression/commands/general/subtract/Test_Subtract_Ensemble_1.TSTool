@@ -9,6 +9,6 @@ Scale(TSList=EnsembleID,EnsembleID="EnsembleCopy",ScaleValue=2)
 Subtract(EnsembleID="Ensemble1",SubtractTSList=EnsembleID,SubtractEnsembleID="EnsembleCopy",HandleMissingHow="IgnoreMissing")
 # The output should be alternating values of -1,-2
 # Uncomment the following command to regenerate expected results.
-WriteDateValue(OutputFile="ExpectedResults/Test_Subtract_Ensemble_1_out.dv")
+# WriteDateValue(OutputFile="ExpectedResults/Test_Subtract_Ensemble_1_out.dv")
 WriteDateValue(OutputFile="Results/Test_Subtract_Ensemble_1_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_Subtract_Ensemble_1_out.dv",InputFile2="Results/Test_Subtract_Ensemble_1_out.dv",WarnIfDifferent=True)
