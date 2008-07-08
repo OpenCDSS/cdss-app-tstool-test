@@ -1,0 +1,6 @@
+StartLog(LogFile="Results/Test_FTPGet_1.TSTool.log")
+RemoveFile(InputFile="Results\co.txt",WarnIfMissing=False)
+FTPGet(RemoteSite="ftp.wcc.nrcs.usda.gov",RemoteFolder="/data/snow/update/co/wy2008",FilePattern="co080626.txt",DestinationFolder="Results",TransferMode=ASCII)
+# Uncomment the following command to regenerate the expected results file.
+# FTPGet(RemoteSite="ftp.wcc.nrcs.usda.gov",RemoteFolder="/data/snow/update/co/wy2008",FilePattern="co080626.txt",DestinationFolder="ExpectedResults",TransferMode=ASCII)
+CompareFiles(InputFile1="ExpectedResults\co080626.txt",InputFile2="Results\co080626.txt",WarnIfDifferent=True)
