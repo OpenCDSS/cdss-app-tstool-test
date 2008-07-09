@@ -1,0 +1,10 @@
+# Test setup...
+StartLog(LogFile="Results/Test_SetDebugLevel_Legacy_LogLevel.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetDebugLevel_Legacy_LogLevel_out.txt",WarnIfMissing=False)
+SetDebugLevel(,10)
+# Uncomment the following two commands to regenerate the expected results file.
+#WriteProperty(OutputFile="ExpectedResults\Test_SetDebugLevel_Legacy_LogLevel_out.txt",PropertyName="DebugLevelLogFile",Append="False")
+# Generate new output...
+WriteProperty(OutputFile="Results/Test_SetDebugLevel_Legacy_LogLevel_out.txt",PropertyName="DebugLevelLogFile",Append="False")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetDebugLevel_Legacy_LogLevel_out.txt",InputFile2="Results/Test_SetDebugLevel_Legacy_LogLevel_out.txt",WarnIfDifferent=True)
