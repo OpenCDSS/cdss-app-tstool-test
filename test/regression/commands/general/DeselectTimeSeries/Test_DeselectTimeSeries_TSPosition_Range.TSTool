@@ -1,0 +1,11 @@
+StartLog(LogFile="Results/Test_SelectTimeSeries_TSPosition_Range.TSTool.log")
+RemoveFile(InputFile="Results/Test_SelectTimeSeries_TSPosition_Range_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,7,15,8,5,2,0.5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Day",Description="test data 2",SetStart="2000-01-01",SetEnd="2003-07-28",PatternValues="2,4,8,14,30,16,10,4,1")
+TS ts3 = NewPatternTimeSeries(NewTSID="ts3...Day",Description="test data 3",SetStart="2000-01-01",SetEnd="2003-07-28",PatternValues="3,5,9,15,31,17,11,5,2")
+TS ts4 = NewPatternTimeSeries(NewTSID="ts4...Day",Description="test data 4",SetStart="2000-01-01",SetEnd="2003-07-28",PatternValues="4,6,10,16,32,18,12,6,3")
+SelectTimeSeries(TSList=TSPosition,TSID="ts2",TSPosition="1-3",DeselectAllFirst=True)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_SelectTimeSeries_TSPosition_Range_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results/Test_SelectTimeSeries_TSPosition_Range_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults/Test_SelectTimeSeries_TSPosition_Range_out.dv",InputFile2="Results/Test_SelectTimeSeries_TSPosition_Range_out.dv",WarnIfDifferent=True)
