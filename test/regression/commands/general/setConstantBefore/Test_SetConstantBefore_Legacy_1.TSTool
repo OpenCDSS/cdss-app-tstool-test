@@ -1,10 +1,14 @@
 StartLog(LogFile="Results/Test_SetConstantBefore_Day.TSTool.log")
-RemoveFile(InputFile="Results/Test_SetConstantBefore_Day_out.dv",WarnIfMissing=False)
+#
+# This command is obsolete so running should generate a failure
+#@expectedStatus Failure
+#
+RemoveFile(InputFile="Results/Test_SetConstantBefore_Legacy_out.dv",WarnIfMissing=False)
 TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
 TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Day",Description="test data 2",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
 SetConstantBefore(ts1,2.55,2001-07-02)
 SetConstantBefore(ts2,5.3,2004-06-05)
 # Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_SetConstantBefore_Day_out.dv")
-WriteDateValue(OutputFile="Results/Test_SetConstantBefore_Day_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_SetConstantBefore_Day_out.dv",InputFile2="Results/Test_SetConstantBefore_Day_out.dv",WarnIfDifferent=True)
+# WriteDateValue(OutputFile="ExpectedResults/Test_SetConstantBefore_Legacy_out.dv")
+WriteDateValue(OutputFile="Results/Test_SetConstantBefore_Legacy_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_SetConstantBefore_Legacy_out.dv",InputFile2="Results/Test_SetConstantBefore_Legacy_out.dv",WarnIfDifferent=True)
