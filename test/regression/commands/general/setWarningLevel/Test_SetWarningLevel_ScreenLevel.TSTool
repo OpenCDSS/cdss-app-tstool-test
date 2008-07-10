@@ -8,3 +8,5 @@ SetWarningLevel(ScreenLevel=10)
 WriteProperty(OutputFile="Results/Test_SetWarningLevel_ScreenLevel_out.txt",PropertyName="WarningLevelScreen",Append="False")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_SetWarningLevel_ScreenLevel_out.txt",InputFile2="Results/Test_SetWarningLevel_ScreenLevel_out.txt",WarnIfDifferent=True)
+# Reset to normal level so other commands are not impacted
+SetWarningLevel(ScreenLevel="1")

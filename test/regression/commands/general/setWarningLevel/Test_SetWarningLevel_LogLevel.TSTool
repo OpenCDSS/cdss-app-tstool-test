@@ -8,3 +8,5 @@ SetWarningLevel(LogFileLevel="10")
 WriteProperty(OutputFile="Results/Test_SetWarningLevel_LogLevel_out.txt",PropertyName="WarningLevelLogFile",Append="False")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_SetWarningLevel_LogLevel_out.txt",InputFile2="Results/Test_SetWarningLevel_LogLevel_out.txt",WarnIfDifferent=True)
+# Reset to normal level so other commands are not impacted
+SetWarningLevel(LogFileLevel="3")

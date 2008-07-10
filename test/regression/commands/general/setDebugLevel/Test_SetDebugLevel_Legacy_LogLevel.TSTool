@@ -8,3 +8,5 @@ SetDebugLevel(,10)
 WriteProperty(OutputFile="Results/Test_SetDebugLevel_Legacy_LogLevel_out.txt",PropertyName="DebugLevelLogFile",Append="False")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_SetDebugLevel_Legacy_LogLevel_out.txt",InputFile2="Results/Test_SetDebugLevel_Legacy_LogLevel_out.txt",WarnIfDifferent=True)
+# Set back to level before test so that additional tests are not impacted
+SetDebugLevel(,0)
