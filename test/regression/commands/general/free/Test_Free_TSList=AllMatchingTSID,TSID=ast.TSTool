@@ -1,0 +1,10 @@
+#@readonly
+StartLog(LogFile="Results/Test_Free_TSList=AllMatchingTSID,TSID=ast.TSTool.log")
+RemoveFile(InputFile="Results/Test_Free_TSList=AllMatchingTSID,TSID=ast_out.txt")
+TS Alias1 = NewPatternTimeSeries(NewTSID="MyLoc1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+TS Alias2 = NewPatternTimeSeries(NewTSID="MyLoc2..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="10,20,24,26,150")
+Free(TSList=AllMatchingTSID,TSID="*")
+# Uncomment the following command to regenerate the expected results file.
+# WriteProperty(OutputFile="ExpectedResults\Test_Free_TSList=AllMatchingTSID,TSID=ast_out.txt",PropertyName="TSResultsListSize",Append="False")
+WriteProperty(OutputFile="Results\Test_Free_TSList=AllMatchingTSID,TSID=ast_out.txt",PropertyName="TSResultsListSize",Append="False")
+CompareFiles(InputFile1="Results\Test_Free_TSList=AllMatchingTSID,TSID=ast_out.txt",InputFile2="ExpectedResults\Test_Free_TSList=AllMatchingTSID,TSID=ast_out.txt",WarnIfDifferent=True)
