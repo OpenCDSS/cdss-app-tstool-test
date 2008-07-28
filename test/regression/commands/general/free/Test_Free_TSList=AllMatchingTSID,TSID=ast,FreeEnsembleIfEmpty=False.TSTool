@@ -1,0 +1,11 @@
+StartLog(LogFile="Results/Test_Free_TSList=AllMatchingTSID,TSID=ast,FreeEnsembleIfEmpty=False.TSTool.log")
+RemoveFile(InputFile="Results/Test_Free_TSList=AllMatchingTSID,TSID=ast,FreeEnsembleIfEmpty=False_out.txt",WarnIfMissing=True)
+TS Alias1 = NewPatternTimeSeries(NewTSID="MyLoc1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+TS Alias2 = NewPatternTimeSeries(NewTSID="MyLoc2..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="10,20,24,26,150")
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2007-05-13",PatternValues="1,2,4,3,5,6,25,10,8,5,1")
+CreateEnsemble(TSID="ts1",TraceLength=1Year,EnsembleID="TestEnsemble",ReferenceDate="2000-01-01",ShiftDataHow=ShiftToReference)
+Free(TSList=AllMatchingTSID,TSID="*",FreeEnsembleIfEmpty=False)
+# Uncomment the following command to regenerate the expected results file.
+# WriteProperty(OutputFile="ExpectedResults\Test_Free_TSList=AllMatchingTSID,TSID=ast,FreeEnsembleIfEmpty=False_out.txt",PropertyName="TSEnsembleResultsListSize",Append=False)
+WriteProperty(OutputFile="Results\Test_Free_TSList=AllMatchingTSID,TSID=ast,FreeEnsembleIfEmpty=False_out.txt",PropertyName="TSEnsembleResultsListSize",Append=False)
+CompareFiles(InputFile1="Results\Test_Free_TSList=AllMatchingTSID,TSID=ast,FreeEnsembleIfEmpty=False_out.txt",InputFile2="ExpectedResults\Test_Free_TSList=AllMatchingTSID,TSID=ast,FreeEnsembleIfEmpty=False_out.txt",WarnIfDifferent=True)
