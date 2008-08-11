@@ -1,6 +1,0 @@
-startLog(LogFile="10years_dayTS.log")
-# 0100507 - BIJOU CANAL
-0100507.DWR.DivTotal.Year~HydroBase
-setAveragePeriod(1975-12,1995-06)
-writeDateValue(OutputFile="../output/20years_yearOutput.dv")
-compareFiles(InputFile1="20years_yearExpected.dv",InputFile2="../output/20years_yearOutput.dv",WarnIfDifferent=True)
