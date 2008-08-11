@@ -1,0 +1,2 @@
+AverageStart="1901-01-01"
+AverageEnd="2007-12-31"
