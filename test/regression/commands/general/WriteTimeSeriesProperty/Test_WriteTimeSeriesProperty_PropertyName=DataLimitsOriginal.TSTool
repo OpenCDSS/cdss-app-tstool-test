@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_WriteTimeSeriesProperty_PropertyName=DataLimitsOriginal.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeriesProperty_PropertyName=DataLimitsOriginal_out.txt",WarnIfMissing=False)
+TS ts1_month = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1")
+# Uncomment the following command to regenerate expected results.
+# WriteTimeSeriesProperty(OutputFile="ExpectedResults/Test_WriteTimeSeriesProperty_PropertyName=DataLimitsOriginal_out.txt",PropertyName="DataLimitsOriginal",Append=False)
+WriteTimeSeriesProperty(OutputFile="Results/Test_WriteTimeSeriesProperty_PropertyName=DataLimitsOriginal_out.txt",PropertyName="DataLimitsOriginal",Append=False)
+CompareFiles(InputFile1="ExpectedResults/Test_WriteTimeSeriesProperty_PropertyName=DataLimitsOriginal_out.txt",InputFile2="Results/Test_WriteTimeSeriesProperty_PropertyName=DataLimitsOriginal_out.txt",WarnIfDifferent=True)
