@@ -1,0 +1,13 @@
+StartLog(LogFile="Results/Test_SetFromTS_HandleMissingHow=IgnoreMissing.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.dv",WarnIfMissing=False)
+RemoveFile(InputFile="Results/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.txt",WarnIfMissing=False)
+TS ts1_month = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1")
+TS ts2_month = NewPatternTimeSeries(NewTSID="ts2...Month",Description="test data 2",SetStart="2001-01",SetEnd="2003-07",PatternValues="-999,-999,3,2,1,.5,5,1,5,15,4,1")
+SetFromTS(TSList=AllMatchingTSID,TSID="ts1_month",IndependentTSList=AllMatchingTSID,IndependentTSID="ts2_month",TransferHow=ByDateTime,HandleMissingHow="IgnoreMissing")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.dv")
+# WriteTimeSeriesProperty(OutputFile="ExpectedResults/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.txt",PropertyName="DataLimitsOriginal",Append=False)
+WriteDateValue(OutputFile="Results/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.dv")
+WriteTimeSeriesProperty(OutputFile="Results/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.txt",PropertyName="DataLimitsOriginal",Append=False)
+CompareFiles(InputFile1="ExpectedResults/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.dv",InputFile2="Results/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.txt",InputFile2="Results/Test_SetFromTS_Month_HandleMissingHow=IgnoreMissing_out.txt",WarnIfDifferent=True)
