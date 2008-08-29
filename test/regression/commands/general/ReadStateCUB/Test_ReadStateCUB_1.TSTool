@@ -1,0 +1,8 @@
+StartLog(LogFile="Results/Test_ReadStateCUB_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadStateCUB_1_out.dv",WarnIfMissing=False)
+# SetDebugLevel(LogFileLevel=5)
+ReadStateCUB(InputFile="Data\rg2004.BD1")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateCUB_1_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_ReadStateCUB_1_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadStateCUB_1_out.dv",InputFile2="Results\Test_ReadStateCUB_1_out.dv",WarnIfDifferent=True)
