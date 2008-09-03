@@ -1,5 +1,9 @@
+# @testSuite HydroBase
 StartLog(LogFile="Results/Test_CreateFromList_1.TSTool.log")
 RemoveFile(InputFile="Results\Test_CreateFromList_1_out.dv",WarnIfMissing=False)
+# Set the input period since reading from HydroBase and want to control the
+# period so differences are not seen in the results.
+SetInputPeriod(InputStart="1974-11",InputEnd="2005-10")
 CreateFromList(ListFile="Data\Test_CreateFromList_1.txt",IDCol=1,DataSource=DWR,DataType="DivTotal",Interval=Month,InputType=HydroBase,HandleMissingTSHow=IgnoreMissingTS)
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_CreateFromList_1_out.dv")

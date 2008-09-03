@@ -9,4 +9,4 @@ WriteProperty(OutputFile="Results/Test_SetDebugLevel_Legacy_ScreenLevel_out.txt"
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_SetDebugLevel_Legacy_ScreenLevel_out.txt",InputFile2="Results/Test_SetDebugLevel_Legacy_ScreenLevel_out.txt",WarnIfDifferent=True)
 # Set back to normal level so other tests are not impacted
-SetDebugLevel(0,)
+SetDebugLevel(0,0)
