@@ -1,3 +1,9 @@
-UPJUNFMP.NWSRFS.FMAP.6Hour~NWSRFS_FS5Files~C:\Develop\TSTool_SourceBuild\TSTool\test\regression\commands\general\ReadNWSRFSFS5Files_Alias\Data_MARFC
-JNIATAPA.NWSRFS.MAP.6Hour~NWSRFS_FS5Files~C:\Develop\TSTool_SourceBuild\TSTool\test\regression\commands\general\ReadNWSRFSFS5Files_Alias\Data_MARFC
-JNIATAPA.NWSRFS.MAP.6Hour.OBS~NWSRFS_FS5Files~C:\Develop\TSTool_SourceBuild\TSTool\test\regression\commands\general\ReadNWSRFSFS5Files_Alias\Data_MARFC
+StartLog(LogFile="Results/Test_ReadNWSRFSFS5Files_MARFC_MAP.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv",WarnIfMissing=False)
+TS JNIATAPA.OBS = ReadNwsrfsFS5Files(TSID="JNIATAPA.NWSRFS.MAP.6Hour.OBS~NWSRFS_FS5Files~Data_MARFC")
+TS JUNFMP.FMAP = ReadNwsrfsFS5Files(TSID="UPJUNFMP.NWSRFS.FMAP.6Hour~NWSRFS_FS5Files~Data_MARFC")
+TS JNIATAPA = ReadNwsrfsFS5Files(TSID="JNIATAPA.NWSRFS.MAP.6Hour~NWSRFS_FS5Files~Data_MARFC")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv",InputFile2="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv",WarnIfDifferent=True)

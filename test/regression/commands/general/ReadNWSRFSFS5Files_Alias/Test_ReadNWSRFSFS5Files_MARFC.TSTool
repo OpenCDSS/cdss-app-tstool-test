@@ -1,7 +1,7 @@
 StartLog(LogFile="Results/Test_ReadNWSRFSFS5Files_MARFC.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadNWSRFSFS5Files_MARFC_out.dv",WarnIfMissing=False)
-TS CANN6.QIN = ReadNWSRFSFS5Files(TSID="CANN6.NWSRFS.QIN.6Hour~NWSRFS_FS5Files~C:\Develop\TSTool_SourceBuild\TSTool\test\regression\commands\general\ReadNWSRFSFS5Files_Alias\Data_MARFC")
-TS DWNN6.QIN = ReadNWSRFSFS5Files(TSID="DWNN6.NWSRFS.QIN.6Hour~NWSRFS_FS5Files~C:\Develop\TSTool_SourceBuild\TSTool\test\regression\commands\general\ReadNWSRFSFS5Files_Alias\Data_MARFC")
+TS CANN6.QIN = ReadNwsrfsFS5Files(TSID="CANN6.NWSRFS.QIN.6Hour~NWSRFS_FS5Files~Data_MARFC")
+TS DWNN6.QIN = ReadNwsrfsFS5Files(TSID="DWNN6.NWSRFS.QIN.6Hour~NWSRFS_FS5Files~Data_MARFC")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNWSRFSFS5Files_MARFC_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNWSRFSFS5Files_MARFC_out.dv")
