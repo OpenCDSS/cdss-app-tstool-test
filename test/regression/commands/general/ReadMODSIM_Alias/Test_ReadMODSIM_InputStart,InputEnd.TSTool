@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_ReadMODSIM_InputStart,InputEnd.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadMODSIM_out.dv",WarnIfMissing=False)
+TS ts1 = ReadMODSIM(InputFile="Data\CALIB42.FLO",TSID="NATHALLIGAN..FLOW..",InputStart="1987-03",InputEnd="1987-07")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadMODSIM_InputStart,InputEnd_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadMODSIM_InputStart,InputEnd_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadMODSIM_InputStart,InputEnd_out.dv",InputFile2="Results\Test_ReadMODSIM_InputStart,InputEnd_out.dv",WarnIfDifferent=True)
