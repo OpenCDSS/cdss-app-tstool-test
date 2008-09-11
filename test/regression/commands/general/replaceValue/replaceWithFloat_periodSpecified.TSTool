@@ -1,6 +1,0 @@
-startLog(LogFile="replaceWithFloat_periodSpecified.log")
-# 08235700 - ALAMOSA RIVER BELOW CASTLEMAN GULCH NEAR JASPER
-08235700.DWR.Streamflow.Month~HydroBase
-replaceValue(08235700.DWR.Streamflow.Month,0,500,2.25,1997-10,1999-10)
-writeDateValue(OutputFile="../output/replaceWithFloat_periodSpecifiedOutput.dv")
-compareFiles(InputFile1="replaceWithFloat_periodSpecifiedExpected.dv",InputFile2="../output/replaceWithFloat_periodSpecifiedOutput.dv",WarnIfDifferent=True)
