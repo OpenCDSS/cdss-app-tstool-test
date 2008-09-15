@@ -1,4 +1,0 @@
-startLog(LogFile="streamFlowDay.log")
-# 06759000 - BIJOU CREEK NEAR WIGGINS, CO.
-06759000.USGS.Streamflow.Day~HydroBase
-adjustExtremes(06759000.USGS.Streamflow.Day,Average,AdjustMinimum,0,0,*,*)
