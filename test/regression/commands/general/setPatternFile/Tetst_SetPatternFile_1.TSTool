@@ -1,2 +1,0 @@
-StartLog(LogFile="Results/Test_SetPatternFile_1.TSTool.log")
-SetPatternFile("Data\Test_AnalyzePattern_FromMonthDataValues_out.stm")
