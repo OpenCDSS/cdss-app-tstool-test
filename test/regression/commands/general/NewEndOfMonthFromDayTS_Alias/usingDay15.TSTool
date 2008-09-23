@@ -1,4 +1,0 @@
-startLog(LogFile="usingDay15.log")
-# 2003536 - CONTINENTAL RES
-2003536.DWR.ResMeasStorage.Day~HydroBase
-TS Continental = newEndOfMonthTSFromDayTS(2003536.DWR.ResMeasStorage.Day,15)
