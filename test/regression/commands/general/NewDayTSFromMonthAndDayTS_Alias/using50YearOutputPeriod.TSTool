@@ -1,7 +1,0 @@
-startLog(LogFile="using50YearOutputPeriod.log")
-setOutputPeriod(1950-01,2002-12)
-# 08236500 - ALAMOSA RIVER BELOW TERRACE RESERVOIR
-08236500.DWR.Streamflow.Day~HydroBase
-# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
-08236000.DWR.Streamflow.Month~HydroBase
-TS DayTS = newDayTSFromMonthAndDayTS(08236000.DWR.Streamflow.Day,08236000.DWR.Streamflow.Month,08236500.DWR.Streamflow.Day)
