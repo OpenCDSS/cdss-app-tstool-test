@@ -1,0 +1,8 @@
+StartLog(LogFile="Results/Test_Normalize_MinValueMethod=MinFromTS,MinValue=0,MaxValue=1.TSTool.log")
+RemoveFile(InputFile="Results\Test_Normalize_MinValueMethod=MinFromTS,MinValue=0,MaxValue=1_out.dv",WarnIfMissing=False)
+TS ts1_day = NewPatternTimeSeries(NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,50,25,7,5")
+TS tsout = Normalize(TSID="ts1_day",MinValueMethod=MinFromTS,MinValue=0.0,MaxValue=1.0)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_Normalize_MinValueMethod=MinFromTS,MinValue=0,MaxValue=1_out.dv")
+WriteDateValue(OutputFile="Results\Test_Normalize_MinValueMethod=MinFromTS,MinValue=0,MaxValue=1_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_Normalize_MinValueMethod=MinFromTS,MinValue=0,MaxValue=1_out.dv",InputFile2="Results\Test_Normalize_MinValueMethod=MinFromTS,MinValue=0,MaxValue=1_out.dv",WarnIfDifferent=True)
