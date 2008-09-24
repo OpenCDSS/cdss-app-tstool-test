@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_StateModMax.TSTool.log")
+RemoveFile(InputFile="Results\Test_StateModMax_out.stm",IfNotFound=Ignore)
+StateModMax(InputFile1="Data\whiteT.ddh",InputFile2="Data\whiteTB.ddm")
+# Uncomment the following command to regenerate the expected results file.
+# WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults\Test_StateModMax_out.stm")
+WriteStateMod(TSList=AllTS,OutputFile="Results\Test_StateModMax_out.stm")
+CompareFiles(InputFile1="ExpectedResults\Test_StateModMax_out.stm",InputFile2="Results\Test_StateModMax_out.stm",WarnIfDifferent=True)
