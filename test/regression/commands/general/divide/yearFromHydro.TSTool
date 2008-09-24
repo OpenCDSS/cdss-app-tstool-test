@@ -1,8 +1,0 @@
-startLog(LogFile="yearFromHydro.log")
-# 3643 - GROVER 10 W
-3643.NOAA.FrostDateF28F.Year~HydroBase
-# 3038 - FORT MORGAN
-3038.NOAA.FrostDateF28F.Year~HydroBase
-divide(3038.NOAA.FrostDateF28F.Year,3643.NOAA.FrostDateF28F.Year)
-writeDateValue(OutputFile="../output/yearOutput.dv")
-compareFiles(InputFile1="yearExpected.dv",InputFile2="../output/yearOutput.dv",WarnIfDifferent=True)
