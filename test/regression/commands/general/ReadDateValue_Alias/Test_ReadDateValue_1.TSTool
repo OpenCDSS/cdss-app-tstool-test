@@ -1,12 +1,12 @@
 # Test setup...
 StartLog(LogFile="Results/Test_ReadDateValue_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadDateValue_1_out.dv",WarnIfMissing=False)
-# Uncomment the following two commands to recreate the "Data" folder used as
+RemoveFile(InputFile="Results/Test_ReadDateValue_1_out.dv",IfNotFound=Ignore)
+# Uncomment the following two commands to recreate the "Data" file used as
 # input to this test
 # TS ts1 = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 # WriteDateValue(OutputFile="Data\Test_WriteDateValue_1_out.dv")
 # Test the command...
-TS ts1 = ReadDateValue(InputFile="Data\Test_WriteDateValue_1_out.dv",TSID="*")
+TS ts1 = ReadDateValue(InputFile="Data\Test_WriteDateValue_1_out.dv")
 # Uncomment the following command to regenerate the expected results file.
 # Make sure to do after the above is commented so only one time series ends
 # up in the expected results file.
