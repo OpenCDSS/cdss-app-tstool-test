@@ -1,8 +1,0 @@
-startLog(LogFile="yearByyear.log")
-# 0100509 - CORONA RANCH DITCH
-0100509.DWR.DivTotal.Year~HydroBase
-# 0100503 - RIVERSIDE CANAL
-0100503.DWR.DivTotal.Year~HydroBase
-multiply(0100509.DWR.DivTotal.Year,0100503.DWR.DivTotal.Year)
-writeDateValue(OutputFile="../output/yearByyearOutput.dv")
-compareFiles(InputFile1="yearByyearExpected.dv",InputFile2="../output/yearByyearOutput.dv",WarnIfDifferent=True)
