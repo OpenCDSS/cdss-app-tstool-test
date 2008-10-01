@@ -1,9 +1,0 @@
-StartLog(LogFile="Results/Test_ReadDateValue.TSTool.log")
-RemoveFile(InputFile="Results\Test_ReadDateValue_out.dv",IfNotFound=Ignore)
-# Uncomment the following 3 commands to regenerate the expected results file.
-# TS Alias = NewPatternTimeSeries(NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1950-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_out.dv")
-# Free(TSList=AllMatchingTSID,TSID="*")
-ts1..MyData.Day~DateValue~ExpectedResults\Test_ReadDateValue_out.dv
-WriteDateValue(OutputFile="Results\Test_ReadDateValue_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_out.dv",InputFile2="Results\Test_ReadDateValue_out.dv",WarnIfDifferent=True)
