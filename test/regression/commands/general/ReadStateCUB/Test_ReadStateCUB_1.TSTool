@@ -1,5 +1,5 @@
 StartLog(LogFile="Results/Test_ReadStateCUB_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadStateCUB_1_out.dv",WarnIfMissing=False)
+RemoveFile(InputFile="Results/Test_ReadStateCUB_1_out.dv",IfNotFound=Ignore)
 # SetDebugLevel(LogFileLevel=5)
 ReadStateCUB(InputFile="Data\rg2004.BD1")
 # Uncomment the following command to regenerate the expected results file.
