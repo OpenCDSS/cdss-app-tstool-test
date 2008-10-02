@@ -1,7 +1,0 @@
-StartLog(LogFile="Results/Test_ReadNwsCard_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadNwsCard_1_out.dv",WarnIfMissing=False)
-TS MyTS = ReadNwsCard(InputFile="Data\03567500.CARD")
-# Uncomment the following to regenerate the expected results...
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsCard_1_out.dv")
-WriteDateValue(OutputFile="Results/Test_ReadNwsCard_1_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsCard_1_out.dv",InputFile2="Results/Test_ReadNwsCard_1_out.dv",WarnIfDifferent=True)
