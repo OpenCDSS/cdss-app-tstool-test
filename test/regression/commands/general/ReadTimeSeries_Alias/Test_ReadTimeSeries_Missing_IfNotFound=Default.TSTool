@@ -1,5 +1,5 @@
 #@testSuite HydroBase
-#@expectedStatus Warning
+#@expectedStatus Success
 StartLog(LogFile="Results/Test_ReadTimeSeries_Missing_IfNotFound=Default.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadTimeSeries_Missing_IfNotFound=Default_out.dv",IfNotFound=Ignore)
 # Set the input period since reading from HydroBase and want to control the

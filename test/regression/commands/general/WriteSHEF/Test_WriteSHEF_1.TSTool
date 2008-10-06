@@ -1,4 +1,5 @@
-# Test setup...
+# Test will only work on Linux with NWSRFS app defaults to help define PE codes
+#@os Linux 
 StartLog(LogFile="Results/Test_WriteSHEF_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteSHEF_1_out.shef",IfNotFound=Warn)
 TS loc1 = NewPatternTimeSeries(NewTSID="loc1..SQIN.6Hour",Description="Test data",SetStart="2007-11-01 00 PST",SetEnd="2007-11-15 18 PST",Units="CFS",PatternValues="5,10,12,13,75")

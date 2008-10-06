@@ -63,7 +63,7 @@ UPPER COLORADO RIVER BASIN
  PHANTOM VALLEY           9030      .1      .0           19.4    20.3    96 
  SCHOFIELD PASS          10700      .8     3.6    22     53.5    42.5   126 
  STILLWATER CREEK         8720      .1      .0           17.2    15.7   110 
- SUMMIT RANCH             9400      -M      .0      *      -M    19.5      *
+ SUMMIT RANCH             9400      .1      .0           23.3    19.5   119 
  VAIL MOUNTAIN           10300      .1      .0           35.4    30.5   116 
  WILLOW CREEK PASS        9540      .4      .0           24.4    20.8   117 
                                                 -----                  -----

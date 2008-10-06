@@ -1,8 +1,8 @@
 # Test setup...
 StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_1_out.dv",WarnIfMissing=True)
+# RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_1_out.dv",IfNotFound=Warn)
 ReadTableFromDelimitedFile(TableID="KNN_Aspinall",InputFile="Data\flow_sequence_dataset_1.csv",SkipRows="1",HeaderRows="2")
 # Uncomment the following command to regenerate the expected results file.
 # Generate new output...
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_ReadTableFromDelimitedFile_1_out.dv",InputFile2="Results/Test_ReadTableFromDelimitedFile_1_out.dv",WarnIfDifferent=True)
+# CompareFiles(InputFile1="ExpectedResults\Test_ReadTableFromDelimitedFile_1_out.dv",InputFile2="Results/Test_ReadTableFromDelimitedFile_1_out.dv",WarnIfDifferent=True)
