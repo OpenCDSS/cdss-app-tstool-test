@@ -6,4 +6,4 @@
 # Don't append the generated commands, in order to force the old file to be
 # overwritten.
 #
-CreateRegressionTestCommandFile(SearchFolder="..\..\..\commands\general",OutputFile="..\run\RunRegressionTest_commands_general.TSTool",Append=False,IncludeTestSuite="*",IncludeOS="Windows")
+CreateRegressionTestCommandFile(SearchFolder="..\..\..\commands\general",OutputFile="..\run\RunRegressionTest_commands_general_IncludeOS=Windows.TSTool",Append=False,IncludeTestSuite="*",IncludeOS="Windows")
