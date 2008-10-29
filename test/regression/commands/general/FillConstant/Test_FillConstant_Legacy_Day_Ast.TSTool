@@ -1,0 +1,12 @@
+#@readOnly
+# Test processing all matching TSID because of *
+StartLog(LogFile="Results/Test_FillConstant_Legacy_Day_Ast.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillConstant_Legacy_Day_Ast_out.dv",IfNotFound=Ignore)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Day",Description="test data 1",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+FillConstant(ts1*,-1.5)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillConstant_Legacy_Day_Ast_out.dv")
+WriteDateValue(OutputFile="Results/Test_FillConstant_Legacy_Day_Ast_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_FillConstant_Legacy_Day_Ast_out.dv",InputFile2="Results/Test_FillConstant_Legacy_Day_Ast_out.dv",WarnIfDifferent=True)

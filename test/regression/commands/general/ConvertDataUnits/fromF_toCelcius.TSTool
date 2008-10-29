@@ -1,5 +1,0 @@
-startLog(LogFile="fromF_toCelcius.log")
-2593.NOAA.TempMean.Month~HydroBase
-convertDataUnits(2593.NOAA.TempMean.Month,C)
-writeDateValue(OutputFile="../output/fromFtoCOutput.dv")
-compareFiles(InputFile1="fromFtoCExpected.dv",InputFile2="../output/fromFtoCOutput.dv",WarnIfDifferent=True)
