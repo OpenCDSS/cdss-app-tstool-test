@@ -1,8 +1,8 @@
 # Test reading a card trace file from ESPADP that has short traces due to
 # leap year issues and the bad header written by ESPADP.
 StartLog(LogFile="Results/Test_ReadNwsCard_Traces_WckTotTraces.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadNwsCard_Traces_WckTotTraces_out.dv",WarnIfMissing=False)
-ReadNwsCard(InputFile="Data\WckTotTraces_FromESPADP.txt")
+RemoveFile(InputFile="Results/Test_ReadNwsCard_Traces_WckTotTraces_out.dv",IfNotFound=Ignore)
+ReadNwsCard(InputFile="Data\WCkTotTraces_FromESPADP.txt")
 # Uncomment the following to regenerate the expected results...
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsCard_Traces_WckTotTraces_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNwsCard_Traces_WckTotTraces_out.dv")
