@@ -1,7 +1,9 @@
 StartLog(LogFile="Results/Test_ReadNwsCard_1_NewUnits=CMSD.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv",WarnIfMissing=False)
+RemoveFile(InputFile="Results/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv",IfNotFound=Ignore)
 ReadNwsCard(InputFile="Data\03567500.CARD",NewUnits="CMSD")
+# Write to precision 2 because roundoff differences may occur on
+# UNIX vs Windows (slight difference in units file?).
 # Uncomment the following to regenerate the expected results...
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv")
-WriteDateValue(OutputFile="Results/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv")
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv",Precision=2)
 CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv",InputFile2="Results/Test_ReadNwsCard_1_NewUnits=CMSD_out.dv",WarnIfDifferent=True)

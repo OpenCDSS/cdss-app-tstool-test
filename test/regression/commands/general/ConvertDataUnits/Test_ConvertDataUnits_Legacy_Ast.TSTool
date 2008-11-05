@@ -7,6 +7,6 @@ TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetS
 TS copy = Copy(TSID="ts1",NewTSID="copy...Day")
 ConvertDataUnits(ts1*,CMS)
 # Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_ConvertDataUnits_Legacy_Ast_out.dv")
-WriteDateValue(OutputFile="Results/Test_ConvertDataUnits_Legacy_Ast_out.dv")
+# WriteDateValue(OutputFile="ExpectedResults/Test_ConvertDataUnits_Legacy_Ast_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_ConvertDataUnits_Legacy_Ast_out.dv",Precision=2)
 CompareFiles(InputFile1="ExpectedResults/Test_ConvertDataUnits_Legacy_Ast_out.dv",InputFile2="Results/Test_ConvertDataUnits_Legacy_Ast_out.dv",WarnIfDifferent=True)

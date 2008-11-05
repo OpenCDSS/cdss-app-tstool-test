@@ -1,5 +1,5 @@
-StartLog(LogFile="Results/Test_ReadNWSRFSFS5Files_MARFC_MAP.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv",WarnIfMissing=False)
+StartLog(LogFile="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv",IfNotFound=Ignore)
 TS JNIATAPA.OBS = ReadNwsrfsFS5Files(TSID="JNIATAPA.NWSRFS.MAP.6Hour.OBS~NWSRFS_FS5Files~Data_MARFC")
 TS JUNFMP.FMAP = ReadNwsrfsFS5Files(TSID="UPJUNFMP.NWSRFS.FMAP.6Hour~NWSRFS_FS5Files~Data_MARFC")
 TS JNIATAPA = ReadNwsrfsFS5Files(TSID="JNIATAPA.NWSRFS.MAP.6Hour~NWSRFS_FS5Files~Data_MARFC")
