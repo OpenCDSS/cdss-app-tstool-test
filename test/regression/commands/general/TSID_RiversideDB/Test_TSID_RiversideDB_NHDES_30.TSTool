@@ -1,0 +1,6 @@
+StartLog(LogFile="Test_TSID_RiversideDB_NHDES_30.TSTool.log")
+# SetDebugLevel(LogFileLevel=30)
+# Table format 100
+RUMN3.NHDES.STG.1HOUR~RiversideDB
+# Table format 401
+BARN3.HYDROBASE.PPAVPOR.1MONTH~RiversideDB
