@@ -1,0 +1,6 @@
+StartLog(LogFile="Results/Test_TSID_UsgsNwis.TSTool.log")
+03451500.USGS.Streamflow.Day~USGSNWIS~Data/G03451500.txt
+# Uncomment the following command to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_UsgsNwis_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_UsgsNwis_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_UsgsNwis_out.dv",InputFile2="Results/Test_TSID_UsgsNwis_out.dv",WarnIfDifferent=True)
