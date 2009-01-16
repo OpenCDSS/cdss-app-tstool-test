@@ -1,0 +1,6 @@
+StartLog(LogFile="Results/Test_NewPatternTimeSeries_PatternFlags.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewPatternTimeSeries_PatternFlags_out.dv")
+TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1950-03-12",Units="CFS",PatternValues="5,10,12,13,75",PatternFlags="a,b,c,xx,yy,zz")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewPatternTimeSeries_PatternFlags_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_NewPatternTimeSeries_PatternFlags_out.dv",Precision=2)
