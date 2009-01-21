@@ -10,7 +10,10 @@ WriteHecDss(OutputFile="Results/Test_WriteHecDss_Day_out.dss",Type=PER-AVER)
 # Since the file is binary and may contain characters that vary over time (write time, etc.),
 # free current time series and read it again and write as DateValue for the comparison
 Free(TSList=AllTS)
-ReadHecDss(InputFile="Results/Test_WriteHecDss_Day_out.dss")
+# Specify the period below because the current software seems to increase the
+# period on read - data values end up in the correct locations but extra missing
+# data is added.
+ReadHecDss(InputFile="Results/Test_WriteHecDss_Day_out.dss",InputStart="1950-01-01",InputEnd="1950-03-12")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_WriteHecDss_Day_out.dv",MissingValue=NaN)
 # Generate new output...
