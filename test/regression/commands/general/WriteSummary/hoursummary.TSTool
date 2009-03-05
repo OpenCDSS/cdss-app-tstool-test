@@ -1,5 +1,0 @@
-startLog(LogFile="hoursummary.log")
-# Commented out because this location/file doesn't exist
-#CSCI.CSCI.SQIN.06.CS~DateValue~J:\CDSS\develop\Apps\TSTool\test\Data_ESPTraceEnsemble\ACCUMULATOR_SHORT
-#setOutputPeriod(2002-11-01 00,2003-07031-18)
-#writeSummary("../output/HourSummary.txt")

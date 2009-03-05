@@ -1,0 +1,11 @@
+# Test writing summary on daily data for water year output...
+StartLog(LogFile="Results/Test_WriteSummary_Day_WaterYear.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteSummary_Day_WaterYear_out.txt",IfNotFound=Ignore)
+TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1955-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+SetOutputYearType(OutputYearType=Water)
+# Uncomment the following command to regenerate the expected results file.
+# WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Day_WaterYear_out.txt")
+# Generate new output...
+WriteSummary(OutputFile="Results/Test_WriteSummary_Day_WaterYear_out.txt")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Day_WaterYear_out.txt",InputFile2="Results/Test_WriteSummary_Day_WaterYear_out.txt",WarnIfDifferent=True)
