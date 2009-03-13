@@ -1,0 +1,86 @@
+LAG/K TEST Deck
+   11 1990    4 1991  
+DEF-TS
+INFLOW     SQIN    6            INPUT
+TSToolLagK/Streamflow.SQIN  
+FIXD_LAG   SQIN    6            OUTPUT
+TSToolLagK/FIXED_LAG_NO_K.SQIN                                         (6F10.5)          
+FIXD_K     SQIN    6            OUTPUT
+TSToolLagK/NO_LAG_FIXED_K.SQIN                                         (6F10.5)          
+FIX_LAGK   SQIN    6            OUTPUT
+TSToolLagK/FIXED_LAG_AND_K.SQIN                                        (6F10.5)          
+VAR_LAG    SQIN    6            OUTPUT
+TSToolLagK/VAR_LAG_NO_K.SQIN                                           (6F10.5)          
+VAR_K      SQIN    6            OUTPUT
+TSToolLagK/NO_LAG_VAR_K.SQIN                                           (6F10.5)          
+VAR_LAGK   SQIN    6            OUTPUT
+TSToolLagK/VAR_LAG_AND_K.SQIN                                          (6F10.5)          
+ENGLISH    SQIN    6            OUTPUT
+TSToolLagK/ENGLISH_UNITS.SQIN                                          (6F10.5)          
+SMALLK     SQIN    6            OUTPUT
+TSToolLagK/SMALL_K.SQIN                                                (6F10.5)          
+3HR        SQIN    3            OUTPUT
+TSToolLagK/3HR_INPUT.SQIN                                              (6F10.5)          
+3HRRTD     SQIN    3            OUTPUT
+TSToolLagK/3HR_VAR_LAG_K.SQIN                                          (6F10.5)          
+END
+LAG/K       FIXD_LAG
+INFLOW   SQIN  6 FIXD_LAG SQIN  6     0     0 METR  0.0       0.0
+     36.
+      0.
+      0
+#
+LAG/K       FIXD_K
+INFLOW   SQIN  6 FIXD_K   SQIN  6     0     0 METR  0.0       0.0
+      0.
+     22.
+      0
+#
+LAG/K       FIX_LAGK
+INFLOW   SQIN  6 FIX_LAGK SQIN  6     0     0 METR  0.0       0.0
+     36.
+     22.
+      0
+#
+# Lag1, Q1, Lag2, Q2, ...
+# K
+LAG/K       VAR_LAG
+INFLOW   SQIN  6 VAR_LAG  SQIN  6     4     0 METR  0.0       0.0
+    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+      0.
+      0
+#
+# Lag
+# K1, Q1, K2, Q2, ...
+LAG/K       VAR_K  
+INFLOW   SQIN  6 VAR_K    SQIN  6     0     4 METR  0.0       0.0
+      0.
+    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+      0
+#
+LAG/K       VAR_LAGK
+INFLOW   SQIN  6 VAR_LAGK SQIN  6     4     4 METR  0.0       0.0
+    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+      0
+#
+LAG/K       ENGLISH
+INFLOW   SQIN  6 ENGLISH  SQIN  6     2     2 ENGL  0.0       0.0
+    36.0 10000.0    12.0 50000.0
+     9.0 20000.0    24.0 60000.0
+      0
+#
+LAG/K       SMALLK  
+INFLOW   SQIN  6 SMALLK   SQIN  6     0     0 METR  0.0       0.0
+     36.
+      1.
+      0
+#
+CHANGE-T    3HR   
+  INFLOW   SQIN    6  3HR      SQIN    3  
+LAG/K       3HRRTD 
+3HR      SQIN  3 3HRRTD   SQIN  3     4     4 METR  0.0       0.0
+    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+      0
+STOP
