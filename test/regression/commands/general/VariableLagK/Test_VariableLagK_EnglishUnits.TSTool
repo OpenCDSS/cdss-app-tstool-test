@@ -1,0 +1,32 @@
+# Test specifying units as English instead of Metric units
+StartLog(LogFile="Results/Test_EnglishUnits.TSTool.log")
+RemoveFile(InputFile="Results\Test_EnglishUnits_out.dv",IfNotFound=Ignore)
+#
+# Read NWSCard input file 
+TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
+#
+# Route using the same routing parameters used in the mcp3 input deck
+# (metric units: Lag(hrs) K(hrs) Q(cfs)
+# Lag
+# K   
+#    36.0 10000.0    12.0 50000.0
+#     9.0 20000.0    24.0 60000.0
+#
+!!! Need to update parameters!!!
+TS EnglishUnits = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=0)
+Free(TSList=AllMatchingTSID,TSID="Inflow")
+#
+# Read the output from mcp3 CHANGE-T command
+TS mcp3_output = ReadNwsCard(InputFile="Data\ENGLISH_UNITS.SQIN")
+CompareTimeSeries(MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
+#
+# Once test out the command, use the following to do an exact test of the results:
+#
+# # Uncomment the following command to regenerate the expected results file.
+# SelectTimeSeries(TSList=AllMatchingTSID,TSID="EnglishUnits")
+# # WriteDateValue(OutputFile="ExpectedResults\Test_EnglishUnits_out.dv",TSList=SelectedTS)
+# WriteDateValue(OutputFile="Results\Test_EnglishUnits_out.dv",TSList=SelectedTS)
+# CompareFiles(InputFile1="ExpectedResults\Test_EnglishUnits_out",InputFile2="Results\Test_EnglishUnits_out",WarnIfDifferent=True)
+
+
+
