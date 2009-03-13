@@ -11,8 +11,7 @@ TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 # K   
 #    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
 #    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
-!!! Need to update parameters!!!
-TS VarLagAndK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=0)
+VariableLagK(TSID="Inflow",NewTSID="MyNewTS.CAT..3Minute",Lag="200,24;600,12;1500,9;3000,42",K="200,24;600,12;1500,9;3000,42",DataUnits=cms,LagInterval=3Minute,Alias="VarLagAndK")
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
 # Read the output from mcp3 CHANGE-T command
@@ -26,6 +25,3 @@ CompareTimeSeries(MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDiffe
 # # WriteDateValue(OutputFile="ExpectedResults\Test_VarLagAndK_out.dv",TSList=SelectedTS)
 # WriteDateValue(OutputFile="Results\Test_VarLagAndK_out.dv",TSList=SelectedTS)
 # CompareFiles(InputFile1="ExpectedResults\Test_VarLagAndK_out",InputFile2="Results\Test_VarLagAndK_out",WarnIfDifferent=True)
-
-
-
