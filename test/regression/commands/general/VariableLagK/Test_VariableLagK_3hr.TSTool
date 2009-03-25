@@ -2,31 +2,34 @@
 StartLog(LogFile="Results/Test_VariableLagK_3hr.TSTool.log")
 RemoveFile(InputFile="Results\Test_VariableLagK_3hr_out.dv",IfNotFound=Ignore)
 #
-# Read NWSCard input file 
+# Read NWSCard input file
 TS Inflow = ReadNwsCard(InputFile="Data\3HR_INPUT.SQIN")
 #
 # Route using the same routing parameters used in the mcp3 input deck
 # (metric units: Lag(hrs) K(hrs) Q(cms)
 # Lag
-# K   
+# K
 #    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
 #    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
 #
-!!! Need to update parameters!!!
-TS 3hr = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=0)
-Free(TSList=AllMatchingTSID,TSID="Inflow")
+# VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",DataUnits=CMS,LagInterval=Hour,Lag="200,24.0;600,12.0;1500,9.0;3000,42.0",K="200,24.0;600,12.0;1500,9.0;3000,42.0",Alias="3Hr")
+# The following has no Lag or K so output should match input
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",DataUnits=CMS,LagInterval=Hour,Alias="3Hr")
+# The following has no K so output should be parallel to input (only lag)
+# VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",DataUnits=CMS,LagInterval=Hour,Lag="200,24.0;600,12.0;1500,9.0;3000,42.0",Alias="3Hr")
+# The following has no Lag so output should attenuate but not lag
+# VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",DataUnits=CMS,LagInterval=Hour,K="200,24.0;600,12.0;1500,9.0;3000,42.0",Alias="3Hr")
+# Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
-# Read the output from mcp3 CHANGE-T command
+# Read the output from mcp3 LAGK operation
 TS mcp3_output = ReadNwsCard(InputFile="Data\3HR_VAR_LAG_K.SQIN")
-CompareTimeSeries(MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
 #
 # Once test out the command, use the following to do an exact test of the results:
+# Then an exact comparison can be performed.
 #
 # # Uncomment the following command to regenerate the expected results file.
 # SelectTimeSeries(TSList=AllMatchingTSID,TSID="3hr")
 # # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3hr_out.dv",TSList=SelectedTS)
 # WriteDateValue(OutputFile="Results\Test_VariableLagK_3hr_out.dv",TSList=SelectedTS)
 # CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3hr_out",InputFile2="Results\Test_VariableLagK_3hr_out",WarnIfDifferent=True)
-
-
-
