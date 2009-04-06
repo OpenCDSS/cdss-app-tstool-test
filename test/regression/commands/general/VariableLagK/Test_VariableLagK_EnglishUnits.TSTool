@@ -1,32 +1,30 @@
-# Test specifying units as English instead of Metric units
-StartLog(LogFile="Results/Test_EnglishUnits.TSTool.log")
-RemoveFile(InputFile="Results\Test_EnglishUnits_out.dv",IfNotFound=Ignore)
+# Test specifying Lag, K units as English instead of Metric units
+# Data are in CMS, table is in CFS
+StartLog(LogFile="Results/Test_VariableLagK_EnglishUnits.TSTool.log")
+RemoveFile(InputFile="Results\Test_VariableLagK_EnglishUnits_out.dv",IfNotFound=Ignore)
 #
-# Read NWSCard input file 
+# Read NWSCard input file
 TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 #
 # Route using the same routing parameters used in the mcp3 input deck
 # (metric units: Lag(hrs) K(hrs) Q(cfs)
 # Lag
-# K   
+# K
 #    36.0 10000.0    12.0 50000.0
 #     9.0 20000.0    24.0 60000.0
 #
-!!! Need to update parameters!!!
-TS EnglishUnits = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=0)
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",DataUnits=CFS,LagInterval=Hour,Lag="10000,36; 20000,9; 50000,12; 60000,24",K="10000,36; 20000,9; 50000,12; 60000,24")
+# Free the original time series so that it is not used in the comparison.
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
 # Read the output from mcp3 CHANGE-T command
 TS mcp3_output = ReadNwsCard(InputFile="Data\ENGLISH_UNITS.SQIN")
-CompareTimeSeries(MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
 #
 # Once test out the command, use the following to do an exact test of the results:
 #
 # # Uncomment the following command to regenerate the expected results file.
 # SelectTimeSeries(TSList=AllMatchingTSID,TSID="EnglishUnits")
-# # WriteDateValue(OutputFile="ExpectedResults\Test_EnglishUnits_out.dv",TSList=SelectedTS)
-# WriteDateValue(OutputFile="Results\Test_EnglishUnits_out.dv",TSList=SelectedTS)
-# CompareFiles(InputFile1="ExpectedResults\Test_EnglishUnits_out",InputFile2="Results\Test_EnglishUnits_out",WarnIfDifferent=True)
-
-
-
+# # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_EnglishUnits_out.dv",TSList=SelectedTS)
+# WriteDateValue(OutputFile="Results\Test_VariableLagK_EnglishUnits_out.dv",TSList=SelectedTS)
+# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_EnglishUnits_out",InputFile2="Results\Test_VariableLagK_EnglishUnits_out",WarnIfDifferent=True)

@@ -1,31 +1,34 @@
 # Test fixed Lag and attenuation (K)<0.5 times interval
-StartLog(LogFile="Results/Test_SmallK.TSTool.log")
-RemoveFile(InputFile="Results\Test_SmallK_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_VariableLagK_SmallK.TSTool.log")
+RemoveFile(InputFile="Results\Test_VariableLagK_SmallK_out.dv",IfNotFound=Ignore)
 #
-# Read NWSCard input file 
+# Read NWSCard input file
 TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 #
 # Route using the same routing parameters used in the mcp3 input deck
 # (metric units: Lag(hrs) K(hrs) Q(cms)
 # Lag
-# K   
+# K
 #     36.
 #      1.
-!!! Need to update parameters!!!
-TS SmallK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=1)
+# Use the fixed LagK command if necessary to verify differences.
+# TS SmallK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=1)
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",DataUnits=CMS,LagInterval=Hour,Lag="1e10,36",K="1e10,1")
+# Free the original time series so that comparison below is between the generated
+# output and MCP3 output.
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
 # Read the output from mcp3 CHANGE-T command
 TS mcp3_output = ReadNwsCard(InputFile="Data\SMALL_K.SQIN")
-CompareTimeSeries(MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
 #
 # Once test out the command, use the following to do an exact test of the results:
 #
 # # Uncomment the following command to regenerate the expected results file.
 # SelectTimeSeries(TSList=AllMatchingTSID,TSID="SmallK")
-# # WriteDateValue(OutputFile="ExpectedResults\Test_SmallK_out.dv",TSList=SelectedTS)
-# WriteDateValue(OutputFile="Results\Test_SmallK_out.dv",TSList=SelectedTS)
-# CompareFiles(InputFile1="ExpectedResults\Test_SmallK_out",InputFile2="Results\Test_SmallK_out",WarnIfDifferent=True)
+# # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
+# WriteDateValue(OutputFile="Results\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
+# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_SmallK_out",InputFile2="Results\Test_VariableLagK_SmallK_out",WarnIfDifferent=True)
 
 
 
