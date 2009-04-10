@@ -1,0 +1,13 @@
+# Test running an external program using a full command line for an executable program
+# without the command shell.
+# This will determine the exit status from the program output.
+# Because the stdout must be read for the exit status, the output
+# cannot be redirected to a file for comparison for regression testing.
+# Therefore, just run the test to confirm that the exit status is a failure
+# as expected.
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_RunProgram_CommandLine_ExitStatusIndicator_testecho_UseCommandShell=False.TSTool.log")
+RemoveFile(InputFile="Results\Test_RunProgram_CommandLine_ExitStatusIndicator_testecho_UseCommandShell=False_out.txt",IfNotFound=Ignore)
+# Uncomment the following command to regenerate the expected results file.
+# Generate the output
+RunProgram(Program="${WorkingDir}/testecho.exe",ProgramArg1="STOP 2",UseCommandShell=False,ExitStatusIndicator="STOP")
