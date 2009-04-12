@@ -1,5 +1,5 @@
 # Test fixed Lag and no attenuation (K)
-StartLog(LogFile="Results/Test_VariableLagK_FixedLagNoK.TSTool.log")
+StartLog(LogFile="Results\Test_VariableLagK_FixedLagNoK.TSTool.log")
 RemoveFile(InputFile="Results\Test_VariableLagK_FixedLagNoK_out.dv",IfNotFound=Ignore)
 #
 # Read NWSCard input file
@@ -11,9 +11,10 @@ TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 # K
 #     36.
 #      0.
-TS FixedLagNoK_OldLagK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=0)
-VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",DataUnits=CMS,LagInterval=Hour,Lag="1e10,36",Alias="FixedLagNoK")
-# Free(TSList=AllMatchingTSID,TSID="Inflow")
+# Use the fixed LagK command if necessary to verify differences.
+#TS FixedLagNoK_OldLagK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=0)
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,36",Alias="FixedLagNoK")
+Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
 # Read the output from mcp3 LAGK command
 TS mcp3_output = ReadNwsCard(InputFile="Data\FIXED_LAG_NO_K.SQIN")
@@ -21,8 +22,8 @@ CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="
 #
 # Once test out the command, use the following to do an exact test of the results:
 #
-# # Uncomment the following command to regenerate the expected results file.
-# SelectTimeSeries(TSList=AllMatchingTSID,TSID="FixedLagNoK")
-# # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_FixedLagNoK_out.dv",TSList=SelectedTS)
-# WriteDateValue(OutputFile="Results\Test_VariableLagK_FixedLagNoK_out.dv",TSList=SelectedTS)
-# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_FixedLagNoK_out.dv",InputFile2="Results\Test_VariableLagK_FixedLagNoK_out.dv",WarnIfDifferent=True)
+# Uncomment the following command to regenerate the expected results file.
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="FixedLagNoK")
+WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_FixedLagNoK_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_VariableLagK_FixedLagNoK_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_FixedLagNoK_out.dv",InputFile2="Results\Test_VariableLagK_FixedLagNoK_out.dv",WarnIfDifferent=True)

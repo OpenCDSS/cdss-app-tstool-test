@@ -1,4 +1,4 @@
-# Test fixed Lag and no attenuation (K)
+# Test fixed Lag and no attenuation (K) against old LagK
 SetDebugLevel(LogFileLevel=1)
 StartLog(LogFile="Results/Test_VariableLagK_3Hour_FixedLagNoK.TSTool.log")
 RemoveFile(InputFile="Results\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",IfNotFound=Ignore)
@@ -6,24 +6,16 @@ RemoveFile(InputFile="Results\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",IfNotF
 # Read NWSCard input file
 TS Inflow = NewPatternTimeSeries(NewTSID="TestLoc..SQIN.3Hour",SetStart="2000-01-01 00",SetEnd="2000-02-15 12",Units="CMS",PatternValues="1,2,4,6,6.5,7,5,3,1.5,1.1")
 #
-# Route using the same routing parameters used in the mcp3 input deck
-# (metric units: Lag(hrs) K(hrs) Q(cms)
-# Lag
-# K
-#     36.
-#      0.
 TS FixedLagNoK_OldLagK = LagK(TSID="Inflow",FillNearest=True,Lag=3,K=0)
-VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",DataUnits=CMS,LagInterval=Hour,Lag="1e10,3",Alias="FixedLagNoK")
-# Free(TSList=AllMatchingTSID,TSID="Inflow")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,3",Alias="FixedLagNoK")
+Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
-# Read the output from mcp3 LAGK command
-#TS mcp3_output = ReadNwsCard(InputFile="Data\FIXED_LAG_NO_K.SQIN")
-#CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
 #
 # Once test out the command, use the following to do an exact test of the results:
 #
 # # Uncomment the following command to regenerate the expected results file.
-# SelectTimeSeries(TSList=AllMatchingTSID,TSID="FixedLagNoK")
-# # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",TSList=SelectedTS)
-# WriteDateValue(OutputFile="Results\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",TSList=SelectedTS)
-# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",InputFile2="Results\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",WarnIfDifferent=True)
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="FixedLagNoK")
+# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",InputFile2="Results\Test_VariableLagK_3Hour_FixedLagNoK_out.dv",WarnIfDifferent=True)

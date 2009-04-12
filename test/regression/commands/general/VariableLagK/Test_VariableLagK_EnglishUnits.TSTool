@@ -7,13 +7,13 @@ RemoveFile(InputFile="Results\Test_VariableLagK_EnglishUnits_out.dv",IfNotFound=
 TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 #
 # Route using the same routing parameters used in the mcp3 input deck
-# (metric units: Lag(hrs) K(hrs) Q(cfs)
+# Lag(hrs) K(hrs) Q(cfs)
 # Lag
 # K
 #    36.0 10000.0    12.0 50000.0
 #     9.0 20000.0    24.0 60000.0
 #
-VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",DataUnits=CFS,LagInterval=Hour,Lag="10000,36; 20000,9; 50000,12; 60000,24",K="10000,36; 20000,9; 50000,12; 60000,24")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CFS,LagInterval=Hour,Lag="10000,36; 50000,12;",K="20000,9; 60000,24",Alias="EnglishUnits")
 # Free the original time series so that it is not used in the comparison.
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
@@ -23,8 +23,8 @@ CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="
 #
 # Once test out the command, use the following to do an exact test of the results:
 #
-# # Uncomment the following command to regenerate the expected results file.
-# SelectTimeSeries(TSList=AllMatchingTSID,TSID="EnglishUnits")
-# # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_EnglishUnits_out.dv",TSList=SelectedTS)
-# WriteDateValue(OutputFile="Results\Test_VariableLagK_EnglishUnits_out.dv",TSList=SelectedTS)
-# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_EnglishUnits_out",InputFile2="Results\Test_VariableLagK_EnglishUnits_out",WarnIfDifferent=True)
+# Uncomment the following command to regenerate the expected results file.
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="EnglishUnits")
+WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_EnglishUnits_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_VariableLagK_EnglishUnits_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_EnglishUnits_out.dv",InputFile2="Results\Test_VariableLagK_EnglishUnits_out.dv",WarnIfDifferent=True)

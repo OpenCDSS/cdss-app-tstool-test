@@ -1,5 +1,5 @@
 # Test fixed Lag and attenuation (K)<0.5 times interval
-StartLog(LogFile="Results/Test_VariableLagK_SmallK.TSTool.log")
+StartLog(LogFile="Results\Test_VariableLagK_SmallK.TSTool.log")
 RemoveFile(InputFile="Results\Test_VariableLagK_SmallK_out.dv",IfNotFound=Ignore)
 #
 # Read NWSCard input file
@@ -13,7 +13,7 @@ TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 #      1.
 # Use the fixed LagK command if necessary to verify differences.
 # TS SmallK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=1)
-VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",DataUnits=CMS,LagInterval=Hour,Lag="1e10,36",K="1e10,1")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,36",K="0,1",Alias="SmallK")
 # Free the original time series so that comparison below is between the generated
 # output and MCP3 output.
 Free(TSList=AllMatchingTSID,TSID="Inflow")
@@ -28,7 +28,7 @@ CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="
 # SelectTimeSeries(TSList=AllMatchingTSID,TSID="SmallK")
 # # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
 # WriteDateValue(OutputFile="Results\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
-# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_SmallK_out",InputFile2="Results\Test_VariableLagK_SmallK_out",WarnIfDifferent=True)
+# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_SmallK_out.dv",InputFile2="Results\Test_VariableLagK_SmallK_out.dv",WarnIfDifferent=True)
 
 
 
