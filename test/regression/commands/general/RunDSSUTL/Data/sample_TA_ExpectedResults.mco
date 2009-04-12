@@ -1,0 +1,7 @@
+* ================================================================
+* Switch the directory to write output to ExpectedResults, if regenerating expected results.
+*
+DB, 15
+TA.F ALL
+ExpectedResults\Test_RunDSSUTL_sample_TA_out.txt
+* Results\Test_RunDSSUTL_sample_TA_out.txt
