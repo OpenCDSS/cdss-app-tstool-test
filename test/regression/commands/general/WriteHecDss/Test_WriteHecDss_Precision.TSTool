@@ -1,0 +1,15 @@
+# Write monthly data to DSS
+# Test setup...
+StartLog(LogFile="Results/Test_WriteHecDss_Precision.TSTool.log")
+# SetDebugLevel(LogFileLevel=10)
+# RemoveFile(InputFile="Results\Test_WriteHecDss_Precision_out.dss")
+RemoveFile(InputFile="Results\Test_WriteHecDss_Precision.dssutl.out",IfNotFound=Ignore)
+# The generated time series has identifier parts that indicate the HEC-DSS
+# parts, other than the D part, which is related to the period of record.
+TS Alias1 = NewPatternTimeSeries(NewTSID="Apart1:Bpart1-with-dashes..Cpart1.Month.Fpart1",Description="Test data",SetStart="1950-01",SetEnd="1952-03",Units="MGD",PatternValues="5,10,12,13,75")
+WriteHecDss(OutputFile="Results/Test_WriteHecDss_Precision_out.dss",Precision=1,Type=PER-AVER)
+#
+# Use DSSUTL to output the data from the resulting DSS file to compare results
+RunDSSUTL(DssFile="Results\Test_WriteHecDss_Precision_out.dss",InputFile="Test_WriteHecDss_Precision.MCO",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
+# In order to regenerate the expected results file, edit the output file in the file: Test_WriteHecDss_Precision.MCO
+CompareFiles(InputFile1="ExpectedResults\Test_WriteHecDss_Precision.dssutl.out",InputFile2="Results/Test_WriteHecDss_Precision.dssutl.out",WarnIfDifferent=True)

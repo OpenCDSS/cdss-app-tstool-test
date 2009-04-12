@@ -1,0 +1,18 @@
+# Write Hourly data to DSS
+# Test setup...
+StartLog(LogFile="Results/Test_WriteHecDss_Hour.TSTool.log")
+# SetDebugLevel(LogFileLevel=10)
+# RemoveFile(InputFile="Results\Test_WriteHecDss_Hour_out.dss")
+RemoveFile(InputFile="Results\Test_WriteHecDss_Hour.dssutl.out",IfNotFound=Ignore)
+# The generated time series has identifier parts that indicate the HEC-DSS
+# parts, other than the D part, which is related to the period of record.
+TS Alias1 = NewPatternTimeSeries(NewTSID="Apart1:Bpart1-with-dashes..Cpart1.Hour.Fpart1",Description="Test data",SetStart="1950-01-01 00",SetEnd="1950-02-11 13",Units="CFS",PatternValues="5,10,12,13,75")
+TS Alias2 = NewPatternTimeSeries(NewTSID="Apart1:Bpart1..Cpart1.Hour.Start on hour 24",Description="Start on hour 24",SetStart="1950-01-01 24",SetEnd="1950-01-11 13",Units="CFS",PatternValues="5,10,12,13,75")
+TS Alias3 = NewPatternTimeSeries(NewTSID="Apart1:Bpart1..Cpart1.6Hour.6 hour data",Description="6 hour data",SetStart="1950-01-01 24",SetEnd="1950-01-11 12",Units="CFS",PatternValues="5,10,12,13,75")
+TS Alias4 = NewPatternTimeSeries(NewTSID="Apart1:Bpart1..Cpart1.4Hour.4 hour data",Description="4 hour data",SetStart="1950-01-01 24",SetEnd="1950-01-11 12",Units="CFS",PatternValues="5,10,12,13,75")
+WriteHecDss(OutputFile="Results/Test_WriteHecDss_Hour_out.dss",Type=INST-VAL)
+#
+# Use DSSUTL to output the data from the resulting DSS file to compare results
+RunDSSUTL(DssFile="Results\Test_WriteHecDss_Hour_out.dss",InputFile="Test_WriteHecDss_Hour.MCO",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
+# In order to regenerate the expected results file, edit the output file in the file: Test_WriteHecDss_Hour.MCO
+CompareFiles(InputFile1="ExpectedResults\Test_WriteHecDss_Hour.dssutl.out",InputFile2="Results/Test_WriteHecDss_Hour.dssutl.out",WarnIfDifferent=True)

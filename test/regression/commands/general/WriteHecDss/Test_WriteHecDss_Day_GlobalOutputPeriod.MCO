@@ -1,0 +1,12 @@
+* ================================================================
+* Switch the directory to write output to the Expected results
+*
+* create catalog and retag
+CA.NA
+RT REF
+CA.NA
+* tabulate results into output file
+TA.F ALL
+Results\Test_WriteHecDss_Day_GlobalOutputPeriod.dssutl.out
+FI
+*ExpectedResults\Test_WriteHecDss_Day_GlobalOutputPeriod.dssutl.out
