@@ -10,7 +10,7 @@ TS FixedLagNoK_OldLagK = LagK(TSID="Inflow",FillNearest=True,Lag=3,K=0)
 VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,3",Alias="FixedLagNoK")
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
-CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",WarnIfDifferent=True)
 #
 # Once test out the command, use the following to do an exact test of the results:
 #

@@ -19,7 +19,8 @@ Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
 # Read the output from mcp3 CHANGE-T command
 TS mcp3_output = ReadNwsCard(InputFile="Data\ENGLISH_UNITS.SQIN")
-CompareTimeSeries(MatchLocation=False,MatchDataType=True,Precision=5,Tolerance="0.00002",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
+# Subtract(TSID="EnglishUnits",SubtractTSList=AllMatchingTSID,SubtractTSID="mcp3_output",HandleMissingHow="IgnoreMissing")
 #
 # Once test out the command, use the following to do an exact test of the results:
 #
