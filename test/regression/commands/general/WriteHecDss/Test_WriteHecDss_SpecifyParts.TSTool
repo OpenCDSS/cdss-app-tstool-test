@@ -15,4 +15,3 @@ WriteHecDss(OutputFile="Results/Test_WriteHecDss_SpecifyParts_out.dss",TSList=Al
 RunDSSUTL(DssFile="Results\Test_WriteHecDss_SpecifyParts_out.dss",InputFile="Test_WriteHecDss_SpecifyParts.MCO",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
 # In order to regenerate the expected results file, edit the output file in the file: Test_WriteHecDss_SpecifyParts.MCO
 CompareFiles(InputFile1="ExpectedResults\Test_WriteHecDss_SpecifyParts.dssutl.out",InputFile2="Results/Test_WriteHecDss_SpecifyParts.dssutl.out",WarnIfDifferent=True)
-ReadHecDss(InputFile="K:\PROJECTS\1039_Arcadis-GA-EPD Surface Part 2\TSTool development\Test cases\ReadHecDss\Data\sample.dss")
