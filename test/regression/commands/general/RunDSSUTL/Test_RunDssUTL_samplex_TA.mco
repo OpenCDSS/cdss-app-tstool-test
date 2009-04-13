@@ -1,7 +1,9 @@
 * ================================================================
-* Switch the directory to write output to ExpectedResults, if regenerating expected results.
-*
-DB, 15
+* Generate the ExpectedResults.
+* Turn on debug
+* DB, 15
+* Create a new catalog - seems to be needed sometimes to keep the DSS file current
+CA.N
 TA.F ALL
 ExpectedResults\Test_RunDSSUTL_sample_TA_out.txt
 * Results\Test_RunDSSUTL_sample_TA_out.txt

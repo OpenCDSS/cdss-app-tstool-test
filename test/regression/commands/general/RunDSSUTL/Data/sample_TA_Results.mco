@@ -1,7 +1,0 @@
-* ================================================================
-* Switch the directory to write output to ExpectedResults, if regenerating expected results.
-*
-DB, 15
-TA.F ALL
-Results\Test_RunDSSUTL_sample_TA_out.txt
-* ExpectedResults\Test_RunDSSUTL_sample_TA_out.txt

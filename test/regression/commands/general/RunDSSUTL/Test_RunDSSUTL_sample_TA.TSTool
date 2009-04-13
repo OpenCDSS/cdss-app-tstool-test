@@ -1,9 +1,12 @@
-# Test generating a tabulation from the sample file distributed with DSS-VUE
+# Test running the DSSUTL program by generating a tabulation from the sample
+# file distributed with DSS-VUE
 SetDebugLevel(LogFileLevel=10)
 StartLog(LogFile="Results/Test_RunDSSUTL_sample_TA.TSTool.log")
 RemoveFile(InputFile="Results\Test_RunDSSUTL_sample_TA_out.txt",IfNotFound=Ignore)
 # Uncomment the following command to regenerate the expected results file.
-# RunDSSUTL(DssFile="Data\sample.dss",InputFile="Data\sample_TA_ExpectedResults.mco",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
+# The MCO files for Results and ExpectedResults are different and control the
+# output files.
+RunDSSUTL(DssFile="Data\sample.dss",InputFile="Test_RunDSSUTL_samplex_TA.mco",OutputFile="Results\Test_RunDSSUTL_sample_TA_DSSUTL.logx",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
 # Generate the output
-RunDSSUTL(DssFile="Data\sample.dss",InputFile="Data\sample_TA_Results.mco",OutputFile="Results\sample_TA_out.txt",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
+RunDSSUTL(DssFile="Data\sample.dss",InputFile="Test_RunDSSUTL_sample_TA.mco",OutputFile="Results\Test_RunDSSUTL_sample_TA_DSSUTL.log",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
 CompareFiles(InputFile1="ExpectedResults/Test_RunDSSUTL_sample_TA_out.txt",InputFile2="Results/Test_RunDSSUTL_sample_TA_out.txt",WarnIfDifferent=True)

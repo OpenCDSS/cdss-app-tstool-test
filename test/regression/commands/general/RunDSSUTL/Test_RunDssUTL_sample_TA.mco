@@ -1,0 +1,9 @@
+* ================================================================
+* Generate the Results, if regenerating expected results.
+* Turn on debug
+* DB, 15
+* Create a new catalog - seems to be needed sometimes to keep the DSS file current
+CA.N
+TA.F ALL
+Results\Test_RunDSSUTL_sample_TA_out.txt
+* ExpectedResults\Test_RunDSSUTL_sample_TA_out.txt
