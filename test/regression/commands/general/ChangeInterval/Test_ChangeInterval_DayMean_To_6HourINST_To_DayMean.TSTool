@@ -1,0 +1,17 @@
+# Test change interval from mean daily flow to 6-hour flow then change interval back to daily and visually compare original to result.
+TS DailyTS = NewPatternTimeSeries(NewTSID="s1.CAT..Day",SetStart="1/1/2007",SetEnd="12/30/2007",Units="IN",PatternValues="10,20,30,-999,40,30")
+TS 6HourlyTS = ChangeInterval(TSID="DailyTS",NewInterval=6Hour,OldTimeScale=MEAN,NewTimeScale=INST,AllowMissingCount=0,OutputFillMethod=Repeat,HandleMissingInputHow=SetToZero)
+TS calculatedDailyTS = ChangeInterval(TSID="6HourlyTS",NewInterval=Day,OldTimeScale=INST,NewTimeScale=MEAN)
+
+# Once test out the command, use the following to do an exact test of the results:
+#
+# # Uncomment the following command to regenerate the expected results file.
+# SelectTimeSeries(TSList=AllMatchingTSID,TSID="6HourlyTS")
+# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_DayMean_To_6HourINST_To_DayMean_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_DayMean_To_6HourINST_To_DayMean_out.dv",TSList=SelectedTS)
+# CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_DayMean_To_6HourINST",InputFile2="Results\Test_ChangeInterval_DayMean_To_6HourINST",WarnIfDifferent=True)
+
+DeselectTimeSeries(TSList=AllTS)
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="calculatedDailyTS")
+# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_DayMean_To_6HourINST_To_DayMean_out2.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_DayMean_To_6HourINST_To_DayMean_out2.dv",TSList=SelectedTS)
