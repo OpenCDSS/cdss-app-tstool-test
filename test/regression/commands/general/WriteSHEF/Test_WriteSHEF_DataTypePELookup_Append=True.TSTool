@@ -1,0 +1,14 @@
+# Test writing SHEF data, appending to the same file, using PE parameter-defined lookup table
+#@os Windows
+StartLog(LogFile="Results/Test_WriteSHEF_DataTypePELookup_Append=True.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",IfNotFound=Ignore)
+TS loc1 = NewPatternTimeSeries(NewTSID="loc1..QIN.6Hour",Description="Test data 1",SetStart="2007-11-01 00 PST",SetEnd="2007-11-15 18 PST",Units="CFS",PatternValues="5,10,12,13,75")
+TS loc2 = NewPatternTimeSeries(NewTSID="loc2..QIN.6Hour",Description="Test data 2",SetStart="2007-11-01 00 PST",SetEnd="2007-11-15 18 PST",Units="CFS",PatternValues="55,111,222,333,777")
+# Uncomment the following 2 commands to regenerate the expected results file.
+# WriteSHEF(TSList=AllMatchingTSID,TSID="loc1",DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="ExpectedResults\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef")
+# WriteSHEF(TSList=AllMatchingTSID,TSID="loc2",DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="ExpectedResults\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",Append=True)
+# Generate new output...
+WriteSHEF(TSList=AllMatchingTSID,TSID="loc1",DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="Results\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef")
+WriteSHEF(TSList=AllMatchingTSID,TSID="loc2",DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="Results\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",Append=True)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",InputFile2="Results/Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",CommentLineChar=":",WarnIfDifferent=True)
