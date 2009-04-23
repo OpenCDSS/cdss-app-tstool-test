@@ -1,0 +1,6 @@
+# Test reading the HEC-DSS sample data file and assign non-unique aliases--should fail
+#
+#@expectedStatus Warning
+#
+StartLog(LogFile="Results/Test_ReadHecDss_NonUniqueAlias.TSTool.log")
+ReadHecDss(InputFile="Data\sample.dss",B="OAK*",Alias="notUnique")

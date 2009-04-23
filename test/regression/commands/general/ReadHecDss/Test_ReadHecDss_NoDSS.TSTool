@@ -1,0 +1,6 @@
+# Test reading non-existent DSS file.
+#
+#@expectedStatus Failure
+#
+StartLog(LogFile="Results/Test_ReadHecDss_NoDSS.TSTool.log")
+ReadHecDss(InputFile="Data\BadDSSName.dss")

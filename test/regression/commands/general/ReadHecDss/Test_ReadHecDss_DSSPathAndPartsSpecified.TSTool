@@ -1,0 +1,3 @@
+# Test reading the HEC-DSS with DSS Path and Parts specified--should generate warning
+StartLog(LogFile="Results/Test_ReadHecDss_DSSPathAndPartsSpecified.TSTool.log")
+ReadHecDss(InputFile="Data\sample.dss",B="OAK*",Pathname="/GREEN RIVER/WALNUT/PRECIP-INC/01MAY1992/1HOUR/OBS/")
