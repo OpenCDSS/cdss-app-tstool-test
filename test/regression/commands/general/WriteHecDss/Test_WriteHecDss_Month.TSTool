@@ -2,7 +2,11 @@
 # Test setup...
 StartLog(LogFile="Results/Test_WriteHecDss_Month.TSTool.log")
 # SetDebugLevel(LogFileLevel=10)
-# RemoveFile(InputFile="Results\Test_WriteHecDss_Month_out.dss")
+# Write a single blank time series to the dss file to allow WriteHecDss to be closed; allows deleting below.
+TS Blank = NewTimeSeries(NewTSID="Blank...Month",SetStart="1960-01",SetEnd="1960-12",Units="CFS")
+WriteHecDss(OutputFile="Results\Test_WriteHecDss_Month_out.dss",Type=PER-AVER,Close=True)
+Free(TSList=AllMatchingTSID,TSID="*")
+RemoveFile(InputFile="Results\Test_WriteHecDss_Month_out.dss")
 RemoveFile(InputFile="Results\Test_WriteHecDss_Month.dssutl.out",IfNotFound=Ignore)
 # The generated time series has identifier parts that indicate the HEC-DSS
 # parts, other than the D part, which is related to the period of record.
