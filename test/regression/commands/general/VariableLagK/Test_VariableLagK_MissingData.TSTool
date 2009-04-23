@@ -1,0 +1,17 @@
+# Test that missing data in input time series for command generates a warning and stops routing from
+# this point forward
+#
+#@expectedStatus Warning
+#
+StartLog(LogFile="Results\Test_VariableLagK_MissingData.TSTool.log")
+#
+# Read NWSCard input file
+TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
+ReplaceValue(TSList=AllMatchingTSID,TSID="Inflow",MinValue=-100,MaxValue=100000,NewValue=-999,SetStart="1990-12-15 00",SetEnd="1991-02-15 00")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,12",Alias="Routed")
+#
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="Routed")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_MissingData_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_VariableLagK_MissingData_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_MissingData_out.dv",InputFile2="Results\Test_VariableLagK_MissingData_out.dv",WarnIfDifferent=True)

@@ -1,0 +1,10 @@
+# Test with lag interval not defined, generates an error
+#
+#@expectedStatus Failure
+#
+StartLog(LogFile="Results\Test_LagIntervalNotDefined.TSTool.log")
+#
+# Read NWSCard input file
+TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
+ReplaceValue(TSList=AllMatchingTSID,TSID="Inflow",MinValue=-100,MaxValue=100000,NewValue=-999,SetStart="1990-12-15 00",SetEnd="1991-02-15 00")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CFS,Lag="0,12",Alias="Routed")

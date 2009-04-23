@@ -9,26 +9,28 @@ TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 # (metric units: Lag(hrs) K(hrs) Q(cms)
 # Lag
 # K
-#     36.
-#      1.
-# Use the fixed LagK command if necessary to verify differences.
-# TS SmallK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=1)
+#    36.0
+#     1.0 20000.0     1.0 60000.0
+#
+# The fixed LagK command gives slightly different results if
+# K<0.5*interval
+# TS SmallK_origLagK = LagK(TSID="Inflow",FillNearest=True,Lag=36,K=1)
 VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,36",K="0,1",Alias="SmallK")
 # Free the original time series so that comparison below is between the generated
 # output and MCP3 output.
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
-# Read the output from mcp3 CHANGE-T command
-TS mcp3_output = ReadNwsCard(InputFile="Data\SMALL_K.SQIN")
+# Read the output from the mcp3 LAG/K command
+TS mcp3_output = ReadNwsCard(InputFile="Data\SMALL_K_TABLE.SQIN")
 CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
 #
-# Once test out the command, use the following to do an exact test of the results:
+# The following does an exact test of the results:
 #
-# # Uncomment the following command to regenerate the expected results file.
-# SelectTimeSeries(TSList=AllMatchingTSID,TSID="SmallK")
-# # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
-# WriteDateValue(OutputFile="Results\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
-# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_SmallK_out.dv",InputFile2="Results\Test_VariableLagK_SmallK_out.dv",WarnIfDifferent=True)
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="SmallK")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_VariableLagK_SmallK_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_SmallK_out.dv",InputFile2="Results\Test_VariableLagK_SmallK_out.dv",WarnIfDifferent=True)
 
 
 

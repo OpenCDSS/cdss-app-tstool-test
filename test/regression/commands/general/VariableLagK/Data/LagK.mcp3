@@ -17,8 +17,10 @@ VAR_LAGK   SQIN    6            OUTPUT
 TSToolLagK/VAR_LAG_AND_K.SQIN                                          (6F10.5)          
 ENGLISH    SQIN    6            OUTPUT
 TSToolLagK/ENGLISH_UNITS.SQIN                                          (6F10.5)          
-SMALLK     SQIN    6            OUTPUT
-TSToolLagK/SMALL_K.SQIN                                                (6F10.5)          
+SMALLK1    SQIN    6            OUTPUT
+TSToolLagK/SMALL_K_CONSTANT.SQIN                                       (6F10.5)          
+SMALLK2    SQIN    6            OUTPUT
+TSToolLagK/SMALL_K_TABLE.SQIN                                          (6F10.5)          
 3HR        SQIN    3            OUTPUT
 TSToolLagK/3HR_INPUT.SQIN                                              (6F10.5)          
 3HRRTD     SQIN    3            OUTPUT
@@ -70,10 +72,16 @@ INFLOW   SQIN  6 ENGLISH  SQIN  6     2     2 ENGL  0.0       0.0
      9.0 20000.0    24.0 60000.0
       0
 #
+# Small K values with constant K versus a table of K
+LAG/K       SMALLK1 
+INFLOW   SQIN  6 SMALLK1  SQIN  6     0     0 METR  0.0       0.0
+    36.0 
+     1.0 
+      0
 LAG/K       SMALLK  
-INFLOW   SQIN  6 SMALLK   SQIN  6     0     0 METR  0.0       0.0
-     36.
-      1.
+INFLOW   SQIN  6 SMALLK2  SQIN  6     0     2 METR  0.0       0.0
+    36.0 
+     1.0 20000.0     1.0 60000.0
       0
 #
 CHANGE-T    3HR   
@@ -83,4 +91,9 @@ LAG/K       3HRRTD
     24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
     24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
       0
+PLOT-TS     SMALLK
+SMALL K COMPARISON           3    1    2
+ ARIT   20       0.0     1300.    2 
+  SMALLK1  SQIN    6        CONSTANT        C
+  SMALLK2  SQIN    6        TABLE           T 
 STOP

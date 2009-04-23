@@ -14,14 +14,13 @@ TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
 VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,K="200,24.0;600,12.0;1500,9.0;3000,42.0",Alias="NoLagVarK")
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
-# Read the output from mcp3 CHANGE-T command
+# Read the output from the mcp3 LAG/K command
 TS mcp3_output = ReadNwsCard(InputFile="Data\NO_LAG_VAR_K.SQIN")
 CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
 #
-# Once test out the command, use the following to do an exact test of the results:
-#
-# Uncomment the following command to regenerate the expected results file.
+# The following does an exact test of the results:
 SelectTimeSeries(TSList=AllMatchingTSID,TSID="NoLagVarK")
+# Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_NoLagVarK_out.dv",TSList=SelectedTS)
 WriteDateValue(OutputFile="Results\Test_VariableLagK_NoLagVarK_out.dv",TSList=SelectedTS)
 CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_NoLagVarK_out.dv",InputFile2="Results\Test_VariableLagK_NoLagVarK_out.dv",WarnIfDifferent=True)
