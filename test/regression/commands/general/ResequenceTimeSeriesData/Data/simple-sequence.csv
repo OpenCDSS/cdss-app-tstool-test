@@ -1,0 +1,14 @@
+# Test data for simple resequencing test
+# The sequence numbers are in easy to check patterns (reverse)
+# The time series data should also be in easy to check patterns
+"Seq1","Seq2","Seq3"
+2009,2004,2000
+2008,2005,2000
+2007,2006,2000
+2006,2007,2000
+2005,2008,2000
+2004,2009,2009
+2003,2000,2009
+2002,2001,2009
+2001,2002,2009
+2000,2003,2009
