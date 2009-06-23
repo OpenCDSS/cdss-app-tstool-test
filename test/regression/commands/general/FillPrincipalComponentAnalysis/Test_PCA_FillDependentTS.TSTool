@@ -13,4 +13,7 @@ TS X7 = NewPatternTimeSeries(NewTSID="X7...Year",SetStart="1983",SetEnd="1993",P
 #
 # Fill dependent ts using PCA Analysis
 #
-fillPrincipalComponentAnalysis(DependentTSList=FirstMatchingTSID,DependentTSID="Dependent...Year",IndependentTSList=AllMatchingTSID,IndependentTSID="X*",PCAOutputFile="Data\PCA_fillDependentTS.txt",FilledTSOutputFile="Results\PCA_fillDependentTS.txt",RegressionEquationFill=1")
+#fillPrincipalComponentAnalysis(DependentTSList=FirstMatchingTSID,DependentTSID="Dependent...Year",IndependentTSList=AllMatchingTSID,IndependentTSID="X*",PCAOutputFile="Data\PCA_fillDependentTS.txt",FilledTSOutputFile="Results\PCA_fillDependentTS.txt",RegressionEquationFill=1")
+FillPrincipalComponentAnalysis(DependentTSList="FirstMatchingTSID",DependentTSID="Y",IndependentTSList=AllMatchingTSID,IndependentTSID="X*",RegressionEquationFill=1,PCAOutputFile="Results\PCA_fillDependentTS_PCAResults.txt",FilledTSOutputFile="Results\PCA_fillDependentTS_FilledTS.txt")
+CompareFiles(InputFile1="Results\PCA_fillDependentTS_FilledTS.txt",InputFile2="ExpectedResults\PCA_fillDependentTS_FilledTS.txt",WarnIfDifferent=True)
+CompareFiles(InputFile1="Results\PCA_fillDependentTS_PCAResults.txt",InputFile2="ExpectedResults\PCA_fillDependentTS_PCAResults.txt",WarnIfDifferent=True)
