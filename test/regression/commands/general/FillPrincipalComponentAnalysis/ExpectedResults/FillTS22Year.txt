@@ -1,0 +1,42 @@
+
+Time Series Identifier  = MOGC2U...Year
+Description             = , pattern
+Data source             = 
+Data type               = 
+Data interval           = Year
+Data units              = 
+Period                  = 1987 to 2008
+Orig./Avail. period     = 1987 to 2008
+
+Comments:
+No comments available.
+
+Time series creation history:
+Set 1987 to 2008 to pattern=22.000,-999.000,16.190,14.800,31.270,15.190,39.520,23.320,45.640,8.350,26.840,26.490,28.910,6.430,21.040,2.420,15.330,19.750,36.290,11.720,15.170,40.690
+Made a copy of time series (previous history information is for original)
+Filled missing values using PCA, regression equation 0.279188515022248, 0.43911539214771983, 0.2474880957395353, 0.046296378963999164, 0.0
+
+Year     Value    
+---- -------------
+1987          22.0
+1988          11.3
+1989          16.2
+1990          14.8
+1991          31.3
+1992          15.2
+1993          39.5
+1994          23.3
+1995          45.6
+1996           8.4
+1997          26.8
+1998          26.5
+1999          28.9
+2000           6.4
+2001          21.0
+2002           2.4
+2003          15.3
+2004          19.8
+2005          36.3
+2006          11.7
+2007          15.2
+2008          40.7
