@@ -5,3 +5,5 @@ TS X3 = NewPatternTimeSeries(NewTSID="LPDC2...Year",SetStart="1987",SetEnd="2008
 TS X4 = NewPatternTimeSeries(NewTSID="CUMC2...Year",SetStart="1987",SetEnd="2008",PatternValues=".9,.5,0,.1,1.7,0,25.2,20.9,35.2,0,11.7,9,7.5,0,7.1,0,6.2,0,25.5,0,5.7,9.9")
 TS X5 = NewPatternTimeSeries(NewTSID="CHAN5...Year",SetStart="1987",SetEnd="2008",PatternValues="0,0,0,0,0,0,0,0,.1,0,0,0,0,0,0,0,0,0,0,0,0,0")
 FillPrincipalComponentAnalysis(DependentTSList="FirstMatchingTSID",DependentTSID="Y",IndependentTSList=AllMatchingTSID,IndependentTSID="X*",RegressionEquationFill=4,PCAOutputFile="Results\PCA22Year.txt",FilledTSOutputFile="Results\FillTS22Year.txt")
+CompareFiles(InputFile1="ExpectedResults\PCA22Year.txt",InputFile2="Results\PCA22Year.txt",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\FillTS22Year.txt",InputFile2="Results\FillTS22Year.txt",WarnIfDifferent=True)
