@@ -1,5 +1,6 @@
 
-REGRESSION COMBINATION PROGRAM     Mon Jun 22 11:02:26 MDT 2009
+REGRESSION COMBINATION PROGRAM
+#Mon Jun 22 11:02:26 MDT 2009
 Critical value of t-statistic = 1.2
 Maximum number of principal components retained = 7
 Number of combinations evaluated = 105
