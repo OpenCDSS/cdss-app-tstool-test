@@ -1,4 +1,4 @@
-# Calculate the 7q10_linsley statistic for time series using Linsey text data and save to a table
+# Calculate the 7q10_linsley statistic for time series using Linsley text data and save to a table
 StartLog(LogFile="Results/Test_CalculateTimeSeriesStatistic_7q10_linsley.TSTool.log")
 RemoveFile(InputFile="Results/Test_CalculateTimeSeriesStatistic_7q10_linsley_out.dv",IfNotFound=Ignore)
 TS linsley = ReadDateValue(InputFile="Data\linsley.dv")
