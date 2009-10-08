@@ -1,0 +1,8 @@
+# Test expanding a FreeMarker template for a block of commands iterating on a list of locations
+StartLog(LogFile="Results/Test_ExpandTemplateFile_List.TSTool.log")
+RemoveFile(InputFile="Results/Test_ExpandTemplateFile_List_out.txt",IfNotFound=Ignore)
+# Uncomment to regenerate the expected results.
+# ExpandTemplateFile(InputFile="Data/List.TSTool",OutputFile="ExpectedResults/Test_ExpandTemplateFile_List_out.TSTool")
+ExpandTemplateFile(InputFile="Data/List.TSTool",OutputFile="Results/Test_ExpandTemplateFile_List_out.TSTool")
+# Compare the expected and current results
+CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_List_out.TSTool",InputFile2="Results/Test_ExpandTemplateFile_List_out.TSTool",IfDifferent=Warn)

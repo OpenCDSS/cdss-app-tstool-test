@@ -1,0 +1,3 @@
+# Simple test to expand a text file using FreeMarker
+<#assign message="Hello World">
+${message}

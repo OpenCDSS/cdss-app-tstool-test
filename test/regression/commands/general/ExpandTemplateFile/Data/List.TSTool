@@ -1,0 +1,11 @@
+# Simple template to illustrate how to repeat commands with a list of location identifiers
+# Create a time series for each location
+# The following ensures that the created template is read-only, so users modify the template instead:
+#@readOnly
+<#assign setStart = "2000-01-01">
+<#assign setEnd = "2000-03-15">
+<#assign units = "CFS">
+<#assign locList = ["loc1", "loc2", "loc3", "loc4"]>
+<#list locList as loc>
+TS ${loc} = NewPatternTimeSeries(NewTSID="${loc}..Streamflow.Day",SetStart="${setStart}",SetEnd="${setEnd}",Units="${units}",PatternValues="${loc_index + 1},0")
+</#list>
