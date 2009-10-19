@@ -1,0 +1,11 @@
+# Calculate the Variance statistic for time series and save to a table, using Year interval data
+# Data are from "Applied Hydrology", Chow, et. al., 1988, example 11.3.2
+StartLog(LogFile="Results/Test_CalculateTimeSeriesStatistic_Year_Variance.TSTool.log")
+RemoveFile(InputFile="Results/Test_CalculateTimeSeriesStatistic_Year_Variance_out.dv",IfNotFound=Ignore)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Year",Description="test data 1",SetStart="1970",SetEnd="1979",Units="IN",PatternValues="33.9,31.7,31.5,59.6,50.5,38.6,43.4,28.7,32.0,51.8")
+NewTable(TableID="Table1",Columns="TSID,string;Variance,double")
+CalculateTimeSeriesStatistic(Statistic="Variance",TableID="Table1",TableTSIDColumn="TSID",TableStatisticColumn="Variance")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_CalculateTimeSeriesStatistic_Year_Variance_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_CalculateTimeSeriesStatistic_Year_Variance_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_CalculateTimeSeriesStatistic_Year_Variance_out.csv",InputFile2="Results/Test_CalculateTimeSeriesStatistic_Year_Variance_out.csv",IfDifferent=Warn)
