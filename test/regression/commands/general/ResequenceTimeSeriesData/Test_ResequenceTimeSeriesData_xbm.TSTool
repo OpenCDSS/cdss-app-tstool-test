@@ -12,7 +12,7 @@ ResequenceTimeSeriesData(TSList=AllTS,TableID="KNN_Seq",TableColumn="1",OutputSt
 # Generate new output...
 WriteStateMod(TSList=AllMatchingTSID,TSID="*KNN*",OutputFile="Results/Test_ResequenceTimeSeriesData_xbm_out1.stm")
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_ResequenceTimeSeriesData_xbm_out1.stm",InputFile2="Results/Test_ResequenceTimeSeriesData_xbm_out1.stm",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ResequenceTimeSeriesData_xbm_out1.stm",InputFile2="Results/Test_ResequenceTimeSeriesData_xbm_out1.stm",IfDifferent=Warn)
 # Now do the second resequencing.  Free the sequence before doing so
 Free(TSList=AllMatchingTSID,TSID="*KNN*")
 ResequenceTimeSeriesData(TSList=AllTS,TableID="KNN_Seq",TableColumn="2",OutputStart="1908",NewScenario="KNN02",Alias="%L-KNN02")
@@ -21,4 +21,4 @@ ResequenceTimeSeriesData(TSList=AllTS,TableID="KNN_Seq",TableColumn="2",OutputSt
 # Generate new output...
 WriteStateMod(TSList=AllMatchingTSID,TSID="*KNN*",OutputFile="Results/Test_ResequenceTimeSeriesData_xbm_out2.stm")
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_ResequenceTimeSeriesData_xbm_out2.stm",InputFile2="Results/Test_ResequenceTimeSeriesData_xbm_out2.stm",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ResequenceTimeSeriesData_xbm_out2.stm",InputFile2="Results/Test_ResequenceTimeSeriesData_xbm_out2.stm",IfDifferent=Warn)
