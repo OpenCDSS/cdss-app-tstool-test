@@ -1,0 +1,13 @@
+# Test creating an ensemble and then inserting month interval time series
+StartLog(LogFile="Results/Test_InsertTimeSeriesIntoEnsemble_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_InsertTimeSeriesIntoEnsemble_Month_out.dv",IfNotFound=Ignore)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Flow.Month",SetStart="1960-01",SetEnd="1960-12",Units="ACFT",PatternValues=".5,1.5,2.5,,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2..Flow.Month",SetStart="1960-01",SetEnd="1960-12",Units="ACFT",PatternValues="1.5,2.5,3.5,,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5")
+NewEnsemble(NewEnsembleID="TestEnsemble",NewEnsembleName="Test Ensemble")
+InsertTimeSeriesIntoEnsemble(EnsembleID2="TestEnsemble")
+# Generate the results.
+# Uncomment the following to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults\Test_InsertTimeSeriesIntoEnsemble_Month_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+WriteDateValue(OutputFile="Results\Test_InsertTimeSeriesIntoEnsemble_Month_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+# Uncomment the following to recreate expected results
+CompareFiles(InputFile1="ExpectedResults/Test_InsertTimeSeriesIntoEnsemble_Month_out.dv",InputFile2="Results/Test_InsertTimeSeriesIntoEnsemble_Month_out.dv",IfDifferent=Warn)

@@ -1,9 +1,0 @@
-StartLog(LogFile="Results/Test_NewStatisticTimeSeries_1.TSTool.log")
-RemoveFile(InputFile="Results\Test_NewStatisticTimeSeries_1_out.dv",IfNotFound=Ignore)
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-TS Stat = NewStatisticTimeSeries(TSID="ts1",NewTSID="ts1...Day",Statistic=Mean)
-Free(TSList=LastMatchingTSID,TSID="ts1")
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticTimeSeries_1_out.dv")
-WriteDateValue(OutputFile="Results\Test_NewStatisticTimeSeries_1_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticTimeSeries_1_out.dv",InputFile2="Results\Test_NewStatisticTimeSeries_1_out.dv",IfDifferent=Warn)
