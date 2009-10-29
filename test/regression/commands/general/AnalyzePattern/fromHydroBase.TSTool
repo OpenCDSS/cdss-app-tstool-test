@@ -1,6 +1,0 @@
-startLog(LogFile="fromHydroBase.log")
-# 06720500 - SOUTH PLATTE RIVER AT HENDERSON
-06720500.DWR.Streamflow.Month~HydroBase
-# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
-06754000.DWR.Streamflow.Month~HydroBase
-analyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="../output/HydroBaseDiv.pat")

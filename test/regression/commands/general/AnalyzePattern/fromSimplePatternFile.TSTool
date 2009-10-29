@@ -1,4 +1,0 @@
-startLog(LogFile="fromSimplePatternFile.log")
-# 06758300 - KIOWA CREEK AT BENNETT, CO.
-06758300.USGS.Streamflow.Month~HydroBase
-setPatternFile("../data/fill2002.pat")

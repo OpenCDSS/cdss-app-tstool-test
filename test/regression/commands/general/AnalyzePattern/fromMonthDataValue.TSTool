@@ -1,8 +1,0 @@
-StartLog(LogFile="Results/Test_AnalyzePattern_FromMonthDataValue.TSTool.log")
-RemoveFile(InputFile="Results/Test_AnalyzePattern_FromMonthDataValues_out.stm",WarnIfMissing=True)
-09129600...MONTH~DateValue~Data/09129600.dv
-09132500...MONTH~DateValue~Data/09132500.dv
-# Uncomment the following command to regenerate the expected results.
-# analyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="ExpectedResults/Test_AnalyzePattern_FromMonthDataValues_out.stm")
-analyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="Results/Test_AnalyzePattern_FromMonthDataValues_out.stm")
-CompareFiles(InputFile1="ExpectedResults/Test_AnalyzePattern_FromMonthDataValues_out.stm",InputFile2="Results/Test_AnalyzePattern_FromMonthDataValues_out.stm",WarnIfDifferent=True)

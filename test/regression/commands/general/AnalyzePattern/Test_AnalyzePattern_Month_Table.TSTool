@@ -1,0 +1,15 @@
+# Test computing monthly DRY/AVG/WET patterns and write statistics to a table
+StartLog(LogFile="Results/Test_AnalyzePattern_Month_Table.TSTool.log")
+# Set debug level to print sorted values to log file
+SetDebugLevel(LogFileLevel=2)
+RemoveFile(InputFile="Results/Test_AnalyzePattern_Month_Table_out.stm",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_AnalyzePattern_Month_Table_out.csv",IfNotFound=Ignore)
+09129600...MONTH~DateValue~Data/09129600.dv
+09132500...MONTH~DateValue~Data/09132500.dv
+# Uncomment the following 2 commands to regenerate the expected results.
+# AnalyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="ExpectedResults/Test_AnalyzePattern_Month_Table_out.stm",TableID="Statistics",DataRow="%L")
+# WriteTableToDelimitedFile(TableID="Statistics",OutputFile="ExpectedResults/Test_AnalyzePattern_Month_Table_out.csv")
+AnalyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="Results/Test_AnalyzePattern_Month_Table_out.stm",TableID="Statistics",DataRow="%L")
+WriteTableToDelimitedFile(TableID="Statistics",OutputFile="Results/Test_AnalyzePattern_Month_Table_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_AnalyzePattern_Month_Table_out.stm",InputFile2="Results/Test_AnalyzePattern_Month_Table_out.stm",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_AnalyzePattern_Month_Table_out.csv",InputFile2="Results/Test_AnalyzePattern_Month_Table_out.csv",IfDifferent=Warn)
