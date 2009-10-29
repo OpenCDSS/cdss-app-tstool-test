@@ -1,13 +1,15 @@
-# Calculate the DeficitLengthMean statistic for time series and save to a table, using Year interval data
+# Calculate the DeficitSeqLengthMean statistic for time series and save to a table, using Year interval data
 # Data are contrived to represent drought patterns of various year lengths
-StartLog(LogFile="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitLengthMean.TSTool.log")
-RemoveFile(InputFile="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitLengthMean_out.csv",IfNotFound=Ignore)
+# For ts1, the deficits(length) are 4(3), 5(2), 9(2), and 1(1)
+# Therefore the statistic is (3 + 2 + 2 + 1)/4 = 2
+StartLog(LogFile="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitSeqLengthMean.TSTool.log")
+RemoveFile(InputFile="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitSeqLengthMean_out.csv",IfNotFound=Ignore)
 # Use a pattern that has mean at 10 so balance deficits and surpluses of various length
 TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Year",Description="test data 1",SetStart="1970",SetEnd="1994",Units="ACFT",PatternValues="9,8,9,10,11,12,11,10,7,8,10,13,12,10,5,6,10,15,14,10,9,10,11,10,10")
 TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Year",Description="test data 2",SetStart="1970",SetEnd="1994",Units="ACFT",PatternValues="18,16,18,20,22,24,22,20,14,16,20,26,24,20,10,12,20,30,28,20,18,20,22,20,20")
-NewTable(TableID="Table1",Columns="TSID,string;DeficitLengthMean,double")
-CalculateTimeSeriesStatistic(Statistic="DeficitLengthMean",TableID="Table1",TableTSIDColumn="TSID",TableStatisticColumn="DeficitLengthMean")
+NewTable(TableID="Table1",Columns="TSID,string;DeficitSeqLengthMean,double")
+CalculateTimeSeriesStatistic(Statistic="DeficitSeqLengthMean",TableID="Table1",TableTSIDColumn="TSID",TableStatisticColumn="DeficitSeqLengthMean")
 # Uncomment the following command to regenerate expected results.
-# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_CalculateTimeSeriesStatistic_Year_DeficitLengthMean_out.csv")
-WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitLengthMean_out.csv")
-CompareFiles(InputFile1="ExpectedResults/Test_CalculateTimeSeriesStatistic_Year_DeficitLengthMean_out.csv",InputFile2="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitLengthMean_out.csv",IfDifferent=Warn)
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_CalculateTimeSeriesStatistic_Year_DeficitSeqLengthMean_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitSeqLengthMean_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_CalculateTimeSeriesStatistic_Year_DeficitSeqLengthMean_out.csv",InputFile2="Results/Test_CalculateTimeSeriesStatistic_Year_DeficitSeqLengthMean_out.csv",IfDifferent=Warn)
