@@ -1,0 +1,14 @@
+# Test changing MEAN to INST, large to small interval
+#
+StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.TSTool.log")
+RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",IfNotFound=Ignore)
+#
+TS MeanDaily = ReadDateValue(InputFile="Data\ShortMeanDailyStreamflow.dv")
+TS Changed_noOptions = ChangeInterval(TSID="MeanDaily",NewInterval=6Hour,OldTimeScale=MEAN,NewTimeScale=INST)
+Free(TSList=AllMatchingTSID,TSID="Original")
+#
+# Uncomment the following command to regenerate the expected results file.
+WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
+#
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",InputFile2="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",WarnIfDifferent=True)
