@@ -10,7 +10,7 @@ TS NewDataUnits = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=IN
 Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.
-WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_General_Specifying_DataType-Units.dv",TSList=AllMatchingTSID,TSID="*")
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_General_Specifying_DataType-Units.dv",TSList=AllMatchingTSID,TSID="*")
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_General_Specifying_DataType-Units.dv",TSList=AllMatchingTSID,TSID="*")
 #
 CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_General_Specifying_DataType-Units.dv",InputFile2="Results\Test_ChangeInterval_General_Specifying_DataType-Units.dv",WarnIfDifferent=True)

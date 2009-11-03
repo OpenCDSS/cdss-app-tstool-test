@@ -10,7 +10,7 @@ TS Changed_OutputFill-Repeat = ChangeInterval(TSID="Original",NewInterval=2Hour,
 Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.
-WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Reg-Reg_INST-MEAN-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Reg-Reg_INST-MEAN-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
 #
 CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_Reg-Reg_INST-MEAN-LargeToSmall.dv",InputFile2="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-LargeToSmall.dv",WarnIfDifferent=True)

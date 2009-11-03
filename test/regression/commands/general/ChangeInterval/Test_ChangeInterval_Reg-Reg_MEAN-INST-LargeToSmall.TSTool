@@ -8,7 +8,7 @@ TS Changed_noOptions = ChangeInterval(TSID="MeanDaily",NewInterval=6Hour,OldTime
 Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.
-WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",TSList=AllMatchingTSID,TSID="*")
 #
 CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",InputFile2="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-LargeToSmall.dv",WarnIfDifferent=True)

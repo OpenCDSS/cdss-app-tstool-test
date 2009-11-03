@@ -1,0 +1,15 @@
+# Test changing monthly ACCM to year MEAN, with period that aligns with
+# calendar years.
+#
+StartLog(LogFile="Results\Test_ChangeInterval_Month-MEAN_Year-ACCM.TSTool.log")
+RemoveFile(InputFile="Results\Test_ChangeInterval_Month-MEAN_Year-ACCM.dv",IfNotFound=Ignore)
+# Test data accumulate to 120 (mean 10) in years with full data,
+# 110 in years with 1 missing value
+TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.Month",Description="Test data",SetStart="2000-01",SetEnd="2004-12",Units="CFS",PatternValues="5,10,15,,10,15,5,10,10,5,10,15,5,10,15,10,10,15,5,10,10,5,10,15")
+TS New = ChangeInterval(TSID="Original",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=MEAN)
+#
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Month-MEAN_Year-ACCM.dv",TSList=AllMatchingTSID,TSID="New")
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_Month-MEAN_Year-ACCM.dv",TSList=AllMatchingTSID,TSID="New")
+#
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_Month-MEAN_Year-ACCM.dv",InputFile2="Results\Test_ChangeInterval_Month-MEAN_Year-ACCM.dv",IfDifferent=Warn)

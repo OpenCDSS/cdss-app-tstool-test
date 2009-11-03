@@ -15,8 +15,8 @@ TS Changed_ACCM-ACCM_ToZero_2Hour = ChangeInterval(TSID="Original",NewInterval=2
 Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.
-WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_HandleMissingInput_Day.dv",TSList=AllMatchingTSID,TSID="*_Day")
-WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_HandleMissingInput_2Hour.dv",TSList=AllMatchingTSID,TSID="*_2Hour")
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_HandleMissingInput_Day.dv",TSList=AllMatchingTSID,TSID="*_Day")
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_HandleMissingInput_2Hour.dv",TSList=AllMatchingTSID,TSID="*_2Hour")
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_HandleMissingInput_Day.dv",TSList=AllMatchingTSID,TSID="*_Day")
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_HandleMissingInput_2Hour.dv",TSList=AllMatchingTSID,TSID="*_2Hour")
 #

@@ -10,7 +10,7 @@ TS Changed_ACCM-ACCM2 = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeSc
 Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.
-WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_AllowMissingCount.dv",TSList=AllMatchingTSID,TSID="*")
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_AllowMissingCount.dv",TSList=AllMatchingTSID,TSID="*")
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_AllowMissingCount.dv",TSList=AllMatchingTSID,TSID="*")
 #
 CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_AllowMissingCount.dv",InputFile2="Results\Test_ChangeInterval_AllowMissingCount.dv",WarnIfDifferent=True)
