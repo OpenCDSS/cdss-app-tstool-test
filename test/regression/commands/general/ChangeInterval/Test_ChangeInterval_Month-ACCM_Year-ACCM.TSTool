@@ -5,7 +5,9 @@ StartLog(LogFile="Results\Test_ChangeInterval_Month-ACCM_Year-ACCM.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Month-ACCM_Year-ACCM.dv",IfNotFound=Ignore)
 # Test data accumulate to 120 in years with full data,
 # 110 in years with 1 missing value
-TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.Month",Description="Test data",SetStart="2000-01",SetEnd="2004-12",Units="CFS",PatternValues="5,10,15,,10,15,5,10,10,5,10,15,5,10,15,10,10,15,5,10,10,5,10,15")
+# Double these values the second year to verify that year boundaries are correct
+# 4 years total to have missing data and the double pattern
+TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.Month",Description="Test data",SetStart="2000-01",SetEnd="2004-12",Units="CFS",PatternValues="5,10,15,,10,15,5,10,10,5,10,15,10,20,30,20,20,30,10,20,20,10,20,30,5,10,15,10,10,15,5,10,10,5,10,15,10,20,30,20,20,30,10,20,20,10,20,30")
 TS New = ChangeInterval(TSID="Original",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
 #
 # Uncomment the following command to regenerate the expected results file.
