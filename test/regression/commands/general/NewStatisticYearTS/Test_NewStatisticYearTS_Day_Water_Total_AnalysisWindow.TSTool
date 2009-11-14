@@ -1,0 +1,11 @@
+# For daily water year data, determine the Total value in each year, with AnalysisStart and AnalysisEnd.
+# The analysis window is in the first part of the water year, requiring that the software
+# adjust the start year to the end year for the window
+StartLog(LogFile="Results/Test_NewStatisticYearTS_Day_Water_Total_AnalysisWindow.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Day_Water_Total_AnalysisWindow_out.dv",IfNotFound=Ignore)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1949-10-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+TS Stat = NewStatisticYearTS(TSID="ts1",NewTSID="ts1..Streamflow.Year.Total",Statistic=Total,OutputYearType=Water,AnalysisWindowStart="04-01",AnalysisWindowEnd="04-30")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticYearTS_Day_Water_Total_AnalysisWindow_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+WriteDateValue(OutputFile="Results\Test_NewStatisticYearTS_Day_Water_Total_AnalysisWindow_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticYearTS_Day_Water_Total_AnalysisWindow_out.dv",InputFile2="Results\Test_NewStatisticYearTS_Day_Water_Total_AnalysisWindow_out.dv",IfDifferent=Warn)
