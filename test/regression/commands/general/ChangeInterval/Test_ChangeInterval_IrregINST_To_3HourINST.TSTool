@@ -1,9 +1,0 @@
-StartLog(LogFile="Results/Test_ChangeInterval_IrregularINST_to_3HourINST.TSTool.log")
-RemoveFile(InputFile="Results\Test_ChangeInterval_IrregularINST_to_3HourINST_out.dv",IfNotFound=Ignore)
-TS IrregularINST = NewPatternTimeSeries(NewTSID="ts1..Temp.Irregular",IrregularInterval=1Hour,Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-31 23",Units="DEGF",PatternValues="20,23,-999,45,-999,-999,56,62,0,-3")
-TS 3HourINST = ChangeInterval(TSID="IrregularINST",NewInterval=3Hour,OldTimeScale=INST,NewTimeScale=INST)
-# Uncomment the following command to regenerate the expected results file.
-SelectTimeSeries(TSList=AllMatchingTSID,TSID="3HourINST")
-# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_IrregularINST_to_3HourINST_out.dv",TSList=SelectedTS)
-WriteDateValue(OutputFile="Results\Test_ChangeInterval_IrregularINST_to_3HourINST_out.dv",TSList=SelectedTS)
-CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_IrregularINST_to_3HourINST_out.dv",InputFile2="Results\Test_ChangeInterval_IrregularINST_to_3HourINST_out.dv",WarnIfDifferent=True)

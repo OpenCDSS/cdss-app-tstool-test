@@ -1,9 +1,0 @@
-StartLog(LogFile="Results/Test_ChangeInterval_DayMean_To_MonthMean.TSTool.log")
-RemoveFile(InputFile="Results\Test_ChangeInterval_DayMean_To_MonthMean_out.dv",IfNotFound=Ignore)
-TS DayMean = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-TS MonthMean = ChangeInterval(TSID="DayMean",NewInterval=Month,OldTimeScale=MEAN,NewTimeScale=MEAN)
-Free(TSList=LastMatchingTSID,TSID="DayMean")
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_DayMean_To_MonthMean_out.dv")
-WriteDateValue(OutputFile="Results\Test_ChangeInterval_DayMean_To_MonthMean_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_DayMean_To_MonthMean_out.dv",InputFile2="Results\Test_ChangeInterval_DayMean_To_MonthMean_out.dv",WarnIfDifferent=True)
