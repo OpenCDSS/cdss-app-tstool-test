@@ -1,0 +1,8 @@
+# Test reading a StateMod diversion rights file and converting to time series
+StartLog(LogFile="Results/Test_ReadStateMod_Rights_ddr.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadStateMod_Rights_ddr_out.dv",IfNotFound=Ignore)
+ReadStateMod(InputFile="Data\cm2005.ddr",InputStart="1900",InputEnd="2010")
+# Uncomment the following to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadStateMod_Rights_ddr_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_ReadStateMod_Rights_ddr_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadStateMod_Rights_ddr_out.dv",InputFile2="Results/Test_ReadStateMod_Rights_ddr_out.dv",IfDifferent=Warn)

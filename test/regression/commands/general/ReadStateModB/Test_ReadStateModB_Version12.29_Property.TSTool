@@ -1,0 +1,9 @@
+# Test to read version 12.29 format binary file, using a property in the input file name
+StartLog(LogFile="Results/Test_ReadStateModB_Version12.29_Property.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadStateModB_Version12.29_Property_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="DataDir",PropertyType=String,PropertyValue="Data")
+ReadStateModB(InputFile="${DataDir}/ex7_Version12.29.b43")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateModB_Version12.29_Property_out.dv",Precision=1)
+WriteDateValue(OutputFile="Results\Test_ReadStateModB_Version12.29_Property_out.dv",Precision=1)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadStateModB_Version12.29_Property_out.dv",InputFile2="Results\Test_ReadStateModB_Version12.29_Property_out.dv",IfDifferent=Warn)
