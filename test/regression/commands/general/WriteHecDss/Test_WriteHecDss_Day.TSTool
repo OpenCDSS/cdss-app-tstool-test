@@ -1,4 +1,5 @@
 # Write Daily data to DSS
+#@os Windows
 # Test setup...
 StartLog(LogFile="Results/Test_WriteHecDss_Day.TSTool.log")
 # SetDebugLevel(LogFileLevel=10)

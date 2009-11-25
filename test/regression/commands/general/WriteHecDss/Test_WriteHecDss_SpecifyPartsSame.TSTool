@@ -1,4 +1,5 @@
 # When specify the parts in the command, if multiple time series are now assigned the same alias, give a warning
+#@os Windows
 #
 #@expectedStatus Failure
 #

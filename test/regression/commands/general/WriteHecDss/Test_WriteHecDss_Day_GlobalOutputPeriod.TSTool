@@ -1,4 +1,5 @@
 # Test writing a couple of HEC-DSS time series to a file when the global output period is specified.
+#@os Windows
 StartLog(LogFile="Results/Test_WriteHecDss_Day_GlobalOutputPeriod.TSTool.log")
 # SetDebugLevel(LogFileLevel=10)
 # Write a single blank time series to the dss file to allow WriteHecDss to be closed; allows deleting below.

@@ -1,4 +1,5 @@
 # Write monthly data to DSS
+#@os Windows
 # Test setup...
 StartLog(LogFile="Results/Test_WriteHecDss_Month.TSTool.log")
 # SetDebugLevel(LogFileLevel=10)

@@ -1,4 +1,5 @@
 # Write Yearly data to DSS
+#@os Windows
 # Test setup...
 StartLog(LogFile="Results\Test_WriteHecDss_Year.TSTool.log")
 # SetDebugLevel(LogFileLevel=10)

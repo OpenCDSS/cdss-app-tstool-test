@@ -1,5 +1,6 @@
 # Test running the DSSUTL program by generating a tabulation from the sample
 # file distributed with DSS-VUE
+#@os Window
 SetDebugLevel(LogFileLevel=10)
 StartLog(LogFile="Results/Test_RunDSSUTL_sample_TA.TSTool.log")
 RemoveFile(InputFile="Results\Test_RunDSSUTL_sample_TA_out.txt",IfNotFound=Ignore)

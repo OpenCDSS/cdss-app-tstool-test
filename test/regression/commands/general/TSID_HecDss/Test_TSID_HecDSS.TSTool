@@ -1,4 +1,5 @@
 # Test reading a specific TSID from the HEC-DSS sample data file.
+#@os Windows
 StartLog(LogFile="Results/Test_ReadHecDss_TSID.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadHecDss_TSID_out.dv",IfNotFound=Ignore)
 GREEN RIVER:GLENFIR.HEC-DSS.FLOW.1HOUR.EDIT~HEC-DSS~Data\sample.dss

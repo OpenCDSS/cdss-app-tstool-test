@@ -1,4 +1,5 @@
 # Specify the parts of the written time series in the command
+#@os Windows
 # Test setup...
 StartLog(LogFile="Results/Test_WriteHecDss_SpecifyParts.TSTool.log")
 # SetDebugLevel(LogFileLevel=10)
