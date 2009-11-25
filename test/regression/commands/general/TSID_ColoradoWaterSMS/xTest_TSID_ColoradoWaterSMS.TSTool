@@ -1,0 +1,8 @@
+StartLog(LogFile="Results\Test_TSID_ColoradoWaterSMS.TSTool.log")
+SetInputPeriod(InputStart="CurrentToMinute - 7Day",InputEnd="CurrentToMinute")
+# PLADENCO - SOUTH PLATTE RIVER AT DENVER
+PLADENCO.DWR.DISCHRG.Irregular~ColoradoWaterSMS
+# PLADENCO - SOUTH PLATTE RIVER AT DENVER
+PLADENCO.DWR.DISCHRG.Hour~ColoradoWaterSMS
+# PLADENCO - SOUTH PLATTE RIVER AT DENVER
+PLADENCO.DWR.DISCHRG.Day~ColoradoWaterSMS
