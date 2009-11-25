@@ -1,4 +1,4 @@
-# Test setup...
+# Test setting the output period to monthly precision
 StartLog(LogFile="Results/Test_SetOutputPeriod_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetOutputPeriod_1_out.txt",WarnIfMissing=False)
 SetOutputPeriod(OutputStart="1900-01-01",OutputEnd="2007-12-31")
@@ -6,7 +6,7 @@ SetOutputPeriod(OutputStart="1900-01-01",OutputEnd="2007-12-31")
 # WriteProperty(OutputFile="ExpectedResults\Test_SetOutputPeriod_1_out.txt",PropertyName="OutputStart",Append="False")
 # WriteProperty(OutputFile="ExpectedResults\Test_SetOutputPeriod_1_out.txt",PropertyName="OutputEnd")
 # Generate new output...
-WriteProperty(OutputFile="Results/Test_SetoutputPeriod_1_out.txt",PropertyName="OutputStart",Append="False")
+WriteProperty(OutputFile="Results/Test_SetOutputPeriod_1_out.txt",PropertyName="OutputStart",Append="False")
 WriteProperty(OutputFile="Results/Test_SetOutputPeriod_1_out.txt",PropertyName="OutputEnd")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_SetOutputPeriod_1_out.txt",InputFile2="Results/Test_SetOutputPeriod_1_out.txt",WarnIfDifferent=True)
