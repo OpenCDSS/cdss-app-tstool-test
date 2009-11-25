@@ -1,4 +1,5 @@
 # Test reading non-existent DSS file.
+#@os Windows
 #
 #@expectedStatus Failure
 #

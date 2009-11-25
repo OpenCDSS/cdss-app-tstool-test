@@ -1,4 +1,5 @@
 # Test reading the HEC-DSS sample data file recognizes the input period
+#@os Windows
 StartLog(LogFile="Results/Test_ReadHecDss_InputPeriod.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadHecDss_InputPeriod_out.dv",IfNotFound=Ignore)
 ReadHecDss(InputFile="Data\sample.dss",A="APART2",InputStart="1999-12-24",InputEnd="2000-01-10")

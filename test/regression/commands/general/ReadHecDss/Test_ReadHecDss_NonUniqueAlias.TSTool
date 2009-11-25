@@ -1,4 +1,5 @@
 # Test reading the HEC-DSS sample data file and assign non-unique aliases--should fail
+#@os Windows
 #
 #@expectedStatus Warning
 #
