@@ -1,4 +1,4 @@
-# Test setup...
+# Test writing SHEF data where the Datatype to PE lookup is specified.
 #@os Windows
 StartLog(LogFile="Results/Test_WriteSHEF_DataTypePELookup.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteSHEF_DataTypePELookup_out.shef",IfNotFound=Ignore)
@@ -8,4 +8,4 @@ TS loc1 = NewPatternTimeSeries(NewTSID="loc1..QIN.6Hour",Description="Test data"
 # Generate new output...
 WriteSHEF(TSList=AllTS,DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="Results\Test_WriteSHEF_DataTypePELookup_out.shef")
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_WriteSHEF_DataTypePELookup_out.shef",InputFile2="Results/Test_WriteSHEF_DataTypePELookup_out.shef",CommentLineChar=":",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSHEF_DataTypePELookup_out.shef",InputFile2="Results/Test_WriteSHEF_DataTypePELookup_out.shef",CommentLineChar=":",IfDifferent=Warn)

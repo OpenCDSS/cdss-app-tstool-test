@@ -11,4 +11,4 @@ TS loc2 = NewPatternTimeSeries(NewTSID="loc2..QIN.6Hour",Description="Test data 
 WriteSHEF(TSList=AllMatchingTSID,TSID="loc1",DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="Results\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef")
 WriteSHEF(TSList=AllMatchingTSID,TSID="loc2",DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="Results\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",Append=True)
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",InputFile2="Results/Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",CommentLineChar=":",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",InputFile2="Results/Test_WriteSHEF_DataTypePELookup_Append=True_out.shef",CommentLineChar=":",IfDifferent=Warn)
