@@ -8,4 +8,4 @@ CalculateTimeSeriesStatistic(Statistic="NonmissingPercent",TableID="Table1",Tabl
 # Uncomment the following command to regenerate expected results.
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_CalculateTimeSeriesStatistic_NonmissingPercent_out.csv")
 WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_CalculateTimeSeriesStatistic_NonmissingPercent_out.csv")
-CompareFiles(InputFile1="ExpectedResults/Test_CalculateTimeSeriesStatistic_NonmissingPercent_out.csv",InputFile2="Results/Test_CalculateTimeSeriesStatistic_NonmissingPercent_out.csv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_CalculateTimeSeriesStatistic_NonmissingPercent_out.csv",InputFile2="Results/Test_CalculateTimeSeriesStatistic_NonmissingPercent_out.csv",IfDifferent=Warn)
