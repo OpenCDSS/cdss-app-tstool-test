@@ -1,0 +1,4 @@
+# Test getting a real-time streamflow file from the State of Colorado's DWR
+# site - this is not usable as a regression test because content changes
+# but is useful as an ad hoc test
+WebGet(URI="http://www.dwr.state.co.us/SurfaceWater/data/export_tabular.aspx?ID=ADATUNCO&MTYPE=GAGE_HT,DISCHRG&INTERVAL=1&START=10/1/06&END=10/6/06",LocalFile="Results\Test_WebGet_CoDwr_out.txt")
