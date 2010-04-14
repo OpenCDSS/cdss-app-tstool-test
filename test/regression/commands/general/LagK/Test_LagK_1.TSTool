@@ -8,4 +8,4 @@ TS ts1Routed = LagK(TSID="ts1",FillNearest=True,Lag=3,K=2)
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_LagK_1_out.dv")
 WriteDateValue(OutputFile="Results\Test_LagK_1_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_LagK_1_out.dv",InputFile2="Results\Test_LagK_1_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_LagK_1_out.dv",InputFile2="Results\Test_LagK_1_out.dv",IfDifferent=Warn)

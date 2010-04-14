@@ -4,4 +4,4 @@ TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test da
 # Uncomment the following command to regenerate the expected results file.
 # ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_1.tsp",View=False,OutputFile="ExpectedResults/Test_ProcessTSProduct_1_out.png")
 ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_1.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_1_out.png")
-CompareFiles(InputFile1="ExpectedResults\Test_ProcessTSProduct_1_out.png",InputFile2="Results\Test_ProcessTSProduct_1_out.png",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ProcessTSProduct_1_out.png",InputFile2="Results\Test_ProcessTSProduct_1_out.png",IfDifferent=Warn)
