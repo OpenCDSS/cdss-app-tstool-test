@@ -14,4 +14,4 @@ CheckTimeSeries(CheckCriteria="InRange",Value1=1.5,Value2=2.5)
 # is harder to strip out dynamic content like dates in comments).
 WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_InRange_out.html")
 WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_InRange_out.csv")
-CompareFiles(InputFile1="ExpectedResults/Test_CheckTimeSeries_InRange_out.csv",InputFile2="Results/Test_CheckTimeSeries_InRange_out.csv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_CheckTimeSeries_InRange_out.csv",InputFile2="Results/Test_CheckTimeSeries_InRange_out.csv",IfDifferent=Warn)

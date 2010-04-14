@@ -14,4 +14,4 @@ CheckTimeSeries(CheckCriteria="OutOfRange",Value1=1.5,Value2=9.5)
 # is harder to strip out dynamic content like dates in comments).
 WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_OutOfRange_out.html")
 WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_OutOfRange_out.csv")
-CompareFiles(InputFile1="ExpectedResults/Test_CheckTimeSeries_OutOfRange_out.csv",InputFile2="Results/Test_CheckTimeSeries_OutOfRange_out.csv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_CheckTimeSeries_OutOfRange_out.csv",InputFile2="Results/Test_CheckTimeSeries_OutOfRange_out.csv",IfDifferent=Warn)

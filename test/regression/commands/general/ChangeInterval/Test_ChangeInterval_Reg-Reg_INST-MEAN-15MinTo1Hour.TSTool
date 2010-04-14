@@ -1,0 +1,17 @@
+# Test changing INST to MEAN, 15 minute to 1 hour
+#
+StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.TSTool.log")
+SetDebugLevel(LogFileLevel=40)
+RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",IfNotFound=Ignore)
+#
+TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.15Min",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-02 00",PatternValues="1,2,6,3.5,0,0,0,0,5,9,1,-999,-999,-999,-999")
+TS Changed_noOptions = ChangeInterval(TSID="Original",NewInterval=1Hour,OldTimeScale=INST,NewTimeScale=MEAN)
+TS Changed_Endpoints-AvgEndpoints = ChangeInterval(TSID="Original",NewInterval=Hour,OldTimeScale=INST,NewTimeScale=MEAN,HandleEndpointsHow=AverageEndpoints)
+TS Changed_Endpoints-IncludeFirstOnly = ChangeInterval(TSID="Original",NewInterval=Hour,OldTimeScale=INST,NewTimeScale=MEAN,HandleEndpointsHow=IncludeFirstOnly)
+#Free(TSList=AllMatchingTSID,TSID="Original")
+#
+# Uncomment the following command to regenerate the expected results file.
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",TSList=AllMatchingTSID,TSID="*")
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",TSList=AllMatchingTSID,TSID="*.*.*.Hour.*")
+#
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",InputFile2="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",IfDifferent=Warn)
