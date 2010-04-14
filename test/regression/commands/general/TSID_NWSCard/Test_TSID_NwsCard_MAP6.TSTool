@@ -1,0 +1,8 @@
+# Test reading an NWS Card MAP 6 time series
+StartLog(LogFile="Results/Test_TSID_NwsCard_MAP6.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_NwsCard_MAP6_out.dv",IfNotFound=Ignore)
+BULOH..MAP.6Hour~NWSCard~Data\BULOH.MAP06.card
+# Uncomment the following to regenerate the expected results...
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_NwsCard_MAP6_out.dv")
+WriteDateValue(OutputFile="Results/Test_TSID_NwsCard_MAP6_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_NwsCard_MAP6_out.dv",InputFile2="Results/Test_TSID_NwsCard_MAP6_out.dv",IfDifferent=Warn)

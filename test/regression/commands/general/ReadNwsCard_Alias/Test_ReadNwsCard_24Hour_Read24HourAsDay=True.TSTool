@@ -4,4 +4,4 @@ TS MyTS = ReadNwsCard(InputFile="Data/03567500.CARD",Read24HourAsDay=True)
 # Uncomment the following to regenerate the expected results...
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsCard_24Hour_Read24HourAsDay=True_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_ReadNwsCard_24Hour_Read24HourAsDay=True_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsCard_24Hour_Read24HourAsDay=True_out.dv",InputFile2="Results/Test_ReadNwsCard_24Hour_Read24HourAsDay=True_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsCard_24Hour_Read24HourAsDay=True_out.dv",InputFile2="Results/Test_ReadNwsCard_24Hour_Read24HourAsDay=True_out.dv",IfDifferent=Warn)

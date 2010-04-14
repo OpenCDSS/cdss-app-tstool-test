@@ -24,4 +24,4 @@ SelectTimeSeries(TSList=AllMatchingTSID,TSID="VarLagAndK")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_VarLagAndK_out.dv",TSList=SelectedTS)
 WriteDateValue(OutputFile="Results\Test_VariableLagK_VarLagAndK_out.dv",TSList=SelectedTS)
-CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_VarLagAndK_out.dv",InputFile2="Results\Test_VariableLagK_VarLagAndK_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_VarLagAndK_out.dv",InputFile2="Results\Test_VariableLagK_VarLagAndK_out.dv",IfDifferent=Warn)

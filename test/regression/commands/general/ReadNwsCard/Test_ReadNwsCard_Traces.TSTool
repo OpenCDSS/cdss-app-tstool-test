@@ -1,7 +1,7 @@
 StartLog(LogFile="Results/Test_ReadNwsCard_Traces.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadNwsCard_Traces_out.dv",WarnIfMissing=False)
+RemoveFile(InputFile="Results/Test_ReadNwsCard_Traces_out.dv",IfNotFound=Ignore)
 ReadNwsCard(InputFile="Data\Reformatted.TDAO3.QA.ESP")
 # Uncomment the following to regenerate the expected results...
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsCard_Traces_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNwsCard_Traces_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsCard_Traces_out.dv",InputFile2="Results/Test_ReadNwsCard_Traces_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsCard_Traces_out.dv",InputFile2="Results/Test_ReadNwsCard_Traces_out.dv",IfDifferent=Warn)
