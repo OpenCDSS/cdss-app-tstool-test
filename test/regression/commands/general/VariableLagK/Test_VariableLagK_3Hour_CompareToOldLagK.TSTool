@@ -18,4 +18,5 @@ CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",WarnI
 SelectTimeSeries(TSList=AllMatchingTSID,TSID="FixedLagNoK")
 # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3Hour_CompareToOldLagK_out.dv",TSList=SelectedTS)
 WriteDateValue(OutputFile="Results\Test_VariableLagK_3Hour_CompareToOldLagK_out.dv",TSList=SelectedTS)
-CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3Hour_CompareToOldLagK_out.dv",InputFile2="Results\Test_VariableLagK_3Hour_CompareToOldLagK_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3Hour_CompareToOldLagK_out.dv",InputFile2="Results\Test_VariableLagK_3Hour_CompareToOldLagK_out.dv",IfDifferent=Warn)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)

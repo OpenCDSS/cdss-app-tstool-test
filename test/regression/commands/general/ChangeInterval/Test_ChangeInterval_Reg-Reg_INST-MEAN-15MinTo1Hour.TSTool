@@ -15,3 +15,4 @@ TS Changed_Endpoints-IncludeFirstOnly = ChangeInterval(TSID="Original",NewInterv
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",TSList=AllMatchingTSID,TSID="*.*.*.Hour.*")
 #
 CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",InputFile2="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.dv",IfDifferent=Warn)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
