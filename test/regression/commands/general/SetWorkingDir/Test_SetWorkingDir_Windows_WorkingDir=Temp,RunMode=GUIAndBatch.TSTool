@@ -1,11 +1,11 @@
-# Test setup...
+# Test setting the working directory on Windows using C:\tmp for temporary files
 #@os Windows
 StartLog(LogFile="Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch.TSTool.log")
-RemoveFile(InputFile="Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",WarnIfMissing=False)
-SetWorkingDir(WorkingDir="C:\TEMP",RunMode=GUIAndBatch)
+RemoveFile(InputFile="Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",IfNotFound=Ignore)
+SetWorkingDir(WorkingDir="C:\TMP",RunMode=GUIAndBatch)
 # Uncomment the following two commands to regenerate the expected results file.
 # WriteProperty(OutputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",PropertyName="WorkingDir",Append=False)
 # Generate new output...
 WriteProperty(OutputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",PropertyName="WorkingDir",Append=False)
 # Do regression comparison...
-CompareFiles(InputFile1="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",InputFile2="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",WarnIfDifferent=True)
+CompareFiles(InputFile1="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",InputFile2="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",IfDifferent=Warn)

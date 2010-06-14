@@ -2,10 +2,9 @@
 StartLog(LogFile="Results/Test_WriteSummary_Day_NovToOct.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteSummary_Day_NovToOct_out.txt",IfNotFound=Ignore)
 TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1955-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-SetOutputYearType(OutputYearType=NovToOct)
 # Uncomment the following command to regenerate the expected results file.
-# WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Day_NovToOct_out.txt")
+# WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Day_NovToOct_out.txt",OutputYearType=NovToOct)
 # Generate new output...
-WriteSummary(OutputFile="Results/Test_WriteSummary_Day_NovToOct_out.txt")
+WriteSummary(OutputFile="Results/Test_WriteSummary_Day_NovToOct_out.txt",OutputYearType=NovToOct)
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Day_NovToOct_out.txt",InputFile2="Results/Test_WriteSummary_Day_NovToOct_out.txt",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Day_NovToOct_out.txt",InputFile2="Results/Test_WriteSummary_Day_NovToOct_out.txt",IfDifferent=Warn)

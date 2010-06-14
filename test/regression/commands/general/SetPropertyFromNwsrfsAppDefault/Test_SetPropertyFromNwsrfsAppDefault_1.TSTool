@@ -1,4 +1,6 @@
-# Test setup...
+# Test setting a processor property from an NWSRFS App Default variable
+# Generally this test should only work on UNIX where an NWSRFS environment is defined
+#@os UNIX
 StartLog(LogFile="Results/Test_SetPropertyFromNwsrfsAppDefault_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetPropertyFromNwsrfsAppDefault_1_out.txt",WarnIfMissing=False)
 SetPropertyFromNwsrfsAppDefault(PropertyName="esp_dir",PropertyType=String,PropertyValue="esp_dir")

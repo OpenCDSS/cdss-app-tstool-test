@@ -1,1 +1,1 @@
-WorkingDir="C:\TEMP"
+WorkingDir="C:\TMP"

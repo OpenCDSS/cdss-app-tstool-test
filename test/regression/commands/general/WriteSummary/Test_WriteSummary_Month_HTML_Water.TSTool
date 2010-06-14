@@ -1,0 +1,10 @@
+# Test writing HTML summary on monthly data for water year output...
+StartLog(LogFile="Results/Test_WriteSummary_Month_HTML_Water.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteSummary_Month_HTML_Water_out.html",IfNotFound=Ignore)
+TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1955-03",Units="CFS",PatternValues="5,10,12,13,75,,,1",PatternFlags=",,,,a,b,,c")
+# Uncomment the following command to regenerate the expected results file.
+# WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Month_HTML_Water_out.html",OutputYearType=Water)
+# Generate new output...
+WriteSummary(OutputFile="Results/Test_WriteSummary_Month_HTML_Water_out.html",OutputYearType=Water)
+# Compare results - allow 2 diffs (one for date/time, one for TSTool version)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Month_HTML_Water_out.html",InputFile2="Results/Test_WriteSummary_Month_HTML_Water_out.html",AllowedDiff="2",IfDifferent=Warn)
