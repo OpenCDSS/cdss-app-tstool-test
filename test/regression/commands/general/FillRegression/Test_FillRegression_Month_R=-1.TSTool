@@ -1,4 +1,4 @@
-# Fill regression using monthly data - expect R of -1 if results are studied
+# Fill regression using monthly data, set fill flags - expect R of -1
 StartLog(LogFile="Results/Test_FillRegression_Month_R=-1.TSTool.log")
 RemoveFile(InputFile="Results/Test_FillRegression_Month_R=-1_out.dv",IfNotFound=Ignore)
 TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2007-12",PatternValues="1,1.1,1.2,1.3,1.4,1.5,1.4,1.3,1.2,1.1,1.0,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999")
@@ -7,4 +7,4 @@ FillRegression(TSID="ts1",IndependentTSID="ts2",FillFlag="R")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_FillRegression_Month_R=-1_out.dv")
 WriteDateValue(OutputFile="Results/Test_FillRegression_Month_R=-1_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Month_R=-1_out.dv",InputFile2="Results/Test_FillRegression_Month_R=-1_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Month_R=-1_out.dv",InputFile2="Results/Test_FillRegression_Month_R=-1_out.dv",IfDifferent=Warn)
