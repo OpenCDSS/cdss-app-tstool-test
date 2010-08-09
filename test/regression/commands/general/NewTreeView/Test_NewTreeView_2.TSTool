@@ -1,0 +1,21 @@
+# Test generating a tree view using simple data.
+# Currently this just tests to make sure no errors occur.
+# May automate the test more if output products are generated (HTML?)
+TS ts1-demand = NewPatternTimeSeries(NewTSID="ts1..Demand.Year",SetStart="2000",SetEnd="2050",Units="ACFT",PatternValues="0, 1, 2, 3, 4, 5, 6")
+TS ts1-supply = NewPatternTimeSeries(NewTSID="ts1..Supply.Year",SetStart="2000",SetEnd="2050",Units="ACFT",PatternValues="0, .5, 1.5, 2.5, 3, 4.5, 5")
+TS ts1-gap = NewTimeSeries(NewTSID="ts1..Gap.Year",SetStart="2000",SetEnd="2050",Units="ACFT")
+Add(TSID="ts1-gap",AddTSList=AllMatchingTSID,AddTSID="ts1-demand",HandleMissingHow="IgnoreMissing")
+Subtract(TSID="ts1-gap",SubtractTSList=AllMatchingTSID,SubtractTSID="ts1-supply",HandleMissingHow="IgnoreMissing")
+#
+TS ts2-demand = NewPatternTimeSeries(NewTSID="ts2..Demand.Year",SetStart="2000",SetEnd="2050",Units="ACFT",PatternValues="0, 1, 2, 3, 4, 5, 6")
+TS ts2-supply = NewPatternTimeSeries(NewTSID="ts2..Supply.Year",SetStart="2000",SetEnd="2050",Units="ACFT",PatternValues="0, .5, 1.5, 2.5, 3, 4.5, 5")
+TS ts2-gap = NewTimeSeries(NewTSID="ts2..Gap.Year",SetStart="2000",SetEnd="2050",Units="ACFT")
+Add(TSID="ts2-gap",AddTSList=AllMatchingTSID,AddTSID="ts2-demand",HandleMissingHow="IgnoreMissing")
+Subtract(TSID="ts2-gap",SubtractTSList=AllMatchingTSID,SubtractTSID="ts2-supply",HandleMissingHow="IgnoreMissing")
+#
+TS ts3-demand = NewPatternTimeSeries(NewTSID="ts3..Demand.Year",SetStart="2000",SetEnd="2050",Units="ACFT",PatternValues="0, 1, 2, 3, 4, 5, 6")
+TS ts3-supply = NewPatternTimeSeries(NewTSID="ts3..Supply.Year",SetStart="2000",SetEnd="2050",Units="ACFT",PatternValues="0, .5, 1.5, 2.5, 3, 4.5, 5")
+TS ts3-gap = NewTimeSeries(NewTSID="ts3..Gap.Year",SetStart="2000",SetEnd="2050",Units="ACFT")
+Add(TSID="ts3-gap",AddTSList=AllMatchingTSID,AddTSID="ts3-demand",HandleMissingHow="IgnoreMissing")
+Subtract(TSID="ts3-gap",SubtractTSList=AllMatchingTSID,SubtractTSID="ts3-supply",HandleMissingHow="IgnoreMissing")
+NewTreeView(ViewID="View1",InputFile="Data\tree1.txt")

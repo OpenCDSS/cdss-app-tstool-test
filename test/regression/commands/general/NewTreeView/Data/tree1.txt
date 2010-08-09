@@ -1,0 +1,7 @@
+# Test data for displaying a tree view of time series results
+Label:  Top-level label
+	TS:  ts1*
+	Label:  Second-level label
+		TS:  ts2*
+	Label:  Another second-level label
+		TS:  ts3*
