@@ -5,6 +5,7 @@ import sys
 import os
 print "start of script"
 print 'os.getcwd()="' + os.getcwd() + '"'
+print "sys.path=\"" + str(sys.path) + "\""
 infile = None
 outfile = None
 if ( len(sys.argv) < 3 ):

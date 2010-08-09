@@ -1,0 +1,7 @@
+# Test to run Python using the Python interpreter program
+StartLog(LogFile="Results/Test_RunPython_Interpreter=Python.TSTool.log")
+RemoveFile(InputFile="Results\Test_RunPython_Interpreter=Python_out.txt",IfNotFound=Ignore)
+RunPython(InputFile="Data/readwritefile.py",Interpreter="Python",Arguments="${WorkingDir}/Data/readwritefile.txt ${WorkingDir}/Results/Test_RunPython_Interpreter=Python_out.txt")
+# Uncomment the following command to regenerate the expected results file.
+# RunPython(InputFile="Data/readwritefile.py",Interpreter="Python",Arguments="${WorkingDir}/Data/readwritefile.txt ${WorkingDir}/ExpectedResults/Test_RunPython_Interpreter=Python_out.txt")
+CompareFiles(InputFile1="ExpectedResults\Test_RunPython_Interpreter=Python_out.txt",InputFile2="Results\Test_RunPython_Interpreter=Python_out.txt",IfDifferent=Warn)
