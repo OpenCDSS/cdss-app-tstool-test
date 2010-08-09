@@ -1,0 +1,10 @@
+# Test writing summary for 15Min data, HTML output
+StartLog(LogFile="Results/Test_WriteSummary_15Min_HTML.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteSummary_15Min_HTML_out.html",IfNotFound=Ignore)
+TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-03-15 12:15",Units="CFS",PatternValues="5,10,12,13,,,75,50",PatternFlags="a,b,c,,x,y,,z")
+# Uncomment the following command to regenerate the expected results file.
+# WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_15Min_HTML_out.html")
+# Generate new output...
+WriteSummary(OutputFile="Results/Test_WriteSummary_15Min_HTML_out.html")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_15Min_HTML_out.html",InputFile2="Results/Test_WriteSummary_15Min_HTML_out.html",AllowedDiff="2",IfDifferent=Warn)

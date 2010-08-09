@@ -1,0 +1,4493 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<title>Time Series Summary
+</title><style>
+@media screen {
+#titles { font-weight:bold; color:#303044 }
+table { background-color:black; text-align:left; border:1; bordercolor:black; cellspacing:1; cellpadding:1 }
+th { background-color:#333366; text-align:center; vertical-align:bottom; color:white }
+tr { valign:bottom; halign:right }
+td { background-color:white; text-align:right; vertical-align:bottom; font-style:normal; font-family:courier; font-size:.75em }
+body { text-align:left; font-size:12pt; }
+pre { font-size:12pt; margin: 0px }
+p { font-size:12pt; }
+/* The following controls formatting of data values in tables */
+.flagcell { background-color:lightgray; }
+.missing { background-color:yellow; }
+.flag { vertical-align: super; }
+.flagnote { font-style:normal; font-family:courier; font-size:.75em; }
+}
+@media print {
+#titles { font-weight:bold; color:#303044 }
+table { border-collapse: collapse; background-color:white; text-align:left; border:1pt solid #000000; cellspacing:2pt; cellpadding:2pt }
+th { background-color:white; text-align:center; vertical-align:bottom; color:black }
+tr { valign:bottom; halign:right;  }
+td { background-color:white; border: 1pt solid #000000; text-align:right; vertical-align:bottom; font-style:normal; font-family:courier; font-size:11pt; padding: 2pt; }
+body { text-align:left; font-size:11pt; }
+pre { font-size:11pt; margin: 0px }
+p { font-size:11pt; }
+/* The following controls formatting of data values in tables */
+.flagcell { background-color:lightgray; }
+.missing { background-color:yellow; }
+.flag { vertical-align: super; }
+.flagnote { font-style:normal; font-family:courier; font-size:11pt; }
+}
+}
+</style>
+</head>
+<body>
+
+<h1>TSTool Time Series Summary</h1>
+
+<h2>Table of Contents</h2>
+<a href="#environment">Program/Environment Information</a>
+ - generated at runtime<br>
+<br>
+<a href="#tslist">Time Series List</a>
+ - list of time series<br>
+
+<h2><a name="environment">Program/Environment Information</a></h2>
+<p>
+<table>
+<tr>
+<th>Property</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>Program
+</td>
+<td>TSTool 9.07.00 beta (2010-06-14)
+</td>
+</tr>
+<tr>
+<td>User
+</td>
+<td>sam
+</td>
+</tr>
+<tr>
+<td>Creation time
+</td>
+<td>2010-08-05 17:43:46 MDT
+</td>
+</tr>
+<tr>
+<td>Computer
+</td>
+<td>AMAZON
+</td>
+</tr>
+<tr>
+<td>Command line
+</td>
+<td>TSTool -home test/operational/CDSS
+</td>
+</tr>
+</table>
+</p>
+
+<h2><a name="tslist">Time Series List</a></h2>
+<table>
+<tr>
+<th>#</th>
+<th>TSID</th>
+<th>Alias</th>
+<th>Description</th>
+<th>Start</th>
+<th>End</th>
+</tr>
+<tr>
+<td>1
+</td>
+<td><a href="#ts1">MyLoc..MyData.Irreg</a>
+</td>
+<td><a href="#ts1">Alias</a>
+</td>
+<td><a href="#ts1">Test data, pattern</a>
+</td>
+<td>1950-01-01 00:00
+</td>
+<td>1950-01-03 12:15
+</td>
+</tr>
+</table>
+
+<hr>
+
+<h2><a name="ts1">Time series MyLoc..MyData.Irreg (Test data, pattern)</a></h2>
+<table>
+<tr>
+<th>Date/time</th>
+<th>Value</th>
+</tr>
+<tr>
+<td>1950-01-01 00:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 00:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 01:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 02:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 03:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 04:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 05:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 06:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 07:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 08:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 09:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 10:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 11:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 12:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 13:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 14:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 15:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 16:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 17:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 18:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 19:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 20:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 21:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 22:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-01 23:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 00:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 01:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 02:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 03:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 04:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 05:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 06:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 07:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 08:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 09:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 10:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 11:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 12:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 13:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 14:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 15:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 16:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 17:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 18:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 19:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 20:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 21:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 22:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-02 23:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 00:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 01:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 02:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 03:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 04:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 05:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 06:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 07:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 08:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 09:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:15
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:20
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:25
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:30
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:35
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:40
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:45
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:50
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 10:55
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:00
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:05
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:10
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:15
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:20
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:25
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:30
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:35
+</td>
+<td>13.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:40
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:45
+</td>
+<td class=missing >
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:50
+</td>
+<td>75.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 11:55
+</td>
+<td>50.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 12:00
+</td>
+<td>5.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 12:05
+</td>
+<td>10.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 12:10
+</td>
+<td>12.00
+</td>
+</tr>
+<tr>
+<td>1950-01-03 12:15
+</td>
+<td>13.00
+</td>
+</tr>
+</table>
+
+<h3>Data Flags</h3>
+<table>
+<tr>
+<td class=flagcell >Flagged Value</td>
+<td class=missing >Missing Value</td>
+</tr>
+</table>
+
+<h3>Time Series Metadata</h3>
+<pre>Time Series Identifier  = MyLoc..MyData.Irreg
+Description             = Test data, pattern
+Data source             = 
+Data type               = MyData
+Data interval           = Irreg
+Data units              = CFS
+Period                  = 1950-01-01 00:00 to 1950-01-03 12:15
+Orig./Avail. period     = 1950-01-01 00:00 to 1950-01-03 12:15
+</pre>
+
+<h3>Time Series Creation History</h3>
+<pre>Set 1950-01-01 00:00 to 1950-01-03 12:15 to pattern=5.000,10.000,12.000,13.000,-999.000,-999.000,75.000,50.000
+</pre>
+
+</body>
+</html>
