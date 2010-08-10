@@ -14,4 +14,4 @@ CheckTimeSeries(CheckCriteria=">",Value1=4.5)
 # is harder to strip out dynamic content like dates in comments).
 WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_GreaterThan_out.html")
 WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_GreaterThan_out.csv")
-CompareFiles(InputFile1="ExpectedResults/Test_CheckTimeSeries_GreaterThan_out.csv",InputFile2="Results/Test_CheckTimeSeries_GreaterThan_out.csv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_CheckTimeSeries_GreaterThan_out.csv",InputFile2="Results/Test_CheckTimeSeries_GreaterThan_out.csv",IfDifferent=Warn)
