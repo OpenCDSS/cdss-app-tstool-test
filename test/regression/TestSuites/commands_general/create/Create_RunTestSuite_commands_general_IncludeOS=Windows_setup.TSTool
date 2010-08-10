@@ -1,4 +1,4 @@
 # Command file to set up the environment and database connections for the general
 # test suite.  This command file should be read in at the start of the test suite
 # and then the remaining tests should be appended.
-OpenHydroBase(DatabaseServer="hbserver",DatabaseName="HydroBase")
+OpenHydroBase(DatabaseServer="lonetree\cdss",DatabaseName="HydroBase")
