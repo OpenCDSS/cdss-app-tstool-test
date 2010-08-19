@@ -8,4 +8,4 @@ TS ts1 = ReadTimeSeries(TSID="08235350.USGS.Streamflow.Day~HydroBase")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadTimeSeries_IfNotFound=Warn_out.dv")
 WriteDateValue(OutputFile="Results\Test_ReadTimeSeries_IfNotFound=Warn_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeries_IfNotFound=Warn_out.dv",InputFile2="Results\Test_ReadTimeSeries_IfNotFound=Warn_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeries_IfNotFound=Warn_out.dv",InputFile2="Results\Test_ReadTimeSeries_IfNotFound=Warn_out.dv",IfDifferent=Warn)
