@@ -3,6 +3,7 @@
 # @testSuite HydroBase
 StartLog(LogFile="Results/Test_FillUsingDiversionComments_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_FillUsingDiversionComments_1_out.dv",IfNotFound=Ignore)
+SetInputPeriod(InputStart="1949-11",InputEnd="2008-10")
 # Get time series from HydroBase using TSIDs
 # 0100501 - EMPIRE DITCH
 0100501.DWR.DivTotal.Month~HydroBase
