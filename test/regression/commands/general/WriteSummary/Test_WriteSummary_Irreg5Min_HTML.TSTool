@@ -6,5 +6,5 @@ TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Irreg",IrregularInterval=
 # WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_5MinIrreg_HTML_out.html")
 # Generate new output...
 WriteSummary(OutputFile="Results/Test_WriteSummary_5MinIrreg_HTML_out.html")
-# Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_5MinIrreg_HTML_out.html",InputFile2="Results/Test_WriteSummary_5MinIrreg_HTML_out.html",AllowedDiff="2",IfDifferent=Warn)
+# Regression comparison (allow 3 diffs for date/version/command line)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_5MinIrreg_HTML_out.html",InputFile2="Results/Test_WriteSummary_5MinIrreg_HTML_out.html",AllowedDiff="3",IfDifferent=Warn)
