@@ -1,0 +1,4 @@
+# Simple test to expand a text file using FreeMarker
+# The processor property ProcessorString="Hello World" is passed in
+<#assign message="${ProcessorString}">
+${message}

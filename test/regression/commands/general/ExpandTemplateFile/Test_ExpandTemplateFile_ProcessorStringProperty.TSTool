@@ -1,0 +1,10 @@
+# Test expanding a FreeMarker template for "Hello World"
+StartLog(LogFile="Results/Test_ExpandTemplateFile_HelloWorld.TSTool.log")
+RemoveFile(InputFile="Results/Test_ExpandTemplateFile_HelloWorld_out.txt",IfNotFound=Ignore)
+# Define a property that will be passed to the template
+SetProperty(PropertyName="ProcessorString",PropertyType=String,PropertyValue="Hello World")
+# Uncomment to regenerate the expected results.
+# ExpandTemplateFile(InputFile="Data/HelloWorld.txt",OutputFile="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_out.txt")
+ExpandTemplateFile(InputFile="Data\ProcessorStringProperty.txt",OutputFile="Results/Test_ExpandTemplateFile_HelloWorld_out.txt")
+# Compare the expected and current results
+CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_out.txt",InputFile2="Results/Test_ExpandTemplateFile_HelloWorld_out.txt",IfDifferent=Warn)
