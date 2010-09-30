@@ -1,4 +1,6 @@
 # Command file to set up the environment and database connections for the general
 # test suite.  This command file should be read in at the start of the test suite
-# and then the remaining tests should be appended.
+# and then the remaining tests can share these connections
 OpenHydroBase(DatabaseServer="lonetree\cdss",DatabaseName="HydroBase")
+# RiversideDB data stores should be set up with the
+# testing/operational/RTi/system/TSTool.cfg settings
