@@ -1,3 +1,5 @@
+# Apparently the database and/or time series are not available.
+# Keep the test around but don't run.
 StartLog(LogFile="Results/Test_TSID_RiversideDB_NHDES_30.TSTool.log")
 # SetDebugLevel(LogFileLevel=30)
 # Table format 100

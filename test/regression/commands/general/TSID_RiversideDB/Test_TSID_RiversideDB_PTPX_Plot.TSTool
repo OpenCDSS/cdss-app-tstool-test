@@ -1,0 +1,5 @@
+# Simple test to see if TSProduct file is properly handled with data store
+AROC2.NRCS.PTPX.6HOUR~RiversideDB1
+ARPC2.NRCS.PTPX.6HOUR~RiversideDB1
+BLKC2.NRCS.PTPX.6HOUR~RiversideDB1
+ProcessTSProduct(TSProductFile="Data\Test_TSID_RiversideDB_PTPX_Plot.tsp",View=False,OutputFile="Results/Test_TSID_RiversideDB_PTPX_Plot_out.png")

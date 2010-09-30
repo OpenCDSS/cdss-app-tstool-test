@@ -1,7 +1,7 @@
-# Test copying an entire table using a table read from a file
+# Test copying a table read from a file.
 StartLog(LogFile="Results/Test_CopyTable.TSTool.log")
 RemoveFile(InputFile="Results/Test_CopyTable_out.csv",IfNotFound=Ignore)
-NewTable(TableID="Table1",Columns="datetime1,datetime;double1,double;float1,float;integer1,integer;short1,short;string 1,string")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
 CopyTable(TableID="Table1",NewTableID="Table1Copy")
 # Uncomment the following to generate the expected results.
 # WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="ExpectedResults\Test_CopyTable_out.csv")

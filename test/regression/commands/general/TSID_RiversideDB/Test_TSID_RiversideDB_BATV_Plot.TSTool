@@ -1,5 +1,0 @@
-# Simple test to see if TSProduct file is properly handled with data store
-4000.ENGINEERING.BATV.5MINUTE~RiversideDB1
-4020.ENGINEERING.BATV.5MINUTE~RiversideDB1
-4040.ENGINEERING.BATV.5MINUTE~RiversideDB1
-ProcessTSProduct(TSProductFile="Data\Test_TSID_RiversideDB_BATV_Plot.tsp",OutputFile="Results/Test_TSID_RiversideDB_BATV_Plot_out.png")

@@ -1,5 +1,7 @@
 # Test reading a delimited file from a DBF file, in this case the
 # attribute file that goes with an ESRI shapefile.
+# Note that this file has latitude, longitude as character strings so they will
+# display left justified.
 StartLog(LogFile="Results/Test_ReadTableFromDBF.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromDBF_out.csv",IfNotFound=Ignore)
 ReadTableFromDBF(TableID="ClimateStations",InputFile="Data\div1_climatestations.dbf")

@@ -2,10 +2,11 @@ StartLog(LogFile="Results/Test_TSID_RiversideDB_NCWCD.TSTool.log")
 # SetDebugLevel(LogFileLevel=30)
 # SetInputPeriod(InputStart="2008-08-01 00:00",InputEnd="2008-08-01 12:00")
 # Table format 100
-4760.ENGINEERING.BATV.5MINUTE~RiversideDB
+# 4760.ENGINEERING.BATV.5MINUTE~RiversideDB
 4760.ENGINEERING.RSTO.5MINUTE~RiversideDB
 # Table format 300
 4760.ENGINEERING.PELV.1DAY~RiversideDB
 4760.ENGINEERING.RSTO.1DAY~RiversideDB
 # Table format 401
-4760.ENGINEERING.RSTO.1MONTH~RiversideDB
+# Apparently this is no longer in the database
+# 4760.ENGINEERING.RSTO.1MONTH~RiversideDB
