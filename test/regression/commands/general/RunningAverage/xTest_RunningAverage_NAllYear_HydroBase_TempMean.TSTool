@@ -1,0 +1,7 @@
+# 3005 - FORT COLLINS
+3005.NOAA.TempMean.Month~HydroBase
+TS 3005-TempMean-Year = ChangeInterval(TSID="3005.NOAA.TempMean.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
+RunningAverage(TSList=AllMatchingTSID,TSID="3005-TempMean-Year",AverageMethod=NAllYear)
+# 3005 - FORT COLLINS
+3005.NOAA.TempMean.Month~HydroBase
+TS 3005-TempMean-Year = ChangeInterval(TSID="3005.NOAA.TempMean.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
