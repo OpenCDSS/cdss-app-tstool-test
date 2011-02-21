@@ -1,0 +1,14 @@
+# Simple test to illustrate various running statistics for mean monthly temperature
+# 09058000 - COLORADO RIVER NEAR KREMMLING, CO
+09058000.USGS.Streamflow.Month~HydroBase
+TS 09058000-Streamflow-Year = ChangeInterval(TSID="09058000.USGS.Streamflow.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Mean,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Mean")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Median,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Median")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Max,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Max")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Min,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Min")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=StdDev,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-StdDev")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Variance,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Variance")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Skew,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Skew")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Lag-1AutoCorrelation,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Lag1AutoCorrelation")
+ProcessTSProduct(TSProductFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Kremmling.tsp",OutputFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow.png")
+ProcessTSProduct(TSProductFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Lag1_Kremmling.tsp",OutputFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Lag1.png")
