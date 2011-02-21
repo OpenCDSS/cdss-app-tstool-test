@@ -1,0 +1,12 @@
+
+I am using the following HTML:
+
+http://data.rcc-acis.org/doc/VariableTable.html
+
+To populate a list of choices in an application.  Here are some things I found that made your HTML not validate in some XML parsers:
+
+* No <head></head>
+* Extra <table>
+* Units header should end in </th> but has </td>
+* Similar for Source and also need to change <tr> to </tr> at end of header
+* Replace <br> with <br/>
