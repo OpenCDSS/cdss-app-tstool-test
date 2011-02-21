@@ -1,5 +1,6 @@
 
-Time Series Identifier  = MyLoc..MyData.Month
+Time series alias       = Alias
+Time series identifier  = MyLoc..MyData.Month
 Description             = Test data, pattern
 Data source             = 
 Data type               = MyData
