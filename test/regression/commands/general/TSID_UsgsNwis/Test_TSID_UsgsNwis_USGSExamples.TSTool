@@ -1,0 +1,33 @@
+StartLog(LogFile="Test_TSID_UsgsNwis_USGSExamples.TSTool.log")
+# Test reading from the USGS NWIS WaterML REST web service
+# Use examples shown in the USGS documentation:
+# http://waterservices.usgs.gov/rest/USGS-DV-Service.html
+#
+# Note that setting the period is required because TSID commands rely on the
+# global input period during the read and the web service requires a period
+#
+# Example from URI query formatter
+SetInputPeriod(InputStart="2000-11-16",InputEnd="2000-12-15")
+01646500..00060-Mean.1Day~USGS-NWIS
+# 3 Instruments at site
+SetInputPeriod(InputStart="2000-11-01",InputEnd="2000-12-31")
+09429000..00065-Mean.1Day~USGS-NWIS
+SetInputPeriod(InputStart="2000-11-01",InputEnd="2000-12-31")
+01578310..00060-Mean.1Day~USGS-NWIS
+# Result code present
+SetInputPeriod(InputStart="1999-03-01",InputEnd="2000-02-29")
+06025500..00060-Mean.1Day~USGS-NWIS
+# Data Aging Code
+SetInputPeriod(InputStart="2006-10-29",InputEnd="2006-11-30")
+06025500..00060-Mean.1Day~USGS-NWIS
+SetInputPeriod(InputStart="2000-11-01",InputEnd="2000-12-31")
+09392000..00065-Mean.1Day~USGS-NWIS
+# Non-USGS Agency Code
+SetInputPeriod(InputStart="2000-01-01",InputEnd="2000-02-29")
+02290810.USNPS.63160-Mean.1Day~USGS-NWIS
+# Not sure what the statistic is is not listed on the USGS query page
+SetInputPeriod(InputStart="1988-10-01",InputEnd="1988-10-31")
+05412041..00060-01002.1Day~USGS-NWIS
+# Observations at 23:59 site time
+SetInputPeriod(InputStart="1951-10-01",InputEnd="1951-10-31")
+12362000..72020-32359.1Day~USGS-NWIS
