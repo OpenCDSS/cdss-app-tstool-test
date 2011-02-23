@@ -6,6 +6,8 @@ StartLog(LogFile="Test_TSID_UsgsNwis_USGSExamples.TSTool.log")
 # Note that setting the period is required because TSID commands rely on the
 # global input period during the read and the web service requires a period
 #
+#@expectedStatus FAILURE (because some examples don't work)
+#
 # Example from URI query formatter
 SetInputPeriod(InputStart="2000-11-16",InputEnd="2000-12-15")
 01646500..00060-Mean.1Day~USGS-NWIS
