@@ -3,7 +3,7 @@ StartLog(LogFile="Results/Test_WriteSummary_Day_HTML_Water.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteSummary_Day_HTML_Water_out.html",IfNotFound=Ignore)
 TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1953-03-12",Units="CFS",PatternValues="5,10,12,,,13,75",PatternFlags=",,,,a,b,,c")
 # Uncomment the following command to regenerate the expected results file.
-WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Day_HTML_Water_out.html",OutputYearType=Water)
+# WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Day_HTML_Water_out.html",OutputYearType=Water)
 # Generate new output...
 WriteSummary(OutputFile="Results/Test_WriteSummary_Day_HTML_Water_out.html",OutputYearType=Water)
 # Do regression comparison - allow 3 diffs for date/version/commmand line
