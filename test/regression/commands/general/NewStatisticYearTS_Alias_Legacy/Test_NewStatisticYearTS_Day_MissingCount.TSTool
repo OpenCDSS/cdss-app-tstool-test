@@ -1,4 +1,6 @@
 # For daily data, determine the MissingCount value in each year.
+# This test is for the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_NewStatisticYearTS_Day_MissingCount.TSTool.log")
 RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Day_MissingCount_out.dv",IfNotFound=Ignore)
 TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,,50,45,20,4")
