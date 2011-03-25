@@ -1,0 +1,7 @@
+# Test that TSIDs are created properly during discovery (editing)
+# The command file should have no warnings/failures at load
+StartLog(LogFile="Results/Test_Normalize_Discovery.TSTool.log")
+NewPatternTimeSeries(Alias="ts1_day",NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,50,25,7,6")
+Normalize(Alias="tsout",TSID="ts1_day",MinValueMethod=MinFromTS,MinValue=0.0,MaxValue=1.0)
+# Editing the following should list the output from the above
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="ts1_day",CheckCriteria="Repeat")
