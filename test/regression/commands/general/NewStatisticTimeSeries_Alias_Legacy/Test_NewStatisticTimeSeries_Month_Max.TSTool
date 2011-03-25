@@ -1,4 +1,6 @@
 # Test of computing a statistic time series for monthly data, statistic=Max
+# This uses the legacy "TS Alias = "syntax
+#@readOnly
 StartLog(LogFile="Results/Test_NewStatisticTimeSeries_Month_Max.TSTool.log")
 RemoveFile(InputFile="Results\Test_NewStatisticTimeSeries_Month_Max_out.dv",IfNotFound=Ignore)
 # Assign 2 months of data so that the mean is different from any month
