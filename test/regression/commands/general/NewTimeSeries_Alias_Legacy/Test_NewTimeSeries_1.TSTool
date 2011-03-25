@@ -1,3 +1,5 @@
+# Command file to test legacy TS Alias = NewTimeSeries() syntax for day interval
+#@readOnly
 StartLog(LogFile="Results/Test_NewTimeSeries_1.TSTool.log")
 TS ts1 = NewTimeSeries(NewTSID="ts1...Day",SetStart="2000-01-01",SetEnd="2001-01-14",Units="CFS",InitialValue=0)
 # Uncomment the following command to regenerate the expected results file.

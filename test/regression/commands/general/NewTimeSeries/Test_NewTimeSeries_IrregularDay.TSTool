@@ -1,0 +1,10 @@
+# Test creating a new irregular interval time series with daily data
+StartLog(LogFile="Results/Test_NewTimeSeries_IrregularDay.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewTimeSeries_IrregularDay_out.dv",IfNotFound=Ignore)
+NewTimeSeries(Alias="ts1",NewTSID="ts1...Irregular",Description="Test time series 1",SetStart="2000-01",SetEnd="2001-01",Units="CFS",InitialValue=0)
+SetDataValue(SetDateTime="2000-01-01",NewValue=1)
+SetDataValue(SetDateTime="2000-01-15",NewValue=15)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_NewTimeSeries_IrregularDay_out.dv")
+WriteDateValue(OutputFile="Results/Test_NewTimeSeries_IrregularDay_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_NewTimeSeries_IrregularDay_out.dv",InputFile2="Results/Test_NewTimeSeries_IrregularDay_out.dv",IfDifferent=Warn)
