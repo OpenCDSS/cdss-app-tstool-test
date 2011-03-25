@@ -1,3 +1,5 @@
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_RelativeDiff_Divisor=DivideByTS1.TSTool.log")
 RemoveFile(InputFile="Results/Test_RelativeDiff_Divisor=DivideByTS1_out.dv",WarnIfMissing=False)
 TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",Units="MM",PatternValues="1,2,4,7,15,8,5,2,0.5,2,3,2")
