@@ -1,5 +1,5 @@
-#@readOnly
-# Test setup...
+# This uses the legacy "TS Alias =" syntax with fixed-format parameters
+#@readOnl
 StartLog(LogFile="Results/Test_ReadDateValue_Legacy.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadDateValue_Legacy_out.dv",IfNotFound=Ignore)
 # Uncomment the following two commands to recreate the "Data" file used as

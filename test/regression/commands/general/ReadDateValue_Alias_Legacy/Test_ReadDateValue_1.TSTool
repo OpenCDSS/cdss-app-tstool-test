@@ -1,4 +1,6 @@
-# Test setup...
+# Test reading a single time series from a DateValue file
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_ReadDateValue_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadDateValue_1_out.dv",IfNotFound=Ignore)
 # Uncomment the following two commands to recreate the "Data" file used as
