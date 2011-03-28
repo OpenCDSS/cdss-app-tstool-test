@@ -1,10 +1,8 @@
 # Test copying 15Minute data with flags.
-# This uses the legacy "TS Alias =" syntax
-#@readOnly
 StartLog(LogFile="Results/Test_Copy_15Minute_DataFlags.TSTool.log")
 RemoveFile(InputFile="Results\Test_Copy_15Minute_DataFlags_out.dv",IfNotFound=Ignore)
-TS Original = NewPatternTimeSeries(NewTSID="MyLoc..MyData.15Minute",Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-01-03 12:00",Units="CFS",PatternValues="5,10,12,,,13,75,50",PatternFlags="a,b,c,xx,,yy,,zz")
-TS Copy = Copy(TSID="Original",NewTSID="a...15Minute")
+NewPatternTimeSeries(Alias="Original",NewTSID="MyLoc..MyData.15Minute",Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-01-03 12:00",Units="CFS",PatternValues="5,10,12,,,13,75,50",PatternFlags="a,b,c,xx,,yy,,zz")
+Copy(Alias="Copy",TSID="Original",NewTSID="a...15Minute")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_Copy_15Minute_DataFlags_out.dv")
 WriteDateValue(OutputFile="Results\Test_Copy_15Minute_DataFlags_out.dv")
