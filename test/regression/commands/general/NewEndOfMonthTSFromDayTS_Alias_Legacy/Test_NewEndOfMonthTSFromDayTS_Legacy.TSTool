@@ -1,3 +1,4 @@
+# This uses the legacy "TS Alias =" syntax
 #@readOnly
 StartLog(LogFile="Results/Test_NewEndOfMonthTSFromDayTS_Legacy.TSTool.log")
 RemoveFile(InputFile="Results\Test_NewEndOfMonthTSFromDayTS_Legacy_out.dv",WarnIfMissing=False)
