@@ -1,11 +1,9 @@
-# Test WeightTraces
-# This uses the legacy "TS Alias =" syntax
-#@readOnly
+# Test weighting traces for daily data
 StartLog(LogFile="Results/Test_WeightTraces_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_WeightTraces_1_out.dv",IfNotFound=Ignore)
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,3,5,6,25,10,8,5,1")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,3,5,6,25,10,8,5,1")
 CreateEnsembleFromOneTimeSeries(TSID="ts1",TraceLength=1Year,EnsembleID="ensemble1",EnsembleName="Ensemble1",ShiftDataHow=ShiftToReference)
-TS weighted = WeightTraces(EnsembleID="ensemble1",SpecifyWeightsHow="AbsoluteWeights",Weights="2000,.5,2001,.3,2002,.2",NewTSID="ts1...Day.weighted")
+WeightTraces(Alias="weighted",EnsembleID="ensemble1",SpecifyWeightsHow="AbsoluteWeights",Weights="2000,.5,2001,.3,2002,.2",NewTSID="ts1...Day.weighted")
 SelectTimeSeries(TSList=AllMatchingTSID,TSID="weighted")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_WeightTraces_1_out.dv",TSList=SelectedTS)
