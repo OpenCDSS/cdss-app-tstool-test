@@ -1,3 +1,4 @@
+# This uses the legacy "TS Alias =" syntax
 #@testSuite HydroBase
 #@readOnly
 StartLog(LogFile="Results/Test_ReadTimeSeries_Legacy.TSTool.log")
