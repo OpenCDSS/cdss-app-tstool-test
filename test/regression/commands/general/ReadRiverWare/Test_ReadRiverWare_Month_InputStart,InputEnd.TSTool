@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_ReadRiverWare_Month_InputStart,InputEnd.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadRiverWare_Month_InputStart,InputEnd_out.dv",IfNotFound=Ignore)
+ReadRiverWare(Alias="rw_month",InputFile="Data_Riverware_Month\Oso.Diversion",InputStart="2003-03",InputEnd="2005-11")
+# Uncomment the following to regenerate the expected results...
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiverWare_Month_InputStart,InputEnd_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadRiverWare_Month_InputStart,InputEnd_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadRiverWare_Month_InputStart,InputEnd_out.dv",InputFile2="Results/Test_ReadRiverWare_Month_InputStart,InputEnd_out.dv",IfDifferent=Warn)

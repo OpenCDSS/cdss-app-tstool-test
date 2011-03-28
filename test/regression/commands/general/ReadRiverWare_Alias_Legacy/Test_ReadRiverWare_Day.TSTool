@@ -1,3 +1,5 @@
+# This version uses the legach "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_ReadRiverWare_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadRiverWare_Day_out.dv",WarnIfMissing=False)
 TS rw_day = ReadRiverWare(InputFile="Data_Riverware_Day\Oso.Diversion")
