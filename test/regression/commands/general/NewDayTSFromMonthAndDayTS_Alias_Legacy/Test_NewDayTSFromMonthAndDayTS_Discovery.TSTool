@@ -1,4 +1,6 @@
 # Test that TSIDs are properly created during discovery
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_NewDayTSFromMonthAndDayTS_Discovery.TSTool.log")
 TS ts1_day = NewPatternTimeSeries(NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 TS ts1_month = NewPatternTimeSeries(NewTSID="ts1..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1951-03",Units="ACFT",PatternValues="10,20,24,26,150")
