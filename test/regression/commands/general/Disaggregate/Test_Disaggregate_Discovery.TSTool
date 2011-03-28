@@ -1,9 +1,7 @@
 # Test that TSIDs are properly created in discovery mode
 # Editing the command file should result in no warnings/failures
-# This is for the legacy "TS Alias =" syntax
-#@readOnly
 StartLog(LogFile="Results/Test_Disaggregate_Discovery.TSTool.log")
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,7,15,8,5,2,0.5")
-TS ts1_disaggregated = Disaggregate(TSID="ts1",Method=Ormsbee,NewInterval=6Hourx)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,7,15,8,5,2,0.5")
+Disaggregate(Alias="ts1_disaggregated",TSID="ts1",Method=Ormsbee,NewInterval=6Hour)
 # The following should list the output time series from above
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="ts1_disaggregated",CheckCriteria="Repeat")

@@ -1,3 +1,5 @@
+# This is for the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_Disaggregate_Method=SameValue.TSTool.log")
 RemoveFile(InputFile="Results/Test_Disaggregate_Method=SameValue_out.dv",WarnIfMissing=False)
 TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,7,15,8,5,2,0.5")
