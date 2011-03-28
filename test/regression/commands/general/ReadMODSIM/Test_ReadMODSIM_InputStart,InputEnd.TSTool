@@ -1,7 +1,7 @@
 StartLog(LogFile="Results/Test_ReadMODSIM_InputStart,InputEnd.TSTool.log")
-RemoveFile(InputFile="Results\Test_ReadMODSIM_InputStart,InputEnd_out.dv",WarnIfMissing=False)
+RemoveFile(InputFile="Results\Test_ReadMODSIM_InputStart,InputEnd_out.dv",IfNotFound=Ignore)
 ReadMODSIM(InputFile="Data\CALIB42.FLO",InputStart="1987-01",InputEnd="1987-03")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadMODSIM_InputStart,InputEnd_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results\Test_ReadMODSIM_InputStart,InputEnd_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults\Test_ReadMODSIM_InputStart,InputEnd_out.dv",InputFile2="Results\Test_ReadMODSIM_InputStart,InputEnd_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadMODSIM_InputStart,InputEnd_out.dv",InputFile2="Results\Test_ReadMODSIM_InputStart,InputEnd_out.dv",IfDifferent=Warn)

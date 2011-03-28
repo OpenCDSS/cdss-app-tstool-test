@@ -1,3 +1,5 @@
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_ReadMODSIM_InputStart,InputEnd.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadMODSIM_out.dv",IfNotFound=Ignore)
 TS ts1 = ReadMODSIM(InputFile="Data\CALIB42.FLO",TSID="NATHALLIGAN..FLOW..",InputStart="1987-03",InputEnd="1987-07")
