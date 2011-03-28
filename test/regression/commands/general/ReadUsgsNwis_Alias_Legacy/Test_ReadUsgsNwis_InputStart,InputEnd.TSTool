@@ -1,3 +1,5 @@
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_ReadUsgsNwis_InputStart,InputEnd.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadUsgsNwis_InputStart,InputEnd_out.dv",WarnIfMissing=False)
 TS nwis = ReadUsgsNwis(InputFile="Data\G03451500.txt",InputStart="1975-01-15",InputEnd="1976-03-23")
