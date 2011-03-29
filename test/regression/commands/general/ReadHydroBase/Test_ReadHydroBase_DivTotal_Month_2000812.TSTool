@@ -3,4 +3,4 @@ ReadHydroBase(DataType="DivTotal",Interval="Month",Where1="District;Equals;20",W
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",InputFile2="Results/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",InputFile2="Results/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",IfDifferent=Warn)

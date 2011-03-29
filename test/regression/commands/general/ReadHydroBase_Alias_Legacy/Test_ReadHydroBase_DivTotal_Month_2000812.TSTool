@@ -1,3 +1,5 @@
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv",IfNotFound=Ignore)
 # Specify the period to read because HydroBase will change over time and
