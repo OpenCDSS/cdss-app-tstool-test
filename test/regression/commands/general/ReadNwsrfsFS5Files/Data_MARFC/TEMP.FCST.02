@@ -1,0 +1,12 @@
+@SETOPT                                                                         
+PRSF(1)                                                                         
+PREADJ(1)                                                                       
+PQPFTIME(1)                                                                     
+FGROUP JUNESP                                                                   
+HISTWYRS  1950 1993                                                             
+STARTESP 0909                                                                   
+WINDOWS(1) 0909 0331                                                            
+HISTSIM                                                                         
+PERMWRIT(1)                                                                     
+@COMP ESP                                                                       
+@STOP                                                                           
