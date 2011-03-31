@@ -1,4 +1,6 @@
 # Test changing ACCM to INST, large to small interval (not supported)
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 #@expectedStatus Failure
 #

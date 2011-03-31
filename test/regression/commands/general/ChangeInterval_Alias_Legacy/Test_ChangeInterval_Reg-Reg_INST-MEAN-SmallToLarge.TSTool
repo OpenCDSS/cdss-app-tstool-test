@@ -1,4 +1,6 @@
 # Test changing INST to MEAN, small to large interval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-SmallToLarge.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-SmallToLarge.dv",IfNotFound=Ignore)

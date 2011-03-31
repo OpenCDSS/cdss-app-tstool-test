@@ -1,4 +1,6 @@
 # Test changing INST to MEAN, 15 minute to 1 hour
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_INST-MEAN-15MinTo1Hour.TSTool.log")
 SetDebugLevel(LogFileLevel=40)

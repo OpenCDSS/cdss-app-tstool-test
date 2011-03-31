@@ -1,5 +1,6 @@
 # Test changing MEAN to INST, small to large interval (not supported)
-#
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #@expectedStatus Failure
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-SmallToLarge.TSTool.log")

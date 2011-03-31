@@ -1,0 +1,15 @@
+Test run of CHANGE-T operation to generate output for testing (real data)
+    1 1963   12 1964  ENG 
+DEF-TS
+INPUT      SQME   24            INPUT 
+TSToolTest/MeanDaily.SQME                      
+6hrOUT     SQIN    6            OUTPUT
+TSToolTest/RealData_6hr_OUT.SQIN                                       (6F10.5)          
+3hrOUT     SQIN    3            OUTPUT
+TSToolTest/RealData_3hr_OUT.SQIN                                       (6F10.5)          
+END
+CHANGE-T    6HR   
+  INPUT    SQME   24  6hrOUT   SQIN    6  
+CHANGE-T    3HR   
+  INPUT    SQME   24  3hrOUT   SQIN    3  
+STOP

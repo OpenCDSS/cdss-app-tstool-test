@@ -1,4 +1,6 @@
 # Test changing ACCM to MEAN, large to small interval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_ACCM-MEAN-LargeToSmall.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_ACCM-MEAN-LargeToSmall.dv",IfNotFound=Ignore)

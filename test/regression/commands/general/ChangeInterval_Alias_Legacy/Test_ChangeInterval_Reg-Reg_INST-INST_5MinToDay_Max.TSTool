@@ -1,4 +1,6 @@
 # Test changing INST to INST, 5Min to Day interval, calculating Max statistic
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_INST-INST_5MinToDay.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_INST-INST_5MinToDay_Max.dv",IfNotFound=Ignore)

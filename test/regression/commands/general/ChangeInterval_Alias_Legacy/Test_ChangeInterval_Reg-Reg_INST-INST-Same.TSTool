@@ -1,4 +1,6 @@
 # Test changing INST to INST, same interval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_INST-INST-Same.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_INST-INST-Same.dv",IfNotFound=Ignore)

@@ -1,5 +1,6 @@
 # Test that the default data type and data units works (keeps the original TS) and that specifying both works
-#
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 StartLog(LogFile="Results/Test_ChangeInterval_General_Specifying_DataType-Units.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_General_Specifying_DataType-Units.dv",IfNotFound=Ignore)
 #

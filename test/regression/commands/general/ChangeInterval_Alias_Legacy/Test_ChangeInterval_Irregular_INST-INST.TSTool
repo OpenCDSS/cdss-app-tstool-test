@@ -1,4 +1,6 @@
 # Irregular interval to regular, INST to INST
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Irregular_INST-INST.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Irregular_INST-INST.dv",IfNotFound=Ignore)

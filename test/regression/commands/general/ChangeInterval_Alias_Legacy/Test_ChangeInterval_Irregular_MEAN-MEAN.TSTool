@@ -1,4 +1,6 @@
 # Irregular interval to regular, MEAN to MEAN
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Irregular_MEAN-MEAN.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Irregular_MEAN-MEAN.dv",IfNotFound=Ignore)

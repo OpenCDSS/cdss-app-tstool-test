@@ -1,4 +1,6 @@
 # Test changing ACCM to ACCM, same interval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_ACCM-ACCM-Same.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_ACCM-ACCM-Same.dv",IfNotFound=Ignore)

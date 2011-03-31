@@ -1,6 +1,8 @@
 # Test changing monthly ACCM to water year MEAN, with period that aligns with
 # water years.
 # Two time series are used to test the AllowMissingCount parameter
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_ACCM-MEAN_Month-Year_WaterYear.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_ACCM-MEAN_Month-Year_WaterYear.dv",IfNotFound=Ignore)

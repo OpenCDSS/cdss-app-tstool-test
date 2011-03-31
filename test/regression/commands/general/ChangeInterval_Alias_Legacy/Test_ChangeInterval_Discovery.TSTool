@@ -1,6 +1,8 @@
 # Test that TSIDs are created in discovery mode
 # Editing the commands should result in no warnings or failures
 # Test changing ACCM to ACCM, large to small interval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Discovery.TSTool.log")
 #

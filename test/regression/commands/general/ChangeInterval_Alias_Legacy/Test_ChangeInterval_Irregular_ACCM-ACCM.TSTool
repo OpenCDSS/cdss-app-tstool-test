@@ -1,4 +1,6 @@
 # Irregular interval to regular, ACCM to ACCM
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Irregular_ACCM-ACCM.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Irregular_ACCM-ACCM.dv",IfNotFound=Ignore)

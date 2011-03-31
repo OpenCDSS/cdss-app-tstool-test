@@ -1,4 +1,6 @@
 # Test handle missing input works in ChangeInterval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
 #
 StartLog(LogFile="Results\Test_ChangeInterval_HandleMissingInput.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_HandleMissingInput.dv",IfNotFound=Ignore)
