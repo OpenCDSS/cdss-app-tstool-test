@@ -1,0 +1,20 @@
+# Simple template to illustrate how to repeat commands
+# with a list of location identifiers, and produce individual graphs.
+# The list is provided by the processor as a one-column table with ID matching the list name
+# The @readOnly comment ensures that the created template is read-only,
+# so users modify the template instead.
+#@readOnly
+<#assign setStart = "2000-01-01">
+<#assign setEnd = "2000-03-15">
+<#assign units = "CFS">
+<#list locList as loc>
+# Set the loc variable for the processor so that it can pass
+# to the ExpandTemplateFile command below
+SetProperty(PropertyName="loc",PropertyType="String",PropertyValue="${loc}")
+# Create the time series
+NewPatternTimeSeries(Alias="${loc}",NewTSID="${loc}..Streamflow.Day",SetStart="${setStart}",SetEnd="${setEnd}",Units="${units}",PatternValues="${loc_index + 1},0")
+# Expand the time series product file (graph) for the time series
+ExpandTemplateFile(InputFile="..\Data\ProcessorTable_TSP_template.tsp",OutputFile="${loc}.tsp")
+# Process the graph
+ProcessTSProduct(TSProductFile="${loc}.tsp",OutputFile="${loc}.tsp)
+</#list>

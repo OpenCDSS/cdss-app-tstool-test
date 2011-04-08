@@ -7,5 +7,5 @@
 <#assign setEnd = "2000-03-15">
 <#assign units = "CFS">
 <#list locList as loc>
-TS ${loc} = NewPatternTimeSeries(NewTSID="${loc}..Streamflow.Day",SetStart="${setStart}",SetEnd="${setEnd}",Units="${units}",PatternValues="${loc_index + 1},0")
+NewPatternTimeSeries(Alias="${loc}",NewTSID="${loc}..Streamflow.Day",SetStart="${setStart}",SetEnd="${setEnd}",Units="${units}",PatternValues="${loc_index + 1},0")
 </#list>
