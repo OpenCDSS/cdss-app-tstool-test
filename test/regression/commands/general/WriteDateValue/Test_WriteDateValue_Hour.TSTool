@@ -1,0 +1,10 @@
+# Test writing a hourly time series to DateValue format
+StartLog(LogFile="Results/Test_WriteDateValue_Hour.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDateValue_Hour_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Hour",Description="Test data",SetStart="1950-01-01 00",SetEnd="1950-01-03 12",Units="CFS",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_WriteDateValue_Hour_out.dv")
+# Generate new output...
+WriteDateValue(OutputFile="Results/Test_WriteDateValue_Hour_out.dv")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_Hour_out.dv",InputFile2="Results/Test_WriteDateValue_Hour_out.dv",IfDifferent=Warn)
