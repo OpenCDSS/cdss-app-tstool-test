@@ -15,5 +15,5 @@ RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Variance,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Variance")
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Skew,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Skew")
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Lag-1AutoCorrelation,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Lag1AutoCorrelation")
-ProcessTSProduct(TSProductFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Kremmling.tsp",OutputFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow.png")
-ProcessTSProduct(TSProductFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Lag1_Kremmling.tsp",OutputFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Lag1.png")
+ProcessTSProduct(TSProductFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Kremmling.tsp",OutputFile="Results/xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow.png")
+ProcessTSProduct(TSProductFile="xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Lag1_Kremmling.tsp",OutputFile="Results/xTest_RunningStatisticTimeSeries_NAllYear_HydroBase_Streamflow_Lag1.png")
