@@ -3,7 +3,7 @@ StartLog(LogFile="Results\Test_VariableLagK_3hr_VarLagAndK.TSTool.log")
 RemoveFile(InputFile="Results\Tes_VariableLagK_3hr_VarLagAndK_out.dv",IfNotFound=Ignore)
 #
 # Read NWSCard input file
-TS Inflow = ReadNwsCard(InputFile="Data\3HR_INPUT.SQIN")
+ReadNwsCard(InputFile="Data\3HR_INPUT.SQIN",Alias="Inflow")
 #
 # Route using the same routing parameters used in the mcp3 input deck
 # (metric units: Lag(hrs) K(hrs) Q(cms)
@@ -16,7 +16,7 @@ VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",FlowUnits=CMS,La
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
 # Read the output from the mcp3 LAG/K command
-TS mcp3_output = ReadNwsCard(InputFile="Data\3HR_VAR_LAG_K.SQIN")
+ReadNwsCard(InputFile="Data\3HR_VAR_LAG_K.SQIN",Alias="mcp3_output")
 CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
 #
 # The following does an exact test of the results:
@@ -24,4 +24,4 @@ SelectTimeSeries(TSList=AllMatchingTSID,TSID="3hr")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_out.dv",TSList=SelectedTS)
 WriteDateValue(OutputFile="Results\Test_VariableLagK_3hr_VarLagAndK_out.dv",TSList=SelectedTS)
-CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_out.dv",InputFile2="Results\Test_VariableLagK_3hr_VarLagAndK_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_out.dv",InputFile2="Results\Test_VariableLagK_3hr_VarLagAndK_out.dv",IfDifferent=Warn)
