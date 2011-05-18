@@ -2,11 +2,11 @@
 #
 StartLog(LogFile="Results\Test_ChangeInterval_Irregular_INST-INST.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_Irregular_INST-INST.dv",IfNotFound=Ignore)
-ReadDateValue(Alias="IrregInput",InputFile="Data\IrregularInput.dv")
-ChangeInterval(Alias="Converted",TSID="IrregInput",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
-ChangeInterval(Alias="Converted_HandleMissing_Repeat",TSID="IrregInput",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
-ChangeInterval(Alias="Converted_HandleMissing_SetToZero",TSID="IrregInput",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
-Free(TSList=AllMatchingTSID,TSID="IrregInput")
+ReadDateValue(InputFile="Data\IrregularInput.dv")
+ChangeInterval(Alias="Converted",TSID="Input",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
+ChangeInterval(Alias="Converted_HandleMissing_Repeat",TSID="Input",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
+ChangeInterval(Alias="Converted_HandleMissing_SetToZero",TSID="Input",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
+Free(TSList=AllMatchingTSID,TSID="Input")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Irregular_INST-INST.dv",TSList=AllMatchingTSID,TSID="*")
 WriteDateValue(OutputFile="Results\Test_ChangeInterval_Irregular_INST-INST.dv",TSList=AllMatchingTSID,TSID="*")

@@ -6,8 +6,8 @@ RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_INST-INST_5MinToDay_Ma
 # Alternate full days with days of missing and positive with negative to make results obvious
 TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.5Min",Description="Test data",SetStart="2006-12-15 00:00",SetEnd="2007-01-01 00:00",Units="CFS",PatternValues="1,2,3,4,5,6,7,8,9,10,11,12,1,2,-999,-999,5,6,7,8,9,10,11,12,-1,-2,-3,-4,-5,-6,-7,-8,-9,-10,-11,-12,-1,-2,-3,-4,-5,-6,-7,-999,-999,-10,-11,-12")
 TS Changed_noOptions = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=INST,NewTimeScale=INST,Statistic=Max,AllowMissingCount=30)
-TS Changed_Endpoints-AvgEndpoints = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=INST,NewTimeScale=INST,Statistic=Max,HandleEndpointsHow=AverageEndpoints,AllowMissingCount=30)
-TS Changed_Endpoints-IncludeFirstOnly = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=INST,NewTimeScale=INST,Statistic=Max,HandleEndpointsHow=IncludeFirstOnly,AllowMissingCount=30)
+TS Changed_Endpoints-AvgEndpoints = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=INST,NewTimeScale=INST,Statistic=Max,AllowMissingCount=30)
+TS Changed_Endpoints-IncludeFirstOnly = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=INST,NewTimeScale=INST,Statistic=Max,AllowMissingCount=30)
 # Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.

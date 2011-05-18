@@ -5,9 +5,9 @@ RemoveFile(InputFile="Results\Test_ChangeInterval_HandleMissingInput.dv",IfNotFo
 #
 NewPatternTimeSeries(Alias="Original",NewTSID="ts1..Flow.6Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
 # To longer interval
-ChangeInterval(Alias="Changed_ACCM-ACCM_Day",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=IncludeFirstOnly)
-ChangeInterval(Alias="Changed_ACCM-ACCM_Repeat_Day",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=IncludeFirstOnly,HandleMissingInputHow=Repeat)
-ChangeInterval(Alias="Changed_ACCM-ACCM_ToZero_Day",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=IncludeFirstOnly,HandleMissingInputHow=SetToZero)
+ChangeInterval(Alias="Changed_ACCM-ACCM_Day",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM)
+ChangeInterval(Alias="Changed_ACCM-ACCM_Repeat_Day",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleMissingInputHow=Repeat)
+ChangeInterval(Alias="Changed_ACCM-ACCM_ToZero_Day",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleMissingInputHow=SetToZero)
 # To shorter interval
 ChangeInterval(Alias="Changed_ACCM-ACCM_2Hour",TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM)
 ChangeInterval(Alias="Changed_ACCM-ACCM_Repeat_2Hour",TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleMissingInputHow=Repeat)

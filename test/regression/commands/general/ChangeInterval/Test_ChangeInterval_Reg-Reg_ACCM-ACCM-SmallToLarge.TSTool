@@ -5,8 +5,8 @@ RemoveFile(InputFile="Results\Test_ChangeInterval_Reg-Reg_ACCM-ACCM-SmallToLarge
 #
 NewPatternTimeSeries(Alias="Original",NewTSID="ts1..Flow.6Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
 ChangeInterval(Alias="Changed_noOptions",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM)
-ChangeInterval(Alias="Changed_Endpoints-AvgEndpoints",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=AverageEndpoints)
-ChangeInterval(Alias="Changed_Endpoints-IncludeFirstOnly",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=IncludeFirstOnly)
+ChangeInterval(Alias="Changed_Endpoints-AvgEndpoints",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM)
+ChangeInterval(Alias="Changed_Endpoints-IncludeFirstOnly",TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM)
 Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.

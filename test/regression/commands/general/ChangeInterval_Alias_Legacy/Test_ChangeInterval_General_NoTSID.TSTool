@@ -1,7 +1,0 @@
-# Test that not specifying TSID fails
-# This uses the legacy "TS Alias =" syntax
-#@readOnly
-#@expectedStatus Failure
-#
-TS DailyTS = NewPatternTimeSeries(NewTSID="s1.CAT..Day",SetStart="1/1/2007",SetEnd="12/30/2007",Units="IN",PatternValues="10,20,30,20,10")
-TS Alias = ChangeInterval(NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)

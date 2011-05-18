@@ -6,9 +6,9 @@ StartLog(LogFile="Results\Test_ChangeInterval_AllowMissingCount.TSTool.log")
 RemoveFile(InputFile="Results\Test_ChangeInterval_AllowMissingCount.dv",IfNotFound=Ignore)
 #
 TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.6Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
-TS Changed_ACCM-ACCM = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=IncludeFirstOnly)
-TS Changed_ACCM-ACCM1 = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=IncludeFirstOnly,AllowMissingCount=1)
-TS Changed_ACCM-ACCM2 = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleEndpointsHow=IncludeFirstOnly,AllowMissingCount=2)
+TS Changed_ACCM-ACCM = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM)
+TS Changed_ACCM-ACCM1 = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,AllowMissingCount=1)
+TS Changed_ACCM-ACCM2 = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,AllowMissingCount=2)
 Free(TSList=AllMatchingTSID,TSID="Original")
 #
 # Uncomment the following command to regenerate the expected results file.
