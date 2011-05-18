@@ -15,6 +15,7 @@ SetProperty(PropertyName="loc",PropertyType="String",PropertyValue="${loc}")
 NewPatternTimeSeries(Alias="${loc}",NewTSID="${loc}..Streamflow.Day",SetStart="${setStart}",SetEnd="${setEnd}",Units="${units}",PatternValues="${loc_index + 1},0")
 # Expand the time series product file (graph) for the time series
 ExpandTemplateFile(InputFile="..\Data\ProcessorTable_TSP_template.tsp",OutputFile="${loc}.tsp")
-# Process the graph
-ProcessTSProduct(TSProductFile="${loc}.tsp",OutputFile="${loc}.tsp)
+# Process the graph - don't show in the GUI because don't want graphs showing up
+# when running regression tests
+ProcessTSProduct(TSProductFile="${loc}.tsp",OutputFile="${loc}.tsp",View=False)
 </#list>
