@@ -1,0 +1,3 @@
+# Test trying to print a one page file portrait, 8.5x11
+StartLog(LogFile="Results/Test_PrintTextFile_Portrait_8x11_1Page.TSTool.log")
+PrintTextFile(InputFile="Data/50lines.txt",PrinterName="\\WATER\BERING",PaperSize="na-letter",Orientation=Landscape,MarginLeft=.5,MarginRight=.6,MarginTop=.7,MarginBottom=.8,Header="Header",Footer="Footer",ShowLineCount=True)
