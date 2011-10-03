@@ -1,0 +1,7 @@
+# Test reading ReclamationHDB time series using the time series identifier
+# Read data for all intervals for ADATUNCO
+# This works with the ECO database (Loveland, CO)
+Real:ADATUNCO.HDB.flow volume.Hour~ReclamationHDB-ECO
+Real:ADATUNCO.HDB.flow volume.Day~ReclamationHDB-ECO
+Real:ADATUNCO.HDB.diversion volume.Month~ReclamationHDB-ECO
+Real:ADATUNCO.HDB.diversion volume.Year~ReclamationHDB-ECO
