@@ -1,7 +1,7 @@
 # Simple test to illustrate various running statistics for mean monthly temperature
 # 09058000 - COLORADO RIVER NEAR KREMMLING, CO
 09058000.USGS.Streamflow.Month~HydroBase
-TS 09058000-Streamflow-Year = ChangeInterval(TSID="09058000.USGS.Streamflow.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
+ChangeInterval(TSList=LastMatchingTSID,TSID="09058000.USGS.Streamflow.Month",Alias="09058000-Streamflow-Year",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Mean,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Mean")
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Median,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Median")
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="09058000-Streamflow-Year",Statistic=Max,SampleMethod=NAllYear,Alias="%L-Streamflow-Year-Max")
