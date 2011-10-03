@@ -1,0 +1,17 @@
+StartLog(LogFile="Results/Test_TSID_UsgsNwis_USGSExample_DifferentPeriods.TSTool.log")
+# Test reading from the USGS NWIS WaterML REST web service
+# Use example shown in the USGS documentation:
+# http://waterservices.usgs.gov/rest/USGS-DV-Service.html
+# This test simply confirms that specifying a period does cause an
+# impact on the returned period
+#
+# Note that setting the period is required because TSID commands rely on the
+# global input period during the read and the web service requires a period
+#
+# Example from URI query formatter
+# Short period from USGS example
+SetInputPeriod(InputStart="2000-11-16",InputEnd="2000-12-15")
+ReadTimeSeries(TSID="01646500..00060-Mean.1Day~USGS-NWIS",Alias="ShortPeriod",IfNotFound=Warn)
+# Same example but with longer period
+SetInputPeriod(InputStart="2000-11-16",InputEnd="2005-12-15")
+ReadTimeSeries(TSID="01646500..00060-Mean.1Day~USGS-NWIS",Alias="LongPeriod",IfNotFound=Warn)
