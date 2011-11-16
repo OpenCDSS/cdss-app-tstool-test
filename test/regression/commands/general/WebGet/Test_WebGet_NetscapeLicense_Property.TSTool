@@ -1,0 +1,11 @@
+# Test getting an old Netscape License file, using ${Property} notation
+# This file may not be totally static over time but likely will be.
+# If the file changes, find something else.
+StartLog(LogFile="Results/Test_WebGet_NetscapeLicense_Property.TSTool.log")
+RemoveFile(InputFile="Results\Test_WebGet_NetscapeLicense_Property.html",IfNotFound=Ignore)
+SetProperty(PropertyName="Host",PropertyType=String,PropertyValue="http://www.mozilla.org")
+SetProperty(PropertyName="File",PropertyType=String,PropertyValue="Test_WebGet_NetscapeLicense_Property.html")
+# Uncomment the following command to regenerate the expected results file.
+# WebGet(URI="${Host}/MPL/NPL-1.1.html",LocalFile="ExpectedResults\${File}")
+WebGet(URI="${Host}/MPL/NPL-1.1.html",LocalFile="Results\${File}")
+CompareFiles(InputFile1="ExpectedResults\Test_WebGet_NetscapeLicense_Property.html",InputFile2="Results\Test_WebGet_NetscapeLicense_Property.html",IfDifferent=Warn)
