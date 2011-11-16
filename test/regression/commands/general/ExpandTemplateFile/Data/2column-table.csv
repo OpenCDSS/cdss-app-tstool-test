@@ -1,0 +1,6 @@
+# Simple list to use during template expansion
+"Location","Value"
+loc1,1.0
+loc2,2.0
+loc3,3.0
+loc4,4.0

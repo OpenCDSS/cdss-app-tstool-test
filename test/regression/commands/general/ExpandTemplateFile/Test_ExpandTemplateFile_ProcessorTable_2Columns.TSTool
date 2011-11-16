@@ -1,0 +1,13 @@
+# Test expanding a FreeMarker template for a list of time series, using a
+# two-column table for the lists (gets split into 2 one-column tables)
+StartLog(LogFile="Results/Test_ExpandTemplateFile_ProcessorTable_2Columns.TSTool.log")
+RemoveFile(InputFile="Results/Test_ExpandTemplateFile_ProcessorTable_2Columns_out.txt",IfNotFound=Ignore)
+# Read a one-column table that will be passed to the template as a list
+ReadTableFromDelimitedFile(TableID="locList2",InputFile="Data\2column-table.csv")
+CopyTable(TableID="locList2",NewTableID="locList",IncludeColumns="Location")
+CopyTable(TableID="locList2",NewTableID="valueList",IncludeColumns="Value")
+# Uncomment to regenerate the expected results.
+# ExpandTemplateFile(InputFile="Data\ProcessorTable_2Columns_template.txt",OutputFile="ExpectedResults/Test_ExpandTemplateFile_ProcessorTable_2Columns_out.txt")
+ExpandTemplateFile(InputFile="Data\ProcessorTable_2Columns_template.txt",OutputFile="Results/Test_ExpandTemplateFile_ProcessorTable_2Columns_out.txt")
+# Compare the expected and current results
+CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_ProcessorTable_2Columns_out.txt",InputFile2="Results/Test_ExpandTemplateFile_ProcessorTable_2Columns_out.txt",IfDifferent=Warn)

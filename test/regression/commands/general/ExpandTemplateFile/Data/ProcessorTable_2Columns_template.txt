@@ -1,0 +1,15 @@
+# Simple template to illustrate how to repeat commands with a list of location identifiers
+# Create a time series for each location
+# The following ensures that the created template is read-only, so users modify the template instead:
+# The location list is provided by the processor as a one-column table with ID matching the list name
+# The value list is provided by the processor as a corresponding one-column table with ID "valueList"
+#@readOnly
+<#assign setStart = "2000-01-01">
+<#assign setEnd = "2000-03-15">
+<#assign units = "CFS">
+# The loc_index is referenced to zero
+<#list locList as loc>
+<#assign value = valueList[loc_index]>
+NewPatternTimeSeries(Alias="${loc}",NewTSID="${loc}..Streamflow.Day",SetStart="${setStart}",SetEnd="${setEnd}",Units="${units}",PatternValues="${value}")
+NewPatternTimeSeries(Alias="${loc}",NewTSID="${loc}..Streamflow.Day",SetStart="${setStart}",SetEnd="${setEnd}",Units="${units}",PatternValues="${valueList[loc_index]}")
+</#list>
