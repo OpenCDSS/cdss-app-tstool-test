@@ -1,2 +1,0 @@
-startLog(LogFile="monthPrecision_50Years.log")
-setOutputPeriod(1950-01,2002-12)
