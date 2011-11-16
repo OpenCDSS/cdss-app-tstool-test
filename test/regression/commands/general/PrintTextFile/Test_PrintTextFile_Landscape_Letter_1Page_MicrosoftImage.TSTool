@@ -1,7 +1,8 @@
 # Test trying to print a one page file portrait, 8.5x11, using the Microsoft
-# image printer
+# image printer - this seems to only work with Office 2003
 # Do not do a comparison with expected results since the printer driver
 # may vary between computers
-#@os Windows
+# See:  http://social.msdn.microsoft.com/Forums/en-US/isv/thread/f3cf6478-d6c8-42dd-97b3-bc54d30719d2/
+#@os WindowsXP
 StartLog(LogFile="Results/Test_PrintTextFile_Landscape_Letter_1Page_MicrosoftImage.TSTool.log")
 PrintTextFile(InputFile="Data/50lines.txt",PrinterName="Microsoft Office Document Image Writer",PaperSize="na-letter",Orientation=Landscape,MarginLeft=.5,MarginRight=.6,MarginTop=.7,MarginBottom=.8,Header="Header",Footer="Footer",ShowLineCount=True,OutputFile="results/Test_PrintTextFile_Landscape_Letter_1Page_MicrosoftImage.png")
