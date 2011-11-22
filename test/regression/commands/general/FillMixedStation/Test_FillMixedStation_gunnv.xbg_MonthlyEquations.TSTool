@@ -1,0 +1,16 @@
+# Test filling the gunnison monthly baseflow time series with
+# Mixed Station Analysis (all combinations for monthly equations)
+StartLog(LogFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations.log")
+RemoveFile(InputFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.txt",IfNotFound=Ignore)
+ReadStateMod(InputFile="Data\gunnv.xbg")
+FillMixedStation(BestFitIndicator=SEP,AnalysisMethod="MOVE2,OLSRegression",NumberOfEquations=MonthlyEquations,Transformation="Log,None",MinimumR=.7,FillFlag="Auto",OutputFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.txt")
+# Check for missing data - all should be filled
+CheckTimeSeries(CheckCriteria="Missing",MaxWarnings=10)
+# Check for negative flows - should not be any
+CheckTimeSeries(CheckCriteria="<",Value1=0,MaxWarnings=10)
+# Uncomment the following command to regenerate expected results.
+WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm")
+WriteStateMod(TSList=AllTS,OutputFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm")
+CompareFiles(InputFile1="ExpectedResults/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm",InputFile2="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm",IfDifferent=Warn)
+# Write out the check file for troubleshooting
+WriteCheckFile(OutputFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations.TSTool.check.html")

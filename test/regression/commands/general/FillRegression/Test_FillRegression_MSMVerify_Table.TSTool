@@ -1,0 +1,15 @@
+# Fill regression using monthly data, set flag - expect R of 1
+# Output statistics to a table and compare the results
+StartLog(LogFile="Results/Test_FillRegression_MSMVerify_Month_Table.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillRegression_MSMVerify_Month_Table_out.dv",IfNotFound=Ignore)
+# Create a table to hold the statistics.
+NewTable(TableID="Statistics")
+# Read test time series data.
+ReadDelimitedFile(InputFile="DataMixedStation\Data.txt",Delimiter="\t",TreatConsecutiveDelimitersAsOne=False,ColumnNames="FC[1:]",DateTimeColumn="FC[2]",ValueColumn="FC[3:]",Comment="#",LocationID="FC[3:]",Interval=Month,Units="ACFT",Alias="%L")
+# Fill the time series using parameters consistent with typical Mixed Station analysis
+FillRegression(TSID="Y",IndependentTSID="X1",NumberOfEquations=OneEquation,FillFlag="R",TableID="Statistics",TableTSIDColumn="TSID",TableTSIDFormat="%A")
+FillRegression(TSID="X1",IndependentTSID="Y",NumberOfEquations=OneEquation,FillFlag="R",TableID="Statistics",TableTSIDColumn="TSID",TableTSIDFormat="%A")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillRegression_MSMVerify_Month_Table_out.dv")
+WriteDateValue(OutputFile="Results/Test_FillRegression_MSMVerify_Month_Table_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_MSMVerify_Month_Table_out.dv",InputFile2="Results/Test_FillRegression_MSMVerify_Month_Table_out.dv",IfDifferent=Warn)
