@@ -1,0 +1,2 @@
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO",DataType="*",Interval="Hour",Where1="Site - Common Name;Contains;tunCO")
+WriteReclamationHDB()

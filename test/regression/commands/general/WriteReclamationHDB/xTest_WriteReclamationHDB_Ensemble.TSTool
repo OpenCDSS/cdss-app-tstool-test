@@ -1,0 +1,9 @@
+# Test writing an ensemble to a ReclamationHDB
+# In this case the ensemble is a file provided by Reclamation
+StartLog(LogFile="Results/Test_WriteReclamationHDB_Ensemble.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteReclamationHDB_Ensemble_out.dv",IfNotFound=Ignore)
+ReadNwsrfsEspTraceEnsemble(InputFile="Data/RURC2L_F.SIM24.SQME.24.CS",EnsembleID="RURCL2_F_Ensemble")
+# Uncomment the following line to regenerate the expected results.
+WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Ensemble_out.dv")
+# TODO SAM 2010-12-08 Need a way to read out the values and compare with the original
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO")
