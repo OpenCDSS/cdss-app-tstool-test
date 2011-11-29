@@ -1,0 +1,17 @@
+# Test creating statistics time series from 6Hour ensemble for exceedance probabilities 10, 30, 50, 70, and 90
+StartLog(LogFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbabilityg.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbabilityg_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..MAP.6Hour",Description="test data 1",SetStart="1980-01-01 00",SetEnd="2007-05-13 18",Units="IN",PatternValues="1,2,4,3,5,6,25,10,8,5,1,3,4,6,7,9,13,16,8,7,5,2,1,5")
+CreateEnsembleFromOneTimeSeries(TSID="ts1",TraceLength=1Year,EnsembleID="TestEnsemble",ReferenceDate="2000-01-01 00",ShiftDataHow=ShiftToReference)
+# List these from least probable to least so plotting overlapping bars will be easy
+NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..MAP-10%.6Hour",Alias="ExceedanceProbability10",Statistic=ExceedanceProbability10)
+NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..MAP-30%.6Hour",Alias="ExceedanceProbability30",Statistic=ExceedanceProbability30)
+NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..MAP-50%.6Hour",Alias="ExceedanceProbability50",Statistic=ExceedanceProbability50)
+NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..MAP-70%.6Hour",Alias="ExceedanceProbability70",Statistic=ExceedanceProbability70)
+NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..MAP-90%.6Hour",Alias="ExceedanceProbability90",Statistic=ExceedanceProbability90)
+# Create a plot to visually verify results
+ProcessTSProduct(TSProductFile="Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbability.tsp",View=False,OutputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbability_out.png")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbabilityg_out.dv")
+WriteDateValue(OutputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbabilityg_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbabilityg_out.dv",InputFile2="Results/Test_NewStatisticTimeSeriesFromEnsemble_6Hour_ExceedanceProbability_out.dv",IfDifferent=Warn)
