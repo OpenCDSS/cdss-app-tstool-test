@@ -6,9 +6,15 @@ SetOutputPeriod(OutputStart="1997-01",OutputEnd="2002-12")
 ReadDateValue(InputFile="Data\streamflow-month.dv")
 NewTable(TableID="Stats",Columns="TSID,string")
 FillRegression(TSID="BelowGeorgetown",IndependentTSID="AboveGeorgetown",FillFlag="R",TableID="Stats",TableTSIDColumn="TSID")
+# Compare the filled time series.
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_out.dv")
 WriteDateValue(OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_out.dv",InputFile2="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.dv",IfDifferent=Warn)
-# Also plot to help with verification (set to no view for automated tests).
+# Compare the statistics tables
+# Uncomment the following command to regenerate expected results.
+WriteTableToDelimitedFile(TableID="Stats",OutputFile="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv")
+WriteTableToDelimitedFile(TableID="Stats",OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv",InputFile2="Results/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv",IfDifferent=Warn)
+# Also plot to help with verification (set to no view when ready for automated tests).
 ProcessTSProduct(TSProductFile="Test_FillRegression_Streamflow_Month_OneEquation.tsp",OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.png")
