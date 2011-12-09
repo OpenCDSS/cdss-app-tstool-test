@@ -10,6 +10,10 @@ StartLog(LogFile="Results/Test_TSID_UsgsNwis_USGSExample_DifferentPeriods.TSTool
 #
 # Example from URI query formatter
 # Short period from USGS example
+#
+# Not sure why this is failing.  Need to update the USGS NWIS data store
+# web services to current standard and figure out what is wrong.
+#
 SetInputPeriod(InputStart="2000-11-16",InputEnd="2000-12-15")
 ReadTimeSeries(TSID="01646500..00060-Mean.1Day~USGS-NWIS",Alias="ShortPeriod",IfNotFound=Warn)
 # Same example but with longer period

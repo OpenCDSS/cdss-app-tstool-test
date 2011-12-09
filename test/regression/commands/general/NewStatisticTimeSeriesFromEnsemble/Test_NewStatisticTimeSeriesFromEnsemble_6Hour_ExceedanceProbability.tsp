@@ -3,8 +3,7 @@
 ProductType = "Graph"
 TotalWidth = "600"
 TotalHeight = "400"
-MainTitleString = "SIM24 (RUEIDI RES INFLOW) Exceedance Probabilities"
-SubTitleString = "Using Historical Years 1976 - 2003"
+MainTitleString = "Test Exceedance Probability Plot"
 
 [SubProduct 1]
 

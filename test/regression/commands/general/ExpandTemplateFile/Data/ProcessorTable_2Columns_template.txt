@@ -3,6 +3,10 @@
 # The following ensures that the created template is read-only, so users modify the template instead:
 # The location list is provided by the processor as a one-column table with ID matching the list name
 # The value list is provided by the processor as a corresponding one-column table with ID "valueList"
+#
+# Two commands are created for each iteration:
+# 1) assign with an intermediate variable
+# 2) assign directly from the secondary list
 #@readOnly
 <#assign setStart = "2000-01-01">
 <#assign setEnd = "2000-03-15">
