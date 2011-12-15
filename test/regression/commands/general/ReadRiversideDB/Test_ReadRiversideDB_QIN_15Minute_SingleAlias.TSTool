@@ -1,0 +1,11 @@
+# Test reading a single time series and assigning an alias.
+StartLog(LogFile="Results/Test_ReadRiversideDB_QIN_15Minute_SingleAlias.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadRiversideDB_QIN_15Minute_SingleAlias_out.dv",IfNotFound=Ignore)
+# Specify the period to read because RiversideDB will change over time and
+# setting the period will better control the numbers that return and impact the
+# test results.
+ReadRiversideDB(DataStore="RiversideDB_TSTool",DataType="QIN - INSTANTANEOUS OBSERVED RIVER DISCHARGE",Interval="15MINUTE",Where1="Station Identifier (ID);Matches;01350101",Where2="Scenario;Matches;RAW",InputStart="2011-10-08 00:00",InputEnd="2011-11-03 08:15",Alias="%L-%T")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiversideDB_QIN_15Minute_SingleAlias_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadRiversideDB_QIN_15Minute_SingleAlias_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadRiversideDB_QIN_15Minute_SingleAlias_out.dv",InputFile2="Results/Test_ReadRiversideDB_QIN_15Minute_SingleAlias_out.dv",IfDifferent=Warn)
