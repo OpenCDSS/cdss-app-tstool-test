@@ -1,7 +1,7 @@
 # Create monthly streamflow test data from HydroBase.
 # A datevalue file is created that can be used by test command files.
-# Only rerun if there is a real reason to do it because tests will then
-# also have to be reverified.
+# Separate CSV files also are created for each month to simplify Python script use.
+# Only rerun if there is a real reason to do it because tests will then also have to be reverified.
 SetOutputPeriod(OutputStart="1997-01",OutputEnd="2009-12")
 # 394308105413800 - CLEAR CR. ABV. GEORGETOWN LAKE NR GEORGETOWN, CO
 ReadTimeSeries(TSID="394308105413800.USGS.Streamflow.Month~HydroBase",Alias="AboveGeorgetown",IfNotFound=Warn)
@@ -10,3 +10,28 @@ ReadTimeSeries(TSID="394359105411900.USGS.Streamflow.Month~HydroBase",Alias="Bel
 Scale(TSList=AllMatchingTSID,TSID="BelowGeorgetown",ScaleValue=1.5)
 # Scale the second time series a bit to get more offset for visual inspection
 WriteDateValue(OutputFile="Data/streamflow-month.dv")
+# Create tables of output for each month of data and write as delimited files.
+TimeSeriesToTable(TableID="M1",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="01",OutputWindowEnd="01",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M1",OutputFile="Data/streamflow-month1.csv")
+TimeSeriesToTable(TableID="M2",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="02",OutputWindowEnd="02",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M2",OutputFile="Data/streamflow-month2.csv")
+TimeSeriesToTable(TableID="M3",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="03",OutputWindowEnd="03",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M3",OutputFile="Data/streamflow-month3.csv")
+TimeSeriesToTable(TableID="M4",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="04",OutputWindowEnd="04",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M4",OutputFile="Data/streamflow-month4.csv")
+TimeSeriesToTable(TableID="M5",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="05",OutputWindowEnd="05",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M5",OutputFile="Data/streamflow-month5.csv")
+TimeSeriesToTable(TableID="M6",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="06",OutputWindowEnd="06",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M6",OutputFile="Data/streamflow-month6.csv")
+TimeSeriesToTable(TableID="M7",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="07",OutputWindowEnd="07",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M7",OutputFile="Data/streamflow-month7.csv")
+TimeSeriesToTable(TableID="M8",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="08",OutputWindowEnd="08",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M8",OutputFile="Data/streamflow-month8.csv")
+TimeSeriesToTable(TableID="M9",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="09",OutputWindowEnd="09",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M9",OutputFile="Data/streamflow-month9.csv")
+TimeSeriesToTable(TableID="M10",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="10",OutputWindowEnd="10",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M10",OutputFile="Data/streamflow-month10.csv")
+TimeSeriesToTable(TableID="M11",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="11",OutputWindowEnd="11",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M11",OutputFile="Data/streamflow-month11.csv")
+TimeSeriesToTable(TableID="M12",DateTimeColumn="DateTime",DataColumn="%L",DataRow=1,OutputWindowStart="12",OutputWindowEnd="12",IfTableNotFound="Create")
+WriteTableToDelimitedFile(TableID="M12",OutputFile="Data/streamflow-month12.csv")
