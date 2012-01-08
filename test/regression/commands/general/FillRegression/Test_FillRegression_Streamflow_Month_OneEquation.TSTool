@@ -1,20 +1,34 @@
 # Fill regression using monthly streamflow data, one equation
 StartLog(LogFile="Results/Test_FillRegression_Streamflow_Month_OneEquation.TSTool.log")
+#
+# Remove the old results files
 RemoveFile(InputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.dv",IfNotFound=Ignore)
-# Read the streamflow data and do the regression
+#
+# Read the streamflow data for the independent and dependent time series
 SetOutputPeriod(OutputStart="1997-01",OutputEnd="2002-12")
 ReadDateValue(InputFile="Data\streamflow-month.dv")
+#
+# Create a table for output statistics...
 NewTable(TableID="Stats",Columns="TSID,string")
 FillRegression(TSID="BelowGeorgetown",IndependentTSID="AboveGeorgetown",FillFlag="R",TableID="Stats",TableTSIDColumn="TSID")
-# Compare the filled time series.
-# Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_out.dv")
+#
+# Uncomment the following command to regenerate expected results using the Python script
+# TODO - does the python script fill or just compute the statistics?
+# RunPython(Interpreter="Python",Program="c:\python25\python.exe",InputFile="Python\FillRegression.py",Arguments="'${WorkingDir}\Data\MonthIndependent' '${WorkingDir}\Data\MonthDependent' '${WorkingDir}\ExpectedResults\Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv' 1")
+#
+# Fill the time series with the TSTool command and write out the filled time series as a delimited file so it
+# can be compared with the Python script output
+# and statistics so the TSTool "Results" can be compared with the Python "ExpectedResults" files
+FillRegression(TSID="BelowGeorgetown",IndependentTSID="AboveGeorgetown",FillFlag="R",TableID="Stats",TableTSIDColumn="TSID")
+WriteTableToDelimitedFile(TableID="Stats",OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv")
+#
+# Compare the filled time series and the statistics files.
 WriteDateValue(OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_out.dv",InputFile2="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.dv",IfDifferent=Warn)
 # Compare the statistics tables
-# Uncomment the following command to regenerate expected results.
 WriteTableToDelimitedFile(TableID="Stats",OutputFile="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv")
 WriteTableToDelimitedFile(TableID="Stats",OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv")
 CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv",InputFile2="Results/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv",IfDifferent=Warn)
+#
 # Also plot to help with verification (set to no view when ready for automated tests).
 ProcessTSProduct(TSProductFile="Test_FillRegression_Streamflow_Month_OneEquation.tsp",OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.png")
