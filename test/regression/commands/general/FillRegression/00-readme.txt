@@ -57,8 +57,10 @@ rather than doing all the testing in the FillMixedStation() command tests.
 2. RUN PYTHON SCRIPTS TO CREATE EXPECTED RESULTS
 
 Run the following Python scripts to use the input from Step 1 to create the expected
-results.  The RunPython() command is used in the TSTool test to compare the Python
-"ExpectedResults" files to the TSTool "Results" files.
+results.  The RunPython() command is used in the TSTool test to generate the Python
+"ExpectedResults" statistic file to compare to the similar TSTool "Results" statistics
+file.  "Python" is included in the expected results so clearly indicate that the file
+did not originate with TSTool.
 
 TODO - figure out whether the Python scripts create ExpectedResults only for the
 core functionality or all parameter combinations.
@@ -68,9 +70,10 @@ Month data, monthly equations - called in xxxxx
 
 The Python configuration that was used to develop the tests is as follows:
 
-C Python 2.5
-NumPy 1.6.1
-SciPy 0.10.0
+C Python 2.5 (install to default C:\Python25)
+NumPy 1.6.1 (from numpy-1.6.1-win32-superpack-python2.5.exe)
+SciPy 0.10.0 (from scipy-0.10.0-win32-superpack-python2.5.exe)
+The above will install into C:\Python25\Lib\site-packages\
 
 TODO - explain the Excel validation (what is the extent of this validation?)
 
