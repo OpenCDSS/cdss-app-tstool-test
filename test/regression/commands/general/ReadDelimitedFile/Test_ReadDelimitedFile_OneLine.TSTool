@@ -1,0 +1,9 @@
+# Test reading from a one-line file (no comments or header line)
+StartLog(LogFile="Results/Test_ReadDelimitedFile_OneLine.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelimitedFile_OneLine_out.dv",IfNotFound=Ignore)
+# Importing a single line results in an error. Adding an (empty) comment line above the single line avoids the problem
+ReadDelimitedFile(InputFile="Data/20111123_0.dat",Delimiter=",",ColumnNames="DATATYPE,RADIO_DATE,RADIO_TIME,RADIO_ID,TABLE_NO,FIELD,DATE,TIME,SITE_ID,BATTERY_VOLTS,TEMPERATURE,RELATIVE_HUMIDITY,FULL_SOLAR,PHOTOSYNTHETIC_ACTIVE_RADIATION, WIND_SPEED,WIND_DIRECTION,PRECIPITATION,SNOW_DEPTH,SNOW_QUALITY,BARIMETRIC_PRESSURE",DateColumn="DATE",TimeColumn="TIME",ValueColumn="BATTERY_VOLTS,TEMPERATURE,RELATIVE_HUMIDITY,FULL_SOLAR,PHOTOSYNTHETIC_ACTIVE_RADIATION, WIND_SPEED,WIND_DIRECTION,PRECIPITATION,SNOW_DEPTH,SNOW_QUALITY,BARIMETRIC_PRESSURE",LocationID="0",Provider="NYCDEP",Interval=IRREGULAR,Scenario="RAW",Units="Volts, DegC,percent,W/m2,umols/s/m2,m/s,Degrees,mm,cm,,inches",MissingValue=-999)
+# Uncomment the following command to regenerate the expected results file.
+# WriteSummary(OutputFile="ExpectedResults\Test_ReadDelimitedFile_OneLine_out.txt")
+WriteSummary(OutputFile="Results\Test_ReadDelimitedFile_OneLine_out.txt")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelimitedFile_OneLine_out.txt",InputFile2="Results\Test_ReadDelimitedFile_OneLine_out.txt",IfDifferent=Warn)
