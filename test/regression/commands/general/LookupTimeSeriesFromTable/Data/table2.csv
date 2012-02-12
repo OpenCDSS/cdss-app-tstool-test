@@ -1,0 +1,10 @@
+# Lookup table test data - these data are suitable for log interpolation
+# TODO SAM 2012-02-04 Need to add effective date and TSID
+"Value1","Value2"
+0.0,0.0
+10.0,20.0
+20.0,400.0
+30.0,600.0
+40.0,800.0
+50.0,1000.0
+55.0,1100.0

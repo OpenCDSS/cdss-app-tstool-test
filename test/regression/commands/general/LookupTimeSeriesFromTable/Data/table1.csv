@@ -1,10 +1,11 @@
-# Lookup table that extends beyond the test data
+# Lookup table test data - these data do not provide a good test for log transformation
+# because Value2 does not span multiple powers of 10
 # TODO SAM 2012-02-04 Need to add effective date and TSID
 "Value1","Value2"
 0.0,0.0
-10.0,0.0
-20.0,44.0
-30.0,66.0
-40.0,88.0
+10.0,20.0
+20.0,40.0
+30.0,60.0
+40.0,80.0
 50.0,100.0
 55.0,110.0

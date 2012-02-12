@@ -1,0 +1,11 @@
+# Test creating a time series using lookup table and daily time series as input
+# Use interpolation for in range values and end value for out of range values
+StartLog(LogFile="Results/Test_LookupTimeSeriesUsingTable_Day_OutOfRangeLookupMethod=UseEndValue.TSTool.log")
+RemoveFile(InputFile="Results\Test_LookupTimeSeriesUsingTable_Day_OutOfRangeLookupMethod=UseEndValue_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Original",NewTSID="MyLoc..MyData.Day",Description="Test data (with out of range on low and high end)",SetStart="1950-01-01",SetEnd="1950-03-15",Units="CFS",PatternValues="-2,5,10,12,,,13,75,50")
+ReadTableFromDelimitedFile(TableID="LookupTable",InputFile="Data\table1.csv")
+LookupTimeSeriesFromTable(TSID="Original",NewTSID="Output..Volumn.Day",Alias="%L-%T",TableID="LookupTable",TableValue1Column="Value1",TableValue2Column="Value2",Units="FT3",LookupMethod=Interpolate,OutOfRangeLookupMethod=UseEndValue)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_LookupTimeSeriesUsingTable_Day_OutOfRangeLookupMethod=UseEndValue_out.dv")
+WriteDateValue(OutputFile="Results\Test_LookupTimeSeriesUsingTable_Day_OutOfRangeLookupMethod=UseEndValue_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_LookupTimeSeriesUsingTable_Day_OutOfRangeLookupMethod=UseEndValue_out.dv",InputFile2="Results\Test_LookupTimeSeriesUsingTable_Day_OutOfRangeLookupMethod=UseEndValue_out.dv",IfDifferent=Warn)
