@@ -1,0 +1,10 @@
+# Test writing a 15minute interval time series to RiversideDB
+StartLog(LogFile="Results/Test_WriteTimeSeries_15Minute.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeries_15Minute_out.dv",IfNotFound=Ignore)
+NewTimeSeries(Alias="ts1",NewTSID="ts1...15Minute",Description="Test time series 1",SetStart="2000-01-01:00:00",SetEnd="2000-01-08:00:45",Units="CFS",InitialValue=0)
+# 01350101.USGS.QIN.15MINUTE.RAW~RiversideDB_TSTool
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteTimeSeries_15Minute_out.dv")
+# WriteDateValue(OutputFile="Results/Test_WriteTimeSeries_15Minute_out.dv")
+WriteRiversideDB(DataStore="RiversideDB_TSTool",Location="AS_1_4",DataSource="UFI",DataType="CHL",DataSubType="1",Interval="IRREGULAR",Scenario="RAW")
+CompareFiles(InputFile1="ExpectedResults/Test_WriteTimeSeries_15Minute_out.dv",InputFile2="Results/Test_WriteTimeSeries_15Minute_out.dv",IfDifferent=Warn)
