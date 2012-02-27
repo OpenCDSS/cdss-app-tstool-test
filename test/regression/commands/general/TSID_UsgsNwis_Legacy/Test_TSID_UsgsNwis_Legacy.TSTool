@@ -1,0 +1,8 @@
+# Test reading from USGS NWIS RDB format file, using legacy input type "USGSNWIS"
+# (new input type is "UsgsNwisRdb", which is tested in separate folder)
+StartLog(LogFile="Results/Test_TSID_UsgsNwis_Legacy.TSTool.log")
+03451500.USGS.Streamflow.Day~USGSNWIS~Data/G03451500.txt
+# Uncomment the following command to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_UsgsNwis_Legacy_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_UsgsNwis_Legacy_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_UsgsNwis_Legacy_out.dv",InputFile2="Results/Test_TSID_UsgsNwis_Legacy_out.dv",IfDifferent=Warn)

@@ -1,0 +1,8 @@
+# Test ReadUsgsNwisRdb command with input period
+StartLog(LogFile="Results/Test_ReadUsgsNwisRdb_InputStart,InputEnd.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadUsgsNwisRdb_InputStart,InputEnd_out.dv",IfNotFound=Ignore)
+ReadUsgsNwisRdb(InputFile="Data\G03451500.txt",Alias="nwis",InputStart="1975-01-15",InputEnd="1976-03-23")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadUsgsNwisRdb_InputStart,InputEnd_out.dv",Precision=0)
+WriteDateValue(OutputFile="Results\Test_ReadUsgsNwisRdb_InputStart,InputEnd_out.dv",Precision=0)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadUsgsNwisRdb_InputStart,InputEnd_out.dv",InputFile2="Results\Test_ReadUsgsNwisRdb_InputStart,InputEnd_out.dv",IfDifferent=Warn)

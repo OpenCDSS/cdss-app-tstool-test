@@ -1,7 +1,9 @@
-StartLog(LogFile="Results/Test_ReadUsgsNwis.TSTool.log")
-RemoveFile(InputFile="Results\Test_ReadUsgsNwis_out.dv",IfNotFound=Ignore)
+# Test ReadUsgsNwis legacy command (now replaced by ReadUsgsNwisRdb)
+#@readOnly
+StartLog(LogFile="Results/Test_ReadUsgsNwis_Legacy.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadUsgsNwis_Legacy_out.dv",IfNotFound=Ignore)
 ReadUsgsNwis(Alias="nwis",InputFile="Data\G03451500.txt")
 # Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_ReadUsgsNwis_out.dv",Precision=0)
-WriteDateValue(OutputFile="Results\Test_ReadUsgsNwis_out.dv",Precision=0)
-CompareFiles(InputFile1="ExpectedResults\Test_ReadUsgsNwis_out.dv",InputFile2="Results\Test_ReadUsgsNwis_out.dv",IfDifferent=Warn)
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadUsgsNwis_Legacy_out.dv",Precision=0)
+WriteDateValue(OutputFile="Results\Test_ReadUsgsNwis_Legacy_out.dv",Precision=0)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadUsgsNwis_Legacy_out.dv",InputFile2="Results\Test_ReadUsgsNwis_Legacy_out.dv",IfDifferent=Warn)
