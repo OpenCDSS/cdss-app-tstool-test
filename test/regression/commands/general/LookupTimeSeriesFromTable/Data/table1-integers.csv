@@ -1,0 +1,12 @@
+# Lookup table test data - these data do not provide a good test for log transformation
+# because Value2 does not span multiple powers of 10
+# Use integers for data because an issue was identified where integer table data caused a problem.
+# TODO SAM 2012-02-04 Need to add effective date and TSID
+"Value1","Value2"
+0,0
+10,20
+20,40
+30,60
+40,80
+50,100
+55,110
