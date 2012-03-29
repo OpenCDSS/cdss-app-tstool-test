@@ -1,0 +1,17 @@
+# Test writing an hour time series to ReclamationHDB database real table by specifying name, etc.
+# The AAA_DELETE location hourly data are written
+StartLog(LogFile="Results/Test_WriteReclamationHDB_Hour_AAADELETE_Real_Name.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReclamationHDB_Hour_AAADELETE_Real_Name_out.dv",IfNotFound=Ignore)
+# Make the definition of this time series match what is used in HDB so that the comparison
+# of results all matches
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.Hour",Description="Real:AAA_DELETE",SetStart="2010-01-01 00",SetEnd="2010-01-03 12",Units="cfs",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_WriteReclamationHDB_Hour_AAADELETE_Real_Name_out.dv")
+# First write the time series to the database...
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",ValidationFlag="A")
+# Now read the same time series from the database using the period that was written...
+Real:AAA_DELETE.HDB.flow.Hour~ReclamationHDB-ECO
+# Generate new output for what was read from the database...
+WriteDateValue(OutputFile="Results/Test_WriteReclamationHDB_Hour_AAADELETE_Real_Name_out.dv",OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12",TSList=LastMatchingTSID,TSID="Real:AAA_DELETE.HDB.flow.Hour")
+# Do regression comparison (allow 4 differences due to header differences)...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteReclamationHDB_Hour_AAADELETE_Real_Name_out.dv",InputFile2="Results/Test_WriteReclamationHDB_Hour_AAADELETE_Real_Name_out.dv",AllowedDiff="4",IfDifferent=Warn)
