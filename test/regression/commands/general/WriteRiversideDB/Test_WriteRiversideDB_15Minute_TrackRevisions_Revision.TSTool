@@ -1,0 +1,25 @@
+# Test writing a 15Minute time series to a RiversideDB database, using the WriteMethod=TrackRevisions
+# Specify a revision comment so that a revision record is added (must inspect data visually to confirm)
+# The time series is in the test TSTool database using NYC data
+# Step 1 should be empty (result of initial delete)
+# Step 2 should be data that is written
+StartLog(LogFile="Results/Test_WriteRiversideDB_15Minute_TrackRevisions_Revision.TSTool.log")
+RemoveFile(InputFile="Results/Test_RiversideDB_15Minute_TrackRevisions_Revision_out.dv",IfNotFound=Ignore)
+# First delete all the data and ensure that the database is blank
+WriteRiversideDB(DataStore="RiversideDB_TSTool",LocationID="01350101",DataSource="USGS",DataType="QIN",Interval="15MINUTE",Scenario="RAW",WriteMethod=Delete)
+ReadRiversideDB(DataStore="RiversideDB_TSTool",DataType="QIN",Interval="15MINUTE",Where1="Data Source Abbreviation;Matches;USGS",Where2="Scenario;Matches;RAW",Where3="Station Identifier (ID);Matches;01350101",Alias="01350101-QIN-Step1",MissingValue="NaN")
+# Next write some data and read to make sure the data were inserted
+NewPatternTimeSeries(Alias="01350101-QIN",NewTSID="01350101.USGS.QIN.15Minute",Description="Data to load initially, which will be deleted",SetStart="2010-01-01 00:00",SetEnd="2010-01-03 12:30",Units="cfs",MissingValue=NaN,PatternValues="5,10,12,13,,,75",PatternFlags="a,b,c,M,e,,M")
+WriteRiversideDB(DataStore="RiversideDB_TSTool",TSList=AllMatchingTSID,TSID="01350101-QIN",LocationID="01350101",DataSource="USGS",DataType="QIN",Interval="15MINUTE",Scenario="RAW",WriteMethod=TrackRevisions,RevisionUser="TestUser",RevisionComment="Test comment")
+ReadRiversideDB(DataStore="RiversideDB_TSTool",DataType="QIN - INSTANTANEOUS OBSERVED RIVER DISCHARGE",Interval="15MINUTE",Where1="Data Source Abbreviation;Matches;USGS",Where2="Scenario;Matches;RAW",Where3="Station Identifier (ID);Matches;01350101",Alias="01350101-QIN-Step2",MissingValue="NaN")
+# Next write another revision of data and read to make sure the data were inserted/updated
+# Increment the period a bit to move forward but still have some overlap
+NewPatternTimeSeries(Alias="01350101-QIN-rev",NewTSID="01350101.USGS.QIN.15Minute.rev",Description="Data to load as a revision - advance original period by one day",SetStart="2010-01-02 00:00",SetEnd="2010-01-04 12:30",Units="cfs",MissingValue=NaN,PatternValues="5.2,10.2,12.2,13.2,,,75.2",PatternFlags="aa,bb,cc,dd,ee,,ff")
+WriteRiversideDB(DataStore="RiversideDB_TSTool",TSList=AllMatchingTSID,TSID="01350101-QIN-rev",LocationID="01350101",DataSource="USGS",DataType="QIN",Interval="15MINUTE",Scenario="RAW",WriteMethod=TrackRevisions,ProtectedFlags="M",RevisionUser="TestUser",RevisionComment="Test comment")
+ReadRiversideDB(DataStore="RiversideDB_TSTool",DataType="QIN",Interval="15MINUTE",Where1="Data Source Abbreviation;Matches;USGS",Where2="Scenario;Matches;RAW",Where3="Station Identifier (ID);Matches;01350101",Alias="01350101-QIN-Step2rev",MissingValue="NaN")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_WriteRiversideDB_15Minute_TrackRevisions_Revision_out.dv")
+# Generate new output for what was read from the database...
+WriteDateValue(OutputFile="Results/Test_WriteRiversideDB_15Minute_TrackRevisions_Revision_out.dv")
+# Do regression comparison (allow 4 differences due to header differences)...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteRiversideDB_15Minute_TrackRevisions_Revision_out.dv",InputFile2="Results/Test_WriteRiversideDB_15Minute_TrackRevisions_Revision_out.dv",AllowedDiff="4",IfDifferent=Warn)
