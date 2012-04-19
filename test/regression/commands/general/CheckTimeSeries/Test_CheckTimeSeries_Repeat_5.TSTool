@@ -16,4 +16,4 @@ WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_Repeat_5_out.html")
 WriteCheckFile(OutputFile="Results/Test_CheckTimeSeries_Repeat_5_out.csv")
 CompareFiles(InputFile1="ExpectedResults/Test_CheckTimeSeries_Repeat_5_out.csv",InputFile2="Results/Test_CheckTimeSeries_Repeat_5_out.csv",IfDifferent=Warn)
 # Uncomment the following to view the results - useful to troubleshoot test.
-ProcessTSProduct(TSProductFile="Test_CheckTimeSeries_SharedGraph.tsp",View=True,OutputFile="Results/Test_CheckTimeSeries_Repeat_5.png")
+#ProcessTSProduct(TSProductFile="Test_CheckTimeSeries_SharedGraph.tsp",View=True,OutputFile="Results/Test_CheckTimeSeries_Repeat_5.png")

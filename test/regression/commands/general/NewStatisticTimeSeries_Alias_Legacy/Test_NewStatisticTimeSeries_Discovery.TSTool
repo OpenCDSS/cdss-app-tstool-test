@@ -10,4 +10,4 @@ TS ts2 = NewPatternTimeSeries(NewTSID="ts2..Streamflow.Month",Description="Test 
 TS ts1_max = NewStatisticTimeSeries(TSID="ts1",NewTSID="ts1..Streamflow.Month.Max",Statistic=Max)
 TS ts2_max = NewStatisticTimeSeries(TSID="ts2",NewTSID="ts2..Streamflow.Month.Max",Statistic=Max)
 # Editing the following should list TSIDs from above
-CheckTimeSeries(TSList=AllMatchingTSID,TSID="ts2_max",CheckCriteria="Repeat")
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="ts2_max",CheckCriteria="Repeat",Value1=3)

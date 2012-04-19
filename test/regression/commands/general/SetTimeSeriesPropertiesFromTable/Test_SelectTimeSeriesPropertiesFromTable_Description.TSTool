@@ -1,0 +1,14 @@
+# Test setting time series properties from a table
+# Set the special TS:Description property
+StartLog(LogFile="Results/Test_SetTimeSeriesPropertiesFromTable_Description.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetTimeSeriesPropertiesFromTable_Description_out.csv",IfNotFound=Ignore)
+NewTimeSeries(Alias="ts1",NewTSID="ts1..Precip.Year",Description="Test data 1",SetStart="2000",SetEnd="2005",Units="IN")
+NewTimeSeries(Alias="ts2",NewTSID="ts2..Precip.Year",Description="Test data 2",SetStart="2000",SetEnd="2005",Units="IN")
+NewTimeSeries(Alias="ts3",NewTSID="ts3..Precip.Year",Description="Test data 3",SetStart="2000",SetEnd="2005",Units="IN")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+SetTimeSeriesPropertiesFromTable(TableID="Table1",TableTSIDColumn="loc",TableTSIDFormat="%L",TableInputColumns="Description,Scenario,Status",TSPropertyNames="TS:Description,Scenario,Status")
+# Uncomment the following to generate the expected results.
+# WriteDateValue(OutputFile="ExpectedResults\Test_SetTimeSeriesPropertiesFromTable_Description_out.dv")
+WriteDateValue(OutputFile="Results\Test_SetTimeSeriesPropertiesFromTable_Description_out.dv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_SetTimeSeriesPropertiesFromTable_Description_out.dv",InputFile2="Results/Test_SetTimeSeriesPropertiesFromTable_Description_out.dv",IfDifferent=Warn)

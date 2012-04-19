@@ -1,4 +1,17 @@
 # Test reading a NRCS SNOTEL tab-delimited flow file downloaded from the web
+# The "all" file that is downloaded with WebGet() is manually cut back to be shorter
+# to minimize file size under revision control and keep automated tests short
+#
+# The URLs for the WebGet() command were determined as follows:
+# 1) Go to main site:
+# 2) Click on Colorado
+# 3) Select the station of interest (e.g., Joe Wright)
+# 4) For the historical data (years prior to current year), pick:
+#      "Standard Sensors"... Historical, Daily (Tab Formatted) in the table, then select "all", then "Get Data"
+#      The URL that is shown can be used for the historical period, where "pill" (pillow) is the SWE value
+# 5) Similarly, select a year of 2012 to only retrieve that year
+# 6) Use the WebGet() commands with the URLs determined from above
+#
 StartLog(LogFile="Results/Test_ReadDelimitedFile_NRCS_SNOTEL.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadDelimitedFile_NRCS_SNOTEL_out.dv",IfNotFound=Ignore)
 # After downloading, the first file is manually edited to cut back the period

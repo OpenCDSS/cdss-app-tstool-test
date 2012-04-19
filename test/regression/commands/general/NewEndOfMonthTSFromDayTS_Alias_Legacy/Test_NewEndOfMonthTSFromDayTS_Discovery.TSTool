@@ -7,4 +7,4 @@ TS ts1_day = NewPatternTimeSeries(NewTSID="ts1..MyData.Day",Description="Test da
 SetOutputPeriod(OutputStart="1950-01-01",OutputEnd="1951-03-31")
 TS tsout = NewEndOfMonthTSFromDayTS(DayTSID="ts1_day",Bracket=15)
 # The following should list output from the above
-CheckTimeSeries(TSList=AllMatchingTSID,TSID="tsout",CheckCriteria="Repeat")
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="tsout",CheckCriteria="Repeat",Value1=3)
