@@ -1,0 +1,20 @@
+# Test reading a NRCS snow course file downloaded from the NRCS website
+# The file is retrieved, parsed into a datevalue format using a Python script,
+# and then read using the ReadDelimitedFile() command.
+#
+StartLog(LogFile="Results/Test_ReadDelimitedFile_NRCS_SnowCourse_Historical.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelimitedFile_NRCS_SnowCourse_Historical_out.dv",IfNotFound=Ignore)
+# Uncomment the following to regenerate snow course test data.
+# WebGet(URI="http://www.wcc.nrcs.usda.gov/ftpref/data/snow/snow_course/table/history/colorado/05j37s.txt",LocalFile="Data/NRCS-SnowCourse-JoeWright-historical.txt")
+# Run a python script to convert the text file to a csv file with data values
+# RunPython(Interpreter="Python",InputFile="C:/develop/TSTool_SourceBuild/TSTool/resources/runtime/python/nrcs-snowcourse/snowcourse2csv.py",Arguments="inputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright.historical.txt\" outputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright_historical.csv\" logFile=\"${WorkingDir}/Results/Test_ReadDelimitedFile_NRCS_SnowCourse_Historical.TSTool.log\"")
+RunPython(Interpreter="Python",InputFile="..\..\..\..\..\resources\runtime\python\nrcs-snowcourse\snowcourse2csv.py",Arguments="inputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright-historical.txt\" outputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright-historical.csv\" logFile=\"${WorkingDir}/Results/Test_ReadDelimitedFile_NRCS_SnowCourse_Historical.TSTool.log\"")
+# Read the delimited file into a time series
+ReadDelimitedFile(InputFile="Data\NRCS-SnowCourse-JoeWright-historical.csv",Delimiter=",",ColumnNames="Date,Depth,SWE,Flag",DateTimeColumn="Date",ValueColumn="Depth,SWE",FlagColumn="Flag,Flag",Comment="#",SkipRowsAfterComments="1",LocationID="JoeWright",Provider="NRCS",DataType="Depth,SWE",Interval=Day,Units="in",Alias="%L%T")
+# Write the output.  Set the output period to minimize the chance that new data
+# will impact the time series.
+SetOutputPeriod(OutputStart="1967-01",OutputEnd="2010-06")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelimitedFile_NRCS_SnowCourse_Historical_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_ReadDelimitedFile_NRCS_SnowCourse_Historical_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelimitedFile_NRCS_SnowCourse_Historical_out.dv",InputFile2="Results\Test_ReadDelimitedFile_NRCS_SnowCourse_Historical_out.dv",IfDifferent=Warn)
