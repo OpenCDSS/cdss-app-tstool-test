@@ -1,0 +1,9 @@
+# Test reading daily precipitation from RCC ACIS
+# Specify a single site ID
+# a historical period to limit changes that will occur in time series data
+StartLog(LogFile="Results/Test_ReadRccAcis_Precipitation_Day_Single.TSTool.log")
+ReadRccAcis(DataStore="RCC-ACIS",DataType="4",Interval="Day",SiteID="COOP:054719",InputStart="1911-01-01",InputEnd="1912-03-15",Alias="%L-Precipitation")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadRccAcis_Precipitation_Day_Single_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadRccAcis_Precipitation_Day_Single_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadRccAcis_Precipitation_Day_Single_out.dv",InputFile2="Results/Test_ReadRccAcis_Precipitation_Day_Single_out.dv",IfDifferent=Warn)
