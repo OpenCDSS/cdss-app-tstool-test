@@ -1,0 +1,15 @@
+# Test reading a RelTotal year time series from ColoradoWaterHBGuest web service using a TSID
+# Compare the resulting time series with that retrieved from HydroBase
+StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Year.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Year_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase - full irrigation year
+SetInputPeriod(InputStart="1994",InputEnd="1995")
+0300909.DWR.RelTotal.Year~HydroBase
+0300909.DWR.RelTotal.Year~ColoradoWaterHBGuest
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterHBGuest_RelTotal_Year_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="0300915.DWR.RelTotal.Year")
+# WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Year_out.dv",Precision=2,TSList=LastMatchingTSID,TSID="0300915.DWR.RelTotal.Year")
+# CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterHBGuest_RelTotal_Year_out.dv",InputFile2="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Year_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
