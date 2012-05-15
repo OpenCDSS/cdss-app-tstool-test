@@ -1,0 +1,15 @@
+# Test reading a TempMean month time series from ColoradoWaterHBGuest web service using a TSID
+# Compare the resulting time series with that retrieved from HydroBase
+StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_TempMean_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_TempMean_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="2000-01",InputEnd="2002-12")
+3005.NOAA.TempMean.Month~HydroBase
+3005.NOAA.TempMean.Month~ColoradoWaterHBGuest
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+#WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterHBGuest_TempMean_Month_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="0300915.DWR.TempMean.Month")
+#WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterHBGuest_TempMean_Month_out.dv",Precision=2,TSList=LastMatchingTSID,TSID="0300915.DWR.TempMean.Month")
+#CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterHBGuest_TempMean_Month_out.dv",InputFile2="Results/Test_TSIDColoradoWaterHBGuest_TempMean_Month_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
