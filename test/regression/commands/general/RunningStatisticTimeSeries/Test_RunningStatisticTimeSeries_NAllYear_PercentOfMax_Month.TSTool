@@ -1,0 +1,13 @@
+# Test the NAllYear running statistic (PercentOfMax), with missing data
+StartLog(LogFile="Results/Test_RunningStatisticTimeSeries_NAllYear_PercentOfMax_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunningStatistic_NAllYear_PercentOfMax_Month_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1_month",NewTSID="ts1..Streamflow.Month",Description="test data 1",SetStart="2000-01",SetEnd="2010-05",PatternValues="1,2,3,2,1,3,5,1,8,15,,1,3,5")
+# Compute the running Max because it is internally used for PercentOfMax
+# and is useful for visual validation of the results.
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_month",Statistic=Max,SampleMethod=NAllYear,Alias="ts1_month_Max")
+# Compute the PercentOfMax statistic, which is the main test
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_month",Statistic=PercentOfMax,SampleMethod=NAllYear,Alias="ts1_month_PercentOfMax")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_NAllYear_PercentOfMax_Month_out.dv")
+WriteDateValue(OutputFile="Results/Test_RunningStatisticTimeSeries_NAllYear_PercentOfMax_Month_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_NAllYear_PercentOfMax_Month_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_NAllYear_PercentOfMax_Month_out.dv",IfDifferent=Warn)
