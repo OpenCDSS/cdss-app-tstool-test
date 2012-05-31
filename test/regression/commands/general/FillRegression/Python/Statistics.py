@@ -9,11 +9,11 @@ import scipy
 import math
 
 def regression_coef (x,y):
-    std_x = numpy.std(x)
-    std_y = numpy.std(y)
+    std_x = numpy.std(x,ddof=1)
+    std_y = numpy.std(y,ddof=1)
     r = numpy.corrcoef(x,y)[0,1]
     b = r * (std_y/std_x)
-    a = numpy.average(y) - (b * numpy.average(x))
+    a = numpy.mean(y) - (b * numpy.mean(x))
     return a, b, r, pow(r,2)
 
 def overlapping (x,y, missingValue):
@@ -34,8 +34,8 @@ def overlapping (x,y, missingValue):
     return x_filtered, x_n2, y_filtered, n1, n2
 
 def statistics (x):
-    Mean = numpy.average(x)
-    StDev = numpy.std(x)
+    Mean = numpy.mean(x)
+    StDev = numpy.std(x,ddof=1)
     return Mean, StDev
 
 def dependent_statistics (y, missingValue):
@@ -43,8 +43,8 @@ def dependent_statistics (y, missingValue):
     for i in range(0,len(y)):
         if y[i] != missingValue:
             y_filtered.append(y[i])
-    MeanY = numpy.average(y_filtered)
-    SY = numpy.std(y_filtered)
+    MeanY = numpy.mean(y_filtered)
+    SY = numpy.std(y_filtered,ddof=1)
     NY = len(y_filtered)
     return MeanY, NY, SY
 
@@ -53,8 +53,8 @@ def calculate_Yest (x, a, b):
     for i in range(0,len(x)):
         value=a+(b*x[i])
         Yest.append(value)
-    meanY1Est = numpy.average(Yest)
-    SY1Est = numpy.std(Yest)
+    meanY1Est = numpy.mean(Yest)
+    SY1Est = numpy.std(Yest,ddof=1)
     return Yest, meanY1Est, SY1Est
 
 def RMSE (y, yest, n):
@@ -73,7 +73,7 @@ def SEE (y, yest, n):
 
 def SEP (x, SEE, n):
     SEP=[]
-    meanX = numpy.average(x)
+    meanX = numpy.mean(x)
     sumOfSquare = 0
     for i in range(0,len(x)):
         sumOfSquare = sumOfSquare + pow((x[i]-meanX),2)
@@ -84,7 +84,7 @@ def SEP (x, SEE, n):
     return SEP
 
 def SESlope (x, y, yest, n):
-    meanX = numpy.average(x)
+    meanX = numpy.mean(x)
     sumOfSquareX = 0
     sumOfSquareY = 0
     for i in range(0,len(x)):
@@ -108,5 +108,6 @@ def LinearRegression (a, b, x):
     return y
 
 def Skew (x):
+    # bias=False means DO correct for bias (use n - 1? as sample standard deviation, etc.?)
     skew = scipy.stats.skew(x, bias=False)
     return skew

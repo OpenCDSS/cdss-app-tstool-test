@@ -26,6 +26,7 @@ def Write_CSV (fileName,
                 NY,
                 MeanY,
                 SY,
+                SkewY,
                 a,
                 b,
                 R,
@@ -42,7 +43,7 @@ def Write_CSV (fileName,
                 NYfilled,
                 MeanYfilled,
                 SYfilled,
-                Skew):
+                SkewYfilled):
 
     # Open the output file, give feedback on error. Most likely cause is output file open in Excel
     try:
@@ -69,7 +70,11 @@ def Write_CSV (fileName,
 
     directory = os.getcwd()
     output.writerow(['# directory:    ' + directory])
-    output.writerow(['# command line: python ' + __name__])
+
+    allArguments = ''
+    for arg in sys.argv:
+        allArguments = allArguments + arg + ' '
+    output.writerow(['# command line: python ' + allArguments])
 
 # command line: TSTool
 #            K:\PROJECTS\1025_CWCB-SPDSS Relational Systems Integration Phase 5\Tasks\140_TSTool\MSM\FillRegression\Test_FillRegression_Streamflow_Month_OneEquation.TSTool
@@ -92,6 +97,7 @@ def Write_CSV (fileName,
     output.writerow(['# NY - Count of the non-missing dependent values'])
     output.writerow(['# MeanY - Mean of the NY values'])
     output.writerow(['# SY - Standard deviation of the NY values'])
+    output.writerow(['# SkewY - skew of the NY values'])
     output.writerow(['# a - The intercept for the relationship equation'])
     output.writerow(['# b - The slope of the relationship equation'])
     output.writerow(['# R - The correlation coefficient for N1 values'])
@@ -100,25 +106,25 @@ def Write_CSV (fileName,
     output.writerow(['# SY1est - Standard deviation of N1 values computed from the relationship (estimate dependent values where previously known'])
     output.writerow(['# RMSE - Root mean squared error for N1 values, computed from regression relationship estimated values'])
     output.writerow(['# SEE - Standard error of estimate for N1 values, computed from regression relationship estimated values'])
-    output.writerow(['# SEP - Standard error of prediction for N1 values, computed from regression relationship estimated values'])
+    #output.writerow(['# SEP - Standard error of prediction for N1 values, computed from regression relationship estimated values'])
     output.writerow(['# SESlope - Standard error (SE) of the slope (b) for N1 values, computed from regression relationship estimated values'])
     output.writerow(['# TestScore - b/SE'])
     output.writerow(['# TestQuantile - From the Student\'s T-test, function of confidence interval and degrees of freedom, DF (N1 - 2)'])
     output.writerow(['# TestRelated - Yes if TestScore < TestQuantile, false if otherwise.'])
-    output.writerow(['# NYfilled - NYfilled'])
-    output.writerow(['# MeanYfilled - MeanYfilled'])
-    output.writerow(['# SYfilled - SYfilled'])
-    output.writerow(['# Skew - Skew'])
+    output.writerow(['# NYfilled - number of filled dependent values'])
+    output.writerow(['# MeanYfilled - Mean of filled dependent values'])
+    output.writerow(['# SYfilled - Standard deviation of filled dependent values'])
+    output.writerow(['# SkewYfilled - Skew of filled dependent values'])
     output.writerow(['# '])
     output.writerow(['# Column headings are first line below, followed by data lines.'])
 
     # Close and re-open file to change delimiter to ','
     fileOpen.close()
     fileOpen = open(fileName, 'ab')
-    output = csv.writer(fileOpen, delimiter=',')
+    output = csv.writer(fileOpen, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
 
     nEquations = len(n1)
-    headerRow = ["\"TSID\"", "\"TSID_Independent\""]
+    headerRow = ["TSID", "TSID_Independent"]
 
     for i in range (0,nEquations):
         # For monthly values each column header has the month indication, leave blank for year.
@@ -128,73 +134,94 @@ def Write_CSV (fileName,
             monthNumber = '_' + str(i+1)
 
         # Construct the Header Row
-        headerRow = headerRow + ["\"N1" + monthNumber + "\"",
-                    "\"MeanX1" + monthNumber + "\"",
-                    "\"SX1" + monthNumber + "\"",
-                    "\"N2" + monthNumber + "\"",
-                    "\"MeanX2" + monthNumber + "\"",
-                    "\"SX2" + monthNumber + "\"",
-                    "\"MeanY1" + monthNumber + "\"",
-                    "\"SY1" + monthNumber + "\"",
-                    "\"NY" + monthNumber + "\"",
-                    "\"MeanY" + monthNumber + "\"",
-                    "\"SY" + monthNumber + "\"",
-                    "\"a" + monthNumber + "\"",
-                    "\"b" + monthNumber + "\"",
-                    "\"R" + monthNumber + "\"",
-                    "\"R2" + monthNumber + "\"",
-                    "\"MeanY1est" + monthNumber + "\"",
-                    "\"SY1est" + monthNumber + "\"",
-                    "\"RMSE" + monthNumber + "\"",
-                    "\"SEE" + monthNumber + "\"",
-                    "\"SEP" + monthNumber + "\"",
-                    "\"SESlope" + monthNumber + "\"",
-                    "\"TestScore" + monthNumber + "\"",
-                    "\"TestQuantile" + monthNumber + "\"",
-                    "\"TestRelated" + monthNumber + "\"",
-                    "\"NYfilled" + monthNumber + "\"",
-                    "\"MeanYfilled" + monthNumber + "\"",
-                    "\"SYfilled" + monthNumber + "\"",
-                    "\"Skew" + monthNumber + "\""]
+        headerRow = headerRow + ["N1" + monthNumber,
+                    "MeanX1" + monthNumber,
+                    "SX1" + monthNumber,
+                    "N2" + monthNumber,
+                    "MeanX2" + monthNumber,
+                    "SX2" + monthNumber,
+                    "MeanY1" + monthNumber,
+                    "SY1" + monthNumber,
+                    "NY" + monthNumber,
+                    "MeanY" + monthNumber,
+                    "SY" + monthNumber,
+                    "SkewY" + monthNumber,
+                    "a" + monthNumber,
+                    "b" + monthNumber,
+                    "R" + monthNumber,
+                    "R2" + monthNumber,
+                    "MeanY1est" + monthNumber,
+                    "SY1est" + monthNumber,
+                    "RMSE" + monthNumber,
+                    "SEE" + monthNumber,
+                    #"SEP" + monthNumber,
+                    "SESlope" + monthNumber,
+                    "TestScore" + monthNumber,
+                    "TestQuantile" + monthNumber,
+                    "TestRelated" + monthNumber,
+                    "NYfilled" + monthNumber,
+                    "MeanYfilled" + monthNumber,
+                    "SYfilled" + monthNumber,
+                    "SkewYfilled" + monthNumber]
 
     # Write the entire header row at once
     output.writerow(headerRow)
 
+    # Close and re-open file to change the quote behavior
+    fileOpen.close()
+    fileOpen = open(fileName, 'ab')
+    # The following does not quote the ID columns, causing TSTool to interpret long integer IDs as doubles
+    # (too big to parse an integer)
+    output = csv.writer(fileOpen, delimiter=',', quoting=csv.QUOTE_MINIMAL)
+    # The following quotes everything
+    #output = csv.writer(fileOpen, delimiter=',', quoting=csv.QUOTE_NONNUMERIC)
+
     # Construct the Data Row
-    precission = '%0.3f'
-    dataRow =  [TSID[0], TSID_Indep[0]]
+    precision = '%0.5f'
+    # Force the double quotes so that TSTool will interpret the column as
+    # strings and not format as a double (bug parsing very long integers in TSTool table)
+    dataRow =  [ TSID[0], TSID_Indep[0] ]
     for i in range (0,nEquations):
         dataRow = dataRow + [n1[i],
-                            precission % MeanX1[i],
-                            precission % SX1[i],
+                            precision % MeanX1[i],
+                            precision % SX1[i],
                             n2[i],
                             MeanX2[i],
                             SX2[i],
-                            precission % MeanY1[i],
-                            precission % SY1[i],
+                            precision % MeanY1[i],
+                            precision % SY1[i],
                             NY[i],
-                            precission % MeanY[i],
-                            precission % SY[i],
-                            precission % a[i],
-                            precission % b[i],
-                            precission % R[i],
-                            precission % R2[i],
-                            precission % MeanY1est[i],
-                            precission % SY1est[i],
-                            precission % RMSE[i],
-                            precission % SEE[i],
-                            precission % SEP[i][0],
-                            precission % SESlope[i],
-                            precission % TestScore[i],
-                            precission % TestQuantile[i],
+                            precision % MeanY[i],
+                            precision % SY[i],
+                            precision % SkewY[i],
+                            precision % a[i],
+                            precision % b[i],
+                            precision % R[i],
+                            precision % R2[i],
+                            precision % MeanY1est[i],
+                            precision % SY1est[i],
+                            precision % RMSE[i],
+                            precision % SEE[i],
+                            #precision % SEP[i][0],
+                            precision % SESlope[i],
+                            precision % TestScore[i],
+                            precision % TestQuantile[i],
                             TestRelated[i],
                             len(NYfilled[i]),
-                            precission % MeanYfilled[i],
-                            precission % SYfilled[i],
-                            precission % Skew[i]]
+                            precision % MeanYfilled[i],
+                            precision % SYfilled[i],
+                            precision % SkewYfilled[i]]
 
     # Write the entire data row at once
     output.writerow(dataRow)
+
+    writeSEP()
+    fileOpen.close()
+
+def writeSEP():
+    # TODO SAM 2012-05-31 This code was cut from above.
+    # The statistics table is not really the place for SEP since SEP is for each estimated value
+    return
 
     # Write all the SEP values for each month
     maxSEPLength = 0
@@ -206,11 +233,9 @@ def Write_CSV (fileName,
         dataRow=[]
         for i in range (0,nEquations):
             try:
-                # This will fail if for a particular month less than maxSEPLength SEP values are calculated and and empty line will be added instead
+                # This will fail if for a particular month less than maxSEPLength SEP values are calculated and and empty line will be added
                 temp = SEP[i][j]
-                dataRow = dataRow + ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', precission % temp, '', '', '', '', '', '']
+                dataRow = dataRow + [None, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', precision % temp, '', '', '', '', '', '']
             except:
-                dataRow = dataRow + ['', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
+                dataRow = dataRow + [None, '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '', '']
         output.writerow(dataRow)
-
-    fileOpen.close()

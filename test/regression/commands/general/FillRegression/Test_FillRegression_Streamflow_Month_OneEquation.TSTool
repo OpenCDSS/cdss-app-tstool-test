@@ -5,17 +5,16 @@ StartLog(LogFile="Results/Test_FillRegression_Streamflow_Month_OneEquation.TSToo
 RemoveFile(InputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.dv",IfNotFound=Ignore)
 #
 # Read the streamflow data for the independent and dependent time series
-SetOutputPeriod(OutputStart="1997-01",OutputEnd="2002-12")
+SetOutputPeriod(OutputStart="1997-01",OutputEnd="2009-12")
 ReadDateValue(InputFile="Data\streamflow-month.dv")
 #
 # Create a table for output statistics...
 NewTable(TableID="Stats",Columns="TSID,string")
-FillRegression(TSID="BelowGeorgetown",IndependentTSID="AboveGeorgetown",Fill=False,FillFlag="R",TableID="Stats",TableTSIDColumn="TSID")
 #
 # Uncomment the following command to regenerate expected results using the Python script
 # The script does not actually fill the time series, it only computes the statistics and
 # saves in the output CSV file
-# RunPython(Interpreter="Python",Program="c:\python25\python.exe",InputFile="Python\FillRegression.py",Arguments="'IndependentBaseName=${WorkingDir}\Data\MonthIndependent' IndependentTSID=AboveGeorgetown 'DependentBaseName=${WorkingDir}\Data\MonthDependent' DependentTSID=BelowGeorgetown 'StatisticsFile=${WorkingDir}\ExpectedResults\Test_FillRegression_Python_Streamflow_Month_OneEquation_stats_out.csv' 'LogFile=${WorkingDir}\Results\Test_FillRegression_Python_Streamflow_Month_OneEquation.TSTool.log' NumberOfEquations=1")
+RunPython(Interpreter="Python",Program="c:\python25\python.exe",InputFile="Python\FillRegression.py",Arguments="'IndependentBaseName=${WorkingDir}\Data\MonthIndependent' IndependentTSID=AboveGeorgetown 'DependentBaseName=${WorkingDir}\Data\MonthDependent' DependentTSID=BelowGeorgetown 'StatisticsFile=${WorkingDir}\ExpectedResults\Test_FillRegression_Python_Streamflow_Month_OneEquation_stats_out.csv' 'LogFile=${WorkingDir}\Results\Test_FillRegression_Python_Streamflow_Month_OneEquation.TSTool.log' NumberOfEquations=1")
 #
 # Fill the time series with the TSTool command and write out the filled time series as a delimited file so it
 # can be compared with the Python script output
@@ -36,7 +35,7 @@ WriteTableToDelimitedFile(TableID="Stats",OutputFile="Results/Test_FillRegressio
 CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv",InputFile2="Results/Test_FillRegression_Streamflow_Month_OneEquation_stats_out.csv",IfDifferent=Warn)
 # Compare the Python-generated expected results and TSTool-generated results
 ReadTableFromDelimitedFile(TableID="Stats-Python",InputFile="ExpectedResults\Test_FillRegression_Python_Streamflow_Month_OneEquation_stats_out.csv")
-CompareTables(Table1ID="Stats",Table2ID="Stats-Python",NewTableID="Stats-Python-Comparison",OutputFile="Results/Test_FillRegression_Python_Streamflow_Month_OneEquation_stats_out_comparison.html",IfDifferent=Warn)
+CompareTables(Table1ID="Stats",Table2ID="Stats-Python",Precision=4,Tolerance=.02,NewTableID="Stats-Python-Comparison",OutputFile="Results/Test_FillRegression_Python_Streamflow_Month_OneEquation_stats_out_comparison.html",IfDifferent=Warn)
 #
 # Also plot to help with verification (set to no view when ready for automated tests).
-ProcessTSProduct(TSProductFile="Test_FillRegression_Streamflow_Month_OneEquation.tsp",OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.png")
+# ProcessTSProduct(TSProductFile="Test_FillRegression_Streamflow_Month_OneEquation.tsp",OutputFile="Results/Test_FillRegression_Streamflow_Month_OneEquation_out.png")

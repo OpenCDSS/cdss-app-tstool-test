@@ -51,6 +51,7 @@ def main ( independentBaseName, dependentBaseName, independentTSID, dependentTSI
     _NY=[]
     _MeanY=[]
     _SY=[]
+    _SkewY=[]
     _a=[]
     _b=[]
     _R=[]
@@ -90,6 +91,12 @@ def main ( independentBaseName, dependentBaseName, independentTSID, dependentTSI
         [TSID_Indep, X] = Read_TS.Read_CSV(independentName)
         [TSID, Y] = Read_TS.Read_CSV(dependentName)
 
+        # Override the TSID with that from the command line
+        #if ( dependentTSID != None ):
+        #     TSID = dependentTSID
+        #if ( independentTSID != None ):
+        #     TSID_Indep = independentTSID
+
         # remove missing values
         [independent, x_n2, dependent, n1, n2] = Statistics.overlapping(X, Y, missingValue)
 
@@ -103,6 +110,7 @@ def main ( independentBaseName, dependentBaseName, independentTSID, dependentTSI
 
         # calculate additional statistics for dependent variable
         [MeanY, NY, SY]=Statistics.dependent_statistics(Y, missingValue)
+        SkewY = Statistics.Skew(Y)
 
         # calculate regression coefficients
         [a,b,R,R2]=Statistics.regression_coef(independent, dependent)
@@ -156,6 +164,7 @@ def main ( independentBaseName, dependentBaseName, independentTSID, dependentTSI
         _NY.append(NY)
         _MeanY.append(MeanY)
         _SY.append(SY)
+        _SkewY.append(SkewY)
         _a.append(a)
         _b.append(b)
         _R.append(R)
@@ -189,6 +198,7 @@ def main ( independentBaseName, dependentBaseName, independentTSID, dependentTSI
                         _NY,
                         _MeanY,
                         _SY,
+                        _SkewY,
                         _a,
                         _b,
                         _R,
