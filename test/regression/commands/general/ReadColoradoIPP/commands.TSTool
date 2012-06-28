@@ -1,4 +1,0 @@
-ReadColoradoIPP(Subject=County)
-ReadColoradoIPP(Subject=Provider)
-ReadColoradoIPP(Subject=Project)
-CheckTimeSeries(CheckCriteria="Missing")
