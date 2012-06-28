@@ -1,9 +1,12 @@
 # Test reading daily precipitation from RCC ACIS
 # Specify a bounding box to limit the number of stations to 1 and
 # a historical period to limit changes that will occur in time series data
+# This test will need to be updated once the version 2 services are rolled out
 StartLog(LogFile="Results/Test_ReadRccAcis_Precipitation_Day_BBox.TSTool.log")
 ReadRccAcis(DataStore="RCC-ACIS",DataType="4",Interval="Day",Where1="Bounding Box;Matches;-103.53334,37.999999,-103.53332,38.000001",InputStart="1911-01-01",InputEnd="1912-03-15",Alias="%L-Precipitation")
+ReadRccAcis(DataStore="RCC-ACIS-Test",DataType="pcpn",Interval="Day",Where1="Bounding Box;Matches;-103.53334,37.999999,-103.53332,38.000001",InputStart="1911-01-01",InputEnd="1912-03-15",Alias="%L-Precipitation")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv",InputFile2="Results/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv",IfDifferent=Warn)
+CompareTimeSeries(WarnIfDifferent=True)
