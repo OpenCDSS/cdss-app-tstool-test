@@ -1,4 +1,4 @@
-# Test comparing version 1 web service (RCC-ACIS) with version 2 (RCC-ACIS-Test) 
+# Test comparing version 1 web service (RCC-ACIS) with version 2 (RCC-ACIS-Test)
 # Daily precipitation (pcpn)
 # This test will change after the legacy web services are completely phased out
 SetInputPeriod(InputStart="2000-01-01",InputEnd="2000-12-31")
