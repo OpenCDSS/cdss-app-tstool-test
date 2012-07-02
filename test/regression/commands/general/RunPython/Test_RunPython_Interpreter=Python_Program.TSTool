@@ -1,5 +1,6 @@
 # Test to run Python using the Python interpreter program,
 # specifying the path to the Python program (C:\python25)
+#@os Windows
 StartLog(LogFile="Results/Test_RunPython_Interpreter=Python_Program.TSTool.log")
 RemoveFile(InputFile="Results\Test_RunPython_Interpreter=Python_Program_out.txt",IfNotFound=Ignore)
 RunPython(InputFile="Data/readwritefile.py",Interpreter="Python",Arguments="${WorkingDir}/Data/readwritefile.txt ${WorkingDir}/Results/Test_RunPython_Interpreter=Python_Program_out.txt",Program="C:\python25\python")
