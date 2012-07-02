@@ -3,9 +3,12 @@
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_TempMean_Month.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_TempMean_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="2000-01",InputEnd="2002-12")
+SetInputPeriod(InputStart="1893-01",InputEnd="1895-12")
 3005.NOAA.TempMean.Month~HydroBase
 3005.NOAA.TempMean.Month~ColoradoWaterHBGuest
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and
 # rounding on output produces different values.

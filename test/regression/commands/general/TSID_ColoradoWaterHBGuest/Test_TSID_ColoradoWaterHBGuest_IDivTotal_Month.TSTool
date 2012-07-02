@@ -6,6 +6,9 @@ RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_IDivTotal_Month_out.
 SetInputPeriod(InputStart="1980-11",InputEnd="1981-10")
 0300915.DWR.IDivTotal.Month~HydroBase
 0300915.DWR.IDivTotal.Month~ColoradoWaterHBGuest
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and
 # rounding on output produces different values.

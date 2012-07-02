@@ -3,9 +3,12 @@
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_DivTotal_Year.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_DivTotal_Year_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
-SetInputPeriod(InputStart="1990",InputEnd="1995")
+SetInputPeriod(InputStart="1947",InputEnd="1960")
 0300915.DWR.DivTotal.Year~HydroBase
 0300915.DWR.DivTotal.Year~ColoradoWaterHBGuest
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and
 # rounding on output produces different values.

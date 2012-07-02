@@ -7,6 +7,9 @@ SetInputPeriod(InputStart="1990-01-01",InputEnd="1995-12-31")
 # HydroBase uses more general "WellLevel" data type - need to convert to WellLevelElev when there is time
 SB00306325DDD.DWR.WellLevel.Day~HydroBase
 SB00306325DDD.DWR.WellLevelElev.Day~ColoradoWaterHBGuest
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and
 # rounding on output produces different values.
