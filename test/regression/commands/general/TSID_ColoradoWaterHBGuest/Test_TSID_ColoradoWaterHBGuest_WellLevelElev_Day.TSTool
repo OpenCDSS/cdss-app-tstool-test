@@ -3,12 +3,12 @@
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_WellLevelElev_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_WellLevelElev_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="1990-01-01",InputEnd="1995-12-31")
+SetInputPeriod(InputStart="1983-01-01",InputEnd="1995-12-31")
 # HydroBase uses more general "WellLevel" data type - need to convert to WellLevelElev when there is time
-SB00306325DDD.DWR.WellLevel.Day~HydroBase
+SB00306325DDD.DWR.WellLevelElev.Day~HydroBase
 SB00306325DDD.DWR.WellLevelElev.Day~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
-CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=8,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and
