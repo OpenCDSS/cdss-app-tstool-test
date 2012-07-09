@@ -3,7 +3,7 @@
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_ResMeasEvap_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_ResMeasEvap_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="1990-01-01",InputEnd="2009-12-31")
+SetInputPeriod(InputStart="1990-01-01",InputEnd="2008-12-31")
 0303732.DWR.ResMeasEvap.Day~HydroBase
 0303732.DWR.ResMeasEvap.Day~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
