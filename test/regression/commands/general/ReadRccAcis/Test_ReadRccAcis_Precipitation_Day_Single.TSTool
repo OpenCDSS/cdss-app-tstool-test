@@ -3,8 +3,8 @@
 # a historical period to limit changes that will occur in time series data
 # This test will need to be updated when the version 2 web services are released
 StartLog(LogFile="Results/Test_ReadRccAcis_Precipitation_Day_Single.TSTool.log")
-ReadRccAcis(DataStore="RCC-ACIS",DataType="4",Interval="Day",SiteID="COOP:054719",InputStart="1911-01-01",InputEnd="1912-03-15",Alias="%L-Precipitation")
-ReadRccAcis(DataStore="RCC-ACIS-Test",DataType="pcpn",Interval="Day",SiteID="COOP:054719",InputStart="1911-01-01",InputEnd="1912-03-15",Alias="%L-Precipitation")
+ReadRccAcis(DataStore="RCC-ACIS",DataType="pcpn",Interval="Day",SiteID="COOP:054719",InputStart="1911-01-01",InputEnd="1912-03-15",Alias="%L-Precipitation")
+ReadRccAcis(DataStore="RCC-ACIS-Old",DataType="4",Interval="Day",SiteID="COOP:054719",InputStart="1911-01-01",InputEnd="1912-03-15",Alias="%L-Precipitation")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadRccAcis_Precipitation_Day_Single_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadRccAcis_Precipitation_Day_Single_out.dv")
