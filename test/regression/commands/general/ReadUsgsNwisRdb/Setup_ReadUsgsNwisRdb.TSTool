@@ -1,0 +1,8 @@
+# Setup the Rdb tests by retrieving data from the USGS in current formats
+#
+# Retrieve time series for two stations (all statistics), in this case near Asheville, NC
+WebGet(URI="http://waterservices.usgs.gov/nwis/dv?format=rdb,1.0&sites=03451500&startDT=2000-01-01&endDT=2010-12-31",LocalFile="Data/03451500.rdb")
+#
+# Retrieve time series for two stations on the Colorado River, different
+# statistics for each
+WebGet(URI="http://waterservices.usgs.gov/nwis/dv?format=rdb,1.0&sites=09071750,09070500&startDT=2000-01-01&endDT=2010-12-31",LocalFile="Data/ColoradoRiver2Gages.rdb")
