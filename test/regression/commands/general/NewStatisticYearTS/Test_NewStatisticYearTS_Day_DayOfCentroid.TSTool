@@ -1,0 +1,9 @@
+# For daily data, determine the DayOfCentroid value in each year.
+StartLog(LogFile="Results/Test_NewStatisticYearTS_Day_DayOfCentroid.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Day_DayOfCentroid_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,,50,45,20,4")
+NewStatisticYearTS(TSID="ts1",Alias="Stat",NewTSID="ts1..Streamflow.Year.DayOfCentroid",Statistic=DayOfCentroid)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticYearTS_Day_DayOfCentroid_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+WriteDateValue(OutputFile="Results\Test_NewStatisticYearTS_Day_DayOfCentroid_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticYearTS_Day_DayOfCentroid_out.dv",InputFile2="Results\Test_NewStatisticYearTS_Day_DayOfCentroid_out.dv",IfDifferent=Warn)
