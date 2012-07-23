@@ -1,0 +1,10 @@
+# Test trying to append all *.csv files in a folder to an output file (recreate output)
+StartLog(LogFile="Results/Test_AppendFile_Extension_IncludeText.TSTool.log")
+# Remove the output file before the test
+RemoveFile(InputFile="Results/Test_AppendFile_Extension_IncludeText_out.csv",IfNotFound=Ignore)
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="ExpectedResults/Test_AppendFile_Extension_IncludeText_out.csv",IfNotFound=Ignore)
+# AppendFile(InputFile="Data/*.csv",OutputFile="ExpectedResults/Test_AppendFile_Extension_IncludeText_out.csv",IncludeText=".*\Q-\E.*")
+AppendFile(InputFile="Data/*.csv",OutputFile="Results/Test_AppendFile_Extension_IncludeText_out.csv",IncludeText=".*\Q-\E.*")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_Extension_IncludeText_out.csv",InputFile2="Results/Test_AppendFile_Extension_IncludeText_out.csv",IfDifferent=Warn)
