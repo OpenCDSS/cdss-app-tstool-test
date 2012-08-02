@@ -1,0 +1,4 @@
+DateTimeProp=DateTime("2012-01-01")
+DoubleProp=1.2345
+IntegerProp=12345
+StringProp="A string"
