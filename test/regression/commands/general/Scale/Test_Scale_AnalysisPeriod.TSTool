@@ -1,6 +1,0 @@
-startLog(LogFile="month_usingAnalysisPeriod.log")
-# 0100688 - UNION DITCH
-0100688.DWR.DivTotal.Month~HydroBase
-scale(TSID="0100688.DWR.DivTotal.Month",ScaleValue=-25,AnalysisStart="1993-10",AnalysisEnd="2000-10")
-writeDateValue(OutputFile="../output/month_usingAnalysisPeriodOutput.dv")
-compareFiles(InputFile1="month_usingAnalysisPeriodExpected.dv",InputFile2="../output/month_usingAnalysisPeriodOutput.dv",WarnIfDifferent=True)
