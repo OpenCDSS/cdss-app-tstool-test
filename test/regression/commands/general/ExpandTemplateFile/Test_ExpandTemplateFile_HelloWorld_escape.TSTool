@@ -1,5 +1,5 @@
 # Test expanding a FreeMarker template for "Hello World"
-# in particula to demonstrate how to escape (pass through) a property
+# in particular to demonstrate how to escape (pass through) a property
 StartLog(LogFile="Results/Test_ExpandTemplateFile_HelloWorld_escape.TSTool.log")
 RemoveFile(InputFile="Results/Test_ExpandTemplateFile_HelloWorld_escape_out.txt",IfNotFound=Ignore)
 # Uncomment to regenerate the expected results.

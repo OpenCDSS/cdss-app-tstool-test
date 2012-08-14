@@ -1,0 +1,3 @@
+# Simple test to expand a text file using FreeMarker
+# There should be no comment in the expanded output below this line
+Hello World
