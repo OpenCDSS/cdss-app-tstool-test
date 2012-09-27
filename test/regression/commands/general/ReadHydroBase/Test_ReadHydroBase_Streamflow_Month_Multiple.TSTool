@@ -6,7 +6,7 @@ RemoveFile(InputFile="Results/Test_ReadHydroBase_Streamflow_Month_Multiple_out.d
 # Specify the period to read because HydroBase will change over time and
 # setting the period will better control the numbers that return and impact the
 # test results.
-ReadHydroBase(TSID="2000812.DWR.DivTotal.Month~HydroBase",Alias="%L-%T-%I",InputStart="1949-11",InputEnd="2005-10")
+ReadHydroBase(DataType="Streamflow",Interval="Month",Where1="County Name;Matches;OTERO",Where2="Station Name;Starts with;TIMPAS",Alias="%L-%T-%I")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadHydroBase_Streamflow_Month_Multiple_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadHydroBase_Streamflow_Month_Multiple_out.dv")
