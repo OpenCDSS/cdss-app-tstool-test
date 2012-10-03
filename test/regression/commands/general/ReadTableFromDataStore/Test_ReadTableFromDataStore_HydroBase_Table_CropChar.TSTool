@@ -2,7 +2,7 @@
 # The static vw_CDSS_Cropchar view is used because it has only a few records (although may change with updates)
 StartLog(LogFile="Results/Test_ReadTableFromDataStore_HydroBase_Table_CropChar.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_Table_CropChar_out.csv",IfNotFound=Ignore)
-ReadTableFromDataStore(DataStore="HydroBase2012",DataStoreTable="vw_CDSS_Cropchar",TableID="CropChar")
+ReadTableFromDataStore(DataStore="HydroBase",DataStoreTable="vw_CDSS_Cropchar",TableID="CropChar")
 # Uncomment to regenerate expected results
 # WriteTableToDelimitedFile(TableID="CropChar",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Table_CropChar_out.csv")
 # Generate the results.
