@@ -10,7 +10,7 @@ NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..Streamflow.Month",Description="te
 # Create an ensemble to hold the above time series
 NewEnsemble(TSList=AllTS,NewEnsembleID="TestEnsemble",NewEnsembleName="Test Ensemble")
 # Compute the statistic
-NewStatisticTimeSeriesFromEnsemble(Alias="Mean",EnsembleID="TestEnsemble",NewTSID="Test..Streamflow.Month.Mean",Statistic=Mean,OutputStart="2001-01",OutputEnd="2001-12")
+NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..Streamflow.Month.Mean",Alias="Mean",Statistic=Mean,OutputStart="2001-01",OutputEnd="2001-12")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_NewStatisticTimeSeriesFromEnsemble_Month_Mean_OutputPeriod_out.dv")
 WriteDateValue(OutputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Month_Mean_OutputPeriod_out.dv")

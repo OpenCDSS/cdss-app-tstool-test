@@ -9,7 +9,7 @@ NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..Streamflow.Month",Description="te
 # Create an ensemble to hold the above time series
 NewEnsemble(TSList=AllTS,NewEnsembleID="TestEnsemble",NewEnsembleName="Test Ensemble")
 # Compute the statistic
-NewStatisticTimeSeriesFromEnsemble(Alias="Min",EnsembleID="TestEnsemble",NewTSID="Test..Streamflow.Month.Min",Statistic=Min)
+NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..Streamflow.Month.Min",Alias="Min",Statistic=Min)
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min_out.dv")
 WriteDateValue(OutputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min_out.dv")
