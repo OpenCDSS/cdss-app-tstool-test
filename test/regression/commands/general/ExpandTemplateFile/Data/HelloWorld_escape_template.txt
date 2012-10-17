@@ -1,5 +1,7 @@
 # Simple test to expand a text file using FreeMarker
 # and also escape text so that it passes through to the expanded file
+# The output should be SomeCommand(...) with a property
 # @readOnly
 <#assign message="Hello World">
+${message}
 ${r"SomeCommand($SomeProperty)"}
