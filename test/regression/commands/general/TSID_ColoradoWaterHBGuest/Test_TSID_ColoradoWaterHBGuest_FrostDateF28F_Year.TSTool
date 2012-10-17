@@ -3,7 +3,7 @@
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_FrostDateF28F_Year.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_FrostDateF28F_Year_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="1895",InputEnd="2005")
+SetInputPeriod(InputStart="1900",InputEnd="2005")
 3005.NOAA.FrostDateF28F.Year~HydroBase
 3005.NOAA.FrostDateF28F.Year~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
