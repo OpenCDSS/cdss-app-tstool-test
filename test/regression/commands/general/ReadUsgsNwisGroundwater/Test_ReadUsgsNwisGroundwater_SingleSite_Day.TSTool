@@ -1,6 +1,6 @@
-# Test water level from a single site
+# Test water level from a single site, day interval
 # If no error then things are generally working
 # Don't compare values because them may change
-StartLog(LogFile="NWIS-Groundwater-WaterLevels-Example.TSTool.log")
+StartLog(LogFile="Results/Test_ReadUsgsNwisGroundwtaer_SingleSite_Day.TSTool.log")
 SetInputPeriod(InputStart="1950-01-01",InputEnd="CurrentToDay")
-ReadUsgsNwisGroundwater(DataStore="UsgsNwisGroundwater",Sites="400125104370001",Parameters="72019",SiteStatus="Active",Alias="%L-%T",OutputFile="Results/Test_ReadUsgsNwisGroundwater_SingleSite_out.waterml")
+ReadUsgsNwisGroundwater(DataStore="UsgsNwisGroundwater",Sites="400125104370001",Parameters="72019",SiteStatus="Active",Interval="Day",Alias="%L-%T",OutputFile="Results/Test_ReadUsgsNwisGroundwater_SingleSite_Day_out.waterml")

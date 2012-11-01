@@ -1,0 +1,6 @@
+# Test water level from a single site, irregular interval
+# If no error then things are generally working
+# Don't compare values because them may change
+StartLog(LogFile="Results/Test_ReadUsgsNwisGroundwtaer_SingleSite_Irregular.TSTool.log")
+SetInputPeriod(InputStart="1950-01-01",InputEnd="CurrentToDay")
+ReadUsgsNwisGroundwater(DataStore="UsgsNwisGroundwater",Sites="400125104370001",Parameters="72019",SiteStatus="Active",Interval="Irregular",Alias="%L-%T",OutputFile="Results/Test_ReadUsgsNwisGroundwater_SingleSite_Irregular_out.waterml")
