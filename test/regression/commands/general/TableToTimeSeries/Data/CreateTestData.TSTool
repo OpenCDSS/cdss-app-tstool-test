@@ -1,0 +1,13 @@
+# Generate test data, using two time series
+SetInputPeriod(InputStart="2000-01-01",InputEnd="2000-12-31")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+06754000.DWR.Streamflow.Day~HydroBase
+# 06758500 - SOUTH PLATTE RIVER NEAR WELDONA, CO
+06758500.DWR.Streamflow.Day~HydroBase
+# Convert the time series to a table
+# Create a multi-column data table, and a single-column data table
+TimeSeriesToTable(TableID="TestDataMultiColumn",DateTimeColumn="Date",DataColumn="%L",DataRow=1,IfTableNotFound="Create")
+TimeSeriesToTable(TableID="TestDataSingleColumn",DateTimeColumn="Date",TableTSIDColumn="Location",TableTSIDFormat="%L",DataColumn="Value",DataRow=1,IfTableNotFound="Create")
+# Write the files as test data
+WriteTableToDelimitedFile(TableID="TestDataMultiColumn",OutputFile="multiple-column.csv")
+WriteTableToDelimitedFile(TableID="TestDataSingleColumn",OutputFile="single-column.csv")
