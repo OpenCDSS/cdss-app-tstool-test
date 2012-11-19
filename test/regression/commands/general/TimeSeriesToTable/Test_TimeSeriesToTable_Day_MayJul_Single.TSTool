@@ -5,7 +5,7 @@ StartLog(LogFile="Results/Test_TimeSeriesToTable_Day_MayJul_Single.TSTool.log")
 RemoveFile(InputFile="Results/Test_TimeSeriesToTable_Day_MayJul_Single_out.csv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Flow.Day",SetStart="2000-01-01",SetEnd="2003-12-12",Units="ACFT",PatternValues="1,-2,3,-4,5,,7,-8,9,-10,11,-12")
 NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..Flow.Day",SetStart="2001-03-01",SetEnd="2004-05-20",Units="ACFT",PatternValues="-1,2,-3,4,-5,,-7,8,-9,10,-11,12")
-TimeSeriesToTable(TableID="TestTable",DateTimeColumn="Year",TableTSIDColumn="TSID",TableTSIDFormat="%L-%T",DataColumn="Value",DataRow=1,OutputWindowStart="05-01",OutputWindowEnd="07-31",IfTableNotFound="Create")
+TimeSeriesToTable(TableID="TestTable",DateTimeColumn="Year",TableTSIDColumn="TSID",TableTSIDFormat="%L-%T",ValueColumn="Value",DataRow=1,OutputWindowStart="05-01",OutputWindowEnd="07-31",IfTableNotFound="Create")
 # Uncomment the following to recreate expected results
 # WriteTableToDelimitedFile(TableID="TestTable",OutputFile="ExpectedResults\Test_TimeSeriesToTable_Day_MayJul_Single_out.csv")
 # Generate the results.
