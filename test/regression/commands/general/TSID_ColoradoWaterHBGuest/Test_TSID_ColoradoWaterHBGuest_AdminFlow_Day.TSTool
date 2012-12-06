@@ -4,7 +4,11 @@ StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Day.TSTool.log
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="2000-01-01",InputEnd="2000-12-31")
-HSCCLPCO.DWR.AdminFlow.Day~HydroBase
+# Metadata changed in HydroBase so use new identifier.
+# HSCCLPCO - HANSEN SUPPLY CANAL TO CACHE LA POUDRE RIVER NEAR FORT COLLINS
+# HSCCLPCO.DWR.AdminFlow.Day~HydroBase
+# ES1904 - HANSEN SUPPLY CANAL TO CACHE LA POUDRE RIVER NEAR FORT COLLINS
+ES1904.DWR.AdminFlow.Day~HydroBase
 HSCCLPCO.NCWCD.AdminFlow.Day~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
@@ -15,4 +19,4 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 #WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterHBGuest_AdminFlow_Day_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="0300915.DWR.AdminFlow.Day")
 #WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Day_out.dv",Precision=2,TSList=LastMatchingTSID,TSID="0300915.DWR.AdminFlow.Day")
 #CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterHBGuest_AdminFlow_Day_out.dv",InputFile2="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Day_out.dv",IfDifferent=Warn)
-CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,Tolerance=".01",WarnIfDifferent=True)
