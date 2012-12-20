@@ -9,4 +9,5 @@ ReadUsgsNwisDaily(DataStore="UsgsNwisDaily",States="RI",Parameters="00060",Input
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadUsgsNwisDaily_SingleState_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadUsgsNwisDaily_SingleState_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_SingleState_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_SingleState_out.dv",IfDifferent=Warn)
+# Comment out the following because the number of gages changes over time
+# CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_SingleState_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_SingleState_out.dv",IfDifferent=Warn)
