@@ -6,8 +6,8 @@ RemoveFile(InputFile="Results\Test_ReadTimeSeries_Missing_IfNotFound=Default_out
 SetInputPeriod(InputStart="1995-01-01",InputEnd="1999-12-31")
 SetOutputPeriod(OutputStart="1995-01-01",OutputEnd="1999-12-31")
 # Read at least one good time series so WriteDateValue() does not fail.
-ReadTimeSeries(Alias="ts1",TSID="x08235350.USGS.Streamflow.Day~HydroBase",IfNotFound=Default)
-ReadTimeSeries(Alias="ts2",TSID="08235350.USGS.Streamflow.Day~HydroBase",IfNotFound=Warn)
+ReadTimeSeries(TSID="x08235350.USGS.Streamflow.Day~HydroBase",Alias="ts1",IfNotFound=Default)
+ReadTimeSeries(TSID="08235350.USGS.Streamflow.Day~HydroBase",Alias="ts2",IfNotFound=Warn)
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadTimeSeries_Missing_IfNotFound=Default_out.dv",Precision=1)
 WriteDateValue(OutputFile="Results\Test_ReadTimeSeries_Missing_IfNotFound=Default_out.dv",Precision=1)
