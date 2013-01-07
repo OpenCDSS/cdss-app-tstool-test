@@ -10,6 +10,7 @@ SubTitleString = "Running Statistics (use all previous values)"
 
 GraphType = "Line"
 LayoutYPercent = ""
+LeftYAxisLabelPrecision = 0
 
 [Data 1.1]
 
