@@ -6,7 +6,7 @@ StartLog(LogFile="Results/Test_TSID_RccAcis_Day_053005_pcpn.TSTool.log")
 # Remove previous results
 RemoveFile(InputFile="Results\Test_TSID_RccAcis_Day_053005_pcpn_out.dv",IfNotFound=Ignore)
 # Read time series
-COOP:053005.ACIS.4.Day~RCC-ACIS-Old
+# COOP:053005.ACIS.4.Day~RCC-ACIS-Old
 COOP:053005.ACIS.pcpn.Day~RCC-ACIS
 # Uncomment the following to regenerate expected results
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_RccAcis_Day_053005_pcpn_out.dv",Precision=2)
