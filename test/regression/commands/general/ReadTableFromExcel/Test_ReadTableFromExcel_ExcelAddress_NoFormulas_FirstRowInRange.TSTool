@@ -4,7 +4,7 @@
 #  * Name columns FirstRowInRange
 StartLog(LogFile="Results/Test_ReadTableFromExcel_ExcelAddress_NoFormulas_FirstRowInRange.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromExcel_ExcelAddress_NoFormulas_FirstRowInRange_out.csv",IfNotFound=Ignore)
-ReadTableFromExcel(TableID="Table_NoFormulas",InputFile="Data\TestWorkbook.xlsx",Worksheet="Address_NoFormulas",ExcelAddress="A1:G11",ExcelColumnNames="FirstRowInRange")
+ReadTableFromExcel(TableID="Table_NoFormulas",InputFile="Data\TestWorkbook.xlsx",Worksheet="Address_NoFormulas",ExcelAddress="A1:G11",ExcelColumnNames=FirstRowInRange)
 # Uncomment the following command to regenerate expected results
 # WriteTableToDelimitedFile(TableID="Table_NoFormulas",OutputFile="ExpectedResults\Test_ReadTableFromExcel_ExcelAddress_NoFormulas_FirstRowInRange_out.csv")
 WriteTableToDelimitedFile(TableID="Table_NoFormulas",OutputFile="Results\Test_ReadTableFromExcel_ExcelAddress_NoFormulas_FirstRowInRange_out.csv")

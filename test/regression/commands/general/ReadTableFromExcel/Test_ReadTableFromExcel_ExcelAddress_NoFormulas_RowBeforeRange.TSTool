@@ -4,7 +4,7 @@
 #  * Name columns RowBeforeRange
 StartLog(LogFile="Results/Test_ReadTableFromExcel_ExcelAddress_NoFormulas_RowBeforeRange.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromExcel_ExcelAddress_NoFormulas_RowBeforeRange_out.csv",IfNotFound=Ignore)
-ReadTableFromExcel(TableID="Table_NoFormulas",InputFile="Data\TestWorkbook.xlsx",Worksheet="Address_NoFormulas",ExcelAddress="A2:G11",ExcelColumnNames="RowBeforeRange")
+ReadTableFromExcel(TableID="Table_NoFormulas",InputFile="Data\TestWorkbook.xlsx",Worksheet="Address_NoFormulas",ExcelAddress="A2:G11",ExcelColumnNames=RowBeforeRange)
 # Uncomment the following command to regenerate expected results
 # WriteTableToDelimitedFile(TableID="Table_NoFormulas",OutputFile="ExpectedResults\Test_ReadTableFromExcel_ExcelAddress_NoFormulas_RowBeforeRange_out.csv")
 WriteTableToDelimitedFile(TableID="Table_NoFormulas",OutputFile="Results\Test_ReadTableFromExcel_ExcelAddress_NoFormulas_RowBeforeRange_out.csv")
