@@ -11,8 +11,10 @@
 
 from scipy.stats import norm
 import math
+import logging
 
 def Student_T_quantile (p,n):
+    logger = logging.getLogger()
     # convert one sided exceedence probability to confindence interval
     sign = 1
     if p < 0.5:
@@ -37,6 +39,7 @@ def Student_T_quantile (p,n):
         y = math.pow(x,(2.0/n))
         if y > 0.05 + a:
             x =norm.ppf(p*0.5)
+            logger.info("Probability density function for " + str(p*.5) + "=" + str(x) )
             y = math.pow(x,2)
             if n < 5:
                 c = c + 0.3 * (n-4.5) * (x+0.6)

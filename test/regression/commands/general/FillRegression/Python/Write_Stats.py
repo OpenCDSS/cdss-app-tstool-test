@@ -110,7 +110,9 @@ def Write_CSV (fileName,
     output.writerow(['# SESlope - Standard error (SE) of the slope (b) for N1 values, computed from regression relationship estimated values'])
     output.writerow(['# TestScore - b/SE'])
     output.writerow(['# TestQuantile - From the Student\'s T-test, function of confidence interval and degrees of freedom, DF (N1 - 2)'])
-    output.writerow(['# TestRelated - Yes if TestScore < TestQuantile, false if otherwise.'])
+    output.writerow(['# TestOK - Yes if TestScore >= TestQuantile, No if otherwise.'])
+    output.writerow(['# SampleSizeOK - Yes if sample size >= MinimumSampleSize, No if otherwise.'])
+    output.writerow(['# ROK - Yes if R >= MinimumR, No if otherwise.'])
     output.writerow(['# NYfilled - number of filled dependent values'])
     output.writerow(['# MeanYfilled - Mean of filled dependent values'])
     output.writerow(['# SYfilled - Standard deviation of filled dependent values'])
@@ -158,7 +160,7 @@ def Write_CSV (fileName,
                     "SESlope" + monthNumber,
                     "TestScore" + monthNumber,
                     "TestQuantile" + monthNumber,
-                    "TestRelated" + monthNumber,
+                    "TestOK" + monthNumber,
                     "NYfilled" + monthNumber,
                     "MeanYfilled" + monthNumber,
                     "SYfilled" + monthNumber,

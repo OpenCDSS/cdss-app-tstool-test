@@ -1,0 +1,3 @@
+# Script to compile program
+
+g77 Fill-In.for -o Fill-In-sam.exe

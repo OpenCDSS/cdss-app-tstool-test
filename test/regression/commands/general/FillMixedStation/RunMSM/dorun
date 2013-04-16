@@ -1,0 +1,5 @@
+# Comparable to Fill-In.bat but uses UNIX shell
+
+Fill-In-sam.exe < "fill-in.go"
+
+echo "exit code: $?"
