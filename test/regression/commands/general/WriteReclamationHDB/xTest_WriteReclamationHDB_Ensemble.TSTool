@@ -1,3 +1,6 @@
+#@enabled False
+# Disable because should only be testing against development database
+#
 # Test writing an ensemble to a ReclamationHDB
 # In this case the ensemble is a file provided by Reclamation
 StartLog(LogFile="Results/Test_WriteReclamationHDB_Ensemble.TSTool.log")

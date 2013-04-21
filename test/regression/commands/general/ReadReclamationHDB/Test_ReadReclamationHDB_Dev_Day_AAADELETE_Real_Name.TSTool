@@ -1,3 +1,6 @@
+#@enabled False
+# Disable because should only be testing against development database
+#
 # Test reading a day time series from ReclamationHDB database
 # * real table, using name, etc.
 # * Development database

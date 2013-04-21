@@ -1,3 +1,7 @@
+#@enabled False
+# Disable because it seems like Reclamation is not going to need IntervalOverride after all
+# Delete this test after verifying that it is not needed
+#
 # Test writing an instantaneous time series to ReclamationHDB
 #   * development database
 #   * real table

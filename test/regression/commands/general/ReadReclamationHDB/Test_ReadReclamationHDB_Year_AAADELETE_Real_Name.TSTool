@@ -1,3 +1,6 @@
+#@enabled False
+# Disable because should only be testing against development database
+#
 # Test reading a year time series from ReclamationHDB database real table, using name, etc.
 # The AAA_DELETE location year data are read
 StartLog(LogFile="Results/Test_ReadReclamationHDB_Year_AAADELETE_Real_Name.TSTool.log")

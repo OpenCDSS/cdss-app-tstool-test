@@ -1,3 +1,6 @@
+#@enabled False
+# Disable because should only be testing against development database
+#
 # Test writing a year time series to ReclamationHDB database real table, using name, etc.
 # The AAA_DELETE location year data are written
 StartLog(LogFile="Results/Test_WriteReclamationHDB_Year_AAADELETE_Real_Name.TSTool.log")

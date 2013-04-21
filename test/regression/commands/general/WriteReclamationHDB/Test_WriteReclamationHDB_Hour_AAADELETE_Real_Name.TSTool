@@ -1,3 +1,6 @@
+#@enabled False
+# Disable because should only be testing against development database
+#
 # Test writing an hour time series to ReclamationHDB database real table by specifying name, etc.
 # The AAA_DELETE location hourly data are written
 StartLog(LogFile="Results/Test_WriteReclamationHDB_Hour_AAADELETE_Real_Name.TSTool.log")

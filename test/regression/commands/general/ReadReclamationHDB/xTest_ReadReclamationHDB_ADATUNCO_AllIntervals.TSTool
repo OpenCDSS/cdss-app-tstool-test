@@ -1,3 +1,6 @@
+#@enabled False
+# Disable because should only be testing against development database
+#
 # Test to read from Reclamation HDB for a Real station for all intervals
 # This works with the ECO database (Loveland, CO)
 ReadReclamationHDB(DataStore="ReclamationHDB-ECO",DataType="diversion - flow volume",Interval="Hour",Where1="Site - Common Name;Matches;ADATUNCO")
