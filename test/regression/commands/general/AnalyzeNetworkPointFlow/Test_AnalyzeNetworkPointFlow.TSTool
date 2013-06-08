@@ -1,0 +1,16 @@
+# Test analyzing a simple network for point fFlows
+StartLog(LogFile="Results/Test_AnalyzeNetworkPointFlow.TSTool.log")
+RemoveFile(InputFile="Results/Test_AnalyzeNetworkPointFlow_out.csv",IfNotFound=Ignore)
+# Read the network
+ReadTableFromExcel(TableID="Network1",InputFile="Data\Network1.xlsx",Worksheet="Network1",ExcelColumnNames=FirstRowInRange)
+# Read the time series associated with network nodes (pregenerated)
+ReadDateValue(InputFile="Data\Network1-Diversion-DivTotal.dv")
+ReadDateValue(InputFile="Data\Network1-Return-DivTotal.dv")
+ReadDateValue(InputFile="Data\Network1-StreamGage-Streamflow.dv")
+# Analyze the network point flow.
+AnalyzeNetworkPointFlow(TableID="Network1",NodeIDColumn="NodeID",NodeNameColumn="NodeName",NodeTypeColumn="NodeType",DownstreamNodeIDColumn="DownstreamNodeID",NodeAddTypes="Return",NodeAddDataTypes="DivTotal",NodeSubtractTypes="Diversion",NodeSubtractDataTypes="DivTotal",NodeOutflowTypes="StreamGage",NodeOutflowDataTypes="Streamflow",NodeFlowThroughTypes="InstreamFlow",Interval=Day,AnalysisStart="1950-01-01",AnalysisEnd="2012-12-31",Units="CFS",OutputTableID="Results")
+# Uncomment the folFlowing to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="ExpectedResults\Test_AnalyzeNetworkPointFlow_out.csv")
+WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="Results\Test_AnalyzeNetworkPointFlow_out.csv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_AnalyzeNetworkPointFlow_out.csv",InputFile2="Results/Test_AnalyzeNetworkPointFlow_out.csv",IfDifferent=Warn)
