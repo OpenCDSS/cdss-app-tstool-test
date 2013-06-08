@@ -1,0 +1,10 @@
+# Read a list of time series
+# - use a CSV file for the location list and DateValue file for time series
+StartLog(LogFile="Results/Test_ReadTimeSeries.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadTimeSeries_out.dv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="StationList",InputFile="Data\testdata.csv")
+ReadTimeSeriesList(TableID="StationList",LocationColumn="TSID",DataSource="NWIS",DataType="00060-00003",Interval="Day",DataStore="DateValue",InputName="Data/testdata.dv",IfNotFound=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadTimeSeries_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadTimeSeries_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeries_out.dv",InputFile2="Results\Test_ReadTimeSeries_out.dv",IfDifferent=Warn)
