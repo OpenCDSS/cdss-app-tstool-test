@@ -1,0 +1,9 @@
+# Test creating a new day interval time series
+# * Test using the location type in the identifier
+StartLog(LogFile="Results/Test_NewTimeSeries_Day_LocationType.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewTimeSeries_Day_LocationType_out.dv",IfNotFound=Ignore)
+NewTimeSeries(Alias="ts1",NewTSID="LocType:ts1...Day",Description="Test time series 1",SetStart="2000-01-01",SetEnd="2001-01-14",Units="CFS",InitialValue=0)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_NewTimeSeries_Day_LocationType_out.dv")
+WriteDateValue(OutputFile="Results/Test_NewTimeSeries_Day_LocationType_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_NewTimeSeries_Day_LocationType_out.dv",InputFile2="Results/Test_NewTimeSeries_Day_LocationType_out.dv",IfDifferent=Warn)
