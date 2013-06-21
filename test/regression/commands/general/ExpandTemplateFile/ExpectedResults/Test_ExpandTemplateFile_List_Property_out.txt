@@ -1,0 +1,1 @@
+ListProperty="IN ('loc1','loc2','loc3','loc4')"
