@@ -4,8 +4,11 @@ StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_TempMin_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_TempMin_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="1894-01-01",InputEnd="1894-12-31")
-3005.NOAA.TempMin.Day~HydroBase
-3005.NOAA.TempMin.Day~ColoradoWaterHBGuest
+# Newer HydroBase uses GHCN identifiers, Fort Collins
+# 3005.NOAA.TempMin.Day~HydroBase
+# 3005.NOAA.TempMin.Day~ColoradoWaterHBGuest
+USC00053005.NOAA.TempMin.Day~HydroBase
+USC00053005.NOAA.TempMin.Day~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)

@@ -4,8 +4,11 @@ StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_EvapPan_Month.TSTool.log
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_EvapPan_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="2000-01",InputEnd="2001-12")
-3005.NOAA.EvapPan.Month~HydroBase
-3005.NOAA.EvapPan.Month~ColoradoWaterHBGuest
+# Newer HydroBase is using GHCN identifiers, Fort Collins
+# 3005.NOAA.EvapPan.Month~HydroBase
+# 3005.NOAA.EvapPan.Month~ColoradoWaterHBGuest
+USC00053005.NOAA.EvapPan.Month~HydroBase
+USC00053005.NOAA.EvapPan.Month~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)

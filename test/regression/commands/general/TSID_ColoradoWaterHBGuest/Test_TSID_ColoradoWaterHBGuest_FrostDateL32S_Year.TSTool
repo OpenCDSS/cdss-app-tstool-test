@@ -4,8 +4,11 @@ StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_FrostDateL32S_Year.TSToo
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_FrostDateL32S_Year_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="1900",InputEnd="2005")
-3005.NOAA.FrostDateL32S.Year~HydroBase
-3005.NOAA.FrostDateL32S.Year~ColoradoWaterHBGuest
+# New HydroBase uses GHCN identifiers, Fort Collins
+# 3005.NOAA.FrostDateL32S.Year~HydroBase
+# 3005.NOAA.FrostDateL32S.Year~ColoradoWaterHBGuest
+USC00053005.NOAA.FrostDateL32S.Year~HydroBase
+USC00053005.NOAA.FrostDateL32S.Year~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
