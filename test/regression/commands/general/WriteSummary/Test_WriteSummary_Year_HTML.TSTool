@@ -1,10 +1,10 @@
 # Test writing summary for year data, HTML output
 StartLog(LogFile="Results/Test_WriteSummary_Year_HTML.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteSummary_Year_HTML_out.html",IfNotFound=Ignore)
-TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Year",Description="Test data",SetStart="1950",SetEnd="1979",Units="CFS",PatternValues="5,10,12,13,,,75,50",PatternFlags="a,b,c,,x,y,,z")
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Year",Description="Test data",SetStart="1950",SetEnd="1979",Units="CFS",PatternValues="5,10,12,13,,,75,50",PatternFlags="a,b,c,,x,y,,z")
 # Uncomment the following command to regenerate the expected results file.
 # WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Year_HTML_out.html")
 # Generate new output...
 WriteSummary(OutputFile="Results/Test_WriteSummary_Year_HTML_out.html")
-# Do regression comparison - allow 3 diffs for date/version/commmand line
-CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Year_HTML_out.html",InputFile2="Results/Test_WriteSummary_Year_HTML_out.html",AllowedDiff="3",IfDifferent=Warn)
+# Do regression comparison - allow 4 diffs for date/version/commmand line/machine
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Year_HTML_out.html",InputFile2="Results/Test_WriteSummary_Year_HTML_out.html",AllowedDiff="4",IfDifferent=Warn)

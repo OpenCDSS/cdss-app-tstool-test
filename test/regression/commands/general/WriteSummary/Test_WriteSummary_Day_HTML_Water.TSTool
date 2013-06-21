@@ -6,5 +6,5 @@ NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test
 # WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Day_HTML_Water_out.html",OutputYearType=Water)
 # Generate new output...
 WriteSummary(OutputFile="Results/Test_WriteSummary_Day_HTML_Water_out.html",OutputYearType=Water)
-# Do regression comparison - allow 3 diffs for date/version/commmand line
-CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Day_HTML_Water_out.html",InputFile2="Results/Test_WriteSummary_Day_HTML_Water_out.html",AllowedDiff="3",IfDifferent=Warn)
+# Do regression comparison - allow 4 diffs for date/version/commmand line/machine
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Day_HTML_Water_out.html",InputFile2="Results/Test_WriteSummary_Day_HTML_Water_out.html",AllowedDiff="4",IfDifferent=Warn)
