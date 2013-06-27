@@ -4,7 +4,7 @@
 StartLog(LogFile="Results/Test_TableToTimeSeries_SingleColumn_Flags.TSTool.log")
 RemoveFile(InputFile="Results\Test_TableToTimeSeries_SingleColumn_Flags_out.dv",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="SingleColumnData",InputFile="Data\single-column-flags.csv")
-TableToTimeSeries(TableID="SingleColumnData",DateTimeColumn="Date",LocationColumn="Location",ValueColumn="Value",FlagColumn="Flag",Provider="USGS",DataType="Streamflow",Interval=Day,Units="cfs",Alias="%L-%T")
+TableToTimeSeries(TableID="SingleColumnData",DateTimeColumn="Date",LocationColumn="Location",ValueColumn="Value",FlagColumn="Flag",DataSource="USGS",DataType="Streamflow",Interval=Day,Units="cfs",Alias="%L-%T")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_TableToTimeSeries_SingleColumn_Flags_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results\Test_TableToTimeSeries_SingleColumn_Flags_out.dv",Precision=2)

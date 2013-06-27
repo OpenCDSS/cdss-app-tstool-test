@@ -1,9 +1,9 @@
-# Test converting a single-column data table to time series
+# Test converting a multi-column data table to time series
 # * Two time series are included
 StartLog(LogFile="Results/Test_TableToTimeSeries_MultiColumn.TSTool.log")
 RemoveFile(InputFile="Results\Test_TableToTimeSeries_MultiColumn_out.dv",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="MultiColumnData",InputFile="Data\multiple-column.csv")
-TableToTimeSeries(TableID="MultiColumnData",DateTimeColumn="Date",LocationID="TC[2:]",ValueColumn="TC[2:]",Provider="USGS",DataType="Streamflow",Interval=Day,Units="cfs",Alias="%L-%T")
+TableToTimeSeries(TableID="MultiColumnData",DateTimeColumn="Date",LocationID="TC[2:]",ValueColumn="TC[2:]",DataSource="USGS",DataType="Streamflow",Interval=Day,Units="cfs",Alias="%L-%T")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_TableToTimeSeries_MultiColumn_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results\Test_TableToTimeSeries_MultiColumn_out.dv",Precision=2)
