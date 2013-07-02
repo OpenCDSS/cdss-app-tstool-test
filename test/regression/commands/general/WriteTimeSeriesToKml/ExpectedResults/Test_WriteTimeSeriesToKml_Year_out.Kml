@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+ <Document>
+  <Style id="dataTypeStyle">
+  </Style>
+  <Placemark>
+   <name>Test data, pattern</name>
+   <Point>
+    <coordinates>-109.0,44.0,5280.0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>Test data, pattern</name>
+   <Point>
+    <coordinates>-110.0,45.0,0</coordinates>
+   </Point>
+  </Placemark>
+ </Document>
+</kml>
