@@ -4,11 +4,16 @@ RemoveFile(InputFile="Results/Test_AnalyzeNetworkPointFlow_out.csv",IfNotFound=I
 # Read the network
 ReadTableFromExcel(TableID="Network1",InputFile="Data\Network1.xlsx",Worksheet="Network1",ExcelColumnNames=FirstRowInRange)
 # Read the time series associated with network nodes (pregenerated)
+# Fill diversion time series with zeros so there is something to analyze
+# Fill stream gage time series with repeat forward and backward
 ReadDateValue(InputFile="Data\Network1-Diversion-DivTotal.dv")
 ReadDateValue(InputFile="Data\Network1-Return-DivTotal.dv")
+FillConstant(TSList=AllMatchingTSID,TSID="*.*.DivTotal.*.*",ConstantValue=0)
 ReadDateValue(InputFile="Data\Network1-StreamGage-Streamflow.dv")
+FillRepeat(TSList=AllMatchingTSID,TSID="*.*.Streamflow.*.*",FillDirection=Backward)
+FillRepeat(TSList=AllMatchingTSID,TSID="*.*.Streamflow.*.*",FillDirection=Forward)
 # Analyze the network point flow.
-AnalyzeNetworkPointFlow(TableID="Network1",NodeIDColumn="NodeID",NodeNameColumn="NodeName",NodeTypeColumn="NodeType",DownstreamNodeIDColumn="DownstreamNodeID",NodeAddTypes="Return",NodeAddDataTypes="DivTotal",NodeSubtractTypes="Diversion",NodeSubtractDataTypes="DivTotal",NodeOutflowTypes="StreamGage",NodeOutflowDataTypes="Streamflow",NodeFlowThroughTypes="InstreamFlow",Interval=Day,AnalysisStart="1950-01-01",AnalysisEnd="2012-12-31",Units="CFS",OutputTableID="Results")
+AnalyzeNetworkPointFlow(TableID="Network1",NodeIDColumn="NodeID",NodeNameColumn="NodeName",NodeTypeColumn="NodeType",DownstreamNodeIDColumn="DownstreamNodeID",NodeAddTypes="Return",NodeAddDataTypes="DivTotal",NodeSubtractTypes="Diversion",NodeSubtractDataTypes="DivTotal",NodeOutflowTypes="StreamGage",NodeOutflowDataTypes="Streamflow",NodeFlowThroughTypes="InstreamFlow",Interval=Day,AnalysisStart="1950-01-01",AnalysisEnd="2012-12-31",Units="CFS",GainMethod="Distance",OutputTableID="Results")
 # Uncomment the folFlowing to generate the expected results.
 # WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="ExpectedResults\Test_AnalyzeNetworkPointFlow_out.csv")
 WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="Results\Test_AnalyzeNetworkPointFlow_out.csv")
