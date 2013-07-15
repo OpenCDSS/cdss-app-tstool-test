@@ -1,12 +1,13 @@
 # Test reading multiple time series:
 #  Month
 #  Streamflow
+#  Specify period to limit database change impacts on test
 StartLog(LogFile="Results/Test_ReadHydroBase_Streamflow_Month_Multiple.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadHydroBase_Streamflow_Month_Multiple_out.dv",IfNotFound=Ignore)
 # Specify the period to read because HydroBase will change over time and
 # setting the period will better control the numbers that return and impact the
 # test results.
-ReadHydroBase(DataType="Streamflow",Interval="Month",Where1="County Name;Matches;OTERO",Where2="Station Name;Starts with;TIMPAS",Alias="%L-%T-%I")
+ReadHydroBase(DataType="Streamflow",Interval="Month",Where1="County Name;Matches;OTERO",Where2="Station Name;Starts with;TIMPAS",Alias="%L-%T-%I",InputStart="1922-01",InputEnd="2009-09")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadHydroBase_Streamflow_Month_Multiple_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadHydroBase_Streamflow_Month_Multiple_out.dv")
