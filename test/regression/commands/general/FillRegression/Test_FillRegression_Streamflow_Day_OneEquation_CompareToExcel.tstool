@@ -1,0 +1,8 @@
+# Test that FillRegression works for daily data, both with yearly and monthly equations
+StartLog(LogFile="\Results\Test_FillRegression_Day_OneEquation_CompareToExcel.log")
+ReadDateValue(InputFile="Data\streamflow-day.dv",Alias="Original")
+Copy(TSID="Original",NewTSID="06735500...Day",Alias="Copy")
+ReplaceValue(TSList=AllMatchingTSID,TSID="Original",MinValue=0,MaxValue=1000000,Action=Remove,SetStart="2010-01",SetEnd="2010-12")
+ReadTableFromExcel(TableID="excel",InputFile="ExpectedResults\Test_FillRegression_Streamflow_Day_OneEquation_excel.xlsx",Worksheet="Final")
+FillRegression(TSID="Original",IndependentTSID="Copy",NumberOfEquations=OneEquation,TableID="calculations",TableTSIDColumn="TSID")
+CompareTables(Table1ID="excel",Table2ID="calculations",MatchColumnsHow=Order,Tolerance=.00000001,NewTableID="compare",IfDifferent=Warn)

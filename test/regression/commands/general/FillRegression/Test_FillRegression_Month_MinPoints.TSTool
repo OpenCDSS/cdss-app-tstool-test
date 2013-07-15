@@ -1,0 +1,10 @@
+# Fill regression using monthly data but one equation, check for minimum overlap
+StartLog(LogFile="Results/Test_FillRegression_Month_MinPoints.TSTool.log")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2007-12",PatternValues="1,2,3,4,5,6,6,5,4,3,2,1,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts1...Month",Description="test data 2",SetStart="2000-01",SetEnd="2007-12",PatternValues="1,2,3,4,5,6,6,5,4,3,2,1")
+FillRegression(TSID="ts1",IndependentTSID="ts2",NumberOfEquations=OneEquation,MinimumSampleSize=49,FillFlag="R")
+# At this point, the dependent time series should not have been filled due to insufficient data. If it is the same as the independent, then we know that command failed.
+CompareTimeSeries(WarnIfSame=True)
+FillRegression(TSID="ts1",IndependentTSID="ts2",NumberOfEquations=OneEquation,MinimumSampleSize=48,FillFlag="R")
+# Now there should be enough data to fill, so the two should be the same.
+CompareTimeSeries(WarnIfDifferent=True,WarnIfSame=False)

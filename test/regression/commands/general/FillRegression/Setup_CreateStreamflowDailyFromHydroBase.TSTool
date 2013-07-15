@@ -1,0 +1,3 @@
+# Get daily streamflow data to test how FillRegression works with daily data
+ReadHydroBase(DataType="Streamflow",Interval="Day",Where1="Station ID;Matches;06735500",Alias="Original",InputStart="2000-01-01")
+WriteDateValue(OutputFile="Data/streamflow-day.dv",TSList=AllMatchingTSID,TSID="Original")
