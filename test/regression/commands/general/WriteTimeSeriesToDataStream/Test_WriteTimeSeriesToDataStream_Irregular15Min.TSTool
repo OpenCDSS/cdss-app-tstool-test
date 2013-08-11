@@ -1,0 +1,10 @@
+# Test writing an irregular 15min time series to data stream format
+StartLog(LogFile="Results/Test_WriteTimeSeriesToDataStream_Irregular15min.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeriesToDataStream_Irregular15min_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Irregular",IrregularInterval=15Minute,Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-01-05 12:00",Units="CFS",PatternValues="5,10,12,13,75",PatternFlags="aa,b,,dd,e")
+# Uncomment the following command to regenerate the expected results file.
+# WriteTimeSeriesToDataStream(OutputFile="ExpectedResults\Test_WriteTimeSeriesToDataStream_Irregular15min_out.dv")
+# Generate new output...
+WriteTimeSeriesToDataStream(OutputFile="Results/Test_WriteTimeSeriesToDataStream_Irregular15min_out.dv",OutputFileHeader="Test header",OutputLineFormat="%v %q",OutputFileFooter="Test footer")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToDataStream_Irregular15min_out.dv",InputFile2="Results/Test_WriteTimeSeriesToDataStream_Irregular15min_out.dv",IfDifferent=Warn)
