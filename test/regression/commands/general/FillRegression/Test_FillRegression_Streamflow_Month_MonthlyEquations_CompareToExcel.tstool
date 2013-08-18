@@ -1,5 +1,5 @@
 # Fill regression using monthly streamflow data, one equation - test math by comparing to Excel
-StartLog(LogFile="Results/Test_FillRegression_Streamflow_Month_MonthlyEquations_CompareToExcel.TSTool.log")
+StartLog(LogFile="Results/Test_FillRegression_Streamflow_Month_MonthlyEquations.TSTool.log")
 # Read the streamflow data and do the regression
 SetOutputPeriod(OutputStart="1997-01",OutputEnd="2002-12")
 ReadDateValue(InputFile="Data\streamflow-month.dv")
