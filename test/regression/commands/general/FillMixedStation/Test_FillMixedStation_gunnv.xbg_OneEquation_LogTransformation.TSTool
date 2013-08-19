@@ -1,0 +1,12 @@
+# Test filling the gunnison monthly baseflow time series with
+# Mixed Station Analysis (all combinations for one equation)
+StartLog(LogFile="Results/Test_FillMixedStation_gunnv.xbg_OneEquation_LogTransformation.log")
+RemoveFile(InputFile="Results/Test_FillMixedStation_gunnv.xbg_OneEquation_LogTransformation_out.txt",IfNotFound=Ignore)
+ReadStateMod(InputFile="Data\gunnv.xbg")
+FillMixedStation(BestFitIndicator=SEP,AnalysisMethod="MOVE2,OLSRegression",NumberOfEquations="OneEquation",Transformation="Log",FillFlag="Auto",OutputFile="Results/Test_FillMixedStation_gunnv.xbg_OneEquation_out.txt")
+# Uncomment the following command to regenerate expected results.
+# WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults/Test_FillMixedStation_gunnv.xbg_OneEquation_LogTransformation_out.stm")
+WriteStateMod(TSList=AllTS,OutputFile="Results/Test_FillMixedStation_gunnv.xbg_OneEquation_LogTransformation_out.stm")
+CompareFiles(InputFile1="ExpectedResults/Test_FillMixedStation_gunnv.xbg_OneEquation_LogTransformation_out.stm",InputFile2="Results/Test_FillMixedStation_gunnv.xbg_OneEquation_LogTransformation_out.stm",IfDifferent=Warn)
+# Write out the check file for troubleshooting
+WriteCheckFile(OutputFile="Results/Test_FillMixedStation_gunnv.xbg_OneEquation_LogTransformation.TSTool.check.html")
