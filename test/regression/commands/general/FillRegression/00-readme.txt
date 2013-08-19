@@ -17,8 +17,7 @@ the user from inappropriately filling data, optional command parameters also
 are available to ensure that minimum sample size and R^2 and also that the data 
 pass the T-test.  The internal calculations are performed on arrays of numbers; 
 however, data management transferring to/from time series, and handling missing 
-data is required.  Initial testing has been performed on monthly data; however, more
- complete testing on other intervals is needed to fully validate the software.
+data is required.
 
 
 The approach for testing is to use actual time series data that are similar enough
@@ -31,12 +30,9 @@ of the time series and statistics.  The overall test process is as follows:
 
 2) Create an Excel spreadsheet that implements the same logic using the same time series.
 
-3) Basic TSTool tests are run to validate the analysis and filling, and the results are
-   compared to the Excel results from the previous step, to a specified precision.
+3) Basic TSTool tests are run to validate the analysis and filling, and the results are compared to the Excel results from the previous step, to a specified precision.
 
-4) Variations on the tests are implemented to test various FillRegression() parameters,
- with appropriate parameter values being used based on the test data files (no need
- to regenerate test data).
+4) Variations on the tests are implemented to test various FillRegression() parameters, with appropriate parameter values being used based on the test data files (no need to regenerate test data).
 
 
 -----------------------------------------------------------------------------------
@@ -51,23 +47,19 @@ monthly data (should not be a need):
 
 Month: Setup_CreateStreamflowMonthFromHydroBase.TSTool
 
-       This creates a DateValue file and also CSV files for the period and each month.
+       This creates a DateValue file for the period.
 
-Day:   TODO - should be able to use the daily data for the same stations
+Day:   Setup_CreateStreamflowMonthFromHydroBase.TSTool
 
-Year:  TODO - could aggregate the monthly data but may be too much missing
+	  This creates a DateValue file for the period.
 
-
-
-TODO - need to include Mixed Station Model data here if it is easier or appropriate,
-rather than doing all the testing in the FillMixedStation() command tests.
 
 -----------------------------------------------------------------------------------
 
 
 2. CREATE EXCEL SPREADSHEET WITH SAME LOGIC
 
-The spreadsheets already exist in the ExpectedResults folder; they are named with the convention (test name)_Excel.xlsx. Further details on what is contained within them and how to use them is contained within the file itself.
+The spreadsheets already exist in the ExpectedResults folder; they are named with the convention (test name)_excel.xlsx. Further details on what is contained within them and how to use them is contained within the file itself.
 
 
 -----------------------------------------------------------------------------------
@@ -77,10 +69,4 @@ The spreadsheets already exist in the ExpectedResults folder; they are named wit
 
 
 TSTool is tested in the normal fashion by running a TSTool command file to generate
- files in "Results" and compare with files in "ExpectedResults".  The following
- command files run the tests:
-
-
-Month data, one equation - xxxxx
-
-Month data, monthly equations - xxxxx
+ files in "Results" and compare with files in "ExpectedResults". The command files in this folder all run tests, each described in the file itself.

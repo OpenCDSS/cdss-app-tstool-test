@@ -6,6 +6,6 @@ ReadDateValue(InputFile="Data\streamflow-month.dv")
 FillRegression(TSID="BelowGeorgetown",IndependentTSID="AboveGeorgetown",NumberOfEquations=MonthlyEquations,Transformation=Log,ConfidenceInterval=70,FillFlag="R",TableID="Stats",TableTSIDColumn="TSID")
 # Compare value outputted to known previous value.
 # Comment out next line to regenerate expected result.
-# WriteDateValue(OutputFile="ExpectedResults\Test_FillRegression_Month_Transformation=Log.dv",TSList=AllMatchingTSID,TSID="BelowGeorgetown")
-WriteDateValue(OutputFile="Results\Test_FillRegression_Month_Transformation=Log.dv",TSList=AllMatchingTSID,TSID="BelowGeorgetown")
-CompareFiles(InputFile1="C:\DevRiv\TSTool_SourceBuild\TSTool\test\regression\commands\general\FillRegression\ExpectedResults\Test_FillRegression_Month_Transformation=Log.dv",InputFile2="C:\DevRiv\TSTool_SourceBuild\TSTool\test\regression\commands\general\FillRegression\Results\Test_FillRegression_Month_Transformation=Log.dv",IfDifferent=Warn)
+# WriteDateValue(OutputFile="ExpectedResults\Test_FillRegression_Streamflow_Month_Transformation=Log.dv",TSList=AllMatchingTSID,TSID="BelowGeorgetown")
+WriteDateValue(OutputFile="Results\Test_FillRegression_Streamflow_Month_Transformation=Log.dv",TSList=AllMatchingTSID,TSID="BelowGeorgetown")
+CompareFiles(InputFile1="ExpectedResults\Test_FillRegression_Streamflow_Month_Transformation=Log.dv",InputFile2="Results\Test_FillRegression_Streamflow_Month_Transformation=Log.dv",IfDifferent=Warn)

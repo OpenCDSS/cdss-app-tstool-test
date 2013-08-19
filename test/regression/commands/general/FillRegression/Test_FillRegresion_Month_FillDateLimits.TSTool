@@ -1,4 +1,5 @@
 # Fill regression using monthly data but one equation, set flag - expect R of 1
+# Test that the date limits do in fact only fill in part of the time series
 StartLog(LogFile="Results/Test_FillRegression_Month_FillDateLimits.TSTool.log")
 RemoveFile(InputFile="Results/Test_FillRegression_Month_FillDateLimits_out.dv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2007-12",PatternValues="1,2,3,4,5,6,6,5,4,3,2,1,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999,-999")
