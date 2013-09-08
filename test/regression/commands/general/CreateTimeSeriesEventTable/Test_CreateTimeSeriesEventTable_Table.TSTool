@@ -1,0 +1,11 @@
+# Test creating a time series event table
+# - Use an existing event table as input
+StartLog(LogFile="Results/Test_CreateTimeSeriesEventTable_Table.TSTool.log")
+RemoveFile(InputFile="Results/Test_CreateTimeSeriesEventTable_Table_out.csv",IfNotFound=Ignore)
+ReadTableFromExcel(TableID="SouthPlatteEvents",InputFile="Data\SouthPlatte-WaterEvents.xlsx",Worksheet="EventData",ExcelColumnNames=FirstRowInRange,ExcelDateTimeColumns="EventStart,EventEnd")
+CreateTimeSeriesEventTable(TableID="SouthPlatteEvents",NewTableID="SoutPlatteTimeSeriesEvents",InputTableEventIDColumn="EventID",InputTableEventTypeColumn="EventType",InputTableEventStartColumn="EventStart",InputTableEventEndColumn="EventEnd",InputTableEventLocationTypeColumn="LocationType",InputTableEventLocationIDColumn="LocationID",InputTableEventLabelColumn="Label",InputTableEventDescriptionColumn="Description")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="ExpectedResults\Test_CreateTimeSeriesEventTable_Table_out.csv")
+WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="Results\Test_CreateTimeSeriesEventTable_Table_out.csv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_CreateTimeSeriesEventTable_Table_out.csv",InputFile2="Results/Test_CreateTimeSeriesEventTable_Table_out.csv",IfDifferent=Warn)
