@@ -2,10 +2,14 @@
 # - Use an existing event table as input
 StartLog(LogFile="Results/Test_CreateTimeSeriesEventTable_Table.TSTool.log")
 RemoveFile(InputFile="Results/Test_CreateTimeSeriesEventTable_Table_out.csv",IfNotFound=Ignore)
-ReadTableFromExcel(TableID="SouthPlatteEvents",InputFile="Data\SouthPlatte-WaterEvents.xlsx",Worksheet="EventData",ExcelColumnNames=FirstRowInRange,ExcelDateTimeColumns="EventStart,EventEnd")
-CreateTimeSeriesEventTable(TableID="SouthPlatteEvents",NewTableID="SoutPlatteTimeSeriesEvents",InputTableEventIDColumn="EventID",InputTableEventTypeColumn="EventType",InputTableEventStartColumn="EventStart",InputTableEventEndColumn="EventEnd",InputTableEventLocationTypeColumn="LocationType",InputTableEventLocationIDColumn="LocationID",InputTableEventLabelColumn="Label",InputTableEventDescriptionColumn="Description")
+NewTimeSeries(Alias="%L-%T",NewTSID="myloc..DivTotal.Day",Description="Test daily time series",SetStart="2000-01-01",SetEnd="2013-12-31",Units="cfs",MissingValue=NaN,InitialFunction="DateYYYYMMDD")
+SetTimeSeriesProperty(PropertyName="basin",PropertyType=String,PropertyValue="South Platte")
+SetTimeSeriesProperty(PropertyName="wd",PropertyType=Integer,PropertyValue="1")
+SetTimeSeriesProperty(PropertyName="div",PropertyType=Integer,PropertyValue="1")
+ReadTableFromExcel(TableID="SouthPlatteEvents",InputFile="Data\SouthPlatte-WaterEvents.xlsx",Worksheet="EventData",ExcelColumnNames=FirstRowInRange,ExcelIntegerColumns="Division,District",ExcelDateTimeColumns="EventStart,EventEnd")
+CreateTimeSeriesEventTable(TimeSeriesLocations="Site:%L,Division:${TS:div},Basin:${TS:basin},District:${TS:wd}",TableID="SouthPlatteEvents",InputTableEventIDColumn="EventID",InputTableEventTypeColumn="EventType",InputTableEventStartColumn="EventStart",InputTableEventEndColumn="EventEnd",InputTableEventLocationColumns="State:State,Region:Region,Basin:Basin,County:County,Division:Division,District:District,Locale:Locale,Site:Site",InputTableEventLabelColumn="Label",InputTableEventDescriptionColumn="Description",NewTableID="SoutPlatteTimeSeriesEvents",OutputTableTSIDColumn="TSID",OutputTableTSIDFormat="%L")
 # Uncomment the following to generate the expected results.
-# WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="ExpectedResults\Test_CreateTimeSeriesEventTable_Table_out.csv")
-WriteTableToDelimitedFile(TableID="Table1Copy",OutputFile="Results\Test_CreateTimeSeriesEventTable_Table_out.csv")
+# WriteTableToDelimitedFile(TableID="SoutPlatteTimeSeriesEvents",OutputFile="ExpectedResults\Test_CreateTimeSeriesEventTable_Table_out.csv")
+WriteTableToDelimitedFile(TableID="SoutPlatteTimeSeriesEvents",OutputFile="Results\Test_CreateTimeSeriesEventTable_Table_out.csv")
 # Do regression comparison with the original input
 CompareFiles(InputFile1="ExpectedResults\Test_CreateTimeSeriesEventTable_Table_out.csv",InputFile2="Results/Test_CreateTimeSeriesEventTable_Table_out.csv",IfDifferent=Warn)
