@@ -3,7 +3,7 @@
 StartLog(LogFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_NoTransformation.log")
 RemoveFile(InputFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_NoTransformation_out.txt",IfNotFound=Ignore)
 ReadStateMod(InputFile="Data\gunnv.xbg")
-FillMixedStation(BestFitIndicator=SEP,AnalysisMethod="MOVE2,OLSRegression",NumberOfEquations="MonthlyEquations",Transformation="None",FillFlag="Auto",OutputFile="Results/Test_FillMixedStation_gunnv.xbg_OneEquation_out.txt")
+FillMixedStation(BestFitIndicator=SEP,AnalysisMethod="MOVE2,OLSRegression",NumberOfEquations="MonthlyEquations",Transformation="None",LEZeroLogValue=missing,FillFlag="Auto")
 # Uncomment the following command to regenerate expected results.
 # WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_NoTransformation_out.stm")
 WriteStateMod(TSList=AllTS,OutputFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_NoTransformation_out.stm")
