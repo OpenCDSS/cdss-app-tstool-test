@@ -5,6 +5,6 @@ SetOutputPeriod(OutputStart="1997-01",OutputEnd="2002-12")
 ReadDateValue(InputFile="Data\streamflow-month.dv")
 # Do the regression and test it against known correct values from Excel.
 NewTable(TableID="Stats",Columns="TSID,string")
-ReadTableFromExcel(TableID="excel",InputFile="\ExpectedResults\Test_FillRegression_Streamflow_Month_OneEquation_excel.xlsx",Worksheet="Final")
+ReadTableFromExcel(TableID="excel",InputFile="\ExpectedResults\Test_FillRegression_Streamflow_Month_OneEquation_excel.xlsx",Worksheet="Final",NumberPrecision=8)
 FillRegression(TSID="BelowGeorgetown",IndependentTSID="AboveGeorgetown",NumberOfEquations=OneEquation,ConfidenceInterval=70,FillFlag="R",TableID="Stats",TableTSIDColumn="TSID")
 CompareTables(Table1ID="Stats",Table2ID="excel",MatchColumnsHow=Order,NewTableID="compare",IfDifferent=Warn)
