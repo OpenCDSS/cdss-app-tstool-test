@@ -1,3 +1,4 @@
+#@enabled False
 # Test trying to print a one page file portrait, 8.5x11, to a PDF file
 # Do not do a comparison with expected results since the printer driver
 # may vary between computers

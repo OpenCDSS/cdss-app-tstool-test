@@ -1,3 +1,4 @@
+#@enabled False
 # Test trying to print a one page file portrait, 8.5x11, using the Microsoft
 # image printer - this seems to only work with Office 2003
 # Do not do a comparison with expected results since the printer driver
