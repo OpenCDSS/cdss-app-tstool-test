@@ -6,7 +6,9 @@
 StartLog(LogFile="Results/Test_WriteTimeSeriesToDataStream_15min_FormatFile.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteTimeSeriesToDataStream_15min_FormatFile_out.dv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-01-05 12:00",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,,13,75",PatternFlags="aa,b,,dd,e,fff")
-SetProperty(PropertyName="DateTimeProp",PropertyType=DateTime,PropertyValue="CurrentToDay")
+# Can't use CurrentToDay in automated test because it will change every run
+# SetProperty(PropertyName="DateTimeProp",PropertyType=DateTime,PropertyValue="CurrentToDay")
+SetProperty(PropertyName="DateTimeProp",PropertyType=DateTime,PropertyValue="2013-09-11")
 SetProperty(PropertyName="StringProp",PropertyType=String,PropertyValue="String1")
 SetProperty(PropertyName="DoubleProp",PropertyType=Double,PropertyValue="1000.1")
 # Uncomment the following command to regenerate the expected results file.
