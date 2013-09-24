@@ -8,4 +8,4 @@ ReadTableFromDataStore(DataStore="HydroBase",DataStoreTable="vw_CDSS_Cropchar",T
 # Generate the results.
 WriteTableToDelimitedFile(TableID="CropChar",OutputFile="Results/Test_ReadTableFromDataStore_HydroBase_Table_CropChar_out.csv")
 # Do regression comparison with the expected results
-CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Table_CropChar_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_Table_CropChar_out.csv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Table_CropChar_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_Table_CropChar_out.csv",MatchCase=False,IfDifferent=Warn)

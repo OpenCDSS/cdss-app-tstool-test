@@ -15,7 +15,7 @@ StartLog(LogFile="Results/Test_TSID_UsgsNwis_USGSExample_DifferentPeriods.TSTool
 # web services to current standard and figure out what is wrong.
 #
 SetInputPeriod(InputStart="2000-11-16",InputEnd="2000-12-15")
-ReadTimeSeries(TSID="01646500..00060-Mean.1Day~USGS-NWIS",Alias="ShortPeriod",IfNotFound=Warn)
+ReadTimeSeries(TSID="01646500..00060-00003.1Day~UsgsNwisDaily",Alias="ShortPeriod",IfNotFound=Warn)
 # Same example but with longer period
 SetInputPeriod(InputStart="2000-11-16",InputEnd="2005-12-15")
-ReadTimeSeries(TSID="01646500..00060-Mean.1Day~USGS-NWIS",Alias="LongPeriod",IfNotFound=Warn)
+ReadTimeSeries(TSID="01646500..00060-00003.1Day~UsgsNwisDaily",Alias="LongPeriod",IfNotFound=Warn)

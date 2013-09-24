@@ -11,4 +11,4 @@ ReadDateValue(InputFile="Data\CLAFTCCO-GAGE_HT-Irregular.dv")
 #
 # Process the graphs
 ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Irregular.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Irregular.png")
-ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Irregular.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Hour.png")
+ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Hour.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Hour.png")

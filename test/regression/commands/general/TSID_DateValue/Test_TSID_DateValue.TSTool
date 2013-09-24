@@ -6,4 +6,4 @@ RemoveFile(InputFile="Results\Test_TSID_DateValue_out.dv",IfNotFound=Ignore)
 # Free(TSList=AllMatchingTSID,TSID="*")
 ts1..MyData.Day~DateValue~ExpectedResults\Test_TSID_DateValue_out.dv
 WriteDateValue(OutputFile="Results\Test_TSID_DateValue_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_TSID_DateValue_out.dv",InputFile2="Results\Test_TSID_DateValue_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_TSID_DateValue_out.dv",InputFile2="Results\Test_TSID_DateValue_out.dv",IfDifferent=Warn)

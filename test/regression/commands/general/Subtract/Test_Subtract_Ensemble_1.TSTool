@@ -1,8 +1,8 @@
 StartLog(LogFile="Results/Test_Subtract_Ensemble_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_Subtract_Ensemble_1_out.dv",WarnIfMissing=False)
+RemoveFile(InputFile="Results/Test_Subtract_Ensemble_1_out.dv",IfNotFound=Ignore)
 # Alternating values 1,2...
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2007-05-13",PatternValues="1,2")
-CreateEnsemble(TSID="ts1",TraceLength=1Year,EnsembleID="Ensemble1",EnsembleName="Ensemble1 name",ReferenceDate="2000-01-01",ShiftDataHow=ShiftToReference)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2007-05-13",PatternValues="1,2")
+CreateEnsembleFromOneTimeSeries(TSID="ts1",TraceLength=1Year,EnsembleID="Ensemble1",EnsembleName="Ensemble1 name",ReferenceDate="2000-01-01",ShiftDataHow=ShiftToReference)
 # Alternating values 2,4,....
 CopyEnsemble(NewEnsembleID="EnsembleCopy",NewEnsembleName="Ensemble copy",NewTSID="Enscopy...",EnsembleID="Ensemble1")
 Scale(TSList=EnsembleID,EnsembleID="EnsembleCopy",ScaleValue=2)
@@ -11,4 +11,4 @@ Subtract(EnsembleID="Ensemble1",SubtractTSList=EnsembleID,SubtractEnsembleID="En
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_Subtract_Ensemble_1_out.dv")
 WriteDateValue(OutputFile="Results/Test_Subtract_Ensemble_1_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_Subtract_Ensemble_1_out.dv",InputFile2="Results/Test_Subtract_Ensemble_1_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_Subtract_Ensemble_1_out.dv",InputFile2="Results/Test_Subtract_Ensemble_1_out.dv",IfDifferent=Warn)
