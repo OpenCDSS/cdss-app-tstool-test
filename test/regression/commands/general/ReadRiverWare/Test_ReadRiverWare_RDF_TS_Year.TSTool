@@ -1,9 +1,0 @@
-# Read an RDF file into time series
-# -Year interval
-StartLog(LogFile="Results/Test_ReadRiverWare_RDF_TS_Year.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadRiverWare_RDF_TS_Year_out.dv",IfNotFound=Ignore)
-ReadRiverWare(InputFile="Data\OWDAnn.rdf",Alias="%L-%T")
-# Uncomment the following to regenerate the expected results...
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiverWare_RDF_TS_Year_out.dv")
-WriteDateValue(OutputFile="Results/Test_ReadRiverWare_RDF_TS_Year_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadRiverWare_RDF_TS_Year_out.dv",InputFile2="Results/Test_ReadRiverWare_RDF_TS_Year_out.dv",IfDifferent=Warn)
