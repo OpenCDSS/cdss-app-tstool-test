@@ -18,7 +18,6 @@ WriteReclamationHDB(DataStore="ReclamationHDB-Dev",TSList=EnsembleID,EnsembleID=
 Exit()
 # Now read the same time series from the database using the period that was written...
 SetInputPeriod(InputStart="2010-01-01 00",InputEnd="2010-01-03 12")
-Real:AAA_DELETE.HDB.flow.3Hour~ReclamationHDB-Dev
 #
 # Start second pass (previous values x 10)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.3Hour",Description="Real:AAA_DELETE",SetStart="2010-01-01 00",SetEnd="2010-01-03 12",Units="cfs",PatternValues="500,100,120,130,750")
