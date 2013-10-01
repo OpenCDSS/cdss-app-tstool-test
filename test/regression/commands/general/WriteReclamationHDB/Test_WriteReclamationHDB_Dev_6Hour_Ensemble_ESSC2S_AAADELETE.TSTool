@@ -24,7 +24,7 @@ NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.3Hour"
 # First write the time series to the database...
 WriteReclamationHDB(DataStore="ReclamationHDB-Dev",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",ValidationFlag="A")
 # Now read the same time series from the database using the period that was written...
-ReadReclamationHDB(DataStore="ReclamationHDB-Dev",Interval="3Hour",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",InputStart="2010-01-01 00",InputEnd="2010-01-03 12")
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="3Hour",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,InputStart="2010-01-01 00",InputEnd="2010-01-03 12")
 #
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_6Hour_Ensemble_ESSC2S_AAADELETE_out.dv",OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12",TSList=LastMatchingTSID,TSID="Real:AAA_DELETE.HDB.flow.3Hour")
