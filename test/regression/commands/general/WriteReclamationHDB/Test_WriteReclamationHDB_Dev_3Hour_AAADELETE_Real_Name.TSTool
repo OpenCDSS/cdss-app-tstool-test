@@ -13,23 +13,25 @@ RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_3Hour_AAADELETE_Real_Name_
 # of results all matches
 #
 # Start first pass...
-NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.3Hour",Description="Real:AAA_DELETE",SetStart="2010-01-01 00",SetEnd="2010-01-03 12",Units="cfs",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",SetStart="2010-01-01 00",SetEnd="2010-01-03 12",Units="cfs",PatternValues="5,10,12,13,75")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="ReclamationHDB-Dev",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",ValidationFlag="A")
+SetDebugLevel(LogFileLevel=1)
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ValidationFlag="A")
+SetDebugLevel(LogFileLevel=0)
 # Now read the same time series from the database using the period that was written...
 SetInputPeriod(InputStart="2010-01-01 00",InputEnd="2010-01-03 12")
-Real:AAA_DELETE.HDB.flow.3Hour~ReclamationHDB-Dev
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="3Hour",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,InputStart="2010-01-01 00",InputEnd="2010-01-03 12",Alias="SecondRead")
 #
 # Start second pass (previous values x 10)...
-NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.3Hour",Description="Real:AAA_DELETE",SetStart="2010-01-01 00",SetEnd="2010-01-03 12",Units="cfs",PatternValues="500,100,120,130,750")
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",SetStart="2010-01-01 00",SetEnd="2010-01-03 12",Units="cfs",PatternValues="500,100,120,130,750")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="ReclamationHDB-Dev",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",ValidationFlag="A")
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ValidationFlag="A")
 # Now read the same time series from the database using the period that was written...
-ReadReclamationHDB(DataStore="ReclamationHDB-Dev",Interval="3Hour",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",InputStart="2010-01-01 00",InputEnd="2010-01-03 12")
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="3Hour",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,InputStart="2010-01-01 00",InputEnd="2010-01-03 12",Alias="SecondRead")
 #
 # Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Real_Name_out.dv",OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12",TSList=LastMatchingTSID,TSID="Real:AAA_DELETE.HDB.flow.3Hour")
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Real_Name_out.dv",OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour")
 # Generate new output for what was read from the database...
-WriteDateValue(OutputFile="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Real_Name_out.dv",OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12",TSList=LastMatchingTSID,TSID="Real:AAA_DELETE.HDB.flow.3Hour")
+WriteDateValue(OutputFile="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Real_Name_out.dv",OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Real_Name_out.dv",InputFile2="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Real_Name_out.dv",IfDifferent=Warn)

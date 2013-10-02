@@ -1,0 +1,36 @@
+# Test writing a year time series to ReclamationHDB database:
+#   * development database
+#   * real table
+#   * SDI 100376 (site common name AAA_DELETE)
+#   * Model name (MSI is not specified)
+#   * year data
+#   * Write twice with different numbers to make sure old results are not just sitting
+#     in the database.  Write non-missing values because HDB convention is to
+#     NOT write missing values (not sure how re-write is handled if missing involved).
+#   * For two writes, use TSID read once, and ReadReclamationHDB() once to exercise read.
+StartLog(LogFile="Results/Test_WriteReclamationHDB_Dev_Year_AAADELETE_Model_Name.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_Year_AAADELETE_Model_Name_out.dv",IfNotFound=Ignore)
+# Make the definition of this time series match what is used in HDB so that the comparison
+# of results all matches
+#
+# Start first pass...
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Year",Description="AAA_DELETE",SetStart="2010",SetEnd="2013",Units="cfs",PatternValues="5,10,12,13,75")
+# First write the time series to the database...
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelName="CBT AOP RiverWare",ModelRunName="CBT AOP Test",ModelRunDate="2012-07-01 00:00",ValidationFlag="A")
+# Now read the same time series from the database using the period that was written...
+SetInputPeriod(InputStart="2010",InputEnd="2013")
+ReadTimeSeries(TSID="diversion:100376-167.HDB.flow.Year.AAA_DELETE~ReclamationHDB-ECO-Dev",Alias="FirstReadUsingTSID",IfNotFound=Warn)
+#
+# Start second pass (previous values x 10)...
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Year",Description="AAA_DELETE",SetStart="2010",SetEnd="2013",Units="cfs",PatternValues="500,100,120,130,750")
+# First write the time series to the database...
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelName="CBT AOP RiverWare",ModelRunName="CBT AOP Test",ModelRunDate="2012-07-01 00:00",ValidationFlag="A")
+# Now read the same time series from the database using the period that was written...
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="Year",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelName="CBT AOP RiverWare",ModelRunName="CBT AOP Test",ModelRunDate="2012-07-01 00:00",InputStart="2010",InputEnd="2013",Alias="SecondRead")
+#
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_Year_AAADELETE_Model_Name_out.dv",OutputStart="2010",OutputEnd="2013",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.Year")
+# Generate new output for what was read from the database...
+WriteDateValue(OutputFile="Results/Test_WriteReclamationHDB_Dev_Year_AAADELETE_Model_Name_out.dv",OutputStart="2010",OutputEnd="2013",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.Year")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteReclamationHDB_Dev_Year_AAADELETE_Model_Name_out.dv",InputFile2="Results/Test_WriteReclamationHDB_Dev_Year_AAADELETE_Model_Name_out.dv",IfDifferent=Warn)

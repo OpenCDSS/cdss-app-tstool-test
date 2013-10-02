@@ -1,5 +1,0 @@
-#@enabled False
-# Disable because should only be testing against development database
-#
-ReadReclamationHDB(DataStore="ReclamationHDB-ECO",Interval="Hour",DataType="*",Where1="Site - Common Name;Contains;tunCO")
-WriteReclamationHDB()
