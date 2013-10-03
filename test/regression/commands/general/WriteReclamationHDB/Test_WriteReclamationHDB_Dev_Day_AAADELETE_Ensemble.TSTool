@@ -1,0 +1,36 @@
+# Test writing a Day ensemble of model time series to ReclamationHDB database:
+# - development database
+# - model table since ensemble
+# - fabricated ensemble data
+# - Day interval
+# - SDI 100376 AAB_DELETE (average flow)
+# - pick a short period
+# - Write twice with different numbers to make sure old results are not just sitting
+#   in the database.  Write non-missing values because HDB convention is to
+#   NOT write missing values (not sure how re-write is handled if missing involved).
+# - Use ReadReclamationHDB() and WriteRlamationHDB() because ensembles don't work with TSIDs
+StartLog(LogFile="Results/Test_WriteReclamationHDB_Dev_Day_AAADELETE_Ensemble.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_Day_AAADELETE_Ensemble_out.dv",IfNotFound=Ignore)
+#
+# Start first pass...
+# First write the ensemble to the database...
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Day",Description="AAA_DELETE",SetStart="2010-01-01",SetEnd="2015-02-15",Units="cfs",PatternValues="5,10,12,13,75,33,14")
+CreateEnsembleFromOneTimeSeries(TSID="AAA_DELETE",TraceLength=1Year,EnsembleID="AAA_DELETE",EnsembleName="AAA_DELETE",ShiftDataHow=ShiftToReference)
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=EnsembleID,EnsembleID="AAA_DELETE",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Day Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P")
+# Now read the same time series from the database using the period that was written...
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="Day",SiteDataTypeID=100376,EnsembleName="AAA_DELETE Day Date",Alias="AAA_DELETE-Day-%z")
+#
+# Start second pass (previous values x 10)...
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Day",Description="AAA_DELETE",SetStart="2010-01-01",SetEnd="2015-02-15",Units="cfs",PatternValues="50,100,120,130,750,330,140")
+CreateEnsembleFromOneTimeSeries(TSID="AAA_DELETE",TraceLength=1Year,EnsembleID="AAA_DELETE2",EnsembleName="AAA_DELETE2",ShiftDataHow=ShiftToReference)
+# First write the time series to the database...
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=EnsembleID,EnsembleID="AAA_DELETE2",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Day Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P")
+# Now read the same time series from the database using the period that was written...
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="Day",SiteDataTypeID=100376,EnsembleName="AAA_DELETE Day Date",Alias="AAA_DELETE2-Day-%z")
+#
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_Day_AAADELETE_Ensemble_out.dv",TSList=AllMatchingTSID,TSID="AAA_DELETE2-Day*")
+# Generate new output for what was read from the database...
+WriteDateValue(OutputFile="Results/Test_WriteReclamationHDB_Dev_Day_AAADELETE_Ensemble_out.dv",TSList=AllMatchingTSID,TSID="AAA_Delete2-Day*")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteReclamationHDB_Dev_Day_AAADELETE_Ensemble_out.dv",InputFile2="Results/Test_WriteReclamationHDB_Dev_Day_AAADELETE_Ensemble_out.dv",IfDifferent=Warn)
