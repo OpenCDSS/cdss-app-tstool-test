@@ -19,7 +19,7 @@ SetOutputPeriod(OutputStart="2013-07-31 18",OutputEnd="2013-08-05 18")
 WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=EnsembleID,EnsembleID="ESSC2S",SiteCommonName="BTABESCO",DataTypeCommonName="flow",SiteDataTypeID=101017,NewEnsembleName="ESSCN SQIN 1 Date",EnsembleTrace="${ts:sequence_number}",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="GMT")
 # Now read the same time series from the database using the period that was written...
 SetInputPeriod(InputStart="2013-07-31 18",InputEnd="2013-08-05 18")
-ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="Hour",SiteDataTypeID=101017,EnsembleName="ESSCN SQIN 1 Date",Alias="ESSCN-SQN-1Hour-%z")
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="Hour",SiteDataTypeID=101017,EnsembleName="ESSCN SQIN 1 Date",Alias="ESSCN-SQIN-1Hour-%z")
 #
 # Start second pass (previous values x 10)...
 ReadNwsrfsEspTraceEnsemble(InputFile="Data\ESSC2.ESSC2LOC.SQIN.01.CS",EnsembleID="ESSC2S_Copy",EnsembleName="ESSC2S_Copy")
@@ -27,7 +27,7 @@ Scale(TSList=EnsembleID,EnsembleID="ESSC2S_Copy",ScaleValue=10)
 # First write the time series to the database...
 WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=EnsembleID,EnsembleID="ESSC2S_Copy",SiteCommonName="BTABESCO",DataTypeCommonName="flow",SiteDataTypeID=101017,NewEnsembleName="ESSCN SQIN 1 Date",EnsembleTrace="${ts:sequence_number}",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="GMT")
 # Now read the same time series from the database using the period that was written...
-ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="Hour",SiteDataTypeID=101017,EnsembleName="ESSCN SQIN 1 Date",Alias="ESSCN-Copy-SQN-1Hour-%z")
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="Hour",SiteDataTypeID=101017,EnsembleName="ESSCN SQIN 1 Date",Alias="ESSCN-Copy-SQIN-1Hour-%z")
 #
 # Output 12 hours less to account for the 7 hour GMT to MST offset.
 # This ensures that previous contents in HDB don't show up in test output.

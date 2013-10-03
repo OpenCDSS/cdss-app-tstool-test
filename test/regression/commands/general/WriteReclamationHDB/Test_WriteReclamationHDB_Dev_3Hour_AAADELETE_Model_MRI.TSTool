@@ -1,0 +1,39 @@
+# Test writing a 3hour time series to ReclamationHDB database:
+#   * development database
+#   * model table
+#   * use MRI 167 (not model name)
+#   * SDI 100376 (site common name AAA_DELETE)
+#   * 3hour data
+#   * Write twice with different numbers to make sure old results are not just sitting
+#     in the database.  Write non-missing values because HDB convention is to
+#     NOT write missing values (not sure how re-write is handled if missing involved).
+#   * For two writes, use TSID read once, and ReadReclamationHDB() once to exercise read.
+StartLog(LogFile="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",IfNotFound=Ignore)
+# Make the definition of this time series match what is used in HDB so that the comparison
+# of results all matches
+#
+# Start first pass...
+SetOutputPeriod(OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12")
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="5,10,12,13,75")
+# First write the time series to the database...
+SetDebugLevel(LogFileLevel=1)
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
+# Now read the same time series from the database using the period that was written...
+SetInputPeriod(InputStart="2010-01-01 00",InputEnd="2010-01-03 12")
+ReadTimeSeries(TSID="diversion:100376-167.HDB.flow.3Hour.AAA_DELETE~ReclamationHDB-ECO-Dev",Alias="FirstReadUsingTSID",IfNotFound=Warn)
+SetDebugLevel(LogFileLevel=0)
+#
+# Start second pass (previous values x 10)...
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="500,100,120,130,750")
+# First write the time series to the database...
+WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
+# Now read the same time series from the database using the period that was written...
+ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="3Hour",SiteDataTypeID=100376,ModelRunID=167,Alias="SecondRead")
+#
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour")
+# Generate new output for what was read from the database...
+WriteDateValue(OutputFile="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",InputFile2="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",IfDifferent=Warn)
