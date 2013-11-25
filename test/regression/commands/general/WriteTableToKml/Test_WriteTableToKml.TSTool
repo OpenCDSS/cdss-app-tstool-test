@@ -1,0 +1,12 @@
+# Test writing a table to a Kml file
+StartLog(LogFile="Results/Test_WriteTableToKml.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTableToKml_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="StationMeta",InputFile="Data\StationMeta.csv")
+# Generate the results.
+FormatTableString(TableID="StationMeta",InputColumns="Name",Format="Description:  %s",OutputColumn="Description")
+# Uncomment the following to regenerate the expected results
+# WriteTableToKml(TableID="StationMeta",OutputFile="ExpectedResults/Test_WriteTableToKml_out.kml",Name="Test layer",Description="Description for layer",PlacemarkNameColumn="Name",PlacemarkDescriptionColumn="Description",LongitudeColumn="Lon",LatitudeColumn="Lat",StyleFile="Data/Precipitation-ACIS-KML-Style.xml",StyleUrl="#exampleStyleMap")
+WriteTableToKml(TableID="StationMeta",OutputFile="Results/Test_WriteTableToKml_out.kml",Name="Test layer",Description="Description for layer",PlacemarkNameColumn="Name",PlacemarkDescriptionColumn="Description",LongitudeColumn="Lon",LatitudeColumn="Lat",StyleFile="Data/Precipitation-ACIS-KML-Style.xml",StyleUrl="#exampleStyleMap")
+# Do regression comparison with the original input (possible because strings
+# and integers with no formatting issues).
+CompareFiles(InputFile1="ExpectedResults/Test_WriteTableToKml_out.kml",InputFile2="Results/Test_WriteTableToKml_out.kml",IfDifferent=Warn)
