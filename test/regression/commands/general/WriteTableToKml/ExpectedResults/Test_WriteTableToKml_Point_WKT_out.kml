@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+ <Document>
+  <name>Test layer</name>
+  <description>Description for layer</description>
+  <Style id="highlightPlacemark">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="normalPlacemark">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <StyleMap id="exampleStyleMap">
+    <Pair>
+      <key>normal</key>
+      <styleUrl>#normalPlacemark</styleUrl>
+    </Pair>
+    <Pair>
+      <key>highlight</key>
+      <styleUrl>#highlightPlacemark</styleUrl>
+    </Pair>
+  </StyleMap>
+  <Placemark>
+   <name>ANTERO RSVR</name>
+   <description>Description:  ANTERO RSVR</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.89194,38.99333,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>BAILEY</name>
+   <description>Description:  BAILEY</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.47667,39.40472,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>BOULDER</name>
+   <description>Description:  BOULDER</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.26667,39.99194,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>BYERS 5 ENE</name>
+   <description>Description:  BYERS 5 ENE</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-104.1275,39.74028,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>CHEESMAN</name>
+   <description>Description:  CHEESMAN</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.27833,39.22028,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>DENVER STAPLETON</name>
+   <description>Description:  DENVER STAPLETON</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-104.86944,39.76333,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>ESTES PARK</name>
+   <description>Description:  ESTES PARK</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.48583,40.37667,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>ESTES PARK 1 SSE</name>
+   <description>Description:  ESTES PARK 1 SSE</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.51083,40.36889,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>FT COLLINS</name>
+   <description>Description:  FT COLLINS</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.13139,40.61472,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>FT MORGAN</name>
+   <description>Description:  FT MORGAN</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-103.81556,40.26,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>JULESBURG</name>
+   <description>Description:  JULESBURG</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-102.27056,40.98667,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>KASSLER</name>
+   <description>Description:  KASSLER</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.09528,39.49,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>LAKE GEORGE 8 SW</name>
+   <description>Description:  LAKE GEORGE 8 SW</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.47056,38.9075,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>LONGMONT 2 ESE</name>
+   <description>Description:  LONGMONT 2 ESE</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.07361,40.15889,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>SEDALIA 4 SSE</name>
+   <description>Description:  SEDALIA 4 SSE</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-104.95222,39.40361,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>SEDGWICK</name>
+   <description>Description:  SEDGWICK</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-102.52528,40.93833,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>SEDGWICK 5 S</name>
+   <description>Description:  SEDGWICK 5 S</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-102.51667,40.85917,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>STERLING</name>
+   <description>Description:  STERLING</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-103.20833,40.62778,0</coordinates>
+   </Point>
+  </Placemark>
+  <Placemark>
+   <name>WATERDALE</name>
+   <description>Description:  WATERDALE</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-105.21028,40.42556,0</coordinates>
+   </Point>
+  </Placemark>
+ </Document>
+</kml>
