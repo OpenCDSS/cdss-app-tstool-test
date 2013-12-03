@@ -1,0 +1,11 @@
+# Test expanding a FreeMarker template for "Hello World"
+# - input from text (not file)
+# - output to a property
+StartLog(LogFile="Results/Test_ExpandTemplateFile_InputText_ProcessorStringProperty.TSTool.log")
+RemoveFile(InputFile="Results/Test_ExpandTemplateFile_InputText_ProcessorStringProperty_out.txt",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="locList",InputFile="Data\loclist.csv")
+# Uncomment to regenerate the expected results.
+# ExpandTemplateFile(InputText="<#list locList as loc><#if (loc_index > 0)>,</#if>${loc}</#list>",OutputFile="ExpectedResults/Test_ExpandTemplateFile_InputText_ProcessorStringProperty_out.txt")
+ExpandTemplateFile(InputText="<#list locList as loc><#if (loc_index > 0)>,</#if>${loc}</#list>",OutputFile="Results/Test_ExpandTemplateFile_InputText_ProcessorStringProperty_out.txt")
+# Compare the expected and current results
+CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_InputText_ProcessorStringProperty_out.txt",InputFile2="Results/Test_ExpandTemplateFile_InputText_ProcessorStringProperty_out.txt",IfDifferent=Warn)
