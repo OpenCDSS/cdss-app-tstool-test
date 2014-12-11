@@ -9,7 +9,7 @@ CheckTimeSeries(CheckCriteria="Missing",MaxWarnings=10)
 # Check for negative flows - should not be any
 CheckTimeSeries(CheckCriteria="<",Value1=0,MaxWarnings=10)
 # Uncomment the following command to regenerate expected results.
-WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm")
+#WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm")
 WriteStateMod(TSList=AllTS,OutputFile="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm")
 CompareFiles(InputFile1="ExpectedResults/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm",InputFile2="Results/Test_FillMixedStation_gunnv.xbg_MonthlyEquations_out.stm",IfDifferent=Warn)
 # Write out the check file for troubleshooting

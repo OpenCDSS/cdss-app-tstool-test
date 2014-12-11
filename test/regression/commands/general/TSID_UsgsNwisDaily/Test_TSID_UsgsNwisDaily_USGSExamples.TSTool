@@ -1,4 +1,4 @@
-StartLog(LogFile="Test_TSID_UsgsNwis_USGSExamples.TSTool.log")
+StartLog(LogFile="Results/Test_TSID_UsgsNwis_USGSExamples.TSTool.log")
 # Test reading from the USGS NWIS WaterML REST web service
 # Use examples shown in the USGS documentation:
 # http://waterservices.usgs.gov/rest/USGS-DV-Service.html
