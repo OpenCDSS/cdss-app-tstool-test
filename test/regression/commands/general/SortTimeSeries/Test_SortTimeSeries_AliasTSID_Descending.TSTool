@@ -1,0 +1,14 @@
+# Test sorting time series
+# - by AliasTSID
+# - descending
+StartLog(LogFile="Results/Test_SortTimeSeries_AliasTSID_Descending.TSTool.log")
+RemoveFile(InputFile="Results/Test_SortTimeSeries_AliasTSID_Descending_out.dv",IfNotFound=Ignore)
+# Define TSID to not be in same sort order as alias since testing alias sort
+NewPatternTimeSeries(Alias="TS2",NewTSID="MyLoc3..MyData.Day",Description="Test data 2",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="TS1",NewTSID="MyLoc2..MyData.Day",Description="Test data 1",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="TS3",NewTSID="MyLoc1..MyData.Day",Description="Test data 3",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+SortTimeSeries(TSIDFormat="AliasTSID",SortOrder="Descending")
+# Uncomment the following command to regenerate the expected results file.
+WriteDateValue(OutputFile="ExpectedResults\Test_SortTimeSeries_AliasTSID_Descending_out.dv")
+WriteDateValue(OutputFile="Results\Test_SortTimeSeries_AliasTSID_Descending_out.dv")
+CompareFiles(InputFile1="Results\Test_SortTimeSeries_AliasTSID_Descending_out.dv",InputFile2="ExpectedResults\Test_SortTimeSeries_AliasTSID_Descending_out.dv",IfDifferent=Warn)
