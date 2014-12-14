@@ -3,7 +3,7 @@
 StartLog(LogFile="Results/Test_ReadTimeSeries.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadTimeSeries_out.dv",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="StationList",InputFile="Data\testdata.csv")
-ReadTimeSeriesList(TableID="StationList",LocationColumn="TSID",DataSource="NWIS",DataType="00060-00003",Interval="Day",DataStore="DateValue",InputName="Data/testdata.dv",ColumnProperties="*:*",Properties="TestProperty:TestPropertyValue",IfNotFound=Warn,TimeSeriesCountProperty="TimeSeriesCount")
+ReadTimeSeriesList(TableID="StationList",LocationColumn="TSID",DataSource="NWIS",DataType="00060-00003",Interval="Day",DataStore="DateValue",InputName="Data/testdata.dv",ColumnProperties="*:*",Properties="TestProperty:TestPropertyValue",IfNotFound=Warn,TimeSeriesCountProperty="TimeSeriesCount",TimeSeriesIndex1Property="ReadIndex")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadTimeSeries_out.dv")
 WriteDateValue(OutputFile="Results\Test_ReadTimeSeries_out.dv")

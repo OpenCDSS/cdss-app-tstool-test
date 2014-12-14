@@ -5,5 +5,5 @@ StartLog(LogFile="Results/Test_WebGet_NetscapeLicense.TSTool.log")
 RemoveFile(InputFile="Results\Test_WebGet_NetscapeLicense.html",IfNotFound=Ignore)
 # Uncomment the following command to regenerate the expected results file.
 # WebGet(URI="http://www.mozilla.org/MPL/NPL-1.1.html",LocalFile="ExpectedResults\Test_WebGet_NetscapeLicense.html")
-WebGet(URI="http://www.mozilla.org/MPL/NPL-1.1.html",LocalFile="Results\Test_WebGet_NetscapeLicense.html")
+WebGet(URI="https://www.mozilla.org/MPL/NPL/1.1/",LocalFile="Results\Test_WebGet_NetscapeLicense.html")
 CompareFiles(InputFile1="ExpectedResults\Test_WebGet_NetscapeLicense.html",InputFile2="Results\Test_WebGet_NetscapeLicense.html",IfDifferent=Warn)

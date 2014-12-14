@@ -1,0 +1,30 @@
+# Example with duplicate dates to test HandleDuplicatesHow parameter
+# * copied the multiple column version and reordered into a single column
+"Date","Location","Value","Flag"
+2000-01-01,"Loc1",1.1,"a"
+2000-01-02,"Loc1",1.2,"b"
+2000-01-03,"Loc1",1.3,"c"
+2000-01-04,"Loc1",1.4,"d"
+2000-01-05,"Loc1",1.5,"e"
+# Duplicates on this date, including missing on both ends...
+2000-01-06,"Loc1",,""
+2000-01-06,"Loc1",1.6,"f"
+2000-01-06,"Loc1",2.0,"g"
+2000-01-06,"Loc1",,""
+2000-01-07,"Loc1",1.7,"h"
+2000-01-08,"Loc1",1.8,"i"
+2000-01-09,"Loc1",1.9,"j"
+# Second time series...
+2000-01-01,"Loc2",2.1,"A"
+2000-01-02,"Loc2",2.2,"B"
+2000-01-03,"Loc2",2.3,"C"
+2000-01-04,"Loc2",2.4,"D"
+2000-01-05,"Loc2",2.5,"E"
+# Duplicates on this date, including missing on both ends...
+2000-01-06,"Loc2",,""
+2000-01-06,"Loc2",2.6,"F"
+2000-01-06,"Loc2",3.0,"G"
+2000-01-06,"Loc2",,""
+2000-01-07,"Loc2",2.7,"H"
+2000-01-08,"Loc2",2.8,"I"
+2000-01-09,"Loc2",2.9,"J"

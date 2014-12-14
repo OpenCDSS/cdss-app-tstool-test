@@ -1,0 +1,6 @@
+# Test table data for For() command tests
+"Count","Val","StationID","Basin"
+1,1.0,Station1,Basin1
+2,2.0,Station2,Basin2
+3,3.0,Station3,Basin3
+4,4.0,Station4,Basin4
