@@ -1,0 +1,31 @@
+<Style id="highlightPlacemark">
+  <IconStyle>
+    <Icon>
+      <href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>
+    </Icon>
+  </IconStyle>
+</Style>
+<Style id="normalPlacemark">
+  <IconStyle>
+    <Icon>
+      <href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>
+    </Icon>
+  </IconStyle>
+</Style>
+<StyleMap id="exampleStyleMap">
+  <Pair>
+    <key>normal</key>
+    <styleUrl>#normalPlacemark</styleUrl>
+  </Pair>
+  <Pair>
+    <key>highlight</key>
+    <styleUrl>#highlightPlacemark</styleUrl>
+  </Pair>
+</StyleMap>
+<Style id="polygonFillStyle">
+  <PolyStyle>
+    <color>ff0000ff</color>
+    <outline>0</outline>
+    <fill>1</fill>
+  </PolyStyle>
+</Style>

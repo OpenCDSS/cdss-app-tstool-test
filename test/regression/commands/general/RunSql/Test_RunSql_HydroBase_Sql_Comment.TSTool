@@ -1,0 +1,6 @@
+# Test running an SQL statement against HydroBase
+# - since can't change, just use a comment
+StartLog(LogFile="Results/Test_RunSql_HydroBase_Sql_Comment.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunSql_HydroBase_Sql_Comment_out.csv",IfNotFound=Ignore)
+RunSql(DataStore="HydroBase",Sql="/* Test reading diversion records - need to figure out test */")
+# Don't check output - just see if error results

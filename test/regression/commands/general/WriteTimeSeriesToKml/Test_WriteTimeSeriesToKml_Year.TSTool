@@ -1,5 +1,6 @@
 # Test writing a Year time series to KML format
 # * Interval = Year
+# * default placemark name and description
 StartLog(LogFile="Results/Test_WriteTimeSeriesToKml_Year.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteTimeSeriesToKml_Year_out.Kml",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="MyLoc1",NewTSID="MyLoc1..MyDataType.Year",Description="Test data",SetStart="1950",SetEnd="2000",Units="CFS",PatternValues="5,10,12,13,75")
@@ -10,8 +11,8 @@ NewPatternTimeSeries(Alias="MyLoc2",NewTSID="MyLoc2..MyData.Year",Description="T
 SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc2",PropertyName="Longitude",PropertyType=Double,PropertyValue="-110")
 SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc2",PropertyName="Latitude",PropertyType=Double,PropertyValue="45")
 # Uncomment the following command to regenerate the expected results file.
-# WriteTimeSeriesToKml(OutputFile="ExpectedResults\Test_WriteTimeSeriesToKml_Year_out.Kml")
+# WriteTimeSeriesToKml(OutputFile="ExpectedResults/Test_WriteTimeSeriesToKml_Year_out.kml",Name="Test Layer",Description="Test time series.",LongitudeProperty="Longitude",LatitudeProperty="Latitude",ElevationProperty="Elevation",StyleFile="Data/KML-Style.xml",StyleUrl="#exampleStyleMap")
 # Generate new output...
-WriteTimeSeriesToKml(OutputFile="Results/Test_WriteTimeSeriesToKml_Year_out.Kml",LongitudeProperty="Longitude",LatitudeProperty="Latitude",ElevationProperty="Elevation")
+WriteTimeSeriesToKml(OutputFile="Results/Test_WriteTimeSeriesToKml_Year_out.kml",Name="Test Layer",Description="Test time series.",LongitudeProperty="Longitude",LatitudeProperty="Latitude",ElevationProperty="Elevation",StyleFile="Data/KML-Style.xml",StyleUrl="#exampleStyleMap")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToKml_Year_out.Kml",InputFile2="Results/Test_WriteTimeSeriesToKml_Year_out.Kml",IfDifferent=Warn)

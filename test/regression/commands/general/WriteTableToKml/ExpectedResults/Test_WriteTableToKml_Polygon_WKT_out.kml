@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+ <Document>
+  <name>Test layer</name>
+  <description>Description for layer</description>
+  <Style id="highlightPlacemark">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="normalPlacemark">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <StyleMap id="exampleStyleMap">
+    <Pair>
+      <key>normal</key>
+      <styleUrl>#normalPlacemark</styleUrl>
+    </Pair>
+    <Pair>
+      <key>highlight</key>
+      <styleUrl>#highlightPlacemark</styleUrl>
+    </Pair>
+  </StyleMap>
+  <Style id="polygonFillStyle">
+    <PolyStyle>
+      <color>ff0000ff</color>
+      <outline>0</outline>
+      <fill>1</fill>
+    </PolyStyle>
+  </Style>
+  <Placemark>
+   <name>ANTERO RSVR</name>
+   <description>Description:  ANTERO RSVR</description>
+   <styleUrl>#polygonFillStyle</styleUrl>
+   <Polygon>
+    <outerBoundaryIs>
+     <LinearRing>
+      <coordinates>
+       -105.89194,38.99333
+       -106.0,39.0
+       -106.0,37.5
+       -105.89194,38.99333
+      </coordinates>
+     </LinearRing>
+    </outerBoundaryIs>
+   </Polygon>
+  </Placemark>
+  <Placemark>
+   <name>BAILEY</name>
+   <description>Description:  BAILEY</description>
+   <styleUrl>#polygonFillStyle</styleUrl>
+   <Polygon>
+    <outerBoundaryIs>
+     <LinearRing>
+      <coordinates>
+       -105.47667,39.40472
+       -104.0,39.0
+       -103.0,37.5
+       -105.47667,39.40472
+      </coordinates>
+     </LinearRing>
+    </outerBoundaryIs>
+   </Polygon>
+  </Placemark>
+ </Document>
+</kml>

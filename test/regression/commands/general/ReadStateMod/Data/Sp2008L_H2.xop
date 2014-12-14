@@ -1,4 +1,4 @@
-#
+# Operating rule identifiers can be up to 12 characters
 # ________________________________________________________________________________
 # *.xop       Operational Right Diversion Summary              
 #
@@ -13,7 +13,7 @@
 
  Operational Right Summary  ACFT
 
- ID = 01038160.01        Name = Opr_Empire_Store         Opr Type =   45   Admin # =      20226.00000
+ ID = 01038160.01X       Name = Opr_Empire_Store         Opr Type =   45   Admin # =      20226.00000
  Source 1 = 0103816.01   Destination = 0103816           Year On =     0   Year Off =  9999
 YEAR    JAN     FEB     MAR     APR     MAY     JUN     JUL     AUG     SEP     OCT     NOV     DEC     TOT 
 ____ _______ _______ _______ _______ _______ _______ _______ _______ _______ _______ _______ _______ _______

@@ -27,6 +27,13 @@
       <styleUrl>#highlightPlacemark</styleUrl>
     </Pair>
   </StyleMap>
+  <Style id="polygonFillStyle">
+    <PolyStyle>
+      <color>ff0000ff</color>
+      <outline>0</outline>
+      <fill>1</fill>
+    </PolyStyle>
+  </Style>
   <Placemark>
    <name>ANTERO RSVR</name>
    <description>Description:  ANTERO RSVR</description>

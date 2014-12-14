@@ -1,0 +1,14 @@
+# Test creating an HTML data dictionary for a datastore
+# - Use SQL Server HydroBase as the database
+StartLog(LogFile="Results/TestCreateDataStoreDataDictionary_HydroBase.TSTool.log")
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select          st.name [Table],         sc.name [Column],         sep.value [Description]     from sys.tables st     inner join sys.columns sc on st.object_id = sc.object_id     left join sys.extended_properties sep on st.object_id = sep.major_id                                          and sc.column_id = sep.minor_id                                          and sep.name = 'MS_Description'     where st.name = 'vw_CDSS_Structuure'     and sc.name = 'structure_num'",TableID="x")
+# Remove the output file before the test
+RemoveFile(InputFile="Results/TestCreateDataStoreDataDictionary_HydroBase_out.html",IfNotFound=Ignore)
+# Uncomment the following line to regenerate the expected results
+# Pick a smaller table as a reference table since the reference tables
+# are actually only available through the FLEX stored procedure
+CreateDataStoreDataDictionary(DataStore="HydroBase",ReferenceTables="vw_CDSS_WISSheetName_Distinct",OutputFile="Results\Test_CreateDataStoreDataDictionary_out.html")
+# Currently don't compare because HydroBase will change.
+# Need to develop a more controlled database to test with.
+# Compare the results
+# CompareFiles(InputFile1="ExpectedResults/TestCreateDataStoreDataDictionary_HydroBase_out.csv",InputFile2="Results/TestCreateDataStoreDataDictionary_HydroBase_out.csv",IfDifferent=Warn)
