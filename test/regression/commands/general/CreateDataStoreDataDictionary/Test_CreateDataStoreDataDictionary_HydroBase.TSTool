@@ -7,7 +7,7 @@ RemoveFile(InputFile="Results/TestCreateDataStoreDataDictionary_HydroBase_out.ht
 # Uncomment the following line to regenerate the expected results
 # Pick a smaller table as a reference table since the reference tables
 # are actually only available through the FLEX stored procedure
-CreateDataStoreDataDictionary(DataStore="HydroBase",ReferenceTables="vw_CDSS_WISSheetName_Distinct",OutputFile="Results\Test_CreateDataStoreDataDictionary_out.html")
+CreateDataStoreDataDictionary(DataStore="HydroBase",ReferenceTables="vw_CDSS_WISSheetName_Distinct",OutputFile="Results\Test_CreateDataStoreDataDictionary_HydroBase_out.html")
 # Currently don't compare because HydroBase will change.
 # Need to develop a more controlled database to test with.
 # Compare the results
