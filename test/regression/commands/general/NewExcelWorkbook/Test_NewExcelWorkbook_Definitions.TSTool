@@ -8,7 +8,7 @@ WriteTableToExcel(TableID="Definitions",OutputFile="Results/Test_NewExcelWorkboo
 # Read the new Excel file into a table and then write the table below for comparison
 ReadTableFromExcel(TableID="Table1",InputFile="Results/Test_NewExcelWorkbook_Definitions_out.xlsx",Worksheet="TestSheet1",ExcelColumnNames=FirstRowInRange)
 # Uncomment the following command to regenerate the expected results file.
-WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_NewExcelWorkbook_Definitions_out.csv")
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_NewExcelWorkbook_Definitions_out.csv")
 # Generate new output...
 WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_NewExcelWorkbook_Definitions_out.csv")
 # Do regression comparison...

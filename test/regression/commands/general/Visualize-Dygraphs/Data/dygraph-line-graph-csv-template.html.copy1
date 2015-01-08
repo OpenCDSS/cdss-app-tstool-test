@@ -1,0 +1,34 @@
+<#--
+This is a template that is expanded to insert the CSV filename for dygraphs.
+The test http server is running in the parent (main command test) folder.
+The URL to the expanded file will include Results/xxxx.
+Therefore, find the dygraph-combined.js file by walking up the path,
+but the CSV data file is in this same folder.
+-->
+<html>
+<head>
+<h1>Dygraph test for line graph</h1>
+<script type="text/javascript"
+  src="../Data/dygraph-combined.js"></script>
+</head>
+<body>
+<p>
+Draw box on graph to zoom.  Double-click on graph to zoom out.
+</p>
+<div id="graphdiv1"
+style="width:500px; height:300px;"></div>
+<script type="text/javascript">
+  g1 = new Dygraph(
+    document.getElementById("graphdiv1"),
+    "${CSVFilename}",
+    {
+       // Don't use rollover (running average)
+       // - rollover can result in missing values being masked
+       //rollPeriod: 7,
+       showRoller: false,
+       axisLabelFontSize: 12
+    }
+);
+</script>
+</body>
+</html>

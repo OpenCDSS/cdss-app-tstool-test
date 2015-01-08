@@ -1,0 +1,12 @@
+#!/bin/bash
+# See:  http://stackoverflow.com/questions/530787/simple-http-web-server
+# Start this script with ./httpserver
+# Python 2.x must be installed and be in the PATH
+
+# Run an HTTP server on port 8000 using Python 2.4+
+
+python -m SimpleHTTPServer
+
+# Python 3+
+
+#python -m http.server

@@ -1,0 +1,136 @@
+<#--
+This is a template that is expanded to insert the CSV filename for dygraphs.
+The test http server is running in the parent (main command test) folder.
+The URL to the expanded file will include Results/xxxx.
+Therefore, find the dygraph-combined.js file by walking up the path,
+but the CSV data file is in this same folder.
+-->
+<html>
+<head>
+<h1>Dygraph test for line graph</h1>
+<script type="text/javascript"
+  src="../Data/dygraph-combined.js"></script>
+</head>
+<body>
+<p>
+Draw box on graph to zoom.  Double-click on graph to zoom out.
+</p>
+<!-- Note that widet and height specified here will trump the graph options if options are larger values -->
+<div id="graphdiv1"
+style="width:700px; height:500px;"></div>
+<script type="text/javascript">
+
+   // Copied from:  http://dygraphs.com/tests/plotters.html
+   // This function draws bars for a single series. See
+   // multiColumnBarPlotter below for a plotter which can draw multi-series
+   // bar charts.
+   function barChartPlotter(e) {
+     var ctx = e.drawingContext;
+     var points = e.points;
+     var y_bottom = e.dygraph.toDomYCoord(0);
+
+     // The RGBColorParser class is provided by rgbcolor.js, which is
+     // packed in with dygraphs.
+     var color = new RGBColorParser(e.color);
+     color.r = Math.floor((255 + color.r) / 2);
+     color.g = Math.floor((255 + color.g) / 2);
+     color.b = Math.floor((255 + color.b) / 2);
+     ctx.fillStyle = color.toRGB();
+
+     // Find the minimum separation between x-values.
+     // This determines the bar width.
+     var min_sep = Infinity;
+     for (var i = 1; i < points.length; i++) {
+       var sep = points[i].canvasx - points[i - 1].canvasx;
+       if (sep < min_sep) min_sep = sep;
+     }
+     var bar_width = Math.floor(2.0 / 3 * min_sep);
+
+     // Do the actual plotting.
+     for (var i = 0; i < points.length; i++) {
+       var p = points[i];
+       var center_x = p.canvasx;
+
+       ctx.fillRect(center_x - bar_width / 2, p.canvasy,
+       bar_width, y_bottom - p.canvasy);
+
+       ctx.strokeRect(center_x - bar_width / 2, p.canvasy,
+       bar_width, y_bottom - p.canvasy);
+     }
+   }
+
+  g1 = new Dygraph(
+    document.getElementById("graphdiv1"),
+    "${CSVFilename}",
+    {
+       // Properties for the entire graph
+       // Don't use rollover (running average)
+       // - rollover can result in missing values being masked
+       //rollPeriod: 7,
+       showRoller: false,
+       axisLabelFontSize: 12,
+       includeZero: true,
+       title: '${GraphOption_title}',
+       ylabel: '${GraphOption_ylabel}',
+       colors: [ 'blue' ],
+       width: 600,
+       height: 400,
+       // Apparently fillAlpha only works globall, not on a single series
+       fillAlpha: 1.0,
+       // Does not seem to work?
+       //digitsAfterDecimal: 2,
+       // Properties for a specific time series (column in CSV that has name 'StationID')
+       'StationID': {
+         stepPlot: false,
+         // fillGraph creates an "area graph" effect
+         fillGraph: true,
+         //fillAlpha: 1.0,
+         stackedGraph: true,
+         strokeWidth: 2//,
+         //plotter: barChartPlotter
+       }
+    }
+  );
+
+  g1.ready(function() {
+    g1.setAnnotations([
+      {
+        series: "StationID",
+        x: "1950-10-25",
+        // Can either specify shortText or icon (later requies width and height)
+        //shortText: "Label",
+        //width: 40, // This should be based on length of string
+        icon: "../Data/sun.png",
+        width: 32,
+        height: 32,
+        text: "This is the day that a drought started",
+      },
+      {
+        series: "StationID",
+        x: "1950-11-27",
+        icon: "../Data/cloud_rain_icon.png",
+        width: 32,
+        height: 32,
+        text: "This is the day that a flood started",
+      },
+      {
+        series: "StationID",
+        x: "1950-09-25",
+        icon: "../Data/document_text_edit_32.png",
+        width: 32,
+        height: 32,
+        text: "New legislation",
+      },
+      {
+        series: "StationID",
+        x: "1950-12-23",
+        icon: "../Data/document_text_add_32.png",
+        width: 32,
+        height: 32,
+        text: "Legislation implemented",
+      }
+    ]);
+  });
+</script>
+</body>
+</html>

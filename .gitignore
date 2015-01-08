@@ -1,0 +1,6 @@
+# Ignore vi editor swap files
+*.swp
+*.swo
+
+# Ignore Microsoft Office temporary files
+~$*
