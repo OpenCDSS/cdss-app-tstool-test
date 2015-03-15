@@ -4,7 +4,7 @@ StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Month.TSTool.l
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 SetInputPeriod(InputStart="2000-01",InputEnd="2001-12")
-HSCCLPCO.DWR.AdminFlow.Month~HydroBase
+ES1904.DWR.AdminFlow.Month~HydroBase
 HSCCLPCO.NCWCD.AdminFlow.Month~ColoradoWaterHBGuest
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
@@ -14,5 +14,6 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 # rounding on output produces different values.
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterHBGuest_AdminFlow_Month_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="0300915.DWR.AdminFlow.Month")
 # WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Month_out.dv",Precision=2,TSList=LastMatchingTSID,TSID="0300915.DWR.AdminFlow.Month")
+# Because Northern and DWR use different identifiers for the time series, only match data type.
 # CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterHBGuest_AdminFlow_Month_out.dv",InputFile2="Results/Test_TSIDColoradoWaterHBGuest_AdminFlow_Month_out.dv",IfDifferent=Warn)
-CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,Tolerance=".01",WarnIfDifferent=True)

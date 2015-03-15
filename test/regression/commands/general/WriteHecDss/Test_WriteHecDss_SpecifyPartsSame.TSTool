@@ -7,13 +7,13 @@
 StartLog(LogFile="Results/Test_WriteHecDss_SpecifyPartsSame.TSTool.log")
 # SetDebugLevel(LogFileLevel=10)
 # Write a single blank time series to the DSS file to allow WriteHecDss to be closed; allows deleting DSS file.
-TS Blank = NewTimeSeries(NewTSID="Blank...Month",SetStart="1960-01",SetEnd="1960-12",Units="CFS")
+NewTimeSeries(Alias="Blank",NewTSID="Blank...Month",SetStart="1960-01",SetEnd="1960-12",Units="CFS")
 WriteHecDss(OutputFile="Results\Test_WriteHecDss_SpecifyPartsSame_out.dss",Type=PER-AVER,Close=True)
 Free(TSList=AllMatchingTSID,TSID="*")
 RemoveFile(InputFile="Results\Test_WriteHecDss_SpecifyPartsSame_out.dss")
 RemoveFile(InputFile="Results\Test_WriteHecDss_SpecifyPartsSame.dssutl.out",IfNotFound=Ignore)
 # The generated time series has identifier parts that indicate the HEC-DSS
 # parts, other than the D part, which is related to the period of record.
-TS Alias1 = NewPatternTimeSeries(NewTSID="Apart1:Bpart1-with-dashes..Cpart1.Month.Fpart1",Description="Test data",SetStart="1950-01",SetEnd="1952-03",Units="MGD",PatternValues="5,10,12,13,75")
-TS Alias2 = NewPatternTimeSeries(NewTSID="Apart2:Bpart2-with-dashes..Cpart2.Month.Fpart2",Description="Test data",SetStart="1950-01",SetEnd="1952-03",Units="MGD",PatternValues="20,5,30,4,3,2")
+NewPatternTimeSeries(Alias="Alias1",NewTSID="Apart1:Bpart1-with-dashes..Cpart1.Month.Fpart1",Description="Test data",SetStart="1950-01",SetEnd="1952-03",Units="MGD",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="Alias2",NewTSID="Apart2:Bpart2-with-dashes..Cpart2.Month.Fpart2",Description="Test data",SetStart="1950-01",SetEnd="1952-03",Units="MGD",PatternValues="20,5,30,4,3,2")
 WriteHecDss(OutputFile="Results/Test_WriteHecDss_SpecifyPartsSame_out.dss",TSList=AllTS,Type=PER-AVER,A="NewPartA",B="NewPartB",C="NewPartC",F="NewPartF")

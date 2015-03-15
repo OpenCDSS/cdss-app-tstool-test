@@ -9,4 +9,6 @@ ReadNrcsAwdb(DataStore="NrcsAwdb",Interval=Day,Stations="551",States="CO",Networ
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Day_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Day_out.dv")
+# Read the expected results to troubleshoot issues
+ReadDateValue(InputFile="ExpectedResults\Test_ReadNrcsAwdb_SingleSite_WTEQ_Day_out.dv",Alias="%l-%T-Expected")
 CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Day_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Day_out.dv",IfDifferent=Warn)

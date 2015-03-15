@@ -15,4 +15,4 @@ ReadTimeSeries(TSID="6403551.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFoun
 # Uncomment the following command to regenerate the expected results file.
 # ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_Day.tsp",View=False,OutputFile="ExpectedResults/Test_ProcessTSProduct_Day_out.png")
 ProcessRasterGraph(TSProductFile="Test_ProcessRasterGraph_Day.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_Day_out.png")
-CompareFiles(InputFile1="ExpectedResults\Test_ProcessTSProduct_Day_out.png",InputFile2="Results\Test_ProcessTSProduct_Day_out.png",IfDifferent=Warn)
+# CompareFiles(InputFile1="ExpectedResults\Test_ProcessTSProduct_Day_out.png",InputFile2="Results\Test_ProcessTSProduct_Day_out.png",IfDifferent=Warn)

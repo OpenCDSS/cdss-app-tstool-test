@@ -1,0 +1,11 @@
+# Test setting a property from a table
+# - read the table from the file
+StartLog(LogFile="Results/Test_SetPropertyFromTable.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetPropertyFromTable_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:First*",PropertyName="StringProp")
+# Uncomment the following to generate the expected results.
+# WriteProperty(OutputFile="ExpectedResults/Test_SetPropertyFromTable_out.txt",PropertyName="StringProp",Append=False)
+WriteProperty(OutputFile="Results/Test_SetPropertyFromTable_out.txt",PropertyName="StringProp",Append=False)
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults/Test_SetPropertyFromTable_out.txt",InputFile2="Results/Test_SetPropertyFromTable_out.txt",IfDifferent=Warn)

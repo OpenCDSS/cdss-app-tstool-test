@@ -9,4 +9,6 @@ ReadNrcsAwdb(DataStore="NrcsAwdb",Interval=Day,Networks="SNTL",HUCs="10190006",E
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNrcsAwdb_HUC_WTEQ_Day_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNrcsAwdb_HUC_WTEQ_Day_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_HUC_WTEQ_Day_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_HUC_WTEQ_Day_out.dv",IfDifferent=Warn)
+# Don't compare with expected results because the number of sites changes over time.
+# See the single site comparisons.
+# CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_HUC_WTEQ_Day_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_HUC_WTEQ_Day_out.dv",IfDifferent=Warn)

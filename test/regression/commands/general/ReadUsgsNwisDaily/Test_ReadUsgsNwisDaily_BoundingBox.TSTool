@@ -9,4 +9,6 @@ ReadUsgsNwisDaily(DataStore="UsgsNwisDaily",BoundingBox="-106,40.5,-105,41",Para
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadUsgsNwisDaily_BoundingBox_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadUsgsNwisDaily_BoundingBox_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_BoundingBox_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_BoundingBox_out.dv",IfDifferent=Warn)
+# Don't compare the output because the number of time series changes over time
+# TODO SAM 2015-03-2014 Need a way to check for non-zero time series count
+# CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_BoundingBox_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_BoundingBox_out.dv",IfDifferent=Warn)

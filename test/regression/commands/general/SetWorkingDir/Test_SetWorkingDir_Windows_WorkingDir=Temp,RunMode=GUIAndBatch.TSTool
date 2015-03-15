@@ -1,4 +1,5 @@
 # Test setting the working directory on Windows using C:\tmp for temporary files
+# TODO SAM 2015-03-04 Need to fix so this works. Temporary files are now in user space, not global.
 #@os Windows
 StartLog(LogFile="Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetWorkingDir_Windows_WorkingDir=Temp,RunMode=GUIAndBatch_out.txt",IfNotFound=Ignore)

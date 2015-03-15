@@ -9,4 +9,6 @@ ReadUsgsNwisDaily(DataStore="UsgsNwisDaily",HUCs="10190007",Parameters="00060",S
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadUsgsNwisDaily_SingleHUC_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadUsgsNwisDaily_SingleHUC_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_SingleHUC_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_SingleHUC_out.dv",IfDifferent=Warn)
+# Don't compare output because the number of time series in a HUC changes
+# TODO SAM 2015-03-14 Need to implement a way to check for non-zero time series count
+# CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_SingleHUC_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_SingleHUC_out.dv",IfDifferent=Warn)

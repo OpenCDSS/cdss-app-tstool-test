@@ -1,7 +1,10 @@
+#@enabled False
+# Disable the test because a large binary file was removed from the repository.
+# TODO SAM 2015-03-14 Need to get some small StateMod binary files for tests
 StartLog(LogFile="Results/Test_ReadStateModB_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadStateModB_1_out.dv",IfNotFound=Ignore)
 ReadStateModB(InputFile="Data\rg2007H.b43",TSID="200812*")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateModB_1_out.dv")
 WriteDateValue(OutputFile="Results\Test_ReadStateModB_1_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_ReadStateModB_1_out.dv",InputFile2="Results\Test_ReadStateModB_1_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadStateModB_1_out.dv",InputFile2="Results\Test_ReadStateModB_1_out.dv",IfDifferent=Warn)

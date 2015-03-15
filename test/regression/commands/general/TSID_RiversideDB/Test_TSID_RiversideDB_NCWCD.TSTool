@@ -1,3 +1,5 @@
+#@enabled False
+# TODO SAM 2015-03-14 Disable test because don't have database at OWF
 StartLog(LogFile="Results/Test_TSID_RiversideDB_NCWCD.TSTool.log")
 # SetDebugLevel(LogFileLevel=30)
 # SetInputPeriod(InputStart="2008-08-01 00:00",InputEnd="2008-08-01 12:00")

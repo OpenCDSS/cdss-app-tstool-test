@@ -7,6 +7,6 @@ For(Name="TestFor",TableID="Table1",TableColumn="StationID")
 WritePropertiesToFile(OutputFile="Results/Test_For_TableString_out.txt",IncludeProperty="TestFor",WriteMode=Append,FileFormat=NameTypeValue)
 EndFor(Name="TestFor")
 # Uncomment the following to generate the expected results.
-CopyFile(InputFile="Results\Test_For_TableString_out.txt",OutputFile="ExpectedResults\Test_For_TableString_out.txt",IfInputNotFound=Fail)
+# CopyFile(InputFile="Results\Test_For_TableString_out.txt",OutputFile="ExpectedResults\Test_For_TableString_out.txt",IfInputNotFound=Fail)
 # Do regression comparison with the original input
 CompareFiles(InputFile1="ExpectedResults/Test_For_TableString_out.txt",InputFile2="Results/Test_For_TableString_out.txt",IfDifferent=Warn)

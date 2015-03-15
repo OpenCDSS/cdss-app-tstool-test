@@ -1,3 +1,5 @@
+#@enabled False
+# Disable until WaterOneFlow support is fully implemented
 # Test reading a single NWIS daily value time series and assigning an alias.
 # Specify the period to have faster performance
 StartLog(LogFile="Results/Test_ReadWaterOneFlow_NWISDV.TSTool.log")

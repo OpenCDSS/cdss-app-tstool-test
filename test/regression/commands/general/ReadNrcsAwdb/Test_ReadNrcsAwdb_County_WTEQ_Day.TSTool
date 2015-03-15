@@ -9,4 +9,6 @@ ReadNrcsAwdb(DataStore="NrcsAwdb",Interval=Day,States="CO",Networks="SNTL",Count
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadNrcsAwdb_County_WTEQ_Day_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNrcsAwdb_County_WTEQ_Day_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_County_WTEQ_Day_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_County_WTEQ_Day_out.dv",IfDifferent=Warn)
+# Don't do the comparison because the number of stations returned is open ended
+# Instead, see the single station query.
+# CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_County_WTEQ_Day_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_County_WTEQ_Day_out.dv",IfDifferent=Warn)

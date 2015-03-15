@@ -17,7 +17,7 @@ CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Streamflow_Month_Mo
 # Compare the statistics tables
 # Uncomment the following command to regenerate expected results.
 # WriteTableToDelimitedFile(TableID="Stats",OutputFile="ExpectedResults/Test_FillRegression_Streamflow_Month_MonthlyEquations_May_stats_out.csv")
-WriteTableToDelimitedFile(TableID="Stats",OutputFile="Results/Test_FillRegression_Streamflow_Month_MonthlyEquations_May_stats_out.csv")
+WriteTableToDelimitedFile(TableID="Stats",OutputFile="Results/Test_FillRegression_Streamflow_Month_MonthlyEquations_May_stats_out.csv",NaNValue="Blank")
 CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Streamflow_Month_MonthlyEquations_May_stats_out.csv",InputFile2="Results/Test_FillRegression_Streamflow_Month_MonthlyEquations_May_stats_out.csv",IfDifferent=Fail)
 # Also plot to help with verification (set to no view when ready for automated tests).
 # ProcessTSProduct(TSProductFile="Test_FillRegression_Streamflow_Month_OneEquation.tsp",OutputFile="Results/Test_FillRegression_Streamflow_Month_MonthlyEquations_out.png")
