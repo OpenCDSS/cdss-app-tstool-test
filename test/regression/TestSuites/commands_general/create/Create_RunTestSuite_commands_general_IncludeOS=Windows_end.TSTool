@@ -1,0 +1,5 @@
+# Command file to finish the automated tests
+# Write the summary table to CSV and Excel files
+WriteTableToDelimitedFile(TableID="TestResults",OutputFile="RunRegressionTest_commands_general_Windows_out.csv",WriteHeaderComments=False)
+NewExcelWorkbook(OutputFile="RunRegressionTest_commands_general_Windows_out.xlsx",Worksheets="TestResults",KeepOpen=True)
+WriteTableToExcel(TableID="TestResults",OutputFile="RunRegressionTest_commands_general_Windows_out.xlsx",Worksheet="TestResults",ExcelAddress="A1",ExcelColumnNames=FirstRowInRange,ColumnWidths="Default:Auto")
