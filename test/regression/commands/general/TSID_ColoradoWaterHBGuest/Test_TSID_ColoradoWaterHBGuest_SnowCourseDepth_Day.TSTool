@@ -4,7 +4,7 @@
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseDepth_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseDepth_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="2006-01-01",InputEnd="2009-12-31")
+SetInputPeriod(InputStart="2006-01-01",InputEnd="2010-12-31")
 ReadTimeSeries(TSID="07K02.NRCS.SnowCourseDepth.Day~HydroBase",Alias="HydroBase",IfNotFound=Warn)
 ReadTimeSeries(TSID="07K02.SCS.SnowCourseDepth.Day~ColoradoWaterHBGuest",Alias="ColoradoWaterHBGuest",IfNotFound=Warn)
 # Make sure that enough data are available in the test data, and some missing

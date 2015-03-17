@@ -1,3 +1,5 @@
+#@enabled False
+# Disable because don't need this command with pre-configured datastores
 # Test opening a HydroBase connection.  This will only work at Riverside
 # where the lonetree\CDSS database instance is available.
 StartLog(LogFile="Results/Test_OpenHydroBase_1.log")

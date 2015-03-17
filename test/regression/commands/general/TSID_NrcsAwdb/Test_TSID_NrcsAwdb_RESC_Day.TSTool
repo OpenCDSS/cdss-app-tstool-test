@@ -8,6 +8,6 @@ RemoveFile(InputFile="Results/Test_TSID_NrcsAwdb_RESC_Day_out.dv",IfNotFound=Ign
 SetInputPeriod(InputStart="2000-01-01",InputEnd="2000-12-31")
 CO-07007090.BOR.RESC.Day~NrcsAwdb
 # Uncomment the following command to regenerate the expected results file.
-WriteDateValue(OutputFile="ExpectedResults/Test_TSID_NrcsAwdb_RESC_Day_out.dv")
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_NrcsAwdb_RESC_Day_out.dv")
 WriteDateValue(OutputFile="Results/Test_TSID_NrcsAwdb_RESC_Day_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_TSID_NrcsAwdb_RESC_Day_out.dv",InputFile2="Results/Test_TSID_NrcsAwdb_RESC_Day_out.dv",IfDifferent=Warn)
