@@ -1,5 +1,6 @@
 # Test filling HydroBase diversion records using diversion comments.
 # Use a specified period to limit HydroBase update impacts on the test.
+# - this test is not that interesting and had issues because of a TSTool bug (it is retained for historical purposes)
 # @testSuite HydroBase
 StartLog(LogFile="Results/Test_FillUsingDiversionComments_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_FillUsingDiversionComments_1_out.dv",IfNotFound=Ignore)
@@ -13,7 +14,7 @@ SetInputPeriod(InputStart="1949-11",InputEnd="2008-10")
 0100504.DWR.DivTotal.Month~HydroBase
 # 0100506 - PUTNAM DITCH
 0100506.DWR.DivTotal.Month~HydroBase
-FillUsingDiversionComments(TSID="*",FillFlag="Auto",FillUsingCIU=True,FillUsingCIUFlag="Auto",RecalcLimits=True)
+FillUsingDiversionComments(TSList=AllMatchingTSID,TSID="*",FillFlag="Auto",RecalcLimits=True,FillUsingCIU=True,FillUsingCIUFlag="Auto")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_FillUsingDiversionComments_1_out.dv")
 WriteDateValue(OutputFile="Results/Test_FillUsingDiversionComments_1_out.dv")
