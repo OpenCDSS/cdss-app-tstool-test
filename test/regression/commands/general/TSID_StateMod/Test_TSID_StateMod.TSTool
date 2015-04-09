@@ -1,7 +1,7 @@
 # Test reading a time series from a StateMod daily file using a TSID
 StartLog(LogFile="Results/Test_TSID_StateMod.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_StateMod_out.dv",IfNotFound=Warn)
-RemoveFile(InputFile="Results/Test_TSID_StateMod_out.stm",IfNotFound=Warn)
+RemoveFile(InputFile="Results/Test_TSID_StateMod_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_TSID_StateMod_out.stm",IfNotFound=Ignore)
 TS 0675400 = NewPatternTimeSeries(NewTSID="0675400...Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 # Generate a StateMod file
 WriteStateMod(TSList=AllTS,OutputFile="Results/Test_TSID_StateMod_out.stm",Precision=2)
