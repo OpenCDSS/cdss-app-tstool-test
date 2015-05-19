@@ -1,4 +1,4 @@
-# Test writing a daily time series to DateValue format using properties in parameters
+# Test writing a daily time series to DateValue format using ${} properties in parameters
 StartLog(LogFile="Results/Test_WriteDateValue_Property.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteDateValue_Property_out.dv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
