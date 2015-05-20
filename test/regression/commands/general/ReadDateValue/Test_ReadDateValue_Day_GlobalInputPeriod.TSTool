@@ -1,0 +1,10 @@
+# Test reading a day interval time series from a DateValue file
+# - Set the global input period with SetInputPeriod() to verify that it is recognized
+StartLog(LogFile="Results/Test_ReadDateValue_Day_GlobalInputPeriod.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDateValue_Day_GlobalInputPeriod_out.dv",IfNotFound=Ignore)
+SetInputPeriod(InputStart="1951-01-01",InputEnd="1951-02-15")
+ReadDateValue(InputFile="Data\Test_WriteDateValue_Day_out.dv",InputStart="${InputStart}",InputEnd="${InputEnd}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_Day_GlobalInputPeriod_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadDateValue_Day_GlobalInputPeriod_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_Day_GlobalInputPeriod_out.dv",InputFile2="Results\Test_ReadDateValue_Day_GlobalInputPeriod_out.dv",IfDifferent=Warn)

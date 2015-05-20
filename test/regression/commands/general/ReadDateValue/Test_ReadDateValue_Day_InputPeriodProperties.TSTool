@@ -1,0 +1,11 @@
+# Test reading a day interval time series from a DateValue file
+# - specity the input period with ${property} notation
+StartLog(LogFile="Results/Test_ReadDateValue_Day_InputPeriodProperties.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDateValue_Day_InputPeriodProperties_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="1951-01-01")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="1951-02-15")
+ReadDateValue(InputFile="Data\Test_WriteDateValue_Day_out.dv",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_Day_InputPeriodProperties_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadDateValue_Day_InputPeriodProperties_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_Day_InputPeriodProperties_out.dv",InputFile2="Results\Test_ReadDateValue_Day_InputPeriodProperties_out.dv",IfDifferent=Warn)
