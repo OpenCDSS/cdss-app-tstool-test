@@ -1,0 +1,13 @@
+# Test writing a daily time series to DateValue format
+# - specify the output period using processor properties
+StartLog(LogFile="Results/Test_WriteDateValue_Day_OutputPeriodProperties.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDateValue_Day_OutputPeriodProperties_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+SetProperty(PropertyName="TestOutputStart",PropertyType=DateTime,PropertyValue="1951-01-01")
+SetProperty(PropertyName="TestOutputEnd",PropertyType=DateTime,PropertyValue="1951-02-15")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteDateValue_Day_OutputPeriodProperties_out.dv",OutputStart="${TestOutputStart}",OutputEnd="${TestOutputEnd}")
+# Generate new output...
+WriteDateValue(OutputFile="Results/Test_WriteDateValue_Day_OutputPeriodProperties_out.dv",OutputStart="${TestOutputStart}",OutputEnd="${TestOutputEnd}")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_Day_OutputPeriodProperties_out.dv",InputFile2="Results/Test_WriteDateValue_Day_OutputPeriodProperties_out.dv",IfDifferent=Warn)

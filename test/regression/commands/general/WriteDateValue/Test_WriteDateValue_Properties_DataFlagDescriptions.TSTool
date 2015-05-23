@@ -1,0 +1,28 @@
+# Test writing a daily time series to DateValue format
+# - Write properties to the file
+# - write data flag descriptions to the file
+# - also test writing a version 1.5 file, which is before properties and data flag descriptions were supported
+StartLog(LogFile="Results/Test_WriteDateValue_DataFlagDescriptions.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDateValue_DataFlagDescriptions_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_WriteDateValue_DataFlagDescriptions_15_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,,9")
+FillConstant(ConstantValue=0,FillFlag="Z",FillFlagDesc="Filled with zero")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteDateValue_DataFlagDescriptions_out.dv")
+# Generate new output...
+SetTimeSeriesProperty(PropertyName="DateTimeProperty",PropertyType=DateTime,PropertyValue="2010-01-01 01:02:03")
+SetTimeSeriesProperty(PropertyName="IntegerProperty",PropertyType=Integer,PropertyValue="123")
+SetTimeSeriesProperty(PropertyName="DoubleProperty",PropertyType=Double,PropertyValue="123.456")
+SetTimeSeriesProperty(PropertyName="StringProperty",PropertyType=String,PropertyValue="abc")
+# Uncomment the following line to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteDateValue_DataFlagDescriptions_out.dv",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",WriteDataFlagDescriptions=True)
+WriteDateValue(OutputFile="Results/Test_WriteDateValue_DataFlagDescriptions_out.dv",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",WriteDataFlagDescriptions=True)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_DataFlagDescriptions_out.dv",InputFile2="Results/Test_WriteDateValue_DataFlagDescriptions_out.dv",IfDifferent=Warn)
+#
+# 1.5 version...
+# Uncomment the following line to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteDateValue_DataFlagDescriptions_15_out.dv",WriteDataFlagDescriptions=True,Version=1.5)
+WriteDateValue(OutputFile="Results/Test_WriteDateValue_DataFlagDescriptions_15_out.dv",WriteDataFlagDescriptions=True,Version=1.5)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_DataFlagDescriptions_15_out.dv",InputFile2="Results/Test_WriteDateValue_DataFlagDescriptions_15_out.dv",IfDifferent=Warn)
