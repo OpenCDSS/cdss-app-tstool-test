@@ -1,0 +1,10 @@
+# Table data to to set time series values
+"TSID","DateTime","Value","Flag","FlagDesc"
+ts1,2000-01,111.0,"Flag1","Flag1 Description"
+ts1,2000-03,333.0,"Flag3","Flag3 Description"
+ts1,2000-04,444.0,"Flag4","Flag4 Description"
+# Try to set some values outside period
+ts2,2000-11,1100.0,"Flag11","Flag11 Description"
+ts2,2000-12,1200.0,"Flag12","Flag12 Description"
+ts2,2001-01,1000.0,"Flag1","Flag1 Description"
+ts2,2001-02,2000.0,"Flag2","Flag2 Description"
