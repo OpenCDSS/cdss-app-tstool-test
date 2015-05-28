@@ -1,0 +1,13 @@
+# Test setting the input period
+# -set with processor properties
+StartLog(LogFile="Results/Test_SetInputPeriod_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetInputPeriod_Properties_out.txt",IfNotFound=Ignore)
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="1900-01-01")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2007-12-31")
+SetInputPeriod(InputStart="${TestInputStart}",InputEnd="${TestInputEnd}")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetInputPeriod_Properties_out.txt",IncludeProperty="InputStart,InputEnd",FileFormat=NameValue,SortOrder=Ascending)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetInputPeriod_Properties_out.txt",IncludeProperties="InputStart,InputEnd",FileFormat=NameValue,SortOrder=Ascending)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetInputPeriod_Properties_out.txt",InputFile2="Results/Test_SetInputPeriod_Properties_out.txt",IfDifferent=Warn)
