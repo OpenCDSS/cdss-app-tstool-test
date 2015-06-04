@@ -105,6 +105,6 @@ SetProperty(PropertyName="String_Z_NE_A_Test",PropertyType=Boolean,PropertyValue
 Message(Message="Z != A")
 EndIf(Name="Check_String_Z_NE_A")
 # Uncomment the next command to regenerate expected results
-# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_String_out.txt",IncludeProperty="String_*_Test")
-WritePropertiesToFile(OutputFile="Results/Test_If_String_out.txt",IncludeProperty="String_*_Test")
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_String_out.txt",IncludeProperties="String_*_Test",SortOrder=Ascending)
+WritePropertiesToFile(OutputFile="Results/Test_If_String_out.txt",IncludeProperties="String_*_Test",SortOrder=Ascending)
 CompareFiles(InputFile1="ExpectedResults/Test_If_String_out.txt",InputFile2="Results/Test_If_String_out.txt",IfDifferent=Warn)

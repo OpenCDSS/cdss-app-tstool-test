@@ -11,5 +11,5 @@ CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeries_out.dv",InputFile2=
 # Also write a properties file with the time series count
 # Uncomment the following command to regenerate the expected results file.
 # WritePropertiesToFile(OutputFile="ExpectedResults/Test_ReadTimeSeriesList_props_out.txt",IncludeProperty="TimeSeriesCount",FileFormat=NameValue)
-WritePropertiesToFile(OutputFile="Results/Test_ReadTimeSeriesList_props_out.txt",IncludeProperty="TimeSeriesCount",FileFormat=NameValue)
+WritePropertiesToFile(OutputFile="Results/Test_ReadTimeSeriesList_props_out.txt",IncludeProperties="TimeSeriesCount",FileFormat=NameValue)
 CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeriesList_props_out.txt",InputFile2="Results\Test_ReadTimeSeriesList_props_out.txt",IfDifferent=Warn)

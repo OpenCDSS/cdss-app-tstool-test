@@ -2,7 +2,7 @@
 StartLog(LogFile="Results/Test_Copy_Month_DataFlags.TSTool.log")
 RemoveFile(InputFile="Results\Test_Copy_Month_DataFlags_out.dv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="Original",NewTSID="MyLoc..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1951-03",Units="CFS",PatternValues="5,10,12,,,13,75,50",PatternFlags="a,b,c,xx,,yy,,zz")
-Copy(Alias="Copy",TSID="Original",NewTSID="a...Month")
+Copy(TSID="Original",NewTSID="a...Month",Alias="Copy")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_Copy_Month_DataFlags_out.dv")
 WriteDateValue(OutputFile="Results\Test_Copy_Month_DataFlags_out.dv")

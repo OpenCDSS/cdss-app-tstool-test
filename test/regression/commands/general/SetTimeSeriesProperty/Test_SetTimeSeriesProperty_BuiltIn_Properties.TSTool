@@ -1,0 +1,17 @@
+# Test setting built-in time series properties
+# - Set the time series to process using ${Property}
+# - Set the description using ${Property}
+# - Set the data units using ${Property}
+# - Set the missing value using ${Property}
+StartLog(LogFile="Results/Test_SetTimeSeriesProperty_BuiltIn_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetTimeSeriesProperty_BuiltIn_Properties_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestTSID",PropertyType=String,PropertyValue="ts1")
+NewPatternTimeSeries(Alias="${TestTSID}",NewTSID="ts1..Precip.Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2000-01-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+SetProperty(PropertyName="TestDescription",PropertyType=String,PropertyValue="Test description text")
+SetProperty(PropertyName="TestUnits",PropertyType=String,PropertyValue="Units123")
+SetProperty(PropertyName="TestMissing",PropertyType=Double,PropertyValue="-9999")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="${TestTSID}",Description="%L %T ${TestDescription}",Units="${TestUnits}",MissingValue=${TestMissing},Editable=True,PropertyType=DateTime)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_SetTimeSeriesProperty_BuiltIn_Properties_out.dv")
+WriteDateValue(OutputFile="Results/Test_SetTimeSeriesProperty_BuiltIn_Properties_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_SetTimeSeriesProperty_BuiltIn_Properties_out.dv",InputFile2="Results/Test_SetTimeSeriesProperty_BuiltIn_Properties_out.dv",IfDifferent=Warn)

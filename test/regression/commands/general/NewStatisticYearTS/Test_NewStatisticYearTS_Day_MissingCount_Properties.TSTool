@@ -1,0 +1,19 @@
+# For daily data, determine the MissingCount value in each year.
+# - Specify the TSID to process with ${Property}
+# - Specify the alias with ${Property}
+# - Specify the new TSID with ${Property}
+# - Specify the analysis period with ${Property}
+StartLog(LogFile="Results/Test_NewStatisticYearTS_Day_MissingCount_Properties.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Day_MissingCount_Properties_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestAlias",PropertyType=String,PropertyValue="ts1")
+SetProperty(PropertyName="TestAliasStat",PropertyType=String,PropertyValue="Stat")
+SetProperty(PropertyName="TestLoc",PropertyType=String,PropertyValue="ts1")
+SetProperty(PropertyName="TestTSID1",PropertyType=String,PropertyValue="ts1")
+SetProperty(PropertyName="TestAnalysisStart",PropertyType=DateTime,PropertyValue="1950-01-01")
+SetProperty(PropertyName="TestAnalysisEnd",PropertyType=DateTime,PropertyValue="1950-12-31")
+NewPatternTimeSeries(Alias="${TestTSID1}",NewTSID="${TestLoc}..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,,50,45,20,4")
+NewStatisticYearTS(TSID="${TestTSID1}",Alias="${TestAliasStat}",NewTSID="${TestLoc}..Streamflow.Year.MissingCount",Statistic=MissingCount,AnalysisStart="${TestAnalysisStart}",AnalysisEnd="${TestAnalysisEnd}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(TSList=AllMatchingTSID,TSID="Stat",OutputFile="ExpectedResults\Test_NewStatisticYearTS_Day_MissingCount_Properties_out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="Stat",OutputFile="Results\Test_NewStatisticYearTS_Day_MissingCount_Properties_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticYearTS_Day_MissingCount_Properties_out.dv",InputFile2="Results\Test_NewStatisticYearTS_Day_MissingCount_Properties_out.dv",IfDifferent=Warn)

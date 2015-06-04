@@ -105,6 +105,6 @@ SetProperty(PropertyName="Boolean_True_NE_False_Test",PropertyType=Boolean,Prope
 Message(Message="True != False")
 EndIf(Name="Check_Boolean_True_NE_False")
 # Uncomment the next command to regenerate expected results
-# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_Boolean_out.txt",IncludeProperty="Boolean_*_Test")
-WritePropertiesToFile(OutputFile="Results/Test_If_Boolean_out.txt",IncludeProperty="Boolean_*_Test")
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_Boolean_out.txt",IncludeProperties="Boolean_*_Test")
+WritePropertiesToFile(OutputFile="Results/Test_If_Boolean_out.txt",IncludeProperties="Boolean_*_Test",SortOrder=Ascending)
 CompareFiles(InputFile1="ExpectedResults/Test_If_Boolean_out.txt",InputFile2="Results/Test_If_Boolean_out.txt",IfDifferent=Warn)

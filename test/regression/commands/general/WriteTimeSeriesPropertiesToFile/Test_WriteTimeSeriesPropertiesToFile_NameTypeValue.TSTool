@@ -7,6 +7,6 @@ SetTimeSeriesProperty(PropertyName="DoubleProperty",PropertyType=Double,Property
 SetTimeSeriesProperty(PropertyName="StringProperty",PropertyType=String,PropertyValue="MyString")
 SetTimeSeriesProperty(PropertyName="IntegerProperty",PropertyType=Integer,PropertyValue="123")
 # Uncomment the following command to regenerate expected results.
-# WriteTimeSeriesPropertiesToFile(OutputFile="ExpectedResults/Test_WriteTimeSeriesPropertiesToFile_NameTypeValue_out.txt",IncludeProperty="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",FileFormat=NameTypeValue,SortOrder=Ascending)
-WriteTimeSeriesPropertiesToFile(OutputFile="Results/Test_WriteTimeSeriesPropertiesToFile_NameTypeValue_out.txt",IncludeProperty="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",FileFormat=NameTypeValue,SortOrder=Ascending)
+# WriteTimeSeriesPropertiesToFile(OutputFile="ExpectedResults/Test_WriteTimeSeriesPropertiesToFile_NameTypeValue_out.txt",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",FileFormat=NameTypeValue,SortOrder=Ascending)
+WriteTimeSeriesPropertiesToFile(OutputFile="Results/Test_WriteTimeSeriesPropertiesToFile_NameTypeValue_out.txt",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",FileFormat=NameTypeValue,SortOrder=Ascending)
 CompareFiles(InputFile1="ExpectedResults/Test_WriteTimeSeriesPropertiesToFile_NameTypeValue_out.txt",InputFile2="Results/Test_WriteTimeSeriesPropertiesToFile_NameTypeValue_out.txt",IfDifferent=Warn)

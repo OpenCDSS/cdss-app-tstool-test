@@ -105,6 +105,6 @@ SetProperty(PropertyName="Integer_1_NE_0_Test",PropertyType=Boolean,PropertyValu
 Message(Message="1 != 0")
 EndIf(Name="Check_Integer_1_NE_0")
 # Uncomment the next command to regenerate expected results
-# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_Integer_out.txt",IncludeProperty="Integer_*_Test")
-WritePropertiesToFile(OutputFile="Results/Test_If_Integer_out.txt",IncludeProperty="Integer_*_Test")
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_Integer_out.txt",IncludeProperties="Integer_*_Test",SortOrder=Ascending)
+WritePropertiesToFile(OutputFile="Results/Test_If_Integer_out.txt",IncludeProperties="Integer_*_Test",SortOrder=Ascending)
 CompareFiles(InputFile1="ExpectedResults/Test_If_Integer_out.txt",InputFile2="Results/Test_If_Integer_out.txt",IfDifferent=Warn)
