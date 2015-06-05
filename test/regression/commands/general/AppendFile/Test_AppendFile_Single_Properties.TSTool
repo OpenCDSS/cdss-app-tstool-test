@@ -1,0 +1,14 @@
+# Test trying to append a single file to an output file (recreate output)
+# - Specify input file with ${Property}
+# - Specify output file with ${Property}
+StartLog(LogFile="Results/Test_AppendFile_Single_Properties.TSTool.log")
+# Remove the output file before the test
+RemoveFile(InputFile="Results/Test_AppendFile_Single_Properties_out.csv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestInputFile",PropertyType=String,PropertyValue="Data/file1.csv")
+SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Results/Test_AppendFile_Single_Properties_out.csv")
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="ExpectedResults/Test_AppendFile_Single_Properties_out.csv",IfNotFound=Ignore)
+# AppendFile(InputFile="Data/file1.csv",OutputFile="ExpectedResults/Test_AppendFile_Single_Properties_out.csv",Newline="\r\n")
+AppendFile(InputFile="${TestInputFile}",OutputFile="${TestOutputFile}",Newline="\r\n")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_Single_Properties_out.csv",InputFile2="Results/Test_AppendFile_Single_Properties_out.csv",IfDifferent=Warn)
