@@ -4,7 +4,7 @@ StartLog(LogFile="Results/Test_For_ListString.TSTool.log")
 RemoveFile(InputFile="Results/Test_For_ListString_out.txt",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
 For(Name="TestFor",List="Station1,Station2,Station3,Station4")
-WritePropertiesToFile(OutputFile="Results/Test_For_ListString_out.txt",IncludeProperty="TestFor",WriteMode=Append,FileFormat=NameTypeValue)
+WritePropertiesToFile(OutputFile="Results/Test_For_ListString_out.txt",IncludeProperties="TestFor",WriteMode=Append,FileFormat=NameTypeValue)
 EndFor(Name="TestFor")
 # Uncomment the following to generate the expected results.
 # CopyFile(InputFile="Results\Test_For_ListString_out.txt",OutputFile="ExpectedResults\Test_For_ListString_out.txt",IfInputNotFound=Fail)
