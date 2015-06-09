@@ -1,1 +1,3 @@
 TimeSeriesCount=4
+TimeSeriesDefaultCount=1
+TimeSeriesReadCount=3
