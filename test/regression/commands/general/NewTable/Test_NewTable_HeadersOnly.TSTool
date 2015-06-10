@@ -6,4 +6,4 @@ NewTable(TableID="Table1",Columns="datetime1,datetime;double1,double;float1,floa
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_NewTable_HeadersOnly_out.csv")
 WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_NewTable_HeadersOnly_out.csv")
 # Do regression comparison with the original input
-CompareFiles(InputFile1="ExpectedResults\Test_NewTable_HeadersOnly_out.csv",InputFile2="Results/Test_NewTable_HeadersOnly_out.csv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_NewTable_HeadersOnly_out.csv",InputFile2="Results/Test_NewTable_HeadersOnly_out.csv",IfDifferent=Warn)
