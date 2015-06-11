@@ -1,0 +1,13 @@
+# Test reading a CO DOLA tab-delimited population data downloaded from the web
+# Column names are read from the file
+# - Specify the input file with ${Property} - THIS IS NOT YET ENABLED
+# - Specify the input period with ${Property}
+StartLog(LogFile="Results/Test_ReadDelimitedFile_CODOLA_Population_Properties.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="2000")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2010")
+ReadDelimitedFile(InputFile="Data\DOLA-counties1yr-trans.csv",Delimiter=",",ColumnNames="Year,FC[2:]",DateTimeColumn="Year",ValueColumn="FC[2:]",LocationID="FC[2:]",Provider="DOLA",DataType="Population",Interval=Year,Units="Persons",Alias="%L-pop",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",InputFile2="Results\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",IfDifferent=Warn)
