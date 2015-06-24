@@ -1,0 +1,8 @@
+# Table to specify formatting for column cells based on values
+"Column","Condition","StyleID"
+"ts*","${tsdata:value} < 0","Color1"
+"ts*","${tsdata:value} >= 0.0 AND ${tsdata:value} < 10","Color2"
+"ts*","${tsdata:value} >= 10.0 AND ${tsdata:value} < 25","Color3"
+"ts*","${tsdata:value} >= 25.0 AND ${tsdata:value} < 50","Color4"
+"ts*","${tsdata:value} >= 50.0 AND ${tsdata:value} < 75","Color5"
+"ts*","${tsdata:value} >= 75.0","Color6"
