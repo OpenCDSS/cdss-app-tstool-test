@@ -6,5 +6,5 @@ ReadPropertiesFromExcel(InputFile="Data\CO-SWSI-Control.xlsx",Worksheet="Config"
 # Uncomment the following command to regenerate expected results
 # WritePropertiesToFile(OutputFile="ExpectedResults/Test_ReadPropertiesFromExcel_SWSI2_out.txt",FileFormat=NameValue,SortOrder=Ascending)
 WritePropertiesToFile(OutputFile="Results/Test_ReadPropertiesFromExcel_SWSI2_out.txt",FileFormat=NameValue,SortOrder=Ascending)
-# Do regression comparison with the expected results - allow 2 different for program version properties
-CompareFiles(InputFile1="ExpectedResults\Test_ReadPropertiesFromExcel_SWSI2_out.txt",InputFile2="Results/Test_ReadPropertiesFromExcel_SWSI2_out.txt",AllowedDiff="2",IfDifferent=Warn)
+# Do regression comparison with the expected results - allow 3 different for program version properties and warning level
+CompareFiles(InputFile1="ExpectedResults\Test_ReadPropertiesFromExcel_SWSI2_out.txt",InputFile2="Results/Test_ReadPropertiesFromExcel_SWSI2_out.txt",AllowedDiff="3",IfDifferent=Warn)
