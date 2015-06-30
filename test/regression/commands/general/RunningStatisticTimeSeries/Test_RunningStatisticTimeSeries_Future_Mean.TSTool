@@ -5,5 +5,5 @@ NewPatternTimeSeries(Alias="ts1_day",NewTSID="ts1..Streamflow.Day",Description="
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_day",Statistic=Mean,SampleMethod=Future,Bracket=3,Alias="ts1_day_mean")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_Future_Mean_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_mean")
-WriteDateValue(OutputFile="Results/Test_RunningStatisticTimeSeries_Future_Mean_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_mean")
+WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_day_mean",OutputFile="Results/Test_RunningStatisticTimeSeries_Future_Mean_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_Future_Mean_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_Future_Mean_out.dv",IfDifferent=Warn)

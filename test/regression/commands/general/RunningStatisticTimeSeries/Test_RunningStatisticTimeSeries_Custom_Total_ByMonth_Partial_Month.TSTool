@@ -8,5 +8,5 @@ NewPatternTimeSeries(Alias="ts1_day",NewTSID="ts1..Streamflow.Month",Description
 RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_day",Statistic=Total,SampleMethod=Custom,CustomBracketByMonth=",2-5,1-4,0-3,0-2,0-1,0-0,,,,,",Alias="ts1_day_Mean_ByMonth_Partial_Month")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_Custom_Mean_ByMonth_Partial_Month_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_Mean_ByMonth_Partial_Month")
-WriteDateValue(OutputFile="Results/Test_RunningStatisticTimeSeries_Custom_Mean_ByMonth_Partial_Month_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_Mean_ByMonth_Partial_Month")
+WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_day_Mean_ByMonth_Partial_Month",OutputFile="Results/Test_RunningStatisticTimeSeries_Custom_Mean_ByMonth_Partial_Month_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_Custom_Mean_ByMonth_Partial_Month_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_Custom_Mean_ByMonth_Partial_Month_out.dv",IfDifferent=Warn)
