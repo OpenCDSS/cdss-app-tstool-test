@@ -14,6 +14,6 @@ ChangeInterval(TSList=LastMatchingTSID,TSID="Original_HasMissing",Alias="New_Has
 #
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_ACCM-ACCM_Month-Year.dv",TSList=AllMatchingTSID,TSID="New*")
-WriteDateValue(OutputFile="Results\Test_ChangeInterval_ACCM-ACCM_Month-Year.dv",TSList=AllMatchingTSID,TSID="New*")
+WriteDateValue(TSList=AllMatchingTSID,TSID="New*",OutputFile="Results\Test_ChangeInterval_ACCM-ACCM_Month-Year.dv")
 #
 CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_ACCM-ACCM_Month-Year.dv",InputFile2="Results\Test_ChangeInterval_ACCM-ACCM_Month-Year.dv",IfDifferent=Warn)
