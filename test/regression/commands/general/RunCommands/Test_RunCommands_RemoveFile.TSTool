@@ -1,0 +1,12 @@
+# Test running RunCommands() and confirm that command status messages accumulate called commands
+# - Run command files to remove nonexistent file
+# - Some command files will generate warnings
+# - Verify that warnings are propagated to the RunCommands() command
+# Disable because don't want to interfere with overall automated tests - run manually for now
+#@expectedStatus Warning
+#@enabled False
+StartLog(LogFile="Results/Test_RunCommands_RemoveFile.TSTool.log")
+RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Ignore.TSTool")
+RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Ignore.TSTool")
+RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Warning.TSTool")
+RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Warning.TSTool")
