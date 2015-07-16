@@ -13,7 +13,7 @@ ReadTableFromDelimitedFile(TableID="StyleTable",InputFile="Data\StyleTableColorS
 ReadTableFromDelimitedFile(TableID="ConditionTable",InputFile="Data\ConditionTableColorScale.csv")
 # Write the table to a new Excel file.
 NewExcelWorkbook(OutputFile="Results/Test_WriteTableToExcel_Address_StyleFormat_ColorScale_out.xlsx",Worksheets="Table1",KeepOpen=True)
-WriteTableToExcel(TableID="Table1",OutputFile="Results/Test_WriteTableToExcel_Address_StyleFormat_ColorScale_out.xlsx",Worksheet="Table1",ExcelAddress="A1",ExcelColumnNames=FirstRowInRange,KeepOpen=False,ColumnWidths="Default:Auto",ConditionTableID="ConditionTable",StyleTableID="StyleTable")
+WriteTableToExcel(TableID="Table1",OutputFile="Results/Test_WriteTableToExcel_Address_StyleFormat_ColorScale_out.xlsx",Worksheet="Table1",ExcelAddress="A1",ExcelColumnNames=FirstRowInRange,KeepOpen=False,ColumnWidths="Default:Auto",ConditionTableID="ConditionTable",StyleTableID="StyleTable",LegendWorksheet="Legend",LegendAddress="A1")
 # Now read the table from the new worksheet
 # ReadTableFromExcel(TableID="Table2",InputFile="Results\Test_WriteTableToExcel_Address_StyleFormat_ColorScale_out.xlsx",Worksheet="Table1",ExcelColumnNames=FirstRowInRange)
 # Do regression comparison with the original table

@@ -10,6 +10,6 @@ ReadTableFromDelimitedFile(TableID="ConditionTable",InputFile="Data\ConditionTab
 # Uncomment the following command to regenerate the expected results file.
 # WriteTimeSeriesToExcel(OutputFile="ExpectedResults\Test_WriteTimeSeriesToExcel_Day_StyleFormat_Flags_out.dv")
 # Generate new output...
-WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Flags_out.xlsx",Worksheet="DayInterval",ExcelAddress="A1",ColumnComment="%A (%U)",ValueComment="Flag:  ${tsdata:flag}",CommentWidth="1",ConditionTableID="ConditionTable",StyleTableID="StyleTable")
+WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Flags_out.xlsx",Worksheet="DayInterval",ExcelAddress="A1",ColumnComment="%A (%U)",ValueComment="Flag:  ${tsdata:flag}",CommentWidth="1",ConditionTableID="ConditionTable",StyleTableID="StyleTable",LegendWorksheet="Legend",LegendAddress="A1")
 # Do regression comparison...
 # CompareFiles(InputFile1="ExpectedResults/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Flags_out.dv",InputFile2="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Flags_out.dv",IfDifferent=Warn)

@@ -13,7 +13,7 @@ ReadTableFromDelimitedFile(TableID="ConditionTable",InputFile="Data\ConditionTab
 # WriteTimeSeriesToExcelBlock(OutputFile="ExpectedResults\Test_WriteTimeSeriesToExcelBlock_Day_out.dv")
 # Generate new output...
 # SetDebugLevel(LogFileLevel=1)
-WriteTimeSeriesToExcelBlock(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeriesToExcelBlock_Day_out.xlsx",Worksheet="DayInterval",ExcelAddress="A1",LayoutBlock=Period,LayoutColumns=DAY,LayoutRows=YearDescending,OutputYearType=Water,ConditionTableID="ConditionTable",StyleTableID="StyleTable")
+WriteTimeSeriesToExcelBlock(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeriesToExcelBlock_Day_out.xlsx",Worksheet="DayInterval",ExcelAddress="A1",LayoutBlock=Period,LayoutColumns=DAY,LayoutRows=YearDescending,OutputYearType=Water,BlockMinColumnProperty="BlockMinColumn",BlockMinRowProperty="BlockMinRow",BlockMaxColumnProperty="BlockMaxColumn",BlockMaxRowProperty="BlockMaxRow",ConditionTableID="ConditionTable",StyleTableID="StyleTable",LegendWorksheet="Legend",LegendAddress="A1")
 # SetDebugLevel(LogFileLevel=0)
 # Do regression comparison...
 # CompareFiles(InputFile1="ExpectedResults/Test_WriteTimeSeriesToExcelBlock_Day_out.dv",InputFile2="Results/Test_WriteTimeSeriesToExcelBlock_Day_out.dv",IfDifferent=Warn)
