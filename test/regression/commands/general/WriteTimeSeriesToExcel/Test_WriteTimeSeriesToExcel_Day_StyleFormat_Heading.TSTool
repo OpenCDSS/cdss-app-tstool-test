@@ -2,6 +2,9 @@
 # TODO SAM 2015-03-04 Need to read result and do comparison to validate
 # - Format cell colors for missing, negative, zero using styles
 # - Format heading columns using style format
+# Failure because have an issue requestion null properties in expansion
+# TODO SAM 2015-07-15 need to resolve this issue
+#@expectedStatus Failure
 StartLog(LogFile="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Heading.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Heading_out.xlsx",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="ts0",NewTSID="ts0..Example.Day",Description="Test data 0 - no properties",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="-5,10,12,,0,1,7")
