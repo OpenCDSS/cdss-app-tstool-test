@@ -8,5 +8,5 @@ Message(Message="ProgramVersionNumber (${ProgramVersionNumber}) is >= 11.00.00")
 EndIf(Name="ProgramVersionNumberCheck")
 # Uncomment the next command to regenerate expected results
 # WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_ProgramVersionNumber_out.txt",IncludeProperty="ProgramVersionNumberLaterThan11")
-WritePropertiesToFile(OutputFile="Results/Test_If_ProgramVersionNumber_out.txt",IncludeProperty="ProgramVersionNumberLaterThan11")
+WritePropertiesToFile(OutputFile="Results/Test_If_ProgramVersionNumber_out.txt",IncludeProperties="ProgramVersionNumberLaterThan11")
 CompareFiles(InputFile1="ExpectedResults/Test_If_ProgramVersionNumber_out.txt",InputFile2="Results/Test_If_ProgramVersionNumber_out.txt",IfDifferent=Warn)

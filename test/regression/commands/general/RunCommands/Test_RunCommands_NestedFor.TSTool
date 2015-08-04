@@ -3,6 +3,7 @@
 # - Command status messages should be visible on each RunCommands command and also TSTool Problems tab
 # Disable below because not sure if RunCommands in the test suite will work OK since nested RunCommands
 #@enabled False
+#@expectedStatus Failure
 StartLog(LogFile="Results/Test_RunCommands_NestedFor.TSTool.log")
 # SetDebugLevel(LogFileLevel=1)
 For(Name="TestForBasins",IteratorProperty="Basin",List="Basin1,Basin2,Basin3,Basin4")
