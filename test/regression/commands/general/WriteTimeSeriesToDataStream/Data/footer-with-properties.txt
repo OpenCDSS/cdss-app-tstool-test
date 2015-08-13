@@ -1,0 +1,5 @@
+--- Footer start ---
+DateTimeProp=${DateTimeProp}
+StringProp=${StringProp}
+DoubleProp=${DoubleProp}
+--- Footer end ---
