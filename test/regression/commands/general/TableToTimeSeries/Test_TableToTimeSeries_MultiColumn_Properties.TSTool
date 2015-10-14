@@ -4,14 +4,16 @@
 # - Specify the location ID with ${Property}
 # - Specify the input period with ${Property}
 # - Specify the alias with ${Property}
+# - Specify the data type ${Property}
 StartLog(LogFile="Results/Test_TableToTimeSeries_MultiColumn_Properties.TSTool.log")
 RemoveFile(InputFile="Results\Test_TableToTimeSeries_MultiColumn_Properties_out.dv",IfNotFound=Ignore)
 SetProperty(PropertyName="TestTableID",PropertyType=String,PropertyValue="MultiColumnData")
 SetProperty(PropertyName="TestLocationID",PropertyType=String,PropertyValue="TC[2:]")
 SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="2000-02-01")
 SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2000-11-15")
+SetProperty(PropertyName="TestDataType",PropertyType=String,PropertyValue="Streamflow")
 ReadTableFromDelimitedFile(TableID="${TestTableID}",InputFile="Data\multiple-column.csv")
-TableToTimeSeries(TableID="${TestTableID}",DateTimeColumn="Date",LocationID="${TestLocationID}",ValueColumn="TC[2:]",DataSource="USGS",DataType="Streamflow",Interval=Day,Units="cfs",Alias="%L-%T",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}")
+TableToTimeSeries(TableID="${TestTableID}",DateTimeColumn="Date",LocationID="${TestLocationID}",ValueColumn="TC[2:]",DataSource="USGS",DataType="${TestDataType}",Interval=Day,Units="cfs",Alias="%L-%T",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_TableToTimeSeries_MultiColumn_Properties_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results\Test_TableToTimeSeries_MultiColumn_Properties_out.dv",Precision=2)
