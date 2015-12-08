@@ -2,7 +2,7 @@
 # - both are integers
 StartLog(LogFile="Results/Test_TableMath_IntegerColumn_IntegerConstant_Add.TSTool.log")
 RemoveFile(InputFile="Results/Test_TableMath_IntegerColumn_IntegerConstant_Add_out.dv",IfNotFound=Ignore)
-ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata.csv")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata-ints.csv")
 # Perform math on the table
 TableMath(TableID="Table1",Input1="Integer1",Operator="+",Input2="1",Output="result")
 # Uncomment the following command to regenerate expected results.
