@@ -1,0 +1,12 @@
+# Test reading a JSON file using default parameters.
+# - Data are from Colorado's Data Sharing Network (CDSN) for station list query
+#   http://awqmsws.goldsystems.com/api/MonitoringLocationsVer1?StateCode=CO
+# - Also test DoubleColumns and IntegerColumns using Latitude and Longitude
+StartLog(LogFile="Results/Test_ReadTableFromJSON_AWQMS_MonitoringLocations.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromJSON_AWQMS_MonitoringLocations_out.csv",IfNotFound=Ignore)
+ReadTableFromJSON(TableID="Table1",InputFile="Data\wqx-monitoring-location-data.json",DoubleColumns="Latitude",IntegerColumns="Longitude")
+# Uncomment the following to regenerate expected results
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromJSON_AWQMS_MonitoringLocations_out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromJSON_AWQMS_MonitoringLocations_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromJSON_AWQMS_MonitoringLocations_out.csv",InputFile2="Results/Test_ReadTableFromJSON_AWQMS_MonitoringLocations_out.csv",IfDifferent=Warn)
