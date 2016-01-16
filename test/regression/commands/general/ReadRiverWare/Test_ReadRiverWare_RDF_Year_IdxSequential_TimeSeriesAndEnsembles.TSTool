@@ -6,5 +6,5 @@ RemoveFile(InputFile="Results/Test_ReadRiverWare_RDF_Year_IdxSequential_TimeSeri
 ReadRiverWare(InputFile="Data\OWDAnn-Year-IdxSequential.rdf",Output=TimeSeriesAndEnsembles,Alias="%L-%T-%z")
 # Uncomment the following to regenerate the expected results...
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiverWare_RDF_Year_IdxSequential_TimeSeriesAndEnsembles_out.dv",TSList=EnsembleID,EnsembleID="LeeFerryDeficit_WYDeficit")
-WriteDateValue(OutputFile="Results/Test_ReadRiverWare_RDF_Year_IdxSequential_TimeSeriesAndEnsembles_out.dv",TSList=EnsembleID,EnsembleID="LeeFerryDeficit_WYDeficit")
+WriteDateValue(TSList=EnsembleID,EnsembleID="LeeFerryDeficit_WYDeficit",OutputFile="Results/Test_ReadRiverWare_RDF_Year_IdxSequential_TimeSeriesAndEnsembles_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_ReadRiverWare_RDF_Year_IdxSequential_TimeSeriesAndEnsembles_out.dv",InputFile2="Results/Test_ReadRiverWare_RDF_Year_IdxSequential_TimeSeriesAndEnsembles_out.dv",IfDifferent=Warn)

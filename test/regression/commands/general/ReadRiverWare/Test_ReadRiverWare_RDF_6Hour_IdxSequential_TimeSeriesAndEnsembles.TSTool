@@ -6,5 +6,5 @@ RemoveFile(InputFile="Results/Test_ReadRiverWare_RDF_6Hour_IdxSequential_TimeSer
 ReadRiverWare(InputFile="Data\6hrOutput.rdf",Output=TimeSeriesAndEnsembles,Alias="%L-%T-%z")
 # Uncomment the following to regenerate the expected results...
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiverWare_RDF_6Hour_IdxSequential_TimeSeriesAndEnsembles_out.dv",TSList=EnsembleID,EnsembleID="Confluence1_Outflow")
-WriteDateValue(OutputFile="Results/Test_ReadRiverWare_RDF_6Hour_IdxSequential_TimeSeriesAndEnsembles_out.dv",TSList=EnsembleID,EnsembleID="Confluence1_Outflow")
+WriteDateValue(TSList=EnsembleID,EnsembleID="Confluence1_Outflow",OutputFile="Results/Test_ReadRiverWare_RDF_6Hour_IdxSequential_TimeSeriesAndEnsembles_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_ReadRiverWare_RDF_6Hour_IdxSequential_TimeSeriesAndEnsembles_out.dv",InputFile2="Results/Test_ReadRiverWare_RDF_6Hour_IdxSequential_TimeSeriesAndEnsembles_out.dv",IfDifferent=Warn)

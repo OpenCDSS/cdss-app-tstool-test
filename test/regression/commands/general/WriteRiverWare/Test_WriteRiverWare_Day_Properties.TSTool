@@ -1,0 +1,14 @@
+# Test writing a RiverWare file
+# - Specify OutputFile with ${Property}
+# - Specify TSID with ${Property}
+StartLog(LogFile="Results/Test_WriteRiverWare_Day_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteRiverWare_Day_Properties_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteRiverWare(TSList=AllTS,OutputFile="ExpectedResults\Test_WriteRiverWare_Day_Properties_out.dv")
+# Generate new output...
+SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Results/Test_WriteRiverWare_Day_Properties_out.dv")
+SetProperty(PropertyName="TestTSID",PropertyType=String,PropertyValue="Alias")
+WriteRiverWare(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="${TestOutputFile}")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteRiverWare_Day_Properties_out.dv",InputFile2="Results/Test_WriteRiverWare_Day_Properties_out.dv",IfDifferent=Warn)
