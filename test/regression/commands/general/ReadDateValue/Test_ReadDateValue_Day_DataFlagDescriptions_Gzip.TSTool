@@ -1,0 +1,10 @@
+# Test reading a day interval time series from a DateValue file
+# - File has data flag descriptions
+# - File has been gzipped
+StartLog(LogFile="Results/Test_ReadDateValue_Day_DataFlagDescriptions_Gzip.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDateValue_Day_DataFlagDescriptions_Gzip_out.txt",IfNotFound=Ignore)
+ReadDateValue(InputFile="Data\Test_WriteDateValue_DataFlagDescriptions_out.dv.gz")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_Day_DataFlagDescriptions_Gzip_out.dv",WriteDataFlagDescriptions=True)
+WriteDateValue(OutputFile="Results\Test_ReadDateValue_Day_DataFlagDescriptions_Gzip_out.dv",WriteDataFlagDescriptions=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_Day_DataFlagDescriptions_Gzip_out.dv",InputFile2="Results\Test_ReadDateValue_Day_DataFlagDescriptions_Gzip_out.dv",IfDifferent=Warn)
