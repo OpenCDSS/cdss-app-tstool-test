@@ -23,5 +23,5 @@ CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",Analy
 SelectTimeSeries(TSList=AllMatchingTSID,TSID="3hr")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_out.dv",TSList=SelectedTS)
-WriteDateValue(OutputFile="Results\Test_VariableLagK_3hr_VarLagAndK_out.dv",TSList=SelectedTS)
+WriteDateValue(TSList=SelectedTS,OutputFile="Results\Test_VariableLagK_3hr_VarLagAndK_out.dv")
 CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_out.dv",InputFile2="Results\Test_VariableLagK_3hr_VarLagAndK_out.dv",IfDifferent=Warn)
