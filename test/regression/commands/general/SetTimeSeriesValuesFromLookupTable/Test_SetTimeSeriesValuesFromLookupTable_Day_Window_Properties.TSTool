@@ -11,6 +11,8 @@ RemoveFile(InputFile="Results\Test_SetTimeSeriesValuesFromLookupTable_Day_Window
 SetProperty(PropertyName="TestInputTSID",PropertyType=String,PropertyValue="Input")
 SetProperty(PropertyName="TestOutputTSID",PropertyType=String,PropertyValue="Output")
 SetProperty(PropertyName="TestTableID",PropertyType=String,PropertyValue="LookupTable")
+SetProperty(PropertyName="TestTableValue1Column",PropertyType=String,PropertyValue="Value1")
+SetProperty(PropertyName="TestTableValue2Column",PropertyType=String,PropertyValue="Value2")
 SetProperty(PropertyName="TestSetStart",PropertyType=DateTime,PropertyValue="1950-02-01")
 SetProperty(PropertyName="TestSetEnd",PropertyType=DateTime,PropertyValue="1951-06-30")
 SetProperty(PropertyName="TestSetWindowStart",PropertyType=String,PropertyValue="03-01")
@@ -18,7 +20,7 @@ SetProperty(PropertyName="TestSetWindowEnd",PropertyType=String,PropertyValue="0
 NewPatternTimeSeries(Alias="${TestInputTSID}",NewTSID="ts1..Streamflow.Day",Description="Test data (with out of range on low and high end)",SetStart="1950-01-01",SetEnd="1951-07-15",Units="CFS",PatternValues="-2,5,10,12,,,13,75,50")
 NewPatternTimeSeries(Alias="${TestOutputTSID}",NewTSID="ts2..Streamflow.Day",Description="Test data to be overwritten",SetStart="1950-01-01",SetEnd="1951-07-15",Units="CFS",PatternValues="1,2,3,4,,,7,8,9")
 ReadTableFromDelimitedFile(TableID="${TestLookupTable}",InputFile="Data\table1.csv")
-SetTimeSeriesValuesFromLookupTable(InputTSID="${TestInputTSID}",OutputTSID="${TestOutputTSID}",TableID="${TestLookupTable}",TableValue1Column="Value1",TableValue2Column="Value2",LookupMethod=Interpolate,SetStart="${TestSetStart}",SetEnd="${TestSetEnd}",SetWindowStart="${TestSetWindowStart}",SetWindowEnd="${TestSetWindowEnd}")
+SetTimeSeriesValuesFromLookupTable(InputTSID="${TestInputTSID}",OutputTSID="${TestOutputTSID}",TableID="${TestLookupTable}",TableValue1Column="${TestTableValue1Column}",TableValue2Column="${TestTableValue2Column}",LookupMethod=Interpolate,SetStart="${TestSetStart}",SetEnd="${TestSetEnd}",SetWindowStart="${TestSetWindowStart}",SetWindowEnd="${TestSetWindowEnd}")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_SetTimeSeriesValuesFromLookupTable_Day_Window_Properties_out.dv")
 WriteDateValue(OutputFile="Results\Test_SetTimeSeriesValuesFromLookupTable_Day_Window_Properties_out.dv")
