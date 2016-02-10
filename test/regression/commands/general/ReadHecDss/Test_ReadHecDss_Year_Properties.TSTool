@@ -1,0 +1,26 @@
+# Test reading the HEC-DSS sample data file - Year data
+# - copy the DSS file so changes won't be saved in the original
+# - specify parameters with ${Property}
+#@os Windows
+StartLog(LogFile="Results/Test_ReadHecDss_Year_Properties.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadHecDss_Year_Properties_out.dv",IfNotFound=Ignore)
+CopyFile(InputFile="Data\sample.dss",OutputFile="Results\sample.dss")
+SetProperty(PropertyName="TestInputFile",PropertyType=String,PropertyValue="Results\sample.dss")
+SetProperty(PropertyName="TestA",PropertyType=String,PropertyValue="APART4")
+SetProperty(PropertyName="TestB",PropertyType=String,PropertyValue="BPART4")
+SetProperty(PropertyName="TestC",PropertyType=String,PropertyValue="CPART4")
+SetProperty(PropertyName="TestE",PropertyType=String,PropertyValue="1YEAR")
+SetProperty(PropertyName="TestF",PropertyType=String,PropertyValue="YEARLY DATA")
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="1950")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="1990")
+SetProperty(PropertyName="TestPathname",PropertyType=String,PropertyValue="/APART4/BPART4/CPART4/01JAN1900/1YEAR/YEARLY DATA/")
+SetProperty(PropertyName="TestLocation",PropertyType=String,PropertyValue="TestLocation")
+SetProperty(PropertyName="TestLocation2",PropertyType=String,PropertyValue="TestLocation2")
+# Read by specifying properties for the individual parts
+ReadHecDss(InputFile="${TestInputFile}",A="${TestA}",B="${TestB}",C="${TestC}",E="${TestE}",F="${TestF}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Location="${TestLocation}")
+# Read by specifying properties for the full DSS path (overrides parts) - leave out A part to make sure override works
+ReadHecDss(InputFile="${TestInputFile}",B="${TestB}",C="${TestC}",E="${TestE}",F="${TestF}",Pathname="${TestPathname}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Location="${TestLocation2}")
+# Uncomment the following command to recreate the expected results
+# WriteDateValue(TSList=AllMatchingTSID,TSID="*1YEAR*",OutputFile="ExpectedResults\Test_ReadHecDss_Year_Properties_out.dv",Precision=2,MissingValue=NaN)
+WriteDateValue(TSList=AllMatchingTSID,TSID="*1YEAR*",OutputFile="Results\Test_ReadHecDss_Year_Properties_out.dv",Precision=2,MissingValue=NaN)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadHecDss_Year_Properties_out.dv",InputFile2="Results\Test_ReadHecDss_Year_Properties_out.dv",IfDifferent=Warn)
