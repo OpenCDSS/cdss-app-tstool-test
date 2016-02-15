@@ -1,0 +1,33 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "uid": "430",
+        "name": "FT COLLINS",
+        "county": "08069",
+        "basin": "",
+        "climdiv": "CO04",
+        "cwa": "",
+        "state": "CO",
+        "elev": 5004.0,
+        "longitude": -105.13139,
+        "latitude": 40.61472,
+        "ID-WBAN": "24047",
+        "ID-COOP": "053005",
+        "ID-FAA": "FCL",
+        "ID-ICAO": "KFCL",
+        "ID-GHCN": "USC00053005",
+        "ID-NWSLI": "FCL",
+        "IDWithLocType": "COOP:053005",
+        "valid_daterange1": "1893-01-01",
+        "valid_daterange2": "2016-02-10",
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.13139, 40.61472]
+      }
+    }
+  ]
+}

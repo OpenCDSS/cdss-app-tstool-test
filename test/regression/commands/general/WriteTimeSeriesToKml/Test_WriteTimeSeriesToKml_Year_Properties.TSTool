@@ -1,0 +1,30 @@
+# Test writing a Year time series to KML format
+# - Interval = Year
+# - default placemark name and description
+# - Specify as many command parameters as possible with ${Property} notation
+StartLog(LogFile="Results/Test_WriteTimeSeriesToKml_Year_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeriesToKml_Year_Properties_out.Kml",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc1",NewTSID="MyLoc1..MyDataType.Year",Description="Test data",SetStart="1950",SetEnd="2000",Units="CFS",PatternValues="5,10,12,13,75")
+# Populate some data in the time series
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc1",PropertyName="Longitude",PropertyType=Double,PropertyValue="-109")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc1",PropertyName="Latitude",PropertyType=Double,PropertyValue="44")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc1",PropertyName="Elevation",PropertyType=Double,PropertyValue="5280")
+NewPatternTimeSeries(Alias="MyLoc2",NewTSID="MyLoc2..MyData.Year",Description="Test data",SetStart="1955",SetEnd="2012",Units="CFS",PatternValues="7,12,14,,77",PatternFlags="A,B,,D,E")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc2",PropertyName="Longitude",PropertyType=Double,PropertyValue="-110")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc2",PropertyName="Latitude",PropertyType=Double,PropertyValue="45")
+# Set other properties to supply command parameters
+SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Test_WriteTimeSeriesToKml_Year_Properties_out.kml")
+SetProperty(PropertyName="TestTSID",PropertyType=String,PropertyValue="MyLoc1")
+SetProperty(PropertyName="TestName",PropertyType=String,PropertyValue="Test Layer")
+SetProperty(PropertyName="TestDescription",PropertyType=String,PropertyValue="Test time series")
+SetProperty(PropertyName="TestLongitudeProperty",PropertyType=String,PropertyValue="Longitude")
+SetProperty(PropertyName="TestLatitudeProperty",PropertyType=String,PropertyValue="Latitude")
+SetProperty(PropertyName="TestElevationProperty",PropertyType=String,PropertyValue="Elevation")
+SetProperty(PropertyName="TestStyleFile",PropertyType=String,PropertyValue="Data/KML-Style.xml")
+SetProperty(PropertyName="TestStyleURL",PropertyType=String,PropertyValue="#exampleStyleMap")
+# Uncomment the following command to regenerate the expected results file.
+# WriteTimeSeriesToKml(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="ExpectedResults/${TestOutputFile}",Name="${TestName}",Description="${TestDescription}",LongitudeProperty="${TestLongitudeProperty}",LatitudeProperty="${TestLatitudeProperty}",ElevationProperty="${TestElevationProperty}",StyleFile="${TestStyleFile}",StyleUrl="${TestStyleURL}")
+# Generate new output...
+WriteTimeSeriesToKml(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="Results/${TestOutputFile}",Name="${TestName}",Description="${TestDescription}",LongitudeProperty="${TestLongitudeProperty}",LatitudeProperty="${TestLatitudeProperty}",ElevationProperty="${TestElevationProperty}",StyleFile="${TestStyleFile}",StyleUrl="${TestStyleURL}")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToKml_Year_Properties_out.kml",InputFile2="Results/Test_WriteTimeSeriesToKml_Year_Properties_out.kml",IfDifferent=Warn)

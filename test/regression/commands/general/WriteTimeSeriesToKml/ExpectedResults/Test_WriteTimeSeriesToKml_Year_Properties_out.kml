@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+ <Document>
+  <name>Test Layer</name>
+  <description>Test time series</description>
+  <Style id="highlightPlacemark">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/paddle/red-stars.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <Style id="normalPlacemark">
+    <IconStyle>
+      <Icon>
+        <href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href>
+      </Icon>
+    </IconStyle>
+  </Style>
+  <StyleMap id="exampleStyleMap">
+    <Pair>
+      <key>normal</key>
+      <styleUrl>#normalPlacemark</styleUrl>
+    </Pair>
+    <Pair>
+      <key>highlight</key>
+      <styleUrl>#highlightPlacemark</styleUrl>
+    </Pair>
+  </StyleMap>
+  <Style id="polygonFillStyle">
+    <PolyStyle>
+      <color>ff0000ff</color>
+      <outline>0</outline>
+      <fill>1</fill>
+    </PolyStyle>
+  </Style>
+  <Placemark>
+   <name>MyLoc1</name>
+   <description>Test data, pattern</description>
+   <styleUrl>#exampleStyleMap</styleUrl>
+   <Point>
+    <coordinates>-109.0,44.0,5280.0</coordinates>
+   </Point>
+  </Placemark>
+ </Document>
+</kml>
