@@ -1,6 +1,6 @@
 # Test creating statistics time series from 6Hour ensemble for exceedance probabilities 10, 30, 50, 70, and 90
 # This uses the data from a Northern Colorado Water Conservancy District time series
-StartLog(LogFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Northern_6Hour_ExceedanceProbabilityg.TSTool.log")
+StartLog(LogFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Northern_6Hour_ExceedanceProbability.TSTool.log")
 RemoveFile(InputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Northern_6Hour_ExceedanceProbability_out.dv",IfNotFound=Ignore)
 ReadNwsrfsEspTraceEnsemble(InputFile="Data\WCDC2.NCWCD.SQIN.06.CS",EnsembleID="WCDC2-Ensemble")
 WriteDateValue(OutputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Northern_6Hour_ExceedanceProbability_out.dv",Precision=2)

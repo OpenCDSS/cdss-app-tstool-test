@@ -1,0 +1,4 @@
+# Output checks
+"File","Pattern","Level","Message","Recommendation"
+"${WorkingDir}/abc.log","*Error*","Failure","Error: ${file:line}","Fix ABC..."
+"${WorkingDir}/abc.log","*Warning*","Warning","Warning: ${file:line}","Nonfatal but probably should fix..."

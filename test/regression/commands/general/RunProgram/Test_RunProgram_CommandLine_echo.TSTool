@@ -7,4 +7,4 @@ RemoveFile(InputFile="Results\Test_RunProgram_CommandLine_echo_out.txt",IfNotFou
 # RunProgram(CommandLine="echo Hello > ${WorkingDir}/ExpectedResults/Test_RunProgram_CommandLine_echo_out.txt")
 # Generate the output
 RunProgram(CommandLine="echo Hello > ${WorkingDir}/Results/Test_RunProgram_CommandLine_echo_out.txt")
-CompareFiles(InputFile1="ExpectedResults/Test_RunProgram_CommandLine_echo_out.txt",InputFile2="Results/Test_RunProgram_CommandLine_echo_out.txt",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_RunProgram_CommandLine_echo_out.txt",InputFile2="Results/Test_RunProgram_CommandLine_echo_out.txt",IfDifferent=Warn)
