@@ -34,6 +34,6 @@ ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="3Hour",SiteDataT
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour")
 # Generate new output for what was read from the database...
-WriteDateValue(OutputFile="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour")
+WriteDateValue(TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour",OutputFile="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv")
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",InputFile2="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",IfDifferent=Warn)
