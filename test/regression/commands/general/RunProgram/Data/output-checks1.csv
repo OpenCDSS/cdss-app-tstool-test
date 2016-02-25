@@ -1,4 +1,9 @@
 # Output checks
+# -Use properties for the filename to have flexibility
 "File","Pattern","Level","Message","Recommendation"
-"${WorkingDir}/abc.log","*Error*","Failure","Error: ${file:line}","Fix ABC..."
-"${WorkingDir}/abc.log","*Warning*","Warning","Warning: ${file:line}","Nonfatal but probably should fix..."
+"stdout","*Error*","Failure","Error: ${file.line:text}","Fix ABC..."
+"stdout","*Warning*","Warning","Warning: ${file.line:text}","Nonfatal but probably should fix..."
+"stdout","*","Success","Stdout: ${file.line:text}","Just an echo of the standard output..."
+"${TestOutputFile}","*Error*","Failure","Error: ${file.line:text}","Fix ABC..."
+"${TestOutputFile}","*Warning*","Warning","Warning: ${file.line:text}","Nonfatal but probably should fix..."
+"${TestOutputFile}","*Success*","Success","Success: ${file.line:text}","Just an echo of the success message"
