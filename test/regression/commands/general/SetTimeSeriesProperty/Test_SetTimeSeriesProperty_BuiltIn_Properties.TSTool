@@ -10,7 +10,7 @@ NewPatternTimeSeries(Alias="${TestTSID}",NewTSID="ts1..Precip.Day",Description="
 SetProperty(PropertyName="TestDescription",PropertyType=String,PropertyValue="Test description text")
 SetProperty(PropertyName="TestUnits",PropertyType=String,PropertyValue="Units123")
 SetProperty(PropertyName="TestMissing",PropertyType=Double,PropertyValue="-9999")
-SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="${TestTSID}",Description="%L %T ${TestDescription}",Units="${TestUnits}",MissingValue=${TestMissing},Editable=True,PropertyType=DateTime)
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="${TestTSID}",Description="%L %T ${TestDescription}",Units="${TestUnits}",MissingValue=${TestMissing},Editable=True)
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_SetTimeSeriesProperty_BuiltIn_Properties_out.dv")
 WriteDateValue(OutputFile="Results/Test_SetTimeSeriesProperty_BuiltIn_Properties_out.dv")

@@ -1,0 +1,22 @@
+# Test setting built-in time series ensemble properties
+# - Only name can be set
+# - Specify with ${Property}
+StartLog(LogFile="Results/Test_SetEnsembleProperty_BuiltIn_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetEnsembleProperty_BuiltIn_Properties_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Precip.Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2000-01-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..TempMin.Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2000-01-25",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+NewEnsemble(NewEnsembleID="TestEnsemble",NewEnsembleName="TestEnsemble Name")
+SetProperty(PropertyName="TestBoolean",PropertyType=Boolean,PropertyValue="True")
+SetProperty(PropertyName="TestDateTime",PropertyType=DateTime,PropertyValue="2016-02-27")
+SetProperty(PropertyName="TestDouble",PropertyType=Double,PropertyValue="123.456")
+SetProperty(PropertyName="TestInteger",PropertyType=Integer,PropertyValue="123456")
+SetProperty(PropertyName="TestString",PropertyType=String,PropertyValue="Test string property")
+SetEnsembleProperty(EnsembleList=FirstMatchingEnsembleID,EnsembleID="TestEnsemble",PropertyName="TestDateTime",PropertyType=DateTime,PropertyValue="${TestDateTime}")
+SetEnsembleProperty(EnsembleList=FirstMatchingEnsembleID,EnsembleID="TestEnsemble",PropertyName="TestDouble",PropertyType=Double,PropertyValue="${TestDouble}")
+SetEnsembleProperty(EnsembleList=FirstMatchingEnsembleID,EnsembleID="TestEnsemble",PropertyName="TestInteger",PropertyType=Integer,PropertyValue="${TestInteger}")
+SetEnsembleProperty(EnsembleList=FirstMatchingEnsembleID,EnsembleID="TestEnsemble",PropertyName="TestString",PropertyType=String,PropertyValue="${TestString}")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_SetEnsembleProperty_BuiltIn_Properties_out.dv")
+# TODO SAM 2016-02-26 Need to enable writing time series ensemble properties so can compare test results
+# WriteDateValue(OutputFile="Results/Test_SetEnsembleProperty_BuiltIn_Properties_out.dv")
+# CompareFiles(InputFile1="ExpectedResults/Test_SetEnsembleProperty_BuiltIn_Properties_out.dv",InputFile2="Results/Test_SetEnsembleProperty_BuiltIn_Properties_out.dv",IfDifferent=Warn)
