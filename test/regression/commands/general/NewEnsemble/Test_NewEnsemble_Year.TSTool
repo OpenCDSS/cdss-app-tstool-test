@@ -7,6 +7,6 @@ NewEnsemble(TSList=AllTS,NewEnsembleID="TestEnsemble",NewEnsembleName="Test Ense
 # Generate the results.
 # Uncomment the following to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults\Test_NewEnsemble_Year_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
-WriteDateValue(OutputFile="Results\Test_NewEnsemble_Year_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+WriteDateValue(TSList=EnsembleID,EnsembleID="TestEnsemble",OutputFile="Results\Test_NewEnsemble_Year_out.dv")
 # Uncomment the following to recreate expected results
 CompareFiles(InputFile1="ExpectedResults/Test_NewEnsemble_Year_out.dv",InputFile2="Results/Test_NewEnsemble_Year_out.dv",IfDifferent=Warn)
