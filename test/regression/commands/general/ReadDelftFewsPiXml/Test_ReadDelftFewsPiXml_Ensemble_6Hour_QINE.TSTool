@@ -1,0 +1,12 @@
+# Test reading a Delft FEWS PI XML time series file
+# - ensemble of 6Hour QINE
+# - set the alias on output
+# - shift GMT to MST by using -7 hour shift
+# - set output time zone to "MST"
+StartLog(LogFile="Results/Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_out.dv",IfNotFound=Ignore)
+ReadDelftFewsPiXml(InputFile="Data\DKKC2.QINE.traces.WY.xml",Output=TimeSeriesAndEnsembles,TimeZoneOffset=-7,TimeZone="MST",DataSource="CBRFC",DataType="QINE",Description="${ts:stationName}-%L",Alias="%L-%T",EnsembleID="Ensemble-%L-%T")
+# Uncomment the following command to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_out.dv",IncludeProperties="*")
+WriteDateValue(OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_out.dv",IncludeProperties="*")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_out.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_out.dv",IfDifferent=Warn)
