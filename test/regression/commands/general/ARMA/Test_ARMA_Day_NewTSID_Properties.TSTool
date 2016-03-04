@@ -9,7 +9,7 @@ NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",S
 SetProperty(PropertyName="TestARMAInterval",PropertyType=String,PropertyValue="Day")
 SetProperty(PropertyName="Testa",PropertyType=String,PropertyValue=".25,.1,.075,.05,.025")
 SetProperty(PropertyName="Testb",PropertyType=String,PropertyValue=".25,.25")
-SetProperty(PropertyName="TestInputInitialValues",PropertyType=String,PropertyValue="17.3,17.2,13.5,11.4,8.3")
+SetProperty(PropertyName="TestInputPreviousValues",PropertyType=String,PropertyValue="17.3")
 SetProperty(PropertyName="TestAlias",PropertyType=String,PropertyValue="ts1_routed")
 SetProperty(PropertyName="TestLocID",PropertyType=String,PropertyValue="test_routed")
 SetProperty(PropertyName="TestDescription",PropertyType=String,PropertyValue="New TSID description")
@@ -17,7 +17,8 @@ SetProperty(PropertyName="TestOutputStart",PropertyType=DateTime,PropertyValue="
 SetProperty(PropertyName="TestOutputEnd",PropertyType=DateTime,PropertyValue="2003-05-05")
 SetProperty(PropertyName="TestOutputMinimum",PropertyType=Double,PropertyValue="5")
 SetProperty(PropertyName="TestOutputMaximum",PropertyType=Double,PropertyValue="10")
-ARMA(TSList=AllMatchingTSID,TSID="ts1",InputInitialValues="${TestInputInitialValues}",ARMAInterval=${TestARMAInterval},a="${Testa}",b="${Testb}",Alias="${TestAlias}",NewTSID="${TestLocID}...Day",Description="${TestDescription}",OutputStart="${TestOutputStart}",OutputEnd="${TestOutputEnd}",OutputMinimum=${TestOutputMinimum},OutputMaximum=${TestOutputMaximum})
+SetProperty(PropertyName="TestOutputPreviousValues",PropertyType=String,PropertyValue="17.3,17.2,13.5,11.4,8.3")
+ARMA(TSList=AllMatchingTSID,TSID="ts1",InputPreviousValues="${TestInputPreviousValues}",ARMAInterval=${TestARMAInterval},a="${Testa}",b="${Testb}",NewTSID="${TestLocID}...Day",Alias="${TestAlias}",Description="${TestDescription}",OutputStart="${TestOutputStart}",OutputEnd="${TestOutputEnd}",OutputPreviousValues="${TestOutputPreviousValues}",OutputMinimum=${TestOutputMinimum},OutputMaximum=${TestOutputMaximum})
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ARMA_Day_NewTSID_Properties_out.dv")
 WriteDateValue(OutputFile="Results/Test_ARMA_Day_NewTSID_Properties_out.dv")
