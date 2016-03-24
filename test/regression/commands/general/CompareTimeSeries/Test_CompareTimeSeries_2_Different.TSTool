@@ -1,0 +1,9 @@
+# Test comparing two time series warn if they are the different
+# - only one value in sequence is different
+# - the time series are different so expect to fail
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_CompareTimeSeries_2_Different.log")
+SetOutputPeriod(OutputStart="2010-01-01",OutputEnd="2010-03-20")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..flow.Day",Description="Test data 1",Units="cfs",MissingValue=NaN,PatternValues="2,5,2,5,,8,6,10")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..flow.Day",Description="Test data 2",Units="cfs",MissingValue=NaN,PatternValues="2,5,2,5,,8,5,10")
+CompareTimeSeries(TSID1="ts1",TSID2="ts2",CreateDiffTS=True,WarnIfDifferent=True)
