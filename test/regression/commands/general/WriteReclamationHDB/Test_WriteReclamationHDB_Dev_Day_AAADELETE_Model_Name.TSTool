@@ -8,7 +8,7 @@
 #     in the database.  Write non-missing values because HDB convention is to
 #     NOT write missing values (not sure how re-write is handled if missing involved).
 #   - For two writes, use TSID read once, and ReadReclamationHDB() once to exercise read.
-#   - Set the period to cross the time change, which occurs at 2010-04-14 02
+#   - Set the period to cross the time change, which occurs at 2010-03-14 02
 #   - TO EXAMINE tests, look at first 3 time series around the leap year change, similar for last 3 time series
 StartLog(LogFile="Results/Test_WriteReclamationHDB_Dev_Day_AAADELETE_Model_Name.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_Day_AAADELETE_Model_Name_out.dv",IfNotFound=Ignore)

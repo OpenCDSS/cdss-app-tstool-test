@@ -20,7 +20,7 @@ NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Day",Descri
 # First write the time series to the database...
 WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST")
 # Now read the same time series from the database using the period that was written...
-ReadTimeSeries(TSID="diversion:100376.HDB.flow.Day.AAA_DELETE~hdbtest",Alias="FirstRead",IfNotFound=Warn)
+ReadReclamationHDB(DataStore="hdbtest",Interval="Day",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,Alias="FirstRead")
 # Compare the time series read as a time series with a time series created from SQL query output.
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_DAY where site_datatype_id = 100376 and end_date_time >= to_date('${InputStart}','YYYY-MM-DD') and end_date_time <= to_date('${InputEnd2}','YYYY-MM-DD') order by start_date_time",TableID="r_day1")
 TableToTimeSeries(TableID="r_day1",DateTimeColumn="start_date_time",LocationID="100376",ValueColumn="value",Interval=Day,Units="cfs",Alias="FirstReadFromTable")

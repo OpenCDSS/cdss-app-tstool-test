@@ -18,18 +18,18 @@ SetOutputPeriod(OutputStart="2010-01-01 00",OutputEnd="2010-01-03 12")
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="5,10,12,13,75")
 # First write the time series to the database...
 SetDebugLevel(LogFileLevel=1)
-WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
+WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
 # Now read the same time series from the database using the period that was written...
 SetInputPeriod(InputStart="2010-01-01 00",InputEnd="2010-01-03 12")
-ReadTimeSeries(TSID="diversion:100376-167.HDB.flow.3Hour.AAA_DELETE~ReclamationHDB-ECO-Dev",Alias="FirstReadUsingTSID",IfNotFound=Warn)
+ReadTimeSeries(TSID="diversion:100376-167.HDB.flow.3Hour.AAA_DELETE~hdbtest",Alias="FirstReadUsingTSID",IfNotFound=Warn)
 SetDebugLevel(LogFileLevel=0)
 #
 # Start second pass (previous values x 10)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="500,100,120,130,750")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
 # Now read the same time series from the database using the period that was written...
-ReadReclamationHDB(DataStore="ReclamationHDB-ECO-Dev",Interval="3Hour",SiteDataTypeID=100376,ModelRunID=167,Alias="SecondRead")
+ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",SiteDataTypeID=100376,ModelRunID=167,Alias="SecondRead")
 #
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",TSList=LastMatchingTSID,TSID="AAA_DELETE.HDB.flow.3Hour")
