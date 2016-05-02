@@ -9,11 +9,11 @@ RemoveFile(InputFile="Results/Test_ReclamationHDB_Instant_AAADELETE_Real_Name_ou
 # of results all matches
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.Irregular",IrregularInterval=15Minute,Description="Real:AAA_DELETE",SetStart="2010-01-01 00:00",SetEnd="2010-01-03 12:30",Units="cfs",PatternValues="5,10,12,13,75")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="ReclamationHDB-ECO",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow")
+WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadReclamationHDB_Instant_AAADELETE_Real_Name_out.dv")
 # Now read the same time series from the database using the period that was written...
-ReadReclamationHDB(DataStore="ReclamationHDB-ECO",DataType="stream gage - inst flow",Interval="Irregular",Where1="Site - Common Name;Matches;AAA_DELETE",Alias="%L-%T")
+ReadReclamationHDB(DataStore="hdbtest",DataType="stream gage - inst flow",Interval="Irregular",Where1="Site - Common Name;Matches;AAA_DELETE",Alias="%L-%T")
 # Generate new output for what was read from the database...
 WriteDateValue(OutputFile="Results/Test_ReadReclamationHDB_Instant_AAADELETE_Real_Name_out.dv",OutputStart="2010-01-01 00:00",OutputEnd="2010-01-03 12:30",TSList=LastMatchingTSID,TSID="Real:AAA_DELETE.HDB.flow.Irregular")
 # Do regression comparison (allow 4 differences due to header differences)...

@@ -11,11 +11,11 @@ RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_Day_AAADELETE_Real_Name_ou
 # of results all matches
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.Day",Description="Real:AAA_DELETE",SetStart="2010-01-01",SetEnd="2011-03-03",Units="cfs",PatternValues="5,10,12,13,75")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="ReclamationHDB-Dev",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",ValidationFlag="A")
+WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",ValidationFlag="A")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadReclamationHDB_Dev_Day_AAADELETE_Real_Name_out.dv")
 # Now read the same time series from the database using the period that was written...
-ReadReclamationHDB(DataStore="ReclamationHDB-Dev",Interval="Day",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow")
+ReadReclamationHDB(DataStore="hdbtest",Interval="Day",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow")
 # Generate new output for what was read from the database...
 WriteDateValue(OutputFile="Results/Test_ReadReclamationHDB_Dev_Day_AAADELETE_Real_Name_out.dv",OutputStart="2010-01-01",OutputEnd="2011-03-03",TSList=LastMatchingTSID,TSID="Real:AAA_DELETE.HDB.flow.Day")
 # Do regression comparison (allow 4 differences due to header differences)...
