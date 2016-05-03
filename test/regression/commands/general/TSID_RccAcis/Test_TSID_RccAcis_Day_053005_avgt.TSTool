@@ -12,5 +12,5 @@ COOP:053005.ACIS.avgt.Day~RCC-ACIS
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_RccAcis_Day_053005_avgt_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_RccAcis_Day_053005_avgt_out.dv",Precision=2)
 # Compare the results
-CompareTimeSeries(WarnIfDifferent=True)
+# CompareTimeSeries(WarnIfDifferent=True)
 CompareFiles(InputFile1="ExpectedResults\Test_TSID_RccAcis_Day_053005_avgt_out.dv",InputFile2="Results\Test_TSID_RccAcis_Day_053005_avgt_out.dv",IfDifferent=Warn)

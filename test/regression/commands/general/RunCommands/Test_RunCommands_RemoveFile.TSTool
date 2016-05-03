@@ -6,7 +6,7 @@
 #@expectedStatus Warning
 #@enabled False
 StartLog(LogFile="Results/Test_RunCommands_RemoveFile.TSTool.log")
-RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Ignore.TSTool")
-RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Ignore.TSTool")
-RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Warning.TSTool")
-RunCommands(InputFile="Data\Test_RunCommands_RemoveFile_Warning.TSTool")
+RunCommands(InputFile="Data\aTest_RunCommands_RemoveFile_Ignore.TSTool")
+RunCommands(InputFile="Data\aTest_RunCommands_RemoveFile_Ignore.TSTool")
+RunCommands(InputFile="Data\aTest_RunCommands_RemoveFile_Warning.TSTool")
+RunCommands(InputFile="Data\aTest_RunCommands_RemoveFile_Warning.TSTool")

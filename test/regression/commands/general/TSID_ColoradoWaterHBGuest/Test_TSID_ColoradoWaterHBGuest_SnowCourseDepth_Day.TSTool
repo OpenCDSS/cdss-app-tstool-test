@@ -5,10 +5,11 @@ StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseDepth_Day.TSTo
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseDepth_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="2006-01-01",InputEnd="2010-12-31")
-ReadTimeSeries(TSID="07K02.NRCS.SnowCourseDepth.Day~HydroBase",Alias="HydroBase",IfNotFound=Warn)
-ReadTimeSeries(TSID="07K02.SCS.SnowCourseDepth.Day~ColoradoWaterHBGuest",Alias="ColoradoWaterHBGuest",IfNotFound=Warn)
+# 05J27S - LONG DRAW RESV
+ReadTimeSeries(TSID="05J27S.NRCS.SnowCourseDepth.Day~HydroBase",Alias="HydroBase",IfNotFound=Warn)
+ReadTimeSeries(TSID="05J27S.NRCS.SnowCourseDepth.Day~ColoradoWaterHBGuest",Alias="ColoradoWaterHBGuest",IfNotFound=Warn)
 # Make sure that enough data are available in the test data, and some missing
-CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=5,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and

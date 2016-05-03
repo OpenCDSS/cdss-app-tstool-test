@@ -19,11 +19,11 @@ CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckVal
 # rounding on output produces different values.
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Irregular_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="BIJOUSCO-Irregular")
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Hour_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="BIJOUSCO-Hour")
-# WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Day_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="BIJOUSCO-Day")
+# WriteDateValue(TSList=FirstMatchingTSID,TSID="BIJOUSCO-Day",OutputFile="ExpectedResults/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Day_out.dv",Precision=2)
 # Write out the new results - each interval to a separate file
-WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Irregular_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="BIJOUSCO-Irregular")
-WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Hour_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="BIJOUSCO-Hour")
-WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Day_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="BIJOUSCO-Day")
+WriteDateValue(TSList=FirstMatchingTSID,TSID="BIJOUSCO-Irregular",OutputFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Irregular_out.dv",Precision=2)
+WriteDateValue(TSList=FirstMatchingTSID,TSID="BIJOUSCO-Hour",OutputFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Hour_out.dv",Precision=2)
+WriteDateValue(TSList=FirstMatchingTSID,TSID="BIJOUSCO-Day",OutputFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Day_out.dv",Precision=2)
 # Compare files for each interval
 CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Irregular_out.dv",InputFile2="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Irregular_out.dv",IfDifferent=Warn)
 CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Hour_out.dv",InputFile2="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_Hour_out.dv",IfDifferent=Warn)

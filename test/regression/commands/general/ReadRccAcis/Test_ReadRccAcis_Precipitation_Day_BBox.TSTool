@@ -9,4 +9,4 @@ ReadRccAcis(DataStore="RCC-ACIS",DataType="pcpn",Interval="Day",Where1="Bounding
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv")
 CompareFiles(InputFile1="ExpectedResults/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv",InputFile2="Results/Test_ReadRccAcis_Precipitation_Day_BBox_out.dv",IfDifferent=Warn)
-CompareTimeSeries(WarnIfDifferent=True)
+# CompareTimeSeries(WarnIfDifferent=True)

@@ -2,7 +2,7 @@
 StartLog(LogFile="Results/Test_Copy_6Hour_CopyDataFlags=False.TSTool.log")
 RemoveFile(InputFile="Results\Test_Copy_6Hour_CopyDataFlags=False_out.dv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="Original",NewTSID="MyLoc..MyData.6Hour",Description="Test data",SetStart="1950-01-01 00",SetEnd="1950-01-12 12",Units="CFS",PatternValues="5,10,12,13,75",PatternFlags="a,b,c,xx,yy,zz")
-Copy(TSID="Original",NewTSID="a...Day",Alias="Copy",CopyDataFlags=False,CopyHistory=False)
+Copy(TSID="Original",NewTSID="a...6Hour",Alias="Copy",CopyDataFlags=False,CopyHistory=False)
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_Copy_6Hour_CopyDataFlags=False_out.dv")
 WriteDateValue(OutputFile="Results\Test_Copy_6Hour_CopyDataFlags=False_out.dv")

@@ -1,0 +1,8 @@
+#
+# Create the regression test runner for ReclamationHDB commands, suitable when testing read/write commands for the datastore.
+# TSTool/test/regression/TestSuites/commands_general files.
+#
+# Generate RunCommands() commands and append to the commands from above.
+# Only command files that start with Test_ are included in the output.
+#
+CreateRegressionTestCommandFile(SearchFolder="..\..\..\commands\general",OutputFile="..\run\RunRegressionTest_commands_general_Windows_ReclamationHDB.TSTool",SetupCommandFile="Create_RunTestSuite_commands_general_IncludeOS=Windows_setup.TSTool",EndCommandFile="Create_RunTestSuite_commands_general_IncludeOS=Windows_end.TSTool",FilenamePattern="Test*ReclamationHDB*.TSTool",Append=False,IncludeTestSuite="*",IncludeOS="Windows",TestResultsTableID="TestResults")
