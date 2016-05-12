@@ -9,6 +9,7 @@ ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata5.csv")
 # Manipulate strings in the table
 ManipulateTableString(TableID="Table1",InputColumn1="TSID",Operator="Replace",InputValue2="^\sats",InputValue3="xatsx",OutputColumn="String3")
 ManipulateTableString(TableID="Table1",InputColumn1="TSID",Operator="Replace",InputValue2="ts7\s$",InputValue3="xxts7xx",OutputColumn="String3")
+ManipulateTableString(TableID="Table1",InputColumn1="TSID",Operator="Replace",InputValue2="ts7\s$",InputValue3="xxts7\s\sxx",OutputColumn="String4")
 # Uncomment the following command to regenerate expected results.
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_ManipulateTableString_Columns_Replace_Special_out.csv")
 WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_ManipulateTableString_Columns_Replace_Special_out.csv")
