@@ -1,8 +1,8 @@
 # Test ReadUsgsNwisRdb command
 StartLog(LogFile="Results/Test_ReadUsgsNwisRdb.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadUsgsNwisRdb_out.dv",IfNotFound=Ignore)
-ReadUsgsNwisRdb(InputFile="Data\G03451500.txt",Alias="nwis")
+ReadUsgsNwisRdb(InputFile="Data\G03451500.txt",Alias="nwis",DataType="Streamflow",Interval=Day,Units="CFS")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadUsgsNwisRdb_out.dv",Precision=0)
-WriteDateValue(OutputFile="Results\Test_ReadUsgsNwisRdb_out.dv",Precision=0)
+WriteDateValue(OutputFile="Results\Test_ReadUsgsNwisRdb_out.dv",Precision=0,WriteDataFlagDescriptions=True)
 CompareFiles(InputFile1="ExpectedResults\Test_ReadUsgsNwisRdb_out.dv",InputFile2="Results\Test_ReadUsgsNwisRdb_out.dv",IfDifferent=Warn)
