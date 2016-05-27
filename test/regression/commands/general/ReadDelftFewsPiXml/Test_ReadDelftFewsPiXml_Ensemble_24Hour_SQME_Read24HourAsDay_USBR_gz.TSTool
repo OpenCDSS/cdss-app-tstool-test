@@ -1,0 +1,37 @@
+# Test reading a Delft FEWS PI XML time series file
+# - ensemble of 24Hour SQME
+# - ensemble file is gz file
+# - set the alias on output
+# - offset the GMT by -7 hours
+# - set the output timezone to "MST"
+# - convert 24Hour to Day interval using cutoff of 0 (default)
+StartLog(LogFile="Results/Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out.dv",IfNotFound=Ignore)
+# Read the data in the raw time zone with no shift, resulting in daily values on original day
+ReadDelftFewsPiXml(InputFile="Data\RURC2L_F.SIM24.SQME.24.CS.xml.gz",TimeZoneOffset=0,TimeZone="GMT",Read24HourAsDay=True,Alias="%L-%T-DayGMT",EnsembleID="${ts:locationId}_Ens1")
+# Read the data and shift the time zone from GMT to MST, resulting in daily values on the previous day
+ReadDelftFewsPiXml(InputFile="Data\RURC2L_F.SIM24.SQME.24.CS.xml",TimeZoneOffset=-7,TimeZone="MST",Read24HourAsDay=True,Alias="%L-%T-DayMST",EnsembleID="${ts:locationId}_Ens2")
+# Read the data in the raw time zone with no shift, resulting in houry values in GMT
+ReadDelftFewsPiXml(InputFile="Data\RURC2L_F.SIM24.SQME.24.CS.xml",TimeZoneOffset=0,TimeZone="GMT",Read24HourAsDay=False,Alias="%L-%T-24HourGMT",EnsembleID="${ts:locationId}_Ens3")
+# Read the data and shift the time zone from GMT to MST, resulting in daily values on the previous day
+ReadDelftFewsPiXml(InputFile="Data\RURC2L_F.SIM24.SQME.24.CS.xml",TimeZoneOffset=-7,TimeZone="MST",Read24HourAsDay=False,Alias="%L-%T-24HourMST",EnsembleID="${ts:locationId}_Ens4")
+# Read the data and use the original GMT time zone, to check that default (no shift works)
+ReadDelftFewsPiXml(InputFile="Data\RURC2L_F.SIM24.SQME.24.CS.xml.gz",Read24HourAsDay=True,Alias="%L-%T-DayGMT-NoShift",EnsembleID="${ts:locationId}_EnsNoShift")
+# Uncomment the following 4 lines to regenerate expected results
+# WriteDateValue(TSList=AllMatchingTSID,TSID="*24HourGMT",OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourGMT.dv",IncludeProperties="*")
+# WriteDateValue(TSList=AllMatchingTSID,TSID="*24HourMST",OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourMST.dv",IncludeProperties="*")
+# WriteDateValue(TSList=AllMatchingTSID,TSID="*DayGMT",OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT.dv",IncludeProperties="*")
+# WriteDateValue(TSList=AllMatchingTSID,TSID="*DayMST",OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayMST.dv",IncludeProperties="*")
+# WriteDateValue(TSList=AllMatchingTSID,TSID="*DayGMT-NoShift",OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT-NoShift.dv",IncludeProperties="*")
+#
+WriteDateValue(TSList=AllMatchingTSID,TSID="*24HourGMT",OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourGMT.dv",IncludeProperties="*")
+WriteDateValue(TSList=AllMatchingTSID,TSID="*24HourMST",OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourMST.dv",IncludeProperties="*")
+WriteDateValue(TSList=AllMatchingTSID,TSID="*DayGMT",OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT.dv",IncludeProperties="*")
+WriteDateValue(TSList=AllMatchingTSID,TSID="*DayMST",OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayMST.dv",IncludeProperties="*")
+WriteDateValue(TSList=AllMatchingTSID,TSID="*DayGMT-NoShift",OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT-NoShift.dv",IncludeProperties="*")
+#
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayMST.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayMST.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourGMT.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourGMT.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourMST.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_out24HourMST.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT-NoShift.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_USBR_gz_outDayGMT-NoShift.dv",IfDifferent=Warn)
