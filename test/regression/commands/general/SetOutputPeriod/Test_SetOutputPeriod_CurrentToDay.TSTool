@@ -1,7 +1,7 @@
 # Test setting the output period to daily precision using current day
 StartLog(LogFile="Results/Test_SetOutputPeriod_CurrentToDay.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetOutputPeriod_CurrentToDay_out.txt",IfNotFound=Ignore)
-SetOutputPeriod(OutputStart="CurrentToDay - 7Day",OutputEnd="CurrentToDay")
+SetOutputPeriod(OutputStart="CurrentToMinute - 7Day",OutputEnd="CurrentToMinute")
 # Uncomment the following two commands to regenerate the expected results file.
 # WriteProperty(OutputFile="ExpectedResults\Test_SetOutputPeriod_CurrentToDay_out.txt",PropertyName="OutputStart",Append=False)
 # WriteProperty(OutputFile="ExpectedResults\Test_SetOutputPeriod_CurrentToDay_out.txt",PropertyName="OutputEnd",Append=True)
