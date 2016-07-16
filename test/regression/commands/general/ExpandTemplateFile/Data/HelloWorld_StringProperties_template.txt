@@ -1,0 +1,2 @@
+# Simple test to expand a text file using FreeMarker
+${testProperty}
