@@ -1,11 +1,9 @@
 # Test reading from a Campbell Scientific datalogger file
 # This is a bit complicated because the file has 4 rows of "" containing data
 # Use the second row for data types and manually put in the units
-# Expect to fail because need to deal better with quoted data and getting column names
-#@expectedStatus failure
 StartLog(LogFile="Results/Test_ReadDelimitedFile_CSI.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadDelimitedFile_CSI_out.dv",IfNotFound=Ignore)
-ReadDelimitedFile(InputFile="Data\USGS-G03451500.txt",Delimiter="\t",ColumnNames="Agency,ID,Date,Flow",DateTimeColumn="Date",ValueColumn="Flow",Comment="#<",SkipRowsAfterComments="2",LocationID="03451500",Provider="USGS",Interval=Day,Units="cfs",Alias="%L%T")
+ReadDelimitedFile(InputFile="Data\CR800Series_RemoteTable.dat",Delimiter=",",ColumnNames="TIMESTAMP,RECORD,BattV,AirTF,RH,Stage,Distance,ErrorCode,AirPressure",DateTimeColumn="TIMESTAMP",ValueColumn="BattV,AirTF,RH,Stage,Distance,ErrorCode,AirPressure",SkipRows="1-4",LocationID="TOA5",Provider="CSI",Interval=IRREGULAR,Units="Volts,Deg F,%,Feet,Feet,Units,psi",MissingValue=NAN,Alias="%L%T")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelimitedFile_CSI_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results\Test_ReadDelimitedFile_CSI_out.dv",Precision=2)
