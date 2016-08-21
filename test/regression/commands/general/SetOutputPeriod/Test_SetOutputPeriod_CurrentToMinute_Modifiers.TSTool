@@ -1,5 +1,5 @@
 # Test setting the output period to 5 minute precision using current time
-# - use modifiers to round the minute and set the time zone
+# - use modifiers to round the minute and set the time zone to blank
 # - it is difficult to compare to expected results so just make sure it does not crash
 StartLog(LogFile="Results/Test_SetOutputPeriod_CurrentToMinute_Modifiers.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetOutputPeriod_CurrentToMinute_Modifiers_out.txt",IfNotFound=Ignore)

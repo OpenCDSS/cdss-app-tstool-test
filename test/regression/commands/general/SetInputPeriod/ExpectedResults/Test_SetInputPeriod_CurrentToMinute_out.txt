@@ -1,0 +1,2 @@
+InputStart="2016-07-24 03:10 America/Denver"
+InputEnd="2016-07-31 03:10 America/Denver"
