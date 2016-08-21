@@ -7,6 +7,6 @@ ReadTableFromExcel(TableID="Table1",InputFile="Data\Definitions.xlsx",ExcelAddre
 NewExcelWorkbook(OutputFile="Results/Test_SetExcelWorksheetViewProperties_out.xlsx",Worksheets="Table1",KeepOpen=True)
 WriteTableToExcel(TableID="Table1",OutputFile="Results/Test_SetExcelWorksheetViewProperties_out.xlsx",Worksheet="Table1",ExcelAddress="A1",ExcelColumnNames=FirstRowInRange,KeepOpen=True)
 # Set the freeze pane for columns and rows
-SetExcelWorksheetViewProperties(OutputFile="Results/Test_SetExcelWorksheetViewProperties_out.xlsx",FreezePaneColumnRightOfSplit=B,FreezePaneRowBelowSplit=2,KeepOpen=True)
+SetExcelWorksheetViewProperties(OutputFile="Results/Test_SetExcelWorksheetViewProperties_out.xlsx",KeepOpen=True,FreezePaneColumnRightOfSplit=B,FreezePaneRowBelowSplit=2)
 # Close the Excel file
 CloseExcelWorkbook(OutputFile="Results/Test_SetExcelWorksheetViewProperties_out.xlsx")

@@ -10,6 +10,6 @@ WriteTableToExcel(TableID="Table1",OutputFile="Results/Test_SetExcelWorksheetVie
 # Set the freeze pane for columns and rows
 SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Results/Test_SetExcelWorksheetViewProperties_FreezePane_Properties_out.xlsx")
 SetProperty(PropertyName="TestWorksheet",PropertyType=String,PropertyValue="Table1")
-SetExcelWorksheetViewProperties(OutputFile="${TestOutputFile}",Worksheet="${TestWorksheet}",FreezePaneColumnRightOfSplit=B,FreezePaneRowBelowSplit=2,KeepOpen=True)
+SetExcelWorksheetViewProperties(OutputFile="${TestOutputFile}",Worksheet="${TestWorksheet}",KeepOpen=True,FreezePaneColumnRightOfSplit=B,FreezePaneRowBelowSplit=2)
 # Close the Excel file
 CloseExcelWorkbook(OutputFile="Results/Test_SetExcelWorksheetViewProperties_FreezePane_Properties_out.xlsx")
