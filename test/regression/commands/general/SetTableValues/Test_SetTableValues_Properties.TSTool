@@ -1,6 +1,6 @@
 # Test setting values in a table
 # - Simple table is read from a file.
-# - Use ${Property} to in parameters
+# - Use ${Property} in all parameters
 StartLog(LogFile="Results/Test_SetTableValues_Properties.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetTableValues_Properties_out.csv",IfNotFound=Ignore)
 SetProperty(PropertyName="TestTableID",PropertyType=String,PropertyValue="Table1")
