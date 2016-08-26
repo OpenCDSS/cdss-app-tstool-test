@@ -1,13 +1,13 @@
 # Test reading a delimited file using default parameters.
 # - First column is numbers with leading zero - treat as text
 # - Second column is date/time values
-StartLog(LogFile="Results/Test_ReadTableFromDelimitedFileText_DateTime.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFileText_DateTime_out.csv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_Text_DateTime.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_Text_DateTime_out.csv",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata.csv",DateTimeColumns="DateTime",TextColumns="NumberAsText")
 # Uncomment the following line to generate the expected results.
-# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFileText_DateTime_out.csv")
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_Text_DateTime_out.csv")
 # Generate the results.
-WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromDelimitedFileText_DateTime_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromDelimitedFile_Text_DateTime_out.csv")
 # Do regression comparison with the original input (possible because strings
 # and integers with no formatting issues).
-CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDelimitedFileText_DateTime_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFileText_DateTime_out.csv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDelimitedFile_Text_DateTime_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_Text_DateTime_out.csv",IfDifferent=Warn)
