@@ -1,0 +1,31 @@
+# Test routing at 3 hour interval
+# - Specify inflow and outflow states in a table provided by Excel
+StartLog(LogFile="Results\Test_VariableLagK_3hr_VarLagAndK_StateTable.TSTool.log")
+RemoveFile(InputFile="Results\Tes_VariableLagK_3hr_VarLagAndK_StateTable_out.dv",IfNotFound=Ignore)
+#
+# Read NWSCard input file
+ReadNwsCard(InputFile="Data\3HR_INPUT.SQIN",Alias="Inflow")
+#
+# Read the state table from Excel - all columns are read as text
+ReadTableFromExcel(TableID="StateTable",InputFile="Data\Test_VariableLagK_3hr_VarLagAndK_StateTable.xlsx",Worksheet="States",ExcelColumnNames=FirstRowInRange,ColumnExcludeFilters="StateName:")
+#
+# Route using the same routing parameters used in the mcp3 input deck
+# (metric units: Lag(hrs) K(hrs) Q(cms)
+# Lag
+# K
+#    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+#    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+#
+VariableLagK(TSID="Inflow",FlowUnits="CMS",LagInterval="Hour",Lag="200,24.0;600,12.0;1500,9.0;3000,42.0",K="200,24.0;600,12.0;1500,9.0;3000,42.0",NewTSID="TestLoc..SQIN.3Hour.routed",Alias="3Hr")
+# Free(TSList=AllMatchingTSID,TSID="Inflow")
+#
+# Read the output from the mcp3 LAG/K command
+ReadNwsCard(InputFile="Data\3HR_VAR_LAG_K.SQIN",Alias="mcp3_output")
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
+#
+# The following does an exact test of the results:
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="3hr")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv",TSList=SelectedTS)
+WriteDateValue(TSList=SelectedTS,OutputFile="Results\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv",InputFile2="Results\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv",IfDifferent=Warn)

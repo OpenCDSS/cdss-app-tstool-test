@@ -1,0 +1,35 @@
+# Test routing at 3 hour interval
+# - Save states on even day
+StartLog(LogFile="Results\Test_VariableLagK_3hr_SaveIntervalDay.TSTool.log")
+RemoveFile(InputFile="Results\Tes_VariableLagK_3hr_SaveIntervalDay_out.dv",IfNotFound=Ignore)
+#
+# Read NWSCard input file
+ReadNwsCard(InputFile="Data\3HR_INPUT.SQIN",Alias="Inflow")
+#
+# Route using the same routing parameters used in the mcp3 input deck
+# (metric units: Lag(hrs) K(hrs) Q(cms)
+# Lag
+# K
+#    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+#    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+#
+NewTable(TableID="StateTable",Columns="ObjectID,string;DateTime,datetime;StateName;string;StateValue;string")
+SetProperty(PropertyName="VariableLagKObjectID",PropertyType=String,PropertyValue="TestSegment")
+# SetDebugLevel(LogFileLevel=1)
+VariableLagK(TSID="Inflow",FlowUnits="CMS",LagInterval="Hour",Lag="200,24.0;600,12.0;1500,9.0;3000,42.0",K="200,24.0;600,12.0;1500,9.0;3000,42.0",InitializeStatesFromTable=False,StateTableID="StateTable",StateTableObjectIDColumn="ObjectID",StateTableObjectID="${VariableLagKObjectID}",StateTableDateTimeColumn="DateTime",StateTableNameColumn="StateName",StateTableValueColumn="StateValue",StateSaveInterval="Day",NewTSID="TestLoc..SQIN.3Hour.routed",Alias="Outflow")
+# SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+# Free(TSList=AllMatchingTSID,TSID="Inflow")
+#
+# Read the output from the mcp3 LAG/K command
+ReadNwsCard(InputFile="Data\3HR_VAR_LAG_K.SQIN",Alias="mcp3_output")
+# Compare the input time series.  MCP3 results at the beginning are different - not sure why.
+CompareTimeSeries(TSID1="Outflow",TSID2="mcp3_output",MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
+#
+# The following does an exact test of the results:
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="Outflow")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(TSList=SelectedTS,OutputFile="ExpectedResults\Test_VariableLagK_3hr_SaveIntervalDay_out.dv")
+WriteDateValue(TSList=SelectedTS,OutputFile="Results\Test_VariableLagK_3hr_SaveIntervalDay_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3hr_SaveIntervalDay_out.dv",InputFile2="Results\Test_VariableLagK_3hr_SaveIntervalDay_out.dv",IfDifferent=Warn)
+# Also write the state table for comparison
+WriteTableToDelimitedFile(TableID="StateTable",OutputFile="Results\Test_VariableLagK_3hr_SaveIntervalDay_out_states.csv",NewlineReplacement="\s")

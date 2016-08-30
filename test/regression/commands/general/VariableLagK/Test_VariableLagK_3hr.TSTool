@@ -12,7 +12,7 @@ ReadNwsCard(InputFile="Data\3HR_INPUT.SQIN",Alias="Inflow")
 #    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
 #    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
 #
-VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="200,24.0;600,12.0;1500,9.0;3000,42.0",K="200,24.0;600,12.0;1500,9.0;3000,42.0",Alias="3Hr")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.3Hour.routed",FlowUnits="CMS",LagInterval="Hour",Lag="200,24.0;600,12.0;1500,9.0;3000,42.0",K="200,24.0;600,12.0;1500,9.0;3000,42.0",Alias="3Hr")
 Free(TSList=AllMatchingTSID,TSID="Inflow")
 #
 # Read the output from the mcp3 LAG/K command
