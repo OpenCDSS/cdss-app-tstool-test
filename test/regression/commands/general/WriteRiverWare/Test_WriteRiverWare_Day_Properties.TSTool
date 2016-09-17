@@ -4,11 +4,14 @@
 StartLog(LogFile="Results/Test_WriteRiverWare_Day_Properties.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteRiverWare_Day_Properties_out.dv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-# Uncomment the following command to regenerate the expected results file.
-# WriteRiverWare(TSList=AllTS,OutputFile="ExpectedResults\Test_WriteRiverWare_Day_Properties_out.dv")
 # Generate new output...
-SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Results/Test_WriteRiverWare_Day_Properties_out.dv")
+SetProperty(PropertyName="TestExpectedOutputFile",PropertyType=String,PropertyValue="ExpectedResults/Test_WriteRiverWare_Day_Properties_out.riverware")
+SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Results/Test_WriteRiverWare_Day_Properties_out.riverware")
 SetProperty(PropertyName="TestTSID",PropertyType=String,PropertyValue="Alias")
-WriteRiverWare(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="${TestOutputFile}")
+SetProperty(PropertyName="TestUnits",PropertyType=String,PropertyValue="cfs")
+SetProperty(PropertyName="TestSetUnits",PropertyType=String,PropertyValue="cfs2")
+# Uncomment the following command to regenerate the expected results file.
+# WriteRiverWare(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="${TestExpectedOutputFile}",Units="${TestUnits}",SetUnits="${TestSetUnits}")
+WriteRiverWare(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="${TestOutputFile}",Units="${TestUnits}",SetUnits="${TestSetUnits}")
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_WriteRiverWare_Day_Properties_out.dv",InputFile2="Results/Test_WriteRiverWare_Day_Properties_out.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteRiverWare_Day_Properties_out.riverware",InputFile2="Results/Test_WriteRiverWare_Day_Properties_out.riverware",IfDifferent=Warn)
