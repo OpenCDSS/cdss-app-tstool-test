@@ -1,1 +1,1 @@
-DebugLevelLogFile="10"
+DebugLevelLogFile=10

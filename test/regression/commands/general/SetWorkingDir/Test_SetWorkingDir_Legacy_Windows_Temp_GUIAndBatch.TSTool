@@ -1,0 +1,14 @@
+# Test setting working directory to temp folder on Windows, using legacy syntax
+# TODO SAM 2015-03-04 Need to fix so this works. Temporary files are now in user space, not global.
+#@readOnly
+#@os Windows
+StartLog(LogFile="Results/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",IfNotFound=Ignore)
+# Legacy did not use named parameters
+SetWorkingDir("${TempDir}",GUIAndBatch)
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",IncludeProperties="WorkingDir",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",IncludeProperties="WorkingDir",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",InputFile2="${InitialWorkingDir}/Results/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",IfDifferent=Warn)

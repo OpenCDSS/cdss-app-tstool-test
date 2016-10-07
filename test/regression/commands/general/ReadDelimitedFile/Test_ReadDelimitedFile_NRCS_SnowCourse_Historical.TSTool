@@ -6,9 +6,11 @@ StartLog(LogFile="Results/Test_ReadDelimitedFile_NRCS_SnowCourse_Historical.TSTo
 RemoveFile(InputFile="Results\Test_ReadDelimitedFile_NRCS_SnowCourse_Historical_out.dv",IfNotFound=Ignore)
 # Uncomment the following to regenerate snow course test data.
 # WebGet(URI="http://www.wcc.nrcs.usda.gov/ftpref/data/snow/snow_course/table/history/colorado/05j37s.txt",LocalFile="Data/NRCS-SnowCourse-JoeWright-historical.txt")
-# Run a python script to convert the text file to a csv file with data values
+# Run a python script to convert the text file to a csv file with data values.
+# Actually, the script is run outside this command file in order to avoid broken dependencies.
+# The following comments are retained to understand the dependencies.
 # RunPython(Interpreter="Python",InputFile="C:/develop/TSTool_SourceBuild/TSTool/resources/runtime/python/nrcs-snowcourse/snowcourse2csv.py",Arguments="inputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright.historical.txt\" outputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright_historical.csv\" logFile=\"${WorkingDir}/Results/Test_ReadDelimitedFile_NRCS_SnowCourse_Historical.TSTool.log\"")
-RunPython(Interpreter="Python",InputFile="..\..\..\..\..\resources\runtime\python\nrcs-snowcourse\snowcourse2csv.py",Arguments="inputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright-historical.txt\" outputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright-historical.csv\" logFile=\"${WorkingDir}/Results/Test_ReadDelimitedFile_NRCS_SnowCourse_Historical.TSTool.log\"")
+# RunPython(Interpreter="Python",InputFile="..\..\..\..\..\resources\runtime\python\nrcs-snowcourse\snowcourse2csv.py",Arguments="inputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright-historical.txt\" outputFile=\"${WorkingDir}/Data/NRCS-SnowCourse-JoeWright-historical.csv\" logFile=\"${WorkingDir}/Results/Test_ReadDelimitedFile_NRCS_SnowCourse_Historical.TSTool.log\"")
 # Read the delimited file into a time series
 ReadDelimitedFile(InputFile="Data\NRCS-SnowCourse-JoeWright-historical.csv",Delimiter=",",ColumnNames="Date,Depth,SWE,Flag",DateTimeColumn="Date",ValueColumn="Depth,SWE",FlagColumn="Flag,Flag",Comment="#",SkipRowsAfterComments="1",LocationID="JoeWright",Provider="NRCS",DataType="Depth,SWE",Interval=Day,Units="in",Alias="%L%T")
 # Write the output.  Set the output period to minimize the chance that new data

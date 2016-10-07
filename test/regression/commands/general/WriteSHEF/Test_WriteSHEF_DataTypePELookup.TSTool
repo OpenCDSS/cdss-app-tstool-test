@@ -1,8 +1,7 @@
 # Test writing SHEF data where the Datatype to PE lookup is specified.
-#@os Windows
 StartLog(LogFile="Results/Test_WriteSHEF_DataTypePELookup.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteSHEF_DataTypePELookup_out.shef",IfNotFound=Ignore)
-TS loc1 = NewPatternTimeSeries(NewTSID="loc1..QIN.6Hour",Description="Test data",SetStart="2007-11-01 00 PST",SetEnd="2007-11-15 18 PST",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="loc1",NewTSID="loc1..QIN.6Hour",Description="Test data",SetStart="2007-11-01 00 PST",SetEnd="2007-11-15 18 PST",Units="CFS",PatternValues="5,10,12,13,75")
 # Uncomment the following command to regenerate the expected results file.
 # WriteSHEF(TSList=AllTS,DataTypePELookup="QIN,QI;TAIN,TA",OutputFile="ExpectedResults\Test_WriteSHEF_DataTypePELookup_out.shef")
 # Generate new output...

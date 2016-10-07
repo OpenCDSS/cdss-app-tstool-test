@@ -1,1 +1,1 @@
-OutputYearType="Water"
+OutputYearType=Water

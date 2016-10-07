@@ -1,1 +1,1 @@
-DebugLevelScreen="10"
+DebugLevelScreen=10

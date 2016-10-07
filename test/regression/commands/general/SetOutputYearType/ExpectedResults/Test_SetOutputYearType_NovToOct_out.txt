@@ -1,1 +1,1 @@
-OutputYearType="NovToOct"
+OutputYearType=NovToOct

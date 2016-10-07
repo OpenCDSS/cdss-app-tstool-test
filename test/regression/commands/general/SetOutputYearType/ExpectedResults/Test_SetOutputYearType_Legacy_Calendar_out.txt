@@ -1,1 +1,1 @@
-OutputYearType="Calendar"
+OutputYearType=Calendar

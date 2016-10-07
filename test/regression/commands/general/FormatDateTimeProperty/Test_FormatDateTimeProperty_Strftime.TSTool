@@ -8,12 +8,8 @@ FormatDateTimeProperty(PropertyName="DatePropString",DateTimePropertyName="DateP
 FormatDateTimeProperty(PropertyName="DateTimePropString",DateTimePropertyName="DateTimeProp",Format="%Y-%m-%dT%H:%M:%S")
 FormatDateTimeProperty(PropertyName="DateTimePropAllString",DateTimePropertyName="DateTimeProp",Format="a=%a A=%A b=%b B=%B d=%d H=%H I=%I j=%j m=%m M=%M p=%p S=%S y=%y Y=%Y Z=%Z")
 # Uncomment the following two commands to regenerate the expected results file.
-# WriteProperty(OutputFile="ExpectedResults\Test_FormatDateTimeProperty_strftime_out.txt",PropertyName="DatePropString",Append=False)
-# WriteProperty(OutputFile="ExpectedResults\Test_FormatDateTimeProperty_strftime_out.txt",PropertyName="DateTimePropString",Append=True)
-# WriteProperty(OutputFile="ExpectedResults\Test_FormatDateTimeProperty_strftime_out.txt",PropertyName="DateTimePropAllString",Append=True)
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_FormatDateTimeProperty_strftime_out.txt",IncludeProperties="DatePropString,DateTimePropString,DateTimePropAllString",FileFormat=NameValue)
 # Generate new output...
-WriteProperty(OutputFile="Results/Test_FormatDateTimeProperty_strftime_out.txt",PropertyName="DatePropString",Append=False)
-WriteProperty(OutputFile="Results/Test_FormatDateTimeProperty_strftime_out.txt",PropertyName="DateTimePropString",Append=True)
-WriteProperty(OutputFile="Results/Test_FormatDateTimeProperty_strftime_out.txt",PropertyName="DateTimePropAllString",Append=True)
+WritePropertiesToFile(OutputFile="Results/Test_FormatDateTimeProperty_strftime_out.txt",IncludeProperties="DatePropString,DateTimePropString,DateTimePropAllString",FileFormat=NameValue)
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_FormatDateTimeProperty_strftime_out.txt",InputFile2="Results/Test_FormatDateTimeProperty_strftime_out.txt",IfDifferent=Warn)

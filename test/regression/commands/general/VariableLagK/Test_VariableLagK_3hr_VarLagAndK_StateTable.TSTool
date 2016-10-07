@@ -21,11 +21,11 @@ VariableLagK(TSID="Inflow",FlowUnits="CMS",LagInterval="Hour",Lag="200,24.0;600,
 #
 # Read the output from the mcp3 LAG/K command
 ReadNwsCard(InputFile="Data\3HR_VAR_LAG_K.SQIN",Alias="mcp3_output")
-CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="3Hr",TSID2="mcp3_output",MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
 #
 # The following does an exact test of the results:
 SelectTimeSeries(TSList=AllMatchingTSID,TSID="3hr")
 # Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv",TSList=SelectedTS)
+# WriteDateValue(TSList=SelectedTS,OutputFile="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv")
 WriteDateValue(TSList=SelectedTS,OutputFile="Results\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv")
 CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv",InputFile2="Results\Test_VariableLagK_3hr_VarLagAndK_StateTable_out.dv",IfDifferent=Warn)

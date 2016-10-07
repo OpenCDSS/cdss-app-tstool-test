@@ -1,4 +1,4 @@
-# Test to run Python using the Python interpreter program
+# Test running Python using an installed Python interpreter program
 StartLog(LogFile="Results/Test_RunPython_Interpreter=Python.TSTool.log")
 RemoveFile(InputFile="Results\Test_RunPython_Interpreter=Python_out.txt",IfNotFound=Ignore)
 RunPython(InputFile="Data/readwritefile.py",Interpreter="Python",Arguments="${WorkingDir}/Data/readwritefile.txt ${WorkingDir}/Results/Test_RunPython_Interpreter=Python_out.txt")

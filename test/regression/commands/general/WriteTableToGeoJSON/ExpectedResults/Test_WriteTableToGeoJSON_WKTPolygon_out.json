@@ -1,8 +1,10 @@
 {
   "type": "FeatureCollection",
+  "bbox": [-106.0, 37.5, -103.0, 39.40472],
   "features": [
-    {
+      {
       "type": "Feature",
+      "bbox": [-106.0, 37.5, -105.89194, 39.0],
       "properties": {
         "ID": 50263,
         "ID_text": "050263",
@@ -20,6 +22,7 @@
     },
     {
       "type": "Feature",
+      "bbox": [-105.47667, 37.5, -103.0, 39.40472],
       "properties": {
         "ID": 50454,
         "ID_text": "050454",

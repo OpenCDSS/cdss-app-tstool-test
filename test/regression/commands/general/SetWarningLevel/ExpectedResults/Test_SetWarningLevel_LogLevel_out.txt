@@ -1,1 +1,1 @@
-WarningLevelLogFile="10"
+WarningLevelLogFile=10

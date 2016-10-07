@@ -4,5 +4,5 @@ WriteTableToDelimitedFile(TableID="TestResults",OutputFile="RunRegressionTest_co
 ReadTableFromDelimitedFile(TableID="StyleTable",InputFile="StyleTable.csv")
 ReadTableFromDelimitedFile(TableID="ConditionTable",InputFile="ConditionTable.csv")
 NewExcelWorkbook(OutputFile="RunRegressionTest_commands_general_Windows_out.xlsx",Worksheets="TestResults",KeepOpen=True)
-SetExcelWorksheetViewProperties(OutputFile="RunRegressionTest_commands_general_Windows_out.xlsx",Worksheet="TestResults",FreezePaneRowBelowSplit=2,KeepOpen=True)
+SetExcelWorksheetViewProperties(OutputFile="RunRegressionTest_commands_general_Windows_out.xlsx",Worksheet="TestResults",KeepOpen=True,FreezePaneRowBelowSplit=2)
 WriteTableToExcel(TableID="TestResults",OutputFile="RunRegressionTest_commands_general_Windows_out.xlsx",Worksheet="TestResults",ExcelAddress="A1",ExcelColumnNames=FirstRowInRange,ColumnWidths="Default:Auto",ConditionTableID="ConditionTable",StyleTableID="StyleTable")

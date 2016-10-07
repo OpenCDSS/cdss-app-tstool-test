@@ -1,2 +1,2 @@
-OutputStart="2016-07-24 02:03 America/Denver"
-OutputEnd="2016-07-31 02:03 America/Denver"
+OutputStart="2016-09-12 01:50 America/Denver"
+OutputEnd="2016-09-19 01:50 America/Denver"

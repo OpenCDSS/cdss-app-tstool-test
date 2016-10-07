@@ -4,9 +4,9 @@ StartLog(LogFile="Results/Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlan
 RemoveFile(InputFile="Results/Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlank_out.txt",IfNotFound=Ignore)
 SetProperty(PropertyName="DateTimeProp",PropertyType=DateTime,PropertyValue="CurrentToMinute.Timezone()")
 # Uncomment the following two commands to regenerate the expected results file.
-# WriteProperty(OutputFile="ExpectedResults\Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlank_out.txt",PropertyName="DateTimeProp",Append=False)
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlank_out.txt",IncludeProperties="DateTimeProp",FileFormat=NameValue)
 # Generate new output...
-WriteProperty(OutputFile="Results/Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlank_out.txt",PropertyName="DateTimeProp",Append=False)
+WritePropertiesToFile(OutputFile="Results/Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlank_out.txt",IncludeProperties="DateTimeProp",FileFormat=NameValue)
 # Do regression comparison (allow results to be different because current time
 # will be different from when test was originally run)...
 CompareFiles(InputFile1="ExpectedResults\Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlank_out.txt",InputFile2="Results/Test_SetProperty_DateTime_CurrentToMinute_TimezoneBlank_out.txt",AllowedDiff="1",IfDifferent=Warn)

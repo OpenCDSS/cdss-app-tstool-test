@@ -1,4 +1,6 @@
 # Test setting the output period to month precision
+# Expect to generate a warning because the command is deprecated and replaced with WritePropertiesToFile
+#@expectedStatus Warning
 StartLog(LogFile="Results/Test_WriteProperty_OutputPeriod.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteProperty_OutputPeriod_out.txt",IfNotFound=Ignore)
 SetOutputPeriod(OutputStart="1900-01-01",OutputEnd="2007-12-31")
