@@ -1,0 +1,21 @@
+# Test reading a single site, using all query options.
+# -Specify the period to have faster performance
+# -Specify parameters with ${Property}
+StartLog(LogFile="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_Properties_out.dv",IfNotFound=Ignore)
+# Specify the period to read because UsgsNwisDaily will change over time and
+# setting the period will better control the numbers that return and impact the
+# test results.
+SetProperty(PropertyName="TestSites",PropertyType=String,PropertyValue="03451500")
+SetProperty(PropertyName="TestParameters",PropertyType=String,PropertyValue="00060,00065")
+SetProperty(PropertyName="TestStatistics",PropertyType=String,PropertyValue="00001,00002,00003")
+SetProperty(PropertyName="TestSiteTypes",PropertyType=String,PropertyValue="ST")
+SetProperty(PropertyName="TestAgency",PropertyType=String,PropertyValue="USGS")
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="2010-01-01")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2010-02-05")
+SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_Properties_out.waterml")
+ReadUsgsNwisDaily(DataStore="UsgsNwisDaily",Sites="${TestSites}",Parameters="${TestParameters}",Statistics="${TestStatistics}",SiteStatus="Active",SiteTypes="${TestSiteTypes}",Agency="${TestAgency}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Alias="%L.%T",Format="WaterML",OutputFile="${TestOutputFile}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_Properties_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_Properties_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_Properties_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_Properties_out.dv",IfDifferent=Warn)
