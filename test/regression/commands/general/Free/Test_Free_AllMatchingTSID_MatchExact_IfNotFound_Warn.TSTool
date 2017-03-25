@@ -1,0 +1,14 @@
+# Test freeing a time series
+# - try to remove a nonexistent time series, and generate a warning
+#@expectedStatus Warning
+StartLog(LogFile="Results\Test_Free_AllMatchingTSID_MatchExact_IfNotFound_Warn.TSTool.log")
+# Set up the test by removing old output and generating new output
+RemoveFile(InputFile="Results\Test_Free_AllMatchingTSID_MatchExact_IfNotFound_Warn_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Alias1",NewTSID="MyLoc1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="Alias2",NewTSID="MyLoc2..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="10,20,24,26,150")
+Free(TSList=AllMatchingTSID,TSID="Alias3",IfNotFound=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_Free_AllMatchingTSID_MatchExact_IfNotFound_Warn_out.dv")
+WriteDateValue(OutputFile="Results\Test_Free_AllMatchingTSID_MatchExact_IfNotFound_Warn_out.dv")
+# Execute the test, generating a PASS (no warning/failures) or FAIL
+CompareFiles(InputFile1="Results\Test_Free_AllMatchingTSID_MatchExact_IfNotFound_Warn_out.dv",InputFile2="ExpectedResults\Test_Free_AllMatchingTSID_MatchExact_IfNotFound_Warn_out.dv",IfDifferent=Warn)

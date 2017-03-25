@@ -1,0 +1,80 @@
+# Test If
+# - PropertyIsNotDefinedOrIsEmpty feature
+# - Expect output property NotEmptyStringDetected = False since it is non-null and won't trigger If()
+StartLog(LogFile="Results/Test_If_PropertyIsNotDefinedOrIsEmpty.TSTool.log")
+SetProperty(PropertyName="EmptyString",PropertyType=String,SetEmpty=True)
+SetProperty(PropertyName="NotEmptyString",PropertyType=String,PropertyValue="SomeNonEmptyStringValue")
+SetProperty(PropertyName="NaNDouble",PropertyType=Double,SetNaN=True)
+SetProperty(PropertyName="NullBoolean",PropertyType=Boolean,SetNull=True)
+SetProperty(PropertyName="NullDateTime",PropertyType=DateTime,SetNull=True)
+SetProperty(PropertyName="NullDouble",PropertyType=Double,SetNull=True)
+SetProperty(PropertyName="NullInteger",PropertyType=Integer,SetNull=True)
+SetProperty(PropertyName="NullString",PropertyType=String,SetNull=True)
+#
+SetProperty(PropertyName="NotEmptyStringDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="NotDefinedPropertyDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="EmptyStringDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="NaNDoubleDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="NullBooleanDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="NullDateTimeDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="NullDoubleDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="NullIntegerDetected",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="NullStringDetected",PropertyType=Boolean,PropertyValue="False")
+#
+# Try to match property that does exist - should result in NotEmptyStringDetected left as false
+If(Name="NotEmptyString",PropertyIsNotDefinedOrIsEmpty="NotEmptyString")
+SetProperty(PropertyName="NotEmptyStringDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NotEmptyString was actually detected as empty",CommandStatus=FAILURE)
+EndIf(Name="NotEmptyString")
+#
+# Try to match property that does not exist - should result in NotDefinedPropertyDetected set to true
+If(Name="NotDefinedProperty",PropertyIsNotDefinedOrIsEmpty="NotDefinedProperty")
+SetProperty(PropertyName="NotDefinedPropertyDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NotDefinedProperty set because no property found")
+EndIf(Name="NotDefinedProperty")
+#
+# Try to match empty string property - should result in EmptyStringDetected set to true
+If(Name="EmptyString",PropertyIsNotDefinedOrIsEmpty="EmptyString")
+SetProperty(PropertyName="EmptyStringDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="EmptyStringDetected set to true because EmptyString property is found")
+EndIf(Name="EmptyString")
+#
+# Try to detect NaN double property - should result in NaNDoubleDetected set to true
+If(Name="NaNDouble",PropertyIsNotDefinedOrIsEmpty="NaNDouble")
+SetProperty(PropertyName="NaNDoubleDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NaNDoubleDetected set to true because NaNDouble property has value of NaN")
+EndIf(Name="NaNDouble")
+#
+# Try to detect null boolean property - should result in NullBooleanDetected set to true
+If(Name="NullBoolean",PropertyIsNotDefinedOrIsEmpty="NullBoolean")
+SetProperty(PropertyName="NullBooleanDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NullBooleanDetected set to true because NullBoolean property has value of null")
+EndIf(Name="NullBoolean")
+#
+# Try to detect null DateTime property - should result in NullDateTimeDetected set to true
+If(Name="NullDateTime",PropertyIsNotDefinedOrIsEmpty="NullDateTime")
+SetProperty(PropertyName="NullDateTimeDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NullDateTimeDetected set to true because NullDateTime property has value of null")
+EndIf(Name="NullDateTime")
+#
+# Try to detect null Double property - should result in NullDoubleDetected set to true
+If(Name="NullDouble",PropertyIsNotDefinedOrIsEmpty="NullDouble")
+SetProperty(PropertyName="NullDoubleDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NullDoubleDetected set to true because NullDouble property has value of null")
+EndIf(Name="NullDouble")
+#
+# Try to detect null Integer property - should result in NullIntegerDetected set to true
+If(Name="NullInteger",PropertyIsNotDefinedOrIsEmpty="NullInteger")
+SetProperty(PropertyName="NullIntegerDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NullIntegerDetected set to true because NullInteger property has value of null")
+EndIf(Name="NullInteger")
+#
+# Try to detect null String property - should result in NullStringDetected set to true
+If(Name="NullString",PropertyIsNotDefinedOrIsEmpty="NullString")
+SetProperty(PropertyName="NullStringDetected",PropertyType=Boolean,PropertyValue="True")
+Message(Message="NullStringDetected set to true because NullString property has value of null")
+EndIf(Name="NullString")
+# Uncomment the next command to regenerate expected results
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_PropertyIsNotDefinedOrIsEmpty_out.txt",IncludeProperties="NotEmptyStringDetected,EmptyStringDetected,NaNDoubleDetected,NullBooleanDetected,NullDateTimeDetected,NullDoubleDetected,NullIntegerDetected,NullStringDetected",SortOrder=Ascending)
+WritePropertiesToFile(OutputFile="Results/Test_If_PropertyIsNotDefinedOrIsEmpty_out.txt",IncludeProperties="NotEmptyStringDetected,EmptyStringDetected,NaNDoubleDetected,NullBooleanDetected,NullDateTimeDetected,NullDoubleDetected,NullIntegerDetected,NullStringDetected",SortOrder=Ascending)
+CompareFiles(InputFile1="ExpectedResults/Test_If_PropertyIsNotDefinedOrIsEmpty_out.txt",InputFile2="Results/Test_If_PropertyIsNotDefinedOrIsEmpty_out.txt",IfDifferent=Warn)

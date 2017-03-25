@@ -1,0 +1,8 @@
+EmptyStringDetected=true
+NaNDoubleDetected=true
+NotEmptyStringDetected=false
+NullBooleanDetected=true
+NullDateTimeDetected=true
+NullDoubleDetected=true
+NullIntegerDetected=true
+NullStringDetected=true
