@@ -7,6 +7,6 @@ ReadPropertiesFromFile(InputFile="Data/OutputPeriod_NameTypeValuePython.txt")
 # Uncomment the following two commands to regenerate the expected results file.
 # WritePropertiesToFile(OutputFile="ExpectedResults/Test_ReadPropertiesFromFile_OutputPeriod_NameTypeValuePython_out.txt",IncludeProperty="OutputStart,OutputEnd",FileFormat=NameTypeValuePython)
 # Generate new output...
-WritePropertiesToFile(OutputFile="Results/Test_ReadPropertiesFromFile_OutputPeriod_NameTypeValuePython_out.txt",IncludeProperty="OutputStart,OutputEnd",FileFormat=NameTypeValuePython)
+WritePropertiesToFile(OutputFile="Results/Test_ReadPropertiesFromFile_OutputPeriod_NameTypeValuePython_out.txt",IncludeProperties="OutputStart,OutputEnd",FileFormat=NameTypeValuePython)
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_ReadPropertiesFromFile_OutputPeriod_NameTypeValuePython_out.txt",InputFile2="Results/Test_ReadPropertiesFromFile_OutputPeriod_NameTypeValuePython_out.txt",IfDifferent=Warn)

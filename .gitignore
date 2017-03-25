@@ -4,3 +4,8 @@
 
 # Ignore Microsoft Office temporary files
 ~$*
+
+# HEC-DSS library leaves files around
+# -TODO smalers 2017-03-25 need to figure out how to prevent
+
+tesc

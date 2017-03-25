@@ -9,4 +9,4 @@ CreateFromList(ListFile="Data\Test_CreateFromList_HydroBase.txt",IDCol=1,DataSou
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv")
 WriteDateValue(OutputFile="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",InputFile2="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",InputFile2="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",IfDifferent=Warn)

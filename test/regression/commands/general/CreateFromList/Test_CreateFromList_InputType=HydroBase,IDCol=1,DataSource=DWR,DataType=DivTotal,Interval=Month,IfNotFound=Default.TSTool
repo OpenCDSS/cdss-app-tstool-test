@@ -1,5 +1,4 @@
 #@testSuite HydroBase
-#@expectedStatus Success
 StartLog(LogFile="Results/Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Default.TSTool.log")
 RemoveFile(InputFile="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Default_out.dv",IfNotFound=Ignore)
 # Set the input period since reading from HydroBase and want to control the
