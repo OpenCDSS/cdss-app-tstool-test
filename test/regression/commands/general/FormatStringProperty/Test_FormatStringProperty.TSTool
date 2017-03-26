@@ -10,5 +10,5 @@ SetProperty(PropertyName="Double",PropertyType=Double,PropertyValue="222.22")
 FormatStringProperty(InputProperties="String2,String1,Double,Integer",Format="Value:%s,%20.20s,%8.1f,%05d",OutputProperty="TestStringProp")
 # Uncomment the following command to regenerate expected results.
 # WritePropertiesToFile(OutputFile="ExpectedResults/Test_FormatStringProperty_out.txt",IncludeProperty="TestStringProp")
-WritePropertiesToFile(OutputFile="Results/Test_FormatStringProperty_out.txt",IncludeProperty="TestStringProp")
+WritePropertiesToFile(OutputFile="Results/Test_FormatStringProperty_out.txt",IncludeProperties="TestStringProp")
 CompareFiles(InputFile1="ExpectedResults/Test_FormatStringProperty_out.txt",InputFile2="Results/Test_FormatStringProperty_out.txt",IfDifferent=Warn)
