@@ -1,5 +1,6 @@
 # Test writing a 3hour time series to ReclamationHDB database:
 #   - development database
+#   - old WRITE_TO_HDB procedure
 #   - model table
 #   - use MRI 167 (not model name)
 #   - SDI 100376 (site common name AAA_DELETE)
@@ -17,7 +18,7 @@ SetInputPeriod(InputStart="2010-03-10 00",InputEnd="2010-03-15 12")
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="5,10,12,13,75")
 # First write the time series to the database...
 SetDebugLevel(LogFileLevel=1)
-WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
+WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadTimeSeries(TSID="diversion:100376-167.HDB.flow.3Hour.AAA_DELETE~hdbtest",Alias="FirstRead",IfNotFound=Warn)
 SetDebugLevel(LogFileLevel=0)
@@ -35,7 +36,7 @@ CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="
 # Start second pass (previous values x 10)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="500,100,120,130,750")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",SiteDataTypeID=100376,ModelRunID=167,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.

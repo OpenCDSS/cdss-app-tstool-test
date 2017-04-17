@@ -4,6 +4,7 @@
 #
 # Test writing an instantaneous time series to ReclamationHDB
 #   * development database
+#   * old WRITE_TO_HDB procedure
 #   * real table
 #   * site common name AAA_DELETE
 #   * instantaneous data (treat as hour using IntervalOverride)
@@ -19,14 +20,14 @@ RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_Instant_HourOverride_AAADE
 # First pass...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Irregular",IrregularInterval=15Minute,Description="AAA_DELETE",SetStart="2010-01-01 00:00",SetEnd="2010-01-03 12:30",Units="cfs",PatternValues="5,10,12,13,75")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow")
+WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 SetInputPeriod(InputStart="2010-01-01 00:00",InputEnd="2011-03-03 12:30")
 #
 # Second pass (previous values as hundreds)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="Real:AAA_DELETE.HDB.flow.Irregular",IrregularInterval=15Minute,Description="Real:AAA_DELETE",SetStart="2010-01-01 00:00",SetEnd="2010-01-03 12:30",Units="cfs",PatternValues="500,100,120,130,750")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",ValidationFlag="A")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",ValidationFlag="A",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Irregular",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",InputStart="2010-01-01 00:00",InputEnd="2010-01-03 12:30")
 #

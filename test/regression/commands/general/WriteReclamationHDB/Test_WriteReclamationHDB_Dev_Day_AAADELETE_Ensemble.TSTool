@@ -1,5 +1,6 @@
 # Test writing a Day ensemble of model time series to ReclamationHDB database:
 # - development database
+# - old WRITE_TO_HDB procedure
 # - model table since ensemble
 # - fabricated ensemble data
 # - Day interval - note that HDB uses start_date_time for day (end is hour zero of next day)
@@ -29,7 +30,7 @@ InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS3",Ensemb
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS4",EnsembleID2="AAA_DELETE")
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS5",EnsembleID2="AAA_DELETE")
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS6",EnsembleID2="AAA_DELETE")
-WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Day Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",EnsembleIDProperty="HDBEnsembleIDFromWrite")
+WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Day Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",EnsembleIDProperty="HDBEnsembleIDFromWrite",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Day",SiteDataTypeID=100376,EnsembleName="AAA_DELETE Day Date",OutputEnsembleID="FirstRead",Alias="AAA_DELETE-Day-%z")
 # Compare the time series read as a time series with a time series created from SQL query output.
@@ -59,7 +60,7 @@ InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TSd",Ensemb
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TSe",EnsembleID2="AAA_DELETE2")
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TSf",EnsembleID2="AAA_DELETE2")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE2",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Day Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",EnsembleIDProperty="HDBEnsembleIDFromWrite")
+WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE2",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Day Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",EnsembleIDProperty="HDBEnsembleIDFromWrite",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Day",SiteDataTypeID=100376,EnsembleName="AAA_DELETE Day Date",OutputEnsembleID="SecondRead",Alias="AAA_DELETE2-Day-%z")
 # Compare the time series read as a time series with a time series created from SQL query output.

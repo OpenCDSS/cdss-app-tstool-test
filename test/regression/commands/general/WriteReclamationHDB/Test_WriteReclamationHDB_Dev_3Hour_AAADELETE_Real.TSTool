@@ -1,5 +1,6 @@
 # Test writing a 3hour time series to ReclamationHDB database:
 #   - development database
+#   - old WRITE_TO_HDB procedure
 #   - real HOUR table
 #   - SDI 100376 (AAA_DELETE site common name)
 #   - 3hour data - note that HDB uses end_date_time for end of interval but write routines key off of start_date_time
@@ -20,7 +21,7 @@ SetProperty(PropertyName="CompareEnd",PropertyType=DateTime,PropertyValue="2010-
 # RunSql(DataStore="hdbtest",SqlFile="Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Real.sql")
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="55,105,125,135,755")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 SetDebugLevel(LogFileLevel=1)
 ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",NHourIntervalOffset=0,SiteDataTypeID=100376,Alias="FirstRead")
@@ -44,7 +45,7 @@ CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="
 NewPatternTimeSeries(Alias="AAA_DELETE2",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="550,1050,1250,1350,7550")
 # NewPatternTimeSeries(Alias="AAA_DELETE2",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="10,20,30,40,50")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE2",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE2",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",NHourIntervalOffset=0,SiteDataTypeID=100376,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.

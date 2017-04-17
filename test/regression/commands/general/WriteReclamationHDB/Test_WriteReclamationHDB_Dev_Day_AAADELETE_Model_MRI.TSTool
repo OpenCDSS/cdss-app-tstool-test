@@ -1,5 +1,6 @@
 # Test writing a day time series to ReclamationHDB database:
 #   - development database
+#   - old WRITE_TO_HDB procedure
 #   - model table
 #   - SDI 100376 (site common name AAA_DELETE)
 #   - MRI 167 (don't use model name)
@@ -18,7 +19,7 @@ SetOutputPeriod(OutputStart="2010-03-01",OutputEnd="2010-04-15")
 SetProperty(PropertyName="InputEnd2",PropertyType=DateTime,PropertyValue="2010-04-16")
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Day",Description="AAA_DELETE",Units="cfs",PatternValues="7,12,14,15,77")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadTimeSeries(TSID="diversion:100376-167.HDB.flow.Day.AAA_DELETE~hdbtest",Alias="FirstRead",IfNotFound=Warn)
 # Compare the time series read as a time series with a time series created from SQL query output.
@@ -35,7 +36,7 @@ CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="
 # Start second pass (previous values x 10)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Day",Description="AAA_DELETE",Units="cfs",PatternValues="700,200,220,230,950")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Day",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.

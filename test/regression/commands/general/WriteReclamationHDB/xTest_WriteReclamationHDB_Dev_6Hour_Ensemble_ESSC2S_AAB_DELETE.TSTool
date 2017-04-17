@@ -2,6 +2,7 @@
 #@enable False
 # Test writing a 6hour ensemble of model time series to ReclamationHDB database:
 # - development database
+# - old WRITE_TO_HDB procedure
 # - model table since ensemble
 # - ensemble data from ESSC2S
 # - 6hour SQIN data
@@ -17,7 +18,7 @@ RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_6Hour_Ensemble_ESSC2S_AAB_
 ReadNwsrfsEspTraceEnsemble(InputFile="Data\ESSC2S.ESSC2N.SQIN.06.CS",EnsembleID="ESSC2S",EnsembleName="ESSC2S")
 # First write the ensemble to the database...
 SetOutputPeriod(OutputStart="2013-04-08 12",OutputEnd="2013-04-15 12")
-WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="ESSC2S",SiteDataTypeID=101017,NewEnsembleName="ESSCN SQIN 6 Date",EnsembleTrace="${ts:sequence_number}",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-03 23:59",Agency="NWS",ValidationFlag="P",TimeZone="GMT")
+WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="ESSC2S",SiteDataTypeID=101017,NewEnsembleName="ESSCN SQIN 6 Date",EnsembleTrace="${ts:sequence_number}",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-03 23:59",Agency="NWS",ValidationFlag="P",TimeZone="GMT",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 SetInputPeriod(InputStart="2013-04-08 12",InputEnd="2013-04-15 12")
 ReadReclamationHDB(DataStore="hdbtest",Interval="6Hour",SiteDataTypeID=101017,EnsembleName="ESSCN SQIN 6 Date",Alias="ESSCN-SQIN-6Hour-%z")
@@ -26,7 +27,7 @@ ReadReclamationHDB(DataStore="hdbtest",Interval="6Hour",SiteDataTypeID=101017,En
 ReadNwsrfsEspTraceEnsemble(InputFile="Data\ESSC2S.ESSC2N.SQIN.06.CS",EnsembleID="ESSC2S-Copy",EnsembleName="ESSC2S")
 Scale(TSList=EnsembleID,EnsembleID="ESSC2S-Copy",ScaleValue=10)
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="ESSC2S-Copy",SiteDataTypeID=101017,NewEnsembleName="ESSCN SQIN 6 Date",EnsembleTrace="${ts:sequence_number}",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-03 23:59",Agency="NWS",ValidationFlag="P",TimeZone="GMT")
+WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="ESSC2S-Copy",SiteDataTypeID=101017,NewEnsembleName="ESSCN SQIN 6 Date",EnsembleTrace="${ts:sequence_number}",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-03 23:59",Agency="NWS",ValidationFlag="P",TimeZone="GMT",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="6Hour",SiteDataTypeID=101017,EnsembleName="ESSCN SQIN 6 Date",Alias="ESSCN-Copy-SQIN-6Hour-%z")
 #

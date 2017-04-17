@@ -1,6 +1,7 @@
 # TODO SAM 2016-05-01 This test fails apparently due to bug in Oracle JDBC driver related to time zone change
 # Test writing a 1hour REAL time series to ReclamationHDB database:
 #   - development database
+#   - old WRITE_TO_HDB procedure
 #   - real HOUR table
 #   - SDI 100376 (AAA_DELETE site common name)
 #   - 1hour data - note that HDB uses end_date_time for end of interval but write routines key off of start_date_time
@@ -23,7 +24,7 @@ SetInputPeriod(InputStart="2010-03-10 00",InputEnd="2010-03-15 12")
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.1Hour",Description="AAA_DELETE",Units="cfs",PatternValues="55,105,125,135,755")
 # First write the time series to the database...
 SetDebugLevel(LogFileLevel=1)
-WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # Now read the same time series from the database using the period that was written...
 SetDebugLevel(LogFileLevel=1)
@@ -43,7 +44,7 @@ CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="
 # Start second pass (previous values x 10)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.1Hour",Description="AAA_DELETE",Units="cfs",PatternValues="550,1050,1250,1350,7550")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="1Hour",SiteDataTypeID=100376,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.

@@ -1,5 +1,6 @@
 # Test writing an instantaneous time series to ReclamationHDB
 #   - development database
+#   - old WRITE_TO_HDB procedure
 #   - real table
 #   - SDI 100380
 #   - instantaneous data (treated as irregular) - HDB instantaneous has same start and end date/time in data table
@@ -17,7 +18,7 @@ SetOutputPeriod(OutputStart="2010-03-14 00:00",OutputEnd="2010-03-15 12:00")
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Irregular",IrregularInterval=15Minute,Description="AAA_DELETE",Units="cfs",PatternValues="5,10,12,13,75")
 # First write the time series to the database...
 SetDebugLevel(LogFileLevel=1)
-WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # Now read the same time series from the database using the period that was written...
 ReadTimeSeries(TSID="diversion:100380.HDB.inst flow.Irregular~hdbtest",Alias="FirstRead",IfNotFound=Warn)
@@ -36,7 +37,7 @@ CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="
 # Second pass (previous values as hundreds)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Irregular",IrregularInterval=15Minute,Description="AAA_DELETE",Units="cfs",PatternValues="500,100,120,130,750")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Irregular",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.

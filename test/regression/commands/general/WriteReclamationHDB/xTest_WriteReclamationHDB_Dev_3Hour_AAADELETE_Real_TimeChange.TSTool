@@ -2,6 +2,7 @@
 #@enabled False
 # Test writing a 3hour time series to ReclamationHDB database:
 #   * development database
+#   * old WRITE_TO_HDB procedure
 #   * real table
 #   * SDI 100376 (AAA_DELETE site common name)
 #   * 3hour data
@@ -19,7 +20,7 @@ RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_3Hour_AAADELETE_Real_TimeC
 SetOutputPeriod(OutputStart="2010-03-10 00",OutputEnd="2010-03-15 12")
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="55,105,125,135,755")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 SetInputPeriod(InputStart="2010-03-10 00",InputEnd="2010-03-15 12")
 ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",SiteDataTypeID=100376,Alias="FirstRead")
@@ -27,7 +28,7 @@ ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",SiteDataTypeID=100376,Al
 # Start second pass (previous values x 10)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="550,1050,1250,1350,7550")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",SiteDataTypeID=100376,Alias="SecondRead")
 #
