@@ -1,6 +1,8 @@
 # Test getting an old Netscape License file, using ${Property} notation
 # This file may not be totally static over time but likely will be.
 # If the file changes, find something else.
+# Disable because not reliable
+# @enabled False
 StartLog(LogFile="Results/Test_WebGet_NetscapeLicense_Property.TSTool.log")
 RemoveFile(InputFile="Results\Test_WebGet_NetscapeLicense_Property.html",IfNotFound=Ignore)
 SetProperty(PropertyName="Host",PropertyType=String,PropertyValue="https://www.mozilla.org")
