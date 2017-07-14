@@ -1,0 +1,11 @@
+# Test ReadWaterML2 command for reading file from USGS NWIS Daily Value web service
+# - read using the API (compiled classes) rather than parsing DOM
+StartLog(LogFile="Results/Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",IfNotFound=Ignore)
+# Uncomment the following to regenerate the WaterML 2.0 file read from USGS web services
+# WebGet(URI="https://waterservices.usgs.gov/nwis/dv/?format=waterml,2.0&indent=on&sites=09071750,09070500&startDT=2000-01-01&endDT=2000-03-15&siteStatus=all",LocalFile="Data/ColoradoRiver2Gages_UsgsNwisDaily_API.waterml")
+ReadWaterML2(InputFile="Data\ColoradoRiver2Gages_UsgsNwisDaily_API.waterml",Alias="%L.%T",Interval="Day")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",Precision=0)
+WriteDateValue(OutputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",Precision=0)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",InputFile2="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",IfDifferent=Warn)
