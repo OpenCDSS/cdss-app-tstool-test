@@ -4,7 +4,7 @@ StartLog(LogFile="Results/Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_AP
 RemoveFile(InputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",IfNotFound=Ignore)
 # Uncomment the following to regenerate the WaterML 2.0 file read from USGS web services
 # WebGet(URI="https://waterservices.usgs.gov/nwis/dv/?format=waterml,2.0&indent=on&sites=09071750,09070500&startDT=2000-01-01&endDT=2000-03-15&siteStatus=all",LocalFile="Data/ColoradoRiver2Gages_UsgsNwisDaily_API.waterml")
-ReadWaterML2(InputFile="Data\ColoradoRiver2Gages_UsgsNwisDaily_API.waterml",Alias="%L.%T",Interval="Day")
+ReadWaterML2(InputFile="Data\ColoradoRiver2Gages_UsgsNwisDaily.waterml",ReadMethod=API,Alias="%L.%T",Interval="Day")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",Precision=0)
 WriteDateValue(OutputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_API_out.dv",Precision=0)
