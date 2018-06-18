@@ -7,7 +7,7 @@ InsertTableColumn(TableID="Table1",InsertColumn="double2",ColumnType=Double,Init
 InsertTableColumn(TableID="Table1",InsertColumn="float2",ColumnType=Float,InitialValue="25")
 InsertTableColumn(TableID="Table1",InsertColumn="integer2",ColumnType=Integer,InitialValue="33")
 InsertTableColumn(TableID="Table1",InsertColumn="short2",InsertBeforeColumn="string1",ColumnType=Short,InitialValue="44")
-InsertTableColumn(TableID="Table1",InsertColumn="long1",InsertBeforeColumn="string1",ColumnType=Long,InitialValue="55")
+InsertTableColumn(TableID="Table1",InsertColumn="long2",InsertBeforeColumn="string1",ColumnType=Long,InitialValue="55")
 InsertTableColumn(TableID="Table1",InsertColumn="string2",ColumnType=String,InitialValue="66666",ColumnWidth=12)
 # Uncomment the following to generate the expected results.
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_InsertTableColumn_InitialValue_out.csv")

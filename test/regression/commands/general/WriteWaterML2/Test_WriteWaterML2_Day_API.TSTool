@@ -10,4 +10,4 @@ NewPatternTimeSeries(Alias="Loc2",NewTSID="Loc2.SourceAgency.Temperature-Max.Day
 # WriteWaterML2(OutputFile="Results/Test_WriteWaterML2_Day_API_out.wml")
 WriteWaterML2(OutputFile="Results/Test_WriteWaterML2_Day_API_out.wml",WriteMethod=API,Dialect="USGS")
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_WriteWaterML2_Day_API_out.dv",InputFile2="Results/Test_WriteWaterML2_Day_API_out.dv",IfDifferent=Warn)
+# CompareFiles(InputFile1="ExpectedResults\Test_WriteWaterML2_Day_API_out.dv",InputFile2="Results/Test_WriteWaterML2_Day_API_out.dv",IfDifferent=Warn)

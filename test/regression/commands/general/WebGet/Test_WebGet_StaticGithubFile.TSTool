@@ -1,0 +1,12 @@
+# Test getting a static GitHub file
+StartLog(LogFile="Results/Test_WebGet_StaticGitHubFile.TSTool.log")
+RemoveFile(InputFile="Results\Test_WebGet_StaticGitHubFile.html",IfNotFound=Ignore)
+# Uncomment the following command to regenerate the expected results file.
+# WebGet(URI="https://github.com/OpenWaterFoundation/cdss-app-tstool-test/tree/master/test/regression/commands/general/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="ExpectedResults\Test_WebGet_StaticGitHubFile_out.txt")
+WebGet(URI="https://github.com/OpenWaterFoundation/cdss-app-tstool-test/tree/master/test/regression/commands/general/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="Results\Test_WebGet_StaticGitHubFile_out.txt",ResponseCodeProperty="TestWebGetResponseCode")
+CompareFiles(InputFile1="ExpectedResults\Test_WebGet_StaticGitHubFile_out.txt",InputFile2="Results\Test_WebGet_StaticGitHubFile_out.txt",IfDifferent=Warn)
+#
+# Also expect the response code to be 200 for success
+If(Name="If_Test_WebGet",Condition="${TestWebGetResponseCode} != 200")
+Message(Message="WebGet return ${TestWebGetResponseCode} but was expecting 200 for success.",CommandStatus=FAILURE)
+EndIf(Name="If_Test_WebGet")

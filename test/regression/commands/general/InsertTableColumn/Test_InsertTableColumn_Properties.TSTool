@@ -28,7 +28,7 @@ InsertTableColumn(TableID="${TestTableID}",InsertColumn="double2",InsertBeforeCo
 InsertTableColumn(TableID="${TestTableID}",InsertColumn="float2",InsertBeforeColumn="${TestInsertColumnBefore}",ColumnType=Float,InitialValue="${InitialFloat}")
 InsertTableColumn(TableID="${TestTableID}",InsertColumn="integer2",InsertBeforeColumn="${TestInsertColumnBefore}",ColumnType=Integer,InitialValue="${InitialInteger}")
 InsertTableColumn(TableID="${TestTableID}",InsertColumn="short2",InsertBeforeColumn="${TestInsertColumnBefore}",ColumnType=Short,InitialValue="${InitialShort}")
-InsertTableColumn(TableID="${TestTableID}",InsertColumn="long1",InsertBeforeColumn="${TestInsertColumnBefore}",ColumnType=Long,InitialValue="${InitialLong}")
+InsertTableColumn(TableID="${TestTableID}",InsertColumn="long2",InsertBeforeColumn="${TestInsertColumnBefore}",ColumnType=Long,InitialValue="${InitialLong}")
 InsertTableColumn(TableID="${TestTableID}",InsertColumn="string2",InsertBeforeColumn="${TestInsertColumnBefore}",ColumnType=String,InitialValue="${InitialString}",ColumnWidth=12)
 # Uncomment the following to generate the expected results.
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_InsertTableColumn_Properties_out.csv")
