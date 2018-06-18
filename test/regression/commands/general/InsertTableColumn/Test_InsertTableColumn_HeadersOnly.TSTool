@@ -8,7 +8,7 @@ InsertTableColumn(TableID="Table1",InsertColumn="double2",InsertBeforeColumn="fl
 InsertTableColumn(TableID="Table1",InsertColumn="float2",InsertBeforeColumn="integer1",ColumnType=Float)
 InsertTableColumn(TableID="Table1",InsertColumn="integer2",InsertBeforeColumn="short1",ColumnType=Integer)
 InsertTableColumn(TableID="Table1",InsertColumn="short2",InsertBeforeColumn="string1",ColumnType=Short)
-InsertTableColumn(TableID="Table1",InsertColumn="long1",InsertBeforeColumn="string1",ColumnType=Long)
+InsertTableColumn(TableID="Table1",InsertColumn="long2",InsertBeforeColumn="string1",ColumnType=Long)
 InsertTableColumn(TableID="Table1",InsertColumn="string2",ColumnType=String,ColumnWidth=12)
 # Uncomment the following to generate the expected results.
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_InsertTableColumn_HeadersOnly_out.csv")
