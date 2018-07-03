@@ -1,0 +1,9 @@
+# Simple test to see if web service request works OK
+# If data do not come back, limits will not be calculable and warnings will occur
+# 2000812 - RIO GRANDE CNL
+2000812.DWR.DivTotal.Year~ColoradoHydroBaseRest
+2000812.DWR.DivTotal.Year~HydroBase
+2000812.DWR.DivTotal.Month~ColoradoHydroBaseRest
+2000812.DWR.DivTotal.Month~HydroBase
+2000812.DWR.DivTotal.Day~ColoradoHydroBaseRest
+2000812.DWR.DivTotal.Day~HydroBase
