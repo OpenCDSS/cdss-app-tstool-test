@@ -1,0 +1,16 @@
+# Test reading a Telemetry AIRTEMP 15 min time series from ColoradoHydroBaseRest web service using a TSID
+# Compare the resulting time series with that retrieved from ColoradoWaterSMS
+StartLog(LogFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Min.TSTool.log")
+RemoveFile(InputFile="Results/Test_Compare_Results_TSID_ColoradoWaterHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase - full irrigation year
+CLEDERCO.DWR.AIRTEMP.Irregular~ColoradoWaterSMS
+abbrev:CLEDERCO.DWR.AIRTEMP.15Min~ColoradoHydroBaseRest
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+WriteDateValue(TSList=FirstMatchingTSID,TSID="CLEDERCO.DWR.AIRTEMP.Irregular",OutputFile="ExpectedResults/Test_Compare_Results_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="abbrev:CLEDERCO.DWR.AIRTEMP.15Min",OutputFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",Precision=2)
+#CompareFiles(InputFile1="ExpectedResults/Test_Compare_Results_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",InputFile2="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
