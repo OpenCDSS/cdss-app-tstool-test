@@ -3,7 +3,7 @@
 StartLog(LogFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year.TSTool.log")
 RemoveFile(InputFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
-SetInputPeriod(InputStart="2001",InputEnd="2017")
+SetInputPeriod(InputStart="2001",InputEnd="2013")
 0300915.DWR.DivTotal.Year~HydroBase
 0300915.DWR.DivTotal.Year~ColoradoHydroBaseRest
 # Make sure that enough data are available in the test data, and some missing
