@@ -1,0 +1,18 @@
+# Test reading a DivTotal year time series from ColoradoHydroBaseRest web service using a TSID
+# Compare the resulting time series with that retrieved from HydroBase
+StartLog(LogFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_RelTotal_Year.TSTool.log")
+RemoveFile(InputFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_RelTotal_Year_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase - full irrigation year
+SetInputPeriod(InputStart="1994",InputEnd="2010")
+0300909.DWR.RelTotal.Year~HydroBase
+0300909.DWR.RelTotal.Year~ColoradoHydroBaseRest
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+WriteDateValue(TSList=FirstMatchingTSID,TSID="0300909.DWR.RelTotal.Year",OutputFile="ExpectedResults/Test_Compare_Results_TSID_ColoradoHydroBaseRest_RelTotal_Year_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="0300909.DWR.RelTotal.Year",OutputFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_RelTotal_Year_out.dv",Precision=2)
+# CompareFiles(InputFile1="ExpectedResults/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year_out.dv",InputFile2="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_RelTotal_Year_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)

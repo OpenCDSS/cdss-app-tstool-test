@@ -1,0 +1,6 @@
+# Test reading an individual Telemetry WATTEMP Hour time series from ColoradoHydroBaseRest web service using a TSID
+StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_WATTEMP_Hour.TSTool.log")
+RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_Telemetry_WATTEMP_Hour_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase - full irrigation year
+abbrev:COMRETCO.DWR.WATTEMP.Hour~ColoradoHydroBaseRest
+WriteDateValue(TSID="abbrev:COMRETCO.DWR.WATTEMP.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_WATTEMP_Hour_out.dv",Precision=2)

@@ -1,0 +1,6 @@
+# Test reading an individual Telemetry GAGE_HT Hour time series from ColoradoHydroBaseRest web service using a TSID
+StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT_Hour.TSTool.log")
+RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_Telemetry_GAGE_HT_Hour_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase - full irrigation year
+abbrev:BHEATNCO.DWR.GAGE_HT.Hour~ColoradoHydroBaseRest
+WriteDateValue(TSID="abbrev:BHEATNCO.DWR.GAGE_HT.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT_Hour_out.dv",Precision=2)

@@ -1,0 +1,7 @@
+# Test reading a DivTotal year time series from ColoradoHydroBaseRest web service using a single TSID
+StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_RelTotal_Year.TSTool.log")
+RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_RelTotal_Year_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="2001",InputEnd="2017")
+wdid:0300909.DWR.RelTotal.Year~ColoradoHydroBaseRest
+# WriteDateValue(TSList=FirstMatchingTSID,TSID="0300909.DWR.RelTotal.Year",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_RelTotal_Year_out.dv",Precision=2)
