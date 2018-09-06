@@ -1,0 +1,5 @@
+# Test comparing different files and generate a warning when the files are different
+# - exclude text
+# - should be the same because excluded text, when omitted, results in the same files
+StartLog(LogFile="Results/Test_CompareFiles_DifferentFiles_ExcludeText.TSTool.log")
+CompareFiles(InputFile1="Data/WithExcludeText1.txt",InputFile2="Data/WithExcludeText2.txt",ExcludeText="*excludedText*",IfDifferent=Warn)
