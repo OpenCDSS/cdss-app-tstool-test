@@ -1,0 +1,6 @@
+SetInputPeriod(InputStart="1950-05-05",InputEnd="2000-05-05")
+ReadColoradoHydroBaseRest(DataStore="ColoradoHydroBaseRest",DataType="DivTotal",Interval="Day",Where1="StructureWDID;Matches;0300915")
+# 0300915 - CACHE LA POUDRE DITCH
+ReadHydroBase(DataType="DivTotal",Interval="Day",Where1="District;=;3",Where2="Structure ID;=;915")
+0300915.DWR.DivTotal.Day~HydroBase
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
