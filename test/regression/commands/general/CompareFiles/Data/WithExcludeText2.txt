@@ -1,0 +1,7 @@
+# This file contains text that can be excluded
+dataline1
+excludedText abcd
+dataline2
+dataline3
+dataline4
+dataline5
