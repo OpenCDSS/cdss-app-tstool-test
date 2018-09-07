@@ -1,0 +1,21 @@
+#Test reading multiple time series using ReadColoradoHydroBaseRest and filtering by county and location
+#Test results against TSID's generated from HydroBase database
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Locaiton.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_out.dv",IfNotFound=Ignore)
+#Read the time series using ReadColoradoHydroBaseRest and from HydroBase
+SetInputPeriod(InputStart="2004-01",InputEnd="2015-10")
+ReadColoradoHydroBaseRest(DataStore="ColoradoHydroBaseRest",DataType="DivTotal",Interval="Month",Where1="County;Matches;MESA",Where2="Latitude;=;38.836091",Where3="Longitude;=;-108.580530",Where4="LatLongRadiusUnits;Matches;feet",Where5="LatLongRadius;=;3000")
+# 4200501 - ANDERSON DITCH
+4200501.DWR.DivTotal.Month~HydroBase
+# 4200547 - UNAWEEP DITCH
+4200547.DWR.DivTotal.Month~HydroBase
+#Check that testing for missing values, and that there is enough data nonmissing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+WriteDateValue(TSList=FirstMatchingTSID,TSID="4200501.DWR.DivTotal.Month",OutputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200501_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="4200501.DWR.DivTotal.Month",OutputFile="ExpectedResults/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200501_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200501_out.dv",InputFile2="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200501_out.dv",IfDifferent=Warn)
+WriteDateValue(TSList=FirstMatchingTSID,TSID="4200547.DWR.DivTotal.Month",OutputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="4200547.DWR.DivTotal.Month",OutputFile="ExpectedResults/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",InputFile2="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
