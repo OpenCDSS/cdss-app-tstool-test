@@ -1,6 +1,7 @@
 # Test reading an individual Telemetry EVAP Day time series from ColoradoHydroBaseRest web service using a TSID
-StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Day.TSTool.log")
-RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_Telemetry_EVAP_Day_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_EVAP_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 abbrev:BOBCRKCO.DWR.EVAP.Day~ColoradoHydroBaseRest
-WriteDateValue(TSID="abbrev:BOBCRKCO.DWR.EVAP.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Day_out.dv",Precision=2)
+# WriteDateValue(TSID="abbrev:BOBCRKCO.DWR.EVAP.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Day_out.dv",Precision=2)
+WriteDateValue(TSID="abbrev:BOBCRKCO.DWR.EVAP.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Day_out.dv",Precision=2)

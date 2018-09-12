@@ -1,7 +1,8 @@
 # Test reading an individual DivTotal Month time series from ColoradoHydroBaseRest web service using a TSID
-StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_DivTotal_Month.TSTool.log")
-RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_DivTotal_Month_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_DivTotal_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_DivTotal_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 SetInputPeriod(InputStart="2001-01",InputEnd="2010-01")
 0300915.DWR.DivTotal.Month~ColoradoHydroBaseRest
-# WriteDateValue(TSID="0300915.DWR.DivTotal.Day",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_DivTotal_Month_out.dv",Precision=2)
+# WriteDateValue(TSID="0300915.DWR.DivTotal.Day",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_DivTotal_Month_out.dv",Precision=2)
+WriteDateValue(TSID="0300915.DWR.DivTotal.Day",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_DivTotal_Month_out.dv",Precision=2)

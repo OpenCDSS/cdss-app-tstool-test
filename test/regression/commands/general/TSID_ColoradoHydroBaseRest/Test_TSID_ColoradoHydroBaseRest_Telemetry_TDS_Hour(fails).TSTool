@@ -1,7 +1,9 @@
+# @expectedStatus Warning
 # Test reading an individual Telemetry TDS Hour time series from ColoradoHydroBaseRest web service using a TSID
-# Currently this test fails. Need to check web services.
-StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour.TSTool.log")
-RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_Telemetry_TDS_Hour_out.dv",IfNotFound=Ignore)
+# This test returns an empty Time Series since there is no data on web services.
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_TDS_Hour_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 abbrev:RIOBOXCO.DWR.TDS.Hour~ColoradoHydroBaseRest
-WriteDateValue(TSID="abbrev:RIOBOXCO.DWR.TDS.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour_out.dv",Precision=2)
+# WriteDateValue(TSID="abbrev:RIOBOXCO.DWR.TDS.Hour~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour_out.dv",Precision=2)
+WriteDateValue(TSID="abbrev:RIOBOXCO.DWR.TDS.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour_out.dv",Precision=2)

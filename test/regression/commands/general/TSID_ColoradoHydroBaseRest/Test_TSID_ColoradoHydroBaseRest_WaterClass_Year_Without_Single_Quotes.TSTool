@@ -1,10 +1,11 @@
 # Test reading a WaterClass day time series from ColoradoHydroBaseRest web service using a TSID
-StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes.TSTool.log")
-RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="2005",InputEnd="2017")
 0200700.DWR.WaterClass-0200700 S:8 F: U:A T:6 G:0202611 To:.Year~ColoradoHydroBaseRest
 # Make sure that enough data are available in the test data, and some missing
-CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=5,IfCriteriaMet=Warn)
 # rounding on output produces different values.
-WriteDateValue(TSList=FirstMatchingTSID,TSID="0200700.DWR.WaterClass-0200700 S:8 F: U:A T:6 G:0202611 To:.Year~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",Precision=2)
+# WriteDateValue(TSList=FirstMatchingTSID,TSID="0200700.DWR.WaterClass-0200700 S:8 F: U:A T:6 G:0202611 To:.Year~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",Precision=2)
+WriteDateValue(TSList=FirstMatchingTSID,TSID="0200700.DWR.WaterClass-0200700 S:8 F: U:A T:6 G:0202611 To:.Year~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",Precision=2)

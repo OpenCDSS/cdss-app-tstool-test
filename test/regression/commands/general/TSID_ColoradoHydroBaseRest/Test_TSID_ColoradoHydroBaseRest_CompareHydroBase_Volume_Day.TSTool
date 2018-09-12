@@ -1,4 +1,20 @@
+# Test reading a Volume Day time series from ColoradoHydroBaseRest web service using a TSID
+# Compare the resulting time series with that retrieved from HydroBase
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Volume_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Volume_Day_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="2004-12-01",InputEnd="2006-12-01")
 # 8003550 - CHEESMAN RES
 8003550.DWR.Volume.Day~ColoradoHydroBaseRest
 # 8003550 - CHEESMAN RES
 8003550.DWR.ResMeasStorage.Day~HydroBase
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+# WriteDateValue(TSList=FirstMatchingTSID,TSID="8003550.DWR.Volume.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Volume_Day_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="8003550.DWR.ResMeasStorage.Day~HydroBase",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Volume_Day_out.dv",Precision=2)
+# CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Volume_Day_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Volume_Day_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)

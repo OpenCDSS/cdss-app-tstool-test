@@ -1,7 +1,7 @@
 # Test reading a DivTotal year time series from ColoradoHydroBaseRest web service using a TSID
 # Compare the resulting time series with that retrieved from HydroBase
-StartLog(LogFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year.TSTool.log")
-RemoveFile(InputFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Year.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Year_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 SetInputPeriod(InputStart="1947",InputEnd="1960")
 0300915.DWR.DivTotal.Year~HydroBase
@@ -12,7 +12,7 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and
 # rounding on output produces different values.
-# WriteDateValue(TSList=FirstMatchingTSID,TSID="0300915.DWR.DivTotal.Year",OutputFile="ExpectedResults/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year_out.dv",Precision=2)
-# WriteDateValue(TSList=LastMatchingTSID,TSID="0300915.DWR.DivTotal.Year",OutputFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year_out.dv",Precision=2)
-# CompareFiles(InputFile1="ExpectedResults/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year_out.dv",InputFile2="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_DivTotal_Year_out.dv",IfDifferent=Warn)
+# WriteDateValue(TSList=FirstMatchingTSID,TSID="0300915.DWR.DivTotal.Year",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Year_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="0300915.DWR.DivTotal.Year",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Year_out.dv",Precision=2)
+# CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Year_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Year_out.dv",IfDifferent=Warn)
 CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)

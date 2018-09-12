@@ -1,7 +1,8 @@
 # Test reading an individual Telemetry BAR_P Hour time series from ColoradoHydroBaseRest web service using a TSID
 # Currently this test fails. Need to check web services
-StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_Hour.TSTool.log")
-RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_Telemetry_AIRTEMP_Hour_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_Hour.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_AIRTEMP_Hour_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 abbrev:PUERWXCO.DWR.AIRTEMP.Hour~ColoradoHydroBaseRest
-WriteDateValue(TSID="abbrev:PUERWXCO.DWR.AIRTEMP.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_Hour_out.dv",Precision=2)
+# WriteDateValue(TSID="abbrev:PUERWXCO.DWR.AIRTEMP.Hour~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_Hour_out.dv",Precision=2)
+WriteDateValue(TSID="abbrev:PUERWXCO.DWR.AIRTEMP.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_Hour_out.dv",Precision=2)

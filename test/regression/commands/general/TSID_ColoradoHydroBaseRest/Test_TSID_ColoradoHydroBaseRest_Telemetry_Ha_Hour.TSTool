@@ -1,6 +1,7 @@
 # Test reading an individual Telemetry Ha Hour time series from ColoradoHydroBaseRest web service using a TSID
-StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour.TSTool.log")
-RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_Telemetry_Ha_Hour_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_Ha_Hour_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 abbrev:RFHCANCO.DWR.Ha.Hour~ColoradoHydroBaseRest
-WriteDateValue(TSID="abbrev:RFHCANCO.DWR.Ha.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour_out.dv",Precision=2)
+# WriteDateValue(TSID="abbrev:RFHCANCO.DWR.Ha.Hour~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour_out.dv",Precision=2)
+WriteDateValue(TSID="abbrev:RFHCANCO.DWR.Ha.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour_out.dv",Precision=2)

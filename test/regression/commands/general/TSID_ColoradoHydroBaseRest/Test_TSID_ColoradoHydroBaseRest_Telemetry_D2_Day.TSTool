@@ -1,6 +1,7 @@
 # Test reading an individual Telemetry D2 Day time series from ColoradoHydroBaseRest web service using a TSID
-StartLog(LogFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_D2_Day.TSTool.log")
-RemoveFile(InputFile="Results/Test_Individual_TSID_ColoradoWaterHydroBaseRest_Telemetry_D2_Day_out.dv",IfNotFound=Ignore)
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_D2_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_D2_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
 abbrev:LONBLOCO.DWR.D2.Day~ColoradoHydroBaseRest
-WriteDateValue(TSID="abbrev:LONBLOCO.DWR.D2.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_Individual_TSID_ColoradoHydroBaseRest_Telemetry_D2_Day_out.dv",Precision=2)
+# WriteDateValue(TSID="abbrev:LONBLOCO.DWR.D2.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_D2_Day_out.dv",Precision=2)
+WriteDateValue(TSID="abbrev:LONBLOCO.DWR.D2.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_D2_Day_out.dv",Precision=2)
