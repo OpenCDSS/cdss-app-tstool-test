@@ -1,0 +1,9 @@
+# @expectedStatus Warning
+# Test reading an individual Telemetry GAGE_HT Day time series from ColoradoHydroBaseRest web service using a TSID
+# This test returns an empty Time Series since there is no data on web services.
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_GAGE_HT_Day_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase - full irrigation year
+abbrev:BHEATNCO.DWR.GAGE_HT.Day~ColoradoHydroBaseRest
+# WriteDateValue(TSID="abbrev:BHEATNCO.DWR.GAGE_HT.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT_Day_out.dv",Precision=2)
+WriteDateValue(TSID="abbrev:BHEATNCO.DWR.GAGE_HT.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT_Day_out.dv",Precision=2)

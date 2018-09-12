@@ -1,0 +1,1 @@
+CreateRegressionTestCommandFile(SearchFolder="..\..\..\ReadColoradoHydroBaseRest",OutputFile="..\run\RunRegressionTest_ReadColoradoHydroBaseRest.TSTool",Append=False,IncludeTestSuite="*")
