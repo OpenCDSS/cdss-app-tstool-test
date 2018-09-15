@@ -7,4 +7,4 @@ Free(TSID="*")
 # Uncomment the following command to regenerate the expected results file.
 # WritePropertiesToFile(OutputFile="ExpectedResults\Test_Free_Legacy2_TSID=AllTS_out.txt",IncludeProperties="TSResultsListSize",FileFormat=NameValue)
 WritePropertiesToFile(OutputFile="Results\Test_Free_Legacy2_TSIDAllTS_out.txt",IncludeProperties="TSResultsListSize",FileFormat=NameValue)
-CompareFiles(InputFile1="Results\Test_Free_Legacy2_TSID=AllTS_out.txt",InputFile2="ExpectedResults\Test_Free_Legacy2_TSID=AllTS_out.txt",WarnIfDifferent=True)
+CompareFiles(InputFile1="Results\Test_Free_Legacy2_TSIDAllTS_out.txt",InputFile2="ExpectedResults\Test_Free_Legacy2_TSID=AllTS_out.txt",WarnIfDifferent=True)
