@@ -1,0 +1,13 @@
+#@testSuite HydroBase
+# Read a time series but don't read the data
+# - note that output time series will contain all missing data because period is set but no data exist
+StartLog(LogFile="Results/Test_ReadTimeSeries_HydroBase_NoReadData.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadTimeSeries_HydroBase_NoReadData_out.dv",IfNotFound=Ignore)
+# Set the input period since reading from HydroBase and want to control the
+# period so differences are not seen in the results.
+SetInputPeriod(InputStart="1995-01-01",InputEnd="1999-12-31")
+ReadTimeSeries(TSID="08235350.USGS.Streamflow.Day~HydroBase",Alias="ts1",ReadData=False,IfNotFound=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadTimeSeries_HydroBase_NoReadData_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadTimeSeries_HydroBase_NoReadData_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeries_HydroBase_NoReadData_out.dv",InputFile2="Results\Test_ReadTimeSeries_HydroBase_NoReadData_out.dv",IfDifferent=Warn)

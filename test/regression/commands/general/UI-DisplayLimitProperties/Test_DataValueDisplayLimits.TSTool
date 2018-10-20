@@ -1,0 +1,8 @@
+# Test using the display properties to limit graph Y-axis
+# - don't run as automated test (yet)
+#@enabled False
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+NewPatternTimeSeries(Alias="TestTS1",NewTSID="loc1..flow.Month",SetStart="2000-01",SetEnd="2012-12",Units="cfs",MissingValue=NaN,PatternValues="0,100000,250000,-10000,,5000")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="TestTS1",PropertyName="DataValueDisplayMin",PropertyType=Double,PropertyValue="50000")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="TestTS1",PropertyName="DataValueDisplayMax",PropertyType=Double,PropertyValue="100000")
+SetDebugLevel(LogFileLevel=1)

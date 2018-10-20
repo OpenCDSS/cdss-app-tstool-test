@@ -1,0 +1,17 @@
+# Read a list of time series
+# - use a CSV file for the location list and DateValue file for time series
+# - do not read the data
+# - note that output time series will have all missing data because the period is set, but no data exist
+StartLog(LogFile="Results/Test_ReadTimeSeriesList_NoReadData.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadTimeSeriesList_NoReadData_out.dv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="StationList",InputFile="Data\testdata.csv")
+ReadTimeSeriesList(ReadData=False,TableID="StationList",LocationColumn="TSID",DataSource="NWIS",DataType="00060-00003",Interval="Day",DataStore="DateValue",InputName="Data/testdata.dv",ColumnProperties="*:*",Properties="TestProperty:TestPropertyValue",IfNotFound=Warn,TimeSeriesCountProperty="TimeSeriesCount",TimeSeriesIndex1Property="ReadIndex")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadTimeSeriesList_NoReadData_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadTimeSeriesList_NoReadData_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeriesList_NoReadData_out.dv",InputFile2="Results\Test_ReadTimeSeriesList_NoReadData_out.dv",IfDifferent=Warn)
+# Also write a properties file with the time series count
+# Uncomment the following command to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_ReadTimeSeriesList_NoReadDataList_props_out.txt",IncludeProperties="TimeSeriesCount",FileFormat=NameValue)
+WritePropertiesToFile(OutputFile="Results/Test_ReadTimeSeriesList_NoReadDataList_props_out.txt",IncludeProperties="TimeSeriesCount",FileFormat=NameValue)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadTimeSeriesList_NoReadDataList_props_out.txt",InputFile2="Results\Test_ReadTimeSeriesList_NoReadDataList_props_out.txt",IfDifferent=Warn)
