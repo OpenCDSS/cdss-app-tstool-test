@@ -5,15 +5,18 @@ TSTool is software developed for Colorado's Decision Support Systems (CDSS).
 
 TSTool functional tests consist of TSTool command files and test data used in automated regression tests.
 The purpose of these tests is to validate TSTool command functionality for
-default command parameters and combinations of user-specified command parameter values.
+default command parameters and combinations of command parameter values.
 The tests are also helpful for understanding how to use TSTool commands and can therefore be used as a reference.
 See the following online resources:
 
-* [CDSS](http://cdss.state.co.us)
-* [OpenCDSS](http://learn.openwaterfoundation.org/cdss-website-opencdss/)
-* [TSTool software main repository](https://github.com/OpenWaterFoundation/cdss-app-tstool-main)
-* [TSTool Developer Documentation](http://learn.openwaterfoundation.org/cdss-app-tstool-doc-dev/)
-* [TSTool User Documentation](http://learn.openwaterfoundation.org/cdss-app-tstool-doc-user/)
+* [Colorado's Decision Support Systems (CDSS)](http://cdss.state.co.us)
+* [OpenCDSS](http://learn.openwaterfoundation.org/cdss-website-opencdss/) - currently
+hosted on the Open Water Foundation website while OpenCDSS server is being configured
+* [TSTool software main repository](https://github.com/OpenCDSS/cdss-app-tstool-main)
+* [TSTool Developer Documentation](http://learn.openwaterfoundation.org/cdss-app-tstool-doc-dev/) - currently
+hosted on the Open Water Foundation website while OpenCDSS server is being configured
+* [TSTool User Documentation](http://learn.openwaterfoundation.org/cdss-app-tstool-doc-user/) - currently
+hosted on the Open Water Foundation website while OpenCDSS server is being configured
 	+ ["Quality Control" chapter](http://learn.openwaterfoundation.org/cdss-app-tstool-doc-user/quality-control/quality-control/) - discusses why and how to use tests
 
 See the following sections in this page:
@@ -24,6 +27,9 @@ See the following sections in this page:
 * [Running the Tests](#running-the-tests)
 	+ [Run a Single Test](#run-a-single-test)
 	+ [Run a Test Suite](#run-a-test-suite)
+* [License](#license)
+* [Contributing](#contributing)
+* [Maintainers](#maintainers)
 
 --------------------
 
@@ -148,3 +154,21 @@ However, the true indication of whether a test passed is whether the output resu
 The test suite can also be run in batch mode with `TSTool -commands xxx.TSTool`.
 However, this has not traditionally been done because the TSTool development has not used
 continuous integration and tests that currently always fail would need to be cleaned up.
+
+## License ##
+
+The license for the tests is the
+[Creative Commons Attribution International 4.0 (CC BY 4.0) license](https://creativecommons.org/licenses/by/4.0/).
+
+## Contributing ##
+
+Contribute to the documentation as follows:
+
+1. Use GitHub repository issues to report minor issues.
+Fill out the template issue.
+2. Use GitHub pull requests.
+3. A member of the core development team will follow up to issues and pull requests.
+
+## Maintainers ##
+
+This repository is maintained by the OpenCDSS team.
