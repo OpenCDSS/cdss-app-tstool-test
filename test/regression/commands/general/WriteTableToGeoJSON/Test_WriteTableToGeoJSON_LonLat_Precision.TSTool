@@ -1,0 +1,14 @@
+# Test writing a table to a GeoJSON file
+# - point coordinates in lon and lat columns
+# - specify the precision for output
+StartLog(LogFile="Results/Test_WriteTableToGeoJSON_LonLat_Precision.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTableToGeoJSON_LonLat_Precision_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="StationMeta",InputFile="Data\StationMeta.csv",TextColumns="ID_text")
+# Generate the results.
+FormatTableString(TableID="StationMeta",InputColumns="Name",Format="Description:  %s",OutputColumn="Description")
+# Uncomment the following to regenerate the expected results
+# WriteTableToGeoJSON(TableID="StationMeta",OutputFile="ExpectedResults/Test_WriteTableToGeoJSON_LonLat_Precision_out.json",LongitudeColumn="Lon",LatitudeColumn="Lat",CoordinatePrecision=5,ExcludeColumns="WKTGeometry")
+WriteTableToGeoJSON(TableID="StationMeta",OutputFile="Results/Test_WriteTableToGeoJSON_LonLat_Precision_out.json",LongitudeColumn="Lon",LatitudeColumn="Lat",CoordinatePrecision=5,ExcludeColumns="WKTGeometry")
+# Do regression comparison with the original input (possible because strings
+# and integers with no formatting issues).
+CompareFiles(InputFile1="ExpectedResults/Test_WriteTableToGeoJSON_LonLat_Precision_out.json",InputFile2="Results/Test_WriteTableToGeoJSON_LonLat_Precision_out.json",IfDifferent=Warn)

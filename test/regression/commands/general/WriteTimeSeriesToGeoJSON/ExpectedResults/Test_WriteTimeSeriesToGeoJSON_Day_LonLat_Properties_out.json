@@ -1,8 +1,10 @@
 {
   "type": "FeatureCollection",
+  "bbox": [-105.13139, 40.61472, -105.13139, 40.61472],
   "features": [
     {
       "type": "Feature",
+      "bbox": [-105.13139, 40.61472, -105.13139, 40.61472],
       "properties": {
         "uid": "430",
         "name": "FT COLLINS",

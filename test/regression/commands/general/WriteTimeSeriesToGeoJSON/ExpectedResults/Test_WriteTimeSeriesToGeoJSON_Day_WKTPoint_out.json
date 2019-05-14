@@ -3,6 +3,7 @@
   "features": [
     {
       "type": "Feature",
+      "bbox": [-105.33944, 40.43333, -105.33944, 40.43333],
       "properties": {
         "uid": "430",
         "name": "FT COLLINS",
@@ -31,6 +32,7 @@
     },
     {
       "type": "Feature",
+      "bbox": [-105.48583, 40.37667, -105.48583, 40.37667],
       "properties": {
         "uid": "4077",
         "name": "ESTES PARK",
@@ -56,6 +58,7 @@
     },
     {
       "type": "Feature",
+      "bbox": [-105.48583, 40.37667, -105.48583, 40.37667],
       "properties": {
         "uid": "4088",
         "name": "DRAKE",
