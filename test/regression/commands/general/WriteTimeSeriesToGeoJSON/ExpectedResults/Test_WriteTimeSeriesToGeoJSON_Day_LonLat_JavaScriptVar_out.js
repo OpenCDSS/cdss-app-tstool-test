@@ -1,8 +1,10 @@
 var precipStations = {
   "type": "FeatureCollection",
+  "bbox": [-105.48583, 40.37667, -105.13139, 40.61472],
   "features": [
     {
       "type": "Feature",
+      "bbox": [-105.13139, 40.61472, -105.13139, 40.61472],
       "properties": {
         "uid": "430",
         "name": "FT COLLINS",
@@ -31,6 +33,7 @@ var precipStations = {
     },
     {
       "type": "Feature",
+      "bbox": [-105.48583, 40.37667, -105.48583, 40.37667],
       "properties": {
         "uid": "4077",
         "name": "ESTES PARK",
@@ -56,6 +59,7 @@ var precipStations = {
     },
     {
       "type": "Feature",
+      "bbox": [-105.33944, 40.43333, -105.33944, 40.43333],
       "properties": {
         "uid": "4088",
         "name": "DRAKE",

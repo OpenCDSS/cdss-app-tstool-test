@@ -1,0 +1,13 @@
+# Test writing day time series to GeoJSON format
+# - Interval = Day
+# - Point data from longitude and latitude
+# - Use precision of 4 for spatial data
+StartLog(LogFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",IfNotFound=Ignore)
+ReadDateValue(InputFile="Data\testdata.dv")
+# Uncomment the following command to regenerate the expected results file.
+# WriteTimeSeriesToGeoJSON(OutputFile="ExpectedResults/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",LongitudeProperty="longitude",LatitudeProperty="latitude")
+# Generate new output...
+WriteTimeSeriesToGeoJSON(OutputFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",LongitudeProperty="longitude",LatitudeProperty="latitude")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",InputFile2="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",IfDifferent=Warn)
