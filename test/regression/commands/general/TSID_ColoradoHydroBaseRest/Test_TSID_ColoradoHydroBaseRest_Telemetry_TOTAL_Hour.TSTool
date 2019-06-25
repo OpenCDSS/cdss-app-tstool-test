@@ -1,9 +1,12 @@
-# @expectedStatus Warning
 # Test reading an individual Telemetry TOTAL Hour time series from ColoradoHydroBaseRest web service using a TSID
-# This test returns an empty Time Series since there is no data on web services.
+# Disabled because web service does not return data for parameter
+#@enabled False
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Hour.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_TOTAL_Hour_out.dv",IfNotFound=Ignore)
-# Read the same time series from the web service and HydroBase - full irrigation year
+# Read a short period and visually compare with web service results
+SetInputPeriod(InputStart="2018-01-01 00",InputEnd="2018-01-03 15")
 abbrev:SOUCANCO.DWR.TOTAL.Hour~ColoradoHydroBaseRest
-# WriteDateValue(TSID="abbrev:SOUCANCO.DWR.TOTAL.Hour~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Hour_out.dv",Precision=2)
-WriteDateValue(TSID="abbrev:SOUCANCO.DWR.TOTAL.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Hour_out.dv",Precision=2)
+# Uncomment the following line to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Hour_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Hour_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Hour_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Hour_out.dv",IfDifferent=Warn)

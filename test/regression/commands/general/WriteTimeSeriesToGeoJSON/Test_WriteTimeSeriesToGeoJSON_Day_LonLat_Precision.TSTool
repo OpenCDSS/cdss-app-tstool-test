@@ -6,8 +6,8 @@ StartLog(LogFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision.TST
 RemoveFile(InputFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",IfNotFound=Ignore)
 ReadDateValue(InputFile="Data\testdata.dv")
 # Uncomment the following command to regenerate the expected results file.
-# WriteTimeSeriesToGeoJSON(OutputFile="ExpectedResults/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",LongitudeProperty="longitude",LatitudeProperty="latitude")
+# WriteTimeSeriesToGeoJSON(OutputFile="ExpectedResults/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",LongitudeProperty="longitude",LatitudeProperty="latitude",CoordinatePrecision=4)
 # Generate new output...
-WriteTimeSeriesToGeoJSON(OutputFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",LongitudeProperty="longitude",LatitudeProperty="latitude")
+WriteTimeSeriesToGeoJSON(OutputFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",LongitudeProperty="longitude",LatitudeProperty="latitude",CoordinatePrecision=4)
 # Do regression comparison...
 CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",InputFile2="Results/Test_WriteTimeSeriesToGeoJSON_Day_LonLat_Precision_out.json",IfDifferent=Warn)

@@ -1,4 +1,6 @@
 # Test reading a WellLevelDepth day time series from ColoradoWaterHBGuest web service using a TSID
+# - if graphing, use a point graph
+# - use a period of record shorter than available period to ensure that period is handled
 # Compare the resulting time series with that retrieved from HydroBase
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelDepth_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelDepth_Day_out.dv",IfNotFound=Ignore)
@@ -11,7 +13,7 @@ wellid:1376.DWR.WaterLevelDepth.Day~ColoradoHydroBaseRest
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=8,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
-# The following does not work because numbers are slightly different and
+# CompareFiles does not work because numbers are slightly different and
 # rounding on output produces different values.
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="SB00306325DDD.DWR.WellLevelDepth.Day",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelElev_Day_out.dv",Precision=2)
 WriteDateValue(TSList=LastMatchingTSID,TSID="wellid:1376.DWR.WaterLevelDepth.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelDepth_Day_out.dv",Precision=2)

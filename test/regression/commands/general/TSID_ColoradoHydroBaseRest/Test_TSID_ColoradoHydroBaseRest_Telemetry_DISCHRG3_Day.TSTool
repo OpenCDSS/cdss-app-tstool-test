@@ -1,7 +1,10 @@
 # Test reading an individual Telemetry DISCHRG3 Day time series from ColoradoHydroBaseRest web service using a TSID
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG3_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_DISCHRG3_Day_out.dv",IfNotFound=Ignore)
-# Read the same time series from the web service and HydroBase - full irrigation year
+# Read a short period and visually compare with web service results
+SetInputPeriod(InputStart="2018-07-01",InputEnd="2018-10-15")
 abbrev:METSEWCO.DWR.DISCHRG3.Day~ColoradoHydroBaseRest
-# WriteDateValue(TSID="abbrev:METSEWCO.DWR.DISCHRG3.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG3_Day_out.dv",Precision=2)
-WriteDateValue(TSID="abbrev:METSEWCO.DWR.DISCHRG3.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG3_Day_out.dv",Precision=2)
+# Uncomment the following line to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG3_Day_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG3_Day_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG3_Day_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG3_Day_out.dv",IfDifferent=Warn)

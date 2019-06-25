@@ -1,8 +1,0 @@
-# Test reading an individual Telemetry Q Day time series from ColoradoHydroBaseRest web service using a TSID
-# Currently this test fails. Need to check web services
-StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_Q_Day.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_Q_Day_out.dv",IfNotFound=Ignore)
-# Read the same time series from the web service and HydroBase - full irrigation year
-abbrev:RIOBOXCO.DWR.PH.Day~ColoradoHydroBaseRest
-# WriteDateValue(TSID="abbrev:RIOBOXCO.DWR.Q.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_Q_Day_out.dv",Precision=2)
-WriteDateValue(TSID="abbrev:RIOBOXCO.DWR.Q.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_Q_Day_out.dv",Precision=2)

@@ -1,1 +1,4 @@
-CreateRegressionTestCommandFile(SearchFolder="..\..\..\TSID_ColoradoHydroBaseRest",OutputFile="..\run\RunRegressionTest_commands_general.TSTool",Append=False,IncludeTestSuite="*",TestResultsTableID="TestResults")
+# This command file creates a command file to run all ColoradoHydroBaseRest tests.
+# The command file to run will be created in the ../run folder.
+# This is useful for testing all ColoradoHydroBaseRest tests when working on the library.
+CreateRegressionTestCommandFile(SearchFolder="..\..\..\TSID_ColoradoHydroBaseRest",OutputFile="..\run\TestSuite_ColoradoHydroBaseRest.TSTool",Append=False,IncludeTestSuite="*",TestResultsTableID="TestResults_ColoradoHydroBaseRest")

@@ -7,5 +7,6 @@ SetInputPeriod(InputStart="2005",InputEnd="2017")
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=5,IfCriteriaMet=Warn)
 # rounding on output produces different values.
-# WriteDateValue(TSList=FirstMatchingTSID,TSID="0200700.DWR.WaterClass-0200700 S:8 F: U:A T:6 G:0202611 To:.Year~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",Precision=2)
-WriteDateValue(TSList=FirstMatchingTSID,TSID="0200700.DWR.WaterClass-0200700 S:8 F: U:A T:6 G:0202611 To:.Year~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",Precision=2)
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Year_Without_Single_Quotes_out.dv",IfDifferent=Warn)

@@ -1,7 +1,10 @@
 # Test reading an individual Telemetry GAGE_HT2 Hour time series from ColoradoHydroBaseRest web service using a TSID
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT2_Hour.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_GAGE_HT2_Hour_out.dv",IfNotFound=Ignore)
-# Read the same time series from the web service and HydroBase - full irrigation year
+# Read a short period and visually compare wieth web service results
+SetInputPeriod(InputStart="2017-07-01 00",InputEnd="2017-07-03 12")
 abbrev:LARNO2CO.DWR.GAGE_HT2.Hour~ColoradoHydroBaseRest
-# WriteDateValue(TSID="abbrev:LARNO2CO.DWR.GAGE_HT2.Hour~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT2_Hour_out.dv",Precision=2)
-WriteDateValue(TSID="abbrev:LARNO2CO.DWR.GAGE_HT2.Hour~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT2_Hour_out.dv",Precision=2)
+# Uncomment the following line to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT2_Hour_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT2_Hour_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT2_Hour_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_GAGE_HT2_Hour_out.dv",IfDifferent=Warn)

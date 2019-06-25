@@ -1,9 +1,10 @@
 # Test reading a DivTotal month time series from ColoradoHydroBaseRest web service using a TSID
-# Compare the resulting time series with that retrieved from HydroBase
+# - compare the resulting time series with that retrieved from HydroBase
+# - the test fails because HydroBase has zeros where web services has gaps
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
-SetInputPeriod(InputStart="1949-01",InputEnd="1952-10")
+SetInputPeriod(InputStart="1949-11",InputEnd="2017-10")
 0300915.DWR.DivTotal.Month~HydroBase
 0300915.DWR.DivTotal.Month~ColoradoHydroBaseRest
 # Make sure that enough data are available in the test data, and some missing
@@ -16,3 +17,4 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 WriteDateValue(TSList=LastMatchingTSID,TSID="0300915.DWR.DivTotal.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",Precision=2)
 # CompareFiles(InputFile1="ExpectedResults/TestTSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",IfDifferent=Warn)
 CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_cdss_AnnualAmt where wd = 3 and id = 915 order by irr_year",TableID="x")
