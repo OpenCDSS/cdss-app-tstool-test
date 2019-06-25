@@ -2,11 +2,12 @@
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes_out.dv",IfNotFound=Ignore)
 # Read the same time series
-# SetInputPeriod(InputStart="2014-11-01",InputEnd="2015-10-31")
+SetInputPeriod(InputStart="2015-10-25",InputEnd="2016-10-31")
 0202235.DWR.'WaterClass-0202235 S:8 F:0200700.005 U:Q T: G:0202611 To:'.Day~ColoradoHydroBaseRest
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # rounding on output produces different values.
-# WriteDateValue(TSList=FirstMatchingTSID,TSID="0202235.DWR.'WaterClass-0202235 S:8 F:0200700.005 U:Q T: G:0202611 To:'.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes_out.dv",Precision=2)
-WriteDateValue(TSList=FirstMatchingTSID,TSID="0202235.DWR.'WaterClass-0202235 S:8 F:0200700.005 U:Q T: G:0202611 To:'.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes_out.dv",Precision=2)
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_With_Single_Quotes_out.dv",IfDifferent=Warn)

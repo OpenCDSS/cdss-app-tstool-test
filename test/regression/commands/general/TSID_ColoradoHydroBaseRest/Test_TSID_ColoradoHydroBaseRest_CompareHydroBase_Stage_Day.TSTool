@@ -1,4 +1,6 @@
 # Test reading a Stage Day time series from ColoradoHydroBaseRest web service using a TSID
+# - use a point graph to view results
+# - set the period shorter than available to test handling of period
 # Compare the resulting time series with that retrieved from HydroBase
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Stage_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Stage_Day_out.dv",IfNotFound=Ignore)
@@ -12,7 +14,7 @@ SetInputPeriod(InputStart="2004-12-01",InputEnd="2006-12-01")
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following command to regenerate the expected results file.
-# The following does not work because numbers are slightly different and
+# CompareFiles does not work because numbers are slightly different and
 # rounding on output produces different values.
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="8003550.DWR.Stage.Day~ColoradoHydroBaseRest",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Stage_Day_out.dv",Precision=2)
 WriteDateValue(TSList=LastMatchingTSID,TSID="8003550.DWR.ResMeasElev.Day~HydroBase",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Stage_Day_out.dv",Precision=2)

@@ -1,0 +1,4 @@
+# Ignore all files in the run folder because they get recreated by each developer that runs suites
+# - don't ignore this file
+/*
+!.gitignore

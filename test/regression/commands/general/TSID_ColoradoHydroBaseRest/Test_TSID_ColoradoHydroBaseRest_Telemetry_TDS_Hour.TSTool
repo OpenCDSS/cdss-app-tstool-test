@@ -1,0 +1,12 @@
+# Test reading an individual Telemetry TDS Hour time series from ColoradoHydroBaseRest web service using a TSID
+# Disable because parameter is not provided by web services
+#@enabled False
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_TDS_Hour_out.dv",IfNotFound=Ignore)
+# Read a short time series and visually compare with web services results
+SetInputPeriod(InputStart="2018-01-01 00",InputEnd="2018-01-03 12")
+abbrev:RIOBOXCO.DWR.TDS.Hour~ColoradoHydroBaseRest
+# Uncomment the following line to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_Hour_out.dv",IfDifferent=Warn)
