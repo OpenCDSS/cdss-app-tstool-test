@@ -5,6 +5,6 @@ RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_D1_
 SetInputPeriod(InputStart="2018-01-01 00:00",InputEnd="2018-01-02 01:00")
 abbrev:LONBLOCO.DWR.D1.15Min~ColoradoHydroBaseRest
 # Uncomment the following line to regenerate expected results
-#WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_D1_15Min_out.dv",Precision=2)
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_D1_15Min_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_D1_15Min_out.dv",Precision=2)
 CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_D1_15Min_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_D1_15Min_out.dv",IfDifferent=Warn)

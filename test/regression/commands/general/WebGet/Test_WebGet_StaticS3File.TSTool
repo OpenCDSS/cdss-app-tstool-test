@@ -2,6 +2,6 @@
 StartLog(LogFile="Results/Test_WebGet_StaticS3File.TSTool.log")
 RemoveFile(InputFile="Results\Test_WebGet_StaticS3File.html",IfNotFound=Ignore)
 # Uncomment the following command to regenerate the expected results file.
-#WebGet(URI="https://raw.githubusercontent.com/OpenWaterFoundation/cdss-app-tstool-test/master/test/regression/commands/general/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="ExpectedResults\Test_WebGet_StaticS3File_out.txt")
-WebGet(URI="https://raw.githubusercontent.com/OpenWaterFoundation/cdss-app-tstool-test/master/test/regression/commands/general/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="Results\Test_WebGet_StaticS3File_out.txt")
+# WebGet(URI="http://data.openwaterfoundation.org/test/TSTool/commands/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="ExpectedResults\Test_WebGet_StaticS3File_out.txt")
+WebGet(URI="http://data.openwaterfoundation.org/test/TSTool/commands/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="Results\Test_WebGet_StaticS3File_out.txt")
 CompareFiles(InputFile1="ExpectedResults\Test_WebGet_StaticS3File_out.txt",InputFile2="Results\Test_WebGet_StaticS3File_out.txt",IfDifferent=Warn)

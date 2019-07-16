@@ -1,4 +1,8 @@
 StartLog(LogFile="Results/Test_ReadNwsrfsFS5Files_MARFC.TSTool.log")
+#----
+# Disable because NWSRFS is being phased out of code since legacy system.
+# @enabled False
+#----
 RemoveFile(InputFile="Results/Test_ReadNwsrfsFS5Files_MARFC_out.dv",IfNotFound=Ignore)
 ReadNwsrfsFS5Files(Alias="CANN6.QIN",TSID="CANN6.NWSRFS.QIN.6Hour~NWSRFS_FS5Files~Data_MARFC")
 ReadNwsrfsFS5Files(Alias="DWNN6.QIN",TSID="DWNN6.NWSRFS.QIN.6Hour~NWSRFS_FS5Files~Data_MARFC")

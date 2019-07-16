@@ -1,6 +1,10 @@
 # Test reading DISCHRG time series for all intervals from ColoradoWaterSMS web service using TSIDs
 # TODO SAM 2015-03-04 It looks like the date requested causes the web services to return data for an extra interval in the previous day
 #   Emailed Doug Stenzel on 2015-03-14 but DWR may be going to REST web services
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
 StartLog(LogFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterSMS_DISCHRG_BIJOUSCO_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service

@@ -1,4 +1,8 @@
 # Test reading a SnowCourseDepth day time series from ColoradoWaterHBGuest web service using a TSID
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
 # Compare the resulting time series with that retrieved from HydroBase
 # TODO SAM 2015-03.14 Emailed Doug Stenzel at DWR about the minor differences
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseDepth_Day.TSTool.log")

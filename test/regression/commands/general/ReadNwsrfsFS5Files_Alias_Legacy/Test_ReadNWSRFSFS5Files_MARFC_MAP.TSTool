@@ -1,4 +1,8 @@
 # This uses the legacy "TS Alias =" syntax
+# ----
+# Disable because NWSRFS FS5Files are legacy features being phased out
+# @enabled False
+# ----
 #@readOnly
 StartLog(LogFile="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadNwsrfsFS5Files_MARFC_MAP_out.dv",IfNotFound=Ignore)

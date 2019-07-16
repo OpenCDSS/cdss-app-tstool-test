@@ -1,4 +1,8 @@
 # Test reading a Snow day time series from ColoradoWaterHBGuest web service using a TSID
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
 # Compare the resulting time series with that retrieved from HydroBase
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_Snow_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_Snow_Day_out.dv",IfNotFound=Ignore)

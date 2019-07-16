@@ -1,4 +1,8 @@
 # Test reading a Snow month time series from ColoradoWaterHBGuest web service using a TSID
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
 # - Station is Fort Collins (formerly ID 305)
 # Compare the resulting time series with that retrieved from HydroBase
 StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_Snow_Month.TSTool.log")
