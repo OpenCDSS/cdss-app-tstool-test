@@ -1,4 +1,8 @@
 # Simple test to see if web service request works OK
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
 # If data do not come back, limits will not be calculable and warnings will occur
 # 0300915 - CACHE LA POUDRE DITCH
 # Test DivTotal and IDivTotal for Year and Month

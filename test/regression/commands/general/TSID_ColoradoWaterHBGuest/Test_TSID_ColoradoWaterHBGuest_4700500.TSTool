@@ -1,5 +1,9 @@
 # Simple test to see if web service request works OK
 # If data do not come back, limits will not be calculable and warnings will occur
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
 # 4700500 - ARAPAHOE DITCH
 4700500.DWR.DivTotal.Year~ColoradoWaterHBGuest
 4700500.DWR.DivTotal.Year~HydroBase

@@ -1,3 +1,7 @@
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
 StartLog(LogFile="Results\Test_TSID_ColoradoWaterSMS.TSTool.log")
 SetInputPeriod(InputStart="CurrentToMinute - 7Day",InputEnd="CurrentToMinute")
 # BIJOUSCO - BIJOU CANAL @ 20 FT PARSHALL FLUME
