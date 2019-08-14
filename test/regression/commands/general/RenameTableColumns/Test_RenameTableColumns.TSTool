@@ -1,0 +1,11 @@
+# Test renaming table columns
+# - Rename 2 of 3 columns
+StartLog(LogFile="Results/Test_RenameTableColumns.TSTool.log")
+RemoveFile(InputFile="Results/Test_RenameTableColumns_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table",InputFile="Data\testtable.csv")
+RenameTableColumns(TableID="Table",ColumnMap="double1:double2,integer1:integer2")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table",OutputFile="ExpectedResults\Test_RenameTableColumns_out.csv")
+WriteTableToDelimitedFile(TableID="Table",OutputFile="Results\Test_RenameTableColumns_out.csv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_RenameTableColumns_out.csv",InputFile2="Results/Test_RenameTableColumns_out.csv",IfDifferent=Warn)
