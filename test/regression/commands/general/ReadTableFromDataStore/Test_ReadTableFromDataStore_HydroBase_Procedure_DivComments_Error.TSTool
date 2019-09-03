@@ -1,0 +1,19 @@
+# Test reading a table from a HydroBase data store
+# - read from diversion comments stored procedure, with input parameter of structure number
+# - don't specify a parameter in order to genertae an error
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_Error.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_Error_out.csv",IfNotFound=Ignore)
+ReadTableFromDataStore(DataStore="HydroBase",DataStoreProcedure="usp_CDSS_DiversionComment_Sel_By_Structure_num",ProcedureReturnProperty="Test_ProcedureStatus",TableID="DivComments")
+# Uncomment to regenerate expected results
+# WriteTableToDelimitedFile(TableID="DivComments",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_Error_out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="DivComments",OutputFile="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_Error_out.csv")
+# Do regression comparison with the expected results
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_Error_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_Error_out.csv",MatchCase=False,IfDifferent=Warn)
+# Use the following to list structures that are not active, to select an appropriate structure.
+# ReadTableFromDataStore(DataStore="HydroBase",DataStoreTable="vw_CDSS_Structure",Top=250,TableID="Structure")
+# Also check the return status, should be 0
+If(Name="IfStatus",Condition="${Test_ProcedureStatus} != 0")
+Message(Message="Procedure return status ${Test_ProcedureStatus} is not 0.",CommandStatus=FAILURE)
+EndIf(Name="IfStatus")

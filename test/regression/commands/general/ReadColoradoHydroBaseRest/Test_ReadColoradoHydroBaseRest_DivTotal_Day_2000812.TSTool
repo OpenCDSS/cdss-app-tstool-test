@@ -1,0 +1,18 @@
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Day_2000812.TSTool.log")
+# Test reading daily diversion record from REST web services
+# - since daily time series, fill carry forward should occur (see "c" flags)
+#   - there should be filled values at beginning and end of season
+#   - see 1962-04-01 for a mid-year fill carry forward value
+#   - no diversion comment notUsed values are used, even though requested
+# - specify the period so as to use static historical data
+ReadColoradoHydroBaseRest(DataStore="ColoradoHydroBaseRest",DataType="DivTotal",Interval="Day",Where1="StructureWDID;Matches;2000812",InputStart="1949-11-01",InputEnd="2005-10-31",FillUsingDivComments=True)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadColoradoHydroBaseRest_DivTotal_Day_2000812_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Day_2000812_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadColoradoHydroBaseRest_DivTotal_Day_2000812_out.dv",InputFile2="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Day_2000812_out.dv",IfDifferent=Warn)
+#
+# Query diversion comments from HydroBase to compare, for troubleshooting
+# ReadTableFromDataStore(DataStore="HydroBase",DataStoreProcedure="usp_CDSS_DiversionComment_Sel_By_Structure_num",ProcedureParameters="structureNum:37610",ProcedureReturnProperty="xxx",TableID="DivComments")
+# ReadTableFromDataStore(DataStore="HydroBase",DataStoreProcedure="usp_CDSS_refWaterDivision_Sel",TableID="WaterDivision")
+# Select the structure so as to get the structure number for stored procedure call
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_CDSS_structure where wd = 20 and id = 803",TableID="x")

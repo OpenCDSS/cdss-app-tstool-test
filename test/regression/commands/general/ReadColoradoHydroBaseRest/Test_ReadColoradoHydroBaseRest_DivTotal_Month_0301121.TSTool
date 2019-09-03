@@ -1,0 +1,17 @@
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Month_0301121.TSTool.log")
+# Test reading monthly diversion record from REST web services
+# - since monthly time series, do fill carry forward should occur (see "c" flags)
+#   - there should filled values at beginning and end of season
+# - other missing values with diversion comments should be flagged with "notUsed" value
+# - specify the period so as to use static historical data
+# - the first year is missing since no data in that year
+ReadColoradoHydroBaseRest(DataStore="ColoradoHydroBaseRest",DataType="DivTotal",Interval="Month",Where1="StructureWDID;Matches;0301121",InputStart="1971-11",InputEnd="1981-10",FillUsingDivComments=True)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadColoradoHydroBaseRest_DivTotal_Month_0301121_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Month_0301121_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadColoradoHydroBaseRest_DivTotal_Month_0301121_out.dv",InputFile2="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Month_0301121_out.dv",IfDifferent=Warn)
+#
+# Query diversion comments from HydroBase to compare, for troubleshooting
+# ReadTableFromDataStore(DataStore="HydroBase",DataStoreProcedure="usp_CDSS_DiversionComment_Sel_By_Structure_num",ProcedureParameters="structureNum:78689",TableID="DivComments")
+# Select the structure so as to get the structure number for stored procedure call
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_CDSS_structure where wd = 3 and id = 1121",TableID="x")

@@ -1,0 +1,11 @@
+# Test running an SQL statement against HydroBase
+# - call a stored precedure that expects an argument, but don't pass anything
+# - an error will result, prior to setting the procedure status
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_RunSql_HydroBase_Sql_Procedure_Select_Error.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunSql_HydroBase_Sql_Procedure_Select_Error_out.csv",IfNotFound=Ignore)
+RunSql(DataStore="HydroBase",DataStoreProcedure="usp_CDSS_DiversionComment_Sel_By_Structure_num",ProcedureReturnProperty="Test_ProcedureStatus")
+# Also check the return status, should be 0
+If(Name="IfStatus",Condition="${Test_ProcedureStatus} != 0")
+Message(Message="Procedure return status ${Test_ProcedureStatus} is not 0.",CommandStatus=FAILURE)
+EndIf(Name="IfStatus")

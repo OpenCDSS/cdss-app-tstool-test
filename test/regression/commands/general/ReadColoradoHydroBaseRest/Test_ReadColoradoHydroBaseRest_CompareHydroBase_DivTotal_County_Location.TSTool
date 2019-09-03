@@ -1,6 +1,7 @@
-#Test reading multiple time series using ReadColoradoHydroBaseRest and filtering by county and location
-#Test results against TSID's generated from HydroBase database
 StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location.TSTool.log")
+# Test reading multiple time series using ReadColoradoHydroBaseRest and filtering by county and location.
+# - Test results against TSID's generated from HydroBase database
+# - TODO web services return fewer zeros which resuls in a failure
 RemoveFile(InputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_out.dv",IfNotFound=Ignore)
 #Read the time series using ReadColoradoHydroBaseRest and from HydroBase
 SetInputPeriod(InputStart="2004-01",InputEnd="2015-10")
