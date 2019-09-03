@@ -1,0 +1,10 @@
+# Test running an SQL statement against HydroBase
+# - read counties, but don't do anything with resultset
+# - should return exit status of 0
+StartLog(LogFile="Results/Test_RunSql_HydroBase_Sql_Procedure_Select.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunSql_HydroBase_Sql_Procedure_Select_out.csv",IfNotFound=Ignore)
+RunSql(DataStore="HydroBase",DataStoreProcedure="usp_CDSS_refCounty_Sel",ProcedureReturnProperty="Test_ProcedureStatus")
+# Also check the return status, should be 0
+If(Name="IfStatus",Condition="${Test_ProcedureStatus} != 0")
+Message(Message="Procedure return status ${Test_ProcedureStatus} is not 0.",CommandStatus=FAILURE)
+EndIf(Name="IfStatus")
