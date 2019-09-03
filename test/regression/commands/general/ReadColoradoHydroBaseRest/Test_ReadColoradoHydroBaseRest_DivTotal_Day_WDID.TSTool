@@ -1,4 +1,4 @@
-# Test reading single time series using ReadColoradoHydroBaseRest
+# Test reading single time series using ReadColoradoHydroBaseRest using default parameters
 # - DivTotal
 # - day
 # - select a single WDID
