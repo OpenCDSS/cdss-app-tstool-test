@@ -1,0 +1,14 @@
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_0300909_CompareHB.TSTool.log")
+# Test reading daily diversion record WaterClass from REST web services and compare to HydroBase
+# - this is a reservoir class
+# - TSID results should match the default ReadColoradoHydroBaseRest data fill parameters
+# - use the default filling parameters
+# - since daily time series, fill carry forward should occur (see "c" flags)
+#   - there should filled values at beginning and end of season
+# - diversion comments will NOT be used for filling since not used by default
+# - specify the period so as to use static historical data
+# - the first year is missing since no data in that year
+SetInputPeriod(InputStart="1994-11-01",InputEnd="2010-10-31")
+0300909.DWR.WaterClass-0300909 S:2 F:0303732 U:Q T:7 G: To:.Day~ColoradoHydroBaseRest
+0300909.DWR.RelClass-S:2 F:0303732 U:Q T:7 G:.Day~HydroBase
+CompareTimeSeries(TSID1="0300909.DWR.WaterClass-0300909 S:2 F:0303732 U:Q T:7 G: To:.Day",TSID2="0300909.DWR.RelClass-S:2 F:0303732 U:Q T:7 G:.Day",Tolerance=".01",WarnIfDifferent=True)

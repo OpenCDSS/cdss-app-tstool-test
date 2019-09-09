@@ -1,0 +1,13 @@
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_RelTotal_Day_0300909_CompareHB.TSTool.log")
+# Test reading daily diversion record from REST web services and compare to HydroBase
+# - TSID results should match the default ReadColoradoHydroBaseRest data fill parameters
+# - use the default fill parameters
+# - since daily time series, fill carry forward should occur (see "c" flags)
+#   - there should filled values at beginning and end of season
+# - diversion comments NOT be used by default
+# - specify the period so as to use static historical data
+# - the first year is missing since no data in that year
+SetInputPeriod(InputStart="1994-11-01",InputEnd="2010-10-31")
+0300909.DWR.RelTotal.Day~ColoradoHydroBaseRest
+0300909.DWR.RelTotal.Day~HydroBase
+CompareTimeSeries(TSID1="0300909.DWR.RelTotal.Day~ColoradoHydroBaseRest",TSID2="0300909.DWR.RelTotal.Day~HydroBaseRest",Tolerance=".01",WarnIfDifferent=True)
