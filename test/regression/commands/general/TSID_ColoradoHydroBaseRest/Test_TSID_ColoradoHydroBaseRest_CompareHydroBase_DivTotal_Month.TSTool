@@ -1,6 +1,6 @@
 # Test reading a DivTotal month time series from ColoradoHydroBaseRest web service using a TSID
 # - compare the resulting time series with that retrieved from HydroBase
-# - the test fails because HydroBase has zeros where web services has gaps
+# - TODO the test fails because HydroBase has zeros where web services has gaps, being discussed with State
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
