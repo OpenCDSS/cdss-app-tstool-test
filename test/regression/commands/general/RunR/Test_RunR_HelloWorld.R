@@ -1,6 +1,6 @@
 # R script for corresponding TSTool command file
 # - get the working directory from first command line argument
-# - output a simple "hello world" message to a file
+# - output a simple "Hello world" message to a file
 
 # Set working directory
 args = commandArgs(trailingOnly=TRUE)
