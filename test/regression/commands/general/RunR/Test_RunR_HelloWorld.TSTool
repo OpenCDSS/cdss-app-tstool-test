@@ -4,5 +4,5 @@ StartLog(LogFile="Results/Test_RunR_HelloWorld.TSTool.log")
 RemoveFile(InputFile="Results\Test_RunR_HelloWorld_out.txt",IfNotFound=Ignore)
 RunR(ScriptFile="Test_RunR_HelloWorld.R",ScriptArguments="${WorkingDirPortable}",SetwdHow="IncludedInArguments")
 # Uncomment the following command to regenerate the expected results file.
-CopyFile(InputFile="Results/Test_RunR_HelloWorld_out.txt",OutputFile="ExpectedResults/Test_RunR_HelloWorld_out.txt")
+# CopyFile(InputFile="Results/Test_RunR_HelloWorld_out.txt",OutputFile="ExpectedResults/Test_RunR_HelloWorld_out.txt")
 CompareFiles(InputFile1="ExpectedResults\Test_RunR_HelloWorld_out.txt",InputFile2="Results\Test_RunR_HelloWorld_out.txt",IfDifferent=Warn)
