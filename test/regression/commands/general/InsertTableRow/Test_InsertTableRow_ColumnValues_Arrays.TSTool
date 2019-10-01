@@ -1,0 +1,15 @@
+# Test inserting a row into a table for each of the supported data types
+# - default insert position at end
+# - specify values to insert, including array values
+# The code does not yet handle arrays
+#@enabled False
+StartLog(LogFile="Results/Test_InsertTableRow_ColumnValues_Arrays.TSTool.log")
+RemoveFile(InputFile="Results/Test_InsertTableRow_ColumnValues_Arrays_out.csv",IfNotFound=Ignore)
+# Create a table with columns for all types
+NewTable(TableID="Table1",Columns="boolean1,boolean;datetime1,datetime;double1,double;float1,float;integer1,integer;long1,long;short1,short;string1,string;booleanArray,[boolean];datetimeArray,[datetime];doubleArray,[double];floatArray,[float];integerArray,[integer];longArray,[long];shortArray,[short];stringArray,[string]")
+InsertTableRow(TableID="Table1",ColumnValues="boolean1:true,datetime1:2019-01-01,double1:8.888,float1:9.999,integer1:111,long1:222,short1:333,string:test_string,booleanArray:'[true,true]',dateTimeArray:'[2020-01-01,2020-01-02]',doubleArray:'[8.12,8.13]',floatArray:'[9.12,9.13]',integerArray:'[122,133]',longArray:'[233,244]',shortArray:'[344,355]',stringArray:'[test_string1,test_string2]'")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_InsertTableRow_ColumnValues_Arrays_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_InsertTableRow_ColumnValues_Arrays_out.csv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_InsertTableRow_ColumnValues_Arrays_out.csv",InputFile2="Results/Test_InsertTableRow_ColumnValues_Arrays_out.csv",IfDifferent=Warn)

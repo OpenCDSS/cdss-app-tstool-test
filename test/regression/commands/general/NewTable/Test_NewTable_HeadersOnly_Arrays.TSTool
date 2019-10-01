@@ -1,0 +1,10 @@
+# Test creating a table for each of the supported data types, headers only
+# - also create columns for arrays
+StartLog(LogFile="Results/Test_NewTable_HeadersOnly_Arrays.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewTable_HeadersOnly_Arrays_out.csv",IfNotFound=Ignore)
+NewTable(TableID="Table1",Columns="boolean1,boolean;datetime1,datetime;double1,double;float1,float;integer1,integer;long1,long;short1,short;string1,string;booleanArray,[boolean];datetimeArray,[datetime];doubleArray,[double];floatArray,[float];integerArray,[integer];longArray,[long];shortArray,[short];stringArray,[string]")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_NewTable_HeadersOnly_Arrays_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_NewTable_HeadersOnly_Arrays_out.csv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_NewTable_HeadersOnly_Arrays_out.csv",InputFile2="Results/Test_NewTable_HeadersOnly_Arrays_out.csv",IfDifferent=Warn)
