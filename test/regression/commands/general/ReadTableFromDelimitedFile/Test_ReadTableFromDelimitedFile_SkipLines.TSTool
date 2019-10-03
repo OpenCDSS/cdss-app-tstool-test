@@ -6,4 +6,4 @@ ReadTableFromDelimitedFile(TableID="KNN_Aspinall",InputFile="Data\flow_sequence_
 # WriteTableToDelimitedFile(TableID="KNN_Aspinall",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_SkipLines_out.csv")
 WriteTableToDelimitedFile(TableID="KNN_Aspinall",OutputFile="Results\Test_ReadTableFromDelimitedFile_SkipLines_out.csv")
 # Do regression comparison with the expected results
-CompareFiles(InputFile1="ExpectedResults\Test_ReadTableFromDelimitedFile_SkipLines_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_SkipLines_out.csv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadTableFromDelimitedFile_SkipLines_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_SkipLines_out.csv",IfDifferent=Warn)
