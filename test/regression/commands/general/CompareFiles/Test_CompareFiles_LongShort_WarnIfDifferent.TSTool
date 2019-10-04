@@ -1,0 +1,5 @@
+# Test comparing different files and generate a warning when the files are different
+# - the files are short and long so will be different due to extra lines
+#@expectedStatus Warning
+StartLog(LogFile="Results/Test_CompareFiles_LongShort_WarnIfDifferent.TSTool.log")
+CompareFiles(InputFile1="Data/long.txt",InputFile2="Data/short.txt",IfDifferent=Warn)
