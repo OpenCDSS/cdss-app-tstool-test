@@ -1,0 +1,6 @@
+# stderr file for tests
+stderr line 1
+stderr line 2
+stderr line 3
+stderr line 4
+stderr line 5
