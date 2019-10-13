@@ -1,0 +1,10 @@
+# Test running an external program using a full command line
+# - run using a shell
+# - check stdout
+StartLog(LogFile="Results/Test_RunProgram_Linux_CommandLine_Shell_StdoutFile.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunProgram_Linux_CommandLine_Shell_StdoutFile_out.txt",IfNotFound=Ignore)
+# Uncomment the following command to regenerate the expected results file.
+# RunProgram(CommandLine="${WorkingDir}/Program/testprog-linux --stdoutfile ${WorkingDir}/Data/stdout.txt",UseCommandShell=True,IfNonZeroExitCode="Ignore",ExitCodeProperty="TestExitCode",StdoutFile="${WorkingDir}/ExpectedResults/Test_RunProgram_Linux_CommandLine_Shell_StdoutFile_out.txt")
+# Generate the output
+RunProgram(CommandLine="${WorkingDir}/Program/testprog-linux --stdoutfile ${WorkingDir}/Data/stdout.txt",UseCommandShell=True,IfNonZeroExitCode="Ignore",ExitCodeProperty="TestExitCode",StdoutFile="${WorkingDir}/Results/Test_RunProgram_Linux_CommandLine_Shell_StdoutFile_out.txt")
+CompareFiles(InputFile1="ExpectedResults/Test_RunProgram_Linux_CommandLine_Shell_StdoutFile_out.txt",InputFile2="Results/Test_RunProgram_Linux_CommandLine_Shell_StdoutFile_out.txt",IfDifferent=Warn)

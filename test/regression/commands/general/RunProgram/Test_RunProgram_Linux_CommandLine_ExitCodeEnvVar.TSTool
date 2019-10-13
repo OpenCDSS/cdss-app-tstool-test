@@ -1,0 +1,11 @@
+# Test running an external program using a full command line
+# - set and check the exit code
+# - set the exit code using an environment variable
+# - exit the exit code because it is purposefully set to non-zero
+StartLog(LogFile="Results/Test_RunProgram_Linux_CommandLine_ExitCodeEnvVar.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunProgram_Linux_CommandLine_ExitCodeEnvVar_out.txt",IfNotFound=Ignore)
+# Generate the output
+RunProgram(CommandLine="${WorkingDir}/Program/testprog-linux --exitcodeenv EXIT_CODE",UseCommandShell=False,EnvVars="EXIT_CODE:99",IfNonZeroExitCode="Ignore",ExitCodeProperty="TestExitCode")
+If(Name="IfExitStatus",Condition="${TestExitCode} != 99")
+Message(Message="Exit code ${TestExitCode} is not expected 99",CommandStatus=FAILURE)
+EndIf(Name="IfExitStatus")

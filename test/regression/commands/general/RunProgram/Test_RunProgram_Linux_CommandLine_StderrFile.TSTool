@@ -1,0 +1,9 @@
+# Test running an external program using a full command line
+# - check Stderr
+StartLog(LogFile="Results/Test_RunProgram_Linux_CommandLine_StderrFile.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunProgram_Linux_CommandLine_StderrFile_out.txt",IfNotFound=Ignore)
+# Uncomment the following command to regenerate the expected results file.
+# RunProgram(CommandLine="${WorkingDir}/Program/testprog-linux --stderrfile ${WorkingDir}/Data/stderr.txt",UseCommandShell=False,IfNonZeroExitCode="Ignore",ExitCodeProperty="TestExitCode",StderrFile="${WorkingDir}/ExpectedResults/Test_RunProgram_Linux_CommandLine_StderrFile_out.txt")
+# Generate the output
+RunProgram(CommandLine="${WorkingDir}/Program/testprog-linux --stderrfile ${WorkingDir}/Data/stderr.txt",UseCommandShell=False,IfNonZeroExitCode="Ignore",ExitCodeProperty="TestExitCode",StderrFile="${WorkingDir}/Results/Test_RunProgram_Linux_CommandLine_StderrFile_out.txt")
+CompareFiles(InputFile1="ExpectedResults/Test_RunProgram_Linux_CommandLine_StderrFile_out.txt",InputFile2="Results/Test_RunProgram_Linux_CommandLine_StderrFile_out.txt",IfDifferent=Warn)

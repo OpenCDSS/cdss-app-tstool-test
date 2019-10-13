@@ -9,3 +9,6 @@
 # -TODO smalers 2017-03-25 need to figure out how to prevent
 
 tesc
+
+# Ignore .o object files
+*.o
