@@ -1,4 +1,0 @@
-# Test running an external program using a full command line with other defaults
-# - this test is needed to finish output comparisons because the main test generates errors, as expected
-# - let the output append to the main test log file
-CompareFiles(InputFile1="ExpectedResults/Test_RunProgram_CommandLine_echo_OutputCheckTable_out.csv",InputFile2="Results/Test_RunProgram_CommandLine_echo_OutputCheckTable_out.csv",IfDifferent=Warn)

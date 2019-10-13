@@ -1,0 +1,10 @@
+# Test running an external program using a full command line with other defaults
+# -Specify the command shell
+#@os Windows
+StartLog(LogFile="Results/Test_RunProgram_Windows_CommandLine_Shell_echo.TSTool.log")
+RemoveFile(InputFile="Results\Test_RunProgram_Windows_CommandLine_Shell_echo_out.txt",IfNotFound=Ignore)
+# Uncomment the following command to regenerate the expected results file.
+# RunProgram(CommandLine="echo Hello > ${WorkingDir}/ExpectedResults/Test_RunProgram_Windows_CommandLine_Shell_echo_out.txt")
+# Generate the output /q means no user interface
+RunProgram(CommandLine="echo Hello > ${WorkingDir}\Results\Test_RunProgram_Windows_CommandLine_Shell_echo_out.txt",CommandShell="cmd /c /q")
+CompareFiles(InputFile1="ExpectedResults/Test_RunProgram_Windows_CommandLine_Shell_echo_out.txt",InputFile2="Results/Test_RunProgram_Windows_CommandLine_Shell_echo_out.txt",IfDifferent=Warn)
