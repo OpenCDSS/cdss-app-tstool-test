@@ -1,4 +1,0 @@
-# Test comparing the same files, with one difference, and generate a warning
-# This should actually NOT generate a warning because AllowedDiff=1 is set
-StartLog(LogFile="Results/Test_CompareFiles_SameFiles_1Diff_WarnIfDiff=True.TSTool.log")
-CompareFiles(InputFile1="Data/C1.txt",InputFile2="Data/C2.txt",AllowedDiff="1",IfDifferent=Warn)
