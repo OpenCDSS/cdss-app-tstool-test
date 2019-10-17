@@ -1,0 +1,3 @@
+# Test comparing different files but do not generate a warning when the files are different
+StartLog(LogFile="Results/Test_CompareFiles_DifferentFiles_WarnIfDifferent_False.TSTool.log")
+CompareFiles(InputFile1="Data/A1.txt",InputFile2="Data/B1.txt")

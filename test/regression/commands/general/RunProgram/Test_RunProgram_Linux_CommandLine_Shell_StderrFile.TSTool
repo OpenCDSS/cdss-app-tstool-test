@@ -1,6 +1,7 @@
 # Test running an external program using a full command line
 # - run with a shell
 # - check Stderr
+#@os UNIX
 StartLog(LogFile="Results/Test_RunProgram_Linux_CommandLine_Shell_StderrFile.TSTool.log")
 RemoveFile(InputFile="Results/Test_RunProgram_Linux_CommandLine_Shell_StderrFile_out.txt",IfNotFound=Ignore)
 # Uncomment the following command to regenerate the expected results file.

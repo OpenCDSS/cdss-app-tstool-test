@@ -2,6 +2,7 @@
 # - run a script, which calls the test program
 # - set check the exit code
 # - exit the exit code because it is purposefully set to non-zero
+#@os UNIX
 StartLog(LogFile="Results/Test_RunProgram_Linux_Script_CommandLine_ExitCode.TSTool.log")
 RemoveFile(InputFile="Results/Test_RunProgram_Linux_Script_CommandLine_ExitCode_out.txt",IfNotFound=Ignore)
 # Generate the output

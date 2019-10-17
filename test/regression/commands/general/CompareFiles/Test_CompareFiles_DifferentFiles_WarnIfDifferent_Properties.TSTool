@@ -1,0 +1,5 @@
+# Test comparing different files and generate a warning when the files are different
+# - use properties for the filenames
+#@expectedStatus Warning
+StartLog(LogFile="Results/Test_CompareFiles_DifferentFiles_WarnIfDifferent_True.TSTool.log")
+CompareFiles(InputFile1="${WorkingDir}/Data/A1.txt",InputFile2="${WorkingDir}/Data/B1.txt",IfDifferent=Warn)
