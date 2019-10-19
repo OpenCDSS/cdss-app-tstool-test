@@ -1,0 +1,9 @@
+# Test setup...
+# - Currently just make sure it runs
+# - Put in a small number so the test does not slow down the automated tests
+# - TODO SAM 2015-02-14 Need to add some logic to test with a time property
+# - test specifying with properties
+StartLog(LogFile="Results/Test_Wait_ProgressIncrement_Properties.TSTool.log")
+SetProperty(PropertyName="Test_Wait",PropertyType=Double,PropertyValue="5")
+SetProperty(PropertyName="Test_Increment",PropertyType=Integer,PropertyValue="1")
+Wait(WaitTime="${Test_Wait}",ProgressIncrement="${Test_Increment}")

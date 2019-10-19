@@ -1,0 +1,22 @@
+# Test setting a processor property to a double, using math parameters
+# - specify the math arguments using properties
+StartLog(LogFile="Results/Test_SetProperty_Double_Math_Property.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetProperty_Double_Math_Property_out.txt",IfNotFound=Ignore)
+SetProperty(PropertyName="DoubleProp1",PropertyType=Double,PropertyValue="900913.0")
+SetProperty(PropertyName="DoubleAdd",PropertyType=Double,PropertyValue="10.0")
+SetProperty(PropertyName="DoubleProp1",PropertyType=Double,PropertyValue="${DoubleProp1}",Add="${DoubleAdd}")
+SetProperty(PropertyName="DoubleProp2",PropertyType=Double,PropertyValue="900913.0")
+SetProperty(PropertyName="DoubleSubtract",PropertyType=Double,PropertyValue="10.0")
+SetProperty(PropertyName="DoubleProp2",PropertyType=Double,PropertyValue="${DoubleProp2}",Subtract="${DoubleSubtract}")
+SetProperty(PropertyName="DoubleProp3",PropertyType=Double,PropertyValue="100")
+SetProperty(PropertyName="DoubleMultiply",PropertyType=Double,PropertyValue="2")
+SetProperty(PropertyName="DoubleProp3",PropertyType=Double,PropertyValue="${DoubleProp3}",Multiply=${DoubleMultiply})
+SetProperty(PropertyName="DoubleProp4",PropertyType=Double,PropertyValue="100")
+SetProperty(PropertyName="DoubleDivide",PropertyType=Double,PropertyValue="2")
+SetProperty(PropertyName="DoubleProp4",PropertyType=Double,PropertyValue="${DoubleProp4}",Divide=${DoubleDivide})
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetProperty_Double_Math_Property_out.txt",IncludeProperties="DoubleProp1,DoubleProp2,DoubleProp3,DoubleProp4",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetProperty_Double_Math_Property_out.txt",IncludeProperties="DoubleProp1,DoubleProp2,DoubleProp3,DoubleProp4",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetProperty_Double_Math_Property_out.txt",InputFile2="Results/Test_SetProperty_Double_Math_Property_out.txt",IfDifferent=Warn)
