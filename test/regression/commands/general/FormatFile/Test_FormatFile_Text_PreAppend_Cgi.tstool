@@ -1,0 +1,12 @@
+# Test formatting a file
+# - text file
+# - specify prepend file (no append file needed with CGI)
+# - CGI format
+StartLog(LogFile="Results/Test_FormatFile_Text_PreApp_Cgi.tstool.log")
+# Remove previous results
+RemoveFile(InputFile="Results/Test_FormatFile_Text_PreApp_Cgi_out.txt",IfNotFound=Ignore)
+# Uncomment the next line to regenerate expected results
+# FormatFile(InputFile="Data\text-example1.txt",PrependFile="Data\text-cgi-prepend.txt",OutputFile="ExpectedResults/Test_FormatFile_Text_PreApp_Cgi_out.txt")
+FormatFile(InputFile="Data\text-example1.txt",PrependFile="Data\text-cgi-prepend.txt",OutputFile="Results/Test_FormatFile_Text_PreApp_Cgi_out.txt")
+# Compare the results with expected results
+CompareFiles(InputFile1="ExpectedResults/Test_FormatFile_Text_PreApp_Cgi_out.txt",InputFile2="Results/Test_FormatFile_Text_PreApp_Cgi_out.txt",IfDifferent=Warn)

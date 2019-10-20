@@ -1,0 +1,12 @@
+# Test formatting a file
+# - text file
+# - auto-format
+# - HTML format
+StartLog(LogFile="Results/Test_FormatFile_Text_Auto_Html.tstool.log")
+# Remove previous results
+RemoveFile(InputFile="Results/Test_FormatFile_Text_Auto_Html_out.txt",IfNotFound=Ignore)
+# Uncomment the next line to regenerate expected results
+# FormatFile(InputFile="Data\text-example1.txt",AutoFormat=True,OutputType=Html,OutputFile="ExpectedResults/Test_FormatFile_Text_Auto_Html_out.html")
+FormatFile(InputFile="Data\text-example1.txt",AutoFormat=True,OutputType=Html,OutputFile="Results/Test_FormatFile_Text_Auto_Html_out.html")
+# Compare the results with expected results
+CompareFiles(InputFile1="ExpectedResults/Test_FormatFile_Text_Auto_Html_out.html",InputFile2="Results/Test_FormatFile_Text_Auto_Html_out.html",IfDifferent=Warn)
