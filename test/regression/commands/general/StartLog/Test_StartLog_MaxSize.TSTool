@@ -1,0 +1,8 @@
+# Test starting a new log file
+# - Specify the maximum log file size
+# - Use a small size so as to not adversely impact testing performance
+# - Have to visually check the file
+StartLog(LogFile="results/Test_StartLog_MaxSize.TSTool.log",MaxSize="5120")
+For(Name="Test_For",IteratorProperty="Count",SequenceStart="1",SequenceEnd="10000")
+Message(Message="Processing For loop iteration ${Count}")
+EndFor(Name="Test_For")

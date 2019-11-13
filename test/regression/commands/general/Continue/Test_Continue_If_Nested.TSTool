@@ -1,0 +1,36 @@
+StartLog(LogFile="Results/Test_Continue_If_Nested.TSTool.log")
+# Test Continue in nested For and If statements
+# - test by comparing output generated with only If and separately with Continue
+#@expectedStatus Warning
+# Remove results from previous run
+RemoveFile(InputFile="Results/Test_Continue_If_Nested_out1.txt",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_Continue_If_Nested_out2.txt",IfNotFound=Ignore)
+#
+# First generate the output using only If/EndIf blocks
+For(Name="Test_ForOdd1",IteratorProperty="OddNumber",SequenceStart="1",SequenceEnd="11",SequenceIncrement="2")
+If(Name="If_LittleOdd1",Condition="${OddNumber} <= 5")
+For(Name="Test_ForEven1",IteratorProperty="EvenNumber",SequenceStart="2",SequenceEnd="10",SequenceIncrement="2")
+If(Name="If_LittleEven1",Condition="${EvenNumber} <= 4")
+Message(Message="Odd number=${OddNumber} even number=${EvenNumber}")
+WritePropertiesToFile(OutputFile="Results/Test_Continue_If_Nested_out1.txt",IncludeProperties="OddNumber,EvenNumber",WriteMode=Append)
+EndIf(Name="If_LittleEven1")
+EndFor(Name="Test_ForEven1")
+EndIf(Name="If_LittleOdd1")
+EndFor(Name="Test_ForOdd1")
+#
+# Next generate the output using If/EndIf block and Continue to skip some cases
+For(Name="Test_ForOdd2",IteratorProperty="OddNumber",SequenceStart="1",SequenceEnd="11",SequenceIncrement="2")
+If(Name="If_LittleOdd2",Condition="${OddNumber} > 5")
+Continue()
+EndIf(Name="If_LittleOdd2")
+For(Name="Test_ForEven2",IteratorProperty="EvenNumber",SequenceStart="2",SequenceEnd="10",SequenceIncrement="2")
+If(Name="If_LittleEven2",Condition="${EvenNumber} > 4")
+Continue()
+EndIf(Name="If_LittleEven2")
+Message(Message="Odd number=${OddNumber} even number=${EvenNumber}")
+WritePropertiesToFile(OutputFile="Results/Test_Continue_If_Nested_out2.txt",IncludeProperties="OddNumber,EvenNumber",WriteMode=Append)
+EndFor(Name="Test_ForEven2")
+EndFor(Name="Test_ForOdd2")
+#
+# Compare the output files
+CompareFiles(InputFile1="Results/Test_Continue_If_Nested_out1.txt",InputFile2="Results/Test_Continue_If_Nested_out2.txt",IfDifferent=Warn)
