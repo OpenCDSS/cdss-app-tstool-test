@@ -1,0 +1,33 @@
+StartLog(LogFile="Results/Test_Break_If_Nested.TSTool.log",MaxSize="10000000")
+# Uncomment the next command to turn debug on if trouleshooting
+# SetDebugLevel(LogFileLevel=1)
+# Test Break in nested For and If statements
+# - test by comparing output generated with only If and separately with Break
+#@expectedStatus Warning
+# Remove results from previous run
+# - uncomment first line to regenerate expected results
+# - ALSO NEED TO uncomment another line below
+# RemoveFile(InputFile="ExpectedResults/Test_Break_If_Nested_out.txt",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_Break_If_Nested_out.txt",IfNotFound=Ignore)
+#
+# Generate the output using If/EndIf block and Break to skip some cases
+For(Name="Test_ForOdd",IteratorProperty="OddNumber",SequenceStart="1",SequenceEnd="11",SequenceIncrement="2")
+If(Name="If_LittleOdd",Condition="${OddNumber} > 5")
+Continue()
+EndIf(Name="If_LittleOdd")
+For(Name="Test_ForEven",IteratorProperty="EvenNumber",SequenceStart="2",SequenceEnd="10",SequenceIncrement="2")
+Message(Message="Odd number=${OddNumber} even number=${EvenNumber}")
+If(Name="If_LittleEven",Condition="${EvenNumber} > 4")
+Break()
+EndIf(Name="If_LittleEven")
+# Uncomment the following line to regenerate expected results
+# - ALSO NEED TO uncomment another line above
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_Break_If_Nested_out.txt",IncludeProperties="OddNumber,EvenNumber",WriteMode=Append)
+WritePropertiesToFile(OutputFile="Results/Test_Break_If_Nested_out.txt",IncludeProperties="OddNumber,EvenNumber",WriteMode=Append)
+EndFor(Name="Test_ForEven")
+EndFor(Name="Test_ForOdd")
+#
+# Compare the output files
+CompareFiles(InputFile1="ExpectedResults/Test_Break_If_Nested_out.txt",InputFile2="Results/Test_Break_If_Nested_out.txt",IfDifferent=Warn)
+# Make sure debug is turned off so it won't impact other command files in test suite.
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)

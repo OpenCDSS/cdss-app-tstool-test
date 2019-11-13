@@ -1,0 +1,12 @@
+OddNumber=1
+EvenNumber=2
+OddNumber=1
+EvenNumber=4
+OddNumber=3
+EvenNumber=2
+OddNumber=3
+EvenNumber=4
+OddNumber=5
+EvenNumber=2
+OddNumber=5
+EvenNumber=4
