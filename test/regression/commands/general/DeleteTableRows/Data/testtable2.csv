@@ -1,0 +1,9 @@
+# Simple table for testing
+# - this version includes empty table cells
+"string1","double1","integer1"
+"String1",1.0,1
+"String2",2.0,2
+"String3",3.0,3
+,,
+"String4",,4
+"String5",5.0,
