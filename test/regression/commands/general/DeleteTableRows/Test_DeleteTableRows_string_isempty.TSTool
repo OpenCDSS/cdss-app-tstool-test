@@ -1,0 +1,11 @@
+# Test deleting table rows from a table
+# - delete rows where a string value is empty
+StartLog(LogFile="Results/Test_DeleteTableRows_string_isempty.TSTool.log")
+RemoveFile(InputFile="Results/Test_DeleteTableRows_string_isempty_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable2.csv")
+DeleteTableRows(TableID="Table1",Condition="String1 isempty")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_DeleteTableRows_string_isempty_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_DeleteTableRows_string_isempty_out.csv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_DeleteTableRows_string_isempty_out.csv",InputFile2="Results/Test_DeleteTableRows_string_isempty_out.csv",IfDifferent=Warn)
