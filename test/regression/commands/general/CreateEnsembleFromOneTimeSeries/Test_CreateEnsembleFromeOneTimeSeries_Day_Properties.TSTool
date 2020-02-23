@@ -9,7 +9,7 @@ SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="2
 SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2010-01-01")
 SetProperty(PropertyName="TestBasin",PropertyType=String,PropertyValue="Basin1")
 NewTimeSeries(Alias="${TestTSID}",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2010-05-13",MissingValue=NaN,InitialFunction="DateYYYYMMDD")
-CreateEnsembleFromOneTimeSeries(TSID="${TestTSID}",TraceLength=1Year,InputStart=${TestInputStart},InputEnd=${TestInputEnd},EnsembleID="${TestEnsembleID}",EnsembleName="${TestEnsembleName}",Alias="${TestBasin}_%z",ReferenceDate="2000-01-01",ShiftDataHow=ShiftToReference)
+CreateEnsembleFromOneTimeSeries(TSID="${TestTSID}",InputStart=${TestInputStart},InputEnd=${TestInputEnd},EnsembleID="${TestEnsembleID}",EnsembleName="${TestEnsembleName}",Alias="${TestBasin}_%z",TraceLength=1Year,ReferenceDate="2000-01-01",ShiftDataHow=ShiftToReference)
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(TSList=EnsembleID,EnsembleID="${TestEnsembleID}",OutputFile="ExpectedResults/Test_CreateEnsembleFromOneTimeSeries_Day_Properties_out.dv")
 WriteDateValue(TSList=EnsembleID,EnsembleID="${TestEnsembleID}",OutputFile="Results/Test_CreateEnsembleFromOneTimeSeries_Day_Properties_out.dv")
