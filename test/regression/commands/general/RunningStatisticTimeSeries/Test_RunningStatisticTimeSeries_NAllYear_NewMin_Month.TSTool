@@ -1,0 +1,11 @@
+# Test the NAllYear running statistic
+# - Month interval
+# - Statistic=NewMin, with missing data
+StartLog(LogFile="Results/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Month.tstool.log")
+RemoveFile(InputFile="Results/Test_RunningStatistic_NAllYear_NewMin_Month_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1_month",NewTSID="ts1..Streamflow.Month",Description="test data 1",SetStart="2000-01",SetEnd="2004-12",PatternValues="90,80,70,60,50,2,1,30,25,20,5,6,9,,18,9,15,5,8,,,9,5,3,1,,15,8,1,5,3,1,2,3,2,1")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_month",Statistic=NewMin,SampleMethod=NAllYear,Alias="ts1_month_newmin")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_month_newmin",OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Month_out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_month_newmin",OutputFile="Results/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Month_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Month_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Month_out.dv",IfDifferent=Warn)

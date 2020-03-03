@@ -1,0 +1,14 @@
+# Test the NAllYear running statistic
+# - Day interval
+# - Statistic=NewMin, with missing data
+StartLog(LogFile="Results/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Day.tstool.log")
+RemoveFile(InputFile="Results/Test_RunningStatistic_NAllYear_NewMin_Day_out.dv",IfNotFound=Ignore)
+# Create sample data that includes middle year that does not change values and some missing data.
+NewTimeSeries(Alias="ts1_day",NewTSID="ts1..Streamflow.Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2004-12-31",MissingValue=NaN,InitialFunction="DateYYYYMMDD")
+Scale(ScaleValue=.5,AnalysisStart="2002-01-01",AnalysisEnd="2002-12-31")
+ReplaceValue(MinValue=0,MaxValue=99999999,Action=SetMissing,SetStart="2002-02-01",SetEnd="2002-02-28")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_day",Statistic=NewMin,SampleMethod=NAllYear,Alias="ts1_day_newmin")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_day_newmin",OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Day_out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_day_newmin",OutputFile="Results/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Day_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Day_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_NAllYear_NewMin_Day_out.dv",IfDifferent=Warn)
