@@ -1,4 +1,0 @@
-# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
-ReadTimeSeries(TSID="06754000.DWR.Streamflow.Month~HydroBase",Alias="%L-%T",IfNotFound=Warn)
-RunningStatisticTimeSeries(Statistic=Rank,SortOrder=HighToLow,SampleMethod=AllYears,Alias="%L-%T")
-TimeSeriesToTable(TableID="July",DateTimeColumn="Date",ValueColumn="%A",DataRow=1,OutputWindowStart="07",OutputWindowEnd="07",IfTableNotFound="Create")
