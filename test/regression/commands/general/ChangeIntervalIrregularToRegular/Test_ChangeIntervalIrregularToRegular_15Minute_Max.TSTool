@@ -1,0 +1,12 @@
+# Irregular interval to regular
+# - output is 15Minute
+# - Max statistic
+#
+StartLog(LogFile="Results\Test_ChangeIntervalIrregularToInterval_15Minute_Max.TSTool.log")
+RemoveFile(InputFile="Results\Test_ChangeIntervalIrregularToInterval_15Minute_Max.dv",IfNotFound=Ignore)
+ReadDateValue(InputFile="Data/irregular-second.dv",Alias="Input")
+ChangeIntervalIrregularToRegular(Statistic=Max,Flag="c",Alias="Output",NewInterval=15Minute)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeIntervalIrregularToInterval_15Minute_Max.dv",TSList=AllMatchingTSID,TSID="*")
+WriteDateValue(TSList=AllMatchingTSID,TSID="Output",OutputFile="Results\Test_ChangeIntervalIrregularToInterval_15Minute_Max.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeIntervalIrregularToInterval_15Minute_Max.dv",InputFile2="Results\Test_ChangeIntervalIrregularToInterval_15Minute_Max.dv",IfDifferent=Warn)

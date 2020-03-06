@@ -1,0 +1,32 @@
+#
+# Irregular interval data for second precision times
+# - can use for conversion to 15Minute
+#
+Delimiter   = " "
+NumTS       = 1
+TSID        = "TS1.flow..IrregSecond"
+Alias       = "Input"
+Units       = "CFS"
+MissingVal  = NaN
+Start       = 2005-01-05 00:00:00
+End         = 2005-01-06 02:05:00
+#
+#EndHeader
+Date Time "Input, CFS"
+# Interval ending 00:00:15
+2005-01-05 23:01:15 10.0000
+2005-01-05 23:02:00 20.0000
+2005-01-05 23:05:15 30.0000
+# Skip 15 minutes
+2005-01-05 23:31:00 40.0000
+2005-01-05 23:40:30 50.0000
+2005-01-05 23:44:00 60.0000
+# End of day to check handling 0-hour
+2005-01-05 23:50:00 70.0000
+2005-01-05 23:55:10 80.0000
+# Next day to check handling 0-hour
+2005-01-06 23:00:00 20.0000
+2005-01-06 23:00:00 45.0000
+2005-01-06 23:00:00 90.0000
+# Missing values after this and then another value
+2005-01-06 02:05:00 45.0000
