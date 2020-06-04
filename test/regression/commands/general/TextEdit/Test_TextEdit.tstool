@@ -1,0 +1,13 @@
+# Test editing text in a file
+# - replace a couple of literal patterns
+StartLog(LogFile="Results/Test_TextEdit.TSTool.log")
+RemoveFile(InputFile="Results\Test_TextEdit_out.txt",IfNotFound=Ignore)
+# Uncomment the following three commands to regenerate expected results.
+# TextEdit(InputFile="Data/file1.txt",SearchFor="line1",ReplaceWith="LINEA",OutputFile="ExpectedResults/Test_TextEdit_out.txt")
+# TextEdit(InputFile="ExpectedResults/Test_TextEdit_out.txt",SearchFor="line",ReplaceWith="xxxx",OutputFile="ExpectedResults/Test_TextEdit_out.txt")
+# TextEdit(InputFile="ExpectedResults/Test_TextEdit_out.txt",SearchFor="xxxx7",ReplaceWith="\$\{SomeProperty}",OutputFile="ExpectedResults/Test_TextEdit_out.txt")
+# Run the command to create output
+TextEdit(InputFile="Data/file1.txt",SearchFor="line1",ReplaceWith="LINEA",OutputFile="Results/Test_TextEdit_out.txt")
+TextEdit(InputFile="Results/Test_TextEdit_out.txt",SearchFor="line",ReplaceWith="xxxx",OutputFile="Results/Test_TextEdit_out.txt")
+TextEdit(InputFile="Results/Test_TextEdit_out.txt",SearchFor="xxxx7",ReplaceWith="\$\{SomeProperty}",OutputFile="Results/Test_TextEdit_out.txt")
+CompareFiles(InputFile1="ExpectedResults\Test_TextEdit_out.txt",InputFile2="Results\Test_TextEdit_out.txt",IfDifferent=Fail)
