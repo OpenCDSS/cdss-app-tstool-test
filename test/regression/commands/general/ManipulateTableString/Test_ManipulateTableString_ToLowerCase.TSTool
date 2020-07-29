@@ -1,0 +1,11 @@
+# Test converting strings to lowercase and add new column
+StartLog(LogFile="Results/Test_ManipulateTableString_Columns_ToLowerCase.TSTool.log")
+RemoveFile(InputFile="Results/Test_ManipulateTableString_Columns_ToLowerCase_out.dv",IfNotFound=Ignore)
+# Generate some table data but converting time series to table
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata7.csv")
+# Manipulate strings in the table
+ManipulateTableString(TableID="Table1",InputColumn1="String1",Operator="ToLowerCase",OutputColumn="String3")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_ManipulateTableString_Columns_ToLowerCase_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_ManipulateTableString_Columns_ToLowerCase_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_ManipulateTableString_Columns_ToLowerCase_out.csv",InputFile2="Results/Test_ManipulateTableString_Columns_ToLowerCase_out.csv",IfDifferent=Warn)

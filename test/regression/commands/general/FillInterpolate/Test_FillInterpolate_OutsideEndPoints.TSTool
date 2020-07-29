@@ -1,0 +1,12 @@
+# Testing filling with interpolation for a specified period and flag with X
+# - the end points are in a gap so values on either side must be used
+StartLog(LogFile="Results/Test_FillInterpolate_OutsideEndPoints.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillInterpolate_OutsideEndPoints_out.dv",IfNotFound=Ignore)
+# The ts0_day time series is used for visual comparison but is not written to the results.
+NewPatternTimeSeries(Alias="ts0_day",NewTSID="ts0...Day",Description="test data 0 - original data",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,2,3,5")
+NewPatternTimeSeries(Alias="ts1_day",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,2,3,5")
+FillInterpolate(TSList=AllMatchingTSID,TSID="ts1_day",MaxIntervals=0,FillStart="2000-01-10",FillEnd="2003-04-28",FillFlag="X")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_day",OutputFile="ExpectedResults/Test_FillInterpolate_OutsideEndPoints_out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_day",OutputFile="Results/Test_FillInterpolate_OutsideEndPoints_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_FillInterpolate_OutsideEndPoints_out.dv",InputFile2="Results/Test_FillInterpolate_OutsideEndPoints_out.dv",IfDifferent=Warn)

@@ -5,6 +5,7 @@ RemoveFile(InputFile="Results/Test_ManipulateTableString_Columns_ToInteger_out.d
 ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata2.csv")
 # Manipulate strings in the table
 ManipulateTableString(TableID="Table1",InputColumn1="IntegerString",Operator="ToInteger",OutputColumn="Integer")
+ManipulateTableString(TableID="Table1",InputColumn1="DoubleString",Operator="ToInteger",OutputColumn="DoubleAsInteger")
 # Uncomment the following command to regenerate expected results.
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_ManipulateTableString_Columns_ToInteger_out.csv")
 WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_ManipulateTableString_Columns_ToInteger_out.csv")
