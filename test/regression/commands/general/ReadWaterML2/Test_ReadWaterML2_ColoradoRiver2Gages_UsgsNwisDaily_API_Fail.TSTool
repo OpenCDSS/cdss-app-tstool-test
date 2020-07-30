@@ -10,6 +10,6 @@ RemoveFile(InputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDail
 # WebGet(URI="https://waterservices.usgs.gov/nwis/dv/?format=waterml,2.0&indent=on&sites=06752000&startDT=2000-01-01&endDT=2017-07-05&siteStatus=all",LocalFile="Data/junk.waterml")
 ReadWaterML2(InputFile="Data\ColoradoRiver2Gages_UsgsNwisDaily.waterml",ReadMethod=API,Alias="%L.%T",Interval="Day")
 # Uncomment the following command to regenerate the expected results file.
-WriteDateValue(OutputFile="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_ParseDOM_out.dv",Precision=0)
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_ParseDOM_out.dv",Precision=0)
 WriteDateValue(OutputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_ParseDOM_out.dv",Precision=0)
 CompareFiles(InputFile1="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_ParseDOM_out.dv",InputFile2="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisDaily_ParseDOM_out.dv",IfDifferent=Warn)
