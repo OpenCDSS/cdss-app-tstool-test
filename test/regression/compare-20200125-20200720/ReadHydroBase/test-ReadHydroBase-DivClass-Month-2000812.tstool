@@ -1,13 +1,13 @@
 # Compare databases for DivClass
 # - WDID 2000812
-# - monthly data
+# - monthly: data
 # - use full period available in both databases
 StartLog(LogFile="Results/test-ReadHydroBase-DivClass-Month-2000812.TSTool.log")
-ReadHydroBase(DataStore="HydroBase20200125",DataType="DivClass-S:1 F: U:1 T: G:",Interval="Month",Where1="District;=;20",Where2="Structure ID;=;812",Alias="%L-%T-Month-20200125",InputStart="1949-11",InputEnd="2018-10")
-ReadHydroBase(DataStore="HydroBase20200720",DataType="DivClass-S:1 F: U:1 T: G:",Interval="Month",Where1="District;=;20",Where2="Structure ID;=;812",Alias="%L-%T-Month-20200720",InputStart="1949-11",InputEnd="2018-10")
+ReadHydroBase(DataStore="HydroBase20200125",DataType="DivClass",WaterClass="S:1 F: U:1 T: G:",Interval="Month",Where1="District;=;20",Where2="Structure WDID;matches;2000812",Alias="%L-%T-Month-20200125",InputStart="1949-11",InputEnd="2018-10")
+ReadHydroBase(DataStore="HydroBase20200720",DataType="DivClass",WaterClass="S:1 F: U:1 T: G:",Interval="Month",Where1="District;=;20",Where2="Structure WDID;matches;2000812",Alias="%L-%T-Month-20200720",InputStart="1949-11",InputEnd="2018-10")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/test-ReadHydroBase-DivClass-Month-2000812_out.dv")
-WriteDateValue(TSList=AllMatchingTSID,TSID="2000812-DivClass-S:1 F: U:1 T: G:-S:1 F: U:1 T: G:-Month-20200125",OutputFile="results/test-ReadHydroBase-DivClass-Month-2000812-20200125-out.dv")
-WriteDateValue(TSList=AllMatchingTSID,TSID="2000812-DivClass-S:1 F: U:1 T: G:-S:2 F: U:1 T: G:-Month-20200720",OutputFile="results/test-ReadHydroBase-DivClass-Month-2000812-20200720-out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="2000812-DivClass-S:1 F: U:1 T: G:-Month-20200125",OutputFile="results/test-ReadHydroBase-DivClass-Month-2000812-20200125-out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="2000812-DivClass-S:1 F: U:1 T: G:-Month-20200720",OutputFile="results/test-ReadHydroBase-DivClass-Month-2000812-20200720-out.dv")
 CompareFiles(InputFile1="results/test-ReadHydroBase-DivClass-Month-2000812-20200125-out.dv",InputFile2="results/test-ReadHydroBase-DivClass-Month-2000812-20200720-out.dv",IfDifferent=Warn)
-CompareTimeSeries(TSID1="2000812-DivClass-S:1 F: U:1 T: G:-S:1 F: U:1 T: G:-Month-20200125",TSID2="2000812-DivClass-S:1 F: U:1 T: G:-S:2 F: U:1 T: G:-Month-20200720",Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="2000812-DivClass-S:1 F: U:1 T: G:-Month-20200125",TSID2="2000812-DivClass-S:1 F: U:1 T: G:-Month-20200720",Tolerance=".01",CompareFlags="True",WarnIfDifferent=True)
