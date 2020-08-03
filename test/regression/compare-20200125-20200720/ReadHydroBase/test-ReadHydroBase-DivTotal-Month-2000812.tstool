@@ -5,8 +5,7 @@
 StartLog(LogFile="Results/test-ReadHydroBase-DivTotal-Month-2000812.TSTool.log")
 ReadHydroBase(DataStore="HydroBase20200125",DataType="DivTotal",Interval="Month",Where1="District;=;20",Where2="Structure ID;=;812",Alias="%L-%T-Month-20200125",InputStart="1949-11",InputEnd="2018-10")
 ReadHydroBase(DataStore="HydroBase20200720",DataType="DivTotal",Interval="Month",Where1="District;=;20",Where2="Structure ID;=;812",Alias="%L-%T-Month-20200720",InputStart="1949-11",InputEnd="2018-10")
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults/test-ReadHydroBase-DivTotal-Month-2000812_out.dv")
+# Write the results and compare
 WriteDateValue(TSList=AllMatchingTSID,TSID="2000812-DivTotal-Month-20200125",OutputFile="results/test-ReadHydroBase-DivTotal-Month-2000812-20200125-out.dv")
 WriteDateValue(TSList=AllMatchingTSID,TSID="2000812-DivTotal-Month-20200720",OutputFile="results/test-ReadHydroBase-DivTotal-Month-2000812-20200720-out.dv")
 CompareFiles(InputFile1="results/test-ReadHydroBase-DivTotal-Month-2000812-20200125-out.dv",InputFile2="results/test-ReadHydroBase-DivTotal-Month-2000812-20200720-out.dv",IfDifferent=Warn)
