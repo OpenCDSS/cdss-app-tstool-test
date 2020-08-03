@@ -1,0 +1,11 @@
+# Test reading a StreamflowMin time series for specific structure
+# - station 06754000
+# - monthly data
+StartLog(LogFile="results/test-ReadHydroBase-StreamflowMin-Month.TSTool.log")
+ReadHydroBase(DataStore="HydroBase20200125",DataType="StreamflowMin",Interval="Month",Where1="Station ID;Matches;06754000",Alias="%L-%T-Month-20200125",InputStart="1912-01",InputEnd="2014-12")
+ReadHydroBase(DataStore="HydroBase20200720",DataType="StreamflowMin",Interval="Month",Where1="Station ID;Matches;06754000",Alias="%L-%T-Month-20200720",InputStart="1912-01",InputEnd="2014-12")
+# Write the time series files to compare
+WriteDateValue(TSList=AllMatchingTSID,TSID="06754000-StreamflowMin-Month-20200125",OutputFile="results/test-ReadHydroBase-StreamflowMin-Month-20200125-out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="06754000-StreamflowMin-Month-20200720",OutputFile="results/test-ReadHydroBase-StreamflowMin-Month-20200720-out.dv")
+# Two differences are the datastore in two places
+CompareFiles(InputFile1="results/test-ReadHydroBase-StreamflowMin-Month-20200125-out.dv",InputFile2="results/Test-ReadHydroBase-StreamflowMin-Month-20200720-out.dv",AllowedDiff="2",IfDifferent=Warn)

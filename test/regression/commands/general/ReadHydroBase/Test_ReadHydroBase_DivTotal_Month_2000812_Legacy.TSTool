@@ -1,4 +1,4 @@
-# Test reading time series from HydroBase using input filters
+# Test reading DivTotal time series from HydroBase using input filters
 # This is a legacy command because the operator "Equals" has been changed to "=" in newer code
 #@readOnly
 StartLog(LogFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812_Legacy.TSTool.log")
