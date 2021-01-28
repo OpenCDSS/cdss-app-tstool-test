@@ -1,0 +1,25 @@
+# Test sending an email
+# - use Java API
+# - use Google SMTP
+# - use mail password file to specify the email address for SMTP server
+# TODO smalers 2021-01-27 some commands below don't make sense currently
+# such as how to create an output file to know that an email was sent.
+# It is a bigger effort to create a receiving application, for example to post the email on a public website
+# that can then be retrieved with WebGet command or similar.
+StartLog(LogFile="Results/Test-SendEmailMessage-Java-GoogleSMTP-MailPass.TSTool.log")
+#
+# Currently no local output file.
+#RemoveFile(InputFile="Results/Test_Test-SendEmailMessage-Java-GoogleSMTP-MailPass_out.txt",IfNotFound=Ignore)
+#
+# Send the email.
+SendEmailMessage(From="info@openwaterfoundation.org",To="info@openwaterfoundation.org",Subject="Test-SendEmailMessage-Java-GoogleSMTP-MailPass",Message="Test-SendEmailMessage-Java-GoogleSMTP-MailPass message body line1.
+Line2.
+Line3
+Last line.",MessageFile="Data/message1.txt",AttachmentFiles="Data\attachment1.txt")
+#
+# Currently no local output file.
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillConstant_Day_FillFlag_out.dv")
+#WriteDateValue(OutputFile="Results/Test_FillConstant_Day_FillFlag_out.dv")
+#CompareFiles(InputFile1="ExpectedResults/Test-SendEmailMessage-Java-GoogleSMTP-MailPass.txt",InputFile2="Results/Test-SendEmailMessage-Java-GoogleSMTP-MailPass.txt",IfDifferent=Warn)
+#
