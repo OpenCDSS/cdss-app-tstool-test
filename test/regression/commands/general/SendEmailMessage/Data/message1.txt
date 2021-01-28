@@ -1,0 +1,4 @@
+This is an example message as a text file.
+Line2.
+Line3.
+Last line.
