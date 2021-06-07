@@ -1,0 +1,8 @@
+# Create a simple time series data file with a few time series, used with TSList iteration tests.
+# Annual time series don't require much disk space.
+NewTimeSeries(Alias="ts100",NewTSID="100.test.elev.Year",Description="Test location 100",SetStart="2000",SetEnd="2020",Units="m",MissingValue=NaN,InitialValue=100)
+NewTimeSeries(Alias="ts200",NewTSID="200.test.elev.Year",Description="Test location 200",SetStart="2000",SetEnd="2020",Units="m",MissingValue=NaN,InitialValue=200)
+NewTimeSeries(Alias="ts210",NewTSID="210.test.elev.Year",Description="Test location 210",SetStart="2000",SetEnd="2020",Units="m",MissingValue=NaN,InitialValue=210)
+NewTimeSeries(Alias="ts300",NewTSID="300.test.elev.Year",Description="Test location 200",SetStart="2000",SetEnd="2020",Units="m",MissingValue=NaN,InitialValue=300)
+NewTimeSeries(Alias="ts400",NewTSID="400.test.elev.Year",Description="Test location 400",SetStart="2000",SetEnd="2020",Units="m",MissingValue=NaN,InitialValue=400)
+WriteDateValue(OutputFile="test-year-data.dv")
