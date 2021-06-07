@@ -1,0 +1,12 @@
+# Test to read a table from a SQLite database
+# ReadTableFromDataStore(DataStore="nsuserws-test",DataStoreTable="users",TableID="users")
+SetDebugLevel(LogFileLevel=10)
+NewSQLiteDatabase(DataStore="test",DatabaseFile="Memory")
+RunSql(DataStore="test",Sql="CREATE TABLE IF NOT EXISTS table1 id integer PRIMARY KEY, name text NOT NULL")
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+#
+# Work with a database file
+SetDebugLevel(LogFileLevel=10)
+NewSQLiteDatabase(DataStore="test2",DatabaseFile="test-sqlite.db")
+RunSql(DataStore="test2",Sql="CREATE TABLE IF NOT EXISTS table1 (id integer PRIMARY KEY, name text NOT NULL);")
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)

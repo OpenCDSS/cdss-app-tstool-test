@@ -1,0 +1,4 @@
+# Test creating data dictionary for SQLite database
+# - disable because a full test has not been implemented
+#@enabled false
+CreateDataStoreDataDictionary(DataStore="nsuserws-test",OutputFile="Results/Test_CreateDataStoreDataDictionary_SQLite_out.html")
