@@ -1,0 +1,5 @@
+StartLog(LogFile="Results/test-Comment-require-hydrobase-version-fail.tstool.log")
+# Test that HydroBase application is valid
+# - use an old version
+# - this should pass
+#@require datastore HydroBase >= 20000102
