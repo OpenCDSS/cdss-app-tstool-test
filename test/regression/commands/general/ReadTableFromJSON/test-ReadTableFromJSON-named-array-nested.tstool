@@ -1,0 +1,12 @@
+# Test reading nested arrays from JSON file:
+# - named array
+# - specify the array name
+# - append the array results
+StartLog(LogFile="Results/test-ReadTableFromJSON-named-array-append.TSTool.log")
+RemoveFile(InputFile="Results/test-ReadTableFromJSON-named-array-append-out.csv",IfNotFound=Ignore)
+ReadTableFromJSON(TableID="Table1",InputFile="Data/named-array-nested.json",ArrayName="data",AppendArrays=True,BooleanColumns="string_bool",DateTimeColumns="string_datetime",DoubleColumns="string_double",IntegerColumns="string_int")
+# Uncomment the following to regenerate expected results
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/test-ReadTableFromJSON-named-array-append-out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/test-ReadTableFromJSON-named-array-append-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ReadTableFromJSON-named-array-append-out.csv",InputFile2="Results/test-ReadTableFromJSON-named-array-append-out.csv",IfDifferent=Warn)

@@ -1,0 +1,10 @@
+# Test reading a JSON file using default parameters:
+# - top-level data array
+StartLog(LogFile="Results/test-ReadTableFromJSON-toplevel.TSTool.log")
+RemoveFile(InputFile="Results/test-ReadTableFromJSON-toplevel-out.csv",IfNotFound=Ignore)
+ReadTableFromJSON(TableID="Table1",InputFile="Data/toplevel-array.json",BooleanColumns="string_bool",DateTimeColumns="string_datetime",DoubleColumns="string_double",IntegerColumns="string_int")
+# Uncomment the following to regenerate expected results
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/test-ReadTableFromJSON-toplevel-out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/test-ReadTableFromJSON-toplevel-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ReadTableFromJSON-toplevel-out.csv",InputFile2="Results/test-ReadTableFromJSON-toplevel-out.csv",IfDifferent=Warn)

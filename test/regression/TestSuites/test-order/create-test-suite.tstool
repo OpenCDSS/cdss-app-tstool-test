@@ -1,0 +1,9 @@
+StartLog(LogFile="results/create-test-suite.tstool.log")
+#
+# Create the regression test runner for the
+# TSTool/test/regression/TestSuites/test-order files.
+#
+# Generate RunCommands() commands and append to the commands from above.
+# Only command files that start with test- are included in the output.
+#
+CreateRegressionTestCommandFile(SearchFolder=".",OutputFile="results/create-test-suite-out.tstool",FilenamePattern="test*.tstool",Append=False,TestResultsTableID="TestResults")
