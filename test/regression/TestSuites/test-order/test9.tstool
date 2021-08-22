@@ -1,0 +1,5 @@
+# Ninth test based on alphabetical sort.
+# - use a bad order identifier
+#@id test9
+#@order after test99
+Message(Message="This is test9, which will trigger an order error.")

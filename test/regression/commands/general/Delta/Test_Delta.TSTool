@@ -1,8 +1,8 @@
 # Test computing the delta with data that go up and down (no reset)
 StartLog(LogFile="Results/Test_Delta.TSTool.log")
 RemoveFile(InputFile="Results/Test_Delta_out.dv",IfNotFound=Ignore)
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,4,7,,10,,,,11,13,15")
-TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Day",Description="test data 2",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="2,3,4,5,8,15,21,,,,31,33,35")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,4,7,,10,,,,11,13,15")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2...Day",Description="test data 2",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="2,3,4,5,8,15,21,,,,31,33,35")
 Delta(Alias="%L-delta")
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_Delta_out.dv")
