@@ -1,9 +1,0 @@
-# Test reading a delimited file using default parameters.
-StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_1_out.csv",IfNotFound=Ignore)
-ReadTableFromDelimitedFile(TableID="KNN_Aspinall",InputFile="Data\flow_sequence_dataset_1.csv")
-# Generate the results.
-WriteTableToDelimitedFile(TableID="KNN_Aspinall",OutputFile="Results\Test_ReadTableFromDelimitedFile_1_out.csv")
-# Do regression comparison with the original input (possible because strings
-# and integers with no formatting issues).
-CompareFiles(InputFile1="Data\flow_sequence_dataset_1.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_1_out.csv",IfDifferent=Warn)

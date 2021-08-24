@@ -1,0 +1,17 @@
+# Test converting a multi-column data table to time series
+# - Irregular day precision time series
+# - Two time series are included
+# - Process data flags from table
+# - Deal with duplicate dates
+StartLog(LogFile="Results/Test_TableToTimeSeries_MultiColumn_IrregularDay_Flag_Duplicates.TSTool.log")
+RemoveFile(InputFile="Results\Test_TableToTimeSeries_MultiColumn_IrregularDay_Flag_Duplicates_out.dv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="MultiColumnData",InputFile="Data\multiple-column-flags-duplicates.csv")
+# Create time series using each value of HandleDuplicatesHow parameter
+TableToTimeSeries(TableID="MultiColumnData",DateTimeColumn="Date",LocationID="ts1_Add,ts2_Add",ValueColumn="Streamflow1,Streamflow2",FlagColumn="Flag1,Flag2",DataSource="USGS",DataType="Streamflow",Interval=IRREGULAR,Units="cfs",HandleDuplicatesHow=Add,Alias="%L-%T")
+TableToTimeSeries(TableID="MultiColumnData",DateTimeColumn="Date",LocationID="ts1_UseFirstNonmissing,ts2_UseFirstNonmissing",ValueColumn="Streamflow1,Streamflow2",FlagColumn="Flag1,Flag2",DataSource="USGS",DataType="Streamflow",Interval=IRREGULAR,Units="cfs",HandleDuplicatesHow=UseFirstNonmissing,Alias="%L-%T")
+TableToTimeSeries(TableID="MultiColumnData",DateTimeColumn="Date",LocationID="ts1_UseLast,ts2_UseLast",ValueColumn="Streamflow1,Streamflow2",FlagColumn="Flag1,Flag2",DataSource="USGS",DataType="Streamflow",Interval=IRREGULAR,Units="cfs",HandleDuplicatesHow=UseLast,Alias="%L-%T")
+TableToTimeSeries(TableID="MultiColumnData",DateTimeColumn="Date",LocationID="ts1_UseLastNonmissing,ts2_UseLastNonmissing",ValueColumn="Streamflow1,Streamflow2",FlagColumn="Flag1,Flag2",DataSource="USGS",DataType="Streamflow",Interval=IRREGULAR,Units="cfs",HandleDuplicatesHow=UseLastNonmissing,Alias="%L-%T")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_TableToTimeSeries_MultiColumn_IrregularDay_Flag_Duplicates_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_TableToTimeSeries_MultiColumn_IrregularDay_Flag_Duplicates_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_TableToTimeSeries_MultiColumn_IrregularDay_Flag_Duplicates_out.dv",InputFile2="Results\Test_TableToTimeSeries_MultiColumn_IrregularDay_Flag_Duplicates_out.dv",IfDifferent=Warn)

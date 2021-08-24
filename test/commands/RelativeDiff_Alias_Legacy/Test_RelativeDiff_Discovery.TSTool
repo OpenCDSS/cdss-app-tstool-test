@@ -1,0 +1,10 @@
+# Test that TSIDs are generated during discovery (editing)
+# Editing the command file should show no warnings/failures
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+StartLog(LogFile="Results/Test_RelativeDiff_Discovery.TSTool.log")
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",Units="MM",PatternValues="1,2,4,7,15,8,5,2,0.5,2,3,2")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Month",Description="test data 2",SetStart="2000-01",SetEnd="2004-05",Units="MM",PatternValues="2,5,6,3,30,0,5,2,1,2,1,2.5")
+TS tsout = RelativeDiff(TSID1="ts1",TSID2="ts2",Divisor=DivideByTS1)
+# Editing the following should list output from the above
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="tsout",CheckCriteria="Missing")

@@ -1,0 +1,26 @@
+# Test handle missing input works in ChangeInterval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+#
+StartLog(LogFile="Results\Test_ChangeInterval_HandleMissingInput.TSTool.log")
+RemoveFile(InputFile="Results\Test_ChangeInterval_HandleMissingInput.dv",IfNotFound=Ignore)
+#
+TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.6Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
+# To longer interval
+TS Changed_ACCM-ACCM_Day = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM)
+TS Changed_ACCM-ACCM_Repeat_Day = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleMissingInputHow=Repeat)
+TS Changed_ACCM-ACCM_ToZero_Day = ChangeInterval(TSID="Original",NewInterval=Day,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleMissingInputHow=SetToZero)
+# To shorter interval
+TS Changed_ACCM-ACCM_2Hour = ChangeInterval(TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM)
+TS Changed_ACCM-ACCM_Repeat_2Hour = ChangeInterval(TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleMissingInputHow=Repeat)
+TS Changed_ACCM-ACCM_ToZero_2Hour = ChangeInterval(TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM,HandleMissingInputHow=SetToZero)
+Free(TSList=AllMatchingTSID,TSID="Original")
+#
+# Uncomment the following command to regenerate the expected results file.
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_HandleMissingInput_Day.dv",TSList=AllMatchingTSID,TSID="*_Day")
+#WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_HandleMissingInput_2Hour.dv",TSList=AllMatchingTSID,TSID="*_2Hour")
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_HandleMissingInput_Day.dv",TSList=AllMatchingTSID,TSID="*_Day")
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_HandleMissingInput_2Hour.dv",TSList=AllMatchingTSID,TSID="*_2Hour")
+#
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_HandleMissingInput_Day.dv",InputFile2="Results\Test_ChangeInterval_HandleMissingInput_Day.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_HandleMissingInput_2Hour.dv",InputFile2="Results\Test_ChangeInterval_HandleMissingInput_2Hour.dv",WarnIfDifferent=True)

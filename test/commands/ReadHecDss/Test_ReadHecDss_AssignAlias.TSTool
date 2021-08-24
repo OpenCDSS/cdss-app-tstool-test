@@ -1,0 +1,11 @@
+# Test reading the HEC-DSS sample data file and assign an alias
+# - copy the DSS file so changes won't be saved in the original
+#@os Windows
+StartLog(LogFile="Results/Test_ReadHecDss_AssignAlias.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadHecDss_AssignAlias_out.dv",IfNotFound=Ignore)
+CopyFile(InputFile="Data\sample.dss",OutputFile="Results\sample.dss")
+ReadHecDss(InputFile="Results\sample.dss",B="OAK*",Alias="%T")
+# Uncomment the following command to recreate the expected results
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadHecDss_AssignAlias_out.dv",Precision=2,MissingValue=NaN,TSList=AllMatchingTSID,TSID="*1Hour*")
+WriteDateValue(OutputFile="Results\Test_ReadHecDss_AssignAlias_out.dv",Precision=2,MissingValue=NaN,TSList=AllMatchingTSID,TSID="*1Hour*")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadHecDss_AssignAlias_out.dv",InputFile2="Results\Test_ReadHecDss_AssignAlias_out.dv",IfDifferent=Warn)

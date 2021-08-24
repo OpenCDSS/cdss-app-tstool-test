@@ -1,8 +1,0 @@
-# Don't to save output files to GIT.
-# The results as artifacts laying around in working files can be used as needed to compare with previous test.
-/*.TSTool
-/*out*.txt
-/*out*.csv
-/*out*.xlsx
-/*log
-/x*

@@ -1,0 +1,22 @@
+# Test creating a statistic ensemble for day interval time series, statistic=GTPercent
+# The time series have different periods in order to test iteration logic
+# Also sprinkle some missing values into the period
+StartLog(LogFile="Results/Test_NewStatisticEnsemble_Day_GTPercent.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewStatisticEnsemble_Day_GTPercent_out.dv",IfNotFound=Ignore)
+# Create enough time series to have a reasonable sample size
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Precip.Day",Description="Test data 1",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="1.01,1.02,,1.04,1.04,1.06,1.07,1.08,1.09,1.10,1.11,1.12")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..Precip.Day",Description="Test data 2",SetStart="1950-03-01",SetEnd="1951-05-12",Units="CFS",PatternValues="2.01,2.02,2.03,2.04,2.04,2.06,2.07,2.08,2.09,2.10,2.11,2.12")
+NewPatternTimeSeries(Alias="ts3",NewTSID="ts3..Precip.Day",Description="Test data 3",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="3.01,3.02,3.03,3.04,3.04,3.06,3.07,3.08,3.09,3.10,3.11,3.12")
+NewPatternTimeSeries(Alias="ts4",NewTSID="ts4..Precip.Day",Description="Test data 4",SetStart="1950-01-01",SetEnd="1951-05-12",Units="CFS",PatternValues="4.01,4.02,4.03,4.04,4.04,4.06,4.07,4.08,4.09,4.10,4.11,4.12")
+NewPatternTimeSeries(Alias="ts5",NewTSID="ts5..Precip.Day",Description="Test data 5",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5.01,5.02,5.03,5.04,5.04,5.06,5.07,,5.09,5.10,5.11,5.12")
+NewPatternTimeSeries(Alias="ts6",NewTSID="ts6..Precip.Day",Description="Test data 6",SetStart="1950-01-01",SetEnd="1951-05-12",Units="CFS",PatternValues="6.01,6.02,6.03,6.04,6.04,6.06,6.07,6.08,6.09,6.10,6.11,6.12")
+NewPatternTimeSeries(Alias="ts7",NewTSID="ts7..Precip.Day",Description="Test data 7",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="7.01,7.02,7.03,7.04,7.04,7.06,7.07,7.08,7.09,7.10,7.11,7.12")
+NewPatternTimeSeries(Alias="ts8",NewTSID="ts8..Precip.Day",Description="Test data 8",SetStart="1950-01-01",SetEnd="1951-05-12",Units="CFS",PatternValues="8.01,8.02,8.03,8.04,8.04,8.06,8.07,8.08,8.09,,8.11,8.12")
+NewPatternTimeSeries(Alias="ts9",NewTSID="ts9..Precip.Day",Description="Test data 9",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="9.01,9.02,9.03,9.04,9.04,9.06,9.07,9.08,9.09,9.10,9.11,9.12")
+NewPatternTimeSeries(Alias="ts10",NewTSID="ts10..Precip.Day",Description="Test data 10",SetStart="1950-03-01",SetEnd="1951-05-12",Units="CFS",PatternValues="10.01,10.02,10.03,10.04,10.04,10.06,10.07,10.08,10.09,10.10,10.11,10.12")
+# Create a statistic ensemble from the input
+NewStatisticEnsemble(NewEnsembleID="Group1",Alias="Group1-${c:Statistic}-${c:TestValue}",NewTSID="Group1..StationCount.Day.GTPercent",Statistic=GTPercent,TestValue="11,7,2")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_NewStatisticEnsemble_Day_GTPercent_out.dv")
+WriteDateValue(OutputFile="Results/Test_NewStatisticEnsemble_Day_GTPercent_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_NewStatisticEnsemble_Day_GTPercent_out.dv",InputFile2="Results/Test_NewStatisticEnsemble_Day_GTPercent_out.dv",IfDifferent=Warn)

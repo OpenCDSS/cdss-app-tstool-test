@@ -1,6 +1,0 @@
-# Test setup...
-StartLog(LogFile="Results/Test_Exit.TSTool.log")
-# If Exit() is working, then the following remove command will not execute
-# and will therefore NOT generate an error due to the missing file
-Exit()
-RemoveFile(InputFile="Results/Test_Exit_out.txt",IfNotFound=Warn)

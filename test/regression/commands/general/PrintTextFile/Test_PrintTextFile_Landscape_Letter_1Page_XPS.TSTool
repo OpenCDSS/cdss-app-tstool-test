@@ -1,7 +1,0 @@
-#@enabled False
-# Test trying to print a one page file portrait, 8.5x11, to a Microsoft XPS file
-# Do not do a comparison with expected results since the printer driver
-# may vary between computers
-#@os Windows
-StartLog(LogFile="Results/Test_PrintTextFile_Landscape_Letter_1Page_XPS.TSTool.log")
-PrintTextFile(InputFile="Data/50lines.txt",PrinterName="Microsoft XPS Document Writer",PaperSize="na-letter",Orientation=Landscape,MarginLeft=.5,MarginRight=.6,MarginTop=.7,MarginBottom=.8,Header="Header",Footer="Footer",ShowLineCount=True,OutputFile="results/Test_PrintTextFile_Landscape_Letter_1Page_XPS.xps")

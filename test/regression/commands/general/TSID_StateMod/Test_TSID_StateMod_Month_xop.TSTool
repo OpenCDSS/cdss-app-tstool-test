@@ -1,9 +1,0 @@
-# Test reading a time series from a StateMod monthly file using a TSID
-# - XOP
-StartLog(LogFile="Results/Test_TSID_StateMod_Month_xop.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_StateMod_Month_xop_out.dv",IfNotFound=Ignore)
-# Uncomment the following command to regenerate the expected results file.
-01038160_02..Operation.Month~StateMod~Data\Sp2008L_H2.xop
-# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_StateMod_Month_xop_out.dv",Precision=2)
-WriteDateValue(OutputFile="Results/Test_TSID_StateMod_Month_xop_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults/Test_TSID_StateMod_Month_xop_out.dv",InputFile2="Results/Test_TSID_StateMod_Month_xop_out.dv",IfDifferent=Warn)

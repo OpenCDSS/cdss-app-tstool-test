@@ -1,0 +1,15 @@
+# Free a time series
+# - match a TSID exactly
+# - use ${Property} to specify the time series ID to free
+StartLog(LogFile="Results\Test_Free_AllMatchingTSID_MatchExact_Properties.TSTool.log")
+# Set up the test by removing old output and generating new output
+RemoveFile(InputFile="Results\Test_Free_AllMatchingTSID_MatchExact_Properties_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestAlias",PropertyType=String,PropertyValue="Alias1")
+NewPatternTimeSeries(Alias="${TestAlias}",NewTSID="MyLoc1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="Alias2",NewTSID="MyLoc2..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="10,20,24,26,150")
+Free(TSList=AllMatchingTSID,TSID="${TestAlias}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_Free_AllMatchingTSID_MatchExact_Properties_out.dv")
+WriteDateValue(OutputFile="Results\Test_Free_AllMatchingTSID_MatchExact_Properties_out.dv")
+# Execute the test, generating a PASS (no warning/failures) or FAIL
+CompareFiles(InputFile1="Results\Test_Free_AllMatchingTSID_MatchExact_Properties_out.dv",InputFile2="ExpectedResults\Test_Free_AllMatchingTSID_MatchExact_Properties_out.dv",IfDifferent=Warn)

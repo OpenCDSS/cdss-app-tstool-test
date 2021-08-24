@@ -1,0 +1,11 @@
+# Test the Cumulate operator
+# - double column
+StartLog(LogFile="Results/Test_TableMath_DoubleColumn_Cumulate.TSTool.log")
+RemoveFile(InputFile="Results/Test_TableMath_DoubleColumn_Cumulate_out.dv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata.csv")
+# Perform math on the table.
+TableMath(TableID="Table1",Input1="Double1",Operator="Cumulate",Output="result")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_TableMath_DoubleColumn_Cumulate_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_TableMath_DoubleColumn_Cumulate_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_TableMath_DoubleColumn_Cumulate_out.csv",InputFile2="Results/Test_TableMath_DoubleColumn_Cumulate_out.csv",IfDifferent=Warn)

@@ -1,0 +1,10 @@
+# Test setup...
+StartLog(LogFile="Results/Test_SetOutputYearType_Calendar.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetOutputYearType_Calendar_out.txt",IfNotFound=Ignore)
+SetOutputYearType(OutputYearType=Calendar)
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetOutputYearType_Calendar_out.txt",IncludeProperties="OutputYearType",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetOutputYearType_Calendar_out.txt",IncludeProperties="OutputYearType",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetOutputYearType_Calendar_out.txt",InputFile2="Results/Test_SetOutputYearType_Calendar_out.txt",IfDifferent=Warn)

@@ -1,8 +1,0 @@
-# Test reading a single time series from a MODSIM file and assigning the alias
-StartLog(LogFile="Results/Test_ReadMODSIM_SingleAlias.TSTool.log")
-RemoveFile(InputFile="Results\Test_ReadMODSIM_SingleAlias_out.dv",IfNotFound=Ignore)
-ReadMODSIM(Alias="ts1",InputFile="Data\CALIB42.FLO",TSID="NATHALLIGAN..FLOW..")
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_ReadMODSIM_SingleAlias_out.dv")
-WriteDateValue(OutputFile="Results\Test_ReadMODSIM_SingleAlias_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_ReadMODSIM_SingleAlias_out.dv",InputFile2="Results\Test_ReadMODSIM_SingleAlias_out.dv",IfDifferent=Warn)

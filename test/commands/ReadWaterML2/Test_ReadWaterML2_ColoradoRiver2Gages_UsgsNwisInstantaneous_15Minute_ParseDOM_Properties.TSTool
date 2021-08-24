@@ -1,0 +1,19 @@
+# Test ReadWaterML2 command for reading file from USGS NWIS Instantaneous Value web service
+# - read as 15Minute interval
+# - read by parsing the DOM (rather than reading using compiled API classes)
+# - offset the time zone and then set time zone to blank
+# - use properties to set parameters
+StartLog(LogFile="Results/Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisInstantaneous_15Minute_ParseDOM_Properties.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisInstantaneous_15Minute_ParseDOM_Properties_out.dv",IfNotFound=Ignore)
+# Uncomment the following to regenerate the WaterML 2.0 file read from USGS web services
+# - specify a period that spans the daylight saving time change on March 14
+# WebGet(URI="https://waterservices.usgs.gov/nwis/iv/?format=waterml,2.0&indent=on&sites=09071750,09070500&startDT=2010-03-14&endDT=2010-03-17&siteStatus=all",LocalFile="Data/ColoradoRiver2Gages_UsgsNwisInstantaneous.waterml")
+# The following will result in different time zones, which generates an error.
+SetProperty(PropertyName="TestInputFile",PropertyType=String,PropertyValue="Data\ColoradoRiver2Gages_UsgsNwisInstantaneous.waterml")
+SetProperty(PropertyName="TestOutputTimeZoneOffset",PropertyType=String,PropertyValue="-07:00")
+SetProperty(PropertyName="TestOutputTimeZone",PropertyType=String,PropertyValue="MST")
+ReadWaterML2(InputFile="${TestInputFile}",ReadMethod=ParseDOM,Alias="%L.%T",Interval="15Minute",OutputTimeZoneOffset="${TestOutputTimeZoneOffset}",OutputTimeZone="${TestOutputTimeZone}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisInstantaneous_15Minute_ParseDOM_Properties_out.dv",Precision=0)
+WriteDateValue(OutputFile="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisInstantaneous_15Minute_ParseDOM_Properties_out.dv",Precision=0)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisInstantaneous_15Minute_ParseDOM_Properties_out.dv",InputFile2="Results\Test_ReadWaterML2_ColoradoRiver2Gages_UsgsNwisInstantaneous_15Minute_ParseDOM_Properties_out.dv",IfDifferent=Warn)

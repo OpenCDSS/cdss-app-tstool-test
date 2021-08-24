@@ -1,0 +1,11 @@
+# Test filling year data with historical average and setting fill flags.
+StartLog(LogFile="Results/Test_FillHistYearAverage_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillHistYearAverage_1_out.dv",IfNotFound=Ignore)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Year",Description="test data 1",SetStart="1950",SetEnd="2007",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Year",Description="test data 1",SetStart="1970",SetEnd="2000",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+FillHistYearAverage(TSList=AllMatchingTSID,TSID="ts1",FillStart="1980",FillEnd="1995",FillFlag="A")
+FillHistYearAverage(TSList=AllMatchingTSID,TSID="ts2",FillStart="1990",FillEnd="2005",FillFlag="B")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillHistYearAverage_1_out.dv")
+WriteDateValue(OutputFile="Results/Test_FillHistYearAverage_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_FillHistYearAverage_1_out.dv",InputFile2="Results/Test_FillHistYearAverage_1_out.dv",IfDifferent=Warn)

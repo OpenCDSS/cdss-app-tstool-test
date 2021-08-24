@@ -1,3 +1,0 @@
-Test header
-TS props: 1950-01-05T12:00:00 5.00 "aa",  Processor props: 2013-09-11 String1 1000.1
-Test footer

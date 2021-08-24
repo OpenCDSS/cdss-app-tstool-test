@@ -1,3 +1,0 @@
-# Test command file for RunCommands() test:
-# - Remove a nonexistent file but ignore the warning
-RemoveFile(InputFile="Results/NonexistentFile1.txt",IfNotFound=Ignore)

@@ -1,0 +1,6 @@
+# Example of looking at long-term temperature trends.
+COOP:057936.ACIS.1.Day~RCC-ACIS
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="COOP:057936.ACIS.1.Day",Statistic=Mean,SampleMethod=NAllYear,Alias="057936-TempMax-Day-Running-Mean")
+TS 057936-MaxTemp-DegDay-Year = ChangeInterval(TSID="COOP:057936.ACIS.1.Day",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM,NewDataType=MaxTempDegDay,AllowMissingCount=15)
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="057936-MaxTemp-DegDay-Year",Statistic=Mean,SampleMethod=NAllYear,Alias="057936-TempMax-Year-Running-Mean")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="057936-MaxTemp-DegDay-Year",Statistic=Median,SampleMethod=NAllYear,Alias="057936-TempMax-Year-Running-Median")

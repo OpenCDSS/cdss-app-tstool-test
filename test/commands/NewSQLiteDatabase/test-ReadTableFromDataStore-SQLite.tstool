@@ -1,0 +1,12 @@
+# Test to read a table from a SQLite database:
+# - use an in-memory database and file database
+# - close the databases so that files are not open and locked
+# ReadTableFromDataStore(DataStore="nsuserws-test",DataStoreTable="users",TableID="users")
+NewSQLiteDatabase(DataStore="test",DatabaseFile="Memory")
+RunSql(DataStore="test",Sql="CREATE TABLE IF NOT EXISTS table1 (id integer PRIMARY KEY, name text NOT NULL)")
+CloseDataStore(DataStore="test",StatusMessage="Closed after test.")
+#
+# Work with a database file
+NewSQLiteDatabase(DataStore="test2",DatabaseFile="results/test-sqlite.db")
+RunSql(DataStore="test2",Sql="CREATE TABLE IF NOT EXISTS table1 (id integer PRIMARY KEY, name text NOT NULL);")
+CloseDataStore(DataStore="test2",StatusMessage="Closed after test.")

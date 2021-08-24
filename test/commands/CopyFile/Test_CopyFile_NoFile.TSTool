@@ -1,0 +1,4 @@
+# Test trying to copy a non-existant file - and warn (default)
+#@expectedStatus Warn
+StartLog(LogFile="Results/Test_CopyFile_NoFile.TSTool.log")
+CopyFile(InputFile="Data/NonexistantFile.txt",OutputFile="Results/Test_CopyFile_NoFile_out.txt")

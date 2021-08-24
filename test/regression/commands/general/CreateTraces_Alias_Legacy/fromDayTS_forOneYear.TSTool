@@ -1,5 +1,0 @@
-startLog(LogFile="fromDayTS_forOneYear.log")
-# Create annual traces from a time series shifted to the current year
-# (1995-1998) ALAMOSA RIVER ABOVE JASPER, CO  USGS  Streamflow  Day
-08235350.USGS.Streamflow.Day~HydroBase
-createTraces(08235350.USGS.Streamflow.Day,1Year,2004-01-01,ShiftToReference)

@@ -1,0 +1,15 @@
+StartLog(LogFile="Results/Setup_CreateStreamflowMonthFromHydroBase.TSTool.log")
+# Create monthly streamflow test data from HydroBase.
+# A datevalue file is created that can be used by test command files.
+# Separate CSV files also are created for each month to simplify Python script use.
+# Only rerun if there is a real reason to do it because tests will then also have to be reverified.
+SetOutputPeriod(OutputStart="1997-01",OutputEnd="2009-12")
+# 394308105413800 - CLEAR CR. ABV. GEORGETOWN LAKE NR GEORGETOWN, CO
+ReadTimeSeries(TSID="394308105413800.USGS.Streamflow.Month~HydroBase",Alias="AboveGeorgetown",IfNotFound=Warn)
+# 394359105411900 - CLEAR CR. BLW. GEORGETOWN LAKE NR GEORGETOWN, CO.
+ReadTimeSeries(TSID="394359105411900.USGS.Streamflow.Month~HydroBase",Alias="BelowGeorgetown",IfNotFound=Warn)
+# Scale the second time series a bit to get more offset for visual inspection
+Scale(TSList=AllMatchingTSID,TSID="BelowGeorgetown",ScaleValue=1.5)
+# Write the time series as a DateValue file in case the data need to be accessed
+# in the future without reading from HydroBase
+WriteDateValue(OutputFile="Data/streamflow-month.dv")

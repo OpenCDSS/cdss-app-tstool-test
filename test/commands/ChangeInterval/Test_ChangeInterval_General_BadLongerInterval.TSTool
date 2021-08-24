@@ -1,0 +1,6 @@
+# Test that specifying a NewInterval that isn't evenly divisible into the original interval fails
+#
+#@expectedStatus Failure
+#
+NewPatternTimeSeries(Alias="Original",NewTSID="ts1..Flow.4Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
+ChangeInterval(Alias="Changed",TSID="Original",NewInterval=6Hour,OldTimeScale=MEAN,NewTimeScale=MEAN)

@@ -1,0 +1,10 @@
+# Test reading a State of Colorado tab-delimited flow and stage file,
+# using a property to set the file name
+StartLog(LogFile="Results/Test_ReadDelimitedFile_CODWR_Flow_Property.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelimitedFile_CODWR_Flow_Property_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="DataDir",PropertyType=String,PropertyValue="Data")
+ReadDelimitedFile(InputFile="${DataDir}\CO-DWR-ADATUNCO-tab.txt",Delimiter="\t",ColumnNames="ID,DateTime,GAGE_HT,DISCHRG",DateTimeColumn="DateTime",ValueColumn="GAGE_HT,DISCHRG",SkipRowsAfterComments="1",LocationID="ADATUNCO",Provider="DWR",DataType="GAGE_HT,DISCHRG",Interval=15Minute,Units="ft,cfs",Alias="%L%T")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelimitedFile_CODWR_Flow_Property_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_ReadDelimitedFile_CODWR_Flow_Property_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelimitedFile_CODWR_Flow_Property_out.dv",InputFile2="Results\Test_ReadDelimitedFile_CODWR_Flow_Property_out.dv",IfDifferent=Warn)

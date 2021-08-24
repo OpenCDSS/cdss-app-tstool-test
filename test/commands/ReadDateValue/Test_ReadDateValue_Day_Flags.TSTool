@@ -1,0 +1,10 @@
+# Test reading a day interval time series (with data flags) from a DateValue file
+StartLog(LogFile="Results/Test_ReadDateValue_Day_Flags.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDateValue_Day_Flags_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_Day_Flags_out.dv")
+Free(TSList=AllMatchingTSID,TSID="*")
+ReadDateValue(InputFile="ExpectedResults\Test_ReadDateValue_Day_Flags_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadDateValue_Day_Flags_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_Day_Flags_out.dv",InputFile2="Results\Test_ReadDateValue_Day_Flags_out.dv",IfDifferent=Warn)

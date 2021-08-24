@@ -1,0 +1,4 @@
+# Test starting a new log file
+# -Specify the name using ${TempDir} processor property (note contains trailing separator)
+# -Just make sure no error results
+StartLog(LogFile="${TempDir}Test_StartLog_TempDir.TSTool.log")

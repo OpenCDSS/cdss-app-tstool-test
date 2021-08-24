@@ -1,0 +1,5 @@
+# Command file to set up the environment and database connections for the general test suite.
+# This command file should be read in at the start of the test suite
+# and then the remaining tests can share these connections
+# TODO SAM 2014-04-14 don't use this since it is an old server - rely on HydroBase being enabled.
+#OpenHydroBase(DatabaseServer="lonetree\cdss",DatabaseName="HydroBase")

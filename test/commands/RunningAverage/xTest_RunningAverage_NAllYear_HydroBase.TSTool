@@ -1,0 +1,7 @@
+# 09058000 - COLORADO RIVER NEAR KREMMLING, CO
+09058000.USGS.Streamflow.Month~HydroBase
+TS 09058000_Year_Average = ChangeInterval(TSID="09058000.USGS.Streamflow.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
+RunningAverage(TSList=AllMatchingTSID,TSID="09058000_Year_Average",AverageMethod=NAllYear)
+09058000.USGS.Streamflow.Month~HydroBase
+TS 09058000_Year = ChangeInterval(TSID="09058000.USGS.Streamflow.Month",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM)
+ProcessTSProduct(TSProductFile="xTest_RunningAverage_NAllYear_HydroBase.tsp",OutputFile="Results/xTest_RunningAverage_NAllYear_HydroBase.png")

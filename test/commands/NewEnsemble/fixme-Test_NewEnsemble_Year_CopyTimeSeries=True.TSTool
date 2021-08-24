@@ -1,0 +1,19 @@
+# Test creating an ensemble from year interval time series, and copy the data
+#@fixme SAM 2009-10-10 The WriteDateValue() and other commands cannot access
+# data that is ONLY in an ensemble (freed from main list).  Need to evaluate
+# concept of ensemble time series not being in the main list.
+StartLog(LogFile="Results/Test_NewEnsemble_Year_CopyTimeSeries=True.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewEnsemble_Year_CopyTimeSeries=True_out.dv",IfNotFound=Ignore)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Flow.Year",SetStart="1960",SetEnd="2000",Units="ACFT",PatternValues="1,2,5,8,,20")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2..Flow.Year",SetStart="1950",SetEnd="2005",Units="ACFT",PatternValues="2,4,10,16,,40")
+NewEnsemble(NewEnsembleID="TestEnsemble",NewEnsembleName="Test Ensemble",CopyTimeSeries="True")
+# Freeing the time series should keep the time series in the ensemble since
+# they were copied.  Then writing below should still work because the time
+# series are accessed from the ensemble.
+Free(TSList=AllTS)
+# Generate the results.
+# Uncomment the following to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewEnsemble_Year_CopyTimeSeries=True_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+WriteDateValue(OutputFile="Results\Test_NewEnsemble_Year_CopyTimeSeries=True_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+# Uncomment the following to recreate expected results
+CompareFiles(InputFile1="ExpectedResults/Test_NewEnsemble_Year_CopyTimeSeries=True_out.dv",InputFile2="Results/Test_NewEnsemble_Year_out.dv",IfDifferent=Warn)

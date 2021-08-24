@@ -1,8 +1,0 @@
-# Test changing INST to ACCM, same interval (not supported)
-#
-#@expectedStatus Failure
-#
-StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_INST-ACCM-Same.TSTool.log")
-#
-NewPatternTimeSeries(Alias="Original",NewTSID="ts1..Flow.6Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
-ChangeInterval(Alias="Changed_noOptions",TSID="Original",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=ACCM)

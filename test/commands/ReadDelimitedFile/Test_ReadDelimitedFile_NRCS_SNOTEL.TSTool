@@ -1,0 +1,34 @@
+# Test reading a NRCS SNOTEL tab-delimited flow file downloaded from the web
+# The "all" file that is downloaded with WebGet() is manually cut back to be shorter
+# to minimize file size under revision control and keep automated tests short
+#
+# The URLs for the WebGet() command were determined as follows:
+# 1) Go to main site:
+# 2) Click on Colorado
+# 3) Select the station of interest (e.g., Joe Wright)
+# 4) For the historical data (years prior to current year), pick:
+#      "Standard Sensors"... Historical, Daily (Tab Formatted) in the table, then select "all", then "Get Data"
+#      The URL that is shown can be used for the historical period, where "pill" (pillow) is the SWE value
+# 5) Similarly, select a year of 2012 to only retrieve that year
+# 6) Use the WebGet() commands with the URLs determined from above
+#
+StartLog(LogFile="Results/Test_ReadDelimitedFile_NRCS_SNOTEL.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelimitedFile_NRCS_SNOTEL_out.dv",IfNotFound=Ignore)
+# After downloading, the first file is manually edited to cut back the period
+# to 2010-2011 so that the test is smaller and files are smaller in the repository.
+# Uncomment the following to regenerate SNOTEL test data.
+# The first command downloads the historical data (apparently all but the current year)
+# The second command downloads the current year
+# WebGet(URI="http://www.wcc.nrcs.usda.gov/ftpref/data/snow/snotel/cards/colorado/05j37s_all.txt",LocalFile="Data/NRCS-SNOTEL-JoeWright-all.txt")
+# WebGet(URI="http://www.wcc.nrcs.usda.gov/ftpref/data/snow/snotel/cards/colorado/05j37s_2012.tab",LocalFile="Data/NRCS-SNOTEL-JoeWright-2012.txt")
+ReadDelimitedFile(InputFile="Data\NRCS-SNOTEL-JoeWright-all.txt",Delimiter="\t",ColumnNames="Date,pill,prec,tmax,tmin,tavg,prcp",DateTimeColumn="Date",DateTimeFormat="C:%m%d%y",ValueColumn="pill",Comment="#",SkipRowsAfterComments="1",LocationID="JoeWright",Provider="NRCS",DataType="SWE",Interval=Day,Units="in",Alias="%L%T")
+ReadDelimitedFile(InputFile="Data\NRCS-SNOTEL-JoeWright-2012.txt",Delimiter="\t",ColumnNames="Date,pill,prec,tmax,tmin,tavg,prcp",DateTimeColumn="Date",DateTimeFormat="C:%m%d%y",ValueColumn="pill",SkipRows="1",LocationID="JoeWright",Provider="NRCS",DataType="SWE",Interval=Day,Units="in",Alias="%L%T-2012")
+# Merge the historical years and current year
+Blend(TSID="JoeWrightSWE",IndependentTSID="JoeWrightSWE-2012",BlendMethod=BlendAtEnd)
+# Uncomment the following command to regenerate the expected results file.
+# Calculate average as illustration - uncomment for discussion but leave
+# commented for test expected results.
+# NewStatisticTimeSeries(TSID="JoeWrightSWE",Alias="JoeWriteSWE-Average",NewTSID="JoeWright..SWE.Day",Statistic=Mean)
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelimitedFile_NRCS_SNOTEL_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_ReadDelimitedFile_NRCS_SNOTEL_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelimitedFile_NRCS_SNOTEL_out.dv",InputFile2="Results\Test_ReadDelimitedFile_NRCS_SNOTEL_out.dv",IfDifferent=Warn)

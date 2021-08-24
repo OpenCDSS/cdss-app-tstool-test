@@ -1,0 +1,24 @@
+# Test resequencing all the natural flow time series in a StateMod *xbm file
+# Write the output to a StateMod file to ensure that it will work with climate change work.
+# Use the same input time series to resequence two sets output
+StartLog(LogFile="Results/Test_ResequenceTimeSeriesData_xbm.TSTool.log")
+RemoveFile(InputFile="Results/Test_ResequenceTimeSeriesData_xbm_out1.stm",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_ResequenceTimeSeriesData_xbm_out2.stm",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="KNN_Seq",InputFile="Data\flow_sequence_dataset_1.csv",SkipLines="1",HeaderLines="2")
+ReadStateMod(InputFile="Data\gm2004x.xbm")
+ResequenceTimeSeriesData(TSList=AllTS,TableID="KNN_Seq",TableColumn="1",OutputStart="1908",NewScenario="KNN01",Alias="%L-KNN01")
+# Uncomment the following command to regenerate the expected results file.
+# WriteStateMod(TSList=AllMatchingTSID,TSID="*KNN*",OutputFile="ExpectedResults/Test_ResequenceTimeSeriesData_xbm_out1.stm")
+# Generate new output...
+WriteStateMod(TSList=AllMatchingTSID,TSID="*KNN*",OutputFile="Results/Test_ResequenceTimeSeriesData_xbm_out1.stm")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_ResequenceTimeSeriesData_xbm_out1.stm",InputFile2="Results/Test_ResequenceTimeSeriesData_xbm_out1.stm",IfDifferent=Warn)
+# Now do the second resequencing.  Free the sequence before doing so
+Free(TSList=AllMatchingTSID,TSID="*KNN*")
+ResequenceTimeSeriesData(TSList=AllTS,TableID="KNN_Seq",TableColumn="2",OutputStart="1908",NewScenario="KNN02",Alias="%L-KNN02")
+# Uncomment the following command to regenerate the expected results file.
+# WriteStateMod(TSList=AllMatchingTSID,TSID="*KNN*",OutputFile="ExpectedResults/Test_ResequenceTimeSeriesData_xbm_out2.stm")
+# Generate new output...
+WriteStateMod(TSList=AllMatchingTSID,TSID="*KNN*",OutputFile="Results/Test_ResequenceTimeSeriesData_xbm_out2.stm")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_ResequenceTimeSeriesData_xbm_out2.stm",InputFile2="Results/Test_ResequenceTimeSeriesData_xbm_out2.stm",IfDifferent=Warn)

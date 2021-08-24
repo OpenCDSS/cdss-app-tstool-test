@@ -1,0 +1,7 @@
+# Test to ensure tht discovery mode (editing) properly creates output time series
+# This command file should show no warnings when edited
+StartLog(LogFile="Results/Test_Copy_Discovery.TSTool.log")
+NewPatternTimeSeries(Alias="Original",NewTSID="MyLoc..MyData.15Minute",Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-01-03 12:00",Units="CFS",PatternValues="5,10,12,0,0,13,75,50",PatternFlags="a,b,c,xx,,yy,,zz")
+Copy(TSID="Original",NewTSID="a...15Minute",Alias="Copy")
+# Use this to check that copy creates discovery time series
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="Copy",CheckCriteria="Missing")

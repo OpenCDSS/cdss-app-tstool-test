@@ -1,0 +1,14 @@
+# Test of computing a statistic time series for 6hour data, statistic=Mean
+StartLog(LogFile="Results/Test_NewStatisticTimeSeries_6Hour_Mean.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticTimeSeries_6Hour_Mean_out.dv",IfNotFound=Ignore)
+NewTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.6Hour",Description="Test data",SetStart="1950-01-01 00",SetEnd="1951-03-12 18",Units="CFS")
+SetConstant(TSList=AllMatchingTSID,TSID="ts1",MonthValues="1,2,3,4,5,6,7,8,9,10,11,12")
+# Double the above
+NewTimeSeries(Alias="ts2",NewTSID="ts2..Streamflow.6Hour",Description="Test data",SetStart="1951-01-01 00",SetEnd="1953-01-31 18",Units="CFS")
+SetConstant(TSList=AllMatchingTSID,TSID="ts2",MonthValues="2,4,6,8,10,12,14,16,18,20,22,24")
+NewStatisticTimeSeries(Alias="ts1_mean",TSID="ts1",NewTSID="ts1..Streamflow.6Hour.Mean",Statistic=Mean)
+NewStatisticTimeSeries(Alias="ts2_mean",TSID="ts2",NewTSID="ts2..Streamflow.6Hour.Mean",Statistic=Mean)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticTimeSeries_6Hour_Mean_out.dv")
+WriteDateValue(OutputFile="Results\Test_NewStatisticTimeSeries_6Hour_Mean_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticTimeSeries_6Hour_Mean_out.dv",InputFile2="Results\Test_NewStatisticTimeSeries_6Hour_Mean_out.dv",IfDifferent=Warn)

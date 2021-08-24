@@ -1,0 +1,13 @@
+# Test reading a single site and assigning an alias.
+# Specify the period to have faster performance
+StartLog(LogFile="Results/Test_ReadUsgsNwisDaily_SingleSite_Alias.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_Alias_out.dv",IfNotFound=Ignore)
+# Specify the period to read because UsgsNwisDaily will change over time and
+# setting the period will better control the numbers that return and impact the
+# test results.
+# Cache la Poudre Near Mouth of Canyon
+ReadUsgsNwisDaily(DataStore="UsgsNwisDaily",Sites="06752000",Parameters="00060",Statistics="00003",InputStart="2007-01-01",InputEnd="2007-09-30",Alias="%L.%T",OutputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_Alias_out.waterml")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadUsgsNwisDaily_SingleSite_Alias_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_Alias_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_SingleSite_Alias_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_SingleSite_Alias_out.dv",IfDifferent=Warn)

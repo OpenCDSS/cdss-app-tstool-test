@@ -1,0 +1,31 @@
+# Test no Lag and fixed attenuation (K)
+StartLog(LogFile="Results\Test_VariableLagK_NoLagFixedK.TSTool.log")
+RemoveFile(InputFile="Results\Test_VariableLagK_NoLagFixedK_out.dv",IfNotFound=Ignore)
+#
+# Read NWSCard input file
+TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
+#
+# Route using the same routing parameters used in the mcp3 input deck
+# (metric units: Lag(hrs) K(hrs) Q(cms)
+# Lag
+# K
+#      0.
+#     22.
+# Use the fixed LagK command if necessary to verify differences.
+# TS NoLagFixedK_OldLagK = LagK(TSID="Inflow",FillNearest=True,Lag=0,K=22)
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,K="0,22",Alias="NoLagFixedK")
+Free(TSList=AllMatchingTSID,TSID="Inflow")
+#
+# Read the output from the mcp3 LAG/K command
+TS mcp3_output = ReadNwsCard(InputFile="Data\NO_LAG_FIXED_K.SQIN")
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.001",AnalysisStart="1990-12-01",WarnIfDifferent=True)
+#
+# The following does an exact test of the results:
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="NoLagFixedK")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_NoLagFixedK_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_VariableLagK_NoLagFixedK_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_NoLagFixedK_out.dv",InputFile2="Results\Test_VariableLagK_NoLagFixedK_out.dv",WarnIfDifferent=True)
+
+
+

@@ -1,8 +1,0 @@
-# Test comparing different files and warn if they are the same
-StartLog(LogFile="Results/Test_AllDifferent.log")
-# Commands file to make sure that warnings are generated for different data.
-ReadDateValue(InputFile="Data/RawData1.dv")
-ReadDateValue(InputFile="Data/RawData1Scaled.dv")
-# Generate an error if the files are the same.
-# Since the files are different this would indicate a coding error.
-CompareTimeSeries(CreateDiffTS=True,WarnIfSame=True)

@@ -1,5 +1,0 @@
-# Fort Collins (Colorado State University) Weather Station
-COOP:053005.ACIS.pcpn.Day~RCC-ACIS
-# 06752260 - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
-06752260.USGS.Streamflow.Day~HydroBase
-ProcessTSProduct(TSProductFile="TSView-Annotation-Rectangle-VerticalYAxis.tsp")

@@ -1,0 +1,18 @@
+#@testSuite ColoradoWaterSMS
+# Test reading realtime streamflow for ColoradoWaterSMS web service
+# The test only confirms that data could be read but does not try to compare
+# with expected results because the data will change over time
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
+StartLog(LogFile="Results\Test_TSID_ColoradoWaterSMS_PLADENCO.TSTool.log")
+# SetInputPeriod(InputStart="CurrentToMinute - 7Day",InputEnd="CurrentToMinute")
+# PLADENCO - SOUTH PLATTE RIVER AT DENVER
+PLADENCO.DWR.DISCHRG.Irregular~ColoradoWaterSMS
+# PLADENCO - SOUTH PLATTE RIVER AT DENVER
+PLADENCO.DWR.DISCHRG.Hour~ColoradoWaterSMS
+# PLADENCO - SOUTH PLATTE RIVER AT DENVER
+PLADENCO.DWR.DISCHRG.Day~ColoradoWaterSMS
+# Make sure that data were returned
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)

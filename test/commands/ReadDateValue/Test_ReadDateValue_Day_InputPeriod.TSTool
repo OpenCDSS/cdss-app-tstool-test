@@ -1,0 +1,10 @@
+# Test reading a day interval time series from a DateValue file
+# - specity the input period with parseable Date/Time string
+StartLog(LogFile="Results/Test_ReadDateValue_Day_InputPeriod.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDateValue_Day_InputPeriod_out.dv",IfNotFound=Ignore)
+# Read previously generated daily time series (shared by tests)
+ReadDateValue(InputFile="Data\Test_WriteDateValue_Day_out.dv",InputStart="1951-01-01",InputEnd="1951-02-15")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_Day_InputPeriod_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadDateValue_Day_InputPeriod_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_Day_InputPeriod_out.dv",InputFile2="Results\Test_ReadDateValue_Day_InputPeriod_out.dv",IfDifferent=Warn)

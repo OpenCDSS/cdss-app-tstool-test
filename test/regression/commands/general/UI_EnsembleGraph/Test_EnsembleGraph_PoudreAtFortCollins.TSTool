@@ -1,6 +1,0 @@
-# 06752260 - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
-06752260.USGS.Streamflow.Month~HydroBase
-06752260.USGS.Streamflow.Day~HydroBase
-# Convert the daily time series into an ensemble to be able to interactively test
-# the graph template with ensemble.
-CreateEnsembleFromOneTimeSeries(TSID="06752260.USGS.Streamflow.Day",EnsembleID="TestEnsemble",EnsembleName="%D (%L)",TraceLength=1Year,ReferenceDate="2016-10-01",OutputYearType=Water,ShiftDataHow=ShiftToReference)

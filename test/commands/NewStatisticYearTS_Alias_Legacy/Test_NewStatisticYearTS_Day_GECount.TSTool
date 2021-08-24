@@ -1,0 +1,11 @@
+# For daily data, determine the GECount value in each year.
+# This test is for the legacy "TS Alias =" syntax
+#@readOnly
+StartLog(LogFile="Results/Test_NewStatisticYearTS_Day_GECount.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Day_GECount_out.dv",IfNotFound=Ignore)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,,50,45,20,4")
+TS Stat = NewStatisticYearTS(TSID="ts1",NewTSID="ts1..Streamflow.Year.GECount",Statistic=GECount,TestValue=70)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticYearTS_Day_GECount_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+WriteDateValue(OutputFile="Results\Test_NewStatisticYearTS_Day_GECount_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticYearTS_Day_GECount_out.dv",InputFile2="Results\Test_NewStatisticYearTS_Day_GECount_out.dv",IfDifferent=Warn)

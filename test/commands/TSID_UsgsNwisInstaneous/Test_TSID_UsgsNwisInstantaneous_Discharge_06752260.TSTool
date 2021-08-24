@@ -1,0 +1,6 @@
+# Test water level from a single site
+# If no error then things are generally working
+# Don't compare values because them may change
+StartLog(LogFile="Results/Test_TSID_UsgsNwisInstantaneous_Discharge_06752260.TSTool.log")
+SetInputPeriod(InputStart="2010-01-01",InputEnd="2010-03-15")
+06752260.USGS.00060.15Min~UsgsNwisInstantaneous

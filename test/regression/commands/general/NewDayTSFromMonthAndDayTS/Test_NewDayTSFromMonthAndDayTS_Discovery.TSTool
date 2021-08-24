@@ -1,8 +1,0 @@
-# Test that TSIDs are properly created during discovery
-StartLog(LogFile="Results/Test_NewDayTSFromMonthAndDayTS_Discovery.TSTool.log")
-NewPatternTimeSeries(Alias="ts1_day",NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-NewPatternTimeSeries(Alias="ts1_month",NewTSID="ts1..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1951-03",Units="ACFT",PatternValues="10,20,24,26,150")
-SetOutputPeriod(OutputStart="1950-01-01",OutputEnd="1951-03-31")
-NewDayTSFromMonthAndDayTS(NewTSID="tsout..test.Day",MonthTSID="ts1_month",DayTSID="ts1_day",Alias="tsout")
-# The following should list output from above
-CheckTimeSeries(TSList=AllMatchingTSID,TSID="tsout",CheckCriteria="Repeat",Value1=3)

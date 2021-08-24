@@ -1,9 +1,0 @@
-# Test trying to remove a  file
-# -create a temporary file by writing global property and then remove file
-# -specify the file using ${Property}
-StartLog(LogFile="Results/Test_RemoveFile_Properties.TSTool.log")
-# First create a file with all properties
-SetProperty(PropertyName="TestFile",PropertyType=String,PropertyValue="Results\Test_RemoveFile_Properties_out.txt")
-WritePropertiesToFile(OutputFile="${TestFile}",FileFormat=NameValue)
-# Now remove the file, failing if there is an issue
-RemoveFile(InputFile="${TestFile}",IfNotFound=Fail)

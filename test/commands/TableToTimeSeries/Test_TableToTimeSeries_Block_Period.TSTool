@@ -1,0 +1,14 @@
+# Test converting a block layout table to time series
+# - read the data from Excel
+# - Rows are years
+# - months are columns
+StartLog(LogFile="Results/Test_TableToTimeSeries_Block_Period.TSTool.log")
+RemoveFile(InputFile="Results\Test_TableToTimeSeries_Block_Period_out.dv",IfNotFound=Ignore)
+ReadTableFromExcel(TableID="Table1",InputFile="Data\data-block-month.xlsx",ExcelColumnNames=FirstRowInRange,ExcelIntegerColumns="Year")
+FormatTableDateTime(TableID="Table1",InputColumn="Year",DateTimeFormat="%Y",OutputYearType=Calendar,OutputColumn="YearAsDate",OutputType=DateTime,InsertBeforeColumn="Oct")
+SetProperty(PropertyName="HUCID",PropertyType=String,PropertyValue="10180001")
+TableToTimeSeries(TableID="Table1",DateTimeColumn="YearAsDate",LocationID="${HUCID}",ValueColumn="Oct",DataSource="NRCS",DataType="SWSI",Interval=Month,Alias="%L-%T",BlockLayout=Period,BlockLayoutColumns=MONTH,BlockLayoutRows=YEAR,BlockOutputYearType=Water)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_TableToTimeSeries_Block_Period_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_TableToTimeSeries_Block_Period_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_TableToTimeSeries_Block_Period_out.dv",InputFile2="Results\Test_TableToTimeSeries_Block_Period_out.dv",IfDifferent=Warn)

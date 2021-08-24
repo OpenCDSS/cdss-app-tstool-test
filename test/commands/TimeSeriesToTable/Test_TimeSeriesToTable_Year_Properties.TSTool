@@ -1,0 +1,16 @@
+# Test copying annual time series to a table, and also create the table
+# - specify the time series to process using ${Property}
+# - specify the table to create using ${Property}
+StartLog(LogFile="Results/Test_TimeSeriesToTable_Year_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_TimeSeriesToTable_Year_Properties_out.csv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Flow.Year",SetStart="1960",SetEnd="2000",Units="ACFT",PatternValues="1,2,5,8,,20")
+SetProperty(PropertyName="TestTableID",PropertyType=String,PropertyValue="TestTable")
+SetProperty(PropertyName="TestTSID",PropertyType=String,PropertyValue="ts1")
+SetProperty(PropertyName="TestOutputStart",PropertyType=DateTime,PropertyValue="1965")
+SetProperty(PropertyName="TestOutputEnd",PropertyType=DateTime,PropertyValue="1995")
+TimeSeriesToTable(TSList=AllMatchingTSID,TSID="${TestTSID}",TableID="${TestTableID}",DateTimeColumn="Year",ValueColumn="%L-%T",OutputStart="${TestOutputStart}",OutputEnd="${TestOutputEnd}",IfTableNotFound="Create")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="${TestTableID}",OutputFile="Results\Test_TimeSeriesToTable_Year_Properties_out.csv")
+# Uncomment the following to recreate expected results
+# WriteTableToDelimitedFile(TableID="${TestTableID}",OutputFile="ExpectedResults\Test_TimeSeriesToTable_Year_Properties_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_TimeSeriesToTable_Year_Properties_out.csv",InputFile2="Results/Test_TimeSeriesToTable_Year_Properties_out.csv",IfDifferent=Warn)

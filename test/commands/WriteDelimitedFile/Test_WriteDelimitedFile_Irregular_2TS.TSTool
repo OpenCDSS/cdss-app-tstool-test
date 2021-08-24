@@ -1,0 +1,17 @@
+# Test writing a daily time series to delimited format
+# - irregular interval
+# - commas as delimiter (CSV)
+# - no header comments
+# - defaults for all other parameters
+# - trying to write more than 1 irregular time series will generate an error
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_WriteDelimitedFile_Irregular_2TS.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDelimitedFile_Irregular_2TS_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Loc1",NewTSID="Loc1..Precip.Irregular",IrregularInterval=15Minute,Description="Test precipitation data 1",SetStart="1950-01-01 00:00",SetEnd="1950-01-02 06:00",Units="mm",PatternValues="5,,10,12,13,35")
+NewPatternTimeSeries(Alias="Loc1",NewTSID="Loc2..Precip.Irregular",IrregularInterval=15Minute,Description="Test precipitation data 2",SetStart="1950-01-01 00:00",SetEnd="1950-01-02 06:00",Units="mm",PatternValues="10,,20,24,26,70")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDelimitedFile(OutputFile="ExpectedResults\Test_WriteDelimitedFile_Irregular_2TS_out.dv")
+# Generate new output...
+WriteDelimitedFile(OutputFile="Results/Test_WriteDelimitedFile_Irregular_2TS_out.dv")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDelimitedFile_Irregular_2TS_out.dv",InputFile2="Results/Test_WriteDelimitedFile_Irregular_2TS_out.dv",IfDifferent=Warn)

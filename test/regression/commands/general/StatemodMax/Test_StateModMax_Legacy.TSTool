@@ -1,8 +1,0 @@
-#@readOnly
-StartLog(LogFile="Results/Test_StateModMax_Legacy.TSTool.log")
-RemoveFile(InputFile="Results\Test_StateModMax_Legacy_out.stm",WarnIfMissing=False)
-StateModMax("Data\whiteT.ddh","Data\whiteTB.ddm")
-# Uncomment the following command to regenerate the expected results file.
-# WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults\Test_StateModMax_Legacy_out.stm")
-WriteStateMod(TSList=AllTS,OutputFile="Results\Test_StateModMax_Legacy_out.stm")
-CompareFiles(InputFile1="ExpectedResults\Test_StateModMax_Legacy_out.stm",InputFile2="Results\Test_StateModMax_Legacy_out.stm",WarnIfDifferent=True)

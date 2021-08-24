@@ -1,0 +1,11 @@
+# Test creating a day interval time series using a pattern of values
+# and setting the missing value
+# Use two time series, one with the default missing value and one with NaN
+StartLog(LogFile="Results/Test_NewPatternTimeSeries_Day_MissingValue.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewPatternTimeSeries_Day_MissingValue_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,,,75")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",MissingValue=NaN,PatternValues="5,10,,,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_NewPatternTimeSeries_Day_MissingValue_out.dv")
+WriteDateValue(OutputFile="Results/Test_NewPatternTimeSeries_Day_MissingValue_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_NewPatternTimeSeries_Day_MissingValue_out.dv",InputFile2="Results/Test_NewPatternTimeSeries_Day_MissingValue_out.dv",IfDifferent=Warn)

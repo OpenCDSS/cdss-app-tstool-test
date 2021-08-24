@@ -1,0 +1,9 @@
+# Test reading DivTotal time series from HydroBase using input filters
+# This is a legacy command because the operator "Equals" has been changed to "=" in newer code
+#@readOnly
+StartLog(LogFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812_Legacy.TSTool.log")
+ReadHydroBase(DataType="DivTotal",Interval="Month",Where1="District;Equals;20",Where2="Structure ID;Equals;812",InputStart="1949-11",InputEnd="2005-10")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_Legacy_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812_Legacy_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_Legacy_out.dv",InputFile2="Results/Test_ReadHydroBase_DivTotal_Month_2000812_Legacy_out.dv",WarnIfDifferent=True)

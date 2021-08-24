@@ -1,9 +1,0 @@
-# For daily data, determine the MonthOfLastGT value in each year.
-StartLog(LogFile="Results/Test_NewStatisticYearTS_Day_MonthOfLastGT.TSTool.log")
-RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Day_MonthOfLastGT_out.dv",IfNotFound=Ignore)
-NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,,50,45,20,4")
-NewStatisticYearTS(Alias="Stat",TSID="ts1",NewTSID="ts1..Streamflow.Year.MonthOfLastGT",Statistic=MonthOfLastGT,TestValue=47)
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticYearTS_Day_MonthOfLastGT_out.dv",TSList=AllMatchingTSID,TSID="Stat")
-WriteDateValue(OutputFile="Results\Test_NewStatisticYearTS_Day_MonthOfLastGT_out.dv",TSList=AllMatchingTSID,TSID="Stat")
-CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticYearTS_Day_MonthOfLastGT_out.dv",InputFile2="Results\Test_NewStatisticYearTS_Day_MonthOfLastGT_out.dv",IfDifferent=Warn)

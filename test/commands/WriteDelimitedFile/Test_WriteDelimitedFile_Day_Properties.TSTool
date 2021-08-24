@@ -1,0 +1,19 @@
+# Test writing a daily time series to delimited format
+# - commas as delimiter (CSV)
+# - Specify time series to write using ${Property}
+# - Specify output file using ${Property}
+# - Specify output period using ${Property}
+StartLog(LogFile="Results/Test_WriteDelimitedFile_Day_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDelimitedFile_Day_Properties_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Loc1",NewTSID="Loc1..Precip.Day",Description="Test precipitation data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="mm",PatternValues="5,,10,12,13,35")
+SetProperty(PropertyName="TestTSID",PropertyType=String,PropertyValue="Loc1")
+SetProperty(PropertyName="TestOutputFile0",PropertyType=String,PropertyValue="ExpectedResults/Test_WriteDelimitedFile_Day_Properties_out.csv")
+SetProperty(PropertyName="TestOutputFile",PropertyType=String,PropertyValue="Results/Test_WriteDelimitedFile_Day_Properties_out.csv")
+SetProperty(PropertyName="TestOutputStart",PropertyType=DateTime,PropertyValue="1950-01-15")
+SetProperty(PropertyName="TestOutputEnd",PropertyType=DateTime,PropertyValue="1951-01-20")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDelimitedFile(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="${TestOutputFile0}",OutputStart="${TestOutputStart}",OutputEnd="${TestOutputEnd}")
+# Generate new output...
+WriteDelimitedFile(TSList=AllMatchingTSID,TSID="${TestTSID}",OutputFile="${TestOutputFile}",OutputStart="${TestOutputStart}",OutputEnd="${TestOutputEnd}")
+# Do regression comparison...
+CompareFiles(InputFile1="${TestOutputFile0}",InputFile2="${TestOutputFile}",IfDifferent=Warn)

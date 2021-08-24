@@ -1,0 +1,21 @@
+# Test reading a CO DOLA tab-delimited population data downloaded from the web
+# Column names are read from the file
+# - Specify as many properties as are supported with ${Property}
+StartLog(LogFile="Results/Test_ReadDelimitedFile_CODOLA_Population_Properties.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestInputFile",PropertyType=String,PropertyValue="Data\DOLA-counties1yr-trans.csv")
+SetProperty(PropertyName="TestDelimiter",PropertyType=String,PropertyValue=",")
+SetProperty(PropertyName="TestComment",PropertyType=String,PropertyValue="#")
+SetProperty(PropertyName="TestYearColumn",PropertyType=String,PropertyValue="Year")
+SetProperty(PropertyName="TestLocationID",PropertyType=String,PropertyValue="FC[2:]")
+SetProperty(PropertyName="TestValueColumn",PropertyType=String,PropertyValue="FC[2:]")
+SetProperty(PropertyName="TestProvider",PropertyType=String,PropertyValue="DOLA")
+SetProperty(PropertyName="TestDataType",PropertyType=String,PropertyValue="Population")
+SetProperty(PropertyName="TestUnits",PropertyType=String,PropertyValue="Persons")
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="2000")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2010")
+ReadDelimitedFile(InputFile="${TestInputFile}",Delimiter="${TestDelimiter}",ColumnNames="${TestYearColumn},${TestValueColumn}",DateTimeColumn="${TestYearColumn}",ValueColumn="${TestValueColumn}",Comment="${TestComment}",LocationID="${TestLocationID}",Provider="${TestProvider}",DataType="${TestDataType}",Interval=Year,Units="${TestUnits}",Alias="%L-pop",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",InputFile2="Results\Test_ReadDelimitedFile_CODOLA_Population_Properties_out.dv",IfDifferent=Warn)

@@ -1,8 +1,0 @@
-# Test reading an NWS Card QME 24 time series
-StartLog(LogFile="Results/Test_TSID_NwsCard_QME24.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_NwsCard_QME24_out.dv",IfNotFound=Ignore)
-03567500..QME.24Hour~NWSCard~Data\03567500.QME.24.CARD
-# Uncomment the following to regenerate the expected results...
-# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_NwsCard_QME24_out.dv")
-WriteDateValue(OutputFile="Results/Test_TSID_NwsCard_QME24_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_TSID_NwsCard_QME24_out.dv",InputFile2="Results/Test_TSID_NwsCard_QME24_out.dv",IfDifferent=Warn)

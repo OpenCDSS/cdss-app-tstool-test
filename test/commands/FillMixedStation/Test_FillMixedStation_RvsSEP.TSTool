@@ -1,0 +1,17 @@
+# This test is intended to show that the different means of sorting sort correctly
+# R is a measure of the correlation between two series,
+# so we can expect the better correlated series ("correlated") to be used to fill when sorting by R.
+# SEP is a measure of the distance from the mean,
+# so we can expect the series with values all close to the mean ("mean") to be used to fill when sorting by SEP.
+#@testSuite MixedStationModel
+StartLog(LogFile="Results\Test_FillMixedStation_RvsSEP.log")
+NewPatternTimeSeries(Alias="toFill",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,2,,")
+Copy(TSID="toFill",NewTSID="here...Month",Alias="toFill2")
+NewPatternTimeSeries(Alias="correlated",NewTSID="correlated...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,16,1")
+NewPatternTimeSeries(Alias="mean",NewTSID="mean...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="2,1,1")
+FillMixedStation(DependentTSList=AllMatchingTSID,DependentTSID="toFill",BestFitIndicator=SEP,FillFlag="i")
+FillMixedStation(DependentTSList=AllMatchingTSID,DependentTSID="toFill2",BestFitIndicator=R,FillFlag="i")
+# Uncomment the following line to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults\Test_FillMixedStation_RvsSEP_out.dv")
+WriteDateValue(OutputFile="Results\Test_FillMixedStation_RvsSEP_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_FillMixedStation_RvsSEP_out.dv",InputFile2="Results\Test_FillMixedStation_RvsSEP_out.dv")

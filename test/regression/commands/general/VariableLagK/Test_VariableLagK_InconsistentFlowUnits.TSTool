@@ -1,9 +1,0 @@
-# Test that entering discharge values that are not increasing generates an error
-#
-#@expectedStatus Failure
-#
-StartLog(LogFile="Results\Test_InconsistentFlowUnits.TSTool.log")
-#
-# Read NWSCard input file
-TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
-VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMSD,LagInterval=Hour,Lag="0,12",Alias="Routed")

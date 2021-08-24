@@ -1,0 +1,12 @@
+# Set time series data from another time series
+# - Provide a set window to limit setting to a few months
+StartLog(LogFile="Results/Test_SetFromTS_SetWindow.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetFromTS_Month_SetWindow_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_SetFromTS_Month_SetWindow_out.txt",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1_month",NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1")
+NewPatternTimeSeries(Alias="ts2_month",NewTSID="ts2...Month",Description="test data 2",SetStart="2001-01",SetEnd="2003-07",PatternValues="10,20,30,20,10,5,50,10,50,150,40,10")
+SetFromTS(TSList=AllMatchingTSID,TSID="ts1_month",IndependentTSList=AllMatchingTSID,IndependentTSID="ts2_month",SetWindowStart="03",SetWindowEnd="06",TransferHow=ByDateTime,HandleMissingHow="IgnoreMissing",RecalcLimits=True)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_SetFromTS_Month_SetWindow_out.dv")
+WriteDateValue(OutputFile="Results/Test_SetFromTS_Month_SetWindow_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_SetFromTS_Month_SetWindow_out.dv",InputFile2="Results/Test_SetFromTS_Month_SetWindow_out.dv",IfDifferent=Warn)

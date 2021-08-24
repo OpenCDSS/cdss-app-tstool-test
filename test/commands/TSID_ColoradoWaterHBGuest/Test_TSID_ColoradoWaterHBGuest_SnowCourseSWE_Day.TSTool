@@ -1,0 +1,23 @@
+#@testSuite ColoradoWaterHBGuest
+# Test reading a SnowCourseSWE day time series from ColoradoWaterHBGuest web service using a TSID
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
+# Compare the resulting time series with that retrieved from HydroBase
+StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseSWE_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseSWE_Day_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="2000-01-01",InputEnd="2002-12-31")
+05J06S.NRCS.SnowCourseSWE.Day~HydroBase
+05J06S.NRCS.SnowCourseSWE.Day~ColoradoWaterHBGuest
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+#WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterHBGuest_SnowCourseSWE_Day_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="0300915.DWR.SnowCourseSWE.Day")
+#WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseSWE_Day_out.dv",Precision=2,TSList=LastMatchingTSID,TSID="0300915.DWR.SnowCourseSWE.Day")
+#CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterHBGuest_SnowCourseSWE_Day_out.dv",InputFile2="Results/Test_TSIDColoradoWaterHBGuest_SnowCourseSWE_Day_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)

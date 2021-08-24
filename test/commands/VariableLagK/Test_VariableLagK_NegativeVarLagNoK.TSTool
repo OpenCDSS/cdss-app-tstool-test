@@ -1,0 +1,19 @@
+# Test using negative variable Lag
+StartLog(LogFile="Results\Test_VariableLagK_NegativeVarLagNoK.TSTool.log")
+# RemoveFile(InputFile="Results\Test_VariableLagK_NegativeVarLagNoK_out.dv",IfNotFound=Ignore)
+#
+# Read NWSCard input file
+TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
+#
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,-18",Alias="ConstantNegativeLag")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,-6",Alias="ConstantNegativeLag2")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="1000,-18; 5000,-6",Alias="VariableNegativeLag1")
+# Free(TSList=AllMatchingTSID,TSID="Inflow")
+#
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_NegativeVarLagNoK_out.dv",TSList=SelectedTS)
+# WriteDateValue(OutputFile="Results\Test_VariableLagK_NegativeVarLagNoK_out.dv",TSList=SelectedTS)
+# CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_NegativeVarLagNoK_out.dv",InputFile2="Results\Test_VariableLagK_NegativeVarLagNoK_out.dv",WarnIfDifferent=True)
+
+
+

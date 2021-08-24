@@ -1,0 +1,3 @@
+# Test command file for RunCommands() test:
+# - Remove a nonexistent file and generate a warning when not found
+RemoveFile(InputFile="Results/NonexistentFile1.txt",IfNotFound=Warn)

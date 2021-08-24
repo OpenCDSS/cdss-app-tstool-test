@@ -1,0 +1,8 @@
+# Test creating a pattern day interval time series, with flags
+StartLog(LogFile="Results/Test_NewPatternTimeSeries_Day_Flags.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewPatternTimeSeries_Day_Flags_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1950-03-12",Units="CFS",PatternValues="5,10,12,13,75",PatternFlags="a,b,c,xx,yy,zz")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewPatternTimeSeries_Day_Flags_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_NewPatternTimeSeries_Day_Flags_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_NewPatternTimeSeries_Day_Flags_out.dv",InputFile2="Results/Test_NewPatternTimeSeries_Day_Flags_out.dv",IfDifferent=Warn)

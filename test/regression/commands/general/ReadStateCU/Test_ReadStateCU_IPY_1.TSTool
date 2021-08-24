@@ -1,7 +1,0 @@
-StartLog(LogFile="Results/Test_Test_ReadStateCU_IPY_1.TSTool.log")
-RemoveFile(InputFile="Results/Test_Test_ReadStateCU_IPY_1_out.dv",WarnIfMissing=False)
-ReadStateCU(InputFile="Data\rg2007.ipy",TSID="200812*",CheckData=False)
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateCU_IPY_1_out.dv")
-WriteDateValue(OutputFile="Results\Test_ReadStateCU_IPY_1_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_ReadStateCU_IPY_1_out.dv",InputFile2="Results\Test_ReadStateCU_IPY_1_out.dv",WarnIfDifferent=True)

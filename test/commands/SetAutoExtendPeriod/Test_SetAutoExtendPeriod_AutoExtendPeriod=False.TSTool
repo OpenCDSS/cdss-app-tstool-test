@@ -1,0 +1,10 @@
+# Test setup...
+StartLog(LogFile="Results/Test_SetAutoExtendPeriod_AutoExtendPeriod=False.TSTool.log")
+# RemoveFile(InputFile="Results/Test_SetAutoExtendPeriod_AutoExtendPeriod=False_out.txt",WarnIfMissing=True)
+SetAutoExtendPeriod(AutoExtendPeriod=False)
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetAutoExtendPeriod_AutoExtendPeriod=False_out.txt",IncludeProperties="AutoExtendPeriod",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetAutoExtendPeriod_AutoExtendPeriod=False_out.txt",IncludeProperties="AutoExtendPeriod",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetAutoExtendPeriod_AutoExtendPeriod=False_out.txt",InputFile2="Results/Test_SetAutoExtendPeriod_AutoExtendPeriod=False_out.txt",IfDifferent=Warn)

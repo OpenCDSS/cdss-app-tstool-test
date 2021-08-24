@@ -1,4 +1,0 @@
-# Test trying to remove a non-existant file - and warn (default)
-#@expectedStatus Warn
-StartLog(LogFile="Results/Test_RemoveFile_NoFile.TSTool.log")
-RemoveFile(InputFile="Results/NonexistantFile.txt")

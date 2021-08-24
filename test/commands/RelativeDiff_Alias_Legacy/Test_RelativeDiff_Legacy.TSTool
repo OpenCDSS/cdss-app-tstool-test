@@ -1,0 +1,11 @@
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+StartLog(LogFile="Results/Test_RelativeDiff_Legacy.TSTool.log")
+RemoveFile(InputFile="Results/Test_RelativeDiff_Legacy_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",Units="MM",PatternValues="1,2,4,7,15,8,5,2,0.5,2,3,2")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Month",Description="test data 2",SetStart="2000-01",SetEnd="2004-05",Units="MM",PatternValues="2,5,6,3,30,0,5,2,1,2,1,2")
+TS tsout = RelativeDiff(ts1,ts2,DivideByTS1)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_RelativeDiff_Legacy_out.dv")
+WriteDateValue(OutputFile="Results/Test_RelativeDiff_Legacy_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_RelativeDiff_Legacy_out.dv",InputFile2="Results/Test_RelativeDiff_Legacy_out.dv",WarnIfDifferent=True)

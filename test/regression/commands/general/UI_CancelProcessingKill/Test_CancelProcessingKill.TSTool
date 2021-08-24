@@ -1,9 +1,0 @@
-# Test killing processing with a thread kill
-# -this example uses a for loop over a sequence, with a wait to give plenty of time to manually kill
-# Disable for automated tests
-#@enabled=False
-StartLog(LogFile="Results/Test_CancelProcessingKill.TSTool.log")
-RemoveFile(InputFile="Results/Test_CancelProcessingKill_out.txt",IfNotFound=Ignore)
-For(Name="TestFor",SequenceStart="1",SequenceEnd="20",SequenceIncrement="2")
-Wait(WaitTime="5")
-EndFor(Name="TestFor")

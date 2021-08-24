@@ -1,6 +1,0 @@
-startLog(LogFile="yearWithFillFlag.log")
-# 06756500 - CROW CREEK NEAR BARNSVILLE, CO.
-06756500.USGS.Streamflow.Day~HydroBase
-fillConstant(TSList=AllMatchingTSID,TSID="06756500.USGS.Streamflow.Day",ConstantValue=500,FillStart="1970-02",FillEnd="1970-10",FillFlag="C")
-writeDateValue(OutputFile="../output/dayWithFillFlagOutput.dv")
-compareFiles(InputFile1="dayWithFillFlagExpected.dv",InputFile2="../output/dayWithFillFlagOutput.dv",WarnIfDifferent=True)

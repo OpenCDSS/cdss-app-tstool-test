@@ -1,0 +1,13 @@
+# Test reading a Delft FEWS PI XML time series file
+# - ensemble of 24Hour SQME
+# - set the alias on output
+# - offset the GMT by -7 hours
+# - set the output timezone to "MST"
+# - convert 24Hour to Day interval using cutoff of 0 (default)
+StartLog(LogFile="Results/Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_out.dv",IfNotFound=Ignore)
+ReadDelftFewsPiXml(InputFile="Data\DIRC2L_F.SIM24.SQME.24.CS.xml",TimeZoneOffset=-7,TimeZone="MST",Read24HourAsDay=True,Alias="%L-%T")
+# Uncomment the following line to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_out.dv",IncludeProperties="*")
+WriteDateValue(OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_out.dv",IncludeProperties="*")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_out.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_24Hour_SQME_Read24HourAsDay_out.dv",IfDifferent=Warn)

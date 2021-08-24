@@ -1,0 +1,20 @@
+# Test reading a Delft FEWS PI XML time series file
+# - ensemble of 6Hour QINE
+# - set the alias on output
+# - shift GMT to MST by using -7 hour shift
+# - set output time zone to "MST"
+# - specify parameters with ${Property}
+StartLog(LogFile="Results/Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_Properties.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_Properties_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestDataSource",PropertyType=String,PropertyValue="CBRFC")
+SetProperty(PropertyName="TestDataType",PropertyType=String,PropertyValue="QINE")
+SetProperty(PropertyName="TestDescription",PropertyType=String,PropertyValue="Test Description")
+SetProperty(PropertyName="TestEnsembleIDPrefix",PropertyType=String,PropertyValue="Ensemble")
+SetProperty(PropertyName="TestEnsembleName",PropertyType=String,PropertyValue="Test ensemble name")
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="2016-02-04 11")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2016-09-28 05")
+ReadDelftFewsPiXml(InputFile="Data\DKKC2.QINE.traces.WY.xml",Output=TimeSeriesAndEnsembles,TimeZoneOffset=-7,TimeZone="MST",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",DataSource="${TestDataSource}",DataType="${TestDataType}",Description="${TestDescription}: ${ts:stationName}-%L",Alias="%L-%T",EnsembleID="${TestEnsembleIDPrefix}-%L-%T",EnsembleName="${TestEnsembleName}")
+# Uncomment the following command to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_Properties_out.dv",IncludeProperties="*")
+WriteDateValue(OutputFile="Results\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_Properties_out.dv",IncludeProperties="*")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_Properties_out.dv",InputFile2="Results\Test_ReadDelftFewsPiXml_Ensemble_6Hour_QINE_Properties_out.dv",IfDifferent=Warn)

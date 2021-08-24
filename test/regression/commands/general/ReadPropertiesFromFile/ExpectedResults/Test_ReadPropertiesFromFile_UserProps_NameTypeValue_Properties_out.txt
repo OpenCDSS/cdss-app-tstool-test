@@ -1,2 +1,0 @@
-DoubleProp=1.2345
-IntegerProp=12345

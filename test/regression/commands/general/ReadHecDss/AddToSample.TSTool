@@ -1,6 +1,0 @@
-#@os Windows
-TS Alias1 = NewPatternTimeSeries(NewTSID="Apart1:Bpart1..Cpart1.6Hour.Fpart1",SetStart="1999-12-25 18",SetEnd="2000-01-11 12",Units="CFS",PatternValues="50,10,5,3,2")
-TS Alias2 = NewPatternTimeSeries(NewTSID="Apart2:Bpart2..Cpart2.Day.daily data",SetStart="1999-12-20",SetEnd="2000-01-11",Units="CMS",PatternValues="10,30,50,40")
-TS Alias3 = NewPatternTimeSeries(NewTSID="Apart3:Bpart3..Cpart3.Month.monthly data",SetStart="1999-12",SetEnd="2002-03",Units="IN",PatternValues="10,20,50,70")
-TS Alias4 = NewPatternTimeSeries(NewTSID="Apart4:Bpart4..Cpart4.Year.yearly data",SetStart="1957",SetEnd="1979",Units="ACFT",PatternValues="1,2,4,3,5")
-WriteHecDss(OutputFile="Data\sample.dss",Type=INST-VAL)

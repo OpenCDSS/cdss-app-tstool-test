@@ -1,0 +1,10 @@
+# For daily data, determine the LTPercent value in each month.
+StartLog(LogFile="Results/Test_NewStatisticMonthTimeSeries_Day_LTPercent.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticMonthTimeSeries_Day_LTPercent_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,,75")
+NewStatisticMonthTimeSeries(TSID="ts1",Alias="Stat",NewTSID="ts1..Streamflow.Month.LTPercent",Statistic=LTPercent,TestValue=10)
+NewStatisticMonthTimeSeries(TSID="ts1",Alias="StatMonth",NewTSID="ts1Month..Streamflow.Month.LTPercent",Statistic=LTPercent,MonthTestValues="10,20,10,20,10,20,10,20,10,20,10,20")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticMonthTimeSeries_Day_LTPercent_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+WriteDateValue(OutputFile="Results\Test_NewStatisticMonthTimeSeries_Day_LTPercent_out.dv",TSList=AllMatchingTSID,TSID="Stat")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticMonthTimeSeries_Day_LTPercent_out.dv",InputFile2="Results\Test_NewStatisticMonthTimeSeries_Day_LTPercent_out.dv",IfDifferent=Warn)

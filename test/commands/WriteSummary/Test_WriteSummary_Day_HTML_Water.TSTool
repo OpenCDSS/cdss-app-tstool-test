@@ -1,0 +1,10 @@
+# Test writing summary on daily data for water year output, with flags, as HTML
+StartLog(LogFile="Results/Test_WriteSummary_Day_HTML_Water.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteSummary_Day_HTML_Water_out.html",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1953-03-12",Units="CFS",PatternValues="5,10,12,,,13,75",PatternFlags=",,,,a,b,,c")
+# Uncomment the following command to regenerate the expected results file.
+# WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Day_HTML_Water_out.html",OutputYearType=Water)
+# Generate new output...
+WriteSummary(OutputFile="Results/Test_WriteSummary_Day_HTML_Water_out.html",OutputYearType=Water)
+# Do regression comparison - allow 4 diffs for date/version/commmand line/machine
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Day_HTML_Water_out.html",InputFile2="Results/Test_WriteSummary_Day_HTML_Water_out.html",AllowedDiff="4",IfDifferent=Warn)

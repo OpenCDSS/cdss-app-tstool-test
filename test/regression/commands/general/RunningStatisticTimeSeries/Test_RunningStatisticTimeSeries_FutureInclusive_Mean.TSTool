@@ -1,9 +1,0 @@
-# Test the FutureInclusive running statistic (mean), with missing data
-StartLog(LogFile="Results/Test_RunningStatisticTimeSeries_FutureInclusive_Mean.TSTool.log")
-RemoveFile(InputFile="Results/Test_RunningStatistic_FutureInclusive_Mean_out.dv",IfNotFound=Ignore)
-NewPatternTimeSeries(Alias="ts1_day",NewTSID="ts1..Streamflow.Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,3,5,1,8,15,,1,3,5")
-RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_day",Statistic=Mean,SampleMethod=FutureInclusive,Bracket=3,Alias="ts1_day_mean")
-# Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_mean")
-WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_day_mean",OutputFile="Results/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_out.dv",IfDifferent=Warn)

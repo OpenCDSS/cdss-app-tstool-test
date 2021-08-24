@@ -1,9 +1,0 @@
-# Test that an incorrect unit on the output time series generates an error
-#
-#@expectedStatus Failure
-#
-StartLog(LogFile="Results\Test_IntervalIncorrect.TSTool.log")
-#
-# Read NWSCard input file
-TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
-VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.24Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,12",Alias="Routed")

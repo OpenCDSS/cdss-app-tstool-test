@@ -1,9 +1,0 @@
-StartLog(LogFile="Results/Test_Divide_NewUnits.TSTool.log")
-RemoveFile(InputFile="Results/Test_Divide_NewUnits_out.dv",IfNotFound=Ignore)
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2001-05",Units="MM",PatternValues="1,2,4,7,15,8,5,2,0.5,2,3,2")
-TS ts2 = NewPatternTimeSeries(NewTSID="ts2...Month",Description="test data 2",SetStart="2000-01",SetEnd="2001-09",Units="MM",PatternValues="2,4,8,14,30,16,10,4,1,4,6,4")
-Divide(TSID="ts1",DivisorTSID="ts2",NewUnits="MM2")
-# Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_Divide_NewUnits_out.dv",Precision=2)
-WriteDateValue(OutputFile="Results/Test_Divide_NewUnits_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults/Test_Divide_NewUnits_out.dv",InputFile2="Results/Test_Divide_NewUnits_out.dv",WarnIfDifferent=True)

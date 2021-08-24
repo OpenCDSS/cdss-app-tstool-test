@@ -1,0 +1,38 @@
+#@testSuite ColoradoWaterHBGuest
+# Simple test to see if web service request works OK
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
+# If data do not come back, limits will not be calculable and warnings will occur
+# 0300915 - CACHE LA POUDRE DITCH
+# Test DivTotal and IDivTotal for Year and Month
+0300915.DWR.DivTotal.Day~ColoradoWaterHBGuest
+0300915.DWR.DivTotal.Month~ColoradoWaterHBGuest
+0300915.DWR.DivTotal.Year~ColoradoWaterHBGuest
+#
+0300915.DWR.IDivTotal.Month~ColoradoWaterHBGuest
+0300915.DWR.IDivTotal.Year~ColoradoWaterHBGuest
+#
+# Test RelTotal and IRelTotal for Year and Month
+# 0300909 - HANSEN SUPPLY CANAL
+0300909.DWR.RelTotal.Day~ColoradoWaterHBGuest
+0300909.DWR.RelTotal.Month~ColoradoWaterHBGuest
+0300909.DWR.RelTotal.Year~ColoradoWaterHBGuest
+# 0300913 - NEW MERCER DITCH
+0300913.DWR.IRelTotal.Month~ColoradoWaterHBGuest
+0300913.DWR.IRelTotal.Year~ColoradoWaterHBGuest
+#
+# Test ResEOM and ResEOY
+# TODO SAM 2012-05-04 service does not seem to return data records
+# 5105053 - OURAY RESERVOIR NO 1
+5104053.DWR.ResEOY.Month~ColoradoWaterHBGuest
+5104053.DWR.ResEOY.Year~ColoradoWaterHBGuest
+#
+# Test ReasMeas...
+# 0303732 - HORSETOOTH RES
+0303732.DWR.ResMeasElev.Day~ColoradoWaterHBGuest
+0303732.DWR.ResMeasEvap.Day~ColoradoWaterHBGuest
+0303732.DWR.ResMeasFill.Day~ColoradoWaterHBGuest
+0303732.DWR.ResMeasRelease.Day~ColoradoWaterHBGuest
+0303732.DWR.ResMeasStorage.Day~ColoradoWaterHBGuest

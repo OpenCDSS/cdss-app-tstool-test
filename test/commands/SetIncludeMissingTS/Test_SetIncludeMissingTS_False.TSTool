@@ -1,0 +1,10 @@
+# Test setup...
+StartLog(LogFile="Results/Test_SetIncludeMissingTS_False.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetIncludeMissingTS_False.txt",IfNotFound=Ignore)
+SetIncludeMissingTS(IncludeMissingTS=False)
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetIncludeMissingTS_False.txt",IncludeProperties="IncludeMissingTS",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetIncludeMissingTS_False.txt",IncludeProperties="IncludeMissingTS",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetIncludeMissingTS_False.txt",InputFile2="Results/Test_SetIncludeMissingTS_False.txt",IfDifferent=Warn)

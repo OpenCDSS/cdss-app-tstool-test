@@ -1,0 +1,14 @@
+# Testing filling one time series from another, do not recalculate the data limits
+StartLog(LogFile="Results/Test_FillFromTS_Month_RecalcLimits=False.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillFromTS_Month_RecalcLimits=False_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_FillFromTS_Month_RecalcLimits=False_out.txt",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1_month",NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1")
+NewPatternTimeSeries(Alias="ts2_month",NewTSID="ts2...Month",Description="test data 2",SetStart="2001-01",SetEnd="2003-07",PatternValues="1,2,3,2,1,.5,5,1,5,15,4,1")
+FillFromTS(TSList=AllMatchingTSID,TSID="ts1_month",IndependentTSList=AllMatchingTSID,IndependentTSID="ts2_month")
+# Uncomment the following 2 commands to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillFromTS_Month_RecalcLimits=False_out.dv")
+# WriteTimeSeriesProperty(OutputFile="ExpectedResults/Test_FillFromTS_Month_RecalcLimits=False_out.txt",PropertyName="DataLimitsOriginal",Append=False)
+WriteDateValue(OutputFile="Results/Test_FillFromTS_Month_RecalcLimits=False_out.dv")
+WriteTimeSeriesProperty(OutputFile="Results/Test_FillFromTS_Month_RecalcLimits=False_out.txt",PropertyName="DataLimitsOriginal",Append=False)
+CompareFiles(InputFile1="ExpectedResults/Test_FillFromTS_Month_RecalcLimits=False_out.dv",InputFile2="Results/Test_FillFromTS_Month_RecalcLimits=False_out.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_FillFromTS_Month_RecalcLimits=False_out.txt",InputFile2="Results/Test_FillFromTS_Month_RecalcLimits=False_out.txt",IfDifferent=Warn)

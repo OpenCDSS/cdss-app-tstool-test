@@ -1,0 +1,23 @@
+StartLog(LogFile="Results/Create_RunTestSuite_commands_general_Windows.tstool.log")
+#
+# Create the regression test runner for the
+# TSTool/test/regression/TestSuites/commands_general files.
+#
+# Generate RunCommands() commands and append to the commands from above.
+# Command files that start with 'Test_' (old naming convention) and
+# 'test-' (new naming convention) are included in the output.
+#
+# =======================================================================================================
+# The following test suites are excluded during normal development to avoid slow tests:
+#   ColoradoWaterHBGuest               No longer available.
+#   ColoradoWaterSMS                   No longer available.
+#   MixedStationModel                  Very slow, separate MixedStationModel software is still used.
+#   ReclamationHDB                     ReclamationHDB datastore requires special test setup.
+#   RiversideDB                        RiversideDB datastore requires special test setup.
+#
+#  See the repository issues for outstanding test problems.
+# =======================================================================================================
+CreateRegressionTestCommandFile(SearchFolder="../../../commands",OutputFile="../run/RunRegressionTest_commands_general_Windows.tstool",SetupCommandFile="Create_RunTestSuite_commands_general_Windows_setup.tstool",TestResultsFile="Results/RunRegressionTest_commands_general_Windows_out.txt",EndCommandFile="Create_RunTestSuite_commands_general_Windows_end.tstool",Append=False,IncludeTestSuite="*",ExcludeTestSuite="ColoradoWaterHBGuest,ColoradoWaterSMS,MixedStationModel,ReclamationHDB,RiversideDB",IncludeOS="Windows",TestResultsTableID="TestResults")
+# Use the following to test that patterns are working
+# CreateRegressionTestCommandFile(SearchFolder="..\..\..\commands\general\CompareFiles",OutputFile="..\run\RunRegressionTest_commands_general_Windows.TSTool",SetupCommandFile="Create_RunTestSuite_commands_general_Windows_setup.TSTool",EndCommandFile="Create_RunTestSuite_commands_general_Windows_end.TSTool",Append=False,IncludeTestSuite="*",IncludeOS="Windows",TestResultsTableID="TestResults")
+# CreateRegressionTestCommandFile(SearchFolder="..\..\..\commands\general\CompareFiles",OutputFile="..\run\RunRegressionTest_commands_general_Windows.TSTool",SetupCommandFile="Create_RunTestSuite_commands_general_Windows_setup.TSTool",EndCommandFile="Create_RunTestSuite_commands_general_Windows_end.TSTool",FilenamePattern="Test_*.TSTool,test-*.tstool",Append=False,IncludeTestSuite="*",IncludeOS="Windows",TestResultsTableID="TestResults")

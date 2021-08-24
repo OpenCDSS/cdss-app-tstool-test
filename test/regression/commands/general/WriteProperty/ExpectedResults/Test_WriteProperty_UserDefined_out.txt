@@ -1,4 +1,0 @@
-Count="37"
-HomeDir="/tmp/x"
-Max="100.5"
-Start="2008-01-01"

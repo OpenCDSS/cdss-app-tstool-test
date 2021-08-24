@@ -1,0 +1,26 @@
+# Test writing a daily time series to DateValue format
+# - Write properties to the file
+# - also test writing a version 1.5 file, which is before properties were supported
+StartLog(LogFile="Results/Test_WriteDateValue_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDateValue_Properties_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_WriteDateValue_Properties_15_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteDateValue_Properties_out.dv")
+# Generate new output...
+SetTimeSeriesProperty(PropertyName="DateTimeProperty",PropertyType=DateTime,PropertyValue="2010-01-01 01:02:03")
+SetTimeSeriesProperty(PropertyName="IntegerProperty",PropertyType=Integer,PropertyValue="123")
+SetTimeSeriesProperty(PropertyName="DoubleProperty",PropertyType=Double,PropertyValue="123.456")
+SetTimeSeriesProperty(PropertyName="StringProperty",PropertyType=String,PropertyValue="abc")
+# Uncomment the following line to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteDateValue_Properties_out.dv",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty")
+WriteDateValue(OutputFile="Results/Test_WriteDateValue_Properties_out.dv",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_Properties_out.dv",InputFile2="Results/Test_WriteDateValue_Properties_out.dv",IfDifferent=Warn)
+#
+# 1.5 version...
+# Uncomment the following line to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_WriteDateValue_Properties_15_out.dv",Version=1.5)
+WriteDateValue(OutputFile="Results/Test_WriteDateValue_Properties_15_out.dv",Version=1.5)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_Properties_15_out.dv",InputFile2="Results/Test_WriteDateValue_Properties_15_out.dv",IfDifferent=Warn)

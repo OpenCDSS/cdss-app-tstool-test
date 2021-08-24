@@ -1,0 +1,14 @@
+# Test writing a daily time series to a datastore
+# * with data flags
+# Disable test for now until local datastore can be configured
+#@enabled False
+StartLog(LogFile="Results/Test_WriteDataStore_Day_Flags.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDataStore_Day_Flags_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75",PatternFlags="Flag1,Flag2,,Flag4,Flag5")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDataStore(")
+# Generate new output...
+WriteTimeSeriesToDataStore()
+# TODO SAM 2013-06-08 - write to DateValue and then compare results
+# Do regression comparison...
+#CompareFiles(InputFile1="ExpectedResults\Test_WriteDataStore_Day_Flags_out.dv",InputFile2="Results/Test_WriteDataStore_Day_Flags_out.dv",IfDifferent=Warn)

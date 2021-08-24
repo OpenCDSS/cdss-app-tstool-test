@@ -1,0 +1,17 @@
+# Test reading a single site SNOTEL instantaneous time series
+# Specify the period to have faster performance
+# - make sure to cover daylight savings switch
+StartLog(LogFile="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Instantaneous.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Instantaneous_out.dv",IfNotFound=Ignore)
+# Specify the period to read because UsgsNwisDaily will change over time and
+# setting the period will better control the numbers that return and impact the
+# test results.
+# SetDebugLevel(LogFileLevel=1)
+ReadNrcsAwdb(DataStore="NrcsAwdb",Interval=Irregular,Stations="551",States="CO",Networks="SNTL",Elements="WTEQ",InputStart="2000-03-25",InputEnd="2000-04-03",Alias="%L-%T")
+# SetDebugLevel(LogFileLevel=0)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Instantaneous_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Instantaneous_out.dv")
+# Read the expected results to troubleshoot issues
+ReadDateValue(InputFile="ExpectedResults\Test_ReadNrcsAwdb_SingleSite_WTEQ_Instantaneous_out.dv",Alias="%l-%T-Expected")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Instantaneous_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Instantaneous_out.dv",IfDifferent=Warn)

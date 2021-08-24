@@ -1,0 +1,9 @@
+# Test reading a MODSIM file
+#@readOnly
+StartLog(LogFile="Results/Test_ReadMODSIM_Legacy.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadMODSIM_Legacy_out.dv",WarnIfMissing=False)
+ReadMODSIM(InputFile="Data\CALIB42.FLO")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadMODSIM_Legacy_out.dv")
+WriteDateValue(OutputFile="Results\Test_ReadMODSIM_Legacy_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_ReadMODSIM_Legacy_out.dv",InputFile2="Results\Test_ReadMODSIM_Legacy_out.dv",WarnIfDifferent=True)

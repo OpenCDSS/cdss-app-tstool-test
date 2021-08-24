@@ -1,9 +1,0 @@
-# This test serves to check whether it selects properly from monthly or single equations when one is more accurate
-StartLog(LogFile="C:\DevRiv\TSTool_SourceBuild\TSTool\test\regression\commands\general\FillMixedStation\Results\Test_FillMixedStation_MonthlyvsOne.TSTool.log")
-NewPatternTimeSeries(Alias="ts2",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,2,3,4,5,6,7,8,9,10,11,12,2,4,6,8,10,12,14,16,18,20,22,24,,,,,,,,,,,,,,,,,,,,,,,,,")
-NewPatternTimeSeries(Alias="ts1",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,2,1,2,1,2,1,2,1,2,1,2,2,4,2,4,2,4,2,4,2,4,2,4")
-FillMixedStation(DependentTSList=AllMatchingTSID,DependentTSID="ts2",IndependentTSList=AllTS,BestFitIndicator=R,NumberOfEquations="MonthlyEquations,OneEquation",Transformation="None",Fill=True,MinimumDataCount=3,FillFlag="auto")
-# Uncomment the next line to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults\Test_FillMixedStation_MonthlyvsOne_out.dv")
-WriteDateValue(OutputFile="Results\Test_FillMixedStation_MonthlyvsOne_out.dv")
-CompareFiles(InputFile1="Results\Test_FillMixedStation_MonthlyvsOne_out.dv",InputFile2="ExpectedResults\Test_FillMixedStation_MonthlyvsOne_out.dv",IfDifferent=Warn)

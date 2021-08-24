@@ -1,0 +1,16 @@
+# Test the AdjustExtremes command
+# - Day interval
+# - Adjust the minimum (0)
+# - Maximum of 3 intervals on each side
+# - Set the flag and description
+# - Set the analysis period
+StartLog(LogFile="Results/Test_AdjustExtremes_AnalysisPeriod.TSTool.log")
+RemoveFile(InputFile="Results/Test_AdjustExtremes_Legacy_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,-1,-2,6,25,10,8,5,1")
+AdjustExtremes(TSList=AllMatchingTSID,TSID="ts1",AdjustMethod=Average,ExtremeToAdjust=AdjustMinimum,ExtremeValue=0,MaxIntervals=2,AnalysisStart="2000-01-01",AnalysisEnd="2000-12-31",SetFlag="A",SetFlagDesc="Adjust extremes")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_AdjustExtremes_AnalysisPeriod_out.dv")
+WriteDateValue(OutputFile="Results/Test_AdjustExtremes_AnalysisPeriod_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_AdjustExtremes_AnalysisPeriod_out.dv",InputFile2="Results/Test_AdjustExtremes_AnalysisPeriod_out.dv",IfDifferent=Warn)
+# Create a copy of the oritinal to help with review
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2...Day",Description="test data copy",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,-1,-2,6,25,10,8,5,1")

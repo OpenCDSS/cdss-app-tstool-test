@@ -1,0 +1,14 @@
+# Test to make sure graphs can handle irregular and hourly data with no flags
+# (this generated an error once when dealing with null flag)
+# Data originally were retrieved from the State of Colorado's web services
+# but were saved locally for the test.
+# Just test that the plot can be generated but do not compare with old image files.
+StartLog(LogFile="Results/Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags.TSTool.log")
+# Read data from previously generated DateValue files
+ReadDateValue(InputFile="Data\CLAFTCCO-DISCHRG-Hour.dv")
+ReadDateValue(InputFile="Data\CLAFTCCO-DISCHRG-Irregular.dv")
+ReadDateValue(InputFile="Data\CLAFTCCO-GAGE_HT-Irregular.dv")
+#
+# Process the graphs
+ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Irregular.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Irregular.png")
+ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Hour.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_PoudreFlow_IrregularAndHourNoFlags_Hour.png")

@@ -1,9 +1,0 @@
-# Test expanding a FreeMarker template for "Hello World"
-# - Pass the input property using the StringProperties parameter
-StartLog(LogFile="Results/Test_ExpandTemplateFile_HelloWorld_StringProperties.TSTool.log")
-RemoveFile(InputFile="Results/Test_ExpandTemplateFile_HelloWorld_StringProperties_out.txt",IfNotFound=Ignore)
-# Uncomment to regenerate the expected results.
-# ExpandTemplateFile(InputFile="Data\HelloWorld_StringProperties_template.txt",StringProperties="testProperty:A test property",OutputFile="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_StringProperties_out.txt")
-ExpandTemplateFile(InputFile="Data\HelloWorld_StringProperties_template.txt",StringProperties="testProperty:A test property",OutputFile="Results/Test_ExpandTemplateFile_HelloWorld_StringProperties_out.txt")
-# Compare the expected and current results
-CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_StringProperties_out.txt",InputFile2="Results/Test_ExpandTemplateFile_HelloWorld_StringProperties_out.txt",IfDifferent=Warn)

@@ -1,0 +1,12 @@
+# Test ARMA
+# - Day input interval
+# - Day ARMA interval
+# - Create a new time series for output
+StartLog(LogFile="Results/Test_ARMA_Day_NewTSID.TSTool.log")
+RemoveFile(InputFile="Results/Test_ARMA_Day_NewTSID_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,3,5,6,25,10,8,5,1")
+ARMA(TSList=AllMatchingTSID,TSID="ts1",ARMAInterval=Day,a=".25,.1,.075,.05,.025",b=".25,.25",NewTSID="ts1_routed...Day",Alias="ts1_routed",Description="New TSID description")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ARMA_Day_NewTSID_out.dv")
+WriteDateValue(OutputFile="Results/Test_ARMA_Day_NewTSID_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ARMA_Day_NewTSID_out.dv",InputFile2="Results/Test_ARMA_Day_NewTSID_out.dv",IfDifferent=Warn)

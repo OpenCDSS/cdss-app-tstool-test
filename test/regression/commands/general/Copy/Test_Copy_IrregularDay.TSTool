@@ -1,9 +1,0 @@
-# Test copying irregular day time series with data flags
-StartLog(LogFile="Results/Test_Copy_IrregularDay.TSTool.log")
-RemoveFile(InputFile="Results\Test_Copy_IrregularDay_out.dv",IfNotFound=Ignore)
-NewPatternTimeSeries(Alias="Original",NewTSID="MyLoc..MyData.Irregular",IrregularInterval=Day,Description="Test data",SetStart="1950-01-01",SetEnd="1950-03-15",Units="CFS",PatternValues="5,10,12,,,13,75,50",PatternFlags="a,b,c,xx,,yy,,zz")
-Copy(TSID="Original",NewTSID="a...Irregular",Alias="Copy")
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(TSList=AllMatchingTSID,TSID="Copy",OutputFile="ExpectedResults\Test_Copy_IrregularDay_out.dv")
-WriteDateValue(TSList=AllMatchingTSID,TSID="Copy",OutputFile="Results\Test_Copy_IrregularDay_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_Copy_IrregularDay_out.dv",InputFile2="Results\Test_Copy_IrregularDay_out.dv",IfDifferent=Warn)

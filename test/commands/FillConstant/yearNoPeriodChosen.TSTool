@@ -1,0 +1,6 @@
+startLog(LogFile="yearNoPeriodChosen.log")
+# 3038 - FORT MORGAN
+3038.NOAA.FrostDateF28F.Year~HydroBase
+fillConstant(TSList=AllMatchingTSID,TSID="3038.NOAA.FrostDateF28F.Year~HydroBase",ConstantValue=0,FillFlag="C")
+writeDateValue(OutputFile="../output/yearNoPeriodChosenOutput.dv")
+compareFiles(InputFile1="yearNoPeriodChosenExpected.dv",InputFile2="../output/yearNoPeriodChosenOutput.dv",WarnIfDifferent=True)

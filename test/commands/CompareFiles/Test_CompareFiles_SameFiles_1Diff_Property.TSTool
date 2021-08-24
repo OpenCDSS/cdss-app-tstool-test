@@ -1,0 +1,6 @@
+# Test comparing the same files, with one difference, and generate a warning
+# Use properties to speicify the file names
+# This should actually NOT generate a warning because AllowedDiff=1 is set
+StartLog(LogFile="Results/Test_CompareFiles_SameFiles_1Diff_Property.TSTool.log")
+SetProperty(PropertyName="DataFolder",PropertyType=String,PropertyValue="Data")
+CompareFiles(InputFile1="${DataFolder}/C1.txt",InputFile2="${DataFolder}/C2.txt",AllowedDiff="1",IfDifferent=Warn)

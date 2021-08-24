@@ -1,9 +1,0 @@
-# Test reading a day interval time series from a DateValue file
-# - File has properties
-StartLog(LogFile="Results/Test_ReadDateValue_Day_Properties.TSTool.log")
-RemoveFile(InputFile="Results\Test_ReadDateValue_Day_Properties_out.txt",IfNotFound=Ignore)
-ReadDateValue(InputFile="Data\Test_WriteDateValue_Properties_out.dv")
-# Uncomment the following command to regenerate the expected results file.
-# WriteTimeSeriesPropertiesToFile(OutputFile="ExpectedResults\Test_ReadDateValue_Day_Properties_out.txt",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",FileFormat=NameTypeValue)
-WriteTimeSeriesPropertiesToFile(OutputFile="Results\Test_ReadDateValue_Day_Properties_out.txt",IncludeProperties="DateTimeProperty,DoubleProperty,IntegerProperty,StringProperty",FileFormat=NameTypeValue)
-CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_Day_Properties_out.txt",InputFile2="Results\Test_ReadDateValue_Day_Properties_out.txt",IfDifferent=Warn)

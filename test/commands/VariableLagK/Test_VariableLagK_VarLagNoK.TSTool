@@ -1,0 +1,29 @@
+# Test variable Lag and no attenuation (K)
+StartLog(LogFile="Results\Test_VariableLagK_VarLagNoK.TSTool.log")
+RemoveFile(InputFile="Results\Test_VariableLagK_VarLagNoK_out.dv",IfNotFound=Ignore)
+#
+# Read NWSCard input file
+TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
+#
+# Route using the same routing parameters used in the mcp3 input deck
+# (metric units: Lag(hrs) K(hrs) Q(cms)
+# Lag
+# K
+#    24.0   200.0    12.0  600.00     9.0  1500.0    42.0  3000.0
+#      0.
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="200,24; 600,12; 1500,9; 3000,42",Alias="VarLagNoK")
+Free(TSList=AllMatchingTSID,TSID="Inflow")
+#
+# Read the output from the mcp3 LAG/K command
+TS mcp3_output = ReadNwsCard(InputFile="Data\VAR_LAG_NO_K.SQIN")
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,Tolerance="0.005",AnalysisStart="1990-12-01",WarnIfDifferent=True)
+#
+# The following does an exact test of the results:
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="VarLagNoK")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_VariableLagK_VarLagNoK_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_VariableLagK_VarLagNoK_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_VariableLagK_VarLagNoK_out.dv",InputFile2="Results\Test_VariableLagK_VarLagNoK_out.dv",WarnIfDifferent=True)
+
+
+

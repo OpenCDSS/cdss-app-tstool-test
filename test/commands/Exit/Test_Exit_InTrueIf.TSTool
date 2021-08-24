@@ -1,0 +1,10 @@
+# Test exiting the command file
+# - Put Exit() in If() that evaluates to true
+# - Therefore the exit will occur and there will be no warning
+StartLog(LogFile="Results/Test_Exit_InFalseIf.TSTool.log")
+# If Exit() is working, then the following remove command WILL execute
+# and will therefore WILL generate an error due to the missing file
+If(Name="TrueIf",Condition="1 == 1")
+Exit()
+EndIf(Name="TrueIf")
+RemoveFile(InputFile="Results/Test_Exit_InFalseIf_out.txt",IfNotFound=Warn)

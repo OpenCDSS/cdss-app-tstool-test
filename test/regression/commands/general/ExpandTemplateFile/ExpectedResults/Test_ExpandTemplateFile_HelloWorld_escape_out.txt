@@ -1,5 +1,0 @@
-# Simple test to expand a text file using FreeMarker
-# and also escape text so that it passes through to the expanded file
-# @readOnly
-Hello World
-SomeCommand($SomeProperty)

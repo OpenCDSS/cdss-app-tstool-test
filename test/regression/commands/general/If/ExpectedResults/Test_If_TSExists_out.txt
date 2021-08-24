@@ -1,3 +1,0 @@
-AliasFound=true
-TSIDFound=true
-MissingTSIDFound=false

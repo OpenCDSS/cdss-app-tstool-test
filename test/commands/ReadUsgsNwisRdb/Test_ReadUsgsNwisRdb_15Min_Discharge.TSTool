@@ -1,0 +1,9 @@
+# Test ReadUsgsNwisRdb command
+# - 15minute discharge
+StartLog(LogFile="Results/Test_ReadUsgsNwisRdb_15Min_Discharge.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadUsgsNwisRdb_15Min_Discharge_out.dv",IfNotFound=Ignore)
+ReadUsgsNwisRdb(InputFile="Data\09512500_Discharge.txt",Alias="nwis",DataType="Streamflow",Interval=15Minute,Units="cfs")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadUsgsNwisRdb_15Min_Discharge_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results\Test_ReadUsgsNwisRdb_15Min_Discharge_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadUsgsNwisRdb_15Min_Discharge_out.dv",InputFile2="Results\Test_ReadUsgsNwisRdb_15Min_Discharge_out.dv",IfDifferent=Warn)

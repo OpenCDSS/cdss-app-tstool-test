@@ -1,0 +1,11 @@
+# Test copying daily time series with data flags
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+StartLog(LogFile="Results/Test_Copy_Day_DataFlags.TSTool.log")
+RemoveFile(InputFile="Results\Test_Copy_Day_DataFlags_out.dv",IfNotFound=Ignore)
+TS Original = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1950-03-15",Units="CFS",PatternValues="5,10,12,,,13,75,50",PatternFlags="a,b,c,xx,,yy,,zz")
+TS Copy = Copy(TSID="Original",NewTSID="a...Day")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_Copy_Day_DataFlags_out.dv")
+WriteDateValue(OutputFile="Results\Test_Copy_Day_DataFlags_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_Copy_Day_DataFlags_out.dv",InputFile2="Results\Test_Copy_Day_DataFlags_out.dv",IfDifferent=Warn)

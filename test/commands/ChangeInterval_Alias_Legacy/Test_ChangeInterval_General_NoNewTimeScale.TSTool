@@ -1,0 +1,7 @@
+# Test that not specifying NewTimeScale fails
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+#@expectedStatus Failure
+#
+TS DailyTS = NewPatternTimeSeries(NewTSID="s1.CAT..Day",SetStart="1/1/2007",SetEnd="12/30/2007",Units="IN",PatternValues="10,20,30,20,10")
+TS Alias = ChangeInterval(TSID="DailyTS",NewInterval=Year,OldTimeScale=ACCM)

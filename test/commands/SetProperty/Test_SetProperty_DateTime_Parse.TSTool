@@ -1,0 +1,71 @@
+# Test setting a processor property to a date/time:
+# - parse various supported formats
+StartLog(LogFile="Results/Test_SetProperty_DateTime_Parse.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetProperty_DateTime_Parse_out.txt",IfNotFound=Ignore)
+# List in the order of the DateTime parsing code, which is based on length.
+# 4
+SetProperty(PropertyName="DateProp_YYYY",PropertyType=DateTime,PropertyValue="2011")
+# 5
+SetProperty(PropertyName="DateProp_MM_DD",PropertyType=DateTime,PropertyValue="01/12")
+SetProperty(PropertyName="DateProp_HM_MM",PropertyType=DateTime,PropertyValue="01:30")
+# 6
+SetProperty(PropertyName="DateProp_M_YYYY",PropertyType=DateTime,PropertyValue="1/2011")
+# 7
+SetProperty(PropertyName="DateProp_YYYY_MM",PropertyType=DateTime,PropertyValue="2011-01")
+SetProperty(PropertyName="DateProp_MM_YYYY",PropertyType=DateTime,PropertyValue="01/2011")
+# 8
+SetProperty(PropertyName="DateProp_MM_DD_YY",PropertyType=DateTime,PropertyValue="01/02/2003")
+SetProperty(PropertyName="DateProp_M_D_YYYY",PropertyType=DateTime,PropertyValue="1/2/2003")
+SetProperty(PropertyName="DateProp_YYYYMMDD",PropertyType=DateTime,PropertyValue="20110102")
+# 9
+SetProperty(PropertyName="DateProp_MM_D_YYYY",PropertyType=DateTime,PropertyValue="10/2/2003")
+SetProperty(PropertyName="DateProp_M_DD_YYYY",PropertyType=DateTime,PropertyValue="1/20/2003")
+# 10
+SetProperty(PropertyName="DateProp_MM_DD_YYYY",PropertyType=DateTime,PropertyValue="11/22/2003")
+SetProperty(PropertyName="DateProp_YYYY_MM_DD",PropertyType=DateTime,PropertyValue="2003-11-22")
+# 12
+SetProperty(PropertyName="DateProp_YYYYMMDDhhmm",PropertyType=DateTime,PropertyValue="200311220102")
+# 13
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh",PropertyType=DateTime,PropertyValue="2003-11-22 01")
+SetProperty(PropertyName="DateProp_MM_DD_YYYY_hh",PropertyType=DateTime,PropertyValue="11-22-2003 01")
+SetProperty(PropertyName="DateProp_MM_DD_YYYY_hh2",PropertyType=DateTime,PropertyValue="11/22/2003 01")
+# 14
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_zzz",PropertyType=DateTime,PropertyValue="2003-11-12 01 zone")
+# 15
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hhmm",PropertyType=DateTime,PropertyValue="2003-11-12 0102")
+# 16
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm",PropertyType=DateTime,PropertyValue="2003-11-12 01:02")
+SetProperty(PropertyName="DateProp_MM_DD_YYYY_hh_mm",PropertyType=DateTime,PropertyValue="11/12/2003 01:02")
+# 17
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm_zzz",PropertyType=DateTime,PropertyValue="2003-11-12 01:02 zone")
+# 19
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm_ss",PropertyType=DateTime,PropertyValue="2003-11-12 01:02:03")
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm_ss2",PropertyType=DateTime,PropertyValue="11/12/2003 01:02:03")
+# 22
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm_ss_hh",PropertyType=DateTime,PropertyValue="2003-11-12 01:02:03:04")
+# 23
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm_ss_zzz",PropertyType=DateTime,PropertyValue="2003-11-12 01:02:03 zone")
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm_ss_zzz2",PropertyType=DateTime,PropertyValue="2003-11-12T01:02:03 zone")
+SetProperty(PropertyName="DateProp_YYYY_MM_DD_hh_mm_ss_hh_zzz",PropertyType=DateTime,PropertyValue="2003-11-12T01:02:03:04 zone")
+# ISO formats as per:
+#   https://en.wikipedia.org/wiki/ISO_8601
+#   https://www.oracle.com/technical-resources/articles/java/jf14-date-time.html
+SetProperty(PropertyName="DateProp_ISO_YYYY_MM_DD",PropertyType=DateTime,PropertyValue="2003-11-12")
+SetProperty(PropertyName="DateProp_ISO_YYYY_MM_DDThh_mm_ssZ",PropertyType=DateTime,PropertyValue="2003-11-12T01:02:03Z")
+SetProperty(PropertyName="DateProp_ISO_YYYY_MM_DDThh_mm_sszplus",PropertyType=DateTime,PropertyValue="2003-11-12T01:02:03+01:02")
+SetProperty(PropertyName="DateProp_ISO_YYYY_MM_DDThh_mm_sszminus",PropertyType=DateTime,PropertyValue="2003-11-12T01:02:03-01:02")
+#@todo smalers 2021-08-23 need to enable these formats
+#SetProperty(PropertyName="DateProp_ISO_YYYYMMDDThhmmssz",PropertyType=DateTime,PropertyValue="20031112T010203Z")
+#SetProperty(PropertyName="DateProp_ISO_YYYYMMDDThhmmsszplus",PropertyType=DateTime,PropertyValue="20031112T010203+0102")
+#SetProperty(PropertyName="DateProp_ISO_YYYYMMDDThhmmsszminus",PropertyType=DateTime,PropertyValue="20031112T010203-0102")
+# Additional formats that may be encountered:
+# - more verbose so not generally useful for data files
+# - note still no space
+SetProperty(PropertyName="DateProp_ISO_YYYY_MM_DDThh_mm_ss_hhzminus",PropertyType=DateTime,PropertyValue="2003-11-12T01:02:03-01:02.123-06:00")
+SetProperty(PropertyName="DateProp_ISO_YYYY_MM_DDThh_mm_sszminusname",PropertyType=DateTime,PropertyValue="2003-11-12T01:02:03-01:02-06:00[America/Denver]")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetProperty_DateTime_Parse_out.txt",IncludeProperties="DateProp*",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetProperty_DateTime_Parse_out.txt",IncludeProperties="DateProp*",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetProperty_DateTime_Parse_out.txt",InputFile2="Results/Test_SetProperty_DateTime_Parse_out.txt",IfDifferent=Warn)

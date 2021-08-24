@@ -1,0 +1,23 @@
+# Test iterating through a For() loop using a list of strings
+# - for output, append the property value to a file
+# - Nest three loops to verify that nesting works
+# - Verify command logging by using Message() command with warning
+StartLog(LogFile="Results/Test_For_ListString_Nested_Logging.TSTool.log")
+RemoveFile(InputFile="Results/Test_For_ListString_Nested_Logging_out.txt",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+# SetDebugLevel(LogFileLevel=1)
+For(Name="TestForBasins",IteratorProperty="Basin",List="Basin1,Basin2,Basin3,Basin4")
+Message(Message="Test logging Basin=${Basin}",CommandStatus=SUCCESS)
+For(Name="TestForStations",IteratorProperty="Station",List="Station1,Station2,Station3,Station4")
+Message(Message="Test logging Basin=${Basin} Station=${Station}",CommandStatus=SUCCESS)
+For(Name="TestForSensors",IteratorProperty="Sensor",List="Sensor1,Sensor2,Sensor3,Sensor4")
+WritePropertiesToFile(OutputFile="Results/Test_For_ListString_Nested_Logging_out.txt",IncludeProperties="Basin,Station,Sensor",WriteMode=Append,FileFormat=NameTypeValue)
+Message(Message="Test logging Basin=${Basin} Station=${Station} Sensor=${Sensor}",CommandStatus=SUCCESS)
+EndFor(Name="TestForSensors")
+EndFor(Name="TestForStations")
+EndFor(Name="TestForBasins")
+# SetDebugLevel(LogFileLevel=0)
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results\Test_For_ListString_Nested_Logging_out.txt",OutputFile="ExpectedResults\Test_For_ListString_Nested_Logging_out.txt",IfInputNotFound=Fail)
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults/Test_For_ListString_Nested_Logging_out.txt",InputFile2="Results/Test_For_ListString_Nested_Logging_out.txt",IfDifferent=Warn)
