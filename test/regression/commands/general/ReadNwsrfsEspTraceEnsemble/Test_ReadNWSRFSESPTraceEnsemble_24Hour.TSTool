@@ -1,8 +1,0 @@
-# Test reading a 24-hour ensemble
-StartLog(LogFile="Results/Test_ReadNWSRFSESPTraceEnsemble_24Hour.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadNWSRFSESPTraceEnsemble_24Hour_out.dv",IfNotFound=Ignore)
-ReadNwsrfsEspTraceEnsemble(InputFile="Data\RURC2L_F.SIM24.SQME.24.CS",EnsembleID="RURC2L_F_Ensemble",EnsembleName="RURC2L_F")
-# Uncomment the following line to regenerate the expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNWSRFSESPTraceEnsemble_24Hour_out.dv")
-WriteDateValue(OutputFile="Results/Test_ReadNWSRFSESPTraceEnsemble_24Hour_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadNWSRFSESPTraceEnsemble_24Hour_out.dv",InputFile2="Results/Test_ReadNWSRFSESPTraceEnsemble_24Hour_out.dv",IfDifferent=Warn)

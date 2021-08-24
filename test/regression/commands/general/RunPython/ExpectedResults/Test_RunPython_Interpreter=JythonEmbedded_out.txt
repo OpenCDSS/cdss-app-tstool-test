@@ -1,6 +1,0 @@
-out: # Simple example data file to test Python
-out: Line 1 (first line)
-out: Line 2
-out: Line 3
-out: Line 4
-out: Line 5 (last line)

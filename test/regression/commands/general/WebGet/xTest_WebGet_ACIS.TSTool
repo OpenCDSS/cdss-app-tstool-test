@@ -1,2 +1,0 @@
-# Simple web get of regional climate center ACIS data
-WebGet(URI="http://data.rcc-acis.org/MultiStnData?postal=CO&elems=mly_avgt,mly_pcpn,mly_snow&meta=name,postal,sIds,ll,elev,uid,county,valid_daterange&output=json",LocalFile="H:\HOME\BEWARE\sam\test.json")

@@ -1,0 +1,12 @@
+# Test LagK
+StartLog(LogFile="Results/Test_LagK_1.TSTool.log")
+RemoveFile(InputFile="Results\Test_LagK_1_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,60,50,35,20,10,5,2.5,1")
+LagK(Alias="ts1Routed",TSID="ts1",FillNearest=True,Lag=3,K=2)
+# Don't free the original time series because it is useful for visually
+# inspecting the results.
+# Free(TSList=AllMatchingTSID,TSID="ts1")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_LagK_1_out.dv")
+WriteDateValue(OutputFile="Results\Test_LagK_1_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_LagK_1_out.dv",InputFile2="Results\Test_LagK_1_out.dv",IfDifferent=Warn)

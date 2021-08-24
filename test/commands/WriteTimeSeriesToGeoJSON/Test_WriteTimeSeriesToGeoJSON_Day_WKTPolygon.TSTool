@@ -1,0 +1,15 @@
+# Test writing day time series to GeoJSON format
+# - Interval = Day
+# - Polygon data from WKT point
+StartLog(LogFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_WKTPolygon.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_WKTPolygon_out.json",IfNotFound=Ignore)
+ReadDateValue(InputFile="Data\testdata.dv")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="COOP:053005.ACIS.pcpn.Day",PropertyName="WKTGeometry",PropertyType=String,PropertyValue="POLYGON ((-105.891940 38.993330,-106 39,-106 37.5))")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="COOP:052759.ACIS.pcpn.Day",PropertyName="WKTGeometry",PropertyType=String,PropertyValue="POLYGON ((-105.476670 39.404720, -104 39, -103 37.5))")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="COOP:053005.ACIS.pcpn.Day",PropertyName="WKTGeometry",PropertyType=String,PropertyValue="POLYGON ((-105.576670 39.504720, -104.1 39.1, -103.1 37.4))")
+# Uncomment the following command to regenerate the expected results file.
+# WriteTimeSeriesToGeoJSON(OutputFile="ExpectedResults/Test_WriteTimeSeriesToGeoJSON_Day_WKTPolygon_out.json",WKTGeometryProperty="WKTGeometry")
+# Generate new output...
+WriteTimeSeriesToGeoJSON(OutputFile="Results/Test_WriteTimeSeriesToGeoJSON_Day_WKTPolygon_out.json",WKTGeometryProperty="WKTGeometry")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToGeoJSON_Day_WKTPolygon_out.json",InputFile2="Results/Test_WriteTimeSeriesToGeoJSON_Day_WKTPolygon_out.json",IfDifferent=Warn)

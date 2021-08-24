@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_ProcessTSProduct_1.TSTool.log")
+RemoveFile(InputFile="Results/Test_ProcessTSProduct_1_out.png",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_1.tsp",View=False,OutputFile="ExpectedResults/Test_ProcessTSProduct_1_out.png")
+ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_1.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_1_out.png")
+CompareFiles(InputFile1="ExpectedResults\Test_ProcessTSProduct_1_out.png",InputFile2="Results\Test_ProcessTSProduct_1_out.png",IfDifferent=Warn)

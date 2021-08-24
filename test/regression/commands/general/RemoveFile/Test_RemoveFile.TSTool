@@ -1,7 +1,0 @@
-# Test trying to remove a  file
-# -create a temporary file by writing global property and then remove file
-StartLog(LogFile="Results/Test_RemoveFile.TSTool.log")
-# First create a file with all properties
-WritePropertiesToFile(OutputFile="Results\Test_RemoveFile_out.txt",FileFormat=NameValue)
-# Now remove the file, failing if there is an issue
-RemoveFile(InputFile="Results/Test_RemoveFile_out.txt",IfNotFound=Fail)

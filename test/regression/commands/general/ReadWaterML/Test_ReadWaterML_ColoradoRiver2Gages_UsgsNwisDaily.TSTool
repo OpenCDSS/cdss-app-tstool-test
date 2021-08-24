@@ -1,8 +1,0 @@
-# Test ReadWaterML command for reading file from USGS NWIS Daily Value web service
-StartLog(LogFile="Results/Test_ReadWaterML_ColoradoRiver2Gages_UsgsNwisDaily.TSTool.log")
-RemoveFile(InputFile="Results\Test_ReadWaterML_ColoradoRiver2Gages_UsgsNwisDaily_out.dv",IfNotFound=Ignore)
-ReadWaterML(InputFile="Data\ColoradoRiver2Gages_UsgsNwisDaily.waterml",Alias="%L.%T",Interval="Day")
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_ReadWaterML_ColoradoRiver2Gages_UsgsNwisDaily_out.dv",Precision=0)
-WriteDateValue(OutputFile="Results\Test_ReadWaterML_ColoradoRiver2Gages_UsgsNwisDaily_out.dv",Precision=0)
-CompareFiles(InputFile1="ExpectedResults\Test_ReadWaterML_ColoradoRiver2Gages_UsgsNwisDaily_out.dv",InputFile2="Results\Test_ReadWaterML_ColoradoRiver2Gages_UsgsNwisDaily_out.dv",IfDifferent=Warn)

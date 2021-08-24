@@ -1,0 +1,10 @@
+# Test running an external program using a full command line for an executable program
+# and the command shell.
+# This will determine the exit status from the process exit value.
+StartLog(LogFile="Results/Test_RunProgram_CommandLine_testecho.TSTool.log")
+RemoveFile(InputFile="Results\Test_RunProgram_CommandLine_testecho_out.txt",IfNotFound=Ignore)
+# Uncomment the following command to regenerate the expected results file.
+# RunProgram(CommandLine="${WorkingDir}/testecho.exe Hello > ${WorkingDir}/ExpectedResults/Test_RunProgram_CommandLine_testecho_out.txt")
+# Generate the output
+RunProgram(CommandLine="${WorkingDir}/testecho.exe Hello > ${WorkingDir}/Results/Test_RunProgram_CommandLine_testecho_out.txt")
+CompareFiles(InputFile1="ExpectedResults/Test_RunProgram_CommandLine_testecho_out.txt",InputFile2="Results/Test_RunProgram_CommandLine_testecho_out.txt",IfDifferent=Warn)

@@ -1,0 +1,10 @@
+# Read an RDF file into time series
+# -month interval
+# -idx_sequential = 1
+StartLog(LogFile="Results/Test_ReadRiverWare_RDF_Month_IdxSequential_TimeSeries.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadRiverWare_RDF_Month_IdxSequential_TimeSeries_out.dv",IfNotFound=Ignore)
+ReadRiverWare(InputFile="Data\KeySlots-Month-IdxSequential.rdf",Alias="%L-%T-%z")
+# Uncomment the following to regenerate the expected results...
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadRiverWare_RDF_Month_IdxSequential_TimeSeries_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadRiverWare_RDF_Month_IdxSequential_TimeSeries_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadRiverWare_RDF_Month_IdxSequential_TimeSeries_out.dv",InputFile2="Results/Test_ReadRiverWare_RDF_Month_IdxSequential_TimeSeries_out.dv",IfDifferent=Warn)

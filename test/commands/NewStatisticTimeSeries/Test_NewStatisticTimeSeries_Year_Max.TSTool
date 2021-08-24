@@ -1,0 +1,13 @@
+# Test of computing a statistic time series for year data, statistic=Max
+StartLog(LogFile="Results/Test_NewStatisticTimeSeries_Year_Max.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticTimeSeries_Year_Max_out.dv",IfNotFound=Ignore)
+# Assign 2 months of data so that the mean is different from any month
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.Year",Description="Test data",SetStart="1950",SetEnd="1973",Units="AF",PatternValues=".5,1.5,,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5")
+# Double the above
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..Streamflow.Year",Description="Test data",SetStart="1951",SetEnd="1974",Units="AF",PatternValues="1.5,3.5,,7.5,9.5,11.5,13.5,15.5,17.5,19.5,21.5,23.5,2.5,4.5,6.5,8.5,10.5,12.5,14.5,16.5,18.5,20.5,22.5,24.5")
+NewStatisticTimeSeries(Alias="ts1_mean",TSID="ts1",NewTSID="ts1..Streamflow.Year.Max",Statistic=Max)
+NewStatisticTimeSeries(Alias="ts2_mean",TSID="ts2",NewTSID="ts2..Streamflow.Year.Max",Statistic=Max)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticTimeSeries_Year_Max_out.dv")
+WriteDateValue(OutputFile="Results\Test_NewStatisticTimeSeries_Year_Max_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticTimeSeries_Year_Max_out.dv",InputFile2="Results\Test_NewStatisticTimeSeries_Year_Max_out.dv",IfDifferent=Warn)

@@ -1,0 +1,4 @@
+startLog(LogFile="readStreamFlowFromCARDFile.log")
+01161000..QME.24Hour~NWSCard~../data/HDLN3.qme.CARD
+01166500..QME.24Hour~NWSCard~../data/EROM3.qme.CARD
+EROM3..MAP.6Hour~NWSCard~../data/EROM3CT.MAP06

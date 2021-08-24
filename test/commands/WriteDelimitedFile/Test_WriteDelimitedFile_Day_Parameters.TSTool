@@ -1,0 +1,21 @@
+# Test writing a daily time series to delimited format, specifying parameters
+# - no header comments
+# - DateTimeColumn=Column1
+# - DateTimeFormat=%Y%m%d
+# - ValueColumns=%L_%T_%I ${ts:name}
+# - HeadingSurround=\"
+# - Delimiter=|
+# - Precision=2
+# - MissingValue=X
+# - OutputStart and OutputEnd specified
+StartLog(LogFile="Results/Test_WriteDelimitedFile_Day_Parameters.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDelimitedFile_Day_Parameters_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="Loc1",NewTSID="Loc1..Precip.Day",Description="Test precipitation data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="mm",PatternValues="5,,10,12,13,35")
+NewPatternTimeSeries(Alias="Loc2",NewTSID="Loc2..Precip.Day",Description="Test precipitation data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="mm",PatternValues="10,20,,,24,26,70")
+SetTimeSeriesProperty(PropertyName="name",PropertyType=String,PropertyValue="%D")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDelimitedFile(OutputFile="ExpectedResults/Test_WriteDelimitedFile_Day_Parameters_out.dv",DateTimeColumn="Column1",DateTimeFormat="%Y%m%d",ValueColumns="%L_%T_%I_${ts:name}",HeadingSurround="\"",Delimiter="|",Precision=2,MissingValue=X,OutputStart="1950-01-15",OutputEnd="1951-03-07")
+# Generate new output...
+WriteDelimitedFile(OutputFile="Results/Test_WriteDelimitedFile_Day_Parameters_out.dv",DateTimeColumn="Column1",DateTimeFormat="%Y%m%d",ValueColumns="%L_%T_%I_${ts:name}",HeadingSurround="\"",Delimiter="|",Precision=2,MissingValue=X,OutputStart="1950-01-15",OutputEnd="1951-03-07")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDelimitedFile_Day_Parameters_out.dv",InputFile2="Results/Test_WriteDelimitedFile_Day_Parameters_out.dv",IfDifferent=Warn)

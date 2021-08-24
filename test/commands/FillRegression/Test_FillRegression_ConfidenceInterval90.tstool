@@ -1,0 +1,21 @@
+# Fill regression using monthly streamflow data, one equation
+StartLog(LogFile="Results/Test_FillRegression_ConfidenceInterval90.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillRegression_ConfidenceInterval90.dv",IfNotFound=Ignore)
+# Read the streamflow data, remove data not needed for this test
+SetOutputPeriod(OutputStart="1997-01",OutputEnd="2002-12")
+ReadDateValue(InputFile="Data\streamflow-month.dv")
+Free(TSList=AllMatchingTSID,TSID="BelowGeorgetown")
+# Test that the confidence interval does not exclude values that are accurate
+# Copy a timeseries, delete some values, then fill them in again with FillRegression
+# Check if they match - if not, then FillRegression excluded values that are OK.
+Copy(TSID="AboveGeorgetown",NewTSID="394308105413800...Month",Alias="ToFill")
+ReplaceValue(TSList=AllMatchingTSID,TSID="ToFill",MinValue=0,MaxValue=20000000,Action=Remove,SetStart="2005-01",SetEnd="2005-12")
+FillRegression(TSID="ToFill",IndependentTSID="AboveGeorgetown",NumberOfEquations=MonthlyEquations,ConfidenceInterval=90,FillFlag="R",TableTSIDColumn="TSID")
+CompareTimeSeries(WarnIfDifferent=True)
+# Make an arbitrary data series with holes and try to fill it with regression. It should fail on grounds of insufficient correlation.
+# Check by comparing the arbitrary data that was filled to a copy of the original
+# If different, something was added during filling that should not have been.
+NewPatternTimeSeries(Alias="Arbitrary",NewTSID="Computer...Month",SetStart="1997-01",SetEnd="2009-12",PatternValues="25,36,13,,,82,84,31,,77,,34,55,58,,29,83,46")
+Copy(TSID="Arbitrary",NewTSID="Computer...Month",Alias="CopyArbitrary")
+FillRegression(TSID="Arbitrary",IndependentTSID="AboveGeorgetown",NumberOfEquations=MonthlyEquations,ConfidenceInterval=90,FillFlag="R",TableTSIDColumn="TSID")
+CompareTimeSeries(WarnIfDifferent=True)

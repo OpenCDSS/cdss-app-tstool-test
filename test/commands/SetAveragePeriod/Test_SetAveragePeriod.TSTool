@@ -1,0 +1,10 @@
+# Test setup...
+StartLog(LogFile="Results/Test_SetAveragePeriod.TSTool.log")
+# RemoveFile(InputFile="Results/Test_SetAveragePeriod_out.txt",WarnIfMissing=True)
+SetAveragePeriod(AverageStart="1901-01-01",AverageEnd="2007-12-31")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetAveragePeriod_out.txt",IncludeProperties="AverageStart,AverageEnd",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetAveragePeriod_out.txt",IncludeProperties="AverageStart,AverageEnd",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetAveragePeriod_out.txt",InputFile2="Results/Test_SetAveragePeriod_out.txt",IfDifferent=Warn)

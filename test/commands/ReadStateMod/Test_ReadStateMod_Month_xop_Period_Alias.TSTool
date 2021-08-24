@@ -1,0 +1,10 @@
+# Test reading a StateMod monthly *.xop file
+# - specify the period to read
+# - specify alias using % and ${ts:property}
+StartLog(LogFile="Results/Test_ReadStateMod_Rights_Month_xop_Period_Alias.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadStateMod_Rights_Month_xop_Period_Alias_out.dv",IfNotFound=Ignore)
+ReadStateMod(InputFile="Data\Sp2008L_H2.xop",InputStart="1950-07",InputEnd="1953-11",Alias="%L-${ts:Source1}-${ts:Destination}")
+# Uncomment the following to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadStateMod_Rights_Month_xop_Period_Alias_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_ReadStateMod_Rights_Month_xop_Period_Alias_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadStateMod_Rights_Month_xop_Period_Alias_out.dv",InputFile2="Results/Test_ReadStateMod_Rights_Month_xop_Period_Alias_out.dv",IfDifferent=Warn)

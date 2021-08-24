@@ -1,0 +1,12 @@
+# Check that setting LEZero to missing really excludes 0 from consideration
+StartLog(LogFile="Results\Test_FillRegression_LeZeroValue=Missing.log")
+NewPatternTimeSeries(Alias="Independent",NewTSID="here...Month.independent",SetStart="2000-01",SetEnd="2010-12",PatternValues="2,0,1")
+NewPatternTimeSeries(Alias="Dependent",NewTSID="here...Month.dependent",SetStart="2000-01",SetEnd="2010-12",PatternValues="2,,1")
+FillRegression(TSID="Dependent",IndependentTSID="Independent",LEZeroLogValue=missing)
+Free(TSList=AllMatchingTSID,TSID="Independent")
+NewPatternTimeSeries(Alias="Independent",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="2,0,1")
+# If they're the same, the dependent got filled and exclusion is not working
+CompareTimeSeries(WarnIfSame=True)
+FillRegression(TSID="Dependent",IndependentTSID="Independent",NumberOfEquations=OneEquation,FillFlag="f",TableID="blah",TableTSIDColumn="tsid")
+# If they're different, the dependent didn't get filled, and it is incorrectly excluding 0
+CompareTimeSeries(WarnIfDifferent=True)

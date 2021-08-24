@@ -1,0 +1,12 @@
+# Test reading a JSON file using default parameters.
+# - data are from Colorado's Data Sharing Network (CDSN) for results query
+# - the following URL no longer works:
+#   http://awqmsws.goldsystems.com/api/ResultsVer1?MonitoringLocationIdentifiersCsv=UPSTREAM&OrganizationIdentifiersCsv=AURORA_WQX
+StartLog(LogFile="Results/Test_ReadTableFromJSON_AWQMS_Results.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromJSON_AWQMS_Results_out.csv",IfNotFound=Ignore)
+ReadTableFromJSON(TableID="Table1",InputFile="Data\wqx-results-data-nice.json",ExcludeNames="Projects",DateTimeColumns="StartDate")
+# Uncomment the following to regenerate expected results
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromJSON_AWQMS_Results_out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromJSON_AWQMS_Results_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromJSON_AWQMS_Results_out.csv",InputFile2="Results/Test_ReadTableFromJSON_AWQMS_Results_out.csv",IfDifferent=Warn)

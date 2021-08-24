@@ -1,0 +1,10 @@
+# Test writing daily data to calendar year format
+StartLog(LogFile="Results/Test_WriteStateMod_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteStateMod_Day_out.stm",IfNotFound=Ignore)
+TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1954-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults\Test_WriteStateMod_Day_out.stm")
+# Generate new output...
+WriteStateMod(TSList=AllTS,OutputFile="Results/Test_WriteStateMod_Day_out.stm")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteStateMod_Day_out.stm",InputFile2="Results/Test_WriteStateMod_Day_out.stm",IfDifferent=Warn)

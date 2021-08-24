@@ -1,0 +1,7 @@
+# Create an in-memory Derby database and run some queries.
+NewDerbyDatabase(DataStore="derbyTest",DatabaseDir="InMemory")
+#
+# Read tables to use for test data
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable1.csv")
+#
+# Write the table to the Derby database

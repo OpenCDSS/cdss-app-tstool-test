@@ -1,0 +1,9 @@
+# This command file generates the data file that is used for testing
+# - contains longitude and latitude for points
+# It should only need to be rerun if there are new data needs in test data
+SetInputPeriod(InputStart="2000-01-01",InputEnd="2000-01-05")
+COOP:053005.ACIS.pcpn.Day~RCC-ACIS
+COOP:052759.ACIS.pcpn.Day~RCC-ACIS
+COOP:052354.ACIS.pcpn.Day~RCC-ACIS
+# Write to DateValue format including writing properties, which contain coordinates
+WriteDateValue(OutputFile="testdata.dv",IncludeProperties="*")

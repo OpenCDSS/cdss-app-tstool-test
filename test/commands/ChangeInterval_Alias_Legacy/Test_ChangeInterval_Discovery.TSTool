@@ -1,0 +1,14 @@
+# Test that TSIDs are created in discovery mode
+# Editing the commands should result in no warnings or failures
+# Test changing ACCM to ACCM, large to small interval
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+#
+StartLog(LogFile="Results\Test_ChangeInterval_Discovery.TSTool.log")
+#
+TS Original = NewPatternTimeSeries(NewTSID="ts1..Flow.6Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
+TS Changed_noOptions = ChangeInterval(TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM)
+TS Changed_OutputFill-Interpolate = ChangeInterval(TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM,OutputFillMethod=Interpolate)
+TS Changed_OutputFill-Repeat = ChangeInterval(TSID="Original",NewInterval=2Hour,OldTimeScale=ACCM,NewTimeScale=ACCM,OutputFillMethod=Repeat)
+# Editing the following should list results from above
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="Changed_OutputFill-Repeat",CheckCriteria=">",Value1=100)

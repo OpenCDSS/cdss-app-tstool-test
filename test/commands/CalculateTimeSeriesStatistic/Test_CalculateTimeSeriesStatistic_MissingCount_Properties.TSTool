@@ -1,0 +1,20 @@
+# Calculate the MissingCount statistic for time series
+# -Specify the time series to process using a ${Property}
+# -Specify the period to process using ${Property}
+# -Specify the TableID for output using ${Property}
+# -Specify the TableStatisticColumn for output using ${Property}
+StartLog(LogFile="Results/Test_CalculateTimeSeriesStatistic_MissingCount_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_CalculateTimeSeriesStatistic_MissingCount_Properties_out.txt",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+SetProperty(PropertyName="tsid1",PropertyType=String,PropertyValue="ts1")
+SetProperty(PropertyName="TestAnalysisStart",PropertyType=DateTime,PropertyValue="2000-01-01")
+SetProperty(PropertyName="TestAnalysisEnd",PropertyType=DateTime,PropertyValue="2003-05-13")
+SetProperty(PropertyName="TestTableID",PropertyType=String,PropertyValue="TestTable")
+SetProperty(PropertyName="TestTSIDColumn",PropertyType=String,PropertyValue="TSID")
+SetProperty(PropertyName="TestStatisticColumn",PropertyType=String,PropertyValue="Statistic")
+CalculateTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="${tsid1}",Statistic="MissingCount",AnalysisStart="${TestAnalysisStart}",AnalysisEnd="${TestAnalysisEnd}",TableID="${TestTableID}",TableTSIDColumn="${TestTSIDColumn}",TableTSIDFormat="%L",TableStatisticColumn="${TestStatisticColumn}",TimeSeriesProperty="MissingCount")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_CalculateTimeSeriesStatistic_MissingCount_Properties_out.csv")
+# WriteTimeSeriesPropertiesToFile(OutputFile="ExpectedResults/Test_CalculateTimeSeriesStatistic_MissingCount_Properties_out.txt",IncludeProperties="MissingCount")
+WriteTimeSeriesPropertiesToFile(OutputFile="Results/Test_CalculateTimeSeriesStatistic_MissingCount_Properties_out.txt",IncludeProperties="MissingCount")
+CompareFiles(InputFile1="ExpectedResults/Test_CalculateTimeSeriesStatistic_MissingCount_Properties_out.txt",InputFile2="Results/Test_CalculateTimeSeriesStatistic_MissingCount_Properties_out.txt",IfDifferent=Warn)

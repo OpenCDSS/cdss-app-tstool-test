@@ -1,0 +1,16 @@
+# Set time series data from a table
+# - month interval
+# - set the data flag
+# - don't set the data flag description so it will default
+# - don't set data flags from the table
+StartLog(LogFile="Results/Test_SetTimeSeriesValuesFromTable_Month_SetFlag.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetTimeSeriesValuesFromTable_Month_SetFlag_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1_month",NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",PatternValues="12,22,33,22,11,-999,55,11,-999,-999,-999,11")
+NewPatternTimeSeries(Alias="ts2_month",NewTSID="ts2...Month",Description="test data 2",SetStart="2001-01",SetEnd="2003-07",PatternValues="1,2,3,2,1,.5,5,1,5,15,4,1")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\table.csv",Delimiter=",")
+FormatTableDateTime(TableID="Table1",InputColumn="DateTime",DateTimeFormat="%Y-%m",OutputColumn="DateTime2",OutputType=DateTime,InsertBeforeColumn="Value")
+SetTimeSeriesValuesFromTable(TSIDFormat="%L",SetFlag="T",TableID="Table1",TableTSIDColumn="TSID",TableDateTimeColumn="DateTime2",TableValueColumn="Value")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_SetTimeSeriesValuesFromTable_Month_SetFlag_out.dv",WriteDataFlagDescriptions=True)
+WriteDateValue(OutputFile="Results/Test_SetTimeSeriesValuesFromTable_Month_SetFlag_out.dv",WriteDataFlagDescriptions=True)
+CompareFiles(InputFile1="ExpectedResults/Test_SetTimeSeriesValuesFromTable_Month_SetFlag_out.dv",InputFile2="Results/Test_SetTimeSeriesValuesFromTable_Month_SetFlag_out.dv",IfDifferent=Warn)

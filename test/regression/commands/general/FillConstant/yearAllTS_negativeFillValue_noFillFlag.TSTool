@@ -1,6 +1,0 @@
-startLog(LogFile="yearAllTS_negativeFillValue_noFillFlag.log")
-# 1179 - BYERS 5 ENE
-1179.NOAA.FrostDateF28F.Year~HydroBase
-fillConstant(TSList=AllTS,ConstantValue=-999)
-writeDateValue(OutputFile="../output/yearAllTS_negativeFillValue_noFillFlagOutput.dv")
-compareFiles(InputFile1="yearAllTS_negativeFillValue_noFillFlagExpected.dv",InputFile2="../output/yearAllTS_negativeFillValue_noFillFlagOutput.dv",WarnIfDifferent=True)

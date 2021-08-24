@@ -1,4 +1,0 @@
-DateTimeProperty="2010-01-01 01:02:03"
-DoubleProperty=123.456
-IntegerProperty=123
-StringProperty="abc"

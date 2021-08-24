@@ -1,0 +1,14 @@
+# Test reading a delimited file
+# - First column is numbers with leading zero - treat as text
+# - other types are basic types
+# - set the column types with parameters
+StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_ColumnTypes.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_ColumnTypes_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata2.csv",DateTimeColumns="DateTime",DoubleColumns="Double",IntegerColumns="Integer",TextColumns="NumberAsText,String")
+# Uncomment the following line to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_ColumnTypes_out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromDelimitedFile_ColumnTypes_out.csv")
+# Do regression comparison with the original input (possible because strings
+# and integers with no formatting issues).
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDelimitedFile_ColumnTypes_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_ColumnTypes_out.csv",IfDifferent=Warn)

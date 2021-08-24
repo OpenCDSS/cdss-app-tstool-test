@@ -1,0 +1,10 @@
+# Test getting a static S3 website file
+# - use ${Property} notation
+StartLog(LogFile="Results/Test_WebGet_StaticS3File_Property.TSTool.log")
+RemoveFile(InputFile="Results\Test_WebGet_StaticS3File_Property.html",IfNotFound=Ignore)
+SetProperty(PropertyName="TestURI",PropertyType=String,PropertyValue="http://data.openwaterfoundation.org/test/TSTool/commands/WebGet/Data/Test-WebGet-TestData.txt")
+SetProperty(PropertyName="TestLocalFile",PropertyType=String,PropertyValue="Test_WebGet_StaticS3File_Property_out.txt")
+# Uncomment the following command to regenerate the expected results file.
+# WebGet(URI="${TestURI}",LocalFile="ExpectedResults\${TestLocalFile}")
+WebGet(URI="${TestURI}",LocalFile="Results\${TestLocalFile}")
+CompareFiles(InputFile1="ExpectedResults\${TestLocalFile}",InputFile2="Results\${TestLocalFile}",IfDifferent=Warn)

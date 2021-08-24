@@ -1,0 +1,18 @@
+# Test computing a statistic time series for Month data where Statistic=Min
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+StartLog(LogFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min_out.dv",IfNotFound=Ignore)
+# Define 2 years of data that when averaged equal even numbers
+# The 2nd time series is shifted by 1 from the first.
+# Include missing values in the first time series but not the second.
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Month",Description="test data 1",SetStart="2000-01",SetEnd="2001-12",Units="CFS",PatternValues=".5,1.5,,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5")
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2..Streamflow.Month",Description="test data 2",SetStart="2000-01",SetEnd="2001-12",Units="CFS",PatternValues="1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5,13.5")
+# Create an ensemble to hold the above time series
+NewEnsemble(TSList=AllTS,NewEnsembleID="TestEnsemble",NewEnsembleName="Test Ensemble")
+# Compute the statistic
+TS Min = NewStatisticTimeSeriesFromEnsemble(EnsembleID="TestEnsemble",NewTSID="Test..Streamflow.Month.Min",Statistic=Min)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min_out.dv")
+WriteDateValue(OutputFile="Results/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min_out.dv",InputFile2="Results/Test_NewStatisticTimeSeriesFromEnsemble_Month_Min_out.dv",IfDifferent=Warn)

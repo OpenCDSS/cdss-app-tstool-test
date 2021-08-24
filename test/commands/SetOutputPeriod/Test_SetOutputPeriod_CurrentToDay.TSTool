@@ -1,0 +1,11 @@
+# Test setting the output period to daily precision using current day
+StartLog(LogFile="Results/Test_SetOutputPeriod_CurrentToDay.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetOutputPeriod_CurrentToDay_out.txt",IfNotFound=Ignore)
+SetOutputPeriod(OutputStart="CurrentToMinute - 7Day",OutputEnd="CurrentToMinute")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetOutputPeriod_CurrentToDay_out.txt",IncludeProperties="OutputStart,OutputEnd",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetOutputPeriod_CurrentToDay_out.txt",IncludeProperties="OutputStart,OutputEnd",FileFormat=NameValue)
+# Do regression comparison (allow 2 lines to be different because system time
+# will be different than when expected results were written)...
+CompareFiles(InputFile1="ExpectedResults\Test_SetOutputPeriod_CurrentToDay_out.txt",InputFile2="Results/Test_SetOutputPeriod_CurrentToDay_out.txt",AllowedDiff="2",IfDifferent=Warn)

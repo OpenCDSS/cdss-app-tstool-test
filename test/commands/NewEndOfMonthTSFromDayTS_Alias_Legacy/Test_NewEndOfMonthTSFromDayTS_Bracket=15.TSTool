@@ -1,0 +1,12 @@
+# This uses the legacy "TS Alias =" syntax
+#@readOnly
+StartLog(LogFile="Results/Test_NewEndOfMonthTSFromDayTS_Bracket=15.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewEndOfMonthTSFromDayTS_Bracket=15_out.dv",WarnIfMissing=False)
+TS ts1_day = NewPatternTimeSeries(NewTSID="ts1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,50,25,7,5")
+SetOutputPeriod(OutputStart="1950-01-01",OutputEnd="1951-03-31")
+TS tsout = NewEndOfMonthTSFromDayTS(DayTSID="ts1_day",Bracket="15")
+SelectTimeSeries(TSList=AllMatchingTSID,TSID="tsout",DeselectAllFirst=True)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewEndOfMonthTSFromDayTS_Bracket=15_out.dv",TSList=SelectedTS)
+WriteDateValue(OutputFile="Results\Test_NewEndOfMonthTSFromDayTS_Bracket=15_out.dv",TSList=SelectedTS)
+CompareFiles(InputFile1="ExpectedResults\Test_NewEndOfMonthTSFromDayTS_Bracket=15_out.dv",InputFile2="Results\Test_NewEndOfMonthTSFromDayTS_Bracket=15_out.dv",WarnIfDifferent=True)

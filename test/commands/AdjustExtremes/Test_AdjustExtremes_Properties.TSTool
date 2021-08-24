@@ -1,0 +1,22 @@
+# Test the AdjustExtremes command
+# - Day interval
+# - Adjust the minimum (0)
+# - Maximum of 3 intervals on each side
+# - Set the TSID with ${Property}
+# - Set the flag and description with ${Property}
+# - Set the analysis period with ${Property}
+StartLog(LogFile="Results/Test_AdjustExtremes_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_AdjustExtremes_Legacy_out.dv",IfNotFound=Ignore)
+SetProperty(PropertyName="TestTSID",PropertyType=String,PropertyValue="ts1")
+SetProperty(PropertyName="TestAnalysisStart",PropertyType=DateTime,PropertyValue="2000-01-01")
+SetProperty(PropertyName="TestAnalysisEnd",PropertyType=DateTime,PropertyValue="2000-12-31")
+SetProperty(PropertyName="TestFlag",PropertyType=String,PropertyValue="A")
+SetProperty(PropertyName="TestFlagDesc",PropertyType=String,PropertyValue="Adjust extremes")
+NewPatternTimeSeries(Alias="${TestTSID}",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,-1,-2,6,25,10,8,5,1")
+AdjustExtremes(TSList=AllMatchingTSID,TSID="${TestTSID}",AdjustMethod=Average,ExtremeToAdjust=AdjustMinimum,ExtremeValue=0,MaxIntervals=2,AnalysisStart="${TestAnalysisStart}",AnalysisEnd="${TestAnalysisEnd}",SetFlag="${TestFlag}",SetFlagDesc="${TestFlagDesc}")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_AdjustExtremes_Properties_out.dv")
+WriteDateValue(OutputFile="Results/Test_AdjustExtremes_Properties_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_AdjustExtremes_Properties_out.dv",InputFile2="Results/Test_AdjustExtremes_Properties_out.dv",IfDifferent=Warn)
+# Create a copy of the oritinal to help with review
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2...Day",Description="test data copy",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,-1,-2,6,25,10,8,5,1")

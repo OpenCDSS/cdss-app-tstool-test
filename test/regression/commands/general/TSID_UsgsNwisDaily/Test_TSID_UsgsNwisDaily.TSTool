@@ -1,3 +1,0 @@
-# Test that the time series can be read, but don't check values since
-# USGS might change
-01646500..00060-00003.Day~UsgsNwisDaily

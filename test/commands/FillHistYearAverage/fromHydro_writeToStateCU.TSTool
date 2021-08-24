@@ -1,0 +1,9 @@
+startLog(LogFile="fromHydro_writeToStateCU.log")
+setIgnoreLEZero(True)
+# 0109 - AKRON 4 E
+0109.NOAA.FrostDateL28S.Year~HydroBase
+0109.NOAA.FrostDateL32S.Year~HydroBase
+0109.NOAA.FrostDateF32F.Year~HydroBase
+0109.NOAA.FrostDateF28F.Year~HydroBase
+fillHistYearAverage(*)
+writeStateCU("../output/fillHistYearAverage.stm")

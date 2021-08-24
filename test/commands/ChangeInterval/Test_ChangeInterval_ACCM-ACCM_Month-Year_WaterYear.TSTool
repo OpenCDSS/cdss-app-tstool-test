@@ -1,0 +1,20 @@
+# Test changing monthly ACCM to water year ACCM, with period that aligns with
+# water years.
+# Two time series are used to allow testing AllowMissingCount values
+#
+StartLog(LogFile="Results\Test_ChangeInterval_ACCM-ACCM_Month-Year_WaterYear.TSTool.log")
+RemoveFile(InputFile="Results\Test_ChangeInterval_ACCM-ACCM_Month-Year_WaterYear.dv",IfNotFound=Ignore)
+# Test data accumulate to 120 in years with full data,
+# 110 in years with 1 missing value
+# Double these values the second year to verify that year boundaries are correct
+# 4 years total to have missing data and the double pattern
+NewPatternTimeSeries(Alias="Original",NewTSID="ts1..Flow.Month",Description="Test data",SetStart="1999-10",SetEnd="2004-09",Units="CFS",PatternValues="5,10,15,,10,15,5,10,10,5,10,15,10,20,30,20,20,30,10,20,20,10,20,30,5,10,15,10,10,15,5,10,10,5,10,15,10,20,30,20,20,30,10,20,20,10,20,30")
+NewPatternTimeSeries(Alias="Original_HasMissing",NewTSID="ts2..Flow.Month",Description="Test data with missing values",SetStart="1999-10",SetEnd="2004-09",Units="CFS",PatternValues="5,10,15,,,,5,10,10,5,10,15,10,1,,,20,30,10,20,20,10,20,30,5,10,15,10,10,15,5,10,10,5,10,15,10,20,30,20,20,30,,,20,10,20,30")
+ChangeInterval(Alias="New",TSID="Original",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM,OutputYearType=Water)
+ChangeInterval(Alias="New_HasMissing",TSID="Original_HasMissing",NewInterval=Year,OldTimeScale=ACCM,NewTimeScale=ACCM,OutputYearType=Water,AllowMissingCount=1)
+#
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_ACCM-ACCM_Month-Year_WaterYear.dv",TSList=AllMatchingTSID,TSID="New*")
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_ACCM-ACCM_Month-Year_WaterYear.dv",TSList=AllMatchingTSID,TSID="New*")
+#
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_ACCM-ACCM_Month-Year_WaterYear.dv",InputFile2="Results\Test_ChangeInterval_ACCM-ACCM_Month-Year_WaterYear.dv",IfDifferent=Warn)

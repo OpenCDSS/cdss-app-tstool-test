@@ -1,0 +1,10 @@
+# Test outputting to a table
+#@testSuite MixedStationModel
+StartLog(LogFile="Results/Test_FillMixedStation_Table.log")
+ReadStateMod(InputFile="Data\gunnv.xbg")
+NewTable(TableID="Test",Columns="dependent,string")
+FillMixedStation(BestFitIndicator=SEP,AnalysisMethod="OLSRegression",NumberOfEquations="MonthlyEquations,OneEquation",Transformation="Log,None",LEZeroLogValue=missing,MinimumDataCount=2,MinimumR=0,FillFlag="Auto",TableID="Test",TableTSIDColumn="dependent")
+# Uncomment the following line to regenerate expected output
+# WriteTableToDelimitedFile(TableID="Test",OutputFile="ExpectedResults\Test_FillMixedStation_Table_out.csv")
+WriteTableToDelimitedFile(TableID="Test",OutputFile="Results\Test_FillMixedStation_Table_out.csv")
+CompareFiles(InputFile1="ExpectedResults\Test_FillMixedStation_Table_out.csv",InputFile2="Results\Test_FillMixedStation_Table_out.csv",IfDifferent=Warn)

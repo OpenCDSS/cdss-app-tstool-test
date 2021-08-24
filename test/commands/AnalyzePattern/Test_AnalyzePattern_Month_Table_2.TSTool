@@ -1,0 +1,17 @@
+# Test computing monthly DRY/AVG/WET patterns and write statistics to a table
+# This test uses contrived data with 100 values per sample that clearly show the breaks
+StartLog(LogFile="Results/Test_AnalyzePattern_Month_Table_2.TSTool.log")
+# Set debug level to print sorted values to log file
+SetDebugLevel(LogFileLevel=2)
+RemoveFile(InputFile="Results/Test_AnalyzePattern_Month_Table_2_out.stm",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_AnalyzePattern_Month_Table_2_out.csv",IfNotFound=Ignore)
+ts1..Streamflow.Month~DateValue~Data/monthts1.dv
+ts2..Streamflow.Month~DateValue~Data/monthts2.dv
+# Uncomment the following 2 commands to regenerate the expected results.
+# AnalyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="ExpectedResults/Test_AnalyzePattern_Month_Table_2_out.stm",TableID="ExpectedStatistics",DataRow="%L")
+# WriteTableToDelimitedFile(TableID="ExpectedStatistics",OutputFile="ExpectedResults/Test_AnalyzePattern_Month_Table_2_out.csv")
+AnalyzePattern(TSList=AllTS,Method=Percentile,Percentile="0.25,0.75",PatternID="DRY,AVG,WET",OutputFile="Results/Test_AnalyzePattern_Month_Table_2_out.stm",TableID="Statistics",DataRow="%L")
+WriteTableToDelimitedFile(TableID="Statistics",OutputFile="Results/Test_AnalyzePattern_Month_Table_2_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_AnalyzePattern_Month_Table_2_out.stm",InputFile2="Results/Test_AnalyzePattern_Month_Table_2_out.stm",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_AnalyzePattern_Month_Table_2_out.csv",InputFile2="Results/Test_AnalyzePattern_Month_Table_2_out.csv",IfDifferent=Warn)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)

@@ -1,0 +1,14 @@
+# Set time series data from another time series
+# - specify a set flag
+# - specify the period to set using properties
+StartLog(LogFile="Results/Test_SetFromTS_SetFlag_SetPeriodProperties.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetFromTS_Month_SetFlag_SetPeriodProperties_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1_month",NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",PatternValues="12,22,33,22,11,-999,55,11,-999,-999,-999,11")
+NewPatternTimeSeries(Alias="ts2_month",NewTSID="ts2...Month",Description="test data 2",SetStart="2001-01",SetEnd="2003-07",PatternValues="1,2,3,2,1,.5,5,1,5,15,4,1")
+SetProperty(PropertyName="TestSetStart",PropertyType=DateTime,PropertyValue="2001-03")
+SetProperty(PropertyName="TestSetEnd",PropertyType=DateTime,PropertyValue="2001-11")
+SetFromTS(TSList=AllMatchingTSID,TSID="ts1_month",IndependentTSList=AllMatchingTSID,IndependentTSID="ts2_month",SetStart="${TestSetStart}",SetEnd="${TestSetEnd}",TransferHow=ByDateTime,HandleMissingHow="IgnoreMissing",SetFlag=S,SetFlagDesc=Set from another time series)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_SetFromTS_Month_SetFlag_SetPeriodProperties_out.dv")
+WriteDateValue(OutputFile="Results/Test_SetFromTS_Month_SetFlag_SetPeriodProperties_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_SetFromTS_Month_SetFlag_SetPeriodProperties_out.dv",InputFile2="Results/Test_SetFromTS_Month_SetFlag_SetPeriodProperties_out.dv",IfDifferent=Warn)

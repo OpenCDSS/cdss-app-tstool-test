@@ -1,0 +1,9 @@
+# Test that TSIDs from discovery are properly created
+# Editing the commands should show no warnings or failures
+# This test is for the legacy "TS Alias =" syntax
+#@readOnly
+StartLog(LogFile="Results/Test_NewStatisticYearTS_Discovery.TSTool.log")
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75,,50,45,20,4")
+TS Stat = NewStatisticYearTS(TSID="ts1",NewTSID="ts1..Streamflow.Year.Mean",Statistic=Mean)
+# The following when edited should list time series from the above
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="Stat",CheckCriteria="Repeat",Value1=3)

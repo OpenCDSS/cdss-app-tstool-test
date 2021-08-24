@@ -1,0 +1,13 @@
+# This test is intended to show how fill mixed station selects properly between a log transformation and no transformation
+#@testSuite MixedStationModel
+StartLog(LogFile="Results\Test_FillMixedStation_LogvsNone.log")
+NewPatternTimeSeries(Alias="x",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,2,3,4,5,6,7,8,9,10,11,12")
+NewPatternTimeSeries(Alias="y",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,,")
+Divide(TSID="y",DivisorTSID="x")
+NewPatternTimeSeries(Alias="swapped",NewTSID="there...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="12,11,10,9,8,7,6,5,4,3,2,1")
+NewTable(TableID="stats",Columns="tsid, string")
+FillMixedStation(IndependentTSList=AllMatchingTSID,IndependentTSID="swapped",BestFitIndicator=R,Transformation="Log,None",TableID="stats",TableTSIDColumn="tsid")
+# Uncomment the following line to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults\Test_FillMixedStation_LogvsNone_Out.dv")
+WriteDateValue(OutputFile="Results\Test_FillMixedStation_LogvsNone_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_FillMixedStation_LogvsNone_Out.dv",InputFile2="Results\Test_FillMixedStation_LogvsNone_out.dv",IfDifferent=Warn)

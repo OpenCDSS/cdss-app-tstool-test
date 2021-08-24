@@ -1,0 +1,12 @@
+# Test ARMA
+# - Day interval data and ARMA interval
+# - Use coefficients that sum > 0.0 but no warning
+StartLog(LogFile="Results/Test_ARMA_Day_CoefSumNotZero.TSTool.log")
+RemoveFile(InputFile="Results/Test_ARMA_Day_CoefSumNotZero_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,3,5,6,25,10,8,5,1")
+Copy(TSID="ts1",NewTSID="ts1_copy...Day",Alias="ts1_copy")
+ARMA(TSList=AllMatchingTSID,TSID="ts1",ARMAInterval=Day,a=".25,.1,.075,.05,.025",b=".5,.25",RequireCoefficientsSumTo1=False)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ARMA_Day_CoefSumNotZero_out.dv")
+WriteDateValue(OutputFile="Results/Test_ARMA_Day_CoefSumNotZero_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ARMA_Day_CoefSumNotZero_out.dv",InputFile2="Results/Test_ARMA_Day_CoefSumNotZero_out.dv",IfDifferent=Warn)

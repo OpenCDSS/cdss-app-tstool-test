@@ -1,0 +1,8 @@
+# Test changing MEAN to INST, small to large interval (not supported)
+#
+#@expectedStatus Failure
+#
+StartLog(LogFile="Results\Test_ChangeInterval_Reg-Reg_MEAN-INST-SmallToLarge.TSTool.log")
+#
+NewPatternTimeSeries(Alias="Original",NewTSID="ts1..Flow.6Hour",Description="Test data",SetStart="2006-12-15 00",SetEnd="2007-01-29 00",Units="CFS",PatternValues="25,55,19,32,20,15,35,60,30,40,-999,-999,25,70")
+ChangeInterval(Alias="Changed_noOptions",TSID="Original",NewInterval=Day,OldTimeScale=MEAN,NewTimeScale=INST)

@@ -1,0 +1,13 @@
+#@readOnly
+# Test matching all TSID because no *
+StartLog(LogFile="Results/Test_FillPattern_Legacy_Ast.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillPattern_Legacy_Ast_out.dv",WarnIfMissing=False)
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data",SetStart="1950-01",SetEnd="2000-12",Units="CFS",PatternValues="1,2,3,16,-999,5,14,-999,23,36,-999,45,17")
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1...Month",Description="test data",SetStart="1950-01",SetEnd="2000-12",Units="CFS",PatternValues="1,2,3,16,-999,5,14,-999,23,36,-999,45,17")
+TS copy = Copy(TSID="ts1",NewTSID="copy...Month")
+ReadPatternFile("Data\Test_AnalyzePattern_FromMonthDataValues_out.stm")
+FillPattern(ts1*,09129600)
+# Uncomment the following line to regenerate the expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillPattern_Legacy_Ast_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_FillPattern_Legacy_Ast_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_FillPattern_Legacy_Ast_out.dv",InputFile2="Results/Test_FillPattern_Legacy_Ast_out.dv",WarnIfDifferent=True)

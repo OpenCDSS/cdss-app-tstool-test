@@ -1,8 +1,0 @@
-# Test reading a StateMod daily time series in NovToOct year format
-StartLog(LogFile="Results/Test_ReadStateMod_Day_NovToOct.TSTool.log")
-TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-SetOutputYearType(OutputYearType=NovToOct)
-# Uncomment the following command to regenerate the expected results file.
-# WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults\Test_ReadStateMod_Day_NovToOct_out.stm")
-ReadStateMod(InputFile="ExpectedResults\Test_ReadStateMod_Day_NovToOct_out.stm")
-CompareTimeSeries(Precision=3,Tolerance=".001",DiffFlag="X",WarnIfDifferent=True)

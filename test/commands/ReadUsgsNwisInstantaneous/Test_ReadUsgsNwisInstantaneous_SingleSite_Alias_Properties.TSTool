@@ -1,0 +1,20 @@
+# Test reading a single site and assigning an alias.
+# -specify the period to have faster performance
+# -specify parameter values with ${Property}
+StartLog(LogFile="Results/Test_ReadUsgsNwisInstantaneous_SingleSite_Alias_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadUsgsNwisInstantaneous_SingleSite_Alias_Properties_out.dv",IfNotFound=Ignore)
+# Specify the period to read because UsgsNwisInstantaneous will change over time and
+# setting the period will better control the numbers that return and impact the
+# test results.
+# Cache la Poudre Near Mouth of Canyon
+SetProperty(PropertyName="TestSites",PropertyType=String,PropertyValue="06752260")
+SetProperty(PropertyName="TestParameters",PropertyType=String,PropertyValue="00060")
+SetProperty(PropertyName="TestAgency",PropertyType=String,PropertyValue="USGS")
+SetProperty(PropertyName="TestSiteTypes",PropertyType=String,PropertyValue="ST")
+SetProperty(PropertyName="TestInputStart",PropertyType=DateTime,PropertyValue="2010-01-01")
+SetProperty(PropertyName="TestInputEnd",PropertyType=DateTime,PropertyValue="2010-03-15")
+ReadUsgsNwisInstantaneous(DataStore="UsgsNwisInstantaneous",Sites="${TestSites}",Parameters="${TestParameters}",Agency="${TestAgency}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Alias="%L.%T",OutputFile="Results/Test_ReadUsgsNwisInstantaneous_SingleSite_Alias_Properties_out.waterml",WaterMLInterval="15Minute")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadUsgsNwisInstantaneous_SingleSite_Alias_Properties_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadUsgsNwisInstantaneous_SingleSite_Alias_Properties_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisInstantaneous_SingleSite_Alias_Properties_out.dv",InputFile2="Results/Test_ReadUsgsNwisInstantaneous_SingleSite_Alias_Properties_out.dv",IfDifferent=Warn)

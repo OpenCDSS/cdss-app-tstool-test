@@ -1,0 +1,20 @@
+# Test that creates multiple irregular time series for use in UI inspection
+#@enabled False
+StartLog(LogFile="Results/Test_UI_IrregularIntervalForTable.TSTool.log")
+# Minute - no time zone
+NewPatternTimeSeries(Alias="MyLoc-Irregular-15Min",NewTSID="MyLoc..MyData.Irregular.15Min",IrregularInterval=15Minute,Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-03-03 12:00",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+NewPatternTimeSeries(Alias="MyLoc-Irregular-30Min",NewTSID="MyLoc..MyData.Irregular.15Min",IrregularInterval=30Minute,Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-03-03 12:00",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# Minute - with 2 time zones
+NewPatternTimeSeries(Alias="MyLoc-Irregular-15Min",NewTSID="MyLoc..MyData.Irregular.15Min",IrregularInterval=15Minute,Description="Test data",SetStart="1950-01-01 00:00 MST",SetEnd="1950-03-03 12:00 MST",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+NewPatternTimeSeries(Alias="MyLoc-Irregular-30Min",NewTSID="MyLoc..MyData.Irregular.15Min",IrregularInterval=30Minute,Description="Test data",SetStart="1950-01-01 00:00 GMT",SetEnd="1950-03-03 12:00 GMT",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# NewPatternTimeSeries(Alias="MyLoc-Irregular-15Min",NewTSID="MyLoc..MyData.Irregular.15Min",IrregularInterval=15Minute,Description="Test data",SetStart="1950-01-01 00:00 MST",SetEnd="1950-01-03 12:00 MST",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# NewPatternTimeSeries(Alias="MyLoc-Irregular-30Min",NewTSID="MyLoc..MyData.Irregular.15Min",IrregularInterval=30Minute,Description="Test data",SetStart="1950-01-01 00:00 GMT",SetEnd="1950-01-03 12:00 GMT",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# Hour
+NewPatternTimeSeries(Alias="MyLoc-Irregular-1Hour",NewTSID="MyLoc..MyData.Irregular.1Hour",IrregularInterval=1Hour,Description="Test data",SetStart="1950-01-01 00",SetEnd="1950-03-03 12",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+NewPatternTimeSeries(Alias="MyLoc-Irregular-6Hour",NewTSID="MyLoc..MyData.Irregular.6Hour",IrregularInterval=6Hour,Description="Test data",SetStart="1950-01-01 00",SetEnd="1950-03-03 12",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# Day
+NewPatternTimeSeries(Alias="MyLoc-Irregular-Day",NewTSID="MyLoc..MyData.Irregular.Day",IrregularInterval=Day,Description="Test data",SetStart="1950-01-01",SetEnd="1950-03-03",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# Month
+NewPatternTimeSeries(Alias="MyLoc-Irregular-Month",NewTSID="MyLoc..MyData.Irregular.Month",IrregularInterval=Month,Description="Test data",SetStart="1950-01",SetEnd="1953-03",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# Year
+NewPatternTimeSeries(Alias="MyLoc-Irregular-Year",NewTSID="MyLoc..MyData.Irregular.Year",IrregularInterval=Year,Description="Test data",SetStart="1950",SetEnd="1963",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")

@@ -1,0 +1,12 @@
+# Test setup...
+StartLog(LogFile="Results/Test_SetWarningLevel_ScreenLevel.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetWarningLevel_ScreenLevel_out.txt",IfNotFound=Ignore)
+SetWarningLevel(ScreenLevel=10)
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetWarningLevel_ScreenLevel_out.txt",IncludeProperties="WarningLevelScreen",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetWarningLevel_ScreenLevel_out.txt",IncludeProperties="WarningLevelScreen",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetWarningLevel_ScreenLevel_out.txt",InputFile2="Results/Test_SetWarningLevel_ScreenLevel_out.txt",IfDifferent=Warn)
+# Reset to normal level so other commands are not impacted
+SetWarningLevel(ScreenLevel=1)

@@ -1,0 +1,17 @@
+# Fill regression using monthly data, one equation, and analysis period, set flags
+# Check whether "analyze only" flag indeed prevents filling
+StartLog(LogFile="Results/Test_FillRegression_Month_Don'tFill.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillRegression_Month_Don'tFill=1.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..in.Month",Description="test data 1",SetStart="2000-01",SetEnd="2007-12",PatternValues="1,.9,.8,.7,.6,.5,.6,.7,.8,.9,1,-999")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..in.Month",SetStart="2000-01",SetEnd="2007-12",PatternValues="1,.9,.8,.7,.6,.5,.6,.7,.8,.9,1,-999,,,,,,,,,,,,,")
+Copy(TSID="ts2",NewTSID="ts2...Month",Alias="Copy")
+FillRegression(TSID="ts2",IndependentTSID="ts1",NumberOfEquations=OneEquation,Fill=False,FillFlag="R")
+# Check whether it filled or not - it should not have due to analyze only flag
+CompareTimeSeries(MatchLocation=True,WarnIfDifferent=True)
+FillRegression(TSID="ts2",IndependentTSID="ts1",NumberOfEquations=OneEquation,Fill=True,FillFlag="R")
+# Check whether it filled or not - it should have, since flag now allows filling
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,WarnIfDifferent=True)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillRegression_Month_Don'tFill_out.dv")
+WriteDateValue(OutputFile="Results/Test_FillRegression_Month_Don'tFill_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_FillRegression_Month_Don'tFill_out.dv",InputFile2="Results/Test_FillRegression_Month_Don'tFill_out.dv",IfDifferent=Warn)

@@ -1,0 +1,13 @@
+# Test to ensure that TSIDs are created in discovery mode
+# Editing this command file should not show any warnings/errors
+# This uses the legacy "TS Alias = "syntax
+#@readOnly
+StartLog(LogFile="Results/Test_NewStatisticTimeSeries_Discovery.TSTool.log")
+# Assign 2 months of data so that the mean is different from any month
+TS ts1 = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Month",Description="Test data",SetStart="1950-01",SetEnd="1951-12",Units="CFS",PatternValues=".5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,1.5,2.5,3.5,4.5,5.5,6.5,7.5,8.5,9.5,10.5,11.5,12.5")
+# Double the above
+TS ts2 = NewPatternTimeSeries(NewTSID="ts2..Streamflow.Month",Description="Test data",SetStart="1951-01",SetEnd="1952-12",Units="CFS",PatternValues="1.5,3.5,5.5,7.5,9.5,11.5,13.5,15.5,17.5,19.5,21.5,23.5,2.5,4.5,6.5,8.5,10.5,12.5,14.5,16.5,18.5,20.5,22.5,24.5")
+TS ts1_max = NewStatisticTimeSeries(TSID="ts1",NewTSID="ts1..Streamflow.Month.Max",Statistic=Max)
+TS ts2_max = NewStatisticTimeSeries(TSID="ts2",NewTSID="ts2..Streamflow.Month.Max",Statistic=Max)
+# Editing the following should list TSIDs from above
+CheckTimeSeries(TSList=AllMatchingTSID,TSID="ts2_max",CheckCriteria="Repeat",Value1=3)

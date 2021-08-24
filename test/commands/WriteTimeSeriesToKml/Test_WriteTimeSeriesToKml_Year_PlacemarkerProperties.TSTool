@@ -1,0 +1,18 @@
+# Test writing a Year time series to KML format
+# * Interval = Year
+# * specify placemark name and description with properties
+StartLog(LogFile="Results/Test_WriteTimeSeriesToKml_Year_PlacemarkerProperties.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeriesToKml_Year_PlacemarkerProperties_out.Kml",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc1",NewTSID="MyLoc1..MyDataType.Year",Description="Test data",SetStart="1950",SetEnd="2000",Units="CFS",PatternValues="5,10,12,13,75")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc1",PropertyName="Longitude",PropertyType=Double,PropertyValue="-109")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc1",PropertyName="Latitude",PropertyType=Double,PropertyValue="44")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc1",PropertyName="Elevation",PropertyType=Double,PropertyValue="5280")
+NewPatternTimeSeries(Alias="MyLoc2",NewTSID="MyLoc2..MyData.Year",Description="Test data",SetStart="1955",SetEnd="2012",Units="CFS",PatternValues="7,12,14,,77",PatternFlags="A,B,,D,E")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc2",PropertyName="Longitude",PropertyType=Double,PropertyValue="-110")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc2",PropertyName="Latitude",PropertyType=Double,PropertyValue="45")
+# Uncomment the following command to regenerate the expected results file.
+# WriteTimeSeriesToKml(OutputFile="ExpectedResults/Test_WriteTimeSeriesToKml_Year_PlacemarkerProperties_out.kml",LongitudeProperty="Longitude",LatitudeProperty="Latitude",ElevationProperty="Elevation",PlacemarkName="%L-%T",PlacemarkDescription="Description:  %D",StyleFile="Data/KML-Style.xml",StyleUrl="#exampleStyleMap")
+# Generate new output...
+WriteTimeSeriesToKml(OutputFile="Results/Test_WriteTimeSeriesToKml_Year_PlacemarkerProperties_out.kml",LongitudeProperty="Longitude",LatitudeProperty="Latitude",ElevationProperty="Elevation",PlacemarkName="%L-%T",PlacemarkDescription="Description:  %D",StyleFile="Data/KML-Style.xml",StyleUrl="#exampleStyleMap")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToKml_Year_PlacemarkerProperties_out.kml",InputFile2="Results/Test_WriteTimeSeriesToKml_Year_PlacemarkerProperties_out.kml",IfDifferent=Warn)

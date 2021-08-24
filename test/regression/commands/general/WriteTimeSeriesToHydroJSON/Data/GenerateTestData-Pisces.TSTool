@@ -1,9 +1,0 @@
-# Generate time series from Reclamation Pisces, to use as input when testing WriteTimeSeriesToHydroJSON
-# - This uses the Pisces MySQL database from Karl Tarbet from Aug 27, 2015
-# - Save a short sample for testing
-# - Can add more stations later as the HydroJSON standard is clarified
-abei.PN.sr.Day~ReclamationPisces
-abei.PN.etos.Day~ReclamationPisces
-abei.PN.wr.Day~ReclamationPisces
-abei.PN.zm.Day~ReclamationPisces
-WriteDateValue(OutputFile="TestData-Pisces.dv",IncludeProperties="*")

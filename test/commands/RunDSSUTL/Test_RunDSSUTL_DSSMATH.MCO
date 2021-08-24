@@ -1,0 +1,10 @@
+$AB
+* DSSMATH macro 
+* Compute multiple linear regression coefficients and apply them to produce a 
+* filled time series
+* =================================================================================
+TI 22APR1992,06MAY1992
+GE EXAMP=data\sample.dss: A=GREEN RIVER,B=GLENFIR,C=FLOW,E=1HOUR,F=EDIT
+PU.R EXAMP=Results\new.dss: A=GREEN RIVER,B=GLENFIR,C=FLOW,E=1HOUR,F=FROM DSSMATH
+TA.F EXAMP
+FI

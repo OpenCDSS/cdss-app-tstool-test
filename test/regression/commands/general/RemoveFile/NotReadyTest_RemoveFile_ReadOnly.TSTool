@@ -1,4 +1,0 @@
-# Test trying to remove a read-only file - should fail
-#@expectedStatus Fail
-StartLog(LogFile="Results/Test_RemoveFile_ReadOnly.TSTool.log")
-RemoveFile(InputFile="Data/ReadOnlyFile.doc")

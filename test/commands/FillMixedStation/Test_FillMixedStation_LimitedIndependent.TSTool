@@ -1,0 +1,11 @@
+# Testing excluding certain independents
+#@testSuite MixedStationModel
+StartLog(LogFile="C:\DevRiv\TSTool_SourceBuild\TSTool\test\regression\commands\general\FillMixedStation\Results\Test_FillMixedStation_LimitedIndependent.log")
+NewPatternTimeSeries(Alias="ts1",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,1,2,1")
+NewPatternTimeSeries(Alias="ts2",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="2,2")
+NewPatternTimeSeries(Alias="ts3",NewTSID="here...Month",SetStart="2000-01",SetEnd="2010-12",PatternValues="1,,2,1")
+FillMixedStation(IndependentTSList=AllMatchingTSID,IndependentTSID="ts1",BestFitIndicator=R,Transformation="Log")
+# Uncomment the following line to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults\Test_FillMixedStation_LimitedIndependent_out.dv")
+WriteDateValue(OutputFile="Results\Test_FillMixedStation_LimitedIndependent_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_FillMixedStation_LimitedIndependent_out.dv",InputFile2="Results\Test_FillMixedStation_LimitedIndependent_out.dv",IfDifferent=Warn)

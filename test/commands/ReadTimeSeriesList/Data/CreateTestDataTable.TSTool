@@ -1,0 +1,14 @@
+# Create test data using USGS time series
+# Gets all...
+#ReadUsgsNwisDaily(DataStore="UsgsNwisDaily",Counties="08069",Parameters="00060",Statistics="00003",InputStart="2000-01-01",InputEnd="2002-12-31",Alias="%L-%T")
+# Use a few that are reliable
+SetInputPeriod(InputStart="2001-01-01",InputEnd="2001-12-31")
+# The following should be good...
+06752000.NWIS.00060-00003.Day~UsgsNwisDaily
+06752260.NWIS.00060-00003.Day~UsgsNwisDaily
+06752280.NWIS.00060-00003.Day~UsgsNwisDaily
+CopyTimeSeriesPropertiesToTable(TableID="StationList",TableTSIDColumn="TSID",TableTSIDFormat="%L")
+# Write the table of stations, to use as driver for ReadTimeSeriesList
+WriteTableToDelimitedFile(TableID="StationList",OutputFile="testdata.csv",WriteHeaderComments=True,AlwaysQuoteStrings=True)
+# Also write the time series themselves as DateValue, to use as input so test can be stand-alone
+WriteDateValue(OutputFile="testdata.dv")

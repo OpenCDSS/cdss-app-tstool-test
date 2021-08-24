@@ -1,3 +1,0 @@
-StartLog(LogFile="toolTest_gunnv.xbg.TSTool.log")
-ReadStateMod(InputFile="Data\gunnv.xbg")
-CheckTimeSeries(CheckCriteria="Missing",MaxWarnings=10)

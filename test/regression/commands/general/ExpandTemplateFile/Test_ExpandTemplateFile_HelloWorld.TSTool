@@ -1,9 +1,0 @@
-# Test expanding a FreeMarker template for "Hello World"
-# @readOnly
-StartLog(LogFile="Results/Test_ExpandTemplateFile_HelloWorld.TSTool.log")
-RemoveFile(InputFile="Results/Test_ExpandTemplateFile_HelloWorld_out.txt",IfNotFound=Ignore)
-# Uncomment to regenerate the expected results.
-# ExpandTemplateFile(InputFile="Data/HelloWorld_template.txt",OutputFile="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_out.txt")
-ExpandTemplateFile(InputFile="Data/HelloWorld_template.txt",OutputFile="Results/Test_ExpandTemplateFile_HelloWorld_out.txt")
-# Compare the expected and current results
-CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_out.txt",InputFile2="Results/Test_ExpandTemplateFile_HelloWorld_out.txt",IfDifferent=Warn)

@@ -1,0 +1,12 @@
+# Test iterating through a For() loop using a list of strings from a table
+# - for output, append the property value to a file
+StartLog(LogFile="Results/Test_For_TableString.TSTool.log")
+RemoveFile(InputFile="Results/Test_For_TableString_out.txt",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+For(Name="TestFor",TableID="Table1",TableColumn="StationID")
+WritePropertiesToFile(OutputFile="Results/Test_For_TableString_out.txt",IncludeProperties="TestFor",WriteMode=Append,FileFormat=NameTypeValue)
+EndFor(Name="TestFor")
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results\Test_For_TableString_out.txt",OutputFile="ExpectedResults\Test_For_TableString_out.txt",IfInputNotFound=Fail)
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults/Test_For_TableString_out.txt",InputFile2="Results/Test_For_TableString_out.txt",IfDifferent=Warn)

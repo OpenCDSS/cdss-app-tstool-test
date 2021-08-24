@@ -1,5 +1,0 @@
-# Test setup...
-# - Currently do not close the datastore
-# - Test can be manually opened, edited, and run to test as needed
-StartLog(LogFile="Results/Test_CloseDataStore_HydroBase.TSTool.log")
-# CloseDataStore(DataStore="HydroBase",StatusMessage="Test closing HydroBase with CloseDataStore command")

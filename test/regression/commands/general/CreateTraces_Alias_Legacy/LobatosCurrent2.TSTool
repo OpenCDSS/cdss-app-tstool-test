@@ -1,7 +1,0 @@
-startLog(LogFile="LobatosCurrent2.log")
-# 7337 - SAGUACHE
-7337.NOAA.Precip.Month~HydroBase
-# 08235350 - ALAMOSA RIVER ABOVE JASPER
-08235350.USGS.Streamflow.Month~HydroBase
-# 08236000 - ALAMOSA RIVER ABOVE TERRACE RESERVOIR
-08236000.DWR.Streamflow.Month~HydroBase

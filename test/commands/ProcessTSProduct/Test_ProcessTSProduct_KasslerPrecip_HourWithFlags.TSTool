@@ -1,0 +1,11 @@
+# Test to make sure graphs can handle hourly data with flags
+# (this generated an error once when dealing with null flag)
+# Data originally were retrieved from the RCS ACIS web services
+# but were saved locally for the test.
+# Just test that the plot can be generated but do not compare with old image files.
+StartLog(LogFile="Results/Test_ProcessTSProduct_KasslerPrecip_HourWithFlags.TSTool.log")
+# Read data from previously generated DateValue files
+ReadDateValue(InputFile="Data\Kassler-054452-precip-day.dv")
+#
+# Process the graphs
+ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_KasslerPrecip_HourWithFlags.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_KasslerPrecip_HourWithFlags.png")

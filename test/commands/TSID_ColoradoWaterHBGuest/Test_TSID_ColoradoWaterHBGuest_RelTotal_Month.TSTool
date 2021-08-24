@@ -1,0 +1,23 @@
+#@testSuite ColoradoWaterHBGuest
+# Test reading a RelTotal month time series from ColoradoWaterHBGuest web service using a TSID
+# ----
+# Disable because ColoradoWaterHBGuest web services are no longer available
+# @enabled False
+# ----
+# Compare the resulting time series with that retrieved from HydroBase
+StartLog(LogFile="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase - full irrigation year
+SetInputPeriod(InputStart="1994-11",InputEnd="1996-10")
+0300909.DWR.RelTotal.Month~HydroBase
+0300909.DWR.RelTotal.Month~ColoradoWaterHBGuest
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSIDColoradoWaterHBGuest_RelTotal_Month_out.dv",Precision=2,TSList=FirstMatchingTSID,TSID="0300915.DWR.RelTotal.Month")
+# WriteDateValue(OutputFile="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Month_out.dv",Precision=2,TSList=LastMatchingTSID,TSID="0300915.DWR.RelTotal.Month")
+# CompareFiles(InputFile1="ExpectedResults/Test_TSIDColoradoWaterHBGuest_RelTotal_Month_out.dv",InputFile2="Results/Test_TSIDColoradoWaterHBGuest_RelTotal_Month_out.dv",IfDifferent=Warn)
+CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)

@@ -1,6 +1,0 @@
-# Test trying to copy a file
-# -Input file exists
-StartLog(LogFile="Results/Test_CopyFile.TSTool.log")
-RemoveFile(InputFile="Results\Test_CopyFile_out.txt",IfNotFound=Ignore)
-CopyFile(InputFile="Data/file.txt",OutputFile="Results/Test_CopyFile_out.txt")
-CompareFiles(InputFile1="Data\file.txt",InputFile2="Results\Test_CopyFile_out.txt",IfDifferent=Fail)

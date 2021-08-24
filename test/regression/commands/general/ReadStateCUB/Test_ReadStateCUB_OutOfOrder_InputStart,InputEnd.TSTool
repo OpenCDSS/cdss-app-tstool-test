@@ -1,8 +1,0 @@
-StartLog(LogFile="Results/Test_ReadStateCUB_OutOfOrder_InputStart,InputEnd.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadStateCUB_OutOfOrder_InputStart,InputEnd_out.dv",IfNotFound=Ignore)
-# SetDebugLevel(LogFileLevel=5)
-ReadStateCUB(InputFile="Data\SP2008_OutOfOrder.BD1",InputStart="1970-01",InputEnd="1971-12")
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateCUB_OutOfOrder_InputStart,InputEnd_out.dv",Precision=2)
-WriteDateValue(OutputFile="Results\Test_ReadStateCUB_OutOfOrder_InputStart,InputEnd_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults\Test_ReadStateCUB_OutOfOrder_InputStart,InputEnd_out.dv",InputFile2="Results\Test_ReadStateCUB_OutOfOrder_InputStart,InputEnd_out.dv",WarnIfDifferent=True)

@@ -1,0 +1,23 @@
+# Write Yearly data to DSS
+#@os Windows
+# Test setup...
+StartLog(LogFile="Results/Test_WriteHecDss_OutputStartEnd.TSTool.log")
+# SetDebugLevel(LogFileLevel=10)
+# Write a single blank time series to the dss file to allow WriteHecDss to be closed; allows deleting below.
+NewTimeSeries(Alias="Blank",NewTSID="Blank...Month",SetStart="1960-01",SetEnd="1960-12",Units="CFS")
+WriteHecDss(OutputFile="Results\Test_WriteHecDss_OutputStartEnd_out.dss",Type=PER-AVER,Close=True)
+Free(TSList=AllMatchingTSID,TSID="*")
+RemoveFile(InputFile="Results\Test_WriteHecDss_OutputStartEnd_out.dss")
+RemoveFile(InputFile="Results\Test_WriteHecDss_OutputStartEnd.dssutl.out",IfNotFound=Ignore)
+# The generated time series has identifier parts that indicate the HEC-DSS
+# parts, other than the D part, which is related to the period of record.
+NewPatternTimeSeries(Alias="Alias1",NewTSID="Apart1:Bpart1-with-dashes..Cpart1.Year.Fpart1",Description="Test data",SetStart="1950",SetEnd="1975",Units="MGD",PatternValues="5,10,12,13,75")
+WriteHecDss(OutputFile="Results/Test_WriteHecDss_OutputStartEnd_out.dss",OutputStart="1955",OutputEnd="1965",Type=PER-CUM)
+WriteHecDss(OutputFile="Results/Test_WriteHecDss_OutputStartEnd_out.dss",OutputStart="1955",Type=PER-CUM,A="OnlyStart")
+NewPatternTimeSeries(Alias="Alias2",NewTSID="Apart2:Bpart2-with-dashes..Cpart2.Day.Fpart2",Description="Test data",SetStart="1950-01-01",SetEnd="1950-02-13",Units="MGD",PatternValues="5,10,12,13,75")
+WriteHecDss(OutputFile="Results/Test_WriteHecDss_OutputStartEnd_out.dss",OutputStart="1950-01-15",OutputEnd="1950-01-28",TSList=AllMatchingTSID,TSID="Alias2",Type=PER-CUM)
+#
+# Use DSSUTL to output the data from the resulting DSS file to compare results
+RunDSSUTL(DssFile="Results\Test_WriteHecDss_OutputStartEnd_out.dss",InputFile="Test_WriteHecDss_OutputStartEnd.MCO",DssutlProgram="${WorkingDir}\DSSUTL.EXE")
+# In order to regenerate the expected results file, edit the output file in the file: Test_WriteHecDss_OutputStartEnd.MCO
+CompareFiles(InputFile1="ExpectedResults\Test_WriteHecDss_OutputStartEnd.dssutl.out",InputFile2="Results/Test_WriteHecDss_OutputStartEnd.dssutl.out",IfDifferent=Warn)

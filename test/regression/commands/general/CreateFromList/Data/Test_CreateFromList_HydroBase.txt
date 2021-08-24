@@ -1,5 +1,0 @@
-# List of HydroBase stations
-5000501
-5000502
-# Invalid ID...
-5099999

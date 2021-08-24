@@ -1,0 +1,17 @@
+# Test writing a Year time series to KML format
+# * Polygon shapes
+# * Interval = Year
+# * formatted placemark name and description
+# * location specified with WKT
+StartLog(LogFile="Results/Test_WriteTimeSeriesToKml_Year_Polygon_WKT.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTimeSeriesToKml_Year_Polygon_WKT_out.Kml",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc1",NewTSID="MyLoc1..MyDataType.Year",Description="Test data",SetStart="1950",SetEnd="2000",Units="CFS",PatternValues="5,10,12,13,75")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc1",PropertyName="WKTGeometry",PropertyType=String,PropertyValue="POLYGON Z((-109 44 5280,-109.5 43.5 5280,-110 44 5280))")
+NewPatternTimeSeries(Alias="MyLoc2",NewTSID="MyLoc2..MyData.Year",Description="Test data",SetStart="1955",SetEnd="2012",Units="CFS",PatternValues="7,12,14,,77",PatternFlags="A,B,,D,E")
+SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="MyLoc2",PropertyName="WKTGeometry",PropertyType=String,PropertyValue="POLYGON((-118 45,-117 43.2,-116 48))")
+# Uncomment the following command to regenerate the expected results file.
+# WriteTimeSeriesToKml(OutputFile="ExpectedResults/Test_WriteTimeSeriesToKml_Year_Polygon_WKT_out.kml",WKTGeometryProperty="WKTGeometry",GeometryInsert="<altitudeMode>clampedToGround</altitudeMode><tesselate>1</tesselate>",PlacemarkName="%L-%T",PlacemarkDescription="Desc:  %D",StyleFile="Data/KML-Style.xml",StyleUrl="#polygonFillStyle")
+# Generate new output...
+WriteTimeSeriesToKml(OutputFile="Results/Test_WriteTimeSeriesToKml_Year_Polygon_WKT_out.kml",WKTGeometryProperty="WKTGeometry",GeometryInsert="<altitudeMode>clampedToGround</altitudeMode><tesselate>1</tesselate>",PlacemarkName="%L-%T",PlacemarkDescription="Desc:  %D",StyleFile="Data/KML-Style.xml",StyleUrl="#polygonFillStyle")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteTimeSeriesToKml_Year_Polygon_WKT_out.kml",InputFile2="Results/Test_WriteTimeSeriesToKml_Year_Polygon_WKT_out.kml",IfDifferent=Warn)

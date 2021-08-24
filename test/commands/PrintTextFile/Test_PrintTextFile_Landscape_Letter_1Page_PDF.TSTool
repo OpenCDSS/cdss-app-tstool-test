@@ -1,0 +1,15 @@
+#@enabled False
+# Test trying to print a one page file portrait, 8.5x11, to a PDF file
+# Do not do a comparison with expected results since the printer driver
+# may vary between computers
+# This may generate a warning:
+#
+# When you create a PostScript file you must rely on system fonts and use document fonts.
+# Please go to the printer properties, "Adobe PDF Settings" page
+# and turn OFF the option "Rely on system fonts only; do not use document fonts.
+#
+# It does not seem that there is a way to programatically change so you are stuck!
+#
+#@os Windows
+StartLog(LogFile="Results/Test_PrintTextFile_Landscape_Letter_1Page_PDF.TSTool.log")
+PrintTextFile(InputFile="Data/50lines.txt",PrinterName="Adobe PDF",PaperSize="na-letter",Orientation=Landscape,MarginLeft=.5,MarginRight=.6,MarginTop=.7,MarginBottom=.8,Header="Header",Footer="Footer",ShowLineCount=True,ShowDialog=False,OutputFile="results/Test_PrintTextFile_Landscape_Letter_1Page_PDF.pdf")

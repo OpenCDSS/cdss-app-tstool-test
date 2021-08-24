@@ -1,0 +1,10 @@
+# Test expanding a FreeMarker template for "Hello World"
+# in particula to demonstrate how to use a comment in the template, which
+# does not get passed to the expanded content
+StartLog(LogFile="Results/Test_ExpandTemplateFile_HelloWorld_comment.TSTool.log")
+RemoveFile(InputFile="Results/Test_ExpandTemplateFile_HelloWorld_comment_out.txt",IfNotFound=Ignore)
+# Uncomment to regenerate the expected results.
+# ExpandTemplateFile(InputFile="Data/HelloWorld_comment_template.txt",OutputFile="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_comment_out.txt")
+ExpandTemplateFile(InputFile="Data/HelloWorld_comment_template.txt",OutputFile="Results/Test_ExpandTemplateFile_HelloWorld_comment_out.txt")
+# Compare the expected and current results
+CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_HelloWorld_comment_out.txt",InputFile2="Results/Test_ExpandTemplateFile_HelloWorld_comment_out.txt",IfDifferent=Warn)

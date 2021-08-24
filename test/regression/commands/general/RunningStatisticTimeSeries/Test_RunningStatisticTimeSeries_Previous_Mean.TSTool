@@ -1,9 +1,0 @@
-# Test the Previous running statistic (mean), with missing data
-StartLog(LogFile="Results/Test_RunningStatisticTimeSeries_Previous_Mean.TSTool.log")
-RemoveFile(InputFile="Results/Test_RunningStatistic_Previous_Mean_out.dv",IfNotFound=Ignore)
-TS ts1_day = NewPatternTimeSeries(NewTSID="ts1..Streamflow.Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,3,5,1,8,15,,1,3,5")
-RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_day",Statistic=Mean,SampleMethod=Previous,Bracket=3,Alias="ts1_day_mean")
-# Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_Previous_Mean_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_mean")
-WriteDateValue(OutputFile="Results/Test_RunningStatisticTimeSeries_Previous_Mean_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_mean")
-CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_Previous_Mean_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_Previous_Mean_out.dv",IfDifferent=Warn)

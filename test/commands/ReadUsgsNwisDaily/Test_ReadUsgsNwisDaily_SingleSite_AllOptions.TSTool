@@ -1,0 +1,12 @@
+# Test reading a single site, using all query options.
+# Specify the period to have faster performance
+StartLog(LogFile="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_out.dv",IfNotFound=Ignore)
+# Specify the period to read because UsgsNwisDaily will change over time and
+# setting the period will better control the numbers that return and impact the
+# test results.
+ReadUsgsNwisDaily(DataStore="UsgsNwisDaily",Sites="03451500",Parameters="00060,00065",Statistics="00001,00002,00003",SiteStatus="Active",SiteTypes="ST",Agency="USGS",InputStart="2010-01-01",InputEnd="2010-02-05",Alias="%L.%T",Format="WaterML",OutputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_out.waterml")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_out.dv",InputFile2="Results/Test_ReadUsgsNwisDaily_SingleSite_AllOptions_out.dv",IfDifferent=Warn)

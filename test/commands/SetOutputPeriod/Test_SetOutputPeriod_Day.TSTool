@@ -1,0 +1,10 @@
+# Test setting the output period to daily precision
+StartLog(LogFile="Results/Test_SetOutputPeriod_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetOutputPeriod_Day_out.txt",IfNotFound=Ignore)
+SetOutputPeriod(OutputStart="1900-01-01",OutputEnd="2007-12-31")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetOutputPeriod_Day_out.txt",IncludeProperties="OutputStart,OutputEnd",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetOutputPeriod_Day_out.txt",IncludeProperties="OutputStart,OutputEnd",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetOutputPeriod_Day_out.txt",InputFile2="Results/Test_SetOutputPeriod_Day_out.txt",IfDifferent=Warn)

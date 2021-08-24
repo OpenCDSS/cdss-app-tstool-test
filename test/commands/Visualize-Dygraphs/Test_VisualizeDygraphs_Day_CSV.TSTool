@@ -1,0 +1,17 @@
+# Test creating HTML files for dygraphs visualization
+# - daily time series
+StartLog(LogFile="Results/Test_VisualizeDygraphs_Day_CSV.TSTool.log")
+RemoveFile(InputFile="Results/Test_VisualizeDygraphs_Day_CSV_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,,75,60,54,49,32,,25")
+# Write a CSV file that dygraphs will use as data and expand the HTML template to
+# use the CSV file name.
+WriteTimeSeriesToDataStream(OutputFile="Results/Test_VisualizeDygraphs_Day_CSV_out.csv",OutputFileHeader="Date,StationID",OutputLineFormat="${tsdata:datetime},${tsdata:value}",DateTimeFormat="%Y-%m-%d",Precision=2,MissingValue=Blank)
+SetProperty(PropertyName="CSVFilename",PropertyType=String,PropertyValue="Test_VisualizeDygraphs_Day_CSV_out.csv")
+SetProperty(PropertyName="GraphOption_title",PropertyType=String,PropertyValue="Graph Title Goes Here")
+SetProperty(PropertyName="GraphOption_ylabel",PropertyType=String,PropertyValue="yLabel Here")
+ExpandTemplateFile(InputFile="Data\dygraph-line-graph-csv-template.html",OutputFile="Results\Test_VisualizeDygraphs_Day_CSV_out.html")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_VisualizeDygraphs_Day_CSV_out.dv")
+# Generate new output...
+# Do regression comparison...
+# CompareFiles(InputFile1="ExpectedResults\Test_VisualizeDygraphs_Day_CSV_out.dv",InputFile2="Results/Test_VisualizeDygraphs_Day_CSV_out.dv",IfDifferent=Warn)

@@ -1,0 +1,10 @@
+# Test creating an ensemble with no time series added
+# @expectedStatus Warning (because time series list is empty)
+StartLog(LogFile="Results/Test_NewEnsemble_NoData.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewEnsemble_NoData_out.dv",IfNotFound=Ignore)
+NewEnsemble(NewEnsembleID="TestEnsemble",NewEnsembleName="Test Ensemble")
+# Generate the results.
+# Uncomment the following to recreate expected results
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewEnsemble_NoData_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+WriteDateValue(OutputFile="Results\Test_NewEnsemble_NoData_out.dv",TSList=EnsembleID,EnsembleID="TestEnsemble")
+CompareFiles(InputFile1="ExpectedResults/Test_NewEnsemble_NoData_out.dv",InputFile2="Results/Test_NewEnsemble_NoData_out.dv",IfDifferent=Fail)

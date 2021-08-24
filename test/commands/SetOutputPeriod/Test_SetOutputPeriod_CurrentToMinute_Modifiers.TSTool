@@ -1,0 +1,13 @@
+# Test setting the output period to 5 minute precision using current time
+# - use modifiers to round the minute and set the time zone to blank
+# - it is difficult to compare to expected results so just make sure it does not crash
+StartLog(LogFile="Results/Test_SetOutputPeriod_CurrentToMinute_Modifiers.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetOutputPeriod_CurrentToMinute_Modifiers_out.txt",IfNotFound=Ignore)
+SetOutputPeriod(OutputStart="CurrentToMinute.RoundDirection(<).Round(5min).Timezone() - 7Day",OutputEnd="CurrentToMinute.Round(5min).RoundDirection(>).TimeZone()")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetOutputPeriod_CurrentToMinute_Modifiers_out.txt",IncludeProperties="OutputStart,OutputEnd",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetOutputPeriod_CurrentToMinute_Modifiers_out.txt",IncludeProperties="OutputStart,OutputEnd",FileFormat=NameValue)
+# Do regression comparison (allow 2 lines to be different because system time
+# will be different than when expected results were written)...
+CompareFiles(InputFile1="ExpectedResults\Test_SetOutputPeriod_CurrentToMinute_Modifiers_out.txt",InputFile2="Results/Test_SetOutputPeriod_CurrentToMinute_Modifiers_out.txt",AllowedDiff="2",IfDifferent=Warn)

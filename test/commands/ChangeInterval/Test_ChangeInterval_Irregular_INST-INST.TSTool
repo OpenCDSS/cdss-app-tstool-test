@@ -1,0 +1,13 @@
+# Irregular interval to regular, INST to INST
+#
+StartLog(LogFile="Results\Test_ChangeInterval_Irregular_INST-INST.TSTool.log")
+RemoveFile(InputFile="Results\Test_ChangeInterval_Irregular_INST-INST.dv",IfNotFound=Ignore)
+ReadDateValue(InputFile="Data\IrregularInput.dv")
+ChangeInterval(Alias="Converted",TSID="Input",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
+ChangeInterval(Alias="Converted_HandleMissing_Repeat",TSID="Input",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
+ChangeInterval(Alias="Converted_HandleMissing_SetToZero",TSID="Input",NewInterval=6Hour,OldTimeScale=INST,NewTimeScale=INST)
+Free(TSList=AllMatchingTSID,TSID="Input")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ChangeInterval_Irregular_INST-INST.dv",TSList=AllMatchingTSID,TSID="*")
+WriteDateValue(OutputFile="Results\Test_ChangeInterval_Irregular_INST-INST.dv",TSList=AllMatchingTSID,TSID="*")
+CompareFiles(InputFile1="ExpectedResults\Test_ChangeInterval_Irregular_INST-INST.dv",InputFile2="Results\Test_ChangeInterval_Irregular_INST-INST.dv",IfDifferent=Warn)

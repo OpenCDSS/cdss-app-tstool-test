@@ -1,7 +1,0 @@
-#@enabled False
-# Python no longer being used to test.
-# Read in the single equation dependent time series and cumulate, so we can
-# try to figure out where Java and Python differ in precision computing mean.
-# Use fraction as the units since it displays to 4-digits in tables.
-ReadDelimitedFile(InputFile="Data\MonthDependent.csv",Delimiter=",",ColumnNames="Date,Value",DateTimeColumn="Date",ValueColumn="Value",SkipRowsAfterComments="1",LocationID="x",DataType="Flow",Interval=Month,Units="fraction")
-Cumulate()

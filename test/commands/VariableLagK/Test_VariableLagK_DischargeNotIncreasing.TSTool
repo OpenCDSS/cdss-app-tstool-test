@@ -1,0 +1,9 @@
+# Test that entering discharge values that are not increasing generates an error
+#
+#@expectedStatus Failure
+#
+StartLog(LogFile="Results\Test_VariableLagK_DischargeNotIncreasing.TSTool.log")
+#
+# Read NWSCard input file
+TS Inflow = ReadNwsCard(InputFile="Data\Streamflow.SQIN")
+VariableLagK(TSID="Inflow",NewTSID="TestLoc..SQIN.6Hour.routed",FlowUnits=CMS,LagInterval=Hour,Lag="0,12; 100,24; 50,36",Alias="Routed")

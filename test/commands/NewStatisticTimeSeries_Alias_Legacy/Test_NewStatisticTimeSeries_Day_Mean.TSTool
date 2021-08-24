@@ -1,0 +1,16 @@
+# Test of computing a statistic time series for daily data, statistic=Mean
+# This uses the legacy "TS Alias = "syntax
+#@readOnly
+StartLog(LogFile="Results/Test_NewStatisticTimeSeries_Day_Mean.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticTimeSeries_Day_Mean_out.dv",IfNotFound=Ignore)
+TS ts1 = NewTimeSeries(NewTSID="ts1..Streamflow.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS")
+SetConstant(TSList=AllMatchingTSID,TSID="ts1",MonthValues="1,2,3,4,5,6,7,8,9,10,11,12")
+# Double the above
+TS ts2 = NewTimeSeries(NewTSID="ts2..Streamflow.Day",Description="Test data",SetStart="1951-01-01",SetEnd="1953-01-31",Units="CFS")
+SetConstant(TSList=AllMatchingTSID,TSID="ts2",MonthValues="2,4,6,8,10,12,14,16,18,20,22,24")
+TS ts1_mean = NewStatisticTimeSeries(TSID="ts1",NewTSID="ts1..Streamflow.Day.Mean",Statistic=Mean)
+TS ts2_mean = NewStatisticTimeSeries(TSID="ts2",NewTSID="ts2..Streamflow.Day.Mean",Statistic=Mean)
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticTimeSeries_Day_Mean_out.dv")
+WriteDateValue(OutputFile="Results\Test_NewStatisticTimeSeries_Day_Mean_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticTimeSeries_Day_Mean_out.dv",InputFile2="Results\Test_NewStatisticTimeSeries_Day_Mean_out.dv",IfDifferent=Warn)

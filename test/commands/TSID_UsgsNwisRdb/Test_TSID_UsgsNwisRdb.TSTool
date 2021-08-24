@@ -1,0 +1,7 @@
+# Test reading from USGS NWIS RDB file using a TSID command
+StartLog(LogFile="Results/Test_TSID_UsgsNwisRdb.TSTool.log")
+03451500.USGS.Streamflow.Day~UsgsNwisRdb~Data/G03451500.txt
+# Uncomment the following command to regenerate expected results
+# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_UsgsNwisRdb_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TSID_UsgsNwisRdb_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_UsgsNwisRdb_out.dv",InputFile2="Results/Test_TSID_UsgsNwisRdb_out.dv",IfDifferent=Warn)

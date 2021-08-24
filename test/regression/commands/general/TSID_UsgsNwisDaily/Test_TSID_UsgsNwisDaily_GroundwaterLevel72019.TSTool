@@ -1,3 +1,0 @@
-# Test that the time series can be read, but don't check values since USGS might change
-# Read well level (depth)
-401834104444801..72019-00003.Day~UsgsNwisDaily

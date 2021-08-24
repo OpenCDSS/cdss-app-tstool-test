@@ -1,0 +1,12 @@
+# Test setup...
+# Read-only because legacy syntax
+# @readOnly
+StartLog(LogFile="Results/Test_SetIgnoreLEZero_Legacy_False.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetIgnoreLEZero_Legacy_False_out.txt",WarnIfMissing=False)
+SetIgnoreLEZero(False)
+# Uncomment the following two commands to regenerate the expected results file.
+#WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetIgnoreLEZero_Legacy_False_out.txt",IncludeProperties="IgnoreLEZero",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetIgnoreLEZero_Legacy_False_out.txt",IncludeProperties="IgnoreLEZero",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetIgnoreLEZero_Legacy_False_out.txt",InputFile2="Results/Test_SetIgnoreLEZero_Legacy_False_out.txt",WarnIfDifferent=True)

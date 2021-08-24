@@ -1,0 +1,12 @@
+# Test setup...
+# Read-only because legacy syntax
+# @readOnly
+StartLog(LogFile="Results/Test_SetOutputYearType_Legacy_Water.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetOutputYearType_Legacy_Water_out.txt",WarnIfMissing=False)
+SetOutputYearType(Water)
+# Uncomment the following two commands to regenerate the expected results file.
+#WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetOutputYearType_Legacy_Water_out.txt",IncludeProperties="OutputYearType",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetOutputYearType_Legacy_Water_out.txt",IncludeProperties="OutputYearType",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetOutputYearType_Legacy_Water_out.txt",InputFile2="Results/Test_SetOutputYearType_Legacy_Water_out.txt",WarnIfDifferent=True)

@@ -1,6 +1,0 @@
-# commented out because there is an error reading line 321 of file
-#startLog(LogFile="fromStateMod.log")
-#setOutputPeriod(1950-01,2003-12)
-#readStateMod("../data/sj_2002.iwr")
-#TS SanJuanSum = newTimeSeries(SanJuanSum..Diversion.Month.,"Sum of San Juan Diversions",*,*,AF,-999)
-#add(SanJuanSum,IgnoreMissing,*)

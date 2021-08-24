@@ -1,5 +1,0 @@
-startLog(LogFile="usingFillPeriod.log")
-# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY
-06754000.DWR.Streamflow.Month~HydroBase
-fillRepeat(TSID="*",FillStart="1900-01",FillEnd="1904-03",FillDirection=Forward,MaxIntervals=10)
-06754000.DWR.Streamflow.Month~HydroBase

@@ -1,0 +1,12 @@
+# Test creating an ensemble from one time series
+# Traces are shifted to the current day.  Because this will change, no comparison
+# to expected results occurs
+StartLog(LogFile="Results/Test_CreateEnsembleFromOneTimeSeries_Day_ReferenceDate=CurrentToDay.TSTool.log")
+RemoveFile(InputFile="Results/Test_CreateEnsembleFromOneTimeSeries_Day_ReferenceDate=CurrentToDay_out.dv",IfNotFound=Ignore)
+NewTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2007-05-13",MissingValue=NaN,InitialFunction="DateYYYYMMDD")
+CreateEnsembleFromOneTimeSeries(TSID="ts1",TraceLength=1Year,EnsembleID="TestEnsemble",ReferenceDate="CurrentToDay",ShiftDataHow=ShiftToReference)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_CreateEnsembleFromOneTimeSeries_Day_ReferenceDate=CurrentToDay_out.dv")
+WriteDateValue(OutputFile="Results/Test_CreateEnsembleFromOneTimeSeries_Day_ReferenceDate=CurrentToDay_out.dv")
+# No comparison because data are dynamic...
+#CompareFiles(InputFile1="ExpectedResults/Test_CreateEnsembleFromOneTimeSeries_Day_ReferenceDate=CurrentToDay_out.dv",InputFile2="Results/Test_CreateEnsembleFromOneTimeSeries_Day_ReferenceDate=CurrentToDay_out.dv",IfDifferent=Warn)

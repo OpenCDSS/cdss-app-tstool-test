@@ -1,8 +1,0 @@
-# Test reading a simple CSV that has data flags
-StartLog(LogFile="Results/Test_ReadDelimitedFile_Flags.TSTool.log")
-RemoveFile(InputFile="Results\Test_ReadDelimitedFile_Flags_out.dv",IfNotFound=Ignore)
-ReadDelimitedFile(InputFile="Data\simpleDataFlags.csv",Delimiter=",",ColumnNames="Date,val1,val2,flag2,val3,flag3",DateTimeColumn="Date",ValueColumn="val1,val2,val3",FlagColumn=",flag2,flag3",SkipRowsAfterComments="1",LocationID="loc",DataType="dt1,dt2,dt3",Interval=Day,Alias="%L-%T")
-# Uncomment the following command to regenerate the expected results file.
-# WriteSummary(OutputFile="ExpectedResults\Test_ReadDelimitedFile_Flags_out.txt")
-WriteSummary(OutputFile="Results\Test_ReadDelimitedFile_Flags_out.txt")
-CompareFiles(InputFile1="ExpectedResults\Test_ReadDelimitedFile_Flags_out.txt",InputFile2="Results\Test_ReadDelimitedFile_Flags_out.txt",IfDifferent=Warn)

@@ -1,0 +1,15 @@
+# FIXME SAM 2012-11-08 Get SOAP exception about BigDecimal having too many digits
+# Emailed the NRCS webmaster on Nov 7
+#
+# Test reading a bounding box for CO SNOTEL daily time series
+# Specify the period to have faster performance
+StartLog(LogFile="Results/Test_ReadNrcsAwdb_BoundingBox_WTEQ_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadNrcsAwdb_BoundingBox_WTEQ_Day_out.dv",IfNotFound=Ignore)
+# Specify the period to read because UsgsNwisDaily will change over time and
+# setting the period will better control the numbers that return and impact the
+# test results.
+ReadNrcsAwdb(DataStore="NrcsAwdb",Interval=Day,Networks="SNTL",BoundingBox="-105.75,40.43,-105.6,40.6",Elements="WTEQ",InputStart="2000-01-01",InputEnd="2000-12-31",Alias="%L-%T")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNrcsAwdb_BoundingBox_WTEQ_Day_out.dv")
+WriteDateValue(OutputFile="Results/Test_ReadNrcsAwdb_BoundingBox_WTEQ_Day_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_BoundingBox_WTEQ_Day_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_BoundingBox_WTEQ_Day_out.dv",IfDifferent=Warn)

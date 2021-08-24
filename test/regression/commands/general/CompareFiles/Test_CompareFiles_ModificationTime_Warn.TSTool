@@ -1,8 +1,0 @@
-# Test comparing file size
-# - warn if the file modification time is not as expected
-# - need to create the files dynamically because repository file dates are not guaranteed
-#@expectedStatus Warning
-StartLog(LogFile="Results/Test_CompareFiles_ModificationTime_Warn.TSTool.log")
-AppendFile(InputFile="Data/short.txt",OutputFile="Results/Test_CompareFiles_ModificationTime_Warn_old.txt")
-AppendFile(InputFile="Data/short.txt",OutputFile="Results/Test_CompareFiles_ModificationTime_Warn_new.txt")
-CompareFiles(InputFile1="Results/Test_CompareFiles_ModificationTime_Warn_old.txt",InputFile2="Results/Test_CompareFiles_ModificationTime_Warn_new.txt",FileProperty=ModificationTime,FilePropertyOperator=<,FilePropertyAction=Warn)

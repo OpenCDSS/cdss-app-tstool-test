@@ -1,0 +1,18 @@
+# Test comparing two simple tables using default parameters
+# The files are different - generate a command warning
+# Check to a precision of of 2 digits and specify a tolerance of .2 to allow some
+# differences to pass without a warning
+# @expectedStatus Warning
+StartLog(LogFile="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn.TSTool.log")
+RemoveFile(InputFile="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.html",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
+ReadTableFromDelimitedFile(TableID="table2",InputFile="Data\table2.2.csv")
+# Uncomment next 2 commands to regenerate the expected results...
+# CompareTables(Table1ID="table1",Table2ID="table2",Precision=2,Tolerance=.2,NewTableID="comparisonExpected",OutputFile="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.html",IfDifferent=Warn)
+# WriteTableToDelimitedFile(TableID="comparisonExpected",OutputFile="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.csv")
+# Generate the results.
+CompareTables(Table1ID="table1",Table2ID="table2",Precision=2,Tolerance=.2,NewTableID="comparison",OutputFile="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.html",IfDifferent=Warn)
+WriteTableToDelimitedFile(TableID="comparison",OutputFile="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.csv")
+# Do regression comparison on the results
+CompareFiles(InputFile1="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.csv",InputFile2="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.csv",IfDifferent=Warn)
+# CompareFiles(InputFile1="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.html",InputFile2="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferent=Warn_out.html",IfDifferent=Warn)

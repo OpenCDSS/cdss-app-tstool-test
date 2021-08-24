@@ -1,4 +1,0 @@
-#@enabled False
-# Test trying to print a three page file portrait, 8.5x11
-StartLog(LogFile="Results/Test_PrintTextFile_Portrait_8x11_3Page.TSTool.log")
-PrintTextFile(InputFile="Data/250lines.txt")

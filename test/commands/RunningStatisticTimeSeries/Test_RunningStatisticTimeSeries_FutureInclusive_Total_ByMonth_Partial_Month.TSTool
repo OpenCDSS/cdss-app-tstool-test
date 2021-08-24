@@ -1,0 +1,12 @@
+# Test the FutureInclusive running statistic (total), with missing data
+# - monthly data
+# - bracket specified by month
+# - bracket has some missing to skip months
+StartLog(LogFile="Results/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_ByMonth_Partial_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunningStatistic_FutureInclusive_Mean_ByMonth_Partial_Month_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1_day",NewTSID="ts1..Streamflow.Month",Description="test data 1",SetStart="2000-01",SetEnd="2003-05",PatternValues="1,2,3,2,1,3,5,1,8,15,,1,3,5")
+RunningStatisticTimeSeries(TSList=AllMatchingTSID,TSID="ts1_day",Statistic=Total,SampleMethod=FutureInclusive,BracketByMonth=",7,6,5,4,,2,1,0,0,0,",Alias="ts1_day_Mean_ByMonth_Partial_Month")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_ByMonth_Partial_Month_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_Mean_ByMonth_Partial_Month")
+WriteDateValue(OutputFile="Results/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_ByMonth_Partial_Month_out.dv",TSList=AllMatchingTSID,TSID="ts1_day_Mean_ByMonth_Partial_Month")
+CompareFiles(InputFile1="ExpectedResults/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_ByMonth_Partial_Month_out.dv",InputFile2="Results/Test_RunningStatisticTimeSeries_FutureInclusive_Mean_ByMonth_Partial_Month_out.dv",IfDifferent=Warn)

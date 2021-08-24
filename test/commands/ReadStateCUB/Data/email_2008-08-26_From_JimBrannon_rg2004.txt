@@ -1,0 +1,9 @@
+BD1 attached - 
+Model run had 5 structures from the RG2004 model for 1980 to 1989.
+
+Note that the BD1 now contains extra time series in addition to the
+individual structure data - district and basin-wide totals.  So the BD1
+actually has 9 time series in it.
+
+Jim
+

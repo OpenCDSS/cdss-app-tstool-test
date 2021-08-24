@@ -1,9 +1,0 @@
-# Test reading a delimited file using default parameters but also skip the first line
-StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_SkipLines.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_SkipLines_out.csv",IfNotFound=Ignore)
-ReadTableFromDelimitedFile(TableID="KNN_Aspinall",InputFile="Data\flow_sequence_dataset_1.csv",SkipLines="1")
-# Uncomment the following command to regenerate expected results
-# WriteTableToDelimitedFile(TableID="KNN_Aspinall",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_SkipLines_out.csv")
-WriteTableToDelimitedFile(TableID="KNN_Aspinall",OutputFile="Results\Test_ReadTableFromDelimitedFile_SkipLines_out.csv")
-# Do regression comparison with the expected results
-CompareFiles(InputFile1="ExpectedResults\Test_ReadTableFromDelimitedFile_SkipLines_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_SkipLines_out.csv",IfDifferent=Warn)

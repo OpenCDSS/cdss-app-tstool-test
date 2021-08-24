@@ -1,0 +1,10 @@
+# Test expanding a FreeMarker template for a block of commands iterating on a list of locations
+StartLog(LogFile="Results/Test_ExpandTemplateFile_List.TSTool.log")
+RemoveFile(InputFile="Results/Test_ExpandTemplateFile_List_out.txt",IfNotFound=Ignore)
+# Uncomment to regenerate the expected results.
+# Don't use .TSTool file extension because automated regression tests will think it is a test.
+# Instead, use .zTSTool extension.
+# ExpandTemplateFile(InputFile="Data/List_template.zTSTool",OutputFile="ExpectedResults/Test_ExpandTemplateFile_List_out.zTSTool")
+ExpandTemplateFile(InputFile="Data/List_template.zTSTool",OutputFile="Results/Test_ExpandTemplateFile_List_out.zTSTool")
+# Compare the expected and current results
+CompareFiles(InputFile1="ExpectedResults/Test_ExpandTemplateFile_List_out.zTSTool",InputFile2="Results/Test_ExpandTemplateFile_List_out.zTSTool",IfDifferent=Warn)

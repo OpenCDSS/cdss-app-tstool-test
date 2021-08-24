@@ -1,0 +1,3 @@
+# Test trying to remove a non-existant file - and ignore
+StartLog(LogFile="Results/Test_RemoveFile_NoFile_IfNotFound=Ignore.TSTool.log")
+RemoveFile(InputFile="Results/NonexistantFile",IfNotFound=Ignore)

@@ -1,0 +1,16 @@
+# - Ensemble input
+# - Day interval data
+# - determine the Total value in each year, with AnalysisStart and AnalysisEnd representing April 1 to Jul 31 total
+# - expect output for 1949 to be missing (too much missing), 1950 to be 2785, 5450, 8355 (Excel check), 1951 missing (to much missing)
+# - output to individual time series (not ensemble)
+StartLog(LogFile="Results/Test_NewStatisticYearTS_Ensemble_Day_Total_AnalysisWindow.TSTool.log")
+RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Ensemble_Day_Total_AnalysisWindow_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1-%z",NewTSID="ts1..Streamflow.Day[1949]",Description="Test data",SetStart="1949-10-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="ts1-%z",NewTSID="ts1..Streamflow.Day[1950]",Description="Test data",SetStart="1949-10-01",SetEnd="1951-03-12",Units="CFS",PatternValues="10,15,24,26,150")
+NewPatternTimeSeries(Alias="ts1-%z",NewTSID="ts1..Streamflow.Day[1951]",Description="Test data",SetStart="1949-10-01",SetEnd="1951-03-12",Units="CFS",PatternValues="15,30,36,39,225")
+NewEnsemble(TSList=AllTS,NewEnsembleID="Ensemble1",NewEnsembleName="Test ensemble")
+NewStatisticYearTS(TSList=EnsembleID,EnsembleID="Ensemble1",Statistic=Total,OutputYearType=Calendar,AnalysisWindowStart="04-01",AnalysisWindowEnd="07-31",Alias="Stat-%z",NewTSID="ts1..Streamflow.Year.Total[%z]")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(TSList=AllMatchingTSID,TSID="Stat*",OutputFile="ExpectedResults\Test_NewStatisticYearTS_Ensemble_Day_Total_AnalysisWindow_out.dv")
+WriteDateValue(TSList=AllMatchingTSID,TSID="Stat*",OutputFile="Results\Test_NewStatisticYearTS_Ensemble_Day_Total_AnalysisWindow_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_NewStatisticYearTS_Ensemble_Day_Total_AnalysisWindow_out.dv",InputFile2="Results\Test_NewStatisticYearTS_Ensemble_Day_Total_AnalysisWindow_out.dv",IfDifferent=Warn)

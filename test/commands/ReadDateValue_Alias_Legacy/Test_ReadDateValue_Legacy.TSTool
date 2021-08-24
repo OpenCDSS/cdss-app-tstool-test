@@ -1,0 +1,18 @@
+# This uses the legacy "TS Alias =" syntax with fixed-format parameters
+#@readOnl
+StartLog(LogFile="Results/Test_ReadDateValue_Legacy.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadDateValue_Legacy_out.dv",IfNotFound=Ignore)
+# Uncomment the following two commands to recreate the "Data" file used as
+# input to this test
+# TS ts1 = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+# WriteDateValue(OutputFile="Data\Test_WriteDateValue_Legacy_out.dv")
+# Test the command...
+TS ts1 = ReadDateValue("Data\Test_WriteDateValue_Legacy_out.dv",*,*,*,*)
+# Uncomment the following command to regenerate the expected results file.
+# Make sure to do after the above is commented so only one time series ends
+# up in the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_Legacy_out.dv")
+# Generate new output...
+WriteDateValue(OutputFile="Results/Test_ReadDateValue_Legacy_out.dv")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_ReadDateValue_Legacy_out.dv",InputFile2="Results/Test_ReadDateValue_Legacy_out.dv",WarnIfDifferent=True)

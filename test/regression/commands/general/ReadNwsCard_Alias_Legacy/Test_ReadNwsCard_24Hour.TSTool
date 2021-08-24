@@ -1,9 +1,0 @@
-# This used the legacy "TS Alias =" syntax
-#@readOnly
-StartLog(LogFile="Results/Test_ReadNwsCard_24Hour.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadNwsCard_24Hour_out.dv",IfNotFound=Ignore)
-TS MyTS = ReadNwsCard(InputFile="Data/03567500.CARD")
-# Uncomment the following to regenerate the expected results...
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNwsCard_24Hour_out.dv")
-WriteDateValue(OutputFile="Results/Test_ReadNwsCard_24Hour_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_ReadNwsCard_24Hour_out.dv",InputFile2="Results/Test_ReadNwsCard_24Hour_out.dv",WarnIfDifferent=True)

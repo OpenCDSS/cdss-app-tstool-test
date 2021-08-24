@@ -1,0 +1,27 @@
+# Test selecting time series from a network
+# - network is for basins in Colorado
+# - specify that downstream node should not be included
+StartLog(LogFile="Results/Test_SelectTimeSeries_Network_CoBasins_-Downstream.TSTool.log")
+RemoveFile(InputFile="Results/Test_SelectTimeSeries_Network_CoBasins_-Downstream_out.csv",IfNotFound=Ignore)
+# Read the network data for Colorado Basins from Excel, and create the network
+ReadTableFromExcel(TableID="Connectivity",InputFile="Data\Watershed_Connectivity_v4.xlsx",Worksheet="Connectivity",ExcelColumnNames=FirstRowInRange,ColumnExcludeFilters="LOCAL_ID:",ExcelTextColumns="LOCAL_ID,TOTAL_ID,DOWNSTREAM_LOCAL_ID")
+CreateNetworkFromTable(NetworkID="WaterSupplyBasins",NetworkName="Colorado water supply basins used in CDSS SNODAS Tools",DefaultDownstreamNodeID="OutOfState",TableID="Connectivity",NodeIDColumn="LOCAL_ID",NodeNameColumn="LOCAL_NAME",DownstreamNodeIDColumn="DOWNSTREAM_LOCAL_ID")
+# SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+# Generate short time series of synthetic data for testing
+SetOutputPeriod(OutputStart="2016-01",OutputEnd="2016-12")
+For(Name="For_basins",IteratorProperty="LOCAL_ID",TableID="Connectivity",TableColumn="LOCAL_ID")
+NewPatternTimeSeries(Alias="${LOCAL_ID}",NewTSID="${LOCAL_ID}..volume.Month",Units="acft",MissingValue=NaN,PatternValues="1")
+EndFor(Name="For_basins")
+# Select time series upstream of one node and downstream of others
+# The network looks like:
+# CRDC2 -> RWGC2 -> DNRC2 -> MVTC2
+#                     ^
+#                     |
+#                    SRGC2
+#
+# For the example, specify RWGC2 (to include it) and -SRGC2 (to exclude it)
+SelectTimeSeries(DeselectAllFirst=True,NetworkID="WaterSupplyBasins",DownstreamNodeID="-MVTC2",UpstreamNodeIDs="RWGC2,-SRGC2")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(TSList=SelectedTS,OutputFile="ExpectedResults/Test_SelectTimeSeries_Network_CoBasins_-Downstream_out.dv")
+WriteDateValue(TSList=SelectedTS,OutputFile="Results/Test_SelectTimeSeries_Network_CoBasins_-Downstream_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_SelectTimeSeries_Network_CoBasins_-Downstream_out.dv",InputFile2="Results/Test_SelectTimeSeries_Network_CoBasins_-Downstream_out.dv",IfDifferent=Warn)
