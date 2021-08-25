@@ -1,0 +1,5 @@
+# Check a file for size in bytes:
+# - if file size is > a value, warn
+#@expectedStatus Warning
+StartLog(LogFile="Results/test-CheckFile-FileSizeBytes-GT.TSTool.log")
+CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeBytes",CheckCriteria=">=",CheckValue1=0)

@@ -1,0 +1,5 @@
+# Check a file for size in lines:
+# - if file lines is < a value, warn
+#@expectedStatus Warning
+StartLog(LogFile="Results/test-CheckFile-FileSizeLines-LT.TSTool.log")
+CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeLines",CheckCriteria="<=",CheckValue1=10)

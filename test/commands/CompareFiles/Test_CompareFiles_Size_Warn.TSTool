@@ -2,4 +2,4 @@
 # - warn if the file size is not as expected
 #@expectedStatus Warning
 StartLog(LogFile="Results/Test_CompareFiles_Size_Warn.TSTool.log")
-CompareFiles(InputFile1="Data/short.txt",InputFile2="Data/long.txt",FileProperty=Size,FilePropertyOperator=<,FilePropertyAction=Warn)
+CompareFiles(InputFile1="Data/short.txt",InputFile2="Data/long.txt",FileProperty=Size,FilePropertyOperator="<",FilePropertyAction=Warn)

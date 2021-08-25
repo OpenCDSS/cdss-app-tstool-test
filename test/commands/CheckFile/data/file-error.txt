@@ -1,0 +1,2 @@
+This file has a string that indicates a problem (next line)
+error
