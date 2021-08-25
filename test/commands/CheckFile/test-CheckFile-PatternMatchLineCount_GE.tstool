@@ -1,0 +1,5 @@
+# Check a file for size in bytes:
+# - if pattern match line count is > a value, warn
+#@expectedStatus Warning
+StartLog(LogFile="Results/test-CheckFile-PatternMatchLineCount-GE.TSTool.log")
+CheckFile(InputFile="data\file-5lines.txt",Statistic="PatternMatchLineCount",SearchPattern="*Line*",CheckCriteria=">=",CheckValue1=3)

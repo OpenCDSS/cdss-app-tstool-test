@@ -1,0 +1,14 @@
+# Check a file for size in bytes:
+# - if file size is <= a value, warn
+# - test the output features to set properties and add to table
+#@expectedStatus Failure
+StartLog(LogFile="Results/test-CheckFile-FileSizeBytes-LE-output.TSTool.log")
+CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeBytes",CheckCriteria="<=",CheckValue1=100,IfCriteriaMet=Fail,ProblemType="FileTooSmall",CheckResultPropertyName="TestCheckProperty",CriteriaMetPropertyValue="TestCheckPropertyMet",CriteriaNotMetPropertyValue="TestCheckPropertyNotMet",TableID="TestCheckFileTable",TableFilenameColumn="TestFile",TableStatisticColumn="TestStatistic",TableStatisticValueColumn="TestStatisticValue")
+# Uncomment the following two lines to regenerate expected results.
+# WritePropertiesToFile(OutputFile="results/test-CheckFile-FileSizeBytes-LE-output-props-out.csv",IncludeProperties="TestCheckProperty")
+# WriteTableToDelimitedFile(TableID="TestCheckFileTable",OutputFile="expected-results/test-CheckFile-FileSizeBytes-LE-output-out.csv")
+WritePropertiesToFile(OutputFile="expected-results/test-CheckFile-FileSizeBytes-LE-output-props-out.csv",IncludeProperties="TestCheckProperty")
+WriteTableToDelimitedFile(TableID="TestCheckFileTable",OutputFile="results/test-CheckFile-FileSizeBytes-LE-output-out.csv")
+# Compare the expected results with current results.
+CompareFiles(InputFile1="expected-results/test-CheckFile-FileSizeBytes-LE-output-props-out.csv",InputFile2="results/test-CheckFile-FileSizeBytes-LE-output-props-out.csv",IfDifferent=Warn)
+CompareFiles(InputFile1="expected-results/test-CheckFile-FileSizeBytes-LE-output-out.csv",InputFile2="results/test-CheckFile-FileSizeBytes-LE-output-out.csv",IfDifferent=Warn)

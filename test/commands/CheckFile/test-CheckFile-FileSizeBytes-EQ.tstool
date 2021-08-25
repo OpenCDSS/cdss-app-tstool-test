@@ -1,0 +1,5 @@
+# Check a file for size in bytes:
+# - if file size is == a value, fail
+#@expectedStatus Failure
+StartLog(LogFile="Results/test-CheckFile-FileSizeBytes-EQ.TSTool.log")
+CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeBytes",CheckCriteria="==",CheckValue1=55)
