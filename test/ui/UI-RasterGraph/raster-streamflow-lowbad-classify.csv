@@ -1,0 +1,9 @@
+# Symbol table for streamflow raster graph emphasizing low flows, specifically for the Poudre:
+valueMin,  valueMax, color,   opacity, fillColor, fillOpacity, comment
+-Infinity, <2,       #ff00ff, 1.0,     #ff00ff,   1.0,         magenta
+>=2,       <10,      #ff0000, 1.0,     #ff0000,   1.0,         red
+>=10,      <100,     #ffa500, 1.0,     #ffa500,   1.0,         orange
+>=100,     <1000,    #ffff00, 1.0,     #ffff00,   1.0,         yellow
+>=1000,    <5000,    #00ffff, 1.0,     #00ffff,   1.0,         cyan
+>=5000,    Infinity, #0000ff, 1.0,     #0000ff,   1.0,         blue
+NoData,    NoData,   #ffffff, 1.0,     #ffffff,   1.0,         white

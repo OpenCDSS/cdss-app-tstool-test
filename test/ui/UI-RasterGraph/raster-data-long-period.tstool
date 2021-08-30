@@ -1,0 +1,19 @@
+StartLog(LogFile="results/raster-data-long-period.tstool.log")
+# Data that can be used to create a raster graph, interactively or running in batch.
+# 06752000 - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+06752000.DWR.Streamflow.Month~HydroBase
+06752000.DWR.Streamflow.Day~HydroBase
+ProcessRasterGraph(TSProductFile="raster-streamflow-lowbad.tsp")
+#
+# Poudre at Fort Collins (Lincoln Bridge)
+06752260.USGS.Streamflow.Day~HydroBase
+ProcessRasterGraph(TSProductFile="raster-Poudre-FortCollins-streamflow-lowbad.tsp")
+#
+# Daily maximum temperatures.
+COOP:053005.ACIS.maxt.Day~RCC-ACIS
+ProcessRasterGraph(TSProductFile="raster-maxt-highbad.tsp")
+#
+# Daily precipitation.
+COOP:053005.ACIS.pcpn.Day~RCC-ACIS
+ProcessRasterGraph(TSProductFile="raster-precip-highbad.tsp")
+# 06752260 - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
