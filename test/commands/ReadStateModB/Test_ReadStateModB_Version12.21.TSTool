@@ -5,4 +5,4 @@ ReadStateModB(InputFile="Data/westalt1_12.21.b44")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateModB_Version12.21_out.dv",Precision=1)
 WriteDateValue(OutputFile="Results\Test_ReadStateModB_Version12.21_out.dv",Precision=1)
-CompareFiles(InputFile1="ExpectedResults\Test_ReadStateModB_Version12.21_out.dv",InputFile2="Results\Test_ReadStateModB_Version12.21_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadStateModB_Version12.21_out.dv",InputFile2="Results\Test_ReadStateModB_Version12.21_out.dv",IfDifferent=Warn)

@@ -1,0 +1,13 @@
+# Test running an external program using program and arguments with other defaults:
+# - use a command shell internally to run
+# - determine the exit status from the process exit value
+# - set the standard output to a property and check the value
+StartLog(LogFile="Results/Test_RunProgram_Program_echo_StdoutProperty.TSTool.log")
+RemoveFile(InputFile="Results\Test_RunProgram_Program_echo_StdoutProperty_out.txt",IfNotFound=Ignore)
+# Uncomment the following command to regenerate the expected results file.
+# RunProgram(Program=echo,ProgramArg1=Hello,ProgramArg2=>,ProgramArg3=${WorkingDir}/ExpectedResults/Test_RunProgram_Program_echo_StdoutProperty_out.txt)
+# Generate the output
+RunProgram(CommandLine="echo Hello",StdoutProperty="StdoutProperty")
+If(Name="If_property",Condition="${StdoutProperty} != Hello")
+Message(Message="Program output property value is not 'Hello'.")
+EndIf(Name="If_property")

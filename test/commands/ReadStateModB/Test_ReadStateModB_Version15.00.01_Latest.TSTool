@@ -1,0 +1,16 @@
+# Test to read version 15.00.01 latest format binary file:
+# - the data files were copied from the ex0002 example, which has reservoir
+# - use the OutputVersion=Latest parameter to convert to the latest format
+# - the 15.00.01 file (has duplicate parameters)
+#   and 17.0.4 file (does not have duplicate parameters) are compared
+# - only the b44 file has a problem with parameter names
+# Since cannot get old and new input to totally map to same time series, expect a warning.
+#@expectedStatus Warning
+StartLog(LogFile="Results/Test_ReadStateModB_Version15.00.01-Latest.TSTool.log")
+# SetDebugLevel(LogFileLevel=1)
+RemoveFile(InputFile="Results/Test_ReadStateModB_Version15.00.01-Latest.out.dv",IfNotFound=Ignore)
+ReadStateModB(InputFile="Data/ex0002-15.00.01.b44",OutputVersion="Latest")
+ReadStateModB(InputFile="Data/ex0002-17.0.4.b44")
+# SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+# Compare time series:
+CompareTimeSeries(MatchLocation=True,MatchDataType=True,Precision=1,CreateDiffTS=IfDifferent,SummaryFile="Results/Test_ReadStateModB_Version15.00.01_Latest-out-summary.txt",IfDifferent=Warn)
