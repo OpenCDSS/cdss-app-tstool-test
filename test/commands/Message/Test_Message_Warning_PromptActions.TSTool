@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/Test_Message_Warning_PromptActions.TSTool.log")
+# Test printing a message for command status WARNING
+# - use the expectedStatus to ensure things are working
+# - disable for automated testing because prompt would interrupt
+#@expectedStatus Warning
+#@enabled False
+Message(Message="This command generated a warning.",PromptActions="Cancel,Continue",CommandStatus=WARNING)
