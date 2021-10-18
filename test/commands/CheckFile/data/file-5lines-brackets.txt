@@ -1,0 +1,6 @@
+# This file has some data with brackets, which must be escaped in the pattern search.
+Line 1
+Line 2
+[Line] 3
+Line 4 some text
+[Line] 5 some text
