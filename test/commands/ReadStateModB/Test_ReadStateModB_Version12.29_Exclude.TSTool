@@ -1,0 +1,9 @@
+# Test to read version 12.29 format binary file:
+# - exclude parameters 'Control_Right' and 'Control_Location'
+StartLog(LogFile="Results/Test_ReadStateModB_Version12.29_Exclude.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadStateModB_Version12.29_Exclude_out.dv",IfNotFound=Ignore)
+ReadStateModB(InputFile="Data/ex7_Version12.29.b43",ExcludeDataTypes="Control_Right,Control_Location")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadStateModB_Version12.29_Exclude_out.dv",Precision=1)
+WriteDateValue(OutputFile="Results\Test_ReadStateModB_Version12.29_Exclude_out.dv",Precision=1)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadStateModB_Version12.29_Exclude_out.dv",InputFile2="Results\Test_ReadStateModB_Version12.29_Exclude_out.dv",IfDifferent=Warn)
