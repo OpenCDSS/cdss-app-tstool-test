@@ -1,10 +1,11 @@
-# Test reading a delimited file using default parameters.
+# Test reading a delimited file:
+# - use space for delimiter
 StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_1.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_1_out.csv",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="KNN_Aspinall",InputFile="Data\flow_sequence_dataset_1.tsv",Delimiter="\t",SkipLines="1")
 # Generate the results.
 # WriteTableToDelimitedFile(TableID="KNN_Aspinall",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_1_out.csv",WriteHeaderComments=False)
 WriteTableToDelimitedFile(TableID="KNN_Aspinall",OutputFile="Results\Test_ReadTableFromDelimitedFile_1_out.csv",WriteHeaderComments=False)
-# Do regression comparison with the original input (possible because strings
+# Comparison with the original input (possible because strings
 # and integers with no formatting issues).
 CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDelimitedFile_1_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_1_out.csv",IfDifferent=Warn)

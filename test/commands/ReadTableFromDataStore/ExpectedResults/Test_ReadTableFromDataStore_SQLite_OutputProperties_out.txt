@@ -1,0 +1,3 @@
+TestProperty_name="name1"
+TestProperty_integer1=1
+TestProperty_float1=1.1

@@ -1,0 +1,10 @@
+# Test data file containing columns of different type:
+# - include missing values
+# - doubles are specified as integers to test specifying the type 
+#   resulting in precision of 0 when read in
+# - use space for delimiter - note sometimes spaces adjoin and are treated as separate delimiters
+"NumberAsText" "DateTime" String Double Integer
+01234567 "2000-01-01 00:01:02" "abc" 1 
+02345678 "01/02/2000 02:03:04"  2 2
+03456789  "ghi" 3 3
+12345678 "01/02/2000 02:03:04" "jkl"  4

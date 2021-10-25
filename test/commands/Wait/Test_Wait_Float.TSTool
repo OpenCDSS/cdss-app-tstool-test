@@ -1,0 +1,6 @@
+# Test Wait command:
+# - Just make sure it runs
+# - Test using the smallest allowed floating point number
+# - TODO SAM 2015-02-14 Need to add some logic to test with a time property before and after
+StartLog(LogFile="Results/Test_Wait_Float.TSTool.log")
+Wait(WaitTime=".001")

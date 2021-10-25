@@ -1,0 +1,7 @@
+# Test Wait command:
+# - Just make sure it runs
+# - Test using a very small floating point number to make sure no division by zero
+# - TODO SAM 2015-02-14 Need to add some logic to test with a time property before and after
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_Wait_SmallFloat.TSTool.log")
+Wait(WaitTime=".000001")

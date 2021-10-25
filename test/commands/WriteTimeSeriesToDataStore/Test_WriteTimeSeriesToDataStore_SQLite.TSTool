@@ -1,0 +1,20 @@
+# Test writing a time series to a datastore:
+# - use a SQLite test database
+# - this test needs a lot of work because SQLite does not have date/time column type so need to verify 
+#@enabled False
+StartLog(LogFile="Results/Test_RunSql_WriteTimeSeriesToDataStore_SQLite.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunSql_WriteTimeSeriesToDataStore_SQLite_out.csv",IfNotFound=Ignore)
+# Open a SQLite database:
+# - make a copy since inserting a new row
+CopyFile(InputFile="Data\test-sqlite.db",OutputFile="Results\Test_RunSql_WriteTimeSeriesToDataStore_SQLite_out.db")
+OpenDataStore(DataStoreName="TestSQLiteDatastore",DataStoreDescription="Test SQLite datastore",DataStoreType="GenericDatabaseDataStore",DatabaseEngine="SQLite",ServerName="Results\Test_RunSql_WriteTimeSeriesToDataStore_SQLite_out.db")
+# Write a time series to the datastore.
+ReadTableFromDelimitedFile(TableID="TestTable",InputFile="Data\testdata.csv")
+WriteTimeSeriesToDataStore(TableID="TestTable",DataStore="TestSQLiteDatastore",DataStoreTable="table1")
+ReadTableFromDataStore(DataStore="TestSQLiteDatastore",Sql="SELECT name, integer1, float1 FROM table1",TableID="TestTable")
+CloseDataStore(DataStore="TestSQLiteDatastore",StatusMessage="Closed after test complete")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="TestTable",OutputFile="ExpectedResults/Test_RunSql_WriteTimeSeriesToDataStore_SQLite_out.csv")
+WriteTableToDelimitedFile(TableID="TestTable",OutputFile="Results/Test_RunSql_WriteTimeSeriesToDataStore_SQLite_out.csv")
+# Do regression comparison with the expected results for the properties.
+CompareFiles(InputFile1="ExpectedResults/Test_RunSql_WriteTimeSeriesToDataStore_SQLite_out.csv",InputFile2="Results/Test_RunSql_WriteTimeSeriesToDataStore_SQLite_out.csv",IfDifferent=Warn)
