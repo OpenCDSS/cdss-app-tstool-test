@@ -1,0 +1,11 @@
+# Test writing a delimited file:
+# - use ExcludeColumns
+StartLog(LogFile="Results/Test_WriteTableToDelimitedFile_Exclude.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTableToDelimitedFile_Exclude_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="TestTable",InputFile="Data\testtable2.csv",DateTimeColumns="Date,DateTime")
+# Uncomment the following to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="TestTable",ExcludeColumns="Short,Boolean",OutputFile="ExpectedResults\Test_WriteTableToDelimitedFile_Exclude_out.csv")
+WriteTableToDelimitedFile(TableID="TestTable",OutputFile="Results\Test_WriteTableToDelimitedFile_Exclude_out.csv",ExcludeColumns="Short,Boolean")
+# Copare output with the original input (possible because strings
+# and integers with no formatting issues).
+CompareFiles(InputFile1="ExpectedResults\Test_WriteTableToDelimitedFile_Exclude_out.csv",InputFile2="Results/Test_WriteTableToDelimitedFile_Exclude_out.csv",IfDifferent=Warn)

@@ -1,0 +1,22 @@
+StartLog(LogFile="Results/Test-NewSQLiteDatabase-Memory.TSTool.log")
+# Test to read a table from a SQLite database:
+# - use an in-memory database
+# - close the databases so that files are not open and locked
+RemoveFile(InputFile="results/test-sqlite-memory.db",IfNotFound=Ignore)
+NewSQLiteDatabase(DataStore="TestSQLiteMemory",DatabaseFile="Memory")
+RunSql(DataStore="TestSQLiteMemory",Sql="CREATE TABLE IF NOT EXISTS table1 (id INTEGER PRIMARY KEY, name TEXT NOT NULL, integer1 INTEGER, float1 REAL)")
+RunSql(DataStore="TestSQLiteMemory",Sql="INSERT INTO table1 (name, integer1, float1) VALUES ('name1', 1, 1.1)")
+RunSql(DataStore="TestSQLiteMemory",Sql="INSERT INTO table1 (name, integer1, float1) VALUES ('name2', 2, 2.2)")
+RunSql(DataStore="TestSQLiteMemory",Sql="backup to ${WorkingDirPortable}/results/test-sqlite-memory.db")
+CloseDataStore(DataStore="TestSQLiteMemory",StatusMessage="Closed after test.")
+# Read the table:
+# - make a copy of the database to prevent conflict
+CopyFile(InputFile="results\test-sqlite-memory.db",OutputFile="results\test-sqlite-memory2.db")
+OpenDataStore(DataStoreName="TestSQLiteMemory2",DataStoreDescription="SQLite Test Database",DataStoreType="GenericDatabaseDataStore",DatabaseEngine="SQLite",ServerName="results/test-sqlite-memory2.db")
+ReadTableFromDataStore(DataStore="TestSQLiteMemory2",DataStoreTable="table1",TableID="TestTable")
+CloseDataStore(DataStore="TestSQLiteMemory2")
+# Compare the tables after writing to files.
+# Uncomment the next line to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="TestTable",OutputFile="expected-results/test-NewSQLiteDatabase-Memory-out.csv",IncludeColumns="name,integer1,float1")
+WriteTableToDelimitedFile(TableID="TestTable",OutputFile="results/test-NewSQLiteDatabase-Memory-out.csv",IncludeColumns="name,integer1,float1")
+CompareFiles(InputFile1="expected-results/test-NewSQLiteDatabase-Memory-out.csv",InputFile2="results/test-NewSQLiteDatabase-Memory-out.csv",IfDifferent=Warn)

@@ -1,0 +1,11 @@
+# Test reading a delimited file:
+# - use space for delimiter
+StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_1_Space.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_1_Space_out.txt",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="TestSpaceDelimiter",InputFile="Data\testdata2-space.txt",Delimiter="\s")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="TestSpaceDelimiter",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_1_Space_out.txt",WriteHeaderComments=False)
+WriteTableToDelimitedFile(TableID="TestSpaceDelimiter",OutputFile="Results\Test_ReadTableFromDelimitedFile_1_Space_out.txt",WriteHeaderComments=False)
+# Compare with the original input (possible because strings
+# and integers with no formatting issues).
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDelimitedFile_1_Space_out.txt",InputFile2="Results/Test_ReadTableFromDelimitedFile_1_Space_out.txt",IfDifferent=Warn)

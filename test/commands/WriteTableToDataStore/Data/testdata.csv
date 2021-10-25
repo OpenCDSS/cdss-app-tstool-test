@@ -1,0 +1,9 @@
+# Data to insert into the test database:
+# - add rows in addition to what is already in the database
+# - the name is high enough number to not interfere
+# - serial key will be added automatically
+"name","integer1","float1"
+name10,10,10.0
+name11,11,11.1
+name12,12,12.2
+name13,13,13.3

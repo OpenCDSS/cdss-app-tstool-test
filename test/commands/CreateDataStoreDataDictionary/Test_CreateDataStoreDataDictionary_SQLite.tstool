@@ -1,4 +1,14 @@
-# Test creating data dictionary for SQLite database
-# - disable because a full test has not been implemented
-#@enabled false
-CreateDataStoreDataDictionary(DataStore="nsuserws-test",OutputFile="Results/Test_CreateDataStoreDataDictionary_SQLite_out.html")
+# Test creating data dictionary for SQLite database:
+# - use a SQLite test database
+# - the database is very simple
+StartLog(LogFile="Results/Test_CreateDataStoreDataDictionary_SQLite.TSTool.log")
+RemoveFile(InputFile="Results/Test_CreateDataStoreDataDictionary_SQLite_out.csv",IfNotFound=Ignore)
+# Open a SQLite database:
+# - make a copy to ensure no chagnes to the original
+CopyFile(InputFile="Data\test-sqlite.db",OutputFile="Results\Test_CreateDataStoreDataDictionary_SQLite_out.db")
+OpenDataStore(DataStoreName="TestSQLiteDatastore",DataStoreDescription="Test SQLite datastore",DataStoreType="GenericDatabaseDataStore",DatabaseEngine="SQLite",ServerName="Results\Test_CreateDataStoreDataDictionary_SQLite_out.db")
+CreateDataStoreDataDictionary(DataStore="TestSQLiteDatastore",OutputFile="Results/Test_CreateDataStoreDataDictionary_SQLite_out.html")
+CloseDataStore(DataStore="TestSQLiteDatastore")
+# Check the file size and existance of '</html>'.
+CheckFile(InputFile="Results\Test_CreateDataStoreDataDictionary_SQLite_out.html",IfNotFound="Fail",Statistic="FileSizeLines",CheckCriteria="<",CheckValue1=100,IfCriteriaMet=Fail)
+CheckFile(InputFile="Results\Test_CreateDataStoreDataDictionary_SQLite_out.html",IfNotFound="Fail",Statistic="PatternMatchLineCount",SearchPattern="*</html>*",CheckCriteria="!=",CheckValue1=1,IfCriteriaMet=Fail)

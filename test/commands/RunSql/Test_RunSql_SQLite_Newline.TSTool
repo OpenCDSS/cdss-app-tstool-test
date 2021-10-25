@@ -1,0 +1,17 @@
+# Test running SQL:
+# - test using multi-line SQL
+# - use a SQLite test database
+StartLog(LogFile="Results/Test_RunSql_SQLite_Newline.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunSql_SQLite_Newline_out.csv",IfNotFound=Ignore)
+# Open a SQLite database:
+# - make a copy since inserting a new row
+CopyFile(InputFile="Data\test-sqlite.db",OutputFile="Results\Test_RunSql_SQLite_Newline_out.db")
+OpenDataStore(DataStoreName="TestSQLiteDatastore",DataStoreDescription="Test SQLite datastore",DataStoreType="GenericDatabaseDataStore",DatabaseEngine="SQLite",ServerName="Results\Test_RunSql_SQLite_Newline_out.db")
+RunSql(DataStore="TestSQLiteDatastore",Sql="INSERT INTO table1 (name, integer1, float1)\nVALUES ('name3', 3, 3.3 )")
+ReadTableFromDataStore(DataStore="TestSQLiteDatastore",Sql="SELECT name, integer1, float1 FROM table1",TableID="TestTable")
+CloseDataStore(DataStore="TestSQLiteDatastore",StatusMessage="Closed after test complete")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="TestTable",OutputFile="ExpectedResults/Test_RunSql_SQLite_Newline_out.csv")
+WriteTableToDelimitedFile(TableID="TestTable",OutputFile="Results/Test_RunSql_SQLite_Newline_out.csv")
+# Do regression comparison with the expected results for the properties.
+CompareFiles(InputFile1="ExpectedResults/Test_RunSql_SQLite_Newline_out.csv",InputFile2="Results/Test_RunSql_SQLite_Newline_out.csv",IfDifferent=Warn)
