@@ -2,4 +2,4 @@
 # - if file size is != a value, fail
 #@expectedStatus Failure
 StartLog(LogFile="Results/test-CheckFile-FileSizeBytes-NE.TSTool.log")
-CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeBytes",CheckCriteria="!=",CheckValue1=0)
+CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeBytes",CheckCriteria="!=",CheckValue1=0,IfCriteriaMet=Fail)

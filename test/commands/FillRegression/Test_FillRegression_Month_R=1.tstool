@@ -9,7 +9,7 @@ NewPatternTimeSeries(Alias="ts3",NewTSID="ts2...Month",SetStart="2000-01",SetEnd
 FillRegression(TSID="ts1",IndependentTSID="ts2",NumberOfEquations=OneEquation,MinimumR=1,FillFlag="R")
 # Check whether it includes values with an R >= 1
 FillRegression(TSID="ts3",IndependentTSID="ts2",MinimumR=1,FillFlag="R")
-CompareTimeSeries(MatchLocation=True,WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=True,IfDifferent=Warn)
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_FillRegression_Month_R=1_out.dv")
 WriteDateValue(OutputFile="Results/Test_FillRegression_Month_R=1_out.dv")

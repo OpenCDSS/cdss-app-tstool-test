@@ -19,4 +19,4 @@ WriteDateValue(TSList=FirstMatchingTSID,TSID="4200501.DWR.DivTotal.Month",Output
 WriteDateValue(TSList=FirstMatchingTSID,TSID="4200547.DWR.DivTotal.Month",OutputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",Precision=2)
 # WriteDateValue(TSList=LastMatchingTSID,TSID="4200547.DWR.DivTotal.Month",OutputFile="ExpectedResults/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",Precision=2)
 # CompareFiles(InputFile1="ExpectedResults/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",InputFile2="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_County_Location_4200547_out.dv",IfDifferent=Warn)
-CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)

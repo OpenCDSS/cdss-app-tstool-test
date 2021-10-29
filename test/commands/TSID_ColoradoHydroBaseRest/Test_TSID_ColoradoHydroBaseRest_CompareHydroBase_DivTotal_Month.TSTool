@@ -16,5 +16,5 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="0300915.DWR.DivTotal.Month",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",Precision=2)
 WriteDateValue(TSList=LastMatchingTSID,TSID="0300915.DWR.DivTotal.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",Precision=2)
 # CompareFiles(InputFile1="ExpectedResults/TestTSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",IfDifferent=Warn)
-CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)
 # ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_cdss_AnnualAmt where wd = 3 and id = 915 order by irr_year",TableID="x")

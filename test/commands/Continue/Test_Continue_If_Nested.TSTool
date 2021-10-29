@@ -1,7 +1,6 @@
 StartLog(LogFile="Results/Test_Continue_If_Nested.TSTool.log")
 # Test Continue in nested For and If statements
 # - test by comparing output generated with only If and separately with Continue
-#@expectedStatus Warning
 # Remove results from previous run
 RemoveFile(InputFile="Results/Test_Continue_If_Nested_out1.txt",IfNotFound=Ignore)
 RemoveFile(InputFile="Results/Test_Continue_If_Nested_out2.txt",IfNotFound=Ignore)

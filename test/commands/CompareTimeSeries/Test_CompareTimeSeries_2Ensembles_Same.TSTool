@@ -1,6 +1,6 @@
 # Test comparing two ensembles
-# - the time series are different so expect to fail
-#@expectedStatus Failure
+# - the time series are the same so expect to warn
+#@expectedStatus Warning
 StartLog(LogFile="Results/Test_CompareTimeSeries_2Ensembles_Same.log")
 SetOutputPeriod(OutputStart="2010-01-01",OutputEnd="2010-03-20")
 NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..flow.Day",Description="Test data 1",Units="cfs",MissingValue=NaN,PatternValues="2,5,2,5,,8,6,10")
@@ -11,4 +11,4 @@ NewPatternTimeSeries(Alias="tsA",NewTSID="tsA..flow.Day",Description="Test data 
 NewPatternTimeSeries(Alias="tsB",NewTSID="tsB..flow.Day",Description="Test data B",Units="cfs",MissingValue=NaN,PatternValues="2,5,2,5,,8,7,10")
 NewEnsemble(TSList=AllMatchingTSID,TSID="tsA",NewEnsembleID="Ensemble2",NewEnsembleName="Ensemble2")
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="tsB",EnsembleID2="Ensemble2")
-CompareTimeSeries(EnsembleID1="Ensemble1",EnsembleID2="Ensemble2",CreateDiffTS=True,WarnIfSame=True)
+CompareTimeSeries(EnsembleID1="Ensemble1",EnsembleID2="Ensemble2",CreateDiffTS=True,IfSame=Warn)
