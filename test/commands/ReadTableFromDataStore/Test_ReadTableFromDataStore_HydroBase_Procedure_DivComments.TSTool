@@ -4,10 +4,10 @@
 StartLog(LogFile="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_out.csv",IfNotFound=Ignore)
 ReadTableFromDataStore(DataStore="HydroBase",DataStoreProcedure="usp_CDSS_DiversionComment_Sel_By_Structure_num",ProcedureParameters="StructureNum:2",ProcedureReturnProperty="Test_ProcedureStatus",TableID="DivComments")
-# Uncomment to regenerate expected results
-# WriteTableToDelimitedFile(TableID="DivComments",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_out.csv")
 # Generate the results.
-WriteTableToDelimitedFile(TableID="DivComments",OutputFile="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_out.csv")
+# Uncomment to regenerate expected results
+# WriteTableToDelimitedFile(TableID="DivComments",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_out.csv",ExcludeColumns="meas_num")
+WriteTableToDelimitedFile(TableID="DivComments",OutputFile="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_out.csv",ExcludeColumns="meas_num")
 # Do regression comparison with the expected results
 CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_Procedure_DivComments_out.csv",MatchCase=False,IfDifferent=Warn)
 # Use the following to list structures so that an inactive structure can be used.

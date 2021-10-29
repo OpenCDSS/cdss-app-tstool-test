@@ -7,10 +7,10 @@ NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..in.Month",SetStart="2000-01",SetE
 Copy(TSID="ts2",NewTSID="ts2...Month",Alias="Copy")
 FillRegression(TSID="ts2",IndependentTSID="ts1",NumberOfEquations=OneEquation,Fill=False,FillFlag="R")
 # Check whether it filled or not - it should not have due to analyze only flag
-CompareTimeSeries(MatchLocation=True,WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=True,IfDifferent=Warn)
 FillRegression(TSID="ts2",IndependentTSID="ts1",NumberOfEquations=OneEquation,Fill=True,FillFlag="R")
 # Check whether it filled or not - it should have, since flag now allows filling
-CompareTimeSeries(MatchLocation=False,MatchDataType=True,WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=False,MatchDataType=True,IfDifferent=Warn)
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_FillRegression_Month_Don'tFill_out.dv")
 WriteDateValue(OutputFile="Results/Test_FillRegression_Month_Don'tFill_out.dv")

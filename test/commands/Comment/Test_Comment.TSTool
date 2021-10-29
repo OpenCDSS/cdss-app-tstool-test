@@ -1,7 +1,7 @@
 # If the test is working, only one time series will be written to the output
 StartLog(LogFile="Results/Test_Comment.TSTool.log")
 RemoveFile(InputFile="Results/Test_Comment_out.dv",IfNotFound=Ignore)
-TS ts1 = NewPatternTimeSeries(NewTSID="ts1..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1950-03",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1950-03",Units="CFS",PatternValues="5,10,12,13,75")
 #
 #TS ts2 = NewPatternTimeSeries(NewTSID="ts2..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1950-03",Units="CFS",PatternValues="5,10,12,13,75")
 #
@@ -10,4 +10,4 @@ TS ts1 = NewPatternTimeSeries(NewTSID="ts1..MyData.Month",Description="Test data
 # Generate new output...
 WriteDateValue(OutputFile="Results/Test_Comment_out.dv")
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_Comment_out.dv",InputFile2="Results/Test_Comment_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults\Test_Comment_out.dv",InputFile2="Results/Test_Comment_out.dv",IfDifferent=Warn)

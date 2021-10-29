@@ -3,4 +3,4 @@ StartLog(LogFile="Results/test-Comment-require-hydrobase-version-fail.tstool.log
 # - use a future version
 # - this should fail but for automated testing a test with failed requirements will not be run
 #   so no need to check for expected status
-#@require datastore HydroBase >= 99998877
+#@require datastore HydroBase version >= 99998877

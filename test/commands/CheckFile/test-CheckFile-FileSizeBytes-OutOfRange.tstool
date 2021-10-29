@@ -2,4 +2,4 @@
 # - if file size is out of a range of values, fail
 #@expectedStatus Failure
 StartLog(LogFile="Results/test-CheckFile-FileSizeBytes-OutOfRange.TSTool.log")
-CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeBytes",CheckCriteria="OutOfRange",CheckValue1=0,CheckValue2=10)
+CheckFile(InputFile="data\file-5lines.txt",Statistic="FileSizeBytes",CheckCriteria="OutOfRange",CheckValue1=0,CheckValue2=10,IfCriteriaMet=Fail)

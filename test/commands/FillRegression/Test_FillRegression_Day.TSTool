@@ -7,8 +7,8 @@ ReplaceValue(TSList=AllMatchingTSID,TSID="Original",MinValue=0,MaxValue=1000000,
 Copy(TSID="Original",NewTSID="Estes...Day",Alias="WithHoles")
 # Test monthly equations - if the newly filled time series is different than the one filling it, we know that it did not successfully fill it
 FillRegression(TSID="Original",IndependentTSID="Copy",NumberOfEquations=MonthlyEquations)
-CompareTimeSeries(MatchLocation=True,WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=True,IfDifferent=Warn)
 # Test one equation - if the newly filled time series is different than the one filling it, we know that it did not successfully fill it
 ReplaceValue(TSList=AllMatchingTSID,TSID="Original",MinValue=0,MaxValue=1000000,Action=Remove,SetStart="2010-01",SetEnd="2010-12")
 FillRegression(TSID="Original",IndependentTSID="Copy",NumberOfEquations=OneEquation)
-CompareTimeSeries(MatchLocation=True,WarnIfDifferent=True)
+CompareTimeSeries(MatchLocation=True,IfDifferent=Warn)

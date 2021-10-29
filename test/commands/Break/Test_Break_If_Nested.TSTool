@@ -3,7 +3,6 @@ StartLog(LogFile="Results/Test_Break_If_Nested.TSTool.log",MaxSize="10000000")
 # SetDebugLevel(LogFileLevel=1)
 # Test Break in nested For and If statements
 # - test by comparing output generated with only If and separately with Break
-#@expectedStatus Warning
 # Remove results from previous run
 # - uncomment first line to regenerate expected results
 # - ALSO NEED TO uncomment another line below
