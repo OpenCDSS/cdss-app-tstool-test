@@ -4,8 +4,8 @@
 StartLog(LogFile="Results/Test_WebGet_StaticGitHubFile_ResponseCode.TSTool.log")
 RemoveFile(InputFile="Results\Test_WebGet_StaticGitHubFile_ResponseCode.html",IfNotFound=Ignore)
 # Uncomment the following command to regenerate the expected results file.
-# WebGet(URI="https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/regression/commands/general/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="ExpectedResults\Test_WebGet_StaticGitHubFile_ResponseCode_out.txt")
-WebGet(URI="https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/regression/commands/general/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="Results\Test_WebGet_StaticGitHubFile_ResponseCode_out.txt",ResponseCodeProperty="TestWebGetResponseCode")
+# WebGet(URI="https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="ExpectedResults\Test_WebGet_StaticGitHubFile_ResponseCode_out.txt")
+WebGet(URI="https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/WebGet/Data/Test-WebGet-TestData.txt",LocalFile="Results\Test_WebGet_StaticGitHubFile_ResponseCode_out.txt",ResponseCodeProperty="TestWebGetResponseCode")
 CompareFiles(InputFile1="ExpectedResults\Test_WebGet_StaticGitHubFile_ResponseCode_out.txt",InputFile2="Results\Test_WebGet_StaticGitHubFile_ResponseCode_out.txt",IfDifferent=Warn)
 #
 # Also expect the response code to be 200 for success
