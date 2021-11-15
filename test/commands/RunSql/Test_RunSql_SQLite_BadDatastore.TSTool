@@ -1,0 +1,8 @@
+# Test running SQL:
+# - use a SQLite test database
+# - use a bad datastore to check error handling
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_RunSql_SQLite_BadDataStore.TSTool.log")
+RemoveFile(InputFile="Results/Test_RunSql_SQLite_BadDataStore_out.csv",IfNotFound=Ignore)
+# RunSql
+RunSql(DataStore="BadTestSQLiteDatastore",Sql="INSERT INTO badtable1 (name, integer1, float1)\nVALUES ('name3', 3, 3.3 )")
