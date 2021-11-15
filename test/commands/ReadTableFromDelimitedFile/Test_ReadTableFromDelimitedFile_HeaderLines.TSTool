@@ -1,0 +1,13 @@
+# Test reading a delimited file
+# - first row has unquoted headers so use HeaderLines parameter
+# - First column is numbers with leading zero - treat as text
+# - other types are basic types
+StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_HeaderLines.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_HeaderLines_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata2-unquoted-header.csv",HeaderLines="1",DateTimeColumns="DateTime",DoubleColumns="Double",IntegerColumns="Integer",TextColumns="NumberAsText,String")
+# Uncomment the following line to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_HeaderLines_out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromDelimitedFile_HeaderLines_out.csv")
+# Compare results with expected results.
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDelimitedFile_HeaderLines_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_HeaderLines_out.csv",IfDifferent=Warn)
