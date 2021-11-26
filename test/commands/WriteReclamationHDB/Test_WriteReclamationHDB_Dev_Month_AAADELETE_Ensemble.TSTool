@@ -30,7 +30,7 @@ InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS3",Ensemb
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS4",EnsembleID2="AAA_DELETE")
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS5",EnsembleID2="AAA_DELETE")
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TS6",EnsembleID2="AAA_DELETE")
-WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Month Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",EnsembleIDProperty="HDBEnsembleIDFromWrite",WriteProcedure="OLD_WRITE_TO_HDB")
+WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Month Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB",EnsembleIDProperty="HDBEnsembleIDFromWrite")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Month",SiteDataTypeID=100376,EnsembleName="AAA_DELETE Month Date",OutputEnsembleID="FirstRead",Alias="AAA_DELETE-Month-%z")
 # Compare the time series read as a time series with a time series created from SQL query output.
@@ -39,8 +39,8 @@ ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from M_MONTH, HDB_MODEL
 FormatTableString(TableID="m_month1",InputColumns="site_datatype_id",Format="%.0f",OutputColumn="site_datatype_id_int",InsertBeforeColumn="start_date_time")
 TableToTimeSeries(TableID="m_month1",DateTimeColumn="start_date_time",LocationColumn="site_datatype_id_int",SequenceIDColumn="hydrologic_indicator",ValueColumn="value",Interval=Month,Units="cfs",Alias="%L-%z-TableFirstRead")
 NewEnsemble(TSList=AllMatchingTSID,TSID="*TableFirstRead",NewEnsembleID="FirstReadFromTable",NewEnsembleName="FirstReadFromTable")
-CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstRead",WarnIfDifferent=True)
-CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstRead",IfDifferent=Warn)
+CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="FirstRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="FirstReadFromTable",CheckCriteria="Missing")
@@ -60,7 +60,7 @@ InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TSd",Ensemb
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TSe",EnsembleID2="AAA_DELETE2")
 InsertTimeSeriesIntoEnsemble(TSList=AllMatchingTSID,TSID="AAA_DELETE_TSf",EnsembleID2="AAA_DELETE2")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE2",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Month Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",EnsembleIDProperty="HDBEnsembleIDFromWrite",WriteProcedure="OLD_WRITE_TO_HDB")
+WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="AAA_DELETE2",SiteDataTypeID=100376,NewEnsembleName="AAA_DELETE Month Date",EnsembleTrace="%z",EnsembleModelName="NWS CBRFC Forecast",NewEnsembleModelRunDate="2013-10-02 10:11",ValidationFlag="P",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB",EnsembleIDProperty="HDBEnsembleIDFromWrite")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Month",SiteDataTypeID=100376,EnsembleName="AAA_DELETE Month Date",OutputEnsembleID="SecondRead",Alias="AAA_DELETE-Month-%z")
 # Compare the time series read as a time series with a time series created from SQL query output.
@@ -69,8 +69,8 @@ ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from M_MONTH, HDB_MODEL
 FormatTableString(TableID="m_month2",InputColumns="site_datatype_id",Format="%.0f",OutputColumn="site_datatype_id_int",InsertBeforeColumn="start_date_time")
 TableToTimeSeries(TableID="m_month2",DateTimeColumn="start_date_time",LocationColumn="site_datatype_id_int",SequenceIDColumn="hydrologic_indicator",ValueColumn="value",Interval=Month,Units="cfs",Alias="%L-%z-TableSecondRead")
 NewEnsemble(TSList=AllMatchingTSID,TSID="*TableSecondRead",NewEnsembleID="SecondReadFromTable",NewEnsembleName="SecondReadFromTable")
-CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondRead",WarnIfDifferent=True)
-CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondRead",IfDifferent=Warn)
+CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="SecondRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="SecondReadFromTable",CheckCriteria="Missing")

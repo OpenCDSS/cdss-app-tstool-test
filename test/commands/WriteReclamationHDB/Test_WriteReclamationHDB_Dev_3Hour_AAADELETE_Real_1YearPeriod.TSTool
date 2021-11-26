@@ -35,8 +35,8 @@ ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_HOUR where site_
 SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 TableToTimeSeries(TableID="r_hour1",DateTimeColumn="start_date_time",LocationID="100376",ValueColumn="value",Interval=3Hour,Units="cfs",Alias="FirstReadFromTable")
 ShiftTimeByInterval(TSList=AllMatchingTSID,TSID="FirstReadFromTable",ShiftData="-1,1.0")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",IfDifferent=Warn)
+CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstRead",CheckCriteria="Missing",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="Missing",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}")
@@ -44,18 +44,18 @@ CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="
 #
 #------------------------- start the second pass -------------------------------------
 # Start second pass (previous values x 10)...
-NewPatternTimeSeries(Alias="AAA_DELETE2",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="550,1050,1250,1350,7550")
-# NewPatternTimeSeries(Alias="AAA_DELETE2",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="10,20,30,40,50")
+NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="550,1050,1250,1350,7550")
+# NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.3Hour",Description="AAA_DELETE",Units="cfs",PatternValues="10,20,30,40,50")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE2",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="3Hour",NHourIntervalOffset=0,SiteDataTypeID=100376,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_HOUR where site_datatype_id = 100376 and end_date_time >= to_date('${InputStart}','YYYY-MM-DD HH24') and end_date_time <= to_date('${InputEnd}','YYYY-MM-DD HH24') and ((extract(hour from cast(start_date_time as timestamp))=0) or (extract(hour from cast(start_date_time as timestamp))=3) or (extract(hour from cast(start_date_time as timestamp))=6) or (extract(hour from cast(start_date_time as timestamp))=9) or (extract(hour from cast(start_date_time as timestamp))=12) or (extract(hour from cast(start_date_time as timestamp))=15) or (extract(hour from cast(start_date_time as timestamp))=18) or (extract(hour from cast(start_date_time as timestamp))=21)) order by start_date_time",TableID="r_hour2")
 TableToTimeSeries(TableID="r_hour2",DateTimeColumn="start_date_time",LocationID="100376",ValueColumn="value",Interval=3Hour,Units="cfs",Alias="SecondReadFromTable")
 ShiftTimeByInterval(TSList=AllMatchingTSID,TSID="SecondReadFromTable",ShiftData="-1,1.0")
-CompareTimeSeries(TSID1="AAA_DELETE2",TSID2="SecondRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",IfDifferent=Warn)
+CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondRead",CheckCriteria="Missing",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondReadFromTable",CheckCriteria="Missing",AnalysisStart="${CompareStart}",AnalysisEnd="${CompareEnd}")

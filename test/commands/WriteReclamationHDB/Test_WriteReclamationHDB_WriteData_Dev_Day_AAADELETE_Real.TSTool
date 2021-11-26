@@ -24,14 +24,10 @@ WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeComm
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Day",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,Alias="FirstRead")
 # Compare the time series read as a time series with a time series created from SQL query output.
-# - for some reason the Oracle JDBC driver or server returns an extra record (2010-02-28 00:00:00) so 47 instead of 46
-# - therefore delete the first row that comes back so the test works
-# - the time series read returns the correct period
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_DAY where site_datatype_id = 100376 and end_date_time >= to_date('${InputStart}','YYYY-MM-DD') and end_date_time <= to_date('${InputEnd2}','YYYY-MM-DD') order by start_date_time",TableID="r_day1")
-DeleteTableRows(TableID="r_day1",DeleteRowNumbers="1")
 TableToTimeSeries(TableID="r_day1",DateTimeColumn="start_date_time",LocationID="100376",ValueColumn="value",Interval=Day,Units="cfs",Alias="FirstReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",IfDifferent=Warn)
+CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="Missing")
@@ -44,14 +40,10 @@ WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Day",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.
-# - for some reason the Oracle JDBC driver or server returns an extra record (2010-04-16 00:00:00) so 47 instead of 46
-# - therefore delete the last row that comes back so the test works
-# - the time series read returns the correct period
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_DAY where site_datatype_id = 100376 and start_date_time >= to_date('${InputStart}','YYYY-MM-DD') and start_date_time <= to_date('${InputEnd2}','YYYY-MM-DD') order by start_date_time",TableID="r_day2")
-DeleteTableRows(TableID="r_day2",DeleteRowNumbers="last")
 TableToTimeSeries(TableID="r_day2",DateTimeColumn="start_date_time",LocationID="100376",ValueColumn="value",Interval=Day,Units="cfs",Alias="SecondReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",IfDifferent=Warn)
+CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondReadFromTable",CheckCriteria="Missing")

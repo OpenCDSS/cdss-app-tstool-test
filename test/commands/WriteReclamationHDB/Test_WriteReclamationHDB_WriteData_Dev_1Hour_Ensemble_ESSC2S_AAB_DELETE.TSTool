@@ -37,7 +37,7 @@ WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="ESSC2S",Si
 EndIf(Name="FirstLoad")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Hour",SiteDataTypeID=101017,EnsembleName="CHPS/FEWS ESP - ESSC2 - BIG THOMPSON RIVER BELOW LAKE ESTES, CO. (BTBLESCO) 2016-01-27 05:00:00 MST",OutputEnsembleID="FirstRead",Alias="ESSCN-SQIN-1Hour-%z")
-CompareTimeSeries(EnsembleID1="ESSC2S",EnsembleID2="FirstRead",WarnIfDifferent=True)
+CompareTimeSeries(EnsembleID1="ESSC2S",EnsembleID2="FirstRead",IfDifferent=Warn)
 #
 # Start second pass (previous values x 10)...
 ReadDelftFewsPiXml(InputFile="Data\ESSC2N.ECAO.ESP.traces.fullyear.xml",TimeZone="MST",EnsembleID="ESSC2S_Copy",EnsembleName="ESSC2S_Copy")
@@ -50,7 +50,7 @@ WriteReclamationHDB(DataStore="hdbtest",TSList=EnsembleID,EnsembleID="ESSC2S_Cop
 EndIf(Name="FirstLoad")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Hour",SiteDataTypeID=101017,EnsembleName="CHPS/FEWS ESP - ESSC2 - BIG THOMPSON RIVER BELOW LAKE ESTES, CO. (BTBLESCO) 2016-01-27 05:00:00 MST",OutputEnsembleID="SecondRead",Alias="ESSCN-SQIN-1Hour-%z")
-CompareTimeSeries(EnsembleID1="ESSC2S_Copy",EnsembleID2="SecondRead",WarnIfDifferent=True)
+CompareTimeSeries(EnsembleID1="ESSC2S_Copy",EnsembleID2="SecondRead",IfDifferent=Warn)
 #
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(TSList=EnsembleID,EnsembleID="FirstRead",OutputFile="ExpectedResults/Test_WriteReclamationHDB_WriteData_Dev_1Hour_Ensemble_ESSC2S_AAB_DELETE_out.dv")
