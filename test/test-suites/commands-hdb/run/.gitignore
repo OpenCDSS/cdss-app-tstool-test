@@ -1,0 +1,4 @@
+# Don't to save output files to the repository.
+# The results as artifacts laying around in working files can be used as needed to compare with previous test.
+/*.TSTool
+/*.tstool

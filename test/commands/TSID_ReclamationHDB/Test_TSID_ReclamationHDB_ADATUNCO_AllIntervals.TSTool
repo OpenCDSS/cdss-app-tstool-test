@@ -4,5 +4,6 @@
 #@testSuite ReclamationHDB
 diversion:100566.HDB.flow volume.Hour.ADATUNCO~hdbtest
 diversion:100566.HDB.flow volume.Day.ADATUNCO~hdbtest
-diversion:100566.HDB.flow volume.Month.ADATUNCO~hdbtest
+# The following does not appear to be in the database, so disable.
+# diversion:100566.HDB.flow volume.Month.ADATUNCO~hdbtest
 diversion:100566.HDB.flow volume.Year.ADATUNCO~hdbtest

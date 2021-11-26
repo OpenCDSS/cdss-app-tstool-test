@@ -25,8 +25,8 @@ ReadTimeSeries(TSID="diversion:100376.HDB.flow.Month.AAA_DELETE~hdbtest",Alias="
 # Compare the time series read as a time series with a time series created from SQL query output.
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_MONTH where site_datatype_id = 100376 and end_date_time >= to_date('${InputStart}','YYYY-MM') and end_date_time <= to_date('${InputEnd2}','YYYY-MM') order by start_date_time",TableID="r_month1")
 TableToTimeSeries(TableID="r_month1",DateTimeColumn="start_date_time",LocationID="100376",ValueColumn="value",Interval=Month,Units="cfs",Alias="FirstReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",IfDifferent=Warn)
+CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="Missing")
@@ -41,8 +41,8 @@ ReadReclamationHDB(DataStore="hdbtest",Interval="Month",SiteCommonName="AAA_DELE
 # Compare the time series read as a time series with a time series created from SQL query output.
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_MONTH where site_datatype_id = 100376 and start_date_time >= to_date('${InputStart}','YYYY-MM') and start_date_time <= to_date('${InputEnd2}','YYYY-MM') order by start_date_time",TableID="r_month2")
 TableToTimeSeries(TableID="r_month2",DateTimeColumn="start_date_time",LocationID="100376",ValueColumn="value",Interval=Month,Units="cfs",Alias="SecondReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",IfDifferent=Warn)
+CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondReadFromTable",CheckCriteria="Missing")

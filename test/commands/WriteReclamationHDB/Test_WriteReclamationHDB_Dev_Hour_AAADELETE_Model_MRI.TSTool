@@ -21,14 +21,16 @@ NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Hour",Descr
 WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadTimeSeries(TSID="diversion:100376-167.HDB.flow.Hour.AAA_DELETE~hdbtest",Alias="FirstRead",IfNotFound=Warn)
-# Compare the time series read as a time series with a time series created from SQL query output.
+# Compare the time series read as a time series with a time series created from SQL query output:
+# - allow one difference due to daylight saving gap
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from M_HOUR where site_datatype_id = 100376 and model_run_id = 167 and end_date_time >= to_date('${InputStart}','YYYY-MM-DD HH24') and end_date_time <= to_date('${InputEnd}','YYYY-MM-DD HH24') order by start_date_time",TableID="m_hour1")
 TableToTimeSeries(TableID="m_hour1",DateTimeColumn="end_date_time",LocationID="100376",ValueColumn="value",Interval=Hour,Units="cfs",Alias="FirstReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",WarnIfDifferent=True)
-# Also check for missing because there should be none over time zone change
-CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstRead",CheckCriteria="Missing")
-CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="Missing")
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",AllowedDiff="1",IfDifferent=Warn)
+CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",IfDifferent=Warn)
+# Also check for missing because there should be none over time zone change:
+# - actually comment out because daylight saving gap is expected
+# CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstRead",CheckCriteria="Missing")
+# CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="Missing")
 #------------------------- end the first pass -------------------------------------
 #
 #------------------------- start the second pass -------------------------------------
@@ -38,18 +40,20 @@ NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Hour",Descr
 WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,ValidationFlag="A",TimeZone="MST",WriteProcedure="OLD_WRITE_TO_HDB")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Hour",SiteCommonName="AAA_DELETE",DataTypeCommonName="flow",SiteDataTypeID=100376,ModelRunID=167,Alias="SecondRead")
-# Compare the time series read as a time series with a time series created from SQL query output.
+# Compare the time series read as a time series with a time series created from SQL query output:
+# - allow one difference due to daylight saving gap
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from M_HOUR where site_datatype_id = 100376 and model_run_id = 167 and end_date_time >= to_date('${InputStart}','YYYY-MM-DD HH24') and end_date_time <= to_date('${InputEnd}','YYYY-MM-DD HH24') order by start_date_time",TableID="m_hour2")
 TableToTimeSeries(TableID="m_hour2",DateTimeColumn="end_date_time",LocationID="100376",ValueColumn="value",Interval=Hour,Units="cfs",Alias="SecondReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",WarnIfDifferent=True)
-# Also check for missing because there should be none over time zone change
-CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondRead",CheckCriteria="Missing")
-CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondReadFromTable",CheckCriteria="Missing")
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",AllowedDiff="1",IfDifferent=Warn)
+CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",IfDifferent=Warn)
+# Also check for missing because there should be none over time zone change:
+# - actually comment out because daylight saving gap is expected
+# CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondRead",CheckCriteria="Missing")
+# CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondReadFromTable",CheckCriteria="Missing")
 #------------------------- end the second pass -------------------------------------
 #
 # Uncomment the following command to regenerate the expected results file.
-#WriteDateValue(OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_Hour_AAADELETE_Model_MRI_out.dv",TSList=LastMatchingTSID,TSID="FirstRead")
+# WriteDateValue(TSList=LastMatchingTSID,TSID="FirstRead",OutputFile="ExpectedResults/Test_WriteReclamationHDB_Dev_Hour_AAADELETE_Model_MRI_out.dv")
 # Generate new output for what was read from the database...
 WriteDateValue(TSList=LastMatchingTSID,TSID="FirstRead",OutputFile="Results/Test_WriteReclamationHDB_Dev_Hour_AAADELETE_Model_MRI_out.dv")
 # Do regression comparison...

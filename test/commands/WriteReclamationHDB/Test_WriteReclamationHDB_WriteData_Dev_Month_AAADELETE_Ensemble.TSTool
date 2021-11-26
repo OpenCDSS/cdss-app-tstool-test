@@ -39,8 +39,8 @@ ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from M_MONTH, HDB_MODEL
 FormatTableString(TableID="m_month1",InputColumns="site_datatype_id",Format="%.0f",OutputColumn="site_datatype_id_int",InsertBeforeColumn="start_date_time")
 TableToTimeSeries(TableID="m_month1",DateTimeColumn="start_date_time",LocationColumn="site_datatype_id_int",SequenceIDColumn="hydrologic_indicator",ValueColumn="value",Interval=Month,Units="cfs",Alias="%L-%z-TableFirstRead")
 NewEnsemble(TSList=AllMatchingTSID,TSID="*TableFirstRead",NewEnsembleID="FirstReadFromTable",NewEnsembleName="FirstReadFromTable")
-CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstRead",WarnIfDifferent=True)
-CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstRead",IfDifferent=Warn)
+CompareTimeSeries(EnsembleID1="AAA_DELETE",EnsembleID2="FirstReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="FirstRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="FirstReadFromTable",CheckCriteria="Missing")
@@ -69,8 +69,8 @@ ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from M_MONTH, HDB_MODEL
 FormatTableString(TableID="m_month2",InputColumns="site_datatype_id",Format="%.0f",OutputColumn="site_datatype_id_int",InsertBeforeColumn="start_date_time")
 TableToTimeSeries(TableID="m_month2",DateTimeColumn="start_date_time",LocationColumn="site_datatype_id_int",SequenceIDColumn="hydrologic_indicator",ValueColumn="value",Interval=Month,Units="cfs",Alias="%L-%z-TableSecondRead")
 NewEnsemble(TSList=AllMatchingTSID,TSID="*TableSecondRead",NewEnsembleID="SecondReadFromTable",NewEnsembleName="SecondReadFromTable")
-CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondRead",WarnIfDifferent=True)
-CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondRead",IfDifferent=Warn)
+CompareTimeSeries(EnsembleID1="AAA_DELETE2",EnsembleID2="SecondReadFromTable",IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="SecondRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=EnsembleID,EnsembleID="SecondReadFromTable",CheckCriteria="Missing")

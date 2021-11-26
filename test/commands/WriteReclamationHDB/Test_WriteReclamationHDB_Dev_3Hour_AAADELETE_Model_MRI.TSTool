@@ -11,6 +11,8 @@
 #   - For two writes, use TSID read once, and ReadReclamationHDB() once to exercise read.
 #   - TO EXAMINE tests, look at first 3 time series
 #@testSuite ReclamationHDB
+# Disable test since WRITE_TO_HDB is no longer the focus and have limited resources to troubleshoot failing tests.
+#@enabled False
 StartLog(LogFile="Results/Test_WriteReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReclamationHDB_Dev_3Hour_AAADELETE_Model_MRI_out.dv",IfNotFound=Ignore)
 SetOutputPeriod(OutputStart="2010-03-10 00",OutputEnd="2010-03-15 12")

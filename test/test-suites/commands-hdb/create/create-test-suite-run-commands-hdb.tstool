@@ -1,0 +1,21 @@
+StartLog(LogFile="results/create-test-suite-run-commands-hdb.tstool.log")
+#
+# Create the regression test runner for the ReclamationHDB test suite.
+#
+# Generate RunCommands() commands and append to the commands from above.
+# Command files that start with 'Test_' (old naming convention) and
+# 'test-' (new naming convention) are included in the output.
+#
+# =======================================================================================================
+# The following test suites are excluded during normal development to avoid slow tests:
+#   ColoradoWaterHBGuest               No longer available.
+#   ColoradoWaterSMS                   No longer available.
+#   MixedStationModel                  Very slow, separate MixedStationModel software is still used.
+#   RiversideDB                        RiversideDB datastore requires special test setup.
+#
+#  See the repository issues for outstanding test problems.
+# =======================================================================================================
+# Test all general commands and the ReclamationHDB test suite.
+# CreateRegressionTestCommandFile(SearchFolder="../../../commands",OutputFile="../run/run-test-suite-commands-hdb.tstool",SetupCommandFile="create-run-test-suite-commands-hdb-1-setup.tstool",TestResultsFile="results/run-test-suite-commands-hdb-out-${NowString}.txt",EndCommandFile="create-run-test-suite-commands-hdb-2-end.tstool",Append=False,IncludeTestSuite="*",ExcludeTestSuite="ColoradoWaterHBGuest,ColoradoWaterSMS,MixedStationModel,RiversideDB",IncludeOS="Windows",TestResultsTableID="TestResults")
+# Test only the ReclamationHDB test suite.
+CreateRegressionTestCommandFile(SearchFolder="../../../commands",OutputFile="../run/run-test-suite-commands-hdb.tstool",SetupCommandFile="create-test-suite-run-commands-hdb-1-setup.tstool",TestResultsFile="results/run-test-suite-commands-hdb-out-${NowString}.txt",EndCommandFile="create-test-suite-run-commands-hdb-2-end.tstool",Append=False,IncludeTestSuite="ReclamationHDB",IncludeOS="Windows",TestResultsTableID="TestResults")

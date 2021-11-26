@@ -1,0 +1,10 @@
+# Command file to finish the automated tests for ReclamationHDB test suite:
+# - output files use current time as ${NowString} from main command file so can compare test results over time
+# - write the summary table to CSV and Excel files
+# - specify a results folder in the location where the test suite will be run
+WriteTableToDelimitedFile(TableID="TestResults",OutputFile="results/test-suite-commands-hdb-out-${NowString}.csv",WriteHeaderComments=False)
+ReadTableFromDelimitedFile(TableID="StyleTable",InputFile="StyleTable.csv")
+ReadTableFromDelimitedFile(TableID="ConditionTable",InputFile="ConditionTable.csv")
+NewExcelWorkbook(OutputFile="results/test-suite-commands-hdb-out-${NowString}.xlsx",Worksheets="TestResults",KeepOpen=True)
+SetExcelWorksheetViewProperties(OutputFile="results/test-suite-commands-hdb-out-${NowString}.xlsx",Worksheet="TestResults",KeepOpen=True,FreezePaneRowBelowSplit=2)
+WriteTableToExcel(TableID="TestResults",OutputFile="results/test-suite-commands-hdb-out-${NowString}.xlsx",Worksheet="TestResults",ExcelAddress="A1",ExcelColumnNames=FirstRowInRange,ColumnWidths="Default:Auto",ConditionTableID="ConditionTable",StyleTableID="StyleTable")

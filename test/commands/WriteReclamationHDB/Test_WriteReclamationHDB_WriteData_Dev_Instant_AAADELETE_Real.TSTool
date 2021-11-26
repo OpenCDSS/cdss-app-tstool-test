@@ -23,11 +23,12 @@ WriteReclamationHDB(DataStore="hdbtest",SiteCommonName="AAA_DELETE",DataTypeComm
 SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # Now read the same time series from the database using the period that was written...
 ReadTimeSeries(TSID="diversion:100380.HDB.inst flow.Irregular~hdbtest",Alias="FirstRead",IfNotFound=Warn)
-# Compare the time series read as a time series with a time series created from SQL query output.
+# Compare the time series read as a time series with a time series created from SQL query output:
+# - allow 3 values to be different due to daylight saving gap
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_INSTANT where site_datatype_id = 100380 and start_date_time >= to_date('${InputStart}','YYYY-MM-DD HH24:MI') and start_date_time <= to_date('${InputEnd}','YYYY-MM-DD HH24:MI') order by start_date_time",TableID="r_instant1")
 TableToTimeSeries(TableID="r_instant1",DateTimeColumn="start_date_time",LocationID="100380",ValueColumn="value",Interval=IRREGULAR,IrregularIntervalPrecision=Minute,Units="cfs",Alias="FirstReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="AAA_DELETE",TSID2="FirstRead",AllowedDiff="4",IfDifferent=Warn)
+CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",CreateDiffTS=True,IfDifferent=Warn)
 # Also check for missing because there should be none over time zone change
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="Missing")
@@ -36,17 +37,19 @@ CheckTimeSeries(TSList=AllMatchingTSID,TSID="FirstReadFromTable",CheckCriteria="
 #------------------------- start the second pass -------------------------------------
 #
 # Second pass (previous values as hundreds)...
-NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.Irregular",IrregularInterval=15Minute,Description="AAA_DELETE",Units="cfs",PatternValues="50000,10000,12000,13000,75000")
+NewPatternTimeSeries(Alias="AAA_DELETE2",NewTSID="AAA_DELETE.HDB.flow.Irregular",IrregularInterval=15Minute,Description="AAA_DELETE2",Units="cfs",PatternValues="50000,10000,12000,13000,75000")
 # First write the time series to the database...
-WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,Agency="USBR",ValidationFlag="A",TimeZone="MST",WriteProcedure="WRITE_DATA")
+WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE2",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,Agency="USBR",ValidationFlag="A",TimeZone="MST",WriteProcedure="WRITE_DATA")
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="Irregular",SiteCommonName="AAA_DELETE",DataTypeCommonName="inst flow",SiteDataTypeID=100380,Alias="SecondRead")
 # Compare the time series read as a time series with a time series created from SQL query output.
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_INSTANT where site_datatype_id = 100380 and start_date_time >= to_date('${InputStart}','YYYY-MM-DD HH24:MI') and start_date_time <= to_date('${InputEnd}','YYYY-MM-DD HH24:MI') order by start_date_time",TableID="r_instant2")
 TableToTimeSeries(TableID="r_instant2",DateTimeColumn="start_date_time",LocationID="100380",ValueColumn="value",Interval=IRREGULAR,IrregularIntervalPrecision=Minute,Units="cfs",Alias="SecondReadFromTable")
-CompareTimeSeries(TSID1="AAA_DELETE",TSID2="SecondRead",WarnIfDifferent=True)
-CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",WarnIfDifferent=True)
-# Also check for missing because there should be none over time zone change
+CompareTimeSeries(TSID1="AAA_DELETE2",TSID2="SecondRead",AllowedDiff="4",IfDifferent=Warn)
+CompareTimeSeries(TSID1="SecondRead",TSID2="SecondReadFromTable",IfDifferent=Warn)
+# Also check for missing because there should be none over time zone change:
+# - because irregular time series are read, missing values are simply not read so no warnings
+#   even though there are gaps due to daylight saving
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondRead",CheckCriteria="Missing")
 CheckTimeSeries(TSList=AllMatchingTSID,TSID="SecondReadFromTable",CheckCriteria="Missing")
 #------------------------- end the second pass -------------------------------------
