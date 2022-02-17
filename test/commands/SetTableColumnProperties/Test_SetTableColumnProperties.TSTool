@@ -3,9 +3,10 @@
 StartLog(LogFile="Results/Test_SetTableColumnProperties.TSTool.log")
 RemoveFile(InputFile="Results/Test_SetTableColumnProperties_out.csv",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="Test_Table",InputFile="Data\testtable.csv")
+SetTableColumnProperties(TableID="Test_Table",IncludeColumns="Double",Precision="2")
 # Uncomment the following to regenerate expected results.
-# WriteTableToMarkdown(TableID="Test_Table",OutputFile="ExpectedResults\Test_SetTableColumnProperties_out.md")
+# WriteTableToDelimitedFile(TableID="Test_Table",OutputFile="ExpectedResults\Test_SetTableColumnProperties_out.csv")
 # Generate the results.
-WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results\Test_SetTableColumnProperties_out.md")
+WriteTableToDelimitedFile(TableID="Test_Table",OutputFile="Results\Test_SetTableColumnProperties_out.csv")
 # Compare the results.
-CompareFiles(InputFile1="ExpectedResults/Test_SetTableColumnProperties_out.md",InputFile2="Results/Test_SetTableColumnProperties_out.md",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_SetTableColumnProperties_out.csv",InputFile2="Results/Test_SetTableColumnProperties_out.csv",IfDifferent=Warn)
