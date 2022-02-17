@@ -8,7 +8,3 @@ ReadTableFromDelimitedFile(TableID="ConditionTable",InputFile="ConditionTable.cs
 NewExcelWorkbook(OutputFile="Results/RunRegressionTest_commands_general_Windows_out_${NowString}.xlsx",Worksheets="TestResults",KeepOpen=True)
 SetExcelWorksheetViewProperties(OutputFile="Results/RunRegressionTest_commands_general_Windows_out_${NowString}.xlsx",Worksheet="TestResults",KeepOpen=True,FreezePaneRowBelowSplit=2)
 WriteTableToExcel(TableID="TestResults",OutputFile="Results/RunRegressionTest_commands_general_Windows_out_${NowString}.xlsx",Worksheet="TestResults",ExcelAddress="A1",ExcelColumnNames=FirstRowInRange,ColumnWidths="Default:Auto",ConditionTableID="ConditionTable",StyleTableID="StyleTable")
-# Remove the numbers in the first column to allow comparison to detect differences:
-# - TODO smalers 2021-11-26 need to figure out how to run from Windows
-# - for now must run the command on the command line if comparing test suite runs
-#RunProgram(CommandLine="sed 's/^ [ 0-9][ 0-9][ 0-9][ 0-9]/     /' RunRegressionTest_commands_general_Windows_out_${NowString}.txt > RunRegressionTest_commands_general_Windows_out_${NowString}.nonum.txt")
