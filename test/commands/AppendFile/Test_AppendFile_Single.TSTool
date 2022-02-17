@@ -1,4 +1,4 @@
-# Test trying to append a single file to an output file (recreate output)
+# Test appending a single file to a new output file.
 StartLog(LogFile="Results/Test_AppendFile_Single.TSTool.log")
 # Remove the output file before the test
 RemoveFile(InputFile="Results/Test_AppendFile_Single_out.csv",IfNotFound=Ignore)

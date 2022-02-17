@@ -1,4 +1,4 @@
-# Test trying to append all *.csv files in a folder to an output file (recreate output)
+# Test appending all *.csv files in a folder to a new output file
 StartLog(LogFile="Results/Test_AppendFile_Extension_IncludeText.TSTool.log")
 # Remove the output file before the test
 RemoveFile(InputFile="Results/Test_AppendFile_Extension_IncludeText_out.csv",IfNotFound=Ignore)

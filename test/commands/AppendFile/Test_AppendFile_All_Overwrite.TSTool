@@ -1,0 +1,10 @@
+# Test append all files in a folder:
+# - overwrite an input file
+StartLog(LogFile="Results/Test_AppendFile_All_Overwrite.TSTool.log")
+# Copy an input file to the output file before the test - use as input and overwrite as output.
+CopyFile(InputFile="Data\file1.csv",OutputFile="Results/Test_AppendFIle_All_Overwrite_out.csv")
+AppendFile(InputFile="Results/Test_AppendFIle_All_Overwrite_out.csv,Data/*.csv",OutputFile="Results/Test_AppendFile_All_Overwrite_out.csv",Newline="\n")
+# Uncomment the following 2 lines to regenerate the expected results.
+# CopyFile(InputFile="Results/Test_AppendFile_All_Overwrite_out.csv",OutputFile="ExpectedResults/Test_AppendFile_All_Overwrite_out.csv")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_All_Overwrite_out.csv",InputFile2="Results/Test_AppendFile_All_Overwrite_out.csv",IfDifferent=Warn)

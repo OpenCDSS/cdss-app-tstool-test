@@ -1,0 +1,12 @@
+# Test writing a table to Markdown:
+# - default parameters
+# - use InlcludeColumns and ExcludeColumns
+StartLog(LogFile="Results/Test_WriteTableToMarkdown_IncludeExclude.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTableToMarkdown_IncludeExclude_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Test_Table",InputFile="Data\testtable.csv")
+# Uncomment the following to regenerate expected results.
+# WriteTableToMarkdown(TableID="Test_Table",OutputFile="ExpectedResults\Test_WriteTableToMarkdown_IncludeExclude_out.md",IncludeColumns="DateTime,String,Double,Integer",ExcludeColumns="String,Double")
+# Generate the results.
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results\Test_WriteTableToMarkdown_IncludeExclude_out.md",IncludeColumns="DateTime,String,Double,Integer",ExcludeColumns="String,Double")
+# Compare the results.
+CompareFiles(InputFile1="ExpectedResults/Test_WriteTableToMarkdown_IncludeExclude_out.md",InputFile2="Results/Test_WriteTableToMarkdown_IncludeExclude_out.md",IfDifferent=Warn)
