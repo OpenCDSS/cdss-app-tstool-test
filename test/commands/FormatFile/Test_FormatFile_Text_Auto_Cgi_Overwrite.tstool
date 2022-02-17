@@ -1,0 +1,14 @@
+# Test formatting a file
+# - text file
+# - auto-format
+# - CGI format
+# - overwrite the input file
+StartLog(LogFile="Results/Test_FormatFile_Text_Auto_Cgi_Overwrite.tstool.log")
+# Remove previous results
+RemoveFile(InputFile="Results/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt",IfNotFound=Ignore)
+CopyFile(InputFile="Data\text-example1.txt",OutputFile="Results/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt")
+FormatFile(InputFile="Results/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt",AutoFormat=True,OutputType=Cgi,OutputFile="Results/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt")
+# Uncomment the next line to regenerate expected results
+# CopyFile(InputFile="Results/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt",OutputFile="ExpectedResults/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt")
+# Compare the results with expected results
+CompareFiles(InputFile1="ExpectedResults/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt",InputFile2="Results/Test_FormatFile_Text_Auto_Cgi_Overwrite_out.txt",IfDifferent=Warn)

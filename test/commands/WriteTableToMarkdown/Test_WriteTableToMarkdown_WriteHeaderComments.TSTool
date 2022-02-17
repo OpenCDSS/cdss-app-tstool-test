@@ -1,0 +1,14 @@
+# Test writing a table to Markdown:
+# - write the header comments
+StartLog(LogFile="Results/Test_WriteTableToMarkdown_WriteHeaderComments.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTableToMarkdown_WriteHeaderComments_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Test_Table",InputFile="Data\testtable.csv")
+# Uncomment the following to regenerate expected results.
+# WriteTableToMarkdown(TableID="Test_Table",OutputFile="ExpectedResults\Test_WriteTableToMarkdown_WriteHeaderComments_out.md")
+# Generate the results.
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results\Test_WriteTableToMarkdown_WriteHeaderComments_out.md",WriteHeaderComments=True)
+# Check the results:
+# - the comments are dynamic and hard to check so look for indicator strings
+# - check for "Sixth day" will match three, two in the comments and one in the data section
+CheckFile(InputFile="Results/Test_WriteTableToMarkdown_WriteHeaderComments_out.md",Statistic="PatternMatchLineCount",SearchPattern="*Sixth day*",CheckCriteria="!=",CheckValue1=3)
+CheckFile(InputFile="Results/Test_WriteTableToMarkdown_WriteHeaderComments_out.md",Statistic="PatternMatchLineCount",SearchPattern="*Command file name:*",CheckCriteria="!=",CheckValue1=2)

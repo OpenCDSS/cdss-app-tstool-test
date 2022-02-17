@@ -1,0 +1,12 @@
+# Test appending files:
+# - use a csv list of file patterns
+# - new output file
+StartLog(LogFile="Results/Test_AppendFile_List_Wildcards.TSTool.log")
+# Remove the output file before the test
+RemoveFile(InputFile="Results/Test_AppendFile_List_Wildcards_out.csv",IfNotFound=Ignore)
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="ExpectedResults/Test_AppendFile_List_Wildcards_out.csv",IfNotFound=Ignore)
+# AppendFile(InputFile="Data/file1.csv,Data/*2.csv,Data/*3.csv",OutputFile="ExpectedResults/Test_AppendFile_List_Wildcards_out.csv",Newline="\r\n")
+AppendFile(InputFile="Data/file1.csv,Data/*2.csv,Data/*3.csv",OutputFile="Results/Test_AppendFile_List_Wildcards_out.csv",Newline="\r\n")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_List_Wildcards_out.csv",InputFile2="Results/Test_AppendFile_List_Wildcards_out.csv",IfDifferent=Warn)

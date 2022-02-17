@@ -1,0 +1,14 @@
+# Test writing a table to Markdown:
+# - default parameters
+# - append to the input file
+StartLog(LogFile="Results/Test_WriteTableToMarkdown_Append.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteTableToMarkdown_Append_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Test_Table",InputFile="Data\testtable.csv")
+# Uncomment the following 2 commands to regenerate expected results.
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="ExpectedResults\Test_WriteTableToMarkdown_Append_out.md")
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="ExpectedResults\Test_WriteTableToMarkdown_Append_out.md",Append=True)
+# Generate the results.
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results\Test_WriteTableToMarkdown_Append_out.md")
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results\Test_WriteTableToMarkdown_Append_out.md",Append=True)
+# Compare the results.
+CompareFiles(InputFile1="ExpectedResults/Test_WriteTableToMarkdown_Append_out.md",InputFile2="Results/Test_WriteTableToMarkdown_Append_out.md",IfDifferent=Warn)

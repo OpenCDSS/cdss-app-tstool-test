@@ -1,0 +1,10 @@
+# Test appending a csv list of files to a new output file.
+StartLog(LogFile="Results/Test_AppendFile_List.TSTool.log")
+# Remove the output file before the test
+RemoveFile(InputFile="Results/Test_AppendFile_List_out.csv",IfNotFound=Ignore)
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="ExpectedResults/Test_AppendFile_List_out.csv",IfNotFound=Ignore)
+# AppendFile(InputFile="Data/file1.csv,Data/file2.csv,Data/file3.csv",OutputFile="ExpectedResults/Test_AppendFile_List_out.csv",Newline="\r\n")
+AppendFile(InputFile="Data/file1.csv,Data/file2.csv,Data/file3.csv",OutputFile="Results/Test_AppendFile_List_out.csv",Newline="\r\n")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_List_out.csv",InputFile2="Results/Test_AppendFile_List_out.csv",IfDifferent=Warn)

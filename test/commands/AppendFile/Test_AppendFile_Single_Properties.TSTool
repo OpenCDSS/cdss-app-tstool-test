@@ -1,4 +1,4 @@
-# Test trying to append a single file to an output file (recreate output)
+# Test appending a single file to a new output file:
 # - Specify input file with ${Property}
 # - Specify output file with ${Property}
 StartLog(LogFile="Results/Test_AppendFile_Single_Properties.TSTool.log")
