@@ -1,0 +1,11 @@
+# Test converting a multi-column data table to time series:
+# - two time series are included
+# - irregular time series with Microsecond precision
+StartLog(LogFile="Results/Test_TableToTimeSeries_MultiColumn_IrregularMicrosecond.TSTool.log")
+RemoveFile(InputFile="Results/Test_TableToTimeSeries_MultiColumn_IrregularMicrosecond_out.dv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="MultiColumnData",InputFile="Data/multiple-column-IrregMicrosecond.csv")
+TableToTimeSeries(TableID="MultiColumnData",DateTimeColumn="Date",LocationID="TC[2:]",ValueColumn="TC[2:]",DataSource="Test",DataType="Streamflow",Interval=IRREGULAR,IrregularIntervalPrecision=Microsecond,Units="cfs",Alias="%L-%T")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults/Test_TableToTimeSeries_MultiColumn_IrregularMicrosecond_out.dv",Precision=2)
+WriteDateValue(OutputFile="Results/Test_TableToTimeSeries_MultiColumn_IrregularMicrosecond_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TableToTimeSeries_MultiColumn_IrregularMicrosecond_out.dv",InputFile2="Results\Test_TableToTimeSeries_MultiColumn_IrregularMicrosecond_out.dv",IfDifferent=Warn)

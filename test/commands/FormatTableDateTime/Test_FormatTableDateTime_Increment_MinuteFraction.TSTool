@@ -1,0 +1,13 @@
+# Test formatting a date/time to a column in a table
+# - output to a string
+# - increment from starting date/time using minute offsets with fractions
+StartLog(LogFile="Results/Test_FormatTableDateTime_Increment_MinuteFraction.TSTool.log")
+RemoveFile(InputFile="Results/Test_FormatTableDateTime_Increment_MinuteFraction_out.dv",IfNotFound=Ignore)
+# Read table data from Excel worksheet
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data/1341.raw.txt",Delimiter="\t",HeaderLines="1")
+# Format the date/times in the table
+FormatTableDateTime(TableID="Table1",InputColumn="Minute",IncrementStart="2022-01-01 00:00:00",IncrementBaseUnit="Minute",DateTimeFormat="%Y-%m-%d %H:%M-%S.%u",OutputColumn="DateTime",OutputType=String)
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_FormatTableDateTime_Increment_MinuteFraction_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_FormatTableDateTime_Increment_MinuteFraction_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_FormatTableDateTime_Increment_MinuteFraction_out.csv",InputFile2="Results/Test_FormatTableDateTime_Increment_MinuteFraction_out.csv",IfDifferent=Warn)

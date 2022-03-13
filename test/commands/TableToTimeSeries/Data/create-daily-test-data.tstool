@@ -1,4 +1,7 @@
-# Generate test data, using two time series
+# Generate test data, using two time series:
+# - daily data
+# - this depends on HydroBase, which may change
+# - TODO smalers 2022-03-12 need to use synthetic data instead
 SetInputPeriod(InputStart="2000-01-01",InputEnd="2000-12-31")
 # 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
 06754000.DWR.Streamflow.Day~HydroBase
