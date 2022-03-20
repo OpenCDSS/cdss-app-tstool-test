@@ -1,0 +1,17 @@
+# Test reading a Snow-Min month interval time series from ColoradoHydroBaseRest web service using a TSID.
+# - compare the resulting time series with that retrieved from HydroBase
+# - HydroBase does not include the monthly statistic so compute from daily and then compare
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Snow-Min_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Snow-Min_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase.
+SetInputPeriod(InputStart="2014-08",InputEnd="2018-05")
+# USC00053005 - FORT COLLINS
+USC00053005.NOAA.Snow-Min.Month~HydroBaseWeb
+USC00053005.NOAA.Snow.Day~HydroBase
+SetInputPeriod(InputStart="2014-08-01",InputEnd="2018-05-31")
+NewStatisticMonthTimeSeries(TSID="USC00053005.NOAA.Snow.Day",Alias="USC00053005-HydroBase-Month",NewTSID="USC00053005..Snow-Min.Month",Statistic=Min)
+# Make sure that enough data are available in the test data, and some missing.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=0,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="USC00053005.NOAA.Snow-Min.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Snow-Min_Day_out.dv",Precision=2)
+CompareTimeSeries(TSID1="USC00053005.NOAA.Snow-Min.Month",TSID2="USC00053005-HydroBase-Month",Tolerance=".01",IfDifferent=Warn)

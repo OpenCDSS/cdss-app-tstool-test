@@ -6,7 +6,7 @@ StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Month_2000812.
 #   - TODO smalers 2019-08-28 may enable this at some point
 #   - no diversion comment notUsed flags are used, even through requested
 # - specify the period so as to use static historical data
-ReadColoradoHydroBaseRest(DataStore="ColoradoHydroBaseRest",DataType="DivTotal",Interval="Month",Where1="StructureWDID;Matches;2000812",InputStart="1949-11",InputEnd="2005-10",FillUsingDivComments=True)
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DivTotal",Interval="Month",Where1="StructureWDID;Matches;2000812",InputStart="1949-11",InputEnd="2005-10",FillUsingDivComments=True)
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadColoradoHydroBaseRest_DivTotal_Month_2000812_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Month_2000812_out.dv")

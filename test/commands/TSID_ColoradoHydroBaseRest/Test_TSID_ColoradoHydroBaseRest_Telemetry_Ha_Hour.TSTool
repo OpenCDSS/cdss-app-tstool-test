@@ -3,7 +3,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour.TSTo
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_Ha_Hour_out.dv",IfNotFound=Ignore)
 # Read a short period and visually compare with web service results
 SetInputPeriod(InputStart="2018-03-12 00:00",InputEnd="2018-03-13 01:00")
-abbrev:RFHCANCO.DWR.Ha.Hour~ColoradoHydroBaseRest
+abbrev:RFHCANCO.DWR.Ha.Hour~HydroBaseWeb
 # Uncomment the following line to regenerate expected results
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_Ha_Hour_out.dv",Precision=2)

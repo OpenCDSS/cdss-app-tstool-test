@@ -3,7 +3,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Month_With_
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Month_With_Single_Quotes_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="2016-01",InputEnd="2017-01")
-0202235.DWR.'WaterClass-0202235 S:8 F:0200700.005 U:Q T: G:0202611 To:'.Month~ColoradoHydroBaseRest
+0202235.DWR.'WaterClass-0202235 S:8 F:0200700.005 U:Q T: G:0202611 To:'.Month~HydroBaseWeb
 # Make sure that enough data are available in the test data, and some missing
 #CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 #CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)

@@ -5,7 +5,7 @@ RemoveFile(InputFile="Results/Test_Compare_Results_TSID_ColoradoHydroBaseRest_Re
 # Read the same time series from the web service and HydroBase - full irrigation year
 SetInputPeriod(InputStart="1994",InputEnd="2010")
 6700684.DWR.RelTotal.Year~HydroBase
-6700684.DWR.RelTotal.Year~ColoradoHydroBaseRest
+6700684.DWR.RelTotal.Year~HydroBaseWeb
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<",CheckValue1=9,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)

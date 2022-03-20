@@ -4,7 +4,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Hour.TS
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_EVAP_Hour_out.dv",IfNotFound=Ignore)
 # Read a short period and visually compare to web services result
 SetInputPeriod(InputStart="2018-07-01 00",InputEnd="2018-07-03 12")
-abbrev:BOBCRKCO.DWR.EVAP.Hour~ColoradoHydroBaseRest
+abbrev:BOBCRKCO.DWR.EVAP.Hour~HydroBaseWeb
 # Uncomment the following line to regenerate expected results
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Hour_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_EVAP_Hour_out.dv",Precision=2)

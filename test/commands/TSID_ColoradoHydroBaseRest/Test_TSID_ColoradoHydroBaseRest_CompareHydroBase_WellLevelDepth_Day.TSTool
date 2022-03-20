@@ -8,7 +8,7 @@ RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_W
 SetInputPeriod(InputStart="1983-01-01",InputEnd="1995-12-31")
 # HydroBase does not have well level depth as a time series - need to enable
 SB00306325DDD.DWR.WellLevelDepth.Day~HydroBase
-wellid:1376.DWR.WaterLevelDepth.Day~ColoradoHydroBaseRest
+wellid:1376.DWR.WaterLevelDepth.Day~HydroBaseWeb
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=8,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
@@ -16,7 +16,7 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 # CompareFiles does not work because numbers are slightly different and
 # rounding on output produces different values.
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="SB00306325DDD.DWR.WellLevelDepth.Day",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelElev_Day_out.dv",Precision=2)
-WriteDateValue(TSList=LastMatchingTSID,TSID="wellid:1376.DWR.WaterLevelDepth.Day~ColoradoHydroBaseRest",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelDepth_Day_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="wellid:1376.DWR.WaterLevelDepth.Day",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelDepth_Day_out.dv",Precision=2)
 #CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelDepth_Day_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_WellLevelDepth_Day_out.dv",IfDifferent=Warn)
 # The following will fail since no HydroBase equivalent
 CompareTimeSeries(TSID1="SB00306325DDD.DWR.WellLevelDepth.Day",TSID2="wellid:1376.DWR.WaterLevelDepth.Day",Tolerance=".01",WarnIfDifferent=True)

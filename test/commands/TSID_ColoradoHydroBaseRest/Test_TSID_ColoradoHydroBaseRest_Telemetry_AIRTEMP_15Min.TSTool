@@ -3,7 +3,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Mi
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",IfNotFound=Ignore)
 # Read a short period that can be verified against online output
 SetInputPeriod(InputStart="2018-07-01 00:00",InputEnd="2018-07-03 00:00")
-abbrev:CLEDERCO.DWR.AIRTEMP.15Min~ColoradoHydroBaseRest
+abbrev:CLEDERCO.DWR.AIRTEMP.15Min~HydroBaseWeb
 # Uncomment the following line to regenerate expected results
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_AIRTEMP_15Min_out.dv",Precision=2)

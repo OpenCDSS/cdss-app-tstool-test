@@ -9,6 +9,6 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_WaterClass_Day_0300909
 # - specify the period so as to use static historical data
 # - the first year is missing since no data in that year
 SetInputPeriod(InputStart="1994-11-01",InputEnd="2010-10-31")
-0300909.DWR.WaterClass-0300909 S:2 F:0303732 U:Q T:7 G: To:.Day~ColoradoHydroBaseRest
+0300909.DWR.WaterClass-0300909 S:2 F:0303732 U:Q T:7 G: To:.Day~HydroBaseWeb
 0300909.DWR.RelClass-S:2 F:0303732 U:Q T:7 G:.Day~HydroBase
 CompareTimeSeries(TSID1="0300909.DWR.WaterClass-0300909 S:2 F:0303732 U:Q T:7 G: To:.Day",TSID2="0300909.DWR.RelClass-S:2 F:0303732 U:Q T:7 G:.Day",Tolerance=".01",WarnIfDifferent=True)

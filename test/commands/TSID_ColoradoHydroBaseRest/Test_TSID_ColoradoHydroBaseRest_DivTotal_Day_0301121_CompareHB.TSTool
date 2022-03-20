@@ -7,6 +7,6 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_DivTotal_Day_0301121_C
 # - specify the period so as to use static historical data
 # - the first year is missing since no data in that year
 SetInputPeriod(InputStart="1971-11-01",InputEnd="1973-10-31")
-0301121.DWR.DivTotal.Day~ColoradoHydroBaseRest
+0301121.DWR.DivTotal.Day~HydroBaseWeb
 0301121.DWR.DivTotal.Day~HydroBase
-CompareTimeSeries(TSID1="0301121.DWR.DivTotal.Day~ColoradoHydroBaseRest",TSID2="0301121.DWR.DivTotal.Day~HydroBase",Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="0301121.DWR.DivTotal.Day~HydroBaseWeb",TSID2="0301121.DWR.DivTotal.Day~HydroBase",Tolerance=".01",WarnIfDifferent=True)

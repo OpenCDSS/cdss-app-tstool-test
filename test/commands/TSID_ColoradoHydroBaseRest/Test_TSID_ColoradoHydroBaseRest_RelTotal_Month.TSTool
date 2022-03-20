@@ -3,7 +3,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_RelTotal_Month.TSTool.
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_RelTotal_Month_out.dv",IfNotFound=Ignore)
 # Read a short period and visually compare with web service results
 SetInputPeriod(InputStart="2009-11",InputEnd="2010-10")
-0300909.DWR.RelTotal.Month~ColoradoHydroBaseRest
+0300909.DWR.RelTotal.Month~HydroBaseWeb
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_RelTotal_Month_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_RelTotal_Month_out.dv",Precision=2)
 CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_RelTotal_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_RelTotal_Month_out.dv",IfDifferent=Warn)

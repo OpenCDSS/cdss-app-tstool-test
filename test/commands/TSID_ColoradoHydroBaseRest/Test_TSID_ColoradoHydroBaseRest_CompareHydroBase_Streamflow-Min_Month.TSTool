@@ -1,0 +1,23 @@
+# Test reading a Streamflow-Min month interval time series from ColoradoHydroBaseRest web service using a TSID:
+# - compare the resulting time series with that retrieved from HydroBase database
+# - the HydroBase database does not have monthly average CFS so need to compute from daily CFS
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Min_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Min_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="1949-01",InputEnd="1965-12")
+# ABBREV=PLAKERCO, USGS site ID=06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+06754000.DWR.Streamflow.Day~HydroBase
+NewStatisticMonthTimeSeries(TSID="06754000.DWR.Streamflow.Day",Alias="06754000-HydroBase-Month",NewTSID="06754000..Streamflow-Min.Month",Statistic=Min)
+# TODO smalers 2022-03-17 the following shifts the value by one month.
+# ChangeInterval(TSList=AllMatchingTSID,TSID="06754000.DWR.Streamflow.Day",Alias="06754000-HydroBase-Month",NewInterval=Month,OldTimeScale=INST,NewTimeScale=INST,Statistic=Min)
+usgs:06754000.DWR.Streamflow-Min.Month~HydroBaseWeb
+# Make sure that enough data are available in the test data, and some missing.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=0,IfCriteriaMet=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+# WriteDateValue(TSList=FirstMatchingTSID,TSID="06754000.USGS.Streamflow-Min.Month",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Min_Month_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Min.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Min_Month_out.dv",Precision=2)
+#CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Min_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Min_Month_out.dv",IfDifferent=Warn)
+CompareTimeSeries(TSID1="06754000-HydroBase-Month",TSID2="usgs:06754000.DWR.Streamflow-Min.Month",Tolerance=".01",IfDifferent=Warn)

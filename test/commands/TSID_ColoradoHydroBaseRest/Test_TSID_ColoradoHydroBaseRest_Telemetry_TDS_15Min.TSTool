@@ -5,7 +5,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_15Min.TS
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_TDS_15Min_out.dv",IfNotFound=Ignore)
 # Read a short period and visually compare with web services results
 SetInputPeriod(InputStart="2018-01-01 00:00",InputEnd="2018-01-02 01:00")
-abbrev:RIOBOXCO.DWR.TDS.15Min~ColoradoHydroBaseRest
+abbrev:RIOBOXCO.DWR.TDS.15Min~HydroBaseWeb
 # Uncomment the following line to regenerate expected results
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_15Min_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TDS_15Min_out.dv",Precision=2)

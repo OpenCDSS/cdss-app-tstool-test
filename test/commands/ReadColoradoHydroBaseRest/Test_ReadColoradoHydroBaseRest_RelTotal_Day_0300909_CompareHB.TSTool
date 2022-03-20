@@ -5,6 +5,6 @@ StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_RelTotal_Day_0300909_Co
 # - other missing values with diversion comments should be flagged with "notUsed" value
 # - specify the period so as to use static historical data
 # - the first year is missing since no data in that year
-ReadColoradoHydroBaseRest(DataStore="ColoradoHydroBaseRest",DataType="RelTotal",Interval="Day",Where1="StructureWDID;Matches;0300909",Alias="%L-WebService",InputStart="1994-11-01",InputEnd="2010-10-31",FillDivRecordsCarryForward=True,FillUsingDivComments=True)
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="RelTotal",Interval="Day",Where1="StructureWDID;Matches;0300909",Alias="%L-WebService",InputStart="1994-11-01",InputEnd="2010-10-31",FillDivRecordsCarryForward=True,FillUsingDivComments=True)
 ReadHydroBase(DataStore="HydroBase",DataType="RelTotal",Interval="Day",Where1="Structure WDID;Matches;0300909",Alias="%L-Database",InputStart="1994-11-01",InputEnd="2010-10-31",FillDivRecordsCarryForward=True,FillUsingDivComments=True)
 CompareTimeSeries(TSID1="0300909-WebService",TSID2="0300909-Database",Tolerance=".01",WarnIfDifferent=True)

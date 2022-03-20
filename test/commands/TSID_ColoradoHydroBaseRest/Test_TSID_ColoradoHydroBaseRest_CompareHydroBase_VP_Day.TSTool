@@ -1,0 +1,15 @@
+# Test reading a VP day interval time series from ColoradoHydroBaseRest web service using a TSID.
+# - Compare the resulting time series with that retrieved from HydroBase
+# - allow a high number of missing based on database
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP_Day_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="1992-12-01",InputEnd="2018-12-31")
+# FTL01 - FORT LUPTON, 6 MI SSW FORT LUPTON
+FTL01.CoAgMet.VP.Day~HydroBaseWeb
+FTL01.CoAgMet.VaporPressure.Day~HydroBase
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=441,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="FTL01.CoAgMet.VP.Day",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP_Day_out.dv",Precision=2)
+CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)

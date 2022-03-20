@@ -3,7 +3,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV2_15Min.
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_ELEV2_15Min_out.dv",IfNotFound=Ignore)
 # Read a short period and visually compare to web service results
 SetInputPeriod(InputStart="2018-08-02 00:00",InputEnd="2018-08-03 01:00")
-abbrev:GEOLAKCO.DWR.ELEV2.15Min~ColoradoHydroBaseRest
+abbrev:GEOLAKCO.DWR.ELEV2.15Min~HydroBaseWeb
 # Uncomment the following line to regenerate expected results
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV2_15Min_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV2_15Min_out.dv",Precision=2)
