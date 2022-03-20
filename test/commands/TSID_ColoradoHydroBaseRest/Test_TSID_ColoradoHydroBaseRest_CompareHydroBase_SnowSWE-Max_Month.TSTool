@@ -1,0 +1,17 @@
+# Test reading a SnowSWE-Max month interval time series from ColoradoHydroBaseRest web service using a TSID.
+# - compare the resulting time series with that retrieved from HydroBase
+# - HydroBase does not include the monthly statistic so compute from daily and then compare
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowSWE-Max_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowSWE-Max_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase.
+SetInputPeriod(InputStart="1936-01",InputEnd="2018-05")
+# 05L05 - FORT COLLINS
+05L05.NRCS.SnowSWE-Max.Month~HydroBaseWeb
+05L05.NRCS.SnowCourseSWE.Day~HydroBase
+SetInputPeriod(InputStart="1936-01-31",InputEnd="2018-05-31")
+NewStatisticMonthTimeSeries(TSID="05L05.NRCS.SnowCourseSWE.Day",Alias="05L05-HydroBase-Month",NewTSID="05L05..SnowCourseSWE-Max.Month",Statistic=Max)
+# Make sure that enough data are available in the test data, and some missing.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=792,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="05L05.NRCS.SnowSWE-Max.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowSWE-Max_Day_out.dv",Precision=2)
+CompareTimeSeries(TSID1="05L05.NRCS.SnowSWE-Max.Month",TSID2="05L05-HydroBase-Month",Tolerance=".1",IfDifferent=Warn)

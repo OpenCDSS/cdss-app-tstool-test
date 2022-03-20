@@ -1,4 +1,4 @@
-StartLog(LogFile="peak-identification-1.tstool.log")
+StartLog(LogFile="Results/Test_CreateTimeSeriesEventTable_Peaks.tstool.log")
 # Simple example to create an event table for time series peak analysis:
 # - TODO smalers 2022-03-12 this is not a complete test, it is an example for development
 # - the properties ${RunId} and ${Modifier} are used to local files

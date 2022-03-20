@@ -1,0 +1,17 @@
+# Test reading an Evap-Avg month interval time series from ColoradoHydroBaseRest web service using a TSID.
+# - compare the resulting time series with that retrieved from HydroBase
+# - allow a high number of missing based on database
+# - HydroBase does not include the monthly statistic so compute from daily and then compare
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Evap-Avg_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Evap-Avg_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase.
+SetInputPeriod(InputStart="1949-04-06",InputEnd="2018-12-31")
+# USC00053005 - FORT COLLINS
+USC00053005.NOAA.Evap-Avg.Month~HydroBaseWeb
+USC00053005.NOAA.EvapPan.Day~HydroBase
+NewStatisticMonthTimeSeries(TSID="USC00053005.NOAA.EvapPan.Day",Alias="USC00053005-HydroBase-Month",NewTSID="USC00053005..EvapPan-Avg.Month",Statistic=Mean)
+# Make sure that enough data are available in the test data, and some missing.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=316,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="USC00053005.NOAA.Evap-Avg.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Evap-Avg_Day_out.dv",Precision=2)
+CompareTimeSeries(TSID1="USC00053005.NOAA.Evap-Avg.Month",TSID2="USC00053005-HydroBase-Month",Tolerance=".01",IfDifferent=Warn)

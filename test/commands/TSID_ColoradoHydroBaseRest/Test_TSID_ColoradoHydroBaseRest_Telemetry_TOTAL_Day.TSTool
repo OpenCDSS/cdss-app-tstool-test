@@ -5,7 +5,7 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Day.TS
 RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_TOTAL_Day_out.dv",IfNotFound=Ignore)
 # Read a short period and visually compare with web service results
 SetInputPeriod(InputStart="2018-01-01",InputEnd="2018-03-15")
-abbrev:SOUCANCO.DWR.TOTAL.Day~ColoradoHydroBaseRest
+abbrev:SOUCANCO.DWR.TOTAL.Day~HydroBaseWeb
 # Uncomment the following line to regenerate expected results
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Day_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_TOTAL_Day_out.dv",Precision=2)

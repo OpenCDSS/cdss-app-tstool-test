@@ -1,0 +1,22 @@
+# Test reading a Streamflow-Avg month interval time series from ColoradoHydroBaseRest web service using a TSID:
+# - compare the resulting time series with that retrieved from HydroBase database
+# - the HydroBase database does not have monthly average CFS so need to compute from daily CFS
+# - allow one missing value because ChangeInterval results in one missing at the end
+StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="1949-01",InputEnd="1965-12")
+# ABBREV=PLAKERCO, USGS site ID=06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+06754000.DWR.Streamflow.Day~HydroBase
+ChangeInterval(TSList=AllMatchingTSID,TSID="06754000.DWR.Streamflow.Day",Alias="06754000-HydroBase-Month",NewInterval=Month,OldTimeScale=MEAN,NewTimeScale=MEAN)
+usgs:06754000.DWR.Streamflow-Avg.Month~HydroBaseWeb
+# Make sure that enough data are available in the test data, and some missing.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=1,IfCriteriaMet=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# The following does not work because numbers are slightly different and
+# rounding on output produces different values.
+# WriteDateValue(TSList=FirstMatchingTSID,TSID="06754000.USGS.Streamflow-Avg.Month",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Month_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Avg.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Month_out.dv",Precision=2)
+#CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Month_out.dv",IfDifferent=Warn)
+CompareTimeSeries(TSID1="06754000-HydroBase-Month",TSID2="usgs:06754000.DWR.Streamflow-Avg.Month",Tolerance=".01",AllowedDiff="1",IfDifferent=Warn)

@@ -5,7 +5,7 @@ StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Day_0301121.TS
 # - other missing values with diversion comments should be flagged with "notUsed" value
 # - specify the period so as to use static historical data
 # - the first year is missing since no data in that year
-ReadColoradoHydroBaseRest(DataStore="ColoradoHydroBaseRest",DataType="DivTotal",Interval="Day",Where1="StructureWDID;Matches;0301121",InputStart="1971-11-01",InputEnd="1981-10-31",FillUsingDivComments=True)
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DivTotal",Interval="Day",Where1="StructureWDID;Matches;0301121",InputStart="1971-11-01",InputEnd="1981-10-31",FillUsingDivComments=True)
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadColoradoHydroBaseRest_DivTotal_Day_0301121_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Day_0301121_out.dv")

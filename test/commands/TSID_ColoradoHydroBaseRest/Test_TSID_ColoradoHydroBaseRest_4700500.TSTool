@@ -1,9 +1,9 @@
 # Simple test to see if web service request works OK
 # If data do not come back, limits will not be calculable and warnings will occur
 # 4700500 - ARAPAHOE DITCH
-4700500.DWR.DivTotal.Year~ColoradoHydroBaseRest
+4700500.DWR.DivTotal.Year~HydroBaseWeb
 4700500.DWR.DivTotal.Year~HydroBase
-4700500.DWR.DivTotal.Month~ColoradoHydroBaseRest
+4700500.DWR.DivTotal.Month~HydroBaseWeb
 4700500.DWR.DivTotal.Month~HydroBase
-4700500.DWR.DivTotal.Day~ColoradoHydroBaseRest
+4700500.DWR.DivTotal.Day~HydroBaseWeb
 4700500.DWR.DivTotal.Day~HydroBase
