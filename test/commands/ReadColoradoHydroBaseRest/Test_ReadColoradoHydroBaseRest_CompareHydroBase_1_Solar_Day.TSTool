@@ -1,0 +1,16 @@
+# Test reading a Solar day interval time series from ColoradoHydroBaseRest web service using a read command:
+# - compare the resulting time series with that retrieved from HydroBase
+# - allow a high number of missing based on database
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_Solar_Day.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_Solar_Day_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="2015-01-01",InputEnd="2020-07-20")
+# USC00053005 - FORT COLLINS
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="FCL01.CoAgMet.Solar.Day~HydroBaseWeb")
+# FCL01.CoAgMet.Solar.Day~HydroBaseWeb
+FCL01.CoAgMet.Solar.Day~HydroBase
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=153,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="FCL01.CoAgMet.Solar.Day",OutputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_Solar_Day_out.dv",Precision=2)
+CompareTimeSeries(Tolerance=".1",IfDifferent=Warn)

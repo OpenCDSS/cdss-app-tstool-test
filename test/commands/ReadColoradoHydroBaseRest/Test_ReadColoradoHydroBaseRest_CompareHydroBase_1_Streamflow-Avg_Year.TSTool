@@ -1,0 +1,18 @@
+# Test reading a Streamflow-Avg year interval time series from ColoradoHydroBaseRest web service using a read command:
+# - compare the resulting time series with that retrieved from HydroBase database
+# - the HydroBase database does not have annual average CFS so need to compute from daily CFS
+# - allow two missing value because ChangeInterval results in one missing at each end
+StartLog(LogFile="Results/ReadTSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Year.TSTool.log")
+RemoveFile(InputFile="Results/ReadTSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Year_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase
+SetInputPeriod(InputStart="1949",InputEnd="1965")
+# ABBREV=PLAKERCO, USGS site ID=06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="usgs:06754000.DWR.Streamflow-Avg.Year~HydroBaseWeb")
+# usgs:06754000.DWR.Streamflow-Avg.Year~HydroBaseWeb
+06754000.DWR.Streamflow.Day~HydroBase
+ChangeInterval(TSList=AllMatchingTSID,TSID="06754000.DWR.Streamflow.Day",Alias="06754000-HydroBase-Year",NewInterval=Year,OldTimeScale=MEAN,NewTimeScale=MEAN,OutputYearType=Water)
+# Make sure that enough data are available in the test data, and some missing.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=2,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Avg.Year",OutputFile="Results/ReadTSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Avg_Year_out.dv",Precision=2)
+CompareTimeSeries(TSID1="06754000-HydroBase-Year",TSID2="usgs:06754000.DWR.Streamflow-Avg.Year",Tolerance=".01",AllowedDiff="2",IfDifferent=Warn)

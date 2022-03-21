@@ -11,5 +11,5 @@ USC00053005.NOAA.Precip.Month~HydroBase
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=316,IfCriteriaMet=Warn)
-WriteDateValue(TSList=LastMatchingTSID,TSID="USC00053005.NOAA.Precip-Total.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Precip-Avg_Day_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="USC00053005.NOAA.Precip-Total.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Precip-Total_Month_out.dv",Precision=2)
 CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)

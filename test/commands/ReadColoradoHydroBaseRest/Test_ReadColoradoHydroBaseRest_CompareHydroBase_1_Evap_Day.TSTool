@@ -1,0 +1,14 @@
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_1_Evap_Day.TSTool.log")
+# Test reading 1 time series using ReadColoradoHydroBaseRest:
+# - test results against TSID's generated from HydroBase database
+RemoveFile(InputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_1_Evap_Day_out.dv",IfNotFound=Ignore)
+#Read the time series using ReadColoradoHydroBaseRest and from HydroBase
+SetInputPeriod(InputStart="1949-04-06",InputEnd="2018-12-31")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="USC00053005.NOAA.Evap.Day~HydroBaseWeb")
+# USC00053005 - FORT COLLINS
+USC00053005.NOAA.EvapPan.Day~HydroBase
+# Check that missing and nonmissing counts are as expected.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1=2,IfCriteriaMet=Warn)
+WriteDateValue(TSList=FirstMatchingTSID,TSID="USC00053005.NOAA.Evap.Day",OutputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_Evap_Day_out.dv",Precision=2)
+CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)

@@ -1,4 +1,4 @@
-StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_RelTotal_Day_0300909_CompareHB.TSTool.log")
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_RelTotal_Day_0300909.TSTool.log")
 # Test reading daily diversion record from REST web services and compare to HydroBase
 # - since daily time series, fill carry forward should occur (see "c" flags)
 #   - there should filled values at beginning and end of season
