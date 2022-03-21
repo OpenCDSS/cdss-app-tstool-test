@@ -1,4 +1,4 @@
-StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Day_0301121_Defaults_CompareHB.TSTool.log")
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day_0301121_Defaults.TSTool.log")
 # Test reading daily diversion record from REST web services and compare to HydroBase
 # - a similar test focuses on checking the web services
 # - use the default data fill parameters

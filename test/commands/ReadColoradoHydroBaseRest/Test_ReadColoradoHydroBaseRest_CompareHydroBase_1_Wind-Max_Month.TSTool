@@ -1,0 +1,18 @@
+# Test reading a Wind-Max month interval time series from ColoradoHydroBaseRest web service using a read command:
+# - Compare the resulting time series with that retrieved from HydroBase
+# - allow a high number of missing based on database
+# - HydroBase does not include the monthly statistic so compute from daily and then compare
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_Wind-Max_Month.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_Wind-Max_Month_out.dv",IfNotFound=Ignore)
+# Read the same time series from the web service and HydroBase.
+SetInputPeriod(InputStart="1949-04-06",InputEnd="2018-12-31")
+# FTL01 - FORT LUPTON, 6 MI SSW FORT LUPTON
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="FTL01.CoAgMet.Wind-Max.Month~HydroBaseWeb")
+# FTL01.CoAgMet.Wind-Max.Month~HydroBaseWeb
+FTL01.CoAgMet.Wind.Day~HydroBase
+NewStatisticMonthTimeSeries(TSID="FTL01.CoAgMet.Wind.Day",Alias="FTL01-HydroBase-Month",NewTSID="FTL01..Wind-Max.Month",Statistic=Max)
+# Make sure that enough data are available in the test data, and some missing.
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=528,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="FTL01.CoAgMet.Wind-Max.Month",OutputFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_Wind-Max_Month_out.dv",Precision=2)
+CompareTimeSeries(TSID1="FTL01.CoAgMet.Wind-Max.Month",TSID2="FTL01-HydroBase-Month",Tolerance=".01",IfDifferent=Warn)

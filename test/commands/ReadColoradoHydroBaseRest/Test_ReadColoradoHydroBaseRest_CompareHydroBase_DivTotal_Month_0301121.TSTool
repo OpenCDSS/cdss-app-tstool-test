@@ -1,4 +1,4 @@
-StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_DivTotal_Month_0301121_CompareHB.TSTool.log")
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_0301121.TSTool.log")
 # Test reading monthly diversion record from REST web services and compare to HydroBase
 # - a similar test focuses on checking the web services
 # - since monthly time series, fill carry forward should NOT occur
