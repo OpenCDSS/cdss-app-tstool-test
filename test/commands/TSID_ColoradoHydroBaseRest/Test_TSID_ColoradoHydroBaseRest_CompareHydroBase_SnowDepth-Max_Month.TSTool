@@ -7,8 +7,8 @@ RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_S
 SetInputPeriod(InputStart="2014-08",InputEnd="2018-05")
 # USC00053005 - FORT COLLINS
 USC00053005.NOAA.SnowDepth-Max.Month~HydroBaseWeb
-USC00053005.NOAA.SnowCourseDepth.Day~HydroBase
 SetInputPeriod(InputStart="2014-08-01",InputEnd="2018-05-31")
+USC00053005.NOAA.SnowCourseDepth.Day~HydroBase
 NewStatisticMonthTimeSeries(TSID="USC00053005.NOAA.SnowCourseDepth.Day",Alias="USC00053005-HydroBase-Month",NewTSID="USC00053005..SnowCourseDepth-Max.Month",Statistic=Max)
 # Make sure that enough data are available in the test data, and some missing.
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
