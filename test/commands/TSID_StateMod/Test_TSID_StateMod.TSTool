@@ -2,7 +2,7 @@
 StartLog(LogFile="Results/Test_TSID_StateMod.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_StateMod_out.dv",IfNotFound=Ignore)
 RemoveFile(InputFile="Results/Test_TSID_StateMod_out.stm",IfNotFound=Ignore)
-TS 0675400 = NewPatternTimeSeries(NewTSID="0675400...Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="0675400",NewTSID="0675400...Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 # Generate a StateMod file
 WriteStateMod(TSList=AllTS,OutputFile="Results/Test_TSID_StateMod_out.stm",Precision=2)
 # Now try reading with a TSID...
@@ -10,4 +10,4 @@ WriteStateMod(TSList=AllTS,OutputFile="Results/Test_TSID_StateMod_out.stm",Preci
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_TSID_StateMod_out.dv",Precision=2)
 WriteDateValue(OutputFile="Results/Test_TSID_StateMod_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults/Test_TSID_StateMod_out.dv",InputFile2="Results/Test_TSID_StateMod_out.dv",WarnIfDifferent=True)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_StateMod_out.dv",InputFile2="Results/Test_TSID_StateMod_out.dv",IfDifferent=Warn)

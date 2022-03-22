@@ -1,4 +1,4 @@
-#@expectedStatus Warning
+#@expectedStatus Failure
 # Warning is expected because there do not seem to be any Q1 in the database.
 # Test reading an individual Telemetry Q1 Day time series from ColoradoHydroBaseRest web service using a TSID
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_Q1_Day.TSTool.log")
