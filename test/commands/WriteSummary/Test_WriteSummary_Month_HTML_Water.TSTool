@@ -7,4 +7,4 @@ NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Month",Description="Te
 # Generate new output...
 WriteSummary(OutputFile="Results/Test_WriteSummary_Month_HTML_Water_out.html",OutputYearType=Water)
 # Do regression comparison - allow 4 diffs for date/version/commmand line/machine
-CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Month_HTML_Water_out.html",InputFile2="Results/Test_WriteSummary_Month_HTML_Water_out.html",AllowedDiff="4",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteSummary_Month_HTML_Water_out.html",InputFile2="Results/Test_WriteSummary_Month_HTML_Water_out.html",AllowedDiff="5",IfDifferent=Warn)

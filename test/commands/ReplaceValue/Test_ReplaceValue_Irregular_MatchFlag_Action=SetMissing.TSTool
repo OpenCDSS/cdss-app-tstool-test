@@ -7,6 +7,6 @@ NewPatternTimeSeries(Alias="ts1_irr",NewTSID="ts1...Irregular",IrregularInterval
 Copy(TSID="ts1_irr",NewTSID="ts0...Irregular",Alias="ts0_irr")
 ReplaceValue(TSList=AllMatchingTSID,TSID="ts1_irr",MinValue=-10000,MaxValue=-.0001,MatchFlag="Flag2",Action=SetMissing)
 # Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReplaceValue_Irregular_MatchFlag_Action=SetMissing_out.dv",Precision=0,TSList=AllMatchingTSID,TSID="ts1_irr")
-WriteDateValue(OutputFile="Results/Test_ReplaceValue_Irregular_MatchFlag_Action=SetMissing_out.dv",Precision=0,TSList=AllMatchingTSID,TSID="ts1_irr")
+# WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_irr",OutputFile="ExpectedResults/Test_ReplaceValue_Irregular_MatchFlag_Action=SetMissing_out.dv",Precision=0)
+WriteDateValue(TSList=AllMatchingTSID,TSID="ts1_irr",OutputFile="Results/Test_ReplaceValue_Irregular_MatchFlag_Action=SetMissing_out.dv",Precision=0)
 CompareFiles(InputFile1="ExpectedResults/Test_ReplaceValue_Irregular_MatchFlag_Action=SetMissing_out.dv",InputFile2="Results/Test_ReplaceValue_Irregular_MatchFlag_Action=SetMissing_out.dv",IfDifferent=Warn)
