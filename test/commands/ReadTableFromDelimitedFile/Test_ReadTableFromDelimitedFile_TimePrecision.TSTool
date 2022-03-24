@@ -1,0 +1,11 @@
+# Test reading a delimited file:
+# - test all the time precisions that need to be parsed
+StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_TimePrecision.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_TimePrecision_out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data/testdata-timeprecision.csv",DateTimeColumns="DateYear,DateMonth,DateDay,DateTimeHour,DateTimeMinute,DateTimeSecond,DateTimeSecond1,DateTimeHsecond,DateTimeMillisecond,DateTimeSecond4,DateTimeMicrosecond,DateTimeSecond7,DateTimeNanosecond,DateTimeSecond10",DoubleColumns="Double",IntegerColumns="Integer",TextColumns="String")
+# Uncomment the following line to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_TimePrecision_out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromDelimitedFile_TimePrecision_out.csv")
+# Compare with the original input.
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDelimitedFile_TimePrecision_out.csv",InputFile2="Results/Test_ReadTableFromDelimitedFile_TimePrecision_out.csv",IfDifferent=Warn)
