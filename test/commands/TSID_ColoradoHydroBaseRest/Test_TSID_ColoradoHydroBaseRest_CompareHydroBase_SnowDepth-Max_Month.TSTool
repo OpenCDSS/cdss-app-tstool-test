@@ -4,14 +4,13 @@
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Max_Month.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Max_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="2014-08",InputEnd="2018-05")
-# USC00053005 - FORT COLLINS
-USC00053005.NOAA.SnowDepth-Max.Month~HydroBaseWeb
-SetInputPeriod(InputStart="2014-08-01",InputEnd="2018-05-31")
-USC00053005.NOAA.SnowCourseDepth.Day~HydroBase
-NewStatisticMonthTimeSeries(TSID="USC00053005.NOAA.SnowCourseDepth.Day",Alias="USC00053005-HydroBase-Month",NewTSID="USC00053005..SnowCourseDepth-Max.Month",Statistic=Max)
+SetInputPeriod(InputStart="1936-01",InputEnd="2018-12")
+# 06K04 - INDEPENDENCE PASS
+06K04.NRCS.SnowDepth-Max.Month~HydroBaseWeb
+06K04.NRCS.SnowCourseDepth.Day~HydroBase
+NewStatisticMonthTimeSeries(TSID="06K04.NRCS.SnowCourseDepth.Day",Alias="06K04-HydroBase-Month",NewTSID="06K04..SnowCourseDepth-Max.Month",Statistic=Max)
 # Make sure that enough data are available in the test data, and some missing.
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
-CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=0,IfCriteriaMet=Warn)
-WriteDateValue(TSList=LastMatchingTSID,TSID="USC00053005.NOAA.SnowDepth-Max.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Max_Month_out.dv",Precision=2)
-CompareTimeSeries(TSID1="USC00053005.NOAA.SnowDepth-Max.Month",TSID2="USC00053005-HydroBase-Month",Tolerance=".01",IfDifferent=Warn)
+CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=691,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="06K04.NRCS.SnowDepth-Max.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Max_Month_out.dv",Precision=2)
+CompareTimeSeries(TSID1="06K04.NRCS.SnowDepth-Max.Month",TSID2="06K04-HydroBase-Month",Tolerance=".01",IfDifferent=Warn)

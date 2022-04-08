@@ -1,27 +1,30 @@
 # Test reading a MeanTemp day interval time series from ColoradoHydroBaseRest web service using a TSID.
 # - compare the resulting time series with that retrieved from HydroBase
 # - allow some missing based on database
-# - Hydrobase does not include daily mean and computing as the average of daily
-#   min and max daily time series does not give the same result
-# - Therefore, just check that results come back
+# - Hydrobase does not include daily mean
+# - for this station daily min/max loaded from 1992 to 2014 and mean can be calculated
+# - 2015 and later the mean is loaded from the original source and has different values than calculated
+# - daily mean is loaded from the source for 2016-2022 and has different values from calculated
+# - Therefore, just check that results come back from calculation since can cross-check web services and HydroBase
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="2015-01-01",InputEnd="2020-12-31")
-# FCL01 - FORT COLLINS
-FCL01.CoAgMet.MeanTemp.Day~HydroBaseWeb
-# FCL01.CoAgMet.TempMin.Day~HydroBase
-# ConvertDataUnits(TSList=AllMatchingTSID,TSID="FCL01.CoAgMet.TempMin.Day",NewUnits="DEGF")
-# FCL01.CoAgMet.TempMax.Day~HydroBase
-# ConvertDataUnits(TSList=AllMatchingTSID,TSID="FCL01.CoAgMet.TempMax.Day",NewUnits="DEGF")
-# NewTimeSeries(Alias="FCL01-HydroBase-Mean",NewTSID="FCL01.CoAgMet.TempMean.Day",SetStart="${InputStart}",SetEnd="${InputEnd}",Units="degF",MissingValue=NaN)
-# Add(TSID="FCL01-HydroBase-Mean",AddTSList=SpecifiedTSID,AddTSID="FCL01.CoAgMet.TempMin.Day,FCL01.CoAgMet.TempMax.Day",HandleMissingHow="IgnoreMissing")
-# Scale(TSList=AllMatchingTSID,TSID="FCL01-HydroBase-Mean",ScaleValue=.5)
+# SetInputPeriod(InputStart="1992-01-01",InputEnd="2015-12-31")
+SetInputPeriod(InputStart="2015-12-31",InputEnd="2020-12-31")
+# BRL02 - BURLINGTON SOUTH (#2), 6 MI SE BURLINGTON
+BRL02.CoAgMet.MeanTemp.Day~HydroBaseWeb
+BRL02.CoAgMet.TempMin.Day~HydroBase
+# ConvertDataUnits(TSList=AllMatchingTSID,TSID="BRL02.CoAgMet.TempMin.Day",NewUnits="DEGF")
+BRL02.CoAgMet.TempMax.Day~HydroBase
+# ConvertDataUnits(TSList=AllMatchingTSID,TSID="BRL02.CoAgMet.TempMax.Day",NewUnits="DEGF")
+NewTimeSeries(Alias="BRL02-HydroBase-Mean",NewTSID="BRL02.CoAgMet.TempMean.Day",SetStart="${InputStart}",SetEnd="${InputEnd}",Units="degF",MissingValue=NaN)
+Add(TSID="BRL02-HydroBase-Mean",AddTSList=SpecifiedTSID,AddTSID="BRL02.CoAgMet.TempMin.Day,BRL02.CoAgMet.TempMax.Day",HandleMissingHow="IgnoreMissing")
+Scale(TSList=AllMatchingTSID,TSID="BRL02-HydroBase-Mean",ScaleValue=.5)
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
-CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=8,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=2,IfCriteriaMet=Warn)
 # Uncomment the following to regenerate expected results.
-# WriteDateValue(TSList=LastMatchingTSID,TSID="FCL01.CoAgMet.MeanTemp.Day",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day_out.dv",Precision=2)
-WriteDateValue(TSList=LastMatchingTSID,TSID="FCL01.CoAgMet.MeanTemp.Day",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day_out.dv",Precision=2)
-# CompareTimeSeries(TSID1="FCL01.CoAgMet.MeanTemp.Day",TSID2="FCL01-HydroBase-Mean",Tolerance=".01",IfDifferent=Warn)
+# WriteDateValue(TSList=LastMatchingTSID,TSID="BRL02.CoAgMet.MeanTemp.Day",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="BRL02.CoAgMet.MeanTemp.Day",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day_out.dv",Precision=2)
+# CompareTimeSeries(TSID1="BRL02.CoAgMet.MeanTemp.Day",TSID2="BRL02-HydroBase-Mean",Tolerance=".01",IfDifferent=Warn)
 CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp_Day_out.dv",IfDifferent=Warn)

@@ -1,0 +1,14 @@
+# This is an example of a station where data load varies:
+#   1992-2015 only daily max, min were loaded and mean is average of these
+#   2015-2022 daily max, min, and mean were loaded (mean is not calculated)
+# Therefore using HydroBase max/min to calculate mean only works for part of the period.
+# The enabled tests make sure to only compare the first case with HydroBase.
+# BRL02 - BURLINGTON SOUTH (#2), 6 MI SE BURLINGTON
+BRL02.CoAgMet.MaxTemp.Day~HydroBaseWeb
+BRL02.CoAgMet.MinTemp.Day~HydroBaseWeb
+BRL02.CoAgMet.MeanTemp.Day~HydroBaseWeb
+#
+# Calculate mean from min and max.
+NewTimeSeries(Alias="BRL02-mean-calculated",NewTSID="BRL02.CoAgMet.MeanTemp.Day.calculated",Description="BRL02 calculated mean",SetStart="1992-01-02",SetEnd="2022-03-04",Units="degF",MissingValue=NaN)
+Add(TSID="BRL02-mean-calculated",AddTSList=SpecifiedTSID,AddTSID="BRL02.CoAgMet.MaxTemp.Day,BRL02.CoAgMet.MinTemp.Day",HandleMissingHow="IgnoreMissing")
+Scale(TSList=AllMatchingTSID,TSID="BRL02-mean-calculated",ScaleValue=.5)

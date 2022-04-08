@@ -1,19 +1,19 @@
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Year.TSTool.log")
 # Test reading a Streamflow-Total year interval time series from ColoradoHydroBaseRest web service using a TSID:
 # - compare the resulting time series with that retrieved from HydroBase database
-# - the HydroBase database does not have annual total AF so need to compute from monthly AF
-#@require datastore HydroBase version >= 20220330
+# - the HydroBase database does not have annual annual AF so need to compute from monthly AF
+# - HydroBase before 2022-03-30 used a different scale factor for CFS to AF so have to adjust below
+#@require datastore HydroBase20200720 version < 20220330
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Year_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="1949",InputEnd="1965")
 # ABBREV=PLAKERCO, USGS site ID=06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
 usgs:06754000.DWR.Streamflow-Total.Year~HydroBaseWeb
-# Specify the monthly period using water year.
 SetInputPeriod(InputStart="1948-10",InputEnd="1965-09")
-06754000.DWR.Streamflow.Month~HydroBase
+06754000.DWR.Streamflow.Month~HydroBase20200720
 NewStatisticYearTS(TSList=LastMatchingTSID,TSID="06754000.DWR.Streamflow.Month",Statistic=Total,OutputYearType=Water,Alias="06754000-HydroBase-Year",NewTSID="06754000..Streamflow-Total.Year")
 # Scale the time series because web services uses a different factor to convert cfs to af.
-# Scale(TSList=AllMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Total.Year",ScaleValue=1.00025216)
+Scale(TSList=AllMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Total.Year",ScaleValue=1.00025216)
 # Make sure that enough data are available in the test data, and some missing.
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=0,IfCriteriaMet=Warn)

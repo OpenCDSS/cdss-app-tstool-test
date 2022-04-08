@@ -2,14 +2,16 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Strea
 # Test reading a Streamflow-Total month interval time series from ColoradoHydroBaseRest web service using a TSID:
 # - compare the resulting time series with that retrieved from HydroBase database
 # - the HydroBase database does not have monthly average CFS so need to compute from daily CFS
-# - HydroBase database and web service disagreed prior to 2022-03-30 due to CFS to AF factor difference
-#@require datastore HydroBase version >= 20220330
+# - HydroBase before 2022-03-30 used CFS to AF factor different than HydroBaseWeb so have to scale to test
+#@require datastore HydroBase20200720 version < 20220330
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="1949-01",InputEnd="1965-12")
 # ABBREV=PLAKERCO, USGS site ID=06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
-06754000.DWR.Streamflow.Month~HydroBase
 usgs:06754000.DWR.Streamflow-Total.Month~HydroBaseWeb
+06754000.DWR.Streamflow.Month~HydroBase20200720
+# Scale the time series because web services uses a different factor to convert cfs to af.
+Scale(TSList=AllMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Total.Month",ScaleValue=1.00025216)
 # Make sure that enough data are available in the test data, and some missing.
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=0,IfCriteriaMet=Warn)
