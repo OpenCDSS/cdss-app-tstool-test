@@ -4,13 +4,13 @@
 StartLog(LogFile="Results/ReadReadColoradoHydroBaseRest_CompareHydroBase_SnowDepth_Day.TSTool.log")
 RemoveFile(InputFile="Results/ReadReadColoradoHydroBaseRest_CompareHydroBase_SnowDepth_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="2014-08-01",InputEnd="2018-12-31")
-# USC00053005 - FORT COLLINS
-ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="USC00053005.NOAA.SnowDepth.Day~HydroBaseWeb")
-# USC00053005.NOAA.SnowDepth.Day~HydroBaseWeb
-USC00053005.NOAA.SnowCourseDepth.Day~HydroBase
+SetInputPeriod(InputStart="1936-01-01",InputEnd="2018-12-31")
+# 06K04 - INDEPENDENCE PASS
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="06K04.NRCS.SnowDepth.Day~HydroBaseWeb")
+# 06K04.NRCS.SnowDepth.Day~HydroBaseWeb
+06K04.NRCS.SnowCourseDepth.Day~HydroBase
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
-CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=11501,IfCriteriaMet=Warn)
-WriteDateValue(TSList=LastMatchingTSID,TSID="USC00053005.NOAA.SnowDepth.Day",OutputFile="Results/ReadReadColoradoHydroBaseRest_CompareHydroBase_SnowDepth_Day_out.dv",Precision=2)
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=29975,IfCriteriaMet=Warn)
+WriteDateValue(TSList=LastMatchingTSID,TSID="06K04.NRCS.SnowDepth.Day",OutputFile="Results/ReadReadColoradoHydroBaseRest_CompareHydroBase_SnowDepth_Day_out.dv",Precision=2)
 CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)

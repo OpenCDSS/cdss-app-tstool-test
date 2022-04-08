@@ -2,10 +2,11 @@
 # - use a specified period to limit HydroBase update impacts on the test.
 # - use a structure that has known data so that combinations can be validated
 # - monthly data
+# - this version has results for an older HydroBase
 # @testSuite HydroBase
-#@require datastore HydroBase version >= 20220330
-StartLog(LogFile="Results/Test_FillUsingDiversionComments_6400509_Month.TSTool.log")
-RemoveFile(InputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv",IfNotFound=Ignore)
+#@require datastore HydroBase version < 20220330
+StartLog(LogFile="Results/Test_FillUsingDiversionComments_6400509_Month_Before20220330.TSTool.log")
+RemoveFile(InputFile="Results/Test_FillUsingDiversionComments_6400509_Month_Before20220330_out.dv",IfNotFound=Ignore)
 SetInputPeriod(InputStart="11/30/1949",InputEnd="10/31/2013")
 SetOutputPeriod(OutputStart="11/30/1949",OutputEnd="10/31/2013")
 # 6400509 - TAMARACK DITCH
@@ -18,8 +19,8 @@ FillUsingDiversionComments(TSList=AllMatchingTSID,TSID="6400509-DCAndCIU",FillFl
 # Read again without any filling
 ReadTimeSeries(TSID="6400509.DWR.DivTotal.Month~HydroBase",Alias="%L-Raw",IfNotFound=Warn)
 # Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_out.dv")
-WriteDateValue(OutputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv")
+# WriteDateValue(OutputFile="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_Before20220330_out.dv")
+WriteDateValue(OutputFile="Results/Test_FillUsingDiversionComments_6400509_Month_Before20220330_out.dv")
 # Also write an Excel file to simplify review - only uncomment when troubleshooting because it is slow
-#WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.xlsx",Worksheet="Monthly Data",ExcelAddress="A1",ValueColumns="%A",Author="TSTool",ColumnComment="%A (%U)",ValueComment="Flag: ${tsdata:flag}")
-CompareFiles(InputFile1="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_out.dv",InputFile2="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv",IfDifferent=Warn)
+#WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_FillUsingDiversionComments_6400509_Month_Before20220330_out.xlsx",Worksheet="Monthly Data",ExcelAddress="A1",ValueColumns="%A",Author="TSTool",ColumnComment="%A (%U)",ValueComment="Flag: ${tsdata:flag}")
+CompareFiles(InputFile1="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_Before20220330_out.dv",InputFile2="Results/Test_FillUsingDiversionComments_6400509_Month_Before20220330_out.dv",IfDifferent=Warn)

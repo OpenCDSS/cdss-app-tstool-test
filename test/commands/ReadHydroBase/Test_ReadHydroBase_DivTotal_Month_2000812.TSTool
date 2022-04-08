@@ -1,5 +1,6 @@
-# Test reading DivTotal monthly time series
 StartLog(LogFile="Results/Test_ReadHydroBase_DivTotal_Month_2000812.TSTool.log")
+# Test reading DivTotal monthly time series
+#@require datastore HydroBase version >= 20220330
 ReadHydroBase(DataType="DivTotal",Interval="Month",Where1="District;Equals;20",Where2="Structure ID;Equals;812",InputStart="1949-11",InputEnd="2005-10")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults/Test_ReadHydroBase_DivTotal_Month_2000812_out.dv")

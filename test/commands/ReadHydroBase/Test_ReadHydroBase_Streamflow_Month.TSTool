@@ -1,6 +1,7 @@
 # Test reading a Streamflow time series for specific structure
 # - station 06754000
 # - monthly data
+#@require datastore HydroBase version >= 20220330
 StartLog(LogFile="Results/Test_ReadHydroBase_Streamflow_Month.TSTool.log")
 # Set the input period to bound missing values.
 ReadHydroBase(DataType="Streamflow",Interval="Month",Where1="Station ID;Matches;06754000",InputStart="1912-01",InputEnd="1914-12")

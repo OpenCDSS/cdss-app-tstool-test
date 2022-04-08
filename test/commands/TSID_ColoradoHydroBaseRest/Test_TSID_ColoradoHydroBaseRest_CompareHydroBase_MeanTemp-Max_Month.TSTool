@@ -1,15 +1,19 @@
 # Test reading a MeanTemp-Max month interval time series from ColoradoHydroBaseRest web service using a TSID.
-# - Compare the resulting time series with that retrieved from HydroBase
-# - allow some missing based on database
+# - compare the resulting time series with that retrieved from HydroBase
+# - can't compare with HydroBase because daily mean is not available and computing
+#   from min and max gives different results
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp-Max_Month.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp-Max_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="2015-01",InputEnd="2018-12")
-# FTC01 - FORT COLLINS
-FTC01.CoAgMet.MeanTemp-Max.Month~HydroBaseWeb
-FTC01.CoAgMet.TempMeanMax.Month~HydroBase
+# BRL02 - BURLINGTON SOUTH (#2), 6 MI SE BURLINGTON
+BRL02.CoAgMet.MeanTemp-Max.Month~HydroBaseWeb
+#BRL02.CoAgMet.TempMeanMax.Month~HydroBase
 # Make sure that enough data are available in the test data, and some missing
 CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
 CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=0,IfCriteriaMet=Warn)
-WriteDateValue(TSList=LastMatchingTSID,TSID="FTC01.CoAgMet.MeanTemp-Max.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp-Max_Month_out.dv",Precision=2)
-CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)
+# Uncomment the following command to save expected results.
+# WriteDateValue(TSList=LastMatchingTSID,TSID="BRL02.CoAgMet.MeanTemp-Max.Month",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp-Max_Month_out.dv",Precision=2)
+WriteDateValue(TSList=LastMatchingTSID,TSID="BRL02.CoAgMet.MeanTemp-Max.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp-Max_Month_out.dv",Precision=2)
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp-Max_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_MeanTemp-Max_Month_out.dv",IfDifferent=Warn)
+# CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)
