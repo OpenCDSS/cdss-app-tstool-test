@@ -1,0 +1,6 @@
+StartLog(LogFile="Results/test-Comment-enabledif-app-version-fail.tstool.log")
+# Test that TSTool application meets requirements to be enabled:
+# - use a future version
+# - the requirements check should fail and for automated testing a test will be disabled
+#   when the suite is run
+#@enabledif application TSTool version >= 999.999.999

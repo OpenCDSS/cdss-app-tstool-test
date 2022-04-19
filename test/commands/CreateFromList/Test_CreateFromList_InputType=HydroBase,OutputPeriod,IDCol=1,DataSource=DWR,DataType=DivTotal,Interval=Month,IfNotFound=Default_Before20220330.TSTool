@@ -1,6 +1,6 @@
-# This command file is expected to generate a failure because the output period is not defined.
+# This command file is expected to generate a failure because the output period is not defined:
 # - this version is for an older version of HydroBase
-#@require datastore HydroBase version < 20220330
+#@enabledif datastore HydroBase version < 20220330
 #@testSuite HydroBase
 StartLog(LogFile="Results/Test_CreateFromList_InputType=HydroBase,OutputPeriod,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Default_Before20220330.TSTool.log")
 RemoveFile(InputFile="Results\Test_CreateFromList_InputType=HydroBase,OutputPeriod,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Default_Before20220330_out.dv",IfNotFound=Ignore)

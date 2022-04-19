@@ -1,6 +1,6 @@
-# This version of the test requires HydroBase < 20220330
+# This version of the test is enabled if HydroBase < 20220330
 #@testSuite HydroBase
-#@require datastore HydroBase version < 20220330
+#@enabledif datastore HydroBase version < 20220330
 StartLog(LogFile="Results/Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Default_Before20220330.TSTool.log")
 RemoveFile(InputFile="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Default_Before20220330_out.dv",IfNotFound=Ignore)
 # Set the input period since reading from HydroBase and want to control the
