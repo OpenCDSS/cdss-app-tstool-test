@@ -1,5 +1,5 @@
-StartLog(LogFile="Results/test-Comment-require-app-version-fail.tstool.log")
-# Test that TSTool application is valid
-# - use a future version
-# - this should pass since the check is for an early version of TSTool
+StartLog(LogFile="Results/test-Comment-require-app-version-pass.tstool.log")
+# Test that TSTool application is valid:
+# - use an old version
+# - this should pass since the requirements check is for an early version of TSTool
 #@require application TSTool version >= 1.0.0

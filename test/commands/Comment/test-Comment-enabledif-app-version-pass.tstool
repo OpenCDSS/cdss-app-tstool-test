@@ -1,0 +1,6 @@
+StartLog(LogFile="Results/test-Comment-enabledif-app-version-pass.tstool.log")
+# Test that TSTool application is valid:
+# - use an old version
+# - this should pass the requirements check since the check is for an early version of TSTool,
+#   and will therefore be enabled for automated testing
+#@enabledif application TSTool version >= 1.0.0

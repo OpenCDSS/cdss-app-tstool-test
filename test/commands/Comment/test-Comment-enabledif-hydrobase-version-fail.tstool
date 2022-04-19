@@ -1,0 +1,5 @@
+StartLog(LogFile="Results/test-Comment-enabledif-hydrobase-version-fail.tstool.log")
+# Test that HydroBase application is valid:
+# - use a future version
+# - the requirements check will fail and the test will not being enabled for automated testing
+#@enabledif datastore HydroBase version >= 99998877
