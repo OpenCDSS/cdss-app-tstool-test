@@ -1,0 +1,9 @@
+StartLog(LogFile="Results/test-Comment-require-hydrobase-version-whitespace-pass.tstool.log")
+# Test that HydroBase application is valid:
+# - use an old version
+# - this should pass when run as an automated test
+# - test extra whitespace after the hash
+#@require datastore HydroBase version >= 20000102
+# @require datastore HydroBase version >= 20000102
+#     @require datastore HydroBase version >= 20000102
+#     	@require datastore HydroBase version >= 20000102
