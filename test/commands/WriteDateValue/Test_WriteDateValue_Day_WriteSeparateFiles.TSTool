@@ -1,0 +1,13 @@
+# Test writing 2 daily time series to DateValue format:
+# - separate files are written
+StartLog(LogFile="Results/Test_WriteDateValue_Day_WriteSeparateFiles.TSTool.log")
+RemoveFile(InputFile="Results/Test_WriteDateValue_Day_WriteSeparateFiles_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc1",NewTSID="MyLoc1..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="MyLoc2",NewTSID="MyLoc2..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="10,20,24,26,150")
+# Uncomment the following command to regenerate the expected results files.
+# WriteDateValue(OutputFile="ExpectedResults\Test_WriteDateValue_Day_WriteSeparateFiles_%L_out.dv",WriteSeparateFiles="True")
+# Generate new output...
+WriteDateValue(OutputFile="Results/Test_WriteDateValue_Day_WriteSeparateFiles_%L_out.dv",WriteSeparateFiles="True")
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_Day_WriteSeparateFiles_MyLoc1_out.dv",InputFile2="Results/Test_WriteDateValue_Day_WriteSeparateFiles_MyLoc1_out.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_WriteDateValue_Day_WriteSeparateFiles_MyLoc2_out.dv",InputFile2="Results/Test_WriteDateValue_Day_WriteSeparateFiles_MyLoc2_out.dv",IfDifferent=Warn)
