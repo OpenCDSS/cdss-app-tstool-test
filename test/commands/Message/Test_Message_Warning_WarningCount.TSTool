@@ -1,0 +1,11 @@
+# Test printing a message for command status WARNING
+# - use the expectedStatus to ensure things are working
+# - also check that the command file WarningCount property is set
+#@expectedStatus Warning
+StartLog(LogFile="Results/Test_Message_Warning.TSTool.log")
+Message(Message="This command generated a warning.",CommandStatus=WARNING)
+#
+# Also check that the command file WarningCount property is set.
+If(Name="If_Warn",Condition="${WarningCount} != 1")
+Message(Message="Was expecting 1 warning message but have ${WarningCount}.",CommandStatus=FAILURE)
+EndIf(Name="If_Warn")
