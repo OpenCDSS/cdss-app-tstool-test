@@ -1,0 +1,15 @@
+# Test running RunCommands():
+# - set warning and failure count properties
+# Disable because don't want to interfere with overall automated tests - run manually for now
+#@enabled False
+StartLog(LogFile="Results/Test_RunCommands_Warning_Failure_Count.TSTool.log")
+# The warning and failure count will be the number of warnings in the original command file that is run.
+# because the 'RunCommands' command has a log message that is the most severe.
+RunCommands(InputFile="Data/Test_CopyFile_NoFile_Warn.tstool",WarningCountProperty="TestWarningCount")
+If(Name="If_Warn",Condition="${TestWarningCount} != 1")
+Message(Message="Expected 1 warning.",CommandStatus=FAILURE)
+EndIf(Name="If_Warn")
+RunCommands(InputFile="Data/Test_CopyFile_NoFile_Fail.tstool",FailureCountProperty="TestFailureCount")
+If(Name="If_Fail",Condition="${TestFailureCount} != 1")
+Message(Message="Expected 1 failure.",CommandStatus=FAILURE)
+EndIf(Name="If_Fail")

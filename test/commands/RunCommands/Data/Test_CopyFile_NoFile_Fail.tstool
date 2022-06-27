@@ -1,0 +1,5 @@
+# Test trying to copy a non-existant file - and warn (default):
+# - this is used as input to test RunCommands(WarningCountProperty=...)
+#@expectedStatus Failure
+StartLog(LogFile="../Results/Test_CopyFile_NoFile.TSTool.log")
+CopyFile(InputFile="NonexistantFile.txt",OutputFile="../Results/Test_CopyFile_NoFile_out.txt",IfInputNotFound=Fail)

@@ -1,0 +1,7 @@
+# Create a new day interval time series:
+# - this is used to create an output file to test the RunCommands(AppendOutputFiles=True) parameter
+StartLog(LogFile="../Results/Test_NewTimeSeries_Day.tstool.log")
+RemoveFile(InputFile="Results/Test_NewTimeSeries_Day_out.dv",IfNotFound=Ignore)
+NewTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="Test time series 1",SetStart="2000-01-01",SetEnd="2001-01-14",Units="CFS",InitialValue=0)
+# Write the file.
+WriteDateValue(OutputFile="../Results/Test_NewTimeSeries_Day_out.dv")

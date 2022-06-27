@@ -1,0 +1,11 @@
+# Test printing a message for command status FAILURE
+# - use the expectedStatus to ensure things are working
+# - also check that the command file FailureCount property is set
+#@expectedStatus Failure
+StartLog(LogFile="Results/Test_Message_Failure_FailureCount.TSTool.log")
+Message(Message="This command generated a failure.",CommandStatus=FAILURE)
+#
+# Also check that the command file FailureCount property is set.
+If(Name="If_Fail",Condition="${FailureCount} != 1")
+Message(Message="Was expecting 1 failure message but have ${FailureCount}.",CommandStatus=FAILURE)
+EndIf(Name="If_Fail")

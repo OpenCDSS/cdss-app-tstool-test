@@ -1,0 +1,9 @@
+# Test reading a day interval time series from a DateValue file:
+# - ignore the missing input file
+StartLog(LogFile="Results/Test_ReadDateValue_Ignore.TSTool.log")
+RemoveFile(InputFile="Results\Test_ReadDateValue_Ignore_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="MyLoc",NewTSID="MissingFile..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+# Uncomment the following command to regenerate the expected results file.
+# WriteDateValue(OutputFile="ExpectedResults\Test_ReadDateValue_Ignore_out.dv")
+Free(TSList=AllMatchingTSID,TSID="*")
+ReadDateValue(InputFile="ExpectedResults\Test_ReadDateValue_Ignore_out.dv",IfNotFound=Ignore)
