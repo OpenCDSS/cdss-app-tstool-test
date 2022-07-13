@@ -1,7 +1,7 @@
 # Test writing summary for year data, text output
 StartLog(LogFile="Results/Test_WriteSummary_Year.TSTool.log")
 RemoveFile(InputFile="Results/Test_WriteSummary_Year_out.txt",IfNotFound=Ignore)
-TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Year",Description="Test data",SetStart="1950",SetEnd="1979",Units="CFS",PatternValues="5,10,12,13,,,75,50")
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Year",Description="Test data",SetStart="1950",SetEnd="1979",Units="CFS",PatternValues="5,10,12,13,,,75,50")
 # Uncomment the following command to regenerate the expected results file.
 # WriteSummary(OutputFile="ExpectedResults/Test_WriteSummary_Year_out.txt")
 # Generate new output...

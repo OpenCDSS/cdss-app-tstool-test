@@ -1,0 +1,24 @@
+StartLog(LogFile="Results/Test-NewAccessDatabase.TSTool.log")
+# Test to read a table from an Access database:
+# - use an in-memory database and file database
+# - close the databases so that files are not open and locked
+RemoveFile(InputFile="results/test-access.accdb",IfNotFound=Ignore)
+# Use the CopyFile nd OpenDataStore commands if NewAccessDatabase is not working.
+# CopyFile(InputFile="../ReadTableFromDataStore/Data/test-ms-access.accdb",OutputFile="results/test-access.accdb")
+# OpenDataStore(DataStoreName="TestAccess",DataStoreDescription="Test Microsoft Access database",DataStoreType="GenericDatabaseDataStore",DatabaseEngine="Access",DatabaseName="results/test-access.accdb")
+NewAccessDatabase(DataStore="TestAccess",DatabaseFile="results/test-access.accdb")
+RunSql(DataStore="TestAccess",Sql="CREATE TABLE table1 (id INTEGER NOT NULL CONSTRAINT id_constraint PRIMARY KEY, name CHAR NOT NULL, integer1 INTEGER, float1 REAL)")
+RunSql(DataStore="TestAccess",Sql="INSERT INTO table1 (id, name, integer1, float1) VALUES (1, 'name1', 1, 1.1)")
+RunSql(DataStore="TestAccess",Sql="INSERT INTO table1 (id, name, integer1, float1) VALUES (2, 'name2', 2, 2.2)")
+CloseDataStore(DataStore="TestAccess",StatusMessage="Closed after test.")
+# Read the table:
+# - make a copy of the database to prevent conflict
+CopyFile(InputFile="results\test-access.accdb",OutputFile="results\test-access2.accdb")
+OpenDataStore(DataStoreName="TestAccess2",DataStoreDescription="Access Test Database",DataStoreType="GenericDatabaseDataStore",DatabaseEngine="Access",DatabaseName="results/test-access.accdb")
+ReadTableFromDataStore(DataStore="TestAccess2",DataStoreTable="table1",TableID="TestTable")
+CloseDataStore(DataStore="TestAccess2")
+# Compare the tables after writing to files.
+# Uncomment the next line to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="TestTable",OutputFile="expected-results/test-NewAccessDatabase-out.csv",IncludeColumns="name,integer1,float1")
+WriteTableToDelimitedFile(TableID="TestTable",OutputFile="results/test-NewAccessDatabase-out.csv",IncludeColumns="name,integer1,float1")
+CompareFiles(InputFile1="expected-results/test-NewAccessDatabase-out.csv",InputFile2="results/test-NewAccessDatabase-out.csv",IfDifferent=Warn)
