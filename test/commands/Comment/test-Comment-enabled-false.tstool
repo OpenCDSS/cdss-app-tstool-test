@@ -1,4 +1,4 @@
 StartLog(LogFile="Results/test-Comment-enabled-false.tstool.log")
-# Test that teh command file is not enabled:
+# Test that the command file is not enabled:
 # - should be listed in test suite but will be indicated as enabled = false
 #@enabled False

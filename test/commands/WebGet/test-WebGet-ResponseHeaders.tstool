@@ -1,0 +1,7 @@
+StartLog(LogFile="Results/test-WebGet-ResponseHeaders.tstool.log")
+#
+# Do a GET request.
+WebGet(URI="https://data.openwaterfoundation.org/country/us/usgs/continental-divide/continental-divide-co.geojson",HttpHeaders="Origin:'https://localhost',User-Agent:TSTool,Accept:*/*,Accept-Encoding:gzip",LocalFile="Results/test-WebGet-ResponseHeaders-get-out.geojson")
+#
+# Do an OPTIONS request.
+# WebGet(URI="https://data.openwaterfoundation.org/country/us/usgs/continental-divide/continental-divide-co.geojson",RequestMethod=OPTIONS,HttpHeaders="Access-Control-Request-Method:GET,Access-Control-Request-Headers:content-type,Origin:'http://localhost'",LocalFile="Results/test-WebGet-ResponseHeaders-options-out.geojson")
