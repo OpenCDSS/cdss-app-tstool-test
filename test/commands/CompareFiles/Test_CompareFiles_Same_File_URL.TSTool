@@ -1,0 +1,5 @@
+# Test comparing a file and URL with the same content:
+# - the files to compare are a command file stored on GitHub and a local file (file first)
+# - use raw GitHub file because otherwise some HTML-formatted content changes for each download
+StartLog(LogFile="Results/Test_CompareFiles_Same_File_URL.TSTool.log")
+CompareFiles(InputFile1="Test_CompareFiles_Size_Warn.TSTool",InputFile2="https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/CompareFiles/Test_CompareFiles_Size_Warn.TSTool",IfDifferent=Warn,WaitUntil=FilesAreSame,WaitTimeout=60000,WaitInterval=6000)

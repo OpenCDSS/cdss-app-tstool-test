@@ -4,7 +4,7 @@ StartLog(LogFile="Results/Test_ReadTableFromDelimitedFile_TimePrecision.TSTool.l
 RemoveFile(InputFile="Results/Test_ReadTableFromDelimitedFile_TimePrecision_out.csv",IfNotFound=Ignore)
 ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data/testdata-timeprecision.csv",DateTimeColumns="DateYear,DateMonth,DateDay,DateTimeHour,DateTimeMinute,DateTimeSecond,DateTimeSecond1,DateTimeHsecond,DateTimeMillisecond,DateTimeSecond4,DateTimeMicrosecond,DateTimeSecond7,DateTimeNanosecond,DateTimeSecond10",DoubleColumns="Double",IntegerColumns="Integer",TextColumns="String")
 # Uncomment the following line to generate the expected results.
-WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_TimePrecision_out.csv")
+#WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromDelimitedFile_TimePrecision_out.csv")
 # Generate the results.
 WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_ReadTableFromDelimitedFile_TimePrecision_out.csv")
 # Compare with the original input.
