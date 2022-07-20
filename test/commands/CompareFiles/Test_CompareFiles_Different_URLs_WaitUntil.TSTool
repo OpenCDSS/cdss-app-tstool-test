@@ -1,0 +1,5 @@
+# Test comparing two URLs with different content:
+# - use raw GitHub file because otherwise some HTML-formatted content changes for each download
+# - wait until the files are different (will return immediately since different)
+StartLog(LogFile="Results/Test_CompareFiles_Different_URLs_WaitUntil.TSTool.log")
+CompareFiles(InputFile1="https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/CompareFiles/Test_CompareFiles_ExcludeText.TSTool",InputFile2="https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/CompareFiles/Test_CompareFiles_Size_Warn.TSTool",IfSame=Warn,WaitUntil=FilesAreDifferent,WaitTimeout=60000,WaitInterval=6000)

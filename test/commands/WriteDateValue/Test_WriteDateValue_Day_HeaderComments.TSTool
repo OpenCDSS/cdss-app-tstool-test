@@ -7,7 +7,7 @@ RemoveFile(InputFile="Results/Test_WriteDateValue_Day_HeaderComments_out.dv",IfN
 NewPatternTimeSeries(Alias="MyLoc",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 # Uncomment the following command to regenerate the expected results file:
 # - don't specify WriteHeaderComments because the default is Full
-WriteDateValue(OutputFile="ExpectedResults\Test_WriteDateValue_Day_HeaderComments_out.dv",HeaderComments="Test comment 1.\nTest comment 2.\nTest comment 3.")
+#WriteDateValue(OutputFile="ExpectedResults\Test_WriteDateValue_Day_HeaderComments_out.dv",HeaderComments="Test comment 1.\nTest comment 2.\nTest comment 3.")
 # Generate new output...
 WriteDateValue(OutputFile="Results/Test_WriteDateValue_Day_HeaderComments_out.dv",HeaderComments="Test comment 1.\nTest comment 2.\nTest comment 3.")
 # Do regression comparison:
