@@ -5,9 +5,13 @@
 StartLog(LogFile="Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch.TSTool.log")
 RemoveFile(InputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out.txt",IfNotFound=Ignore)
 SetWorkingDir(WorkingDir="${TempDir}",RunMode=GUIAndBatch)
-# Uncomment the following two commands to regenerate the expected results file.
+# Uncomment the following two commands to regenerate the expected results file:
+# - replace the specific user name with generic XXX so that the test passes for different users
 # WritePropertiesToFile(OutputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out.txt",IncludeProperties="WorkingDir",FileFormat=NameValue)
-# Generate new output...
+TextEdit(InputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out.txt",SearchFor="Users.*AppData",ReplaceWith="Users/XXX/AppData",OutputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out3.txt")
+# Generate new output:
+# - replace the specific user name with generic XXX so that the test passes for different users
 WritePropertiesToFile(OutputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out.txt",IncludeProperties="WorkingDir",FileFormat=NameValue)
-# Do regression comparison...
-CompareFiles(InputFile1="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out.txt",InputFile2="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out.txt",IfDifferent=Warn)
+TextEdit(InputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out.txt",SearchFor="Users.*AppData",ReplaceWith="Users/XXX/AppData",OutputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out2.txt")
+# Do regression comparison.
+CompareFiles(InputFile1="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out2.txt",InputFile2="${InitialWorkingDir}/Results/Test_SetWorkingDir_Windows_Temp_GUIAndBatch_out3.txt",IfDifferent=Warn)

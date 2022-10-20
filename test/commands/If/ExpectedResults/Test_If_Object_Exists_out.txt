@@ -1,0 +1,4 @@
+ObjectExists=true
+MissingObjectExists=false
+ObjectDoesNotExist=false
+MissingObjectDoesNotExist=true

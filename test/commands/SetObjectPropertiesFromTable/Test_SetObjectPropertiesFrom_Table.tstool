@@ -1,0 +1,17 @@
+# Test setting an object's properties from a table:
+# - use GeoJSON input file
+# - set a few population values for municipalities
+StartLog(LogFile="Results/Test_SetObjectPropertiesFromTable.tstool.log")
+RemoveFile(InputFile="Results/Test_SetObjectPropertiesFromTable_out.csv",IfNotFound=Ignore)
+# Create the object from the GeoJSON file.
+NewObject(ObjectID="TestObject",InputFile="../NewObject/Data/co-municipalities.geojson")
+ReadTableFromDelimitedFile(TableID="TestTable",InputFile="Data\table.csv")
+# Set values in the object from a table.
+SetDebugLevel(LogFileLevel=2)
+SetObjectPropertiesFromTable(ObjectID="TestObject",TableID="TestTable",MatchMap="OWF_ID:features.properties.OWF_ID",PropertyMap="Population:features.properties.Population")
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults\Test_SetObjectPropertiesFromTable_out.geojson")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results\Test_SetObjectPropertiesFromTable_out.geojson")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_SetObjectPropertiesFromTable_out.geojson",InputFile2="Results/Test_SetObjectPropertiesFromTable_out.geojson",IfDifferent=Warn)

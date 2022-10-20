@@ -1,0 +1,10 @@
+# Test comparing two simple tables where one is empty:
+# - second table is empty
+# @expectedStatus Warning
+StartLog(LogFile="Results/Test_CompareTables_EmptyTable2_Warn.TSTool.log")
+RemoveFile(InputFile="Results/Test_CompareTables_EmptyTable2_Warn_out.html",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="table1-empty",InputFile="Data\table1-empty.csv")
+ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
+# Uncomment to regenerate the expected results.
+# Generate the results.
+CompareTables(Table1ID="table1",Table2ID="table1-empty",NewTableID="comparison",OutputFile="Results/Test_CompareTables_EmptyTable2_Warn_out.html",IfDifferent=Warn)

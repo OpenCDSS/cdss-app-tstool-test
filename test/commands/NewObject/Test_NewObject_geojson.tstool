@@ -1,0 +1,10 @@
+# Test creating a new object:
+# - use GeoJSON input file
+StartLog(LogFile="Results/Test_NewObject.tstool.log")
+RemoveFile(InputFile="Results/Test_NewObject_out.csv",IfNotFound=Ignore)
+NewObject(ObjectID="TestObject",InputFile="Data\co-municipalities.geojson")
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults\Test_NewObject_out.geojson")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results\Test_NewObject_out.geojson")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_NewObject_out.geojson",InputFile2="Results/Test_NewObject_out.geojson",IfDifferent=Warn)

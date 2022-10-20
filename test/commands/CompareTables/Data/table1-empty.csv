@@ -1,0 +1,4 @@
+#
+# Simple table for testing:
+# - this is an empty 'table1'
+"Date/time","ValueInt","ValueFloat","ValueString"

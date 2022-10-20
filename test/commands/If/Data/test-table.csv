@@ -1,0 +1,5 @@
+# Test table data.
+"Integer","Float","Text"
+1,1.0,"String1"
+2,2.0,"String2"
+3,3.0,"String3"
