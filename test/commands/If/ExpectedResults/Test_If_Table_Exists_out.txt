@@ -1,0 +1,4 @@
+TableExists=true
+MissingTableExists=false
+TableDoesNotExist=false
+MissingTableDoesNotExist=true

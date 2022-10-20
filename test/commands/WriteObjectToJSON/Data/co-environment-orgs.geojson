@@ -1,0 +1,226 @@
+{
+  "type": "FeatureCollection",
+  "bbox": [-105.257641, 40.402273, -104.558258, 40.805091],
+  "features": [
+      {
+      "type": "Feature",
+      "bbox": [-105.071971, 40.596537, -105.071971, 40.596537],
+      "properties": {
+        "Organization": "Coalition for the Poudre River Watershed",
+        "OrganizationType": "Nonprofit",
+        "Description": "Improve and maintain the ecolgical health of the Poudre River watershed",
+        "Programs": "Restoration",
+        "Website": "https://www.poudrewatershed.org",
+        "InBasin": "Yes",
+        "Longitude": -105.071971,
+        "Latitude": 40.596537,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "",
+        "Notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.071971, 40.596537]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-104.558258, 40.407222, -104.558258, 40.407222],
+      "properties": {
+        "Organization": "Colorado Water Trust",
+        "OrganizationType": "Nonprofit",
+        "Description": "Restore flow to Colorado\u0027s rivers in need.",
+        "Programs": "Restoration",
+        "Website": "https://coloradowatertrust.org",
+        "InBasin": "No",
+        "Longitude": -104.558258,
+        "Latitude": 40.407222,
+        "LongitudeMain": -104.976869,
+        "LatitudeMain": 39.764793,
+        "WebsiteMain": "",
+        "Notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-104.558258, 40.407222]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.019846, 40.556622, -105.019846, 40.556622],
+      "properties": {
+        "Organization": "CSU Environmental Learning Center",
+        "OrganizationType": "University",
+        "Description": "Environmental learning center",
+        "Programs": "Natural resources documentation",
+        "Website": "https://warnercnr.colostate.edu/elc/",
+        "InBasin": "Yes",
+        "Longitude": -105.019846,
+        "Latitude": 40.556622,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "",
+        "Notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.019846, 40.556622]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.028807, 40.562765, -105.028807, 40.562765],
+      "properties": {
+        "Organization": "Ducks Unlimited",
+        "OrganizationType": "Nonprofit",
+        "Description": "Conservation and restoration of waterfowl habitat.",
+        "Programs": "Habitate conservation",
+        "Website": "https://www.fortcollinsdu.org/",
+        "InBasin": "Yes",
+        "Longitude": -105.028807,
+        "Latitude": 40.562765,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "",
+        "Notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.028807, 40.562765]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.04508, 40.574539, -105.04508, 40.574539],
+      "properties": {
+        "Organization": "Fort Collins Natural Areas",
+        "OrganizationType": "City government",
+        "Description": "City department that manages natural areas",
+        "Programs": "Natural areas and open space, including Poudre River",
+        "Website": "https://www.fcgov.com/naturalareas/",
+        "InBasin": "Yes",
+        "Longitude": -105.04508,
+        "Latitude": 40.574539,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "",
+        "Notes": "Coordinates are Nix office."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.04508, 40.574539]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.07315, 40.53125, -105.07315, 40.53125],
+      "properties": {
+        "Organization": "Poudre Wilderness Volunteers",
+        "OrganizationType": "Nonprofit",
+        "Description": "Caring for Northern Colorado Wilderness.",
+        "Programs": "Hiking, riding, educating.",
+        "Website": "https://www.pwv.org/",
+        "InBasin": "Yes",
+        "Longitude": -105.07315,
+        "Latitude": 40.53125,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "",
+        "Notes": "PO Box 271921, Fort Collins, CO  80527"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.07315, 40.53125]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.112968, 40.402273, -105.112968, 40.402273],
+      "properties": {
+        "Organization": "Rocky Mountain Flycasters and Trout Unlimited",
+        "OrganizationType": "Nonprofit",
+        "Description": "Native trout restoration",
+        "Programs": "Native trout restoration",
+        "Website": "https://www.rockymtnflycasters.org/",
+        "InBasin": "Yes",
+        "Longitude": -105.112968,
+        "Latitude": 40.402273,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "",
+        "Notes": "Coordinates are Loveland office."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.112968, 40.402273]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.076746, 40.595181, -105.076746, 40.595181],
+      "properties": {
+        "Organization": "Save the Poudre",
+        "OrganizationType": "Nonprofit",
+        "Description": "Opposes water development projects on the Poudre",
+        "Programs": "River restoration, oppose water development projects",
+        "Website": "http://www.savethepoudre.org",
+        "InBasin": "Yes",
+        "Longitude": -105.076746,
+        "Latitude": 40.595181,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "",
+        "Notes": "No office location so use Poudre at College."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.076746, 40.595181]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.257641, 40.805091, -105.257641, 40.805091],
+      "properties": {
+        "Organization": "South Platte Timelapse",
+        "OrganizationType": "Nonprofit, Research",
+        "Description": "Longterm image timeline of South Platte River",
+        "Programs": "Natural resources documentation",
+        "Website": "http://plattebasintimelapse.com/explore/galleries/north-fork-cache-la-poudre-river/",
+        "InBasin": "No",
+        "Longitude": -105.257641,
+        "Latitude": 40.805091,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "http://plattebasintimelapse.com/",
+        "Notes": ""
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.257641, 40.805091]
+      }
+    },
+    {
+      "type": "Feature",
+      "bbox": [-105.254758, 40.804403, -105.254758, 40.804403],
+      "properties": {
+        "Organization": "The Nature Conservancy",
+        "OrganizationType": "Nonprofit",
+        "Description": "National conservation organization.",
+        "Programs": "Phantom Canyon Preserve",
+        "Website": "https://www.nature.org/en-us/get-involved/how-to-help/places-we-protect/phantom-canyon-preserve/",
+        "InBasin": "Yes",
+        "Longitude": -105.254758,
+        "Latitude": 40.804403,
+        "LongitudeMain": null,
+        "LatitudeMain": null,
+        "WebsiteMain": "https://www.nature.org/en-us/",
+        "Notes": "National organization."
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-105.254758, 40.804403]
+      }
+    }
+  ]
+}

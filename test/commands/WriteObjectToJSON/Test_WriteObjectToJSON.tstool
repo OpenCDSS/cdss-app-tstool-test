@@ -1,0 +1,10 @@
+# Test writing an object to JSON:
+# - use GeoJSON input file
+StartLog(LogFile="Results/TestWriteObjectToJSON.tstool.log")
+RemoveFile(InputFile="Results/TestWriteObjectToJSON_out.csv",IfNotFound=Ignore)
+NewObject(ObjectID="TestObject",InputFile="Data\co-environment-orgs.geojson")
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults\TestWriteObjectToJSON_out.geojson")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results\TestWriteObjectToJSON_out.geojson")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\TestWriteObjectToJSON_out.geojson",InputFile2="Results/TestWriteObjectToJSON_out.geojson",IfDifferent=Warn)

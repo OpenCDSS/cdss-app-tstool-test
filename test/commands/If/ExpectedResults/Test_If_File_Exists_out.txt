@@ -1,0 +1,4 @@
+FileExists=true
+MissingFileExists=false
+FileDoesNotExist=false
+MissingFileDoesNotExist=true

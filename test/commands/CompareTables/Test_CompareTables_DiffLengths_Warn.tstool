@@ -1,0 +1,10 @@
+# Test comparing two simple tables of different lengths:
+# - second table has more rows
+# @expectedStatus Warning
+StartLog(LogFile="Results/Test_CompareTables_DiffLengths_Warn.TSTool.log")
+RemoveFile(InputFile="Results/Test_CompareTables_DiffLengths_Warn_out.html",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
+ReadTableFromDelimitedFile(TableID="table1-longer",InputFile="Data\table1-longer.csv")
+# Uncomment to regenerate the expected results.
+# Generate the results.
+CompareTables(Table1ID="table1",Table2ID="table1-longer",NewTableID="comparison",OutputFile="Results/Test_CompareTables_DiffLengths_Warn_out.html",IfDifferent=Warn)
