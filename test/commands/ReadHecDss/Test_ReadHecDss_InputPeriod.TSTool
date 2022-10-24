@@ -3,9 +3,9 @@
 #@os Windows
 StartLog(LogFile="Results/Test_ReadHecDss_InputPeriod.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadHecDss_InputPeriod_out.dv",IfNotFound=Ignore)
-CopyFile(InputFile="Data\sample.dss",OutputFile="Results\sample.dss")
-ReadHecDss(InputFile="Results\sample.dss",A="APART2",InputStart="1999-12-24",InputEnd="2000-01-10")
+CopyFile(InputFile="Data\sample.dss",TempFolder="Results",TempFileSuffix=".dss",TempFileProperty="TempDssFile")
+ReadHecDss(InputFile="${TempDssFile}",A="APART2",InputStart="1999-12-24",InputEnd="2000-01-10",CloseAfterReading="True")
 # Uncomment the following command to recreate the expected results
 # WriteDateValue(OutputFile="ExpectedResults\Test_ReadHecDss_InputPeriod_out.dv",Precision=2,MissingValue=NaN,TSList=AllMatchingTSID,TSID="APART2:BPART2.HEC-DSS.CPART2.1DAY.DAILY DATA")
-WriteDateValue(OutputFile="Results\Test_ReadHecDss_InputPeriod_out.dv",Precision=2,MissingValue=NaN,TSList=AllMatchingTSID,TSID="APART2:BPART2.HEC-DSS.CPART2.1DAY.DAILY DATA")
+WriteDateValue(TSList=AllMatchingTSID,TSID="APART2:BPART2.HEC-DSS.CPART2.1DAY.DAILY DATA",OutputFile="Results\Test_ReadHecDss_InputPeriod_out.dv",Precision=2,MissingValue=NaN)
 CompareFiles(InputFile1="ExpectedResults\Test_ReadHecDss_InputPeriod_out.dv",InputFile2="Results\Test_ReadHecDss_InputPeriod_out.dv",IfDifferent=Warn)

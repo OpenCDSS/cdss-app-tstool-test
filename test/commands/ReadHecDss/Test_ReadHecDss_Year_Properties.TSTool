@@ -4,8 +4,7 @@
 #@os Windows
 StartLog(LogFile="Results/Test_ReadHecDss_Year_Properties.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadHecDss_Year_Properties_out.dv",IfNotFound=Ignore)
-CopyFile(InputFile="Data\sample.dss",OutputFile="Results\sample.dss")
-SetProperty(PropertyName="TestInputFile",PropertyType=String,PropertyValue="Results\sample.dss")
+CopyFile(InputFile="Data\sample.dss",TempFolder="Results",TempFileSuffix=".dss",TempFileProperty="TempDssFile")
 SetProperty(PropertyName="TestA",PropertyType=String,PropertyValue="APART4")
 SetProperty(PropertyName="TestB",PropertyType=String,PropertyValue="BPART4")
 SetProperty(PropertyName="TestC",PropertyType=String,PropertyValue="CPART4")
@@ -17,9 +16,9 @@ SetProperty(PropertyName="TestPathname",PropertyType=String,PropertyValue="/APAR
 SetProperty(PropertyName="TestLocation",PropertyType=String,PropertyValue="TestLocation")
 SetProperty(PropertyName="TestLocation2",PropertyType=String,PropertyValue="TestLocation2")
 # Read by specifying properties for the individual parts
-ReadHecDss(InputFile="${TestInputFile}",A="${TestA}",B="${TestB}",C="${TestC}",E="${TestE}",F="${TestF}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Location="${TestLocation}")
+ReadHecDss(InputFile="${TempDssFile}",A="${TestA}",B="${TestB}",C="${TestC}",E="${TestE}",F="${TestF}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Location="${TestLocation}",CloseAfterReading="True")
 # Read by specifying properties for the full DSS path (overrides parts) - leave out A part to make sure override works
-ReadHecDss(InputFile="${TestInputFile}",B="${TestB}",C="${TestC}",E="${TestE}",F="${TestF}",Pathname="${TestPathname}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Location="${TestLocation2}")
+ReadHecDss(InputFile="${TempDssFile}",B="${TestB}",C="${TestC}",E="${TestE}",F="${TestF}",Pathname="${TestPathname}",InputStart="${TestInputStart}",InputEnd="${TestInputEnd}",Location="${TestLocation2}",CloseAfterReading="True")
 # Uncomment the following command to recreate the expected results
 # WriteDateValue(TSList=AllMatchingTSID,TSID="*1YEAR*",OutputFile="ExpectedResults\Test_ReadHecDss_Year_Properties_out.dv",Precision=2,MissingValue=NaN)
 WriteDateValue(TSList=AllMatchingTSID,TSID="*1YEAR*",OutputFile="Results\Test_ReadHecDss_Year_Properties_out.dv",Precision=2,MissingValue=NaN)

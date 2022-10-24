@@ -1,0 +1,28 @@
+# Test coping a file:
+# - specify the temporary folder
+# - multiple tests are defined for each temporary file command parameter
+StartLog(LogFile="Results/Test_CopyFile_TempFolder.TSTool.log")
+#
+# Test 1 - use the default temporary folder:
+# - specify the property to set, to trigger using a temporary file
+# - don't remove the ouput file since it is in the temp folder and will be cleaned up by the OS
+CopyFile(InputFile="Data/file.txt",TempFileProperty="TestTempFile1")
+Message(Message="Copied the file to:  ${TestTempFile1}")
+CompareFiles(InputFile1="Data\file.txt",InputFile2="${TestTempFile1}",IfDifferent=Fail)
+#
+# Test 2 - use the specified temporary folder:
+# - specify the property to set
+# - remove the ouput file so that it does not fill up the results folder
+CopyFile(InputFile="Data/file.txt",TempFolder="Results",TempFileProperty="TestTempFile2")
+Message(Message="Copied the file to:  ${TestTempFile2}")
+CompareFiles(InputFile1="Data\file.txt",InputFile2="${TestTempFile2}",IfDifferent=Fail)
+RemoveFile(InputFile="${TestTempFile2}",IfNotFound=Ignore)
+#
+# Test 3 - use the specified temporary folder:
+# - specify the property to set
+# - set the prefix and suffix
+# - remove the ouput file so that it does not fill up the results folder
+CopyFile(InputFile="Data/file.txt",TempFolder="Results",TempFilePrefix="test-",TempFileSuffix=".TMP",TempFileProperty="TestTempFile3")
+Message(Message="Copied the file to:  ${TestTempFile2}")
+CompareFiles(InputFile1="Data\file.txt",InputFile2="${TestTempFile2}",IfDifferent=Fail)
+RemoveFile(InputFile="${TestTempFile3}",IfNotFound=Ignore)

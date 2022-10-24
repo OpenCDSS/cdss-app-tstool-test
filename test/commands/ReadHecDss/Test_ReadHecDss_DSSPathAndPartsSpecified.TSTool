@@ -1,6 +1,11 @@
-# Test reading the HEC-DSS with DSS Path and Parts specified--should generate warning
+# Test reading the HEC-DSS with DSS Path and Parts specified
+# - because the path is specified the parts are ignored
 # - copy the DSS file so changes won't be saved in the original
 #@os Windows
 StartLog(LogFile="Results/Test_ReadHecDss_DSSPathAndPartsSpecified.TSTool.log")
-CopyFile(InputFile="Data\sample.dss",OutputFile="Results\sample.dss")
-ReadHecDss(InputFile="Results\sample.dss",B="OAK*",Pathname="/GREEN RIVER/WALNUT/PRECIP-INC/01MAY1992/1HOUR/OBS/")
+CopyFile(InputFile="Data\sample.dss",TempFolder="Results",TempFileSuffix=".dss",TempFileProperty="TempDssFile")
+ReadHecDss(InputFile="${TempDssFile}",B="OAK*",Pathname="/GREEN RIVER/WALNUT/PRECIP-INC/01MAY1992/1HOUR/OBS/",CloseAfterReading="True")
+# Uncomment the following command to recreate the expected results
+# WriteDateValue(TSList=AllMatchingTSID,TSID="*1Hour*",OutputFile="ExpectedResults\Test_ReadHecDss_DSSPathAndPartsSpecified_out.dv",Precision=2,MissingValue=NaN)
+WriteDateValue(TSList=AllMatchingTSID,TSID="*1Hour*",OutputFile="Results\Test_ReadHecDss_DSSPathAndPartsSpecified_out.dv",Precision=2,MissingValue=NaN)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadHecDss_DSSPathAndPartsSpecified_out.dv",InputFile2="Results\Test_ReadHecDss_DSSPathAndPartsSpecified_out.dv",IfDifferent=Warn)
