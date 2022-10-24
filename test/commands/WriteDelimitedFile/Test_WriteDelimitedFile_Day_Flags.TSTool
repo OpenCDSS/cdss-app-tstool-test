@@ -11,6 +11,6 @@ NewPatternTimeSeries(Alias="Loc2",NewTSID="Loc2..Precip.Day",Description="Test p
 # Uncomment the following command to regenerate the expected results file.
 # WriteDelimitedFile(OutputFile="ExpectedResults\Test_WriteDelimitedFile_Day_Flags_out.csv")
 # Generate new output.
-WriteDelimitedFile(OutputFile="Results/Test_WriteDelimitedFile_Day_Flags_out.csv")
+WriteDelimitedFile(OutputFile="Results/Test_WriteDelimitedFile_Day_Flags_out.csv",DataFlagColumns="%L_%T_flag")
 # Do regression comparison.
 CompareFiles(InputFile1="ExpectedResults\Test_WriteDelimitedFile_Day_Flags_out.csv",InputFile2="Results/Test_WriteDelimitedFile_Day_Flags_out.csv",IfDifferent=Warn)
