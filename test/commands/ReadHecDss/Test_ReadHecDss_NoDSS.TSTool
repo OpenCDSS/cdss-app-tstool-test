@@ -1,4 +1,6 @@
-# Test reading non-existent DSS file.
+# Test reading non-existent DSS file:
+# - should generate a warning in discovery mode
+# - should generate a failure when run
 #@os Windows
 #
 #@expectedStatus Failure

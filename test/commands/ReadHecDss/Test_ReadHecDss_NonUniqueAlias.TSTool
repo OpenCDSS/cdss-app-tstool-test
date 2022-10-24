@@ -1,9 +1,10 @@
-# Test reading the HEC-DSS sample data file and assign non-unique aliases--should fail
+# Test reading the HEC-DSS sample data file and assign non-unique aliases
+# - should generate a warning
 # - copy the DSS file so changes are not saved in original
 #@os Windows
 #
 #@expectedStatus Warning
 #
 StartLog(LogFile="Results/Test_ReadHecDss_NonUniqueAlias.TSTool.log")
-CopyFile(InputFile="Data\sample.dss",OutputFile="Results\sample.dss")
-ReadHecDss(InputFile="Results\sample.dss",B="OAK*",Alias="notUnique")
+CopyFile(InputFile="Data\sample.dss",TempFolder="Results",TempFileSuffix=".dss",TempFileProperty="TempDssFile")
+ReadHecDss(InputFile="${TempDssFile}",B="OAK*",Alias="notUnique",CloseAfterReading="True")

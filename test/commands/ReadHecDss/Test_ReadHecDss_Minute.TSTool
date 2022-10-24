@@ -4,8 +4,8 @@
 #@os Windows
 StartLog(LogFile="Results/Test_ReadHecDss_Minute.TSTool.log")
 RemoveFile(InputFile="Results\Test_ReadHecDss_Minute_out.dv",IfNotFound=Ignore)
-CopyFile(InputFile="Data\Test_WriteHecDss_Minute_out.dss",OutputFile="Results\Test_WriteHecDss_Minute_out.dss",IfInputNotFound=Fail)
-ReadHecDss(InputFile="Results\Test_WriteHecDss_Minute_out.dss")
+CopyFile(InputFile="Data\Test_WriteHecDss_Minute_out.dss",TempFolder="Results",TempFileSuffix=".dss",TempFileProperty="TempDssFile",IfInputNotFound=Fail)
+ReadHecDss(InputFile="${TempDssFile}",CloseAfterReading="True")
 # Uncomment the following 3 commands to recreate the expected results
 # WriteDateValue(TSList=AllMatchingTSID,TSID="*20MIN*",OutputFile="ExpectedResults\Test_ReadHecDss_Minute_20MIN_out.dv",Precision=2,MissingValue=NaN)
 # WriteDateValue(TSList=AllMatchingTSID,TSID="*15MIN*",OutputFile="ExpectedResults\Test_ReadHecDss_Minute_15MIN_out.dv",Precision=2,MissingValue=NaN)
