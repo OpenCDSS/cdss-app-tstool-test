@@ -22,7 +22,7 @@ RemoveFile(InputFile="${TestTempFile2}",IfNotFound=Ignore)
 # - specify the property to set
 # - set the prefix and suffix
 # - remove the ouput file so that it does not fill up the results folder
-CopyFile(InputFile="Data/file.txt",TempFolder="Results",TempFilePrefix="test-",TempFileSuffix=".TMP",TempFileProperty="TestTempFile3")
+CopyFile(InputFile="Data/file.txt",TempFolder="Results",TempFilePrefix="test-",TempFileSuffix=".TMP",TempFileProperty="TestTempFile2")
 Message(Message="Copied the file to:  ${TestTempFile2}")
 CompareFiles(InputFile1="Data\file.txt",InputFile2="${TestTempFile2}",IfDifferent=Fail)
 RemoveFile(InputFile="${TestTempFile3}",IfNotFound=Ignore)
