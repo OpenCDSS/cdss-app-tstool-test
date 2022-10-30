@@ -1,6 +1,7 @@
 # Test cumulate with daily time series using parameter values:
-#  Reset=01-01
-#  MinimumSampleSize=300
+# - Reset=01-01
+# - MinimumSampleSize=300
+# - reset value is 0, matching legacy behavior
 StartLog(LogFile="Results/Test_Cumulate_Day_Reset=01-01_MinimumSampleSize.TSTool.log")
 RemoveFile(InputFile="Results/Test_Cumulate_Day_Reset=01-01_MinimumSampleSize_out.dv",IfNotFound=Ignore)
 # Define data with no missing values
@@ -12,7 +13,7 @@ ReplaceValue(TSList=AllMatchingTSID,TSID="ts1",MinValue=-100,MaxValue=100,Action
 Copy(TSID="ts1",NewTSID="copy-ts1...Day",Alias="copy-ts1")
 Copy(TSID="ts2",NewTSID="copy-ts2...Day",Alias="copy-ts2")
 # Now cumulate the time series
-Cumulate(TSList=AllMatchingTSID,TSID="ts*",Reset="01-01",MinimumSampleSize=320)
+Cumulate(TSList=AllMatchingTSID,TSID="ts*",Reset="01-01",ResetValue=0,MinimumSampleSize=320)
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_Cumulate_Day_Reset=01-01_MinimumSampleSize_out.dv")
 WriteDateValue(OutputFile="Results/Test_Cumulate_Day_Reset=01-01_MinimumSampleSize_out.dv")

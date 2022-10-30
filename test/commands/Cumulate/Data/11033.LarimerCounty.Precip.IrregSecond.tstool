@@ -1,0 +1,5 @@
+# Read irregular interval test data from the following:
+# - read data from the Larimer County flood warning system
+# - should not need to run again
+# - save the data file in the repo to prevent changes
+WebGet(URI="https://larimerco-ns5.trilynx-novastar.systems/novastar/data/api/v1/ts?locId=11023&dataType=Precip&dataInterval=IrregSecond&format=csv&periodStart=2018-10-01T00:00:00&periodEnd=2022-09-30T00:00:00",LocalFile="11033.LarimerCounty.Precip.IrregSecond.csv")

@@ -1,0 +1,28 @@
+# Test cumulate with monthly time series:
+#  - Reset=01 (January is the first month in the year)
+#  - use different input time series and command parameters
+StartLog(LogFile="Results/Test_Cumulate_Month_Reset_01.TSTool.log")
+RemoveFile(InputFile="Results/Test_Cumulate_Month_Reset_01_out.dv",IfNotFound=Ignore)
+NewPatternTimeSeries(Alias="ts1-has-missing",NewTSID="ts1...Month",Description="test data 1",SetStart="2000-01",SetEnd="2013-05",MissingValue=NaN,PatternValues="1,2,3,2,1,NaN,5,1,NaN,NaN,NaN,1,3,5")
+NewPatternTimeSeries(Alias="ts2-has-missing",NewTSID="ts2...Month",Description="test data 2",SetStart="2000-01",SetEnd="2013-05",MissingValue=NaN,PatternValues="1,2,3,2,1,NaN,5,1,NaN,NaN,NaN,1,3,5")
+NewPatternTimeSeries(Alias="ts3-no-missing",NewTSID="ts3...Month",Description="test data 3",SetStart="2002-01",SetEnd="2013-07",MissingValue=NaN,PatternValues="1,2,3,2,1,4,5,1,3,7,9,1,3,5")
+NewPatternTimeSeries(Alias="ts4-has-missing",NewTSID="ts4...Month",Description="test data 4",SetStart="2000-01",SetEnd="2013-05",MissingValue=NaN,PatternValues="1,2,3,2,1,NaN,5,1,NaN,NaN,NaN,1,3,5")
+NewPatternTimeSeries(Alias="ts5-has-missing",NewTSID="ts5...Month",Description="test data 5",SetStart="2000-01",SetEnd="2013-05",MissingValue=NaN,PatternValues="1,2,3,2,1,NaN,5,1,NaN,NaN,NaN,1,3,5")
+# Create copies of the original data to make it easier to review the test.
+Copy(TSID="ts1-has-missing",NewTSID="ts1-cumulative...Month",Alias="ts1-out-has-missing")
+Copy(TSID="ts2-has-missing",NewTSID="ts2-cumulative...Month",Alias="ts2-out-has-missing-forward")
+Copy(TSID="ts3-no-missing",NewTSID="ts3-cumulative...Month",Alias="ts3-out-no-missing")
+Copy(TSID="ts4-has-missing",NewTSID="ts4-cumulative...Month",Alias="ts4-out-has-missing-insert")
+Copy(TSID="ts5-has-missing",NewTSID="ts5-cumulative...Month",Alias="ts5-out-has-missing-forward-insert")
+# Now cumulate the time series:
+# - ts1 and ts2 are the same except use carry forward on ts2
+Cumulate(TSList=AllMatchingTSID,TSID="ts1-out-has-missing",Reset="01")
+Cumulate(TSList=AllMatchingTSID,TSID="ts2-out-has-missing-forward",HandleMissingHow=CarryForwardIfMissing,Reset="01")
+Cumulate(TSList=AllMatchingTSID,TSID="ts3-out-no-missing",Reset="01")
+Cumulate(TSList=AllMatchingTSID,TSID="ts4-out-has-missing-insert",Reset="01",InsertResetPoint=True)
+Cumulate(TSList=AllMatchingTSID,TSID="ts5-out-has-missing-forward-insert",HandleMissingHow=CarryForwardIfMissing,Reset="01",InsertResetPoint=True)
+SortTimeSeries(TSIDFormat="AliasTSID")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_Cumulate_Month_Reset_01_out.dv")
+WriteDateValue(OutputFile="Results/Test_Cumulate_Month_Reset_01_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_Cumulate_Month_Reset_01_out.dv",InputFile2="Results/Test_Cumulate_Month_Reset_01_out.dv",IfDifferent=Warn)

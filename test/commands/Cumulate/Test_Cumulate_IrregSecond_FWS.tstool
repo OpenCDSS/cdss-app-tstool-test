@@ -1,0 +1,16 @@
+# Test cumulate with IrregSecond time series using parameter values:
+# - cumulate over the full period
+# - carry forward if missing
+# - use precipitation increment data from the Larimer County Flood warning system
+StartLog(LogFile="Results/Test_Cumulate_IrregSecond_FWS.TSTool.log")
+RemoveFile(InputFile="Results/Test_Cumulate_IrregSecond_FWS_out.dv",IfNotFound=Ignore)
+# Read the input data.
+ReadDelimitedFile(InputFile="Data\11033.LarimerCounty.Precip.IrregSecond.csv",Delimiter=",",ColumnNames="FC[1:4]",DateTimeColumn="dateTime",ValueColumn="value",FlagColumn="flag",LocationID="11033",Provider="LarimerCounty",DataType="Precip",Interval=IrregSecond,Units="in",Alias="%L-%T")
+# Create a copy of the original data to make it easier to review test.
+Copy(TSID="11033-Precip",NewTSID="LarimerCounty..Precip.IrregSecond.cumulative",Alias="11033-Precip-Cumulative")
+# Now cumulate the time series
+Cumulate(TSList=AllMatchingTSID,TSID="11033-Precip-Cumulative",HandleMissingHow=CarryForwardIfMissing)
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_Cumulate_IrregSecond_FWS_out.dv")
+WriteDateValue(OutputFile="Results/Test_Cumulate_IrregSecond_FWS_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_Cumulate_IrregSecond_FWS_out.dv",InputFile2="Results/Test_Cumulate_IrregSecond_FWS_out.dv",IfDifferent=Warn)
