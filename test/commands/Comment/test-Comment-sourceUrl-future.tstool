@@ -1,0 +1,14 @@
+StartLog(LogFile="Results/test-Comment-sourceUrl-future.tstool.log")
+# Test the annotation versioning feature:
+# - use @sourceUrl and @version
+# - set a version in the future
+# - testing requires temporarily editing the local command file in TSTool to use an
+#   older version and date and then using the Tools/Commands menus to check for an update
+#   (do not save these changes)
+# - also test other annotations related to command file metadata and documentation
+#
+#@author Steve Malers
+#@version 9.9.9
+#@versionDate 2050-01-01
+#@sourceUrl https://github.com/OpenCDSS/cdss-app-tstool-test/tree/master/test/commands/Comment/test-Comment-sourceUrl-future.tstool
+#@docUrl https://github.com/OpenCDSS/cdss-app-tstool-test/tree/master/test/commands/Comment/test-Comment-sourceUrl-future.tstool.md
