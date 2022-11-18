@@ -6,9 +6,11 @@ StartLog(LogFile="Results/test-Comment-sourceUrl-future.tstool.log")
 #   older version and date and then using the Tools/Commands menus to check for an update
 #   (do not save these changes)
 # - also test other annotations related to command file metadata and documentation
+# - set to read only because in most cases don't want changes to be saved
 #
+#@readOnly
 #@author Steve Malers
 #@version 9.9.9
 #@versionDate 2050-01-01
-#@sourceUrl https://github.com/OpenCDSS/cdss-app-tstool-test/tree/master/test/commands/Comment/test-Comment-sourceUrl-future.tstool
+#@sourceUrl https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/Comment/test-Comment-sourceUrl-future.tstool
 #@docUrl https://github.com/OpenCDSS/cdss-app-tstool-test/tree/master/test/commands/Comment/test-Comment-sourceUrl-future.tstool.md
