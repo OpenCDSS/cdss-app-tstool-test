@@ -1,0 +1,18 @@
+# Test setting an object's properties:
+# - use a simple JSON input file with root level dictionary
+# - set values of each primitive type
+StartLog(LogFile="Results/Test_SetObjectProperty_Dataset.tstool.log")
+# Create the object from the JSON file.
+NewObject(ObjectID="TestObject",InputFile="Data/dataset.json")
+# Set values in the object for different types.
+SetDebugLevel(LogFileLevel=2)
+SetProperty(PropertyName="TestIssued",PropertyType=DateTime,PropertyValue="2022-12-31")
+SetObjectProperty(ObjectID="TestObject",ObjectProperty="issued",Property="TestIssued",SetAsString=True)
+SetProperty(PropertyName="TestPublisherName",PropertyType=String,PropertyValue="Open Water Foundation (new value for set)")
+SetObjectProperty(ObjectID="TestObject",ObjectProperty="publisher.name",Property="TestPublisherName")
+SetDebugLevel(LogFileLevel=0)
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults\Test_SetObjectProperty_Dataset_out.json")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results\Test_SetObjectProperty_Dataset_out.json")
+# Comparison the results with expected.
+CompareFiles(InputFile1="ExpectedResults\Test_SetObjectProperty_Dataset_out.json",InputFile2="Results/Test_SetObjectProperty_Dataset_out.json",IfDifferent=Warn)

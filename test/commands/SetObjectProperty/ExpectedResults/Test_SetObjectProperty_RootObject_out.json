@@ -1,0 +1,9 @@
+{
+  "float" : 2.345,
+  "int" : 2345.0,
+  "bool" : false,
+  "string" : "xyz",
+  "date" : "2022-11",
+  "datetime" : "2022-11-01 02:02:02",
+  "nullString" : null
+}

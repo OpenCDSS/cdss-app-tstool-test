@@ -1,0 +1,27 @@
+{
+  "array" : [ {
+    "float" : 1.234,
+    "int" : 1234,
+    "bool" : true,
+    "string" : "abcde",
+    "date" : "String after set",
+    "datetime" : "String after set",
+    "nullString" : null
+  }, {
+    "float" : 1.234,
+    "int" : 1234,
+    "bool" : true,
+    "string" : "abcde",
+    "date" : "String after set",
+    "datetime" : "String after set",
+    "nullString" : null
+  }, {
+    "float" : 1.234,
+    "int" : 1234,
+    "bool" : true,
+    "string" : "abcde",
+    "date" : "String after set",
+    "datetime" : "String after set",
+    "nullString" : null
+  } ]
+}

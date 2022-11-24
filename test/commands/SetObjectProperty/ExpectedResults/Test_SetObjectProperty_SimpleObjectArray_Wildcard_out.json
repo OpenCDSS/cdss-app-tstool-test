@@ -1,0 +1,27 @@
+{
+  "array" : [ {
+    "float" : "String after set",
+    "int" : "String after set",
+    "bool" : "String after set",
+    "string" : "String after set",
+    "date" : "String after set",
+    "datetime" : "String after set",
+    "nullString" : "String after set"
+  }, {
+    "float" : "String after set",
+    "int" : "String after set",
+    "bool" : "String after set",
+    "string" : "String after set",
+    "date" : "String after set",
+    "datetime" : "String after set",
+    "nullString" : "String after set"
+  }, {
+    "float" : "String after set",
+    "int" : "String after set",
+    "bool" : "String after set",
+    "string" : "String after set",
+    "date" : "String after set",
+    "datetime" : "String after set",
+    "nullString" : "String after set"
+  } ]
+}
