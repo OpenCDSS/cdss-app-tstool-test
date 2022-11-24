@@ -1,0 +1,16 @@
+# Test setting an object's properties:
+# - use a simple JSON input file with root level dictionary
+# - set values of each primitive type
+StartLog(LogFile="Results/Test_SetObjectProperty_SimpleStringArray.tstool.log")
+# Create the object from the JSON file.
+NewObject(ObjectID="TestObject",InputFile="Data\simple-string-array.json")
+# Set values in the object for different types.
+SetDebugLevel(LogFileLevel=2)
+SetProperty(PropertyName="TestPropertyString",PropertyType=String,PropertyValue="String1 after set")
+SetObjectProperty(ObjectID="TestObject",ObjectProperty="array.*",Property="TestPropertyString")
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults\Test_SetObjectProperty_SimpleStringArray_out.json")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results\Test_SetObjectProperty_SimpleStringArray_out.json")
+# Comparison the results with expected.
+CompareFiles(InputFile1="ExpectedResults\Test_SetObjectProperty_SimpleStringArray_out.json",InputFile2="Results/Test_SetObjectProperty_SimpleStringArray_out.json",IfDifferent=Warn)
