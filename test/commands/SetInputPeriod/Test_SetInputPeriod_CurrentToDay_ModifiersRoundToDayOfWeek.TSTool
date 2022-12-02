@@ -1,0 +1,16 @@
+# Test setting the input period to minute precision using current time
+# - round to even 15 minutes
+# - it is difficult to compare to expected results so just make sure it does not crash
+StartLog(LogFile="Results/Test_SetInputPeriod_CurrentToDay_ModifiersRoundToDayOfWeek.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetInputPeriod_CurrentToDay_ModifiersRoundToDayOfWeek_out.txt",IfNotFound=Ignore)
+# Use the following to test a start before the current date and end after the current date - run after a Monday.
+SetInputPeriod(InputStart="CurrentToDay.RoundDirection(<).RoundToDayOfWeek(Monday)",InputEnd="CurrentToDay.RoundDirection(>).RoundToDayOfWeek(Sunday)")
+# Use the following to test a start equal to the current date - run on same day as requested.
+SetInputPeriod(InputStart="CurrentToDay.RoundDirection(<).RoundToDayOfWeek(Tuesday)",InputEnd="CurrentToDay.RoundDirection(>).RoundToDayOfWeek(Tuesday)")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetInputPeriod_CurrentToDay_ModifiersRoundToDayOfWeek_out.txt",IncludeProperties="InputStart,InputEnd",FileFormat=NameValue)
+# Generate new output.
+WritePropertiesToFile(OutputFile="Results/Test_SetInputPeriod_CurrentToDay_ModifiersRoundToDayOfWeek_out.txt",IncludeProperties="InputStart,InputEnd",FileFormat=NameValue)
+# Do regression comparison (allow 2 lines to be different because system time
+# will be different than when expected results were written).
+# CompareFiles(InputFile1="ExpectedResults\Test_SetInputPeriod_CurrentToDay_ModifiersRoundToDayOfWeek_out.txt",InputFile2="Results/Test_SetInputPeriod_CurrentToDay_ModifiersRoundToDayOfWeek_out.txt",AllowedDiff="2",IfDifferent=Warn)

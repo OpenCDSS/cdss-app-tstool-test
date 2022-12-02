@@ -1,0 +1,13 @@
+# Test creating a substring from a string column:
+# - extract from the end using negative index values
+StartLog(LogFile="Results/Test_ManipulateTableString_Columns_Substring_End.TSTool.log")
+RemoveFile(InputFile="Results/Test_ManipulateTableString_Columns_Substring_End_out.dv",IfNotFound=Ignore)
+# Generate some table data but converting time series to table
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata.csv")
+# Manipulate strings in the table
+ManipulateTableString(TableID="Table1",InputColumn1="String1",Operator="Substring",InputValue2="-2",OutputColumn="String3")
+ManipulateTableString(TableID="Table1",InputColumn1="String1",Operator="Substring",InputValue2="-3",InputValue3="-2",OutputColumn="String4")
+# Uncomment the following command to regenerate expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/Test_ManipulateTableString_Columns_Substring_End_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/Test_ManipulateTableString_Columns_Substring_End_out.csv")
+CompareFiles(InputFile1="ExpectedResults/Test_ManipulateTableString_Columns_Substring_End_out.csv",InputFile2="Results/Test_ManipulateTableString_Columns_Substring_End_out.csv",IfDifferent=Warn)
