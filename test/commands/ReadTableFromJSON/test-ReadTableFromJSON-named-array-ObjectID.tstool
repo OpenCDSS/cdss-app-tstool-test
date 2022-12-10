@@ -1,0 +1,13 @@
+# Test reading a table from a JSON object:
+# - read the object from a file, from the similar test
+# - named array - specify the name to read
+# - specify the array name
+StartLog(LogFile="Results/test-ReadTableFromJSON-named-array_ObjectID.TSTool.log")
+RemoveFile(InputFile="Results/test-ReadTableFromJSON-named-array_ObjectID-out.csv",IfNotFound=Ignore)
+NewObject(ObjectID="TestObjectID",InputFile="Data/named-array.json")
+ReadTableFromJSON(ObjectID="TestObjectID",TableID="Table1",ArrayName="data",BooleanColumns="string_bool",DateTimeColumns="string_datetime",DoubleColumns="string_double",IntegerColumns="string_int")
+# Uncomment the following to regenerate expected results
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/test-ReadTableFromJSON-named-array_ObjectID-out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/test-ReadTableFromJSON-named-array_ObjectID-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ReadTableFromJSON-named-array_ObjectID-out.csv",InputFile2="Results/test-ReadTableFromJSON-named-array_ObjectID-out.csv",IfDifferent=Warn)

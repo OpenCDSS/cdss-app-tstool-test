@@ -1,0 +1,13 @@
+# Test reading a JSON file:
+# - named array - specify the name to read
+# - also read a second file to append to the table
+# - specify the array name
+StartLog(LogFile="Results/test-ReadTableFromJSON-named-array-Append.TSTool.log")
+RemoveFile(InputFile="Results/test-ReadTableFromJSON-named-array-Append-out.csv",IfNotFound=Ignore)
+ReadTableFromJSON(InputFile="Data/named-array.json",TableID="Table1",ArrayName="data",BooleanColumns="string_bool",DateTimeColumns="string_datetime",DoubleColumns="string_double",IntegerColumns="string_int")
+ReadTableFromJSON(InputFile="Data/named-array-append.json",TableID="Table1",ArrayName="data",BooleanColumns="string_bool",DateTimeColumns="string_datetime",DoubleColumns="string_double",IntegerColumns="string_int",Append=True)
+# Uncomment the following to regenerate expected results
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/test-ReadTableFromJSON-named-array-Append-out.csv")
+# Generate the results.
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/test-ReadTableFromJSON-named-array-Append-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ReadTableFromJSON-named-array-Append-out.csv",InputFile2="Results/test-ReadTableFromJSON-named-array-Append-out.csv",IfDifferent=Warn)

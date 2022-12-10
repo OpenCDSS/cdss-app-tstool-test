@@ -3,7 +3,7 @@
 # - don't specify the array name (default is to use first found array)
 StartLog(LogFile="Results/test-ReadTableFromJSON-named-array-default.TSTool.log")
 RemoveFile(InputFile="Results/test-ReadTableFromJSON-named-array-default-out.csv",IfNotFound=Ignore)
-ReadTableFromJSON(TableID="Table1",InputFile="Data/named-array.json",BooleanColumns="string_bool",DateTimeColumns="string_datetime",DoubleColumns="string_double",IntegerColumns="string_int")
+ReadTableFromJSON(InputFile="Data/named-array.json",TableID="Table1",BooleanColumns="string_bool",DateTimeColumns="string_datetime",DoubleColumns="string_double",IntegerColumns="string_int")
 # Uncomment the following to regenerate expected results
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults/test-ReadTableFromJSON-named-array-default-out.csv")
 # Generate the results.
