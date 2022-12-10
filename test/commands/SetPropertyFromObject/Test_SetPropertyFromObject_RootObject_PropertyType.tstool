@@ -1,0 +1,21 @@
+# Test setting an properties from an object:
+# - use a simple JSON input file with root level dictionary
+# - set values of each primitive type
+# - convert strings to other property types
+StartLog(LogFile="Results/Test_SetPropertyFromObject_RootObject_PropertyType.tstool.log")
+# Create the object from the JSON file.
+NewObject(ObjectID="TestObject",InputFile="Data\simple-object-strings.json")
+# Set values in the object for different types.
+SetDebugLevel(LogFileLevel=2)
+SetPropertyFromObject(ObjectID="TestObject",ObjectProperty="float",PropertyName="TestPropertyDouble",PropertyType=double)
+SetPropertyFromObject(ObjectID="TestObject",ObjectProperty="int",PropertyName="TestPropertyInteger",PropertyType=integer)
+SetPropertyFromObject(ObjectID="TestObject",ObjectProperty="bool",PropertyName="TestPropertyBoolean",PropertyType=boolean)
+SetPropertyFromObject(ObjectID="TestObject",ObjectProperty="string",PropertyName="TestPropertyString",PropertyType=string)
+SetPropertyFromObject(ObjectID="TestObject",ObjectProperty="datetime",PropertyName="TestPropertyDateTime",PropertyType=datetime)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetPropertyFromObject_RootObject_PropertyType_out.txt",IncludeProperties="TestPropertyBoolean,TestPropertyDateTime,TestPropertyDouble,TestPropertyInteger,TestPropertyString",FileFormat=NameValue)
+# Generate new output...
+WritePropertiesToFile(OutputFile="Results/Test_SetPropertyFromObject_RootObject_PropertyType_out.txt",IncludeProperties="TestPropertyBoolean,TestPropertyDateTime,TestPropertyDouble,TestPropertyInteger,TestPropertyString",FileFormat=NameValue)
+# Do regression comparison...
+CompareFiles(InputFile1="ExpectedResults\Test_SetPropertyFromObject_RootObject_PropertyType_out.txt",InputFile2="Results/Test_SetPropertyFromObject_RootObject_PropertyType_out.txt",IfDifferent=Warn)

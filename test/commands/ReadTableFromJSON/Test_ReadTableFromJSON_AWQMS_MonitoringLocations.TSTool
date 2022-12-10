@@ -5,7 +5,7 @@
 # - also test DoubleColumns and IntegerColumns using Latitude and Longitude
 StartLog(LogFile="Results/Test_ReadTableFromJSON_AWQMS_MonitoringLocations.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromJSON_AWQMS_MonitoringLocations_out.csv",IfNotFound=Ignore)
-ReadTableFromJSON(TableID="Table1",InputFile="Data\wqx-monitoring-location-data-nice.json",DoubleColumns="Latitude,Longitude")
+ReadTableFromJSON(InputFile="Data\wqx-monitoring-location-data-nice.json",TableID="Table1",DoubleColumns="Latitude,Longitude")
 # Uncomment the following to regenerate expected results
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromJSON_AWQMS_MonitoringLocations_out.csv")
 # Generate the results.

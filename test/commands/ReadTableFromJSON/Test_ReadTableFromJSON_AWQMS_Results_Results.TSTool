@@ -4,7 +4,7 @@
 #   http://awqmsws.goldsystems.com/api/ResultsVer1?MonitoringLocationIdentifiersCsv=UPSTREAM&OrganizationIdentifiersCsv=AURORA_WQX
 StartLog(LogFile="Results/Test_ReadTableFromJSON_AWQMS_Results_Results.TSTool.log")
 RemoveFile(InputFile="Results/Test_ReadTableFromJSON_AWQMS_Results_Results_out.csv",IfNotFound=Ignore)
-ReadTableFromJSON(TableID="Table1",InputFile="Data\wqx-results-data-nice.json",ArrayName="Results")
+ReadTableFromJSON(InputFile="Data\wqx-results-data-nice.json",TableID="Table1",ArrayName="Results")
 # Uncomment the following to regenerate expected results
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_ReadTableFromJSON_AWQMS_Results_Results_out.csv")
 # Generate the results.

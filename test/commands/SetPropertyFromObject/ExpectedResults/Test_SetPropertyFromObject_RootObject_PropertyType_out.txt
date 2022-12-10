@@ -1,0 +1,5 @@
+TestPropertyBoolean=true
+TestPropertyDateTime="2022-10-01 01:01:01"
+TestPropertyDouble=1.234
+TestPropertyInteger=1234
+TestPropertyString="abcde"
