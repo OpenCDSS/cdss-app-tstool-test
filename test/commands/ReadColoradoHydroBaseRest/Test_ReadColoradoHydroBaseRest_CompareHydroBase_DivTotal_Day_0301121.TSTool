@@ -8,4 +8,4 @@ StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTot
 # - the first year is missing since no data in that year
 ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DivTotal",Interval="Day",Where1="StructureWDID;Matches;0301121",Alias="%L-WebService",InputStart="1971-11-01",InputEnd="1981-10-31",FillDivRecordsCarryForward=True,FillUsingDivComments=True)
 ReadHydroBase(DataStore="HydroBase",DataType="DivTotal",Interval="Day",Where1="Structure WDID;Matches;0301121",Alias="%L-Database",InputStart="1971-11-01",InputEnd="1981-10-31",FillDivRecordsCarryForward=True,FillUsingDivComments=True)
-CompareTimeSeries(TSID1="0301121-WebService",TSID2="0301121-Database",Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(TSID1="0301121-WebService",TSID2="0301121-Database",Tolerance=".01",IfDifferent=Warn)

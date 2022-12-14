@@ -15,4 +15,4 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="0300909.DWR.RelTotal.Month",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_RelTotal_Month_out.dv",Precision=2)
 WriteDateValue(TSList=LastMatchingTSID,TSID="0300909.DWR.RelTotal.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_RelTotal_Month_out.dv",Precision=2)
 # CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_RelTotal_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_RelTotal_Month_out.dv",IfDifferent=Warn)
-CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
+CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)

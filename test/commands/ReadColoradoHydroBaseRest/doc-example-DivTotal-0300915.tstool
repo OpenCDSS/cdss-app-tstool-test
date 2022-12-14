@@ -1,0 +1,29 @@
+StartLog(LogFile="Results/doc-example-DivTotal-0300915.tstool.log")
+# Example for the ReadColoradoHydroBaseRest documentation.
+#
+# 0300915 - CACHE LA POUDRE DITCH
+# ReadColoradoHydroBaseRest documentation - image 1 of carry forward explanation
+# Monthly, no filling.
+ReadHydroBase(DataStore="HydroBase",TSID="0300915.DWR.DivTotal.Month~HydroBase",Alias="%L-Database-NoFill",FillDivRecordsCarryForward=False)
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="0300915..DivTotal.Month~HydroBaseWeb",Alias="%L-Web-NoFill",FillDivRecordsCarryForward=False)
+# Monthly, with carry forward filling.
+ReadHydroBase(DataStore="HydroBase",TSID="0300915.DWR.DivTotal.Month~HydroBase",Alias="%L-Database-Forward")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="0300915..DivTotal.Month~HydroBaseWeb",Alias="%L-Web-Forward")
+#
+# Daily, no filling.
+ReadHydroBase(DataStore="HydroBase",TSID="0300915.DWR.DivTotal.Day~HydroBase",Alias="%L-Database-NoFill",FillDivRecordsCarryForward=False)
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="0300915..DivTotal.Day~HydroBaseWeb",Alias="%L-Web-NoFill",FillDivRecordsCarryForward=False)
+# Daily, with carry forward filling.
+ReadHydroBase(DataStore="HydroBase",TSID="0300915.DWR.DivTotal.Day~HydroBase",Alias="%L-Database-Forward")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="0300915..DivTotal.Day~HydroBaseWeb",Alias="%L-Web-Forward")
+# ===============================================
+# The following are the TSIDs used for the above.
+# 0300915 - CACHE LA POUDRE DITCH
+0300915.DWR.DivTotal.Month~HydroBase
+0300915.DWR.DivTotal.Month~HydroBaseWeb
+0300915.DWR.DivTotal.Day~HydroBase
+0300915.DWR.DivTotal.Day~HydroBaseWeb
+# ===============================================
+# The following are data for the above.
+ReadTableFromDataStore(DataStore="HydroBase",Sql="SELECT irr_year, amt_nov, amt_dec, amt_jan, amt_feb, amt_mar, amt_apr, amt_may, amt_jun, amt_jul, amt_aug, amt_sep, amt_oct from vw_CDSS_AnnualAmt WHERE wd = 3 and id = 915 ORDER BY irr_year",TableID="AnnualAmt")
+ReadTableFromDataStore(DataStore="HydroBase",Sql="SELECT * from vw_CDSS_DivRec_WaterClassTS_Day WHERE wdid = '0300915' AND wc_identifier LIKE '%Total%' ORDER BY data_meas_date",TableID="DivTotal")

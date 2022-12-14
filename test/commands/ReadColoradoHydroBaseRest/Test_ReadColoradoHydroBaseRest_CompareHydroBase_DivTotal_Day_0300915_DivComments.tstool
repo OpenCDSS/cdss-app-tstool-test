@@ -1,0 +1,12 @@
+StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day_0300915_DivComments.TSTool.log")
+# Test reading daily diversion record from REST web services and compare to HydroBase
+# - a similar test focuses on checking the web services
+# - since daily time series, fill carry forward should occur (see "c" flags)
+# - there should filled values at beginning and end of the irrigation years
+# - other missing values with diversion comments should be flagged with "notUsed" value
+# - read all data but only compare the time series from start to recent (but not current year),
+#   which allows the test to be run on relatively current HydroBase
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DivTotal",Interval="Day",Where1="StructureWDID;Matches;0300915",Alias="%L-WebService",FillUsingDivComments=True)
+ReadHydroBase(DataStore="HydroBase",DataType="DivTotal",Interval="Day",Where1="Structure WDID;Matches;0300915",Alias="%L-Database",FillUsingDivComments=True)
+#
+CompareTimeSeries(TSID1="0300915-WebService",TSID2="0300915-Database",Tolerance=".01",AnalysisEnd="2020-10-31",IfDifferent=Warn)
