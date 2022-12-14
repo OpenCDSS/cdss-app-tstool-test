@@ -4,7 +4,7 @@
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase - full irrigation year
-SetInputPeriod(InputStart="1949-11",InputEnd="2017-10")
+# SetInputPeriod(InputStart="1949-11",InputEnd="2017-10")
 0300915.DWR.DivTotal.Month~HydroBase
 0300915.DWR.DivTotal.Month~HydroBaseWeb
 # Make sure that enough data are available in the test data, and some missing
@@ -16,5 +16,6 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="0300915.DWR.DivTotal.Month",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",Precision=2)
 WriteDateValue(TSList=LastMatchingTSID,TSID="0300915.DWR.DivTotal.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",Precision=2)
 # CompareFiles(InputFile1="ExpectedResults/TestTSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Month_out.dv",IfDifferent=Warn)
-CompareTimeSeries(Tolerance=".01",IfDifferent=Warn)
+# Compare the full period up until a couple of years ago so that full period can be checked.
+CompareTimeSeries(Tolerance=".01",AnalysisEnd="2020-10-31",IfDifferent=Warn)
 # ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_cdss_AnnualAmt where wd = 3 and id = 915 order by irr_year",TableID="x")

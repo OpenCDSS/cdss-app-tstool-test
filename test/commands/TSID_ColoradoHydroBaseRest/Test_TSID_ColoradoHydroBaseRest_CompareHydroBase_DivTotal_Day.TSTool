@@ -3,7 +3,8 @@
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day.TSTool.log")
 RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day_out.dv",IfNotFound=Ignore)
 # Read the same time series from the web service and HydroBase
-SetInputPeriod(InputStart="1949-01-01",InputEnd="1952-12-31")
+# SetInputPeriod(InputStart="1949-01-01",InputEnd="1952-12-31")
+# SetInputPeriod(InputStart="1948-11-01",InputEnd="1952-10-31")
 0300915.DWR.DivTotal.Day~HydroBase
 0300915.DWR.DivTotal.Day~HydroBaseWeb
 # Make sure that enough data are available in the test data, and some missing
@@ -15,4 +16,6 @@ CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="0300915.DWR.DivTotal.Day",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day_out.dv",Precision=2)
 WriteDateValue(TSList=LastMatchingTSID,TSID="0300915.DWR.DivTotal.Day",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day_out.dv",Precision=2)
 #CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_DivTotal_Day_out.dv",IfDifferent=Warn)
-CompareTimeSeries(Tolerance=".01",WarnIfDifferent=True)
+# Compare the time series from start to a couple of years back,
+# which allows the full period to be compared.
+CompareTimeSeries(Tolerance=".01",AnalysisEnd="2020-10-31",IfDifferent=Warn)
