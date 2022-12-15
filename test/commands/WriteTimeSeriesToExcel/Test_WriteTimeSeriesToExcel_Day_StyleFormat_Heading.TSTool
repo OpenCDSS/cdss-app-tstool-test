@@ -39,6 +39,6 @@ WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeri
 WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Heading_contains_out.xlsx",Worksheet="DayInterval",ExcelAddress="A1",ColumnComment="${ts:Integer1} ${ts:Double1} ${ts:StringOne} ${ts:OneString}",ColumnConditionTableID="ConditionTable_contains",ColumnStyleTableID="StyleTable")
 WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Heading_startswith_out.xlsx",Worksheet="DayInterval",ExcelAddress="A1",ColumnComment="${ts:Integer1} ${ts:Double1} ${ts:StringOne} ${ts:OneString}",ColumnConditionTableID="ConditionTable_startswith",ColumnStyleTableID="StyleTable")
 WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Heading_endswith_out.xlsx",Worksheet="DayInterval",ExcelAddress="A1",ColumnComment="${ts:Integer1} ${ts:Double1} ${ts:StringOne} ${ts:OneString}",ColumnConditionTableID="ConditionTable_endswith",ColumnStyleTableID="StyleTable")
-SetDebugLevel(LogFileLevel=0)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # TODO SAM 2015-07-05 Do regression comparison...
 # CompareFiles(InputFile1="ExpectedResults/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Heading_out.dv",InputFile2="Results/Test_WriteTimeSeriesToExcel_Day_StyleFormat_Heading_out.dv",IfDifferent=Warn)

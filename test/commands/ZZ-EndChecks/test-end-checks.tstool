@@ -1,0 +1,12 @@
+StartLog(LogFile="results/test-end-checks.tstool.log")
+# Check that debug log levels are zero:
+# - otherwise debug is on and will slow down testing and create larger log files
+# - the following two commands are typically used, comment out so they don't impact this command file
+# SetDebugLevel(LogFileLevel=1)
+# SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
+If(Name="If_LogFile",Condition="${DebugLevelLogFile} != 0")
+Message(Message="Debug level for the log file is not 0.\nDebug is on.  Run scripts/find-debug-command-fils.bash to find the command file to fix.",CommandStatus=FAILURE)
+EndIf(Name="If_LogFile")
+If(Name="If_Screen",Condition="${DebugLevelScreen} != 0")
+Message(Message="Debug level for the screen is not 0.\nDebug is on.  Run scripts/find-debug-command-fils.bash to find the command file to fix.",CommandStatus=FAILURE)
+EndIf(Name="If_Screen")

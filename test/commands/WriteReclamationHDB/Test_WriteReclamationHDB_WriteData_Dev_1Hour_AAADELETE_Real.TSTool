@@ -26,7 +26,7 @@ NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.1Hour",Desc
 # First write the time series to the database...
 SetDebugLevel(LogFileLevel=1)
 WriteReclamationHDB(DataStore="hdbtest",SiteDataTypeID=100376,Agency="USBR",ValidationFlag="A",TimeZone="MST",WriteProcedure="WRITE_DATA")
-SetDebugLevel(LogFileLevel=0)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="1Hour",SiteDataTypeID=100376,Alias="FirstRead")
 # Compare the time series read as a time series with a time series created from SQL query output:
@@ -45,11 +45,12 @@ CompareTimeSeries(TSID1="FirstRead",TSID2="FirstReadFromTable",IfDifferent=Warn)
 # Start second pass (previous values x 10)...
 NewPatternTimeSeries(Alias="AAA_DELETE",NewTSID="AAA_DELETE.HDB.flow.1Hour",Description="AAA_DELETE",Units="cfs",PatternValues="55000,68000,75000,87000,105000,125000,135000,755000")
 # First write the time series to the database...
-SetDebugLevel(LogFileLevel=0)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 WriteReclamationHDB(DataStore="hdbtest",TSList=LastMatchingTSID,TSID="AAA_DELETE",SiteDataTypeID=100376,Agency="USBR",ValidationFlag="A",TimeZone="MST",WriteProcedure="WRITE_DATA")
 SetDebugLevel(LogFileLevel=1)
 # Now read the same time series from the database using the period that was written...
 ReadReclamationHDB(DataStore="hdbtest",Interval="1Hour",SiteDataTypeID=100376,Alias="SecondRead")
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # Compare the time series read as a time series with a time series created from SQL query output:
 # - allow 1 difference due to daylight saving gap
 ReadTableFromDataStore(DataStore="hdbtest",Sql="select * from R_HOUR where site_datatype_id = 100376 and end_date_time >= to_date('${InputStart}','YYYY-MM-DD HH24') and end_date_time <= to_date('${InputEnd}','YYYY-MM-DD HH24') order by start_date_time",TableID="r_hour2")

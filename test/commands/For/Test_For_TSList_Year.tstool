@@ -4,7 +4,7 @@ StartLog(LogFile="Results/Test_For_TSList_Year.TSTool.log")
 RemoveFile(InputFile="Results/Test_For_TSList_Year_out.txt",IfNotFound=Ignore)
 # Read the test time series data.
 ReadDateValue(InputFile="Data\test-year-data.dv")
-SetDebugLevel(LogFileLevel=1)
+# SetDebugLevel(LogFileLevel=1)
 For(Name="TestForTSList",IteratorProperty="Alias",IteratorValueProperty="${ts:alias}",TSList=AllMatchingTSID,TSID="ts2*",TimeSeriesPropertyMap="description:Description")
 Message(Message="Test logging Alias=${alias} Description=${description}",CommandStatus=SUCCESS)
 WritePropertiesToFile(OutputFile="Results/Test_For_TSList_Year_out.txt",IncludeProperties="Alias,Description",WriteMode=Append,FileFormat=NameTypeValue)

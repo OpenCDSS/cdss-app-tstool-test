@@ -10,7 +10,7 @@ SetProperty(PropertyName="TestIssued",PropertyType=DateTime,PropertyValue="2022-
 SetObjectProperty(ObjectID="TestObject",ObjectProperty="issued",Property="TestIssued",SetAsString=True)
 SetProperty(PropertyName="TestPublisherName",PropertyType=String,PropertyValue="Open Water Foundation (new value for set)")
 SetObjectProperty(ObjectID="TestObject",ObjectProperty="publisher.name",Property="TestPublisherName")
-SetDebugLevel(LogFileLevel=0)
+SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # Uncomment the following to generate the expected results.
 # WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults\Test_SetObjectProperty_Dataset_out.json")
 WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results\Test_SetObjectProperty_Dataset_out.json")
