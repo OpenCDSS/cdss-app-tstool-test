@@ -1,0 +1,27 @@
+{
+  "array" : [ {
+    "float" : 1.234,
+    "int" : 1234,
+    "bool" : true,
+    "string" : "abcde",
+    "date" : "2022-10",
+    "datetime" : "2022-10-01 01:01:01",
+    "nullString" : null
+  }, {
+    "float" : 1.234,
+    "int" : 1234,
+    "bool" : true,
+    "string" : "abcde",
+    "date" : "2022-10",
+    "datetime" : "2022-10-01 01:01:01",
+    "nullString" : null
+  }, {
+    "float" : 1.234,
+    "int" : 1234,
+    "bool" : true,
+    "string" : "abcde",
+    "date" : "2022-10",
+    "datetime" : "2022-10-01 01:01:01",
+    "nullString" : null
+  } ]
+}
