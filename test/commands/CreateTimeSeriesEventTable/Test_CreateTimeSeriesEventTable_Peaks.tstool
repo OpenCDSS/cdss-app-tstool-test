@@ -10,7 +10,7 @@ SetProperty(PropertyName="Modifier",PropertyType=String,PropertyValue="55668")
 ReadTableFromDelimitedFile(TableID="RawData",InputFile="Data/${RunId}.raw.txt",Delimiter="\t",HeaderLines="1")
 # SetDebugLevel(LogFileLevel=10)
 FormatTableDateTime(TableID="RawData",InputColumn="minute",IncrementStart="2020-01-01 00:00:00.000000",IncrementBaseUnit="Minute",DateTimeFormat="%Y-%m-%d %H:%M:%S.%u",OutputColumn="DateTime",OutputType=DateTime,InsertBeforeColumn="value")
-TableToTimeSeries(TableID="RawData",DateTimeColumn="DateTime",LocationID="${RunId}",ValueColumn="value",Interval=IRREGULAR,IrregularIntervalPrecision=Microsecond,Precision=9,Alias="${RunId}-raw")
+TableToTimeSeries(TableID="RawData",DateTimeColumn="DateTime",LocationID="${RunId}",ValueColumn="value",Interval=IRREGULAR,IrregularIntervalPrecision=Microsecond,Precision="9",Alias="${RunId}-raw")
 Delta(TSList=AllMatchingTSID,TSID="${RunId}-raw",Alias="${RunId}-delta")
 SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="${RunId}-delta",Precision=9)
 # SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
@@ -21,7 +21,7 @@ ReadTableFromDelimitedFile(TableID="ExpectedData",InputFile="Data/${RunId}.${Mod
 FormatTableDateTime(TableID="ExpectedData",InputColumn="Apex Time (min)",IncrementStart="2020-01-01 00:00:00.000000",IncrementBaseUnit="Minute",DateTimeFormat="%Y-%m-%d %H:%M:%S.%u",OutputColumn="ApexTimeISO",OutputType=DateTime,InsertBeforeColumn="Class")
 FormatTableDateTime(TableID="ExpectedData",InputColumn="Start Time",IncrementStart="2020-01-01 00:00:00.000000",IncrementBaseUnit="Minute",DateTimeFormat="%Y-%m-%d %H:%M:%S.%u",OutputColumn="StartTimeISO",OutputType=DateTime,InsertBeforeColumn="Start Height")
 FormatTableDateTime(TableID="ExpectedData",InputColumn="End Time",IncrementStart="2020-01-01 00:00:00.000000",IncrementBaseUnit="Minute",DateTimeFormat="%Y-%m-%d %H:%M:%S.%u",OutputColumn="EndTimeISO",OutputType=DateTime,InsertBeforeColumn="End Height")
-TableToTimeSeries(TableID="ExpectedData",DateTimeColumn="ApexTimeISO",LocationID="${RunId}",ValueColumn="Start Height",FlagColumn="Class",Interval=IRREGULAR,IrregularIntervalPrecision=Microsecond,Precision=9,Alias="${RunId}-expected")
+TableToTimeSeries(TableID="ExpectedData",DateTimeColumn="ApexTimeISO",LocationID="${RunId}",ValueColumn="Start Height",FlagColumn="Class",Interval=IRREGULAR,IrregularIntervalPrecision=Microsecond,Precision="9",Alias="${RunId}-expected")
 #
 # Create the event table:
 # - add columns with minutes and fractional seconds similar to the original data
@@ -34,7 +34,7 @@ FormatTableDateTime(TableID="EventTable",InputColumn="EventStartDateTime",DateTi
 FormatTableDateTime(TableID="EventTable",InputColumn="EventStartDateTime",DateTimeFormat="%S",OutputColumn="EventStartSecond",OutputType=Double)
 FormatTableDateTime(TableID="EventTable",InputColumn="EventExtremeDateTime",DateTimeFormat="%M.%u",OutputColumn="EventExtremeMinute",OutputType=String,InsertBeforeColumn="EventExtremeValue")
 FormatTableDateTime(TableID="EventTable",InputColumn="EventEndDateTime",DateTimeFormat="%M.%u",OutputColumn="EventEndMinute",OutputType=String,InsertBeforeColumn="EventEndValue")
-TableToTimeSeries(TableID="EventTable",DateTimeColumn="EventExtremeDateTime",LocationID="${RunId}",ValueColumn="EventExtremeValue",Interval=IRREGULAR,IrregularIntervalPrecision=Microsecond,Precision=9,Alias="${RunId}-estimated")
+TableToTimeSeries(TableID="EventTable",DateTimeColumn="EventExtremeDateTime",LocationID="${RunId}",ValueColumn="EventExtremeValue",Interval=IRREGULAR,IrregularIntervalPrecision=Microsecond,Precision="9",Alias="${RunId}-estimated")
 #
 # Create a graph to view raw and expected data from the seeker.
 ProcessTSProduct(TSProductFile="Test_CreateTimeSeriesEventTable_Peaks.tsp",View=False,OutputFile="Results/${RunId}.png")
