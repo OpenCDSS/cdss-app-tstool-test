@@ -1,0 +1,8 @@
+# Test trying to remove a folder with read-only file:
+# - TODO smalers 2023-02-08 not enabled because GitHub does not handle read-only permissions
+#   (need a way to set file properties at runtime, such as a command)
+# - should fail
+#@enabled False
+#@expectedStatus Fail
+StartLog(LogFile="results/Test_RemoveFolder_ReadOnly.tstool.log")
+RemoveFolder(Folder="data/readOnly/ReadOnlyFile.txt")

@@ -1,0 +1,10 @@
+# Test trying to remove a  folder:
+# - create a temporary file by writing global property and then remove file
+# - the folder should not be removed because MinDepth condition is not met
+#@expectedStatus Failure
+StartLog(LogFile="results/Test_RemoveFolder_MinDepth.tstool.log")
+# First create a file with all properties.
+CreateFolder(Folder="results/folder-MinDepth",IfFolderExists=Ignore)
+WritePropertiesToFile(OutputFile="results/folder-MinDepth/Test_RemoveFolder_out.txt",FileFormat=NameValue)
+# Now remove the file, which willfail because MinDepth is not met.
+RemoveFolder(Folder="results/folder-MinDepth",MinDepth=15,IfNotFound=Fail)

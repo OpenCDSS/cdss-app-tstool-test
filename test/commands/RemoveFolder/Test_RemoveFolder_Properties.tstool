@@ -1,0 +1,10 @@
+# Test trying to remove a folder:
+# - create a temporary file by writing global property and then remove file
+# - specify the file using ${Property}
+StartLog(LogFile="results/Test_RemoveFile_Properties.tstool.log")
+# First create a file with all properties.
+SetProperty(PropertyName="TestFolder",PropertyType=String,PropertyValue="results/folder2")
+CreateFolder(Folder="${TestFolder}")
+WritePropertiesToFile(OutputFile="${TestFolder}/Test_RemoveFile_Properties_out.txt",FileFormat=NameValue)
+# Now remove the folder, failing if there is an issue.
+RemoveFolder(Folder="${TestFolder}",IfNotFound=Fail)

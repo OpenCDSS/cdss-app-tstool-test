@@ -1,0 +1,3 @@
+# Test trying to remove a non-existent folder - and ignore.
+StartLog(LogFile="results/Test_RemoveFile_NoFile_IfNotFound=Ignore.tstool.log")
+RemoveFolder(Folder="results/NonexistantFolder",IfNotFound=Ignore)

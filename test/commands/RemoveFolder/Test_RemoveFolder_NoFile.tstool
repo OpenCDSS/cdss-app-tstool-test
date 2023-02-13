@@ -1,0 +1,4 @@
+# Test trying to remove a non-existent file - and warn (default).
+#@expectedStatus Warn
+StartLog(LogFile="results/Test_RemoveFolder_NoFile.tstool.log")
+RemoveFolder(Folder="results/NonexistantFolder")
