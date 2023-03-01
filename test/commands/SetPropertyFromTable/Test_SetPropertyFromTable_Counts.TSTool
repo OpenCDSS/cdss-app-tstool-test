@@ -1,10 +1,10 @@
 # Test setting row and column count properties from a table.
 StartLog(LogFile="Results/Test_SetPropertyFromTable_Counts.TSTool.log")
-RemoveFile(InputFile="Results/Test_SetPropertyFromTable_Counts_out.txt",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_SetPropertyFromTable_Counts_out.txt",IfNotFound="Ignore")
 ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
 SetPropertyFromTable(TableID="Table1",RowCountProperty="TestTableRowCount",ColumnCountProperty="TestTableColumnCount")
 # Uncomment the following to generate the expected results.
-WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetPropertyFromTable_Counts_out.txt",IncludeProperties="TestTableRowCount,TestTableColumnCount",FileFormat=NameValue,SortOrder=Ascending)
-WritePropertiesToFile(OutputFile="Results/Test_SetPropertyFromTable_Counts_out.txt",IncludeProperties="TestTableRowCount,TestTableColumnCount",FileFormat=NameValue,SortOrder=Ascending)
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetPropertyFromTable_Counts_out.txt",IncludeProperties="TestTableRowCount,TestTableColumnCount",FileFormat="NameValue",SortOrder="Ascending")
+WritePropertiesToFile(OutputFile="Results/Test_SetPropertyFromTable_Counts_out.txt",IncludeProperties="TestTableRowCount,TestTableColumnCount",FileFormat="NameValue",SortOrder="Ascending")
 # Do regression comparison with the original input
-CompareFiles(InputFile1="ExpectedResults/Test_SetPropertyFromTable_Counts_out.txt",InputFile2="Results/Test_SetPropertyFromTable_Counts_out.txt",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_SetPropertyFromTable_Counts_out.txt",InputFile2="Results/Test_SetPropertyFromTable_Counts_out.txt",IfDifferent="Warn")
