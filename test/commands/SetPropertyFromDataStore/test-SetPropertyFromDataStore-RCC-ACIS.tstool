@@ -1,0 +1,8 @@
+# Test setting a processor property from a datastore property:
+# - use the built-in RCC-ACIS datastore, which should not change
+StartLog(LogFile="Results/test-SetPropertyFromDataStore-RCC-ACIS.TSTool.log")
+SetPropertyFromDataStore(DataStore="RCC-ACIS",DataStoreProperty="Type",PropertyName="TestDataStoreType")
+# Check that the datastore type is as expected.
+If(Name="If_Test",Condition="${TestDataStoreType} != RccAcisDataStore")
+    Message(Message="Datastore type (RccAcisDataStore) was not matched.")
+EndIf(Name="If_Test")

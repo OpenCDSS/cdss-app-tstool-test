@@ -1,0 +1,7 @@
+# Test setting a processor property from a datastore property:
+# - use the built-in RCC-ACIS-null-fail datastore, which should not change
+# - try to set from a null datastore property
+# - NOT OK to set to null because AllowNull=False (default)
+#@expectedStatus Failure
+StartLog(LogFile="Results/test-SetPropertyFromDataStore-RCC-ACIS-null-fail.TSTool.log")
+SetPropertyFromDataStore(DataStore="RCC-ACIS",DataStoreProperty="BadProperty",PropertyName="TestDataStoreType")
