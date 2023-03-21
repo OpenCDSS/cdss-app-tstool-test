@@ -1,0 +1,10 @@
+# Test setting a processor property from a datastore property:
+# - use the built-in RCC-ACIS-null-ok datastore, which should not change
+# - try to set from a null datastore property
+# - OK to set to null because AllowNull=True
+StartLog(LogFile="Results/test-SetPropertyFromDataStore-RCC-ACIS-null-ok.TSTool.log")
+SetPropertyFromDataStore(DataStore="RCC-ACIS",DataStoreProperty="BadProperty",PropertyName="TestDataStoreType",AllowNull="True")
+# Check that the datastore type is as expected.
+If(Name="If_Test",PropertyIsNotDefinedOrIsEmpty="TestDataStoreType")
+    Message(Message="Datastore type (RccAcisDataStore) was not matched.")
+EndIf(Name="If_Test")
