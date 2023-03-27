@@ -1,0 +1,5 @@
+# Examples for documentation.
+SetInputPeriod(InputStart="2020-01-01 00:00",InputEnd="CurrentToMinute")
+#
+# The following is an example of reset with inconsistent base value.
+6130.NovaStar5.PrecipAccum.IrregSecond~nsdataws-larimer

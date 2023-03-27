@@ -1,0 +1,8 @@
+# Example for illustrating a simple delta using a streamflow time series:
+# - use a station with a large storm
+SetInputPeriod(InputStart="2013-05-01",InputEnd="2013-10-31")
+# ABBREV=CLAFTCCO, USGS site ID=06752000 - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+usgs:06752000.DWR.Streamflow-Avg.Day~HydroBaseWeb
+#
+# Simple delta.
+Delta(Alias="%L-delta")
