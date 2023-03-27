@@ -5,7 +5,9 @@ StartLog(LogFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Se
 # - variable data
 # - no reset
 # - check the IntervalLimit = set to missing
-# - issues are expected and output to a table
+# - issues are expected and output to a table, will result in warnings
+# - if files are different fail to differentiate between warnings from checks
+#@expectedStatus Warning
 RemoveFile(InputFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table_out.dv",IfNotFound="Ignore")
 #
 # Read the irregular time series from the file, which includes gaps for IntervalLimit.
@@ -18,4 +20,4 @@ Delta(Alias="%L-delta",DeltaLimitAction="SetMissing",IntervalLimit="2Day",Interv
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv")
 WriteDateValue(OutputFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv")
-CompareFiles(InputFile1="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv",InputFile2="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv",IfDifferent="Warn")
+CompareFiles(InputFile1="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv",InputFile2="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv",IfDifferent="Fail")
