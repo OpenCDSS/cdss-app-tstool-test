@@ -2,6 +2,7 @@
 # - increasing trend
 # - ResetType=Rollover with ResetMin and ResetMax
 # - some values in ts2 are out of range so expect to have warnings because some values are out of range
+# - if files are different fail to differentiate between warnings from checks
 # @expectedStatus Warning
 StartLog(LogFile="Results/test-Delta-ResetType-Rollover-OutOfRange.TSTool.log")
 RemoveFile(InputFile="Results/test-Delta-ResetType-Rollover-OutOfRange-out.dv",IfNotFound="Ignore")
@@ -11,4 +12,4 @@ Delta(ExpectedTrend="Increasing",ResetType="Rollover",Flag="Auto",Alias="%L-delt
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/test-Delta-ResetType-Rollover-OutOfRange-out.dv")
 WriteDateValue(OutputFile="Results/test-Delta-ResetType-Rollover-OutOfRange-out.dv")
-CompareFiles(InputFile1="ExpectedResults/test-Delta-ResetType-Rollover-OutOfRange-out.dv",InputFile2="Results/test-Delta-ResetType-Rollover-OutOfRange-out.dv",IfDifferent="Warn")
+CompareFiles(InputFile1="ExpectedResults/test-Delta-ResetType-Rollover-OutOfRange-out.dv",InputFile2="Results/test-Delta-ResetType-Rollover-OutOfRange-out.dv",IfDifferent="Fail")

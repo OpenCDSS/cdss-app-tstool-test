@@ -5,11 +5,13 @@ StartLog(LogFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Ke
 # - variable data
 # - no reset
 # - check the IntervalLimit - keep the values
-# - issues are expected and output to a table
+# - issues are expected and output to a table, will result in warnings
+# - if files are different fail to differentiate between warnings from checks
+#@expectedStatus Warning
 RemoveFile(InputFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Keep-Table_out.dv",IfNotFound="Ignore")
 #
 # Read the irregular time series from the file, which includes gaps for IntervalLimit.
-ReadDelimitedFile(InputFile="data/test-IrregDay.csv",Delimiter=",",ColumnNames="Date,Value",DateColumn="Date",ValueColumn="Value",LocationID="ts1",Interval="IrregDay")
+ReadDelimitedFile(InputFile="data/test-IrregDay.csv",Delimiter=",",ColumnNames="Date,Value",DateColumn="Date",ValueColumn="Value",SkipRowsAfterComments="1",LocationID="ts1",Interval="IrregDay")
 #
 # Run the Delta command.
 # SetDebugLevel(LogFileLevel="1")
@@ -18,7 +20,7 @@ Delta(Alias="%L-delta",DeltaLimitAction="SetMissing",IntervalLimit="2Day",Interv
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Keep-Table-out.dv")
 WriteDateValue(OutputFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Keep-Table-out.dv")
-CompareFiles(InputFile1="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Keep-Table-out.dv",InputFile2="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Keep-Table-out.dv",IfDifferent="Warn")
+CompareFiles(InputFile1="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Keep-Table-out.dv",InputFile2="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-Keep-Table-out.dv",IfDifferent="Fail")
 #
 # Uncomment the following to regenerate the original data (will need to be manually edited to remove missing.
 # NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...IrregDay",IrregularInterval="Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,4,7,,10,,,,11,13,15")
