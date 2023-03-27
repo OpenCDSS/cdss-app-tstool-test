@@ -3,5 +3,5 @@
 # and then the remaining tests can share these connections
 #
 # Get the current time to use in output files.
-SetProperty(PropertyName="Now",PropertyType=DateTime,PropertyValue="CurrentToMinute")
+SetProperty(PropertyName="Now",PropertyType="DateTime",PropertyValue="CurrentToMinute")
 FormatDateTimeProperty(PropertyName="NowString",DateTimePropertyName="Now",Format="%Y%m%d%H%M")
