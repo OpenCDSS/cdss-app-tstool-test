@@ -1,0 +1,18 @@
+# Test computing the delta:
+# - increasing trend
+# - use ResetValue and min/max
+# - expect to have warnings because some values are out of range
+# - Specify parameters with ${Property}
+# @expectedStatus Warning
+StartLog(LogFile="Results/Test_Delta_Increasing_ResetValue_Properties.TSTool.log")
+RemoveFile(InputFile="Results/Test_Delta_Increasing_ResetValue_Properties_out.dv",IfNotFound="Ignore")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,4,7,,10,,,,11,13,15")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2...Day",Description="test data 2",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="2,3,4,5,8,15,21,,,,31,33,35")
+SetProperty(PropertyName="TestTSID",PropertyType="String",PropertyValue="*")
+SetProperty(PropertyName="TestAnalysisStart",PropertyType="DateTime",PropertyValue="2000-01-01")
+SetProperty(PropertyName="TestAnalysisEnd",PropertyType="DateTime",PropertyValue="2003-07-01")
+SetProperty(PropertyName="TestFlag",PropertyType="String",PropertyValue="x")
+Delta(TSList="AllMatchingTSID",TSID="${TestTSID}",ExpectedTrend="Increasing",ResetType="Rollover",AnalysisStart="${TestAnalysisStart}",AnalysisEnd="${TestAnalysisEnd}",Flag="${TestFlag}",Alias="%L-delta",ResetMin="0",ResetMax="20")
+# Uncomment the following command to regenerate expected results.
+WriteDateValue(OutputFile="Results/Test_Delta_Increasing_ResetValue_Properties_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_Delta_Increasing_ResetValue_Properties_out.dv",InputFile2="Results/Test_Delta_Increasing_ResetValue_Properties_out.dv",IfDifferent="Warn")

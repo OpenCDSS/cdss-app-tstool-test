@@ -1,0 +1,8 @@
+# Examples for documentation.
+SetInputPeriod(InputStart="2020-01-01 00:00",InputEnd="CurrentToMinute")
+# 
+# The following is a good example of rollover with maintenance.
+6410.NovaStar5.PrecipAccum.IrregSecond~nsdataws-larimer
+#
+# Delta using defaults.
+Delta(ExpectedTrend="Increasing",ResetType="Auto",Alias="%L-delta",IntervalLimit="7Day",IntervalLimitAction="SetMissing",IntervalLimitFlag="Z")

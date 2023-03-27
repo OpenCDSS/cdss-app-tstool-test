@@ -1,0 +1,21 @@
+StartLog(LogFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table.tstool.log")
+# Test computing the delta:
+# - IrregDay interval
+# - ResetType=Unknown (default for simple delta, so no reset)
+# - variable data
+# - no reset
+# - check the IntervalLimit = set to missing
+# - issues are expected and output to a table
+RemoveFile(InputFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table_out.dv",IfNotFound="Ignore")
+#
+# Read the irregular time series from the file, which includes gaps for IntervalLimit.
+ReadDelimitedFile(InputFile="data/test-IrregDay.csv",Delimiter=",",ColumnNames="Date,Value",DateColumn="Date",ValueColumn="Value",SkipRowsAfterComments="1",LocationID="ts1",Interval="IrregDay")
+#
+# Run the Delta command.
+# SetDebugLevel(LogFileLevel="1")
+Delta(Alias="%L-delta",DeltaLimitAction="SetMissing",IntervalLimit="2Day",IntervalLimitAction="SetMissing",IntervalLimitFlag="X",TableID="Test_Delta_Table",TableTSIDColumn="TSID",TableTSIDFormat="%L")
+# SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv")
+WriteDateValue(OutputFile="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv")
+CompareFiles(InputFile1="ExpectedResults/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv",InputFile2="Results/test-Delta-IrregDay-ResetType-Unknown-IntervalLimit-SetMissing-Table-out.dv",IfDifferent="Warn")

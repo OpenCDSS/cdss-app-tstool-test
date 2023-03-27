@@ -1,0 +1,20 @@
+# Test computing the delta:
+# - decreasing trend
+# - reset uses value with min/max specified
+# - expect to have warnings because some values are out of range
+#
+# The value on 2000-01-14 is an example of the reset:
+# - previous value was 1
+# - current value is 15
+# - limits are 0 to 20
+# - therefore the delta is (0 - 1) + (15 - 20) = -1 + -5 = -6
+# @expectedStatus Warning
+StartLog(LogFile="Results/Test_Delta_Decreasing_ResetValue.TSTool.log")
+RemoveFile(InputFile="Results/Test_Delta_Decreasing_ResetValue_out.dv",IfNotFound="Ignore")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="15,13,11,,,,10,,7,4,3,2,1")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2...Day",Description="test data 2",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="35,33,31,,,,21,15,8,5,4,3,2")
+Delta(ExpectedTrend="Decreasing",ResetType="Rollover",Flag="Auto",Alias="%L-delta",ResetMin="0",ResetMax="20")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_Delta_Decreasing_ResetValue_out.dv")
+WriteDateValue(OutputFile="Results/Test_Delta_Decreasing_ResetValue_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_Delta_Decreasing_ResetValue_out.dv",InputFile2="Results/Test_Delta_Decreasing_ResetValue_out.dv",IfDifferent="Warn")
