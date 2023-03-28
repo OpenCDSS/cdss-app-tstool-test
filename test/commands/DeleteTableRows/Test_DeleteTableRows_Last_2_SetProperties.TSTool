@@ -1,0 +1,21 @@
+StartLog(LogFile="Results/Test_DeleteTableRows_Last_2_SetProoperties.TSTool.log")
+# Test deleting table rows from a table:
+# - delete the last 3 rows
+# - original table has 6 data rows so after delete only have 3
+# - set the processor properties
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable2.csv")
+RemoveFile(InputFile="Results/Test_DeleteTableRows_Last_2_SetProoperties_out.csv",IfNotFound="Ignore")
+DeleteTableRows(TableID="Table1",Last="2",DeleteCountProperty="TestDeleteCount",RowCountProperty="TestRowCount")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_DeleteTableRows_Last_2_SetProoperties_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_DeleteTableRows_Last_2_SetProoperties_out.csv")
+# Do regression comparison with the original input.
+CompareFiles(InputFile1="ExpectedResults\Test_DeleteTableRows_Last_2_SetProoperties_out.csv",InputFile2="Results/Test_DeleteTableRows_Last_2_SetProoperties_out.csv",IfDifferent="Warn")
+#
+# Check that the property values are OK.
+If(Name="If_Delete",Condition="${TestDeleteCount} != 2")
+    Message(Message="The TestDeleteCount property (${TestDeleteCount}) is not 2.",CommandStatus="FAILURE")
+EndIf(Name="If_Delete")
+If(Name="If_Row",Condition="${TestRowCount} != 4")
+    Message(Message="The TestRowCount property (${TestRowCount}) is not 4.",CommandStatus="FAILURE")
+EndIf(Name="If_Row")
