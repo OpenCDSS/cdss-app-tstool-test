@@ -15,4 +15,4 @@ SetProperty(PropertyName="TestFlag",PropertyType="String",PropertyValue="x")
 Delta(TSList="AllMatchingTSID",TSID="${TestTSID}",ExpectedTrend="Increasing",ResetType="Rollover",AnalysisStart="${TestAnalysisStart}",AnalysisEnd="${TestAnalysisEnd}",Flag="${TestFlag}",Alias="%L-delta",ResetMin="0",ResetMax="20")
 # Uncomment the following command to regenerate expected results.
 WriteDateValue(OutputFile="Results/Test_Delta_Increasing_ResetValue_Properties_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_Delta_Increasing_ResetValue_Properties_out.dv",InputFile2="Results/Test_Delta_Increasing_ResetValue_Properties_out.dv",IfDifferent="Warn")
+CompareFiles(InputFile1="ExpectedResults/Test_Delta_Increasing_ResetValue_Properties_out.dv",InputFile2="Results/Test_Delta_Increasing_ResetValue_Properties_out.dv",IfDifferent="Fail")

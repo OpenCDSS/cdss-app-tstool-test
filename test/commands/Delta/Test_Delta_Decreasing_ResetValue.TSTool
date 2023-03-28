@@ -17,4 +17,4 @@ Delta(ExpectedTrend="Decreasing",ResetType="Rollover",Flag="Auto",Alias="%L-delt
 # Uncomment the following command to regenerate expected results.
 # WriteDateValue(OutputFile="ExpectedResults/Test_Delta_Decreasing_ResetValue_out.dv")
 WriteDateValue(OutputFile="Results/Test_Delta_Decreasing_ResetValue_out.dv")
-CompareFiles(InputFile1="ExpectedResults/Test_Delta_Decreasing_ResetValue_out.dv",InputFile2="Results/Test_Delta_Decreasing_ResetValue_out.dv",IfDifferent="Warn")
+CompareFiles(InputFile1="ExpectedResults/Test_Delta_Decreasing_ResetValue_out.dv",InputFile2="Results/Test_Delta_Decreasing_ResetValue_out.dv",IfDifferent="Fail")
