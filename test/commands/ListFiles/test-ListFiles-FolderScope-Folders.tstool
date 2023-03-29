@@ -1,0 +1,20 @@
+StartLog(LogFile="Results/test-ListFiles-FolderScope-Folders.tstool.log")
+# Test listing files;
+# - list all the folders in Data folder
+# - only list the one folder
+#
+# Remove the output file before the test.
+RemoveFile(InputFile="Results/test-ListFiles-FolderScope-Folders-out.csv",IfNotFound="Ignore")
+# SetDebugLevel(LogFileLevel="1")
+ListFiles(Folder="Data",ListFiles="False",ListFolders="True",TableID="FileList")
+# SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
+# Copy only the filename and relative path:
+# - absolute path will vary by computer
+# - file attributes will vary by computer
+CopyTable(TableID="FileList",NewTableID="FileList2",IncludeColumns="Name,RelativePath")
+# will vary between computers.
+# Uncomment the following line to regenerate the expected results.
+# WriteTableToDelimitedFile(TableID="FileList2",OutputFile="ExpectedResults/test-ListFiles-FolderScope-Folders-out.csv")
+WriteTableToDelimitedFile(TableID="FileList2",OutputFile="Results/test-ListFiles-FolderScope-Folders-out.csv")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/test-ListFiles-FolderScope-Folders-out.csv",InputFile2="Results/test-ListFiles-FolderScope-Folders-out.csv",IfDifferent="Warn")
