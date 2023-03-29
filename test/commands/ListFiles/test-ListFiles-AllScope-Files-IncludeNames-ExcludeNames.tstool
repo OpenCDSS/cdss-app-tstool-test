@@ -1,0 +1,16 @@
+StartLog(LogFile="Results/test-ListFiles-AllScope-Files-IncludeNames-ExcludeNames.TSTool.log")
+# Test listing files:
+# - include all files in sub-folders
+# - include files ending in 2.txt
+# - then exclude file1*
+#
+# Remove the output file before the test.
+RemoveFile(InputFile="Results/test-ListFiles-AllScope-Files-IncludeNames-ExcludeNames_out.csv",IfNotFound="Ignore")
+ListFiles(Folder="Data",ListScope="All",IncludeNames="*2.txt",ExcludeNames="file1*",TableID="FileList")
+# Copy the table and only include FileName and RelativePath because AbsolutePath will vary by computer.
+CopyTable(TableID="FileList",NewTableID="FileList2",IncludeColumns="Name,RelativePath")
+# Uncomment the following line to regenerate the expected results.
+# WriteTableToDelimitedFile(TableID="FileList2",OutputFile="ExpectedResults/test-ListFiles-AllScope-Files-IncludeNames-ExcludeNames_out.csv")
+WriteTableToDelimitedFile(TableID="FileList2",OutputFile="Results/test-ListFiles-AllScope-Files-IncludeNames-ExcludeNames_out.csv")
+# Compare the results.
+CompareFiles(InputFile1="ExpectedResults/test-ListFiles-AllScope-Files-IncludeNames-ExcludeNames_out.csv",InputFile2="Results/test-ListFiles-AllScope-Files-IncludeNames-ExcludeNames_out.csv",IfDifferent="Warn")

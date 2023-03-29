@@ -1,0 +1,15 @@
+StartLog(LogFile="Results/test-ListFiles-FolderScope-Files-Append.TSTool.log")
+# Test listing files:
+# - include two folder's files at different levels, separately and append
+# - only include the folder files, not all (recursive)
+# Remove the output file before the test
+RemoveFile(InputFile="Results/test-ListFiles-FolderScope-Files-Append_out.csv",IfNotFound="Ignore")
+ListFiles(Folder="Data/folder1",TableID="FileList",Append="False")
+ListFiles(Folder="Data/folder2",TableID="FileList",Append="True")
+# Copy the file so comparison is only FileName and RelativePath because AbsolutePath will vary by computer
+CopyTable(TableID="FileList",NewTableID="FileList2",IncludeColumns="Name,RelativePath")
+# Uncomment the following line to regenerate the expected results.
+# WriteTableToDelimitedFile(TableID="FileList2",OutputFile="ExpectedResults/test-ListFiles-FolderScope-Files-Append_out.csv")
+WriteTableToDelimitedFile(TableID="FileList2",OutputFile="Results/test-ListFiles-FolderScope-Files-Append_out.csv")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/test-ListFiles-FolderScope-Files-Append_out.csv",InputFile2="Results/test-ListFiles-FolderScope-Files-Append_out.csv",IfDifferent="Warn")
