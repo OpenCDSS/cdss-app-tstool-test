@@ -1,0 +1,15 @@
+# Create a raster graph from a monthly time series:
+# - month interval
+# - multiple time series
+# - default colors
+StartLog(LogFile="Results/test-ProcessRasterGraph-Month-multiple.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Month-multiple-out.png",IfNotFound="Ignore")
+SetInputPeriod(InputStart="1975-01-01",InputEnd="2021-12-31")
+# ABBREV=CLAFTCCO, USGS site ID=06752000 - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+usgs:06752000.DWR.Streamflow-Avg.Month~HydroBaseWeb
+# ABBREV=CLAFORCO, USGS site ID=06752260 - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
+usgs:06752260.USGS.Streamflow-Avg.Month~HydroBaseWeb
+# Uncomment the following command to regenerate the expected results file.
+# ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Month-multiple.tsp",View="False",OutputFile="ExpectedResults/test-ProcessRasterGraph-Month-multiple-out.png")
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Month-multiple.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Month-multiple-out.png")
+CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-Month-multiple-out.png",InputFile2="Results\test-ProcessRasterGraph-Month-multiple-out.png",IfDifferent="Warn")

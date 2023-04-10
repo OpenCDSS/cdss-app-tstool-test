@@ -1,6 +1,8 @@
-# Create a raster graph from a daily time series
-StartLog(LogFile="Results/Test_ProcessTSProduct_Day.TSTool.log")
-RemoveFile(InputFile="Results/Test_ProcessTSProduct_Day_out.png",IfNotFound=Ignore)
+# Create a raster graph from a daily time series:
+# - single time series
+# - default colors
+StartLog(LogFile="Results/test-ProcessRasterGraph-Day.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Day-out.png",IfNotFound="Ignore")
 # NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1965-03-12",Units="CFS",PatternValues="5,10,27,38,75,,,90,64,55,23,88")
 # ReadTimeSeries(TSID="06754000.DWR.Streamflow.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
@@ -9,10 +11,10 @@ RemoveFile(InputFile="Results/Test_ProcessTSProduct_Day_out.png",IfNotFound=Igno
 # 6400511 - HARMONY DITCH 1
 # ReadTimeSeries(TSID="6400511.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # NORTH STERLING RES
-ReadTimeSeries(TSID="6403551.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+ReadTimeSeries(TSID="6403551.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFound="Warn")
 # ReadTimeSeries(TSID="USC00053005.NOAA.TempMax.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # ReadTimeSeries(TSID="USC00053005.NOAA.Precip.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # Uncomment the following command to regenerate the expected results file.
-# ProcessTSProduct(TSProductFile="Test_ProcessTSProduct_Day.tsp",View=False,OutputFile="ExpectedResults/Test_ProcessTSProduct_Day_out.png")
-ProcessRasterGraph(TSProductFile="Test_ProcessRasterGraph_Day.tsp",View=False,OutputFile="Results/Test_ProcessTSProduct_Day_out.png")
-# CompareFiles(InputFile1="ExpectedResults\Test_ProcessTSProduct_Day_out.png",InputFile2="Results\Test_ProcessTSProduct_Day_out.png",IfDifferent=Warn)
+# ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Day.tsp",View=False,OutputFile="ExpectedResults/test-ProcessRasterGraph-Day-out.png")
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Day.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Day-out.png")
+# CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-Day-out.png",InputFile2="Results\test-ProcessRasterGraph-Day-out.png",IfDifferent=Warn)
