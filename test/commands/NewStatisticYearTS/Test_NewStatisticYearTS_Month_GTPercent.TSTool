@@ -2,7 +2,7 @@
 StartLog(LogFile="Results/Test_NewStatisticYearTS_Month_GTPercent.TSTool.log")
 RemoveFile(InputFile="Results\Test_NewStatisticYearTS_Month_GTPercent_out.dv",IfNotFound=Ignore)
 NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..Streamflow.Month",Description="Test data",SetStart="1950-01",SetEnd="1953-08",Units="CFS",PatternValues="1,2,3,4,,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24")
-NewStatisticYearTS(Alias="Stat",TSID="ts1",NewTSID="ts1..Streamflow.Year.GTPercent",Statistic=GTPercent,TestValue=6)
+NewStatisticYearTS(Alias="Stat",TSID="ts1",NewTSID="ts1..Streamflow.Year.GTPercent",Statistic=GTPercent,Value1=6)
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_NewStatisticYearTS_Month_GTPercent_out.dv",TSList=AllMatchingTSID,TSID="Stat")
 WriteDateValue(OutputFile="Results\Test_NewStatisticYearTS_Month_GTPercent_out.dv",TSList=AllMatchingTSID,TSID="Stat")
