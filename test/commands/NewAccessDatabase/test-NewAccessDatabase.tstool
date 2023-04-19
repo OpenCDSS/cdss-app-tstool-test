@@ -2,7 +2,7 @@ StartLog(LogFile="Results/Test-NewAccessDatabase.TSTool.log")
 # Test to read a table from an Access database:
 # - use an in-memory database and file database
 # - close the databases so that files are not open and locked
-RemoveFile(InputFile="results/test-access.accdb",IfNotFound=Ignore)
+RemoveFile(InputFile="results/test-access.accdb",IfNotFound="Ignore")
 # Use the CopyFile nd OpenDataStore commands if NewAccessDatabase is not working.
 # CopyFile(InputFile="../ReadTableFromDataStore/Data/test-ms-access.accdb",OutputFile="results/test-access.accdb")
 # OpenDataStore(DataStoreName="TestAccess",DataStoreDescription="Test Microsoft Access database",DataStoreType="GenericDatabaseDataStore",DatabaseEngine="Access",DatabaseName="results/test-access.accdb")
@@ -21,4 +21,4 @@ CloseDataStore(DataStore="TestAccess2")
 # Uncomment the next line to regenerate expected results.
 # WriteTableToDelimitedFile(TableID="TestTable",OutputFile="expected-results/test-NewAccessDatabase-out.csv",IncludeColumns="name,integer1,float1")
 WriteTableToDelimitedFile(TableID="TestTable",OutputFile="results/test-NewAccessDatabase-out.csv",IncludeColumns="name,integer1,float1")
-CompareFiles(InputFile1="expected-results/test-NewAccessDatabase-out.csv",InputFile2="results/test-NewAccessDatabase-out.csv",IfDifferent=Warn)
+CompareFiles(InputFile1="expected-results/test-NewAccessDatabase-out.csv",InputFile2="results/test-NewAccessDatabase-out.csv",IfDifferent="Warn")
