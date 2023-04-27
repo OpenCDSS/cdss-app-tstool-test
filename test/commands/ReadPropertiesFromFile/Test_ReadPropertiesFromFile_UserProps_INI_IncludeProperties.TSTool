@@ -1,0 +1,17 @@
+# Test reading a properties file:
+# - INI format
+# - read only the include properties
+# - define a Global and Section 2 property so can write to output and verify that only Section1* is read from the file
+StartLog(LogFile="Results/Test_ReadPropertiesFromFile_UserProps_INI_IncludeProperties.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReadPropertiesFromFile_UserProps_INI_IncludeProperties_out.txt",IfNotFound="Ignore")
+# Read the properties.
+ReadPropertiesFromFile(InputFile="Data/UserProps_INI.txt",FileFormat="INI",IncludeProperties="Section1*")
+SetProperty(PropertyName="GlobalTest",PropertyType="String",PropertyValue="TestGlobalValue")
+SetProperty(PropertyName="Section2Test",PropertyType="String",PropertyValue="TestSection2Value")
+SetProperty(PropertyName="SECTION3Test",PropertyType="String",PropertyValue="TestSection3Value")
+# Uncomment the following command to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_ReadPropertiesFromFile_UserProps_INI_IncludeProperties_out.txt",IncludeProperties="Global*,Section1*,Section2*,SECTION3*",FileFormat="NameTypeValue",SortOrder="Ascending")
+# Generate new output.
+WritePropertiesToFile(OutputFile="Results/Test_ReadPropertiesFromFile_UserProps_INI_IncludeProperties_out.txt",IncludeProperties="Global*,Section1*,Section2*,SECTION3*",FileFormat="NameTypeValue",SortOrder="Ascending")
+# Do regression comparison.
+CompareFiles(InputFile1="ExpectedResults\Test_ReadPropertiesFromFile_UserProps_INI_IncludeProperties_out.txt",InputFile2="Results/Test_ReadPropertiesFromFile_UserProps_INI_IncludeProperties_out.txt",IfDifferent="Warn")

@@ -1,12 +1,12 @@
 # Test reading the UserProps (OutputStart, OutputEnd) properties from a file
 # using NameTypeValue format
 StartLog(LogFile="Results/Test_ReadPropertiesFromFile_UserProps_NameTypeValue.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IfNotFound="Ignore")
 # Read the properties
 ReadPropertiesFromFile(InputFile="Data/UserProps_NameTypeValue.txt")
-# Uncomment the following two commands to regenerate the expected results file.
-# WritePropertiesToFile(OutputFile="ExpectedResults/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IncludeProperty="DateTimeProp,DoubleProp,IntegerProp,StringProp",FileFormat=NameTypeValue)
+# Uncomment the following command to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IncludeProperties="TestProp*",FileFormat="NameTypeValue",SortOrder="Ascending")
 # Generate new output...
-WritePropertiesToFile(OutputFile="Results/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IncludeProperties="DateTimeProp,DoubleProp,IntegerProp,StringProp",FileFormat=NameTypeValue)
+WritePropertiesToFile(OutputFile="Results/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IncludeProperties="TestProp*",FileFormat="NameTypeValue",SortOrder="Ascending")
 # Do regression comparison...
-CompareFiles(InputFile1="ExpectedResults\Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",InputFile2="Results/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",InputFile2="Results/Test_ReadPropertiesFromFile_UserProps_NameTypeValue_out.txt",IfDifferent="Warn")

@@ -1,0 +1,5 @@
+GlobalTest="TestGlobalValue"
+Section1.DateTimeProp="2001-01-01"
+Section1.StringProp="String prop 1"
+Section2Test="TestSection2Value"
+SECTION3Test="TestSection3Value"

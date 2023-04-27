@@ -1,0 +1,1 @@
+TestProp_DateTimeProp=DateTime("2000-01-01")
