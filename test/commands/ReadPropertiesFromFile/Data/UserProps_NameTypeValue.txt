@@ -1,5 +1,6 @@
-# Test user properties using NameTypeValue format
-DateTimeProp=DateTime("2000-01-01")
-DoubleProp=1.2345
-IntegerProp=12345
-StringProp="A string prop"
+# Test user properties using NameTypeValue format:
+# - put 'Test_' in front to allow wildcard to be used
+TestProp_DateTimeProp=DateTime("2000-01-01")
+TestProp_DoubleProp=1.2345
+TestProp_IntegerProp=12345
+TestProp_StringProp="A string prop"

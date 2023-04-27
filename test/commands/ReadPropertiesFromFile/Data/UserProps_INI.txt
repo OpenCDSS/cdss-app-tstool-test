@@ -1,0 +1,28 @@
+# Test user properties using INI format.
+
+GlobalDateTimeProp="2000-01-01"
+GlobalDoubleProp=0.2345
+GlobalIntegerProp=99999
+GlobalStringProp="String prop"
+
+[Section1]
+
+DateTimeProp="2001-01-01"
+DoubleProp=1.2345
+IntegerProp=12345
+StringProp="String prop 1"
+
+[Section2]
+
+DateTimeProp="2002-01-01"
+DoubleProp=2.2345
+IntegerProp=23456
+StringProp="String prop 2"
+
+[SECTION3]
+# Upper case properties to test IgnoreCase.
+
+DateTimeProp="2003-01-01"
+DoubleProp=3.2345
+IntegerProp=33456
+StringProp="String prop 3"
