@@ -1,16 +1,17 @@
 # Test sorting time series
 # - by double precision property
 # - descending
+# - after output the order should TS2, TS1, TS3
 StartLog(LogFile="Results/Test_SortTimeSeries_DoubleProperty_Descending.TSTool.log")
-RemoveFile(InputFile="Results/Test_SortTimeSeries_DoubleProperty_Descending_out.dv",IfNotFound=Ignore)
-NewPatternTimeSeries(Alias="TS2",NewTSID="MyLoc2..MyData.Day",Description="Test data 2",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+RemoveFile(InputFile="Results/Test_SortTimeSeries_DoubleProperty_Descending_out.dv",IfNotFound="Ignore")
 NewPatternTimeSeries(Alias="TS1",NewTSID="MyLoc1..MyData.Day",Description="Test data 1",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="TS2",NewTSID="MyLoc2..MyData.Day",Description="Test data 2",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 NewPatternTimeSeries(Alias="TS3",NewTSID="MyLoc3..MyData.Day",Description="Test data 3",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
-SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="TS1",PropertyName="Value",PropertyType=Double,PropertyValue="2")
-SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="TS3",PropertyName="Value",PropertyType=Double,PropertyValue="1")
-SetTimeSeriesProperty(TSList=AllMatchingTSID,TSID="TS2",PropertyName="Value",PropertyType=Double,PropertyValue="3")
-SortTimeSeries(PropertyFormat="${ts:Value}",SortOrder="Descending")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="TS1",PropertyName="Value",PropertyType="Double",PropertyValue="2")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="TS2",PropertyName="Value",PropertyType="Double",PropertyValue="3")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="TS3",PropertyName="Value",PropertyType="Double",PropertyValue="1")
+SortTimeSeries(Property="Value",SortOrder="Descending")
 # Uncomment the following command to regenerate the expected results file.
 # WriteDateValue(OutputFile="ExpectedResults\Test_SortTimeSeries_DoubleProperty_Descending_out.dv")
 WriteDateValue(OutputFile="Results\Test_SortTimeSeries_DoubleProperty_Descending_out.dv")
-CompareFiles(InputFile1="Results\Test_SortTimeSeries_DoubleProperty_Descending_out.dv",InputFile2="ExpectedResults\Test_SortTimeSeries_DoubleProperty_Descending_out.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="Results\Test_SortTimeSeries_DoubleProperty_Descending_out.dv",InputFile2="ExpectedResults\Test_SortTimeSeries_DoubleProperty_Descending_out.dv",IfDifferent="Warn")
