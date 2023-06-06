@@ -2,8 +2,8 @@
 
 ProductType = "Graph"
 TotalWidth = "900"
-TotalHeight = "600"
-MainTitleString = "test-ProcessRasterGraph-Day"
+TotalHeight = "150"
+MainTitleString = "test-ProcessRasterGraph-Year"
 
 [SubProduct 1]
 

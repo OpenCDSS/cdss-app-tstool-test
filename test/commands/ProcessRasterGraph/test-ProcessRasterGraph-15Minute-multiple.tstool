@@ -1,8 +1,8 @@
+StartLog(LogFile="Results/test-ProcessRasterGraph-15Minute-multiple.tstool.log")
 # Create a raster graph from a 15Minute time series:
 # - 15Minute interval
 # - multiple time series
 # - default colors
-StartLog(LogFile="Results/test-ProcessRasterGraph-15Minute-multiple.tstool.log")
 RemoveFile(InputFile="Results/test-ProcessRasterGraph-15Minute-multiple-out.png",IfNotFound="Ignore")
 SetInputPeriod(InputStart="2021-07-01 00:00",InputEnd="2021-07-06 00:00")
 # CLAFTCCO (0301200) - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS

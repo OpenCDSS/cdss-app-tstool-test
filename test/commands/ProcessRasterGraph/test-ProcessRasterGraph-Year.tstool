@@ -1,0 +1,13 @@
+# Create a raster graph from a daily time series:
+# - single time series
+# - year interval
+# - default colors
+StartLog(LogFile="Results/test-ProcessRasterGraph-Year.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Year-out.png",IfNotFound="Ignore")
+# NORTH STERLING RES
+ReadTimeSeries(TSID="6403551.DWR.DivTotal.Year~HydroBase",Alias="Alias",IfNotFound="Warn")
+# Uncomment the following command to regenerate the expected results file.
+# ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Year.tsp",View=False,OutputFile="ExpectedResults/test-ProcessRasterGraph-Year-out.png")
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Year.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Year-out.png")
+# CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-Year-out.png",InputFile2="Results\test-ProcessRasterGraph-Year-out.png",IfDifferent=Warn)
+ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_CDSS_AnnualAmt where ann_amt > 9998.9 and ann_amt < 9999.1",TableID="Test")

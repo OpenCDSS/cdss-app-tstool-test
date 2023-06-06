@@ -1,0 +1,13 @@
+# Create a raster graph from a daily time series:
+# - single time series
+# - 15-Minute interval
+# - default colors
+StartLog(LogFile="Results/test-ProcessRasterGraph-15Minute.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-15Minute-out.png",IfNotFound="Ignore")
+# CLAFTCCO (0301200) - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+SetInputPeriod(InputStart="2020-01-01 00:00",InputEnd="2021-01-01 00:00")
+ReadTimeSeries(TSID="abbrev:CLAFTCCO.DWR.DISCHRG.Hour~HydroBaseWeb",Alias="Alias",IfNotFound="Warn")
+# Uncomment the following command to regenerate the expected results file.
+# ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-15Minute.tsp",View="False",OutputFile="ExpectedResults/test-ProcessRasterGraph-15Minute-out.png")
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-15Minute.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-15Minute-out.png")
+CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-15Minute-out.png",InputFile2="Results\test-ProcessRasterGraph-15Minute-out.png",IfDifferent="Warn")
