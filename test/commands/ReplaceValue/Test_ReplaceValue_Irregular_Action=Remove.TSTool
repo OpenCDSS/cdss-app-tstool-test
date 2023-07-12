@@ -1,9 +1,12 @@
-# Test removing negative values from an irregular interval time series
+# Test removing -999 (old-style missing) values from an irregular interval time series:
+# - in this case Action=RemoveMissing and the values don't need to be specified
 StartLog(LogFile="Results/Test_ReplaceValue_Irregular_Action=Remove.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReplaceValue_Irregular_Action=Remove_out.dv",IfNotFound=Ignore)
-NewPatternTimeSeries(Alias="ts1_irr",NewTSID="ts1...Irregular",IrregularInterval=Day,Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
-ReplaceValue(TSList=AllMatchingTSID,TSID="ts1_irr",MinValue=-1000,MaxValue=-998,Action=Remove)
+RemoveFile(InputFile="Results/Test_ReplaceValue_Irregular_Action=Remove_out.dv",IfNotFound="Ignore")
+NewPatternTimeSeries(Alias="ts1_irr",NewTSID="ts1...IrregDay",IrregularInterval="Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,3,2,1,-999,5,1,-999,-999,-999,1,3,5")
+# If troubleshooting, copy the time series so that the results can be visually checked.
+# Copy(TSID="ts1_irr",NewTSID="ts2_irr...IrregDay",Alias="ts2_irr")
+ReplaceValue(TSList="AllMatchingTSID",TSID="ts1_irr",MinValue="-1000",MaxValue="-998",Action="Remove")
 # Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReplaceValue_Irregular_Action=Remove_out.dv",Precision=0)
-WriteDateValue(OutputFile="Results/Test_ReplaceValue_Irregular_Action=Remove_out.dv",Precision=0)
-CompareFiles(InputFile1="ExpectedResults/Test_ReplaceValue_Irregular_Action=Remove_out.dv",InputFile2="Results/Test_ReplaceValue_Irregular_Action=Remove_out.dv",IfDifferent=Warn)
+# WriteDateValue(TSList="AllMatchingTSID",TSID="ts1_irr",OutputFile="ExpectedResults/Test_ReplaceValue_Irregular_Action=Remove_out.dv",Precision="0")
+WriteDateValue(TSList="AllMatchingTSID",TSID="ts1_irr",OutputFile="Results/Test_ReplaceValue_Irregular_Action=Remove_out.dv",Precision="0")
+CompareFiles(InputFile1="ExpectedResults/Test_ReplaceValue_Irregular_Action=Remove_out.dv",InputFile2="Results/Test_ReplaceValue_Irregular_Action=Remove_out.dv",IfDifferent="Warn")

@@ -1,0 +1,15 @@
+# Test appending a file to a new output file:
+# - only the lines with "2004" are appended
+# - the include and exclude patterns are specified with properties
+StartLog(LogFile="Results/Test_AppendFile_IncludeText_Property.TSTool.log")
+# Remove the output file before the test.
+RemoveFile(InputFile="Results/Test_AppendFile_IncludeText_Property_out.csv",IfNotFound="Ignore")
+# Set properties used in the test.
+SetProperty(PropertyName="Test_IncludePattern",PropertyType="String",PropertyValue="*2004*")
+SetProperty(PropertyName="Test_ExcludePattern",PropertyType="String",PropertyValue="*300*")
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="ExpectedResults/Test_AppendFile_IncludeText_Property_out.csv",IfNotFound="Ignore")
+# AppendFile(InputFile="Data\file5-include.txt",OutputFile="ExpectedResults/Test_AppendFile_IncludeText_Property_out.txt",IncludeText="${Test_IncludePattern}",ExcludeText="${Test_ExcludePattern}")
+AppendFile(InputFile="Data\file5-include.txt",OutputFile="Results/Test_AppendFile_IncludeText_Property_out.txt",IncludeText="${Test_IncludePattern}",ExcludeText="${Test_ExcludePattern}")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_IncludeText_Property_out.txt",InputFile2="Results/Test_AppendFile_IncludeText_Property_out.txt",IfDifferent="Warn")

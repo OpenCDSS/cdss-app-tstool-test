@@ -1,0 +1,12 @@
+# Test appending a file to a new output file:
+# - only the line with the literal string "${FileProperty}" is appended,
+#   which requires escaping the pattern with backslashes
+StartLog(LogFile="Results/Test_AppendFile_IncludeText_FileProperty.TSTool.log")
+# Remove the output file before the test.
+RemoveFile(InputFile="Results/Test_AppendFile_IncludeText_FileProperty_out.csv",IfNotFound="Ignore")
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="ExpectedResults/Test_AppendFile_IncludeText_FileProperty_out.csv",IfNotFound="Ignore")
+# AppendFile(InputFile="Data\file6-property.txt",OutputFile="ExpectedResults/Test_AppendFile_IncludeText_FileProperty_out.txt",IncludeText="*\$\{ReplaceProperty\}*")
+AppendFile(InputFile="Data\file6-property.txt",OutputFile="Results/Test_AppendFile_IncludeText_FileProperty_out.txt",IncludeText="*\$\{ReplaceProperty\}*")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_IncludeText_FileProperty_out.txt",InputFile2="Results/Test_AppendFile_IncludeText_FileProperty_out.txt",IfDifferent="Warn")

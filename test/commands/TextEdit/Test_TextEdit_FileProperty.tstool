@@ -1,0 +1,12 @@
+# Test editing text in a file
+# - replace a file literal string ${Line4Property} with literal text
+# - replace a file literal string ${Line5Property} with the value of a processor property
+StartLog(LogFile="Results/Test_TextEdit_FileProperty.TSTool.log")
+RemoveFile(InputFile="Results\Test_TextEdit_FileProperty_out.txt",IfNotFound="Ignore")
+SetProperty(PropertyName="TestReplaceText",PropertyType="String",PropertyValue="xxxx")
+# Run the command to create output.
+TextEdit(InputFile="Data/file2-property.txt",SearchFor="\$\{Line4Property\}",ReplaceWith="LINE4_VALUE",OutputFile="Results/Test_TextEdit_FileProperty_out.txt")
+TextEdit(InputFile="Results/Test_TextEdit_FileProperty_out.txt",SearchFor="\$\{Line5Property\}",ReplaceWith="${TestReplaceText}",OutputFile="Results/Test_TextEdit_FileProperty_out.txt")
+# Uncomment the following line to regenerate expected results.
+# CopyFile(InputFile="Results/Test_TextEdit_FileProperty_out.txt",OutputFile="ExpectedResults/Test_TextEdit_FileProperty_out.txt")
+CompareFiles(InputFile1="ExpectedResults\Test_TextEdit_FileProperty_out.txt",InputFile2="Results\Test_TextEdit_FileProperty_out.txt",IfDifferent="Fail")
