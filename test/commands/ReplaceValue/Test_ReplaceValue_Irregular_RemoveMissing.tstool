@@ -1,0 +1,12 @@
+# Test removing missing values from an irregular interval time series:
+# - use Action=RemoveMissing without the value range
+StartLog(LogFile="Results/Test_ReplaceValue_Irregular_RemoveMissing.TSTool.log")
+RemoveFile(InputFile="Results/Test_ReplaceValue_Irregular_RemoveMissing_out.dv",IfNotFound="Ignore")
+NewPatternTimeSeries(Alias="ts1_irr",NewTSID="ts1...IrregDay",IrregularInterval="Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",MissingValue="NaN",PatternValues="1,2,3,2,1,,5,1,,,,1,3,5")
+# For troubleshooting, copy the time series to compare original and output time series.
+# Copy(TSID="ts1_irr",NewTSID="ts2...IrregDay",Alias="ts2_irr")
+ReplaceValue(TSList="AllMatchingTSID",TSID="ts1_irr",Action="RemoveMissing")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="ExpectedResults/Test_ReplaceValue_Irregular_RemoveMissing_out.dv",Precision="0")
+WriteDateValue(TSList="AllMatchingTSID",TSID="ts1_irr",OutputFile="Results/Test_ReplaceValue_Irregular_RemoveMissing_out.dv",Precision="0")
+CompareFiles(InputFile1="ExpectedResults/Test_ReplaceValue_Irregular_RemoveMissing_out.dv",InputFile2="Results/Test_ReplaceValue_Irregular_RemoveMissing_out.dv",IfDifferent="Warn")

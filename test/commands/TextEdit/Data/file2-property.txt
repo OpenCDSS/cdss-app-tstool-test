@@ -1,8 +1,8 @@
-# Test data file.
+# Test data file that includes property syntax.
 Simple text file line1.
 Simple text file line2.
 Simple text file line3.
-Simple text file line4.
-Simple text file line5.
+Simple text file ${Line4Property}.
+Simple text file ${Line5Property}.
 Simple text file line6.
 Simple text file line7.

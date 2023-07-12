@@ -1,4 +1,5 @@
-# Test appending all *.csv files in a folder to a new output file
+# Test appending all *.csv files in a folder to a new output file:
+# - only lines with dashes are appended
 StartLog(LogFile="Results/Test_AppendFile_Extension_IncludeText.TSTool.log")
 # Remove the output file before the test
 RemoveFile(InputFile="Results/Test_AppendFile_Extension_IncludeText_out.csv",IfNotFound=Ignore)

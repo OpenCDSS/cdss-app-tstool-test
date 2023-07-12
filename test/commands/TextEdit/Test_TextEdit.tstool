@@ -1,5 +1,7 @@
 # Test editing text in a file
-# - replace a couple of literal patterns
+# - replace a literal string
+# - replace a string provided by a ${Property}
+# - replace a string with a ${Property} (so output file includes a property)
 StartLog(LogFile="Results/Test_TextEdit.TSTool.log")
 RemoveFile(InputFile="Results\Test_TextEdit_out.txt",IfNotFound="Ignore")
 SetProperty(PropertyName="TestReplaceText",PropertyType="String",PropertyValue="xxxx")
