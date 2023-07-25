@@ -1,0 +1,14 @@
+# Test changing the time zone:
+# - 1Hour interval data
+# - from America/Denver time zone to GMT
+# - shift the times
+StartLog(LogFile="Results/TestChangeTimeZone_1Hour_ShiftTime_DenverToGMT.TSTool.log")
+RemoveFile(InputFile="Results/TestChangeTimeZone_1Hour_ShiftTime_DenverToGMT_out.dv",IfNotFound="Ignore")
+NewPatternTimeSeries(Alias="ts0_hour",NewTSID="ts0...1Hour",Description="test data 0",SetStart="2000-01-01 00 America/Denver",SetEnd="2000-12-31 23 America/Denver",PatternValues="0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23")
+# Make a copy of the time series so that before and after can be compared.
+Copy(TSID="ts0_hour",NewTSID="ts1...1Hour",Alias="ts1_hour")
+ChangeTimeZone(TSList="AllMatchingTSID",TSID="ts1_hour",NewTimeZone="GMT",ShiftTime="True")
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(TSList="AllMatchingTSID",TSID="ts1_hour",OutputFile="ExpectedResults/TestChangeTimeZone_1Hour_ShiftTime_DenverToGMT_out.dv")
+WriteDateValue(TSList="AllMatchingTSID",TSID="ts1_hour",OutputFile="Results/TestChangeTimeZone_1Hour_ShiftTime_DenverToGMT_out.dv")
+CompareFiles(InputFile1="ExpectedResults/TestChangeTimeZone_1Hour_ShiftTime_DenverToGMT_out.dv",InputFile2="Results/TestChangeTimeZone_1Hour_ShiftTime_DenverToGMT_out.dv",IfDifferent="Warn")
