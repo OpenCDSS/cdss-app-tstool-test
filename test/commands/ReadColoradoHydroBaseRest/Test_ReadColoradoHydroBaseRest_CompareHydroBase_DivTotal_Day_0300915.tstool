@@ -9,4 +9,4 @@ StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTot
 ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DivTotal",Interval="Day",Where1="StructureWDID;Matches;0300915",Alias="%L-WebService")
 ReadHydroBase(DataStore="HydroBase",DataType="DivTotal",Interval="Day",Where1="Structure WDID;Matches;0300915",Alias="%L-Database")
 #
-CompareTimeSeries(TSID1="0300915-WebService",TSID2="0300915-Database",Tolerance=".01",AnalysisEnd="2020-10-31",IfDifferent=Warn)
+CompareTimeSeries(TSID1="0300915-WebService",TSID2="0300915-Database",Tolerance=".01",AnalysisEnd="2020-10-31",CreateDiffTS="True",IfDifferent="Warn")
