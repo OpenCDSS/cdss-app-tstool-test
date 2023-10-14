@@ -2,7 +2,7 @@
 # - compare the resulting time series with that retrieved from HydroBase
 # - HydroBase does not include the monthly statistic so compute from daily and then compare
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Avg_Month.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Avg_Month_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Avg_Month_out.dv",IfNotFound="Ignore")
 # Read the same time series from the web service and HydroBase.
 SetInputPeriod(InputStart="1936-01",InputEnd="2018-12")
 # 06K04 - INDEPENDENCE PASS
@@ -12,16 +12,17 @@ SetInputPeriod(InputStart="1936-01",InputEnd="2018-12")
 06K04.NRCS.SnowCourseDepth.Day~HydroBase
 # SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # SetDebugLevel(LogFileLevel=10)
-NewStatisticMonthTimeSeries(TSID="06K04.NRCS.SnowCourseDepth.Day",Alias="06K04-HydroBase-Month",NewTSID="06K04..SnowCourseDepth-Avg.Month",Statistic=Mean)
+NewStatisticMonthTimeSeries(TSID="06K04.NRCS.SnowCourseDepth.Day",Alias="06K04-HydroBase-Month",NewTSID="06K04..SnowCourseDepth-Avg.Month",Statistic="Mean")
 # SetDebugLevel(ScreenLevel=0,LogFileLevel=0)
 # Make sure that enough data are available in the test data, and some missing.
-CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
-CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=691,IfCriteriaMet=Warn)
-WriteDateValue(TSList=LastMatchingTSID,TSID="06K04.NRCS.SnowDepth-Avg.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Avg_Month_out.dv",Precision=2)
-CompareTimeSeries(TSID1="06K04.NRCS.SnowDepth-Avg.Month",TSID2="06K04-HydroBase-Month",Tolerance=".01",IfDifferent=Warn)
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1="10",IfCriteriaMet="Warn")
+CheckTimeSeriesStatistic(TSList="AllMatchingTSID",TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1="691",IfCriteriaMet="Warn")
+WriteDateValue(TSList="LastMatchingTSID",TSID="06K04.NRCS.SnowDepth-Avg.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_SnowDepth-Avg_Month_out.dv",Precision="2")
+CompareTimeSeries(TSID1="06K04.NRCS.SnowDepth-Avg.Month",TSID2="06K04-HydroBase-Month",Tolerance=".01",IfDifferent="Warn")
 # Troubleshooting queries.
 # ReadTableFromDataStore(DataStore="HydroBase",Sql="SELECT * from vw_CDSS_SnowCrse where depth < -10000.0",TableID="SnowDepthBad")
 ReadTableFromDataStore(DataStore="HydroBase",Sql="SELECT * from vw_CDSS_SnowCrse where station_num = (SELECT station_num from vw_CDSS_Station where station_id = '06K04') order by cal_year, cal_mon_num, day",TableID="SnowDepth")
 # ReadTableFromDataStore(DataStore="HydroBase",DataStoreTable="vw_CDSS_DailySolar",Top=10,TableID="SnowDepth")
 # ReadTableFromDataStore(DataStore="HydroBase",DataStoreTable="vw_CDSS_SnowCrse",Top=10,TableID="SnowCourse")
 # ReadTableFromDataStore(DataStore="HydroBase",DataStoreTable="vw_CDSS_Station",Top=10,TableID="Station")
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="SELECT * from vw_CDSS_Station where station_id = '06K04'",TableID="x")
