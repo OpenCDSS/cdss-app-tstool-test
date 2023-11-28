@@ -3,11 +3,20 @@
 # - the date/time for creating the product is inserted
 # - a CSV data file is formatted as a table
 StartLog(LogFile="Results/test-WriteTableToMarkdown-LandingPage.tstool.log")
-RemoveFile(InputFile="Results/test-WriteTableToMarkdown-LandingPage-out.csv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/test-WriteTableToMarkdown-LandingPage-out.csv",IfNotFound="Ignore")
+#
+# Get the current time to add as a timestamp in the file.
+SetProperty(PropertyName="CurrentTime",PropertyType="DateTime",PropertyValue="CurrentToMinute")
+TextEdit(InputFile="Data/landing-page-template.md",SearchFor="INSERT_CURRENT_DATETIME",ReplaceWith="${CurrentTime}",OutputFile="Results/test-WriteTableToMarkdown-LandingPage-tmp.md")
+#
+# Read the table and format as Markdown.
 ReadTableFromDelimitedFile(TableID="Test_Table",InputFile="Data/testtable.csv")
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results/test-WriteTableToMarkdown-LandingPage-table-out.md")
+#
+# Concatenate the expanded template and table into the final Markdown file.
+AppendFile(InputFile="Results\test-WriteTableToMarkdown-LandingPage-tmp.md,Results\test-WriteTableToMarkdown-LandingPage-table-out.md",OutputFile="Results/test-WriteTableToMarkdown-LandingPage-out.md")
 # Uncomment the following to regenerate expected results.
-# WriteTableToMarkdown(TableID="Test_Table",OutputFile="ExpectedResults\test-WriteTableToMarkdown_out.md")
-# Generate the results.
-WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results/test-WriteTableToMarkdown-LandingPage-out.md")
-# Compare the results.
-CompareFiles(InputFile1="ExpectedResults/test-WriteTableToMarkdown-LandingPage-out.md",InputFile2="Results/test-WriteTableToMarkdown-LandingPage-out.md",IfDifferent=Warn)
+# AppendFile(InputFile="Results\test-WriteTableToMarkdown-LandingPage-tmp.md,Results\test-WriteTableToMarkdown-LandingPage-table-out.md",OutputFile="ExpectedResults/test-WriteTableToMarkdown-LandingPage-out.md")
+# Compare the results:
+# - allow 1 line to be different for the current date/time
+CompareFiles(InputFile1="Results/test-WriteTableToMarkdown-LandingPage-out.md",InputFile2="ExpectedResults/test-WriteTableToMarkdown-LandingPage-out.md",AllowedDiff="1",IfDifferent="Warn")
