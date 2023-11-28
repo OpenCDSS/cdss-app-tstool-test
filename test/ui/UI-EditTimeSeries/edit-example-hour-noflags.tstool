@@ -1,0 +1,6 @@
+# Simple example to enable time series editing.
+#
+# CLAFTCCO (0301200) - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+abbrev:CLAFTCCO.DWR.DISCHRG.Hour~HydroBaseWeb
+SetTimeSeriesProperty(Editable="True")
+ProcessTSProduct(TSProductFile="edit-example-hour-noflags.tsp",DefaultSaveFile="results/savefile-example-hour-noflags.dv")
