@@ -1,0 +1,8 @@
+# Simple example to enable time series editing:
+# - the original time series does not have flags so set some
+#
+# CLAFTCCO (0301200) - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+abbrev:CLAFTCCO.DWR.DISCHRG.Hour~HydroBaseWeb
+SetTimeSeriesProperty(Editable="True")
+SetConstant(SetFlag="AB12",SetFlagDescription="Test flag")
+ProcessTSProduct(TSProductFile="edit-example-hour-flags.tsp",DefaultSaveFile="results/savefile-example-hour-noflags.dv")

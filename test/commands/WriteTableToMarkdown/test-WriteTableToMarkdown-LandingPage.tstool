@@ -1,0 +1,13 @@
+# Example of creating a simple landing page:
+# - Markdown has introductory text
+# - the date/time for creating the product is inserted
+# - a CSV data file is formatted as a table
+StartLog(LogFile="Results/test-WriteTableToMarkdown-LandingPage.tstool.log")
+RemoveFile(InputFile="Results/test-WriteTableToMarkdown-LandingPage-out.csv",IfNotFound=Ignore)
+ReadTableFromDelimitedFile(TableID="Test_Table",InputFile="Data/testtable.csv")
+# Uncomment the following to regenerate expected results.
+# WriteTableToMarkdown(TableID="Test_Table",OutputFile="ExpectedResults\test-WriteTableToMarkdown_out.md")
+# Generate the results.
+WriteTableToMarkdown(TableID="Test_Table",OutputFile="Results/test-WriteTableToMarkdown-LandingPage-out.md")
+# Compare the results.
+CompareFiles(InputFile1="ExpectedResults/test-WriteTableToMarkdown-LandingPage-out.md",InputFile2="Results/test-WriteTableToMarkdown-LandingPage-out.md",IfDifferent=Warn)
