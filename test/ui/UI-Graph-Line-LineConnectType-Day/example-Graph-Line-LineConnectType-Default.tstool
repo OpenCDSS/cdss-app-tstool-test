@@ -1,0 +1,14 @@
+StartLog(LogFile="results/example-Graph-Line-LineConnectType-Default.tstool.log")
+# Use actual data to test the LineConnectType property:
+# - read the same time series 3 times
+# - day interval data
+# - use different LineConnectType for each time series
+# ABBREV=CLAFTCCO, USGS site ID=06752000 - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+ReadTimeSeries(TSID="usgs:06752000.DWR.Streamflow-Avg.Day~HydroBaseWeb",Alias="Connect",IfNotFound="Warn")
+ReadTimeSeries(TSID="usgs:06752000.DWR.Streamflow-Avg.Day~HydroBaseWeb",Alias="StepUsingValue",IfNotFound="Warn")
+ReadTimeSeries(TSID="usgs:06752000.DWR.Streamflow-Avg.Day~HydroBaseWeb",Alias="StepUsingNextValue",IfNotFound="Warn")
+#
+# Process the time series product.
+SetDebugLevel(LogFileLevel="1")
+ProcessTSProduct(TSProductFile="example-Graph-Line-LineConnectType-Default.tsp")
+SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
