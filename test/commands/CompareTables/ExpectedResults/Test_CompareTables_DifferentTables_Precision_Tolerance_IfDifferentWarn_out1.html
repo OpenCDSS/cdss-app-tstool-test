@@ -1,0 +1,326 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"><html>
+<head>
+<title>Data Table - DifferenceTable1Expected
+</title><style>
+@media screen {
+#titles {
+  font-weight: bold;
+  color: #303044
+}
+table {
+  background-color: black;
+  text-align: left;
+  border: 1;
+  bordercolor: black;
+  cellspacing: 1;
+  cellpadding: 1
+}
+th {
+  background-color: #333366;
+  text-align: center;
+  vertical-align: bottom;
+  color: white
+}
+tr {
+  valign: bottom;
+  halign: right
+}
+td {
+  background-color: white;
+  text-align: right;
+  vertical-align: bottom;
+  font-style: normal;
+  font-family: courier;
+  font-size: .75em
+}
+body {
+  text-align: left;
+  font-size: 12pt;
+}
+pre {
+  font-size: 12pt;
+  margin: 0px
+}
+p {
+  font-size: 12pt;
+}
+/* The following controls formatting of data values in tables. */
+.flagcell {  background-color: lightgray;}
+.missing {
+  background-color: yellow;
+}
+.flag {
+  vertical-align: super;
+}
+.flagnote {
+  font-style: normal;
+  font-family: courier;
+  font-size: .75em;
+}
+.diff { /* Cell value is different in the tables. */
+  background-color: yellow;
+}
+.emptyrow { /* Inserted empty row to align tables (light gray). */
+  background-color: #cccccc;
+  padding: 8px; /* Use to ensure that empty rows have some height. */
+}
+.error { /* Error analyzing the cell. */
+  background-color: red;
+}
+.norow { /* No row in the table, used with different length input. */
+  background-color: black;
+  padding: 8px; /* Use to ensure that empty rows have some height. */
+}
+.rowin1 { /* Row is in only in table1 (light blue). */
+  background-color: #b3d9ff;
+}
+.rowin2 { /* Row is in only in table2 (light green). */
+  background-color: #80ff80;
+}
+.unknown { /* Unknown cell status (not analyzed, dark grey). */
+  background-color: #999999;
+}
+}
+@media print {
+#titles {
+  font-weight: bold;
+  color: #303044
+}
+table {
+  border-collapse: collapse;
+  background-color: white;
+  text-align: left;
+  border: 1pt solid #000000;
+  cellspacing: 2pt;
+  cellpadding: 2pt
+}
+th {
+  background-color: white;
+  text-align: center;
+  vertical-align: bottom;
+  color: black
+}
+tr {
+  valign: bottom;
+  halign: right;
+}
+td {
+  background-color: white;
+  border: 1pt solid #000000;
+  text-align: right;
+  vertical-align: bottom;
+  font-style: normal;
+  font-family: courier;
+  font-size: 11pt;
+  padding: 2pt;
+}
+body {
+  text-align: left;
+  font-size: 11pt;
+}
+pre {
+  font-size: 11pt;
+  margin: 0px
+}
+p {
+  font-size: 11pt;
+}
+/* The following controls formatting of data values in tables. */
+.flagcell {
+  background-color: lightgray;
+}
+.missing {
+  background-color: yellow;
+}
+.flag {
+  vertical-align: super;
+}
+.flagnote {
+  font-style: normal;
+  font-family: courier;
+  font-size: 11pt;
+}
+.diff { /* Cell value is different in the tables. */
+  background-color: yellow;
+}
+.emptyrow { /* Inserted empty row to align tables (light gray). */
+  background-color: #cccccc;
+  padding: 8px; /* Use to ensure that empty rows have some height. */
+}
+.error { /* Error analyzing the cell. */
+  background-color: red;
+}
+.norow { /* No row in the table, used with different length input. */
+  background-color: black;
+  padding: 8px; /* Use to ensure that empty rows have some height. */
+}
+.rowin1 { /* Row is in only in table1 (light blue). */
+  background-color: #b3d9ff;
+}
+.rowin2 { /* Row is in only in table2 (light green). */
+  background-color: #80ff80;
+}
+.unknown { /* Unknown cell status (not analyzed, dark grey). */
+  background-color: #999999;
+}
+}
+}
+</style>
+</head>
+<body>
+<table>
+<tr>
+<th>Row</th>
+<th>Date/time</th>
+<th>ValueInt</th>
+<th>ValueFloat</th>
+<th>ValueString</th>
+</tr>
+<tr>
+<td>1
+</td>
+<td>2000-01
+</td>
+<td class="diff">1 / 11
+</td>
+<td>1 ~/~ 1.10
+</td>
+<td class="diff"> / a
+</td>
+</tr>
+<tr>
+<td>2
+</td>
+<td>2000-02
+</td>
+<td>2
+</td>
+<td>2 ~/~ 2.00
+</td>
+<td>b
+</td>
+</tr>
+<tr>
+<td>3
+</td>
+<td>2000-03
+</td>
+<td>
+</td>
+<td class="diff">3 / 3.30
+</td>
+<td class="diff">c / 
+</td>
+</tr>
+<tr>
+<td>4
+</td>
+<td>2000-04
+</td>
+<td>4
+</td>
+<td>4 ~/~ 4.00
+</td>
+<td>d
+</td>
+</tr>
+<tr>
+<td>5
+</td>
+<td>2000-05
+</td>
+<td>5
+</td>
+<td>5 ~/~ 5.01
+</td>
+<td>e
+</td>
+</tr>
+<tr>
+<td>6
+</td>
+<td>2000-06
+</td>
+<td>6
+</td>
+<td class="diff"> / 6.05
+</td>
+<td>f
+</td>
+</tr>
+<tr>
+<td>7
+</td>
+<td>2000-07
+</td>
+<td>7
+</td>
+<td class="diff">7 / 7.70
+</td>
+<td class="diff">g / gg
+</td>
+</tr>
+<tr>
+<td>8
+</td>
+<td>2000-08
+</td>
+<td class="diff">8 / 88
+</td>
+<td>8
+</td>
+<td>h
+</td>
+</tr>
+<tr>
+<td>9
+</td>
+<td>2000-09
+</td>
+<td>9
+</td>
+<td>9
+</td>
+<td>i
+</td>
+</tr>
+<tr>
+<td>10
+</td>
+<td>2000-10
+</td>
+<td>
+</td>
+<td>
+</td>
+<td>j
+</td>
+</tr>
+<tr>
+<td>11
+</td>
+<td>2000-11
+</td>
+<td>11
+</td>
+<td>11
+</td>
+<td>k
+</td>
+</tr>
+<tr>
+<td>12
+</td>
+<td>2000-12
+</td>
+<td>12
+</td>
+<td>12
+</td>
+<td class="diff">l / ll
+</td>
+</tr>
+</table>
+
+</body>
+</html>

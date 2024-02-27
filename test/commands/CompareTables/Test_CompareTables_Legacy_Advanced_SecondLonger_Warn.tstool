@@ -1,0 +1,16 @@
+# Test comparing two tables of different lengths:
+# - use legacy parameter names
+# - use Advanced analysis
+# - second table has more rows
+# - set as readOnly since using legacy commands
+# @readOnly
+# @expectedStatus Warning
+StartLog(LogFile="Results/Test_CompareTables_Legacy_Advanced_SecondLonger_Warn.tstool.log")
+RemoveFile(InputFile="Results/Test_CompareTables_Legacy_Advanced_SecondLonger_Warn_out.html",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
+ReadTableFromDelimitedFile(TableID="table1-longer",InputFile="Data\table1-longer.csv")
+# Uncomment to regenerate the expected results.
+# Generate the results.
+SetDebugLevel(LogFileLevel="1")
+CompareTables(Table1ID="table1",MatchColumns1="Date/time",Table2ID="table1-longer",AnalysisMethod="Advanced",IfDifferent="Warn",NewTableID="Comparison1Table",NewTable2ID="Comparison2Table",RowNumberColumn="Row",OutputFile="Results/Test_CompareTables_Legacy_Advanced_SecondLonger_Warn_out1.html",OutputFile2="Results/Test_CompareTables_Legacy_Advanced_SecondLonger_Warn_out2.html")
+SetDebugLevel(ScreenLevel="0",LogFileLevel="0")

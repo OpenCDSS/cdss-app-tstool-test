@@ -1,0 +1,34 @@
+# Test comparing two simple tables using default parameters:
+# - the files are different
+# - generate a command warning
+# - check to a precision of of 2 digits and specify a tolerance of .2 to allow some
+#   differences to pass without a warning
+# @expectedStatus Warning
+#@require application TSTool version >= 14.9.3
+StartLog(LogFile="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn.TSTool.log")
+RemoveFile(InputFile="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out.html",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
+ReadTableFromDelimitedFile(TableID="table2",InputFile="Data\table2.2.csv")
+# Uncomment next 2 commands to regenerate the expected results...
+# CompareTables(Table1ID="table1",Table2ID="table2",Precision="2",Tolerance=".2",IfDifferent="Warn",DiffTable1ID="DifferenceTable1Expected",RowNumberColumn="Row",DiffFile1="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out1.html",DiffRowCountProperty="TestDifferentRowCount",DiffCellCountProperty="TestDifferentCellCount",SameRowCountProperty="TestSameRowCount",SameCellCountProperty="TestSameCellCount")
+# WriteTableToDelimitedFile(TableID="DifferenceTable1Expected",OutputFile="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out.csv")
+# Generate the results.
+CompareTables(Table1ID="table1",Table2ID="table2",Precision="2",Tolerance=".2",IfDifferent="Warn",DiffTable1ID="DifferenceTable1",RowNumberColumn="Row",DiffFile1="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out1.html",DiffRowCountProperty="TestDifferentRowCount",DiffCellCountProperty="TestDifferentCellCount",SameRowCountProperty="TestSameRowCount",SameCellCountProperty="TestSameCellCount")
+WriteTableToDelimitedFile(TableID="DifferenceTable1",OutputFile="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out.csv")
+# Do regression comparison on the results.
+# CompareFiles(InputFile1="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out1.csv",InputFile2="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out1.csv",IfDifferent="Warn")
+CompareFiles(InputFile1="ExpectedResults/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out1.html",InputFile2="Results/Test_CompareTables_DifferentTables_Precision_Tolerance_IfDifferentWarn_out1.html",AllowedDiff="1",IfDifferent="Warn")
+#
+# Check that specific counts match expected values.
+If(Name="If_TestDifferentRowCount",Condition="${TestDifferentRowCount} != 6")
+    Message(Message="Different row count is not the expected value 6.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDifferentRowCount")
+If(Name="If_TestDifferentCellCount",Condition="${TestDifferentCellCount} != 9")
+    Message(Message="Different cell count is not the expected value 9.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDifferentCellCount")
+If(Name="If_TestSameRowCount",Condition="${TestSameRowCount} != 6")
+    Message(Message="Same row count is not the expected value 6.",CommandStatus="FAILURE")
+EndIf(Name="If_TestSameRowCount")
+If(Name="If_TestSameCellCount",Condition="${TestSameCellCount} != 39")
+    Message(Message="Same cell count is not the expected value 39.",CommandStatus="FAILURE")
+EndIf(Name="If_TestSameCellCount")

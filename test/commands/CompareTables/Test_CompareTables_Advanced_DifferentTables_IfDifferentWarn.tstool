@@ -1,0 +1,30 @@
+# Test comparing two simple tables using default parameters:
+# - use the advanced analysis method
+# - the tables are different
+# - generate a command warning
+# @expectedStatus Warning
+#@require application TSTool version >= 14.9.3
+StartLog(LogFile="Results/Test_CompareTables_Advanced_DifferentTables_IfDifferentWarn.tstool.log")
+RemoveFile(InputFile="Results/Test_CompareTables_Advanced_DifferentTables_IfDifferentWarn_out.html",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
+ReadTableFromDelimitedFile(TableID="table2",InputFile="Data\table3.csv")
+# Uncomment to regenerate the expected results...
+# Generate the results.
+SetDebugLevel(LogFileLevel="1")
+CompareTables(Table1ID="table1",MatchColumns1="Date/time",Table2ID="table2",AnalysisMethod="Advanced",IfDifferent="Warn",DiffTable1ID="DifferenceTable1",DiffTable2ID="DifferenceTable2",DiffTableID="DifferenceTable",RowNumberColumn="Row",DiffFile1="Results/Test_CompareTables_Advanced_DifferentTables_IfDifferentWarn_out1.html",DiffFile2="Results/Test_CompareTables_Advanced_DifferentTables_IfDifferentWarn_out2.html",DiffFile="Results/Test_CompareTables_Advanced_DifferentTables_IfDifferentWarn_out3.html",DiffRowCountProperty="TestDifferentRowCount",DiffCellCountProperty="TestDifferentCellCount",SameRowCountProperty="TestSameRowCount",SameCellCountProperty="TestSameCellCount")
+SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
+# Do regression comparison on the results
+# CompareFiles(InputFile1="ExpectedResults/Test_CompareTables_Advanced_DifferentTables_IfDifferentWarn_out.html",InputFile2="Results/Test_CompareTables_Advanced_DifferentTables_IfDifferentWarn_out.html",IfDifferent=Warn)
+# Check that specific counts match expected values.
+If(Name="If_TestDifferentRowCount",Condition="${TestDifferentRowCount} != 19")
+    Message(Message="Different row count is not the expected value 19.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDifferentRowCount")
+If(Name="If_TestDifferentCellCount",Condition="${TestDifferentCellCount} != 72")
+    Message(Message="Different cell count is not the expected value 72.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDifferentCellCount")
+If(Name="If_TestSameRowCount",Condition="${TestSameRowCount} != 2")
+    Message(Message="Same row count is not the expected value 2.",CommandStatus="FAILURE")
+EndIf(Name="If_TestSameRowCount")
+If(Name="If_TestSameCellCount",Condition="${TestSameCellCount} != 12")
+    Message(Message="Same cell count is not the expected value 12.",CommandStatus="FAILURE")
+EndIf(Name="If_TestSameCellCount")

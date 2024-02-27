@@ -1,10 +1,25 @@
 # Test comparing two simple tables where one is empty:
 # - second table is empty
 # @expectedStatus Warning
+#@require application TSTool version >= 14.9.3
 StartLog(LogFile="Results/Test_CompareTables_EmptyTable2_Warn.TSTool.log")
-RemoveFile(InputFile="Results/Test_CompareTables_EmptyTable2_Warn_out.html",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_CompareTables_EmptyTable2_Warn_out.html",IfNotFound="Ignore")
 ReadTableFromDelimitedFile(TableID="table1-empty",InputFile="Data\table1-empty.csv")
 ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
 # Uncomment to regenerate the expected results.
 # Generate the results.
-CompareTables(Table1ID="table1",Table2ID="table1-empty",NewTableID="comparison",OutputFile="Results/Test_CompareTables_EmptyTable2_Warn_out.html",IfDifferent=Warn)
+CompareTables(Table1ID="table1",Table2ID="table1-empty",IfDifferent="Warn",DiffTable1ID="DifferenceTable1",RowNumberColumn="Row",DiffFile1="Results/Test_CompareTables_EmptyTable2_Warn_out1.html",DiffRowCountProperty="TestDifferentRowCount",DiffCellCountProperty="TestDifferentCellCount",SameRowCountProperty="TestSameRowCount",SameCellCountProperty="TestSameCellCount")
+#
+# Check that specific counts match expected values.
+If(Name="If_TestDifferentRowCount",Condition="${TestDifferentRowCount} != 12")
+    Message(Message="Different row count is not the expected value 12.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDifferentRowCount")
+If(Name="If_TestDifferentCellCount",Condition="${TestDifferentCellCount} != 43")
+    Message(Message="Different cell count is not the expected value 43.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDifferentCellCount")
+If(Name="If_TestSameRowCount",Condition="${TestSameRowCount} != 0")
+    Message(Message="Same row count is not the expected value 0.",CommandStatus="FAILURE")
+EndIf(Name="If_TestSameRowCount")
+If(Name="If_TestSameCellCount",Condition="${TestSameCellCount} != 5")
+    Message(Message="Same cell count is not the expected value 5.",CommandStatus="FAILURE")
+EndIf(Name="If_TestSameCellCount")
