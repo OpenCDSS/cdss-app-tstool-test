@@ -1,0 +1,15 @@
+# Test comparing two simple tables using default parameters
+# - use legacy parameter names
+# - the files are different
+# - ignore generating a command warning
+# - set as readOnly since using legacy commands
+# @readOnly
+StartLog(LogFile="Results/Test_CompareTables_Legacy_DifferentTables_IfDifferentIgnore.TSTool.log")
+RemoveFile(InputFile="Results/Test_CompareTables_Legacy_DifferentTables_IfDifferentIgnore_out.html",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="table1",InputFile="Data\table1.csv")
+ReadTableFromDelimitedFile(TableID="table2",InputFile="Data\table2.csv")
+# Uncomment to regenerate the expected results...
+# Generate the results.
+CompareTables(Table1ID="table1",Table2ID="table2",IfDifferent="Ignore",NewTableID="comparison",OutputFile="Results/Test_CompareTables_Legacy_DifferentTables_IfDifferentIgnore_out.html")
+# Do regression comparison on the results
+# CompareFiles(InputFile1="ExpectedResults/Test_CompareTables_Legacy_DifferentTables_IfDifferentIgnore_out.html",InputFile2="Results/Test_CompareTables_Legacy_DifferentTables_IfDifferentIgnore_out.html",IfDifferent=Warn)
