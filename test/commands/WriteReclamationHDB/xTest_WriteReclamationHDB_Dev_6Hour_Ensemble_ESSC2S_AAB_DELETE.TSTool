@@ -1,5 +1,5 @@
 # Disable because are moving to FEWS PI XML
-#@enable False
+#@enabled False
 # Test writing a 6hour ensemble of model time series to ReclamationHDB database:
 # - development database
 # - old WRITE_TO_HDB procedure

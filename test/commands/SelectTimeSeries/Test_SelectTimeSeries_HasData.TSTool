@@ -1,0 +1,13 @@
+# Test of HasData parameter:
+# - two time series with data, one with no data
+# - only two should be selected
+StartLog(LogFile="Results/Test_SelectTimeSeries_HasData.TSTool.log")
+RemoveFile(InputFile="Results/Test_SelectTimeSeries_HasData_out.dv",IfNotFound="Ignore")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1...Day",Description="test data 1",SetStart="2000-01-01",SetEnd="2003-05-13",PatternValues="1,2,4,7,15,8,5,2,0.5")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2...Day",Description="test data 2",SetStart="2002-01-01",SetEnd="2003-07-28",PatternValues="2,4,8,14,30,16,10,4,1")
+# Read an empty time series.
+ReadDelimitedFile(InputFile="Data\test-empty-ts.csv",Delimiter=",",ColumnNames="FC[1:2]",DateColumn="Date",ValueColumn="Value",LocationID="ts3",Interval="Year")
+SelectTimeSeries(DeselectAllFirst="True",SelectCountProperty="TestSelectCount",HasData="True")
+If(Name="If_HasData",Condition="${TestSelectCount} != 2")
+    Message(Message="Selected count (${TestSelectCount}) is not the expected value 2.",CommandStatus="FAILURE")
+EndIf(Name="If_HasData")

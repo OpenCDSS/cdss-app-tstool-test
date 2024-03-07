@@ -1,0 +1,10 @@
+StartLog(LogFile="results/example-Graph-Line-LineConnectAllowedGap.tstool.log")
+# Example for the LineConnectAllowedGap property:
+# - generate some irregular interval time series data with date/times spaced far apart
+# - read from a file so that date gap can be forced
+ReadDelimitedFile(InputFile="data/testdata.csv",Delimiter=",",ColumnNames="FC[1:2]",DateTimeColumn="DateTime",ValueColumn="Value",LocationID="ts1",DataType="streamflow",Interval="IrregSecond",Units="cfs",Alias="ts1")
+#
+# Process the time series product.
+SetDebugLevel(LogFileLevel="1")
+ProcessTSProduct(TSProductFile="example-Graph-Line-LineConnectAllowedGap.tsp")
+SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
