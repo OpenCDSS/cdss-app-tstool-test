@@ -1,4 +1,4 @@
-#@readonly
+#@readOnly
 # Test processing the last matching TSID because no *
 StartLog(LogFile="Results/Test_Free_Legacy_NoAst.TSTool.log")
 RemoveFile(InputFile="Results/Test_Free_Legacy_NoAst_out.dv",IfNotFound=Ignore)
