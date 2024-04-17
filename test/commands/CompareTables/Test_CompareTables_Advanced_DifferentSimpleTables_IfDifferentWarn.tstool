@@ -4,6 +4,7 @@
 # - both comparison tables should be the same
 # - generate a command warning
 # @expectedStatus Warning
+#@docExample - command file is used as an example in the command's documentation
 #@require application TSTool version >= 14.9.3
 StartLog(LogFile="Results/Test_CompareTables_Advanced_DifferentSimpleTables_IfDifferentWarn.TSTool.log")
 RemoveFile(InputFile="Results/Test_CompareTables_Advanced_DifferentSimpleTables_IfDifferentWarn_out.html",IfNotFound="Ignore")

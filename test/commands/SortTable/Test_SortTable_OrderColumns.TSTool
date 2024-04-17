@@ -1,0 +1,11 @@
+# Test sorting a table read from a file:
+# - sort the columns
+StartLog(LogFile="Results/Test_SortTable_OrderColumns.TSTool.log")
+RemoveFile(InputFile="Results/Test_SortTable_OrderColumns_out.csv",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+SortTable(TableID="Table1",OrderColumns="Integer,String,DateTime,Double")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_SortTable_OrderColumns_out.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_SortTable_OrderColumns_out.csv")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults\Test_SortTable_OrderColumns_out.csv",InputFile2="Results/Test_SortTable_OrderColumns_out.csv",IfDifferent="Warn")
