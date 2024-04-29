@@ -1,10 +1,10 @@
-StartLog(LogFile="results/test-Comment-sourceUrl-LocalVersionOld.tstool.log")
+StartLog(LogFile="results/test-Comment-sourceUrl-LocalVersionDateNew.tstool.log")
 # Test of #@sourceUrl:
-# - simulate the local file being older than the remote file (1.2.3)
+# - simulate the local file being newer than the remote file (2024-01-01)
 # - to do this, set 'sourceUrl' to a different file
 #
-#@sourceUrl https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/Comment_sourceUrl/data/test-Comment-sourceUrl-version-123.tstool
-#@version 1.2.2
+#@sourceUrl https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/Comment_sourceUrl/data/test-Comment-sourceUrl-version-2024-01-01.tstool
+#@version 2024-01-02
 #
 # The 'data/workflow.tstool' file is used for 'sourceUrl' and contains a version that can be compared to this file.
 # Normally, the source file would be the same file as the command file.
