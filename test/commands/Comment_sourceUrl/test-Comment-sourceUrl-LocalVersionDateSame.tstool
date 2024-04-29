@@ -1,0 +1,11 @@
+StartLog(LogFile="results/test-Comment-sourceUrl-LocalVersionDateSame.tstool.log")
+# Test of #@sourceUrl:
+# - simulate the local file being the same version as the remote file (2024-01-01)
+# - to do this, set 'sourceUrl' to a different file
+#
+#@sourceUrl https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/Comment_sourceUrl/data/test-Comment-sourceUrl-versionDate-2024-01-01.tstool
+#@version 2024-01-01
+#
+# The 'data/workflow.tstool' file is used for 'sourceUrl' and contains a version that can be compared to this file.
+# Normally, the source file would be the same file as the command file.
+# However, in this case two files are needed to simulate the condition in the repository.
