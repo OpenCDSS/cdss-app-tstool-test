@@ -1,0 +1,9 @@
+# Test of #@sourceUrl:
+# - simulate the local file being older than the remote file (1.2.3).
+#
+#@sourceUrl https://github.com/OpenCDSS/cdss-app-tstool-test/tree/master/test/commands/Comment_sourceUrl/test-Comment-sourceUrl-LocalVersionOld.tstool
+#@version 1.2.2
+#
+# The 'data/workflow.tstool' file is used for 'sourceUrl' and contains a version that is newer than this file.
+# Normally, the source file would be the same file as the command file.
+# However, in this case two files are needed to similate the condition in the repository.
