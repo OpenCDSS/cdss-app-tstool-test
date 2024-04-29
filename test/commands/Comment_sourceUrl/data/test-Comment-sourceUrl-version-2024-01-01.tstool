@@ -1,6 +1,8 @@
 # Test of #@sourceUrl:
 # - simulate the local file being older than the remote file
 #
+# Disable the test so that it is not run in automated tests.
+#@enabled False
 # OK to include 'sourceUrl' here, pointing to this file.
 #@sourceUrl https://raw.githubusercontent.com/OpenCDSS/cdss-app-tstool-test/master/test/commands/Comment_sourceUrl/data/test-Comment-sourceUrl-version-2024-01-01.tstool
 #@versionDate 2024-01-01 
