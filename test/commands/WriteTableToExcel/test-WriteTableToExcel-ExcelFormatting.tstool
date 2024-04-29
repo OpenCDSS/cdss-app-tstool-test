@@ -1,0 +1,15 @@
+# Test writing a table to Excel:
+# - read data from a csv file
+# - specify the "Excel Formatting" parameters
+# - can't automate a test but use to visually verify
+StartLog(LogFile="Results/test-WriteTableToExcel-ExcelFormatting.tstool.log")
+RemoveFile(InputFile="Results/test-WriteTableToExcel-ExcelFormatting-out.csv",IfNotFound="Ignore")
+# Read the table from the csv data file.
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+# Write the table to a new Excel file.
+NewExcelWorkbook(OutputFile="Results/test-WriteTableToExcel-ExcelFormatting-out.xlsx",Worksheets="Table1",KeepOpen="True")
+WriteTableToExcel(TableID="Table1",OutputFile="Results/test-WriteTableToExcel-ExcelFormatting-out.xlsx",Worksheet="Table1",ExcelAddress="A1",ExcelColumnNames="FirstRowInRange",KeepOpen="False",ColumnWidths="Default:Auto,Empty:256,String:3840,*Time:5000",ColumnDecimalPlaces="Double:3")
+# Now read the table from the new worksheet.
+# ReadTableFromExcel(TableID="Table2",InputFile="Results\test-WriteTableToExcel-ExcelFormatting-out.xlsx",Worksheet="Table1",ExcelColumnNames="FirstRowInRange")
+# Do regression comparison with the original table.
+# CompareTables(Table1ID="Table1",Table2ID="Table2",IfDifferent="Warn")
