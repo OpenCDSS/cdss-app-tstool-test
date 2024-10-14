@@ -1,0 +1,16 @@
+# Test editing text in a file
+# - replace a literal string with a string containing spaces
+# - replace a string provided by a ${Property} with a string containing spaces
+# - replace a string with a ${Property} with a string containing spaces (so output file includes a property)
+StartLog(LogFile="Results/Test_TextEdit_WhitespaceEnds.TSTool.log")
+RemoveFile(InputFile="Results\Test_TextEdit_WhitespaceEnds_out.txt",IfNotFound="Ignore")
+SetProperty(PropertyName="TestReplaceText",PropertyType="String",PropertyValue=" xxxx ")
+# Uncomment the following three commands to regenerate expected results.
+# TextEdit(InputFile="Data/file1.txt",SearchFor="line1",ReplaceWith="LINEA",OutputFile="ExpectedResults/Test_TextEdit_WhitespaceEnds_out.txt")
+# TextEdit(InputFile="ExpectedResults/Test_TextEdit_WhitespaceEnds_out.txt",SearchFor="line",ReplaceWith="${TestReplaceText}",OutputFile="ExpectedResults/Test_TextEdit_WhitespaceEnds_out.txt")
+# TextEdit(InputFile="ExpectedResults/Test_TextEdit_WhitespaceEnds_out.txt",SearchFor="xxxx7",ReplaceWith="\$\{SomeProperty}",OutputFile="ExpectedResults/Test_TextEdit_WhitespaceEnds_out.txt")
+# Run the command to create output
+TextEdit(InputFile="Data/file1.txt",SearchFor="line1",ReplaceWith="LINEA",OutputFile="Results/Test_TextEdit_WhitespaceEnds_out.txt")
+TextEdit(InputFile="Results/Test_TextEdit_WhitespaceEnds_out.txt",SearchFor="line",ReplaceWith="${TestReplaceText}",OutputFile="Results/Test_TextEdit_WhitespaceEnds_out.txt")
+TextEdit(InputFile="Results/Test_TextEdit_WhitespaceEnds_out.txt",SearchFor="xxxx7",ReplaceWith="\$\{SomeProperty}",OutputFile="Results/Test_TextEdit_WhitespaceEnds_out.txt")
+CompareFiles(InputFile1="ExpectedResults\Test_TextEdit_WhitespaceEnds_out.txt",InputFile2="Results\Test_TextEdit_WhitespaceEnds_out.txt",IfDifferent="Fail")
