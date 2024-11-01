@@ -1,0 +1,10 @@
+SetProperty(PropertyName="TestLastSunday",PropertyType="DateTime",PropertyValue="LastSunday")
+SetProperty(PropertyName="TestLastMonday",PropertyType="DateTime",PropertyValue="LastMonday")
+SetProperty(PropertyName="TestLastTuesday",PropertyType="DateTime",PropertyValue="LastTuesday")
+SetProperty(PropertyName="TestLastWednesday",PropertyType="DateTime",PropertyValue="LastWednesday")
+SetProperty(PropertyName="TestLastThursday",PropertyType="DateTime",PropertyValue="LastThursday")
+SetProperty(PropertyName="TestLastFriday",PropertyType="DateTime",PropertyValue="LastFriday")
+SetProperty(PropertyName="TestLastSaturday",PropertyType="DateTime",PropertyValue="LastSaturday")
+#
+# Test math.
+SetProperty(PropertyName="TestLastSundayPlus3",PropertyType="DateTime",PropertyValue="LastSundayn + 3Day")
