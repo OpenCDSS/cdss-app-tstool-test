@@ -1,0 +1,12 @@
+# Test iterating through a For() loop:
+# - iterate over a period of day precision dates
+# - increment negative Day
+# - for output, append the property value to a file
+StartLog(LogFile="Results/Test_For_PeriodDay_IncrementNegDay.tstool.log")
+RemoveFile(InputFile="Results/Test_For_PeriodDay_IncrementNegDay_out.txt",IfNotFound="Ignore")
+For(Name="TestFor",PeriodStart="2024-03-31",PeriodEnd="2024-01-01",PeriodIncrement="Day")
+    WritePropertiesToFile(OutputFile="Results/Test_For_PeriodDay_IncrementNegDay_out.txt",IncludeProperties="TestFor",WriteMode="Append",FileFormat="NameTypeValue")
+EndFor(Name="TestFor")
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results\Test_For_PeriodDay_IncrementNegDay_out.txt",OutputFile="ExpectedResults\Test_For_PeriodDay_IncrementNegDay_out.txt",IfInputNotFound="Fail")
+CompareFiles(InputFile1="ExpectedResults/Test_For_PeriodDay_IncrementNegDay_out.txt",InputFile2="Results/Test_For_PeriodDay_IncrementNegDay_out.txt",IfDifferent="Warn")

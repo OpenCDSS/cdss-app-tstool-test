@@ -3,17 +3,17 @@
 # - Nest three loops to verify that nesting works
 StartLog(LogFile="Results/Test_For_ListString_Nested.TSTool.log")
 # SetDebugLevel(LogFileLevel=1)
-RemoveFile(InputFile="Results/Test_For_ListString_Nested_out.txt",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_For_ListString_Nested_out.txt",IfNotFound="Ignore")
 ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
 For(Name="TestForBasins",IteratorProperty="Basin",List="Basin1,Basin2,Basin3,Basin4")
 For(Name="TestForStations",IteratorProperty="Station",List="Station1,Station2,Station3,Station4")
 For(Name="TestForSensors",IteratorProperty="Sensor",List="Sensor1,Sensor2,Sensor3,Sensor4")
-WritePropertiesToFile(OutputFile="Results/Test_For_ListString_Nested_out.txt",IncludeProperties="Basin,Station,Sensor",WriteMode=Append,FileFormat=NameTypeValue)
+WritePropertiesToFile(OutputFile="Results/Test_For_ListString_Nested_out.txt",IncludeProperties="Basin,Station,Sensor",WriteMode="Append",FileFormat="NameTypeValue")
 EndFor(Name="TestForSensors")
 EndFor(Name="TestForStations")
 EndFor(Name="TestForBasins")
 # Uncomment the following to generate the expected results.
 # CopyFile(InputFile="Results\Test_For_ListString_Nested_out.txt",OutputFile="ExpectedResults\Test_For_ListString_Nested_out.txt",IfInputNotFound=Fail)
 # Do regression comparison with the original input
-CompareFiles(InputFile1="ExpectedResults/Test_For_ListString_Nested_out.txt",InputFile2="Results/Test_For_ListString_Nested_out.txt",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_For_ListString_Nested_out.txt",InputFile2="Results/Test_For_ListString_Nested_out.txt",IfDifferent="Warn")
 # SetDebugLevel(LogFileLevel=0)

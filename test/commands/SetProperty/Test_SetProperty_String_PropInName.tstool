@@ -1,0 +1,13 @@
+# Test setting a processor property:
+# - set a string property
+# - use a property in the property name
+StartLog(LogFile="Results/Test_SetProperty_String_PropInName.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetProperty_String_PropInName_out.txt",IfNotFound="Ignore")
+SetProperty(PropertyName="TestProp",PropertyType="String",PropertyValue="String")
+SetProperty(PropertyName="${TestProp}Prop",PropertyType="String",PropertyValue="string with spaces")
+# Uncomment the following two commands to regenerate the expected results file.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetProperty_String_PropInName_out.txt",IncludeProperties="StringProp",FileFormat="NameValue")
+# Generate new output.
+WritePropertiesToFile(OutputFile="Results/Test_SetProperty_String_PropInName_out.txt",IncludeProperties="StringProp",FileFormat="NameValue")
+# Do regression comparison.
+CompareFiles(InputFile1="ExpectedResults\Test_SetProperty_String_PropInName_out.txt",InputFile2="Results/Test_SetProperty_String_PropInName_out.txt",IfDifferent="Warn")
