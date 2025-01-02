@@ -1,0 +1,12 @@
+# Test merging PDF files:
+# - all files in a folder using * wildcard
+#StartLog(LogFile="results/test-PDFMerge-all-wildcard.tstool.log")
+# Remove the output file before the test
+RemoveFile(InputFile="results/test-PDFMerge-all-wildcard-out.pdf",IfNotFound="Ignore")
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="expected-reesults/test-PDFMerge-all-wildcard-out.pdf",IfNotFound="Ignore")
+# PDFMerge(InputFiles="data/test-all/*",OutputFile="expected-results/test-PDFMerge-all-wildcard-out.pdf")
+PDFMerge(InputFiles="data/*",OutputFile="results/test-PDFMerge-all-wildcard-out.pdf")
+# Compare the results:
+# - allow one difference because the timestamp is different
+#CompareFiles(InputFile1="expected-results/test-PDFMerge-all-wildcard-out.pdf",InputFile2="results/test-PDFMerge-all-wildcard-out.pdf",AllowedDiff="1",IfDifferent="Warn")

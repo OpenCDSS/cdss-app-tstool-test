@@ -1,0 +1,2 @@
+StringProp1="Abba"
+StringPropLast="meh"

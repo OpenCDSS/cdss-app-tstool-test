@@ -1,0 +1,16 @@
+StartLog(LogFile="results/test-GeoMap-Read.tstool.log")
+# Test reading a GeoMap project file:
+# - create a simple file and read
+#
+# Create a project with map.
+GeoMapProject(ProjectCommand="NewProject",NewGeoMapProjectID="TestGeoMapProject",Name="TestGeoMapProject",Description="Test GeoMap project",Properties="Property1:Value1,Property2:Value2")
+GeoMap(MapCommand="NewMap",GeoMapProjectID="TestGeoMapProject",NewGeoMapID="TestGeoMap",GeoMapName="TestGeoMap",GeoMapDescription="Test Geo Map",GeoMapProperties="LayerViewGroupProertyName1:LayerViewGroupPropertyValue1",GeoLayerID="TestLayer",GeoLayerName="TestLayer",GeoLayerDescription="Test Layer",GeoLayerCrs="EPSG:4326",GeoLayerGeometryType="WKT:Polygon",GeoLayerLayerType="Vector",GeoLayerProperties="LayerPropertyName1:LayerPropertValue1",GeoLayerSourceFormat="GeoJSON",GeoLayerSourcePath="https://someUrl",GeoLayerViewGroupID="TestLayerViewGroup",GeoLayerViewGroupName="TestLayerViewGroup",GeoLayerViewGroupDescription="Test Layer View Group",GeoLayerViewGroupProperties="LayerViewGroupPropertyName1:LayerViewGroupPropertyValue1",GeoLayerViewID="TestLayerView",GeoLayerViewName="TestLayerView",GeoLayerViewDescription="Test Layer View",GeoLayerViewProperties="LayerViewPropertyName1:LayerViewPropertyValue1",SingleSymbolID="TestSymbol",SingleSymbolName="TestSymbol",SingleSymbolDescription="Test Symbol",SingleSymbolProperties="SingleSymbolPropertyName1:SingleSymbolPropertyValue1")
+#
+# Write the project to a file.
+GeoMapProject(ProjectCommand="Write",GeoMapProjectID="TestGeoMapProject",OutputFile="results/test-GeoMap-Read-out.gmpjson")
+#
+# Read the project from the file.
+GeoMapProject(ProjectCommand="Read",NewGeoMapProjectID="TestGeoMapProject2",Name="TestGeoMapProject2",Description="TestGeoMapProject2 from read",InputFile="results/test-GeoMap-Read-out.gmpjson",OutputFile="results/test-GeoMap-Read-out.gmpjson")
+#
+# Write the project to a second file.
+GeoMapProject(ProjectCommand="Write",GeoMapProjectID="TestGeoMapProject2",OutputFile="results/test-GeoMap-Read-out2.gmpjson")

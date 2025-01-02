@@ -1,0 +1,13 @@
+# Test setting a property from a table
+# - read the table from the file
+# - set using the row number, including row value of 'last'
+StartLog(LogFile="Results/Test_SetPropertyFromTable_Row.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetPropertyFromTable_Row_out.csv",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+SetPropertyFromTable(TableID="Table1",Column="String2",Row="1",PropertyName="StringProp1")
+SetPropertyFromTable(TableID="Table1",Column="String2",Row="last",PropertyName="StringPropLast")
+# Uncomment the following to generate the expected results.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetPropertyFromTable_Row_out.txt",IncludeProperties="StringProp*",FileFormat="NameValue",SortOrder="Ascending")
+WritePropertiesToFile(OutputFile="Results/Test_SetPropertyFromTable_Row_out.txt",IncludeProperties="StringProp*",FileFormat="NameValue",SortOrder="Ascending")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults/Test_SetPropertyFromTable_Row_out.txt",InputFile2="Results/Test_SetPropertyFromTable_Row_out.txt",IfDifferent="Warn")

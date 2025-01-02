@@ -1,0 +1,2 @@
+StartLog(LogFile="results/test-GeoMapProject-New.tstool.log")
+GeoMapProject(NewGeoMapProjectID="TestGeoMapProject",Name="TestGeoMapProject",Description="Test GeoMap Project",OutputFile="results/test-GeoMapProject-New-out.gmpjson")

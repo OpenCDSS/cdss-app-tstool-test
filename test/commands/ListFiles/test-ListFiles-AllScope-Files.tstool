@@ -5,7 +5,7 @@ StartLog(LogFile="Results/test-ListFiles-AllScope-Files.tstool.log")
 #
 # Remove the output file before the test
 RemoveFile(InputFile="Results/test-ListFiles-AllScope-Files-out.csv",IfNotFound="Ignore")
-ListFiles(Folder="Data",ListScope="All",TableID="FileList")
+ListFiles(Folder="Data",ListScope="All",TableID="FileList",CountProperty="TestFileCount")
 # Copy only the filename and relative path:
 # - absolute path will vary by computer
 # - file attributes will vary by computer
@@ -14,5 +14,10 @@ CopyTable(TableID="FileList",NewTableID="FileList2",IncludeColumns="Name,Relativ
 # Uncomment the following line to regenerate the expected results.
 # WriteTableToDelimitedFile(TableID="FileList2",OutputFile="ExpectedResults/test-ListFiles-AllScope-Files-out.csv")
 WriteTableToDelimitedFile(TableID="FileList2",OutputFile="Results/test-ListFiles-AllScope-Files-out.csv")
-# Compare the results
+# Compare the output file results.
 CompareFiles(InputFile1="ExpectedResults/test-ListFiles-AllScope-Files-out.csv",InputFile2="Results/test-ListFiles-AllScope-Files-out.csv",IfDifferent="Warn")
+#
+# Compare the count of files.
+If(Name="If_FileCount",Condition="${TestFileCount} != 16")
+    Message(Message="The number of files (${TestFileCount}) is not the expected value (16).",CommandStatus="FAILURE")
+EndIf(Name="If_FileCount")
