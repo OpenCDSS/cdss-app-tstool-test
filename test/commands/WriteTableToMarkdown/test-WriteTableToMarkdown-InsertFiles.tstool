@@ -1,0 +1,13 @@
+# Test writing a table to Markdown:
+# - insert text using prepend and append files
+# - the current time is used to indicate the last update time
+StartLog(LogFile="Results/test-WriteTableToMarkdown-InsertFiles.tstool.log")
+RemoveFile(InputFile="Results/test-WriteTableToMarkdown-InsertFiles-out.md",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="Test_Table",InputFile="Data\testtable.csv")
+SetProperty(PropertyName="TestCurrentTime",PropertyType="DateTime",PropertyValue="CurrentToMinute")
+# Uncomment the following to regenerate expected results.
+# WriteTableToMarkdown(TableID="Test_Table",PrependFile="Data/prepend.txt",AppendFile="Data/append.txt",OutputFile="ExpectedResults\test-WriteTableToMarkdown-InsertFiles-out.md")
+# Generate the results.
+WriteTableToMarkdown(TableID="Test_Table",PrependFile="Data/prepend.txt",AppendFile="Data/append.txt",OutputFile="Results\test-WriteTableToMarkdown-InsertFiles-out.md")
+# Compare the results.
+CompareFiles(InputFile1="ExpectedResults/test-WriteTableToMarkdown-InsertFiles-out.md",InputFile2="Results/test-WriteTableToMarkdown-InsertFiles-out.md",IfDifferent="Warn")
