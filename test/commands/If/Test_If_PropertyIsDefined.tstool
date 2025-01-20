@@ -1,0 +1,91 @@
+# Test If:
+# - PropertyIsDefined parameter
+# - rely on Message command status to validate functionality
+StartLog(LogFile="Results/Test_If_PropertyIsDefined.TSTool.log")
+#
+# Set test data:
+# - set valid values, null, and NaN to test
+# Boolean.
+SetProperty(PropertyName="TestBoolean",PropertyType="Boolean",PropertyValue="True")
+SetProperty(PropertyName="TestNullBoolean",PropertyType="Boolean",SetNull="True")
+# DateTime.
+SetProperty(PropertyName="TestDateTime",PropertyType="DateTime",PropertyValue="2024-01-01")
+SetProperty(PropertyName="TestNullDateTime",PropertyType="DateTime",SetNull="True")
+# Double.
+SetProperty(PropertyName="TestDouble",PropertyType="Double",PropertyValue="1.0")
+SetProperty(PropertyName="TestNaNDouble",PropertyType="Double",SetNaN="True")
+SetProperty(PropertyName="TestNullDouble",PropertyType="Double",SetNull="True")
+# Integer.
+SetProperty(PropertyName="TestInteger",PropertyType="Integer",PropertyValue="1")
+SetProperty(PropertyName="TestNullInteger",PropertyType="Integer",SetNull="True")
+# String.
+SetProperty(PropertyName="TestString",PropertyType="String",PropertyValue="SomeNonEmptyStringValue")
+SetProperty(PropertyName="TestNullString",PropertyType="String",SetNull="True")
+SetProperty(PropertyName="TestEmptyString",PropertyType="String",SetEmpty="True")
+#
+# Use If statements to test:
+# - if not expected, use the Message command to set a failure status
+# - go through the data alphabetically
+#
+# Boolean.
+#
+# Try to detect non-null boolean property - should result in not defined being true.
+If(Name="If_TestBoolean",PropertyIsDefined="TestBoolean")
+    Message(Message="TestBoolean results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestBoolean")
+# Try to detect null boolean property - should result in false.
+If(Name="If_TestNullBoolean",PropertyIsDefined="TestNullBoolean")
+    Message(Message="TestNullBoolean should result in false - test fails.",CommandStatus="FAILURE")
+EndIf(Name="If_TestNullBoolean")
+#
+# DateTime.
+#
+# Try to detect non-null DateTime property - should result in true.
+If(Name="If_TestNullDateTime",PropertyIsDefined="TestNullDateTime")
+    Message(Message="TestDateTime results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestNullDateTime")
+# Try to detect null DateTime property - should result in false.
+If(Name="If_TestNullDateTime",PropertyIsDefined="TestNullDateTime")
+    Message(Message="TestNullDateTime should result in false - test fails.",CommandStatus="FAILURE")
+EndIf(Name="If_TestNullDateTime")
+#
+# Double.
+#
+# Try to detect non-null Double property - should result in success.
+If(Name="If_TestDouble",PropertyIsDefined="TestDouble")
+    Message(Message="TestDouble results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestDouble")
+# Try to detect NaN double property - should result in false.
+If(Name="If_TestNaNDouble",PropertyIsDefined="TestNaNDouble")
+    Message(Message="TestNaNDouble should result in false - test fails.",CommandStatus="FAILURE")
+EndIf(Name="If_TestNaNDouble")
+# Try to detect null Double property - should result in false.
+If(Name="If_TestNullDouble",PropertyIsDefined="TestNullDouble")
+    Message(Message="TestNullDouble should result in false - test fails.",CommandStatus="FAILURE")
+EndIf(Name="If_TestNullDouble")
+#
+# Integer.
+#
+# Try to detect non-null Integer property - should result in true.
+If(Name="If_TestInteger",PropertyIsDefined="TestInteger")
+    Message(Message="TestInteger results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestInteger")
+# Try to detect null Integer property - should result in false.
+If(Name="If_TestNullInteger",PropertyIsDefined="TestNullInteger")
+    Message(Message="NullInteger should result in false - test fails.",CommandStatus="FAILURE")
+EndIf(Name="If_TestNullInteger")
+#
+# String.
+#
+# Try to match non-null string - should result in true. 
+If(Name="If_TestString",PropertyIsDefined="TestString")
+    Message(Message="TestString results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestString")
+# Try to match empty string property - should result in false.
+If(Name="If_TestEmptyString",PropertyIsDefined="TestEmptyString")
+    Message(Message="TestEmptyString should result in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestEmptyString")
+# Try to detect null String property - should result in false.
+If(Name="If_TestNullString",PropertyIsDefined="TestNullString")
+    Message(Message="TestNullString results in true - test is failure.",CommandStatus="FAILURE")
+EndIf(Name="If_TestNullString")
