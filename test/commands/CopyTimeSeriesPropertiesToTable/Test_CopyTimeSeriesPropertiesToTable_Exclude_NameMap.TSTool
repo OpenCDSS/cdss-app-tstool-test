@@ -1,0 +1,31 @@
+# Test copying time series properties to a table
+# - TSID in an existing table is matched
+# - define multiple properties and then exclude some output using explicit name and wildcard
+# - also test the NameMap parameter
+# - the original table DOES NOT include 'Status' so it is renamed in the output
+StartLog(LogFile="Results/Test_CopyTimeSeriesPropertiesToTable_Exclude_NameMap.TSTool.log")
+RemoveFile(InputFile="Results/Test_CopyTimeSeriesPropertiesToTable_Exclude_NameMap_out.csv",IfNotFound="Ignore")
+# Define time series with properties:
+# - define properties 'Status', 'Enabled', and 'Size'
+# - 'Enabled' and `Size' are excluded from the copy below
+NewTimeSeries(Alias="ts1",NewTSID="ts1..Precip.Year",Description="Test data 1",SetStart="2000",SetEnd="2005",Units="IN")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="ts1",PropertyName="Status",PropertyType="String",PropertyValue="ts1Status")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="ts1",PropertyName="Enabled",PropertyType="String",PropertyValue="True")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="ts1",PropertyName="Size",PropertyType="Integer",PropertyValue="10")
+NewTimeSeries(Alias="ts2",NewTSID="ts2..Precip.Year",Description="Test data 2",SetStart="2000",SetEnd="2005",Units="IN")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="ts2",PropertyName="Status",PropertyType="String",PropertyValue="ts2Status")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="ts2",PropertyName="Enabled",PropertyType="String",PropertyValue="False")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="ts2",PropertyName="Size",PropertyType="String",PropertyValue="-10")
+NewTimeSeries(Alias="ts3",NewTSID="ts3..Precip.Year",Description="Test data 3",SetStart="2000",SetEnd="2005",Units="IN")
+SetTimeSeriesProperty(TSList="AllMatchingTSID",TSID="ts3",PropertyName="Status",PropertyType="String",PropertyValue="ts3Status")
+# Define table to receive properties.
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable-no-status.csv")
+# Copy the properties:
+# - rename the 'Status' to 'StatusRenamed'
+# = because the original table that was read included 'Status' it will be retained also
+CopyTimeSeriesPropertiesToTable(ExcludeProperties="Enabled,Siz*",TableID="Table1",TableTSIDColumn="loc",TableTSIDFormat="%L",NameMap="Status:StatusRenamed")
+# Uncomment the following to generate the expected results.
+# WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_CopyTimeSeriesPropertiesToTable_Exclude_NameMap.csv")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_CopyTimeSeriesPropertiesToTable_Exclude_NameMap.csv")
+# Do regression comparison with the original input>
+CompareFiles(InputFile1="ExpectedResults\Test_CopyTimeSeriesPropertiesToTable_Exclude_NameMap.csv",InputFile2="Results\Test_CopyTimeSeriesPropertiesToTable_Exclude_NameMap.csv",IfDifferent="Warn")

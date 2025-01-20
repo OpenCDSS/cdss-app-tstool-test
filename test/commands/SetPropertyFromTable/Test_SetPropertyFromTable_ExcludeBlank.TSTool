@@ -1,0 +1,14 @@
+# Test setting a property from a table:
+# - read the table from the file
+# - use exclude to exclude blank values so the first non-blank value is used
+StartLog(LogFile="Results/Test_SetPropertyFromTable_ExcludeBlank.TSTool.log")
+RemoveFile(InputFile="Results/Test_SetPropertyFromTable_ExcludeBlank_out.csv",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable-blank-first.csv")
+SetDebugLevel(LogFileLevel="1")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:*day*",ColumnExcludeFilters="String2:",PropertyName="StringProp2")
+SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
+# Uncomment the following to generate the expected results.
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_SetPropertyFromTable_ExcludeBlank_out.txt",IncludeProperties="StringProp*",FileFormat="NameValue",SortOrder="Ascending")
+WritePropertiesToFile(OutputFile="Results/Test_SetPropertyFromTable_ExcludeBlank_out.txt",IncludeProperties="StringProp*",FileFormat="NameValue",SortOrder="Ascending")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults/Test_SetPropertyFromTable_ExcludeBlank_out.txt",InputFile2="Results/Test_SetPropertyFromTable_ExcludeBlank_out.txt",IfDifferent="Warn")

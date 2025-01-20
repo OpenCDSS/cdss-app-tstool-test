@@ -1,0 +1,6 @@
+# Test table data with some example time series properties:
+# - no 'Status' column so can test the NameMap parameter
+"loc","Scenario"
+ts1,Scenario1
+ts2,Scenario2
+ts3,Scenario3
