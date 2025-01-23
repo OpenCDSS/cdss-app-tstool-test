@@ -1,0 +1,13 @@
+# Test processing a product:
+# - TSP is a template and will automatically be expanded using Freemarker
+# - test a failure exit status
+# - this is not a complete test because ProcessTSProduct will fail
+#@expectedStatus Failure
+StartLog(LogFile="Results/test-ProcessTSProduct-template-StatusFailure.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessTSProduct-template-StatusFailure-out.png",IfNotFound="Ignore")
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+SetProperty(PropertyName="TestProperty",PropertyType="Double",PropertyValue="1001.0")
+ProcessTSProduct(TSProductFile="test-ProcessTSProduct-Template-StatusFailure.tsp",View="False",OutputFile="Results/test-ProcessTSProduct-template-StatusFailure-out.png",CommandStatusProperty="TSProductStatus")
+If(Name="If_TSProductNotSuccess",Condition="${TSProductStatus} != Failure")
+    Message(Message="Was expecting ProcessTSProduct command status of Failure but have ${TSProductStatus}.",CommandStatus="FAILURE")
+EndIf(Name="If_TSProductNotSuccess")

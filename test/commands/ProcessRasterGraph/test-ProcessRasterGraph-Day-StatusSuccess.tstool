@@ -1,0 +1,21 @@
+# Create a raster graph from a daily time series:
+# - single time series
+# - default colors
+# - check that the status was Success
+StartLog(LogFile="Results/test-ProcessRasterGraph-Day-StatusSuccess.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Day-StatusSuccess-out.png",IfNotFound="Ignore")
+# NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1965-03-12",Units="CFS",PatternValues="5,10,27,38,75,,,90,64,55,23,88")
+# ReadTimeSeries(TSID="06754000.DWR.Streamflow.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+# ReadTimeSeries(TSID="06764000.DWR.Streamflow.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# ReplaceValue(MinValue=15000,MaxValue=1000000,Action=SetMissing)
+# 6400511 - HARMONY DITCH 1
+# ReadTimeSeries(TSID="6400511.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# NORTH STERLING RES
+ReadTimeSeries(TSID="6403551.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFound="Warn")
+# ReadTimeSeries(TSID="USC00053005.NOAA.TempMax.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# ReadTimeSeries(TSID="USC00053005.NOAA.Precip.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Day.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Day-StatusSuccess-out.png",CommandStatusProperty="ProcessRasterGraphStatus")
+If(Name="If_ProcessRasterGraphStatus",Condition="${ProcessRasterGraphStatus} != Success")
+    Message(Message="The ProcessRasterGraph status (${ProcessRasterGraphStatus}) is not Success.",CommandStatus="FAILURE")
+EndIf(Name="If_ProcessRasterGraphStatus")
