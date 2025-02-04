@@ -1,0 +1,8 @@
+TestFor="Station1"
+TestIndexProperty=1
+TestFor="Station2"
+TestIndexProperty=2
+TestFor="Station3"
+TestIndexProperty=3
+TestFor="Station4"
+TestIndexProperty=4

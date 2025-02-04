@@ -1,0 +1,9 @@
+# Test iterating through a For() loop using a sequence of integers
+# - test setting the ShowProgress
+# - don't compare any results, just make sure there is not an exception
+StartLog(LogFile="Results/test-For-SequenceInteger-ShowProgress.tstool.log")
+RemoveFile(InputFile="Results/test-For-SequenceInteger-ShowProgress-out.txt",IfNotFound="Ignore")
+For(Name="TestFor",ShowProgress="True",SequenceStart="1",SequenceEnd="20",SequenceIncrement="2")
+    # Wait to allow the progress bar to display progress.
+    Wait(WaitTime=".1",ProgressIncrement=".01")
+EndFor(Name="TestFor")

@@ -1,0 +1,6 @@
+Alias="ts200"
+Description="Test location 200, constant=200.000"
+TestIndexProperty=1
+Alias="ts210"
+Description="Test location 210, constant=210.000"
+TestIndexProperty=2
