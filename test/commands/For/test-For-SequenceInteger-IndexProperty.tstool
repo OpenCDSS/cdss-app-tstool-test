@@ -1,0 +1,12 @@
+# Test iterating through a For() loop using a sequence of integers
+# - for output, append the property value to a file
+# - use IndexProperty to count the iterations
+StartLog(LogFile="Results/test-For-SequenceInteger-IndexProperty.tstool.log")
+RemoveFile(InputFile="Results/test-For-SequenceInteger-IndexProperty-out.txt",IfNotFound="Ignore")
+For(Name="TestFor",IndexProperty="TestIndexProperty",SequenceStart="1",SequenceEnd="20",SequenceIncrement="2")
+    WritePropertiesToFile(OutputFile="Results/test-For-SequenceInteger-IndexProperty-out.txt",IncludeProperties="TestFor,TestIndexProperty",WriteMode="Append",FileFormat="NameTypeValue")
+EndFor(Name="TestFor")
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results\test-For-SequenceInteger-IndexProperty-out.txt",OutputFile="ExpectedResults\test-For-SequenceInteger-IndexProperty-out.txt",IfInputNotFound="Fail")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults/test-For-SequenceInteger-IndexProperty-out.txt",InputFile2="Results/test-For-SequenceInteger-IndexProperty-out.txt",IfDifferent="Warn")

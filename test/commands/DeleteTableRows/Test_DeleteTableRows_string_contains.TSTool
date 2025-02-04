@@ -1,11 +1,11 @@
 # Test deleting table rows from a table
 # - delete string containing a value
 StartLog(LogFile="Results/Test_DeleteTableRows_string_contains.TSTool.log")
-RemoveFile(InputFile="Results/Test_DeleteTableRows_string_contains_out.csv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_DeleteTableRows_string_contains_out.csv",IfNotFound="Ignore")
 ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
 DeleteTableRows(TableID="Table1",Condition="String1 contains 2")
 # Uncomment the following to generate the expected results.
 # WriteTableToDelimitedFile(TableID="Table1",OutputFile="ExpectedResults\Test_DeleteTableRows_string_contains_out.csv")
 WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results\Test_DeleteTableRows_string_contains_out.csv")
 # Do regression comparison with the original input
-CompareFiles(InputFile1="ExpectedResults\Test_DeleteTableRows_string_contains_out.csv",InputFile2="Results/Test_DeleteTableRows_string_contains_out.csv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults\Test_DeleteTableRows_string_contains_out.csv",InputFile2="Results/Test_DeleteTableRows_string_contains_out.csv",IfDifferent="Warn")

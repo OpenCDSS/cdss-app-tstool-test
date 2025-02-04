@@ -1,0 +1,13 @@
+# Test iterating through a For() loop:
+# - iterate over a period of day precision dates
+# - increment Day
+# - for output, append the property value to a file
+# - test IndexProperty
+StartLog(LogFile="Results/test-For-PeriodDay-IncrementDay-IndexProperty.tstool.log")
+RemoveFile(InputFile="Results/test-For-PeriodDay-IncrementDay-IndexProperty-out.txt",IfNotFound="Ignore")
+For(Name="TestFor",IndexProperty="TestIndexProperty",PeriodStart="2024-01-01",PeriodEnd="2024-03-31",PeriodIncrement="Day")
+    WritePropertiesToFile(OutputFile="Results/test-For-PeriodDay-IncrementDay-IndexProperty-out.txt",IncludeProperties="TestFor,TestIndexProperty",WriteMode="Append",FileFormat="NameTypeValue")
+EndFor(Name="TestFor")
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results\test-For-PeriodDay-IncrementDay-IndexProperty-out.txt",OutputFile="ExpectedResults\test-For-PeriodDay-IncrementDay-IndexProperty-out.txt",IfInputNotFound="Fail")
+CompareFiles(InputFile1="ExpectedResults/test-For-PeriodDay-IncrementDay-IndexProperty-out.txt",InputFile2="Results/test-For-PeriodDay-IncrementDay-IndexProperty-out.txt",IfDifferent="Warn")

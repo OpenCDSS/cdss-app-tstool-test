@@ -1,0 +1,9 @@
+# Test iterating through a For() loop:
+# - test setting the ShowProgress
+# - don't compare any results, just make sure there is not an exception
+StartLog(LogFile="Results/test-For-PeriodDay-IncrementDay-ShowProgress.tstool.log")
+RemoveFile(InputFile="Results/test-For-PeriodDay-IncrementDay-ShowProgress-out.txt",IfNotFound="Ignore")
+For(Name="TestFor",ShowProgress="True",PeriodStart="2024-01-01",PeriodEnd="2024-01-31",PeriodIncrement="Day")
+    # Wait to cause the progress bar to show results.
+    Wait(WaitTime=".1",ProgressIncrement=".01")
+EndFor(Name="TestFor")

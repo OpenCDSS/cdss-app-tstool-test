@@ -1,0 +1,13 @@
+# Test iterating through a For() loop using a list of strings
+# - for output, append the property value to a file
+# - test setting the IndexProperty
+StartLog(LogFile="Results/test-For-ListString-IndexProperty.tstool.log")
+RemoveFile(InputFile="Results/test-For-ListString-IndexProperty-out.txt",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testtable.csv")
+For(Name="TestFor",IndexProperty="TestIndexProperty",List="Station1,Station2,Station3,Station4")
+    WritePropertiesToFile(OutputFile="Results/test-For-ListString-IndexProperty-out.txt",IncludeProperties="TestFor,TestIndexProperty",WriteMode="Append",FileFormat="NameTypeValue")
+EndFor(Name="TestFor")
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results\test-For-ListString-IndexProperty-out.txt",OutputFile="ExpectedResults\test-For-ListString-IndexProperty-out.txt",IfInputNotFound="Fail")
+# Do regression comparison with the original input
+CompareFiles(InputFile1="ExpectedResults/test-For-ListString-IndexProperty-out.txt",InputFile2="Results/test-For-ListString-IndexProperty-out.txt",IfDifferent="Warn")
