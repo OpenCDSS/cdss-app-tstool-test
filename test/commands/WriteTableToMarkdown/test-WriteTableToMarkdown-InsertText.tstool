@@ -9,5 +9,6 @@ SetProperty(PropertyName="TestCurrentTime",PropertyType="DateTime",PropertyValue
 # WriteTableToMarkdown(TableID="Test_Table",PrependText="# Text to Prepend #\n\nThis table has some data.\n\nLast updated: ${TestCurrentTime}\n\n",AppendText="----\n\nTest append text, last updated:  ${TestCurrentTime}",OutputFile="ExpectedResults\test-WriteTableToMarkdown-InsertText-out.md")
 # Generate the results.
 WriteTableToMarkdown(TableID="Test_Table",PrependText="# Text to Prepend #\n\nThis table has some data.\n\nLast updated: ${TestCurrentTime}\n\n",AppendText="----\n\nTest append text, last updated:  ${TestCurrentTime}",OutputFile="Results\test-WriteTableToMarkdown-InsertText-out.md")
-# Compare the results.
-CompareFiles(InputFile1="ExpectedResults/test-WriteTableToMarkdown-InsertText-out.md",InputFile2="Results/test-WriteTableToMarkdown-InsertText-out.md",IfDifferent="Warn")
+# Compare the results:
+# - allow two lines to be different since they use the current time
+CompareFiles(InputFile1="ExpectedResults/test-WriteTableToMarkdown-InsertText-out.md",InputFile2="Results/test-WriteTableToMarkdown-InsertText-out.md",AllowedDiff="2",IfDifferent="Warn")
