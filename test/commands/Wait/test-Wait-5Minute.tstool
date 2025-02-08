@@ -1,0 +1,6 @@
+# Test setup:
+# - wait for 5 minutes, used for manually testing canceling processing
+# - set enabled false so that it won't slow down automated tests
+#@enabled False
+StartLog(LogFile="Results/test-Wait-5Minute.tstool.log")
+Wait(WaitTime="300")
