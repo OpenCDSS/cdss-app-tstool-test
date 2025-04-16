@@ -1,0 +1,16 @@
+# Tests to evaluate simple expressions:
+# - constants
+# - using properties
+StartLog(LogFile="results/test-EvaluateExpression.tstool.log")
+#
+# Expression on constants.
+EvaluateExpression(Expression="1 + 2 + 7",PropertyName="TestExpressionConstants")
+#
+# Expression using input properties.
+SetProperty(PropertyName="A",PropertyType="Double",PropertyValue="1.1")
+SetProperty(PropertyName="B",PropertyType="Double",PropertyValue="2.1")
+SetProperty(PropertyName="C",PropertyType="Double",PropertyValue="7.1")
+EvaluateExpression(Expression="A + B + C",PropertyName="TestExpressionInput")
+#
+# Expression using expanded properties.
+EvaluateExpression(Expression="${A} + ${B} + ${C}",PropertyName="TestExpressionExpanded")

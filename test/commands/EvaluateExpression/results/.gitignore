@@ -1,0 +1,3 @@
+# Evaluate all files except gitignore
+/*
+!.gitignore
