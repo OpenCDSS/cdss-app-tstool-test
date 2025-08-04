@@ -1,0 +1,21 @@
+# Create a raster graph from a monthly time series:
+# - month interval
+# - multiple time series
+# - default colors
+# - output image map
+StartLog(LogFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Month-multiple-out.png",IfNotFound="Ignore")
+SetInputPeriod(InputStart="1975-01-01",InputEnd="2021-12-31")
+# ABBREV=CLAFTCCO, USGS site ID=06752000 - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+usgs:06752000.DWR.Streamflow-Avg.Month~HydroBaseWeb
+# ABBREV=CLAFORCO, USGS site ID=06752260 - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
+usgs:06752260.USGS.Streamflow-Avg.Month~HydroBaseWeb
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Month-multiple.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap-out.png",ImageMapFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap-chunk.html",ImageMapUrl="test-ProcessRasterGraph-Month-multiple-imagemap-out.png",ImageMapName="imagemap1",ImageMapDataHref="https://weather.com",ImageMapDataTitle="tooltip for data area for ${ts:tsid}",ImageMapLegendHref="https://usgs.gov",ImageMapLegendTitle="tooltip for legend area for ${ts:tsid}")
+# Copy the image map page to results and insert the map.
+CopyFile(InputFile="Data/image-map-page-template.html",OutputFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap-out.html")
+TextEdit(InputFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap-out.html",SearchFor="INSERT_IMAGE_MAP_HERE",ReplaceWithFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap-chunk.html",OutputFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap-out.html")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results/test-ProcessRasterGraph-Month-multiple-imagemap-out.html",OutputFile="ExpectedResults/test-ProcessRasterGraph-Month-multiple-imagemap-out.html")
+#
+# Compare the output.
+CompareFiles(InputFile1="ExpectedResults/test-ProcessRasterGraph-Month-multiple-imagemap-out.html",InputFile2="Results/test-ProcessRasterGraph-Month-multiple-imagemap-out.html",IfDifferent="Warn")

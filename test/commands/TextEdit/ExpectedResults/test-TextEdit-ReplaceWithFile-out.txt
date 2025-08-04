@@ -1,0 +1,11 @@
+# Test data file.
+Simple text file line1.
+Simple text file line2.
+This is line 1 of the replacement file.
+This is line 2 of the replacement file.
+This is line 3 of the replacement file.
+
+Simple text file line4.
+Simple text file line5.
+Simple text file line6.
+Simple text file line7.

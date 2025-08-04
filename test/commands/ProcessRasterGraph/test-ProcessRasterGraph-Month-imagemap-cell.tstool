@@ -1,0 +1,28 @@
+# Create a raster graph from a daily time series:
+# - single time series
+# - month interval
+# - default colors
+# - create an image map file with link to time series for the heatmap area data cells
+StartLog(LogFile="Results/test-ProcessRasterGraph-Month-imagemap-cell.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.png",IfNotFound="Ignore")
+# NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1965-03-12",Units="CFS",PatternValues="5,10,27,38,75,,,90,64,55,23,88")
+# ReadTimeSeries(TSID="06754000.DWR.Streamflow.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+# ReadTimeSeries(TSID="06764000.DWR.Streamflow.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# ReplaceValue(MinValue=15000,MaxValue=1000000,Action=SetMissing)
+# 6400511 - HARMONY DITCH 1
+# ReadTimeSeries(TSID="6400511.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# NORTH STERLING RES
+ReadTimeSeries(TSID="6403551.DWR.DivTotal.Month~HydroBaseWeb",Alias="Alias",IfNotFound="Warn")
+# ReadTimeSeries(TSID="USC00053005.NOAA.TempMax.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+# ReadTimeSeries(TSID="USC00053005.NOAA.Precip.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
+#ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Month.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.png",ImageMapFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-chunk.html",ImageMapUrl="test-ProcessRasterGraph-Month-imagemap-cell-out.png",ImageMapName="imagemap1",ImageMapDataArea="Cell",ImageMapDataHref="https://weather.com",ImageMapDataTitle="tooltip for data area for ${ts:tsid}",ImageMapLegendHref="https://usgs.gov",ImageMapLegendTitle="tooltip for legend area for ${ts:tsid}")
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Month.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.png",ImageMapFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-chunk.html",ImageMapUrl="test-ProcessRasterGraph-Month-imagemap-cell-out.png",ImageMapName="imagemap1",ImageMapDataArea="Cell",ImageMapDataHref="https://weather.com",ImageMapDataTitle="TSID=${ts:tsid} dt=${tsdata:datetime} value=${tsdata:value} flag=${tsdata:flag}",ImageMapLegendHref="https://usgs.gov",ImageMapLegendTitle="tooltip for legend area for ${ts:tsid}")
+# Copy the image map page to results and insert the map.
+CopyFile(InputFile="Data/image-map-page-template.html",OutputFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.html")
+TextEdit(InputFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.html",SearchFor="INSERT_IMAGE_MAP_HERE",ReplaceWithFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-chunk.html",OutputFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.html")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.html",OutputFile="ExpectedResults/test-ProcessRasterGraph-Month-imagemap-cell-out.html")
+#
+# Compare the output.
+CompareFiles(InputFile1="ExpectedResults/test-ProcessRasterGraph-Month-imagemap-cell-out.html",InputFile2="Results/test-ProcessRasterGraph-Month-imagemap-cell-out.html",IfDifferent="Warn")
