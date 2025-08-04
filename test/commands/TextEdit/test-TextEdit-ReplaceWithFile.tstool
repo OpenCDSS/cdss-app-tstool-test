@@ -1,0 +1,10 @@
+# Test editing text in a file
+# - replace a placeholder string
+# - replace with a file
+StartLog(LogFile="Results/test-TextEdit.tstool.log")
+RemoveFile(InputFile="Results/test-TextEdit-ReplaceWithFile-out.txt",IfNotFound="Ignore")
+# Run the command to create output
+TextEdit(InputFile="Data/file3-with-placeholder.txt",SearchFor="REPLACE_ME",ReplaceWithFile="Data/file3-replacement.txt",OutputFile="Results/test-TextEdit-ReplaceWithFile-out.txt")
+# Uncomment the following three commands to regenerate expected results.
+# CopyFile(InputFile="Results/test-TextEdit-ReplaceWithFile-out.txt",OutputFile="ExpectedResults/test-TextEdit-ReplaceWithFile-out.txt")
+CompareFiles(InputFile1="ExpectedResults/test-TextEdit-ReplaceWithFile-out.txt",InputFile2="Results/test-TextEdit-ReplaceWithFile-out.txt",IfDifferent="Fail")

@@ -12,7 +12,7 @@ RemoveFile(InputFile="Results/test-ProcessRasterGraph-Month-out.png",IfNotFound=
 # 6400511 - HARMONY DITCH 1
 # ReadTimeSeries(TSID="6400511.DWR.DivTotal.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # NORTH STERLING RES
-ReadTimeSeries(TSID="6403551.DWR.DivTotal.Month~HydroBase",Alias="Alias",IfNotFound="Warn")
+ReadTimeSeries(TSID="6403551.DWR.DivTotal.Month~HydroBaseWeb",Alias="Alias",IfNotFound="Warn")
 # ReadTimeSeries(TSID="USC00053005.NOAA.TempMax.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # ReadTimeSeries(TSID="USC00053005.NOAA.Precip.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # Uncomment the following command to regenerate the expected results file.
