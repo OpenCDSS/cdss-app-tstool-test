@@ -1,32 +1,32 @@
 # Test If object exists feature:
 # - properties are set to ensure that expected values occur when tests are run
 StartLog(LogFile="Results/Test_If_Object_Exists.TSTool.log")
-SetProperty(PropertyName="ObjectExists",PropertyType=Boolean,PropertyValue="False")
-SetProperty(PropertyName="MissingObjectExists",PropertyType=Boolean,PropertyValue="False")
-SetProperty(PropertyName="ObjectDoesNotExist",PropertyType=Boolean,PropertyValue="False")
-SetProperty(PropertyName="MissingObjectDoesNotExist",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="ObjectExists",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="MissingObjectExists",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="ObjectDoesNotExist",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="MissingObjectDoesNotExist",PropertyType="Boolean",PropertyValue="False")
 NewObject(ObjectID="TestIfObject",InputFile="Data/test-file.json")
 # Try to find an object that exists (and does) - should result in property set to True to pass the test.
 If(Name="ObjectExistsCheck",ObjectExists="TestIfObject")
-SetProperty(PropertyName="ObjectExists",PropertyType=Boolean,PropertyValue="True")
+SetProperty(PropertyName="ObjectExists",PropertyType="Boolean",PropertyValue="True")
 Message(Message="ObjectExists:  ${ObjectExists}")
 EndIf(Name="ObjectExistsCheck")
 # Try to find an object that exists (but does not) - should result in property set to False to pass the test.
 If(Name="MissingObjectExistsCheck",ObjectExists="xxx")
-SetProperty(PropertyName="MissingObjectExists",PropertyType=Boolean,PropertyValue="True")
+SetProperty(PropertyName="MissingObjectExists",PropertyType="Boolean",PropertyValue="True")
 Message(Message="MissingObjectExists:  ${MissingObjectExists}")
 EndIf(Name="MissingObjectExistsCheck")
 # Try to find an object that does not exist (but does) - should result in property set to False to pass the test.
 If(Name="ObjectDoesNotExistCheck",ObjectDoesNotExist="TestIfObject")
-SetProperty(PropertyName="ObjectDoesNotExist",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="ObjectDoesNotExist",PropertyType="Boolean",PropertyValue="False")
 Message(Message="ObjectDoesNotExist:  ${ObjectDoesNotExist}")
 EndIf(Name="ObjectDoesNotExistCheck")
 # Try to find an object that does not exist (and does not) - should result in property set to True to pass the test.
 If(Name="MissingObjectDoesNotExistCheck",ObjectDoesNotExist="xxx")
-SetProperty(PropertyName="MissingObjectDoesNotExist",PropertyType=Boolean,PropertyValue="True")
+SetProperty(PropertyName="MissingObjectDoesNotExist",PropertyType="Boolean",PropertyValue="True")
 Message(Message="MissingObjectDoesNotExist:  ${MissingObjectDoesNotExist}")
 EndIf(Name="MissingObjectDoesNotExistCheck")
 # Uncomment the next command to regenerate expected results
 # WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_Object_Exists_out.txt",IncludeProperties="ObjectExists,MissingObjectExists,ObjectDoesNotExist,MissingObjectDoesNotExist")
 WritePropertiesToFile(OutputFile="Results/Test_If_Object_Exists_out.txt",IncludeProperties="ObjectExists,MissingObjectExists,ObjectDoesNotExist,MissingObjectDoesNotExist")
-CompareFiles(InputFile1="ExpectedResults/Test_If_Object_Exists_out.txt",InputFile2="Results/Test_If_Object_Exists_out.txt",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_If_Object_Exists_out.txt",InputFile2="Results/Test_If_Object_Exists_out.txt",IfDifferent="Warn")

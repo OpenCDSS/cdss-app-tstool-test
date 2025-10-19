@@ -1,0 +1,4 @@
+DataStoreOk=true
+MissingDataStoreOk=false
+DataStoreIsNotOk=false
+MissingDataStoreIsNotOk=true
