@@ -1,31 +1,31 @@
 # Test If file exists feature:
 # - properties are set to ensure that expected values occur when tests are run
 StartLog(LogFile="Results/Test_If_File_Exists.TSTool.log")
-SetProperty(PropertyName="FileExists",PropertyType=Boolean,PropertyValue="False")
-SetProperty(PropertyName="MissingFileExists",PropertyType=Boolean,PropertyValue="False")
-SetProperty(PropertyName="FileDoesNotExist",PropertyType=Boolean,PropertyValue="False")
-SetProperty(PropertyName="MissingFileDoesNotExist",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="FileExists",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="MissingFileExists",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="FileDoesNotExist",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="MissingFileDoesNotExist",PropertyType="Boolean",PropertyValue="False")
 # Try to find a file that does exist (and does) - should result in property set to True to pass the test.
 If(Name="FileExistsCheck",FileExists="Data/test-file.txt")
-SetProperty(PropertyName="FileExists",PropertyType=Boolean,PropertyValue="True")
+SetProperty(PropertyName="FileExists",PropertyType="Boolean",PropertyValue="True")
 Message(Message="FileExists:  ${FileExists}")
 EndIf(Name="FileExistsCheck")
 # Try to find a file that exists (but does not) - should result in property set to False to pass the test.
 If(Name="MissingFileExistsCheck",FileExists="xxx")
-SetProperty(PropertyName="MissingFileExists",PropertyType=Boolean,PropertyValue="True")
+SetProperty(PropertyName="MissingFileExists",PropertyType="Boolean",PropertyValue="True")
 Message(Message="MissingFileExists:  ${MissingFileExists}")
 EndIf(Name="MissingFileExistsCheck")
 # Try to find a file that does not exist (but does) - should result in property set to False to pass the test.
 If(Name="FileDoesNotExistCheck",FileDoesNotExist="Data/test-file.txt")
-SetProperty(PropertyName="FileDoesNotExist",PropertyType=Boolean,PropertyValue="False")
+SetProperty(PropertyName="FileDoesNotExist",PropertyType="Boolean",PropertyValue="False")
 Message(Message="FileDoesNotExist:  ${FileDoesNotExist}")
 EndIf(Name="FileDoesNotExistCheck")
 # Try to find a file that does not exist (and does not) - should result in property set to True to pass the test.
 If(Name="MissingFileDoesNotExistCheck",FileDoesNotExist="xxx")
-SetProperty(PropertyName="MissingFileDoesNotExist",PropertyType=Boolean,PropertyValue="True")
+SetProperty(PropertyName="MissingFileDoesNotExist",PropertyType="Boolean",PropertyValue="True")
 Message(Message="MissingFileDoesNotExist:  ${MissingFileDoesNotExist}")
 EndIf(Name="MissingFileDoesNotExistCheck")
 # Uncomment the next command to regenerate expected results
 # WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_File_Exists_out.txt",IncludeProperties="FileExists,MissingFileExists,FileDoesNotExist,MissingFileDoesNotExist")
 WritePropertiesToFile(OutputFile="Results/Test_If_File_Exists_out.txt",IncludeProperties="FileExists,MissingFileExists,FileDoesNotExist,MissingFileDoesNotExist")
-CompareFiles(InputFile1="ExpectedResults/Test_If_File_Exists_out.txt",InputFile2="Results/Test_If_File_Exists_out.txt",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_If_File_Exists_out.txt",InputFile2="Results/Test_If_File_Exists_out.txt",IfDifferent="Warn")

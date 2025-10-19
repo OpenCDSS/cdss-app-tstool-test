@@ -1,0 +1,31 @@
+# Test If datastore is OK feature:
+# - properties are set to ensure that expected values occur when tests are run
+StartLog(LogFile="Results/Test_If_DataStoreIsOk.tstool.log")
+SetProperty(PropertyName="DataStoreOk",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="MissingDataStoreOk",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="DataStoreIsNotOk",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="MissingDataStoreIsNotOk",PropertyType="Boolean",PropertyValue="False")
+# Try to find a datastore that does exist (and does) - should result in property set to True to pass the test.
+If(Name="DataStoreOkCheck",DataStoreIsOk="HydroBaseWeb")
+SetProperty(PropertyName="DataStoreOk",PropertyType="Boolean",PropertyValue="True")
+Message(Message="DataStoreOk:  ${DataStoreOk}")
+EndIf(Name="DataStoreOkCheck")
+# Try to find a datastore that is OK (but is not) - should result in property set to False to pass the test.
+If(Name="MissingDataStoreOkCheck",DataStoreIsOk="xxx")
+SetProperty(PropertyName="MissingDataStoreOk",PropertyType="Boolean",PropertyValue="True")
+Message(Message="MissingDataStoreOk:  ${MissingDataStoreOk}")
+EndIf(Name="MissingDataStoreOkCheck")
+# Try to find a datastore that does not exist (but does) - should result in property set to False to pass the test.
+If(Name="DataStoreIsNotOkCheck",DataStoreIsNotOk="HydroBaseWeb")
+SetProperty(PropertyName="DataStoreIsNotOk",PropertyType="Boolean",PropertyValue="False")
+Message(Message="DataStoreIsNotOk:  ${DataStoreIsNotOk}")
+EndIf(Name="DataStoreIsNotOkCheck")
+# Try to find a datastore that does not exist (and does not) - should result in property set to True to pass the test.
+If(Name="MissingDataStoreIsNotOkCheck",DataStoreIsNotOk="xxx")
+SetProperty(PropertyName="MissingDataStoreIsNotOk",PropertyType="Boolean",PropertyValue="True")
+Message(Message="MissingDataStoreIsNotOk:  ${MissingDataStoreIsNotOk}")
+EndIf(Name="MissingDataStoreIsNotOkCheck")
+# Uncomment the next command to regenerate expected results
+# WritePropertiesToFile(OutputFile="ExpectedResults/Test_If_DataStoreIsOk_out.txt",IncludeProperties="DataStoreOk,MissingDataStoreOk,DataStoreIsNotOk,MissingDataStoreIsNotOk")
+WritePropertiesToFile(OutputFile="Results/Test_If_DataStoreIsOk_out.txt",IncludeProperties="DataStoreOk,MissingDataStoreOk,DataStoreIsNotOk,MissingDataStoreIsNotOk")
+CompareFiles(InputFile1="ExpectedResults/Test_If_DataStoreIsOk_out.txt",InputFile2="Results/Test_If_DataStoreIsOk_out.txt",IfDifferent="Warn")
