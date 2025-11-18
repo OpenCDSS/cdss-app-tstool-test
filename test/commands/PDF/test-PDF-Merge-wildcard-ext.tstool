@@ -1,0 +1,11 @@
+# Test merging PDF files:
+# - all files in a folder using *.pdf
+StartLog(LogFile="results/test-PDF-Merge-wildcard-ext.tstool.log")
+# Remove the output file before the test
+RemoveFile(InputFile="results/test-PDF-Merge-wildcard-ext-out.pdf",IfNotFound="Ignore")
+# Uncomment the following 2 lines to regenerate the expected results.
+# RemoveFile(InputFile="expected-reesults/test-PDF-Merge-wildcard-ext-out.pdf",IfNotFound="Ignore")
+# PDF(PDFCommand="Merge",MergeInputFiles="data/test-all/*.pdf",MergeOutputFile="expected-results/test-PDF-Merge-wildcard-ext-out.pdf")
+PDF(PDFCommand="Merge",MergeInputFiles="data/test-all/*.pdf",MergeOutputFile="results/test-PDF-Merge-wildcard-ext-out.pdf")
+# Compare the results.
+CompareFiles(InputFile1="expected-results/test-PDF-Merge-wildcard-ext-out.pdf",InputFile2="results/test-PDF-Merge-wildcard-ext-out.pdf",AllowedDiff="1",IfDifferent="Warn")
