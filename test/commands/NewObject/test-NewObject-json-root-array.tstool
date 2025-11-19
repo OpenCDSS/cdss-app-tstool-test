@@ -1,0 +1,11 @@
+# Test creating a new object:
+# - use a simple JSON input file
+# - the top level array has [] at the top
+StartLog(LogFile="Results/test-NewObject-json-root-array.tstool.log")
+# Create the object from the JSON file.
+NewObject(ObjectID="TestObject",InputFile="Data/simple-root-array.json")
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults/test-NewObject-json-root-array-out.json")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results/test-NewObject-json-root-array-out.json")
+# Comparison the results with expected.
+CompareFiles(InputFile1="ExpectedResults/test-NewObject-json-root-array-out.json",InputFile2="Results/test-NewObject-json-root-array-out.json",IfDifferent="Warn")

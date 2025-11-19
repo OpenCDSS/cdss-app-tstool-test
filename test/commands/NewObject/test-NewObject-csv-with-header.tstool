@@ -1,0 +1,11 @@
+# Test creating a new object:
+# - use a simple CSV input file with header line
+StartLog(LogFile="Results/test-NewObject-csv-with-header.tstool.log")
+# Create the object from the CSV file.
+NewObject(ObjectID="TestObject",InputFile="Data/stations.csv")
+# NewObject(ObjectID="TestObject",InputFile="Data/simple.csv")
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults/test-NewObject-csv-with-header-out.json")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results/test-NewObject-csv-with-header-out.json")
+# Comparison the results with expected.
+CompareFiles(InputFile1="ExpectedResults/test-NewObject-csv-with-header-out.json",InputFile2="Results/test-NewObject-csv-with-header-out.json",IfDifferent="Warn")
