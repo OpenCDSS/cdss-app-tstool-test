@@ -1,0 +1,10 @@
+# Test creating a new object:
+# - use a simple YAML input file from a MkDocs configuration
+StartLog(LogFile="Results/test-NewObject-yaml-mkdocs.tstool.log")
+# Create the object from the YAML file.
+NewObject(ObjectID="TestObject",InputFile="Data/mkdocs.yaml")
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults/test-NewObject-yaml-mkdocs-out.json")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results/test-NewObject-yaml-mkdocs-out.json")
+# Comparison the results with expected.
+CompareFiles(InputFile1="ExpectedResults/test-NewObject-yaml-mkdocs-out.json",InputFile2="Results/test-NewObject-yaml-mkdocs-out.json",IfDifferent="Warn")

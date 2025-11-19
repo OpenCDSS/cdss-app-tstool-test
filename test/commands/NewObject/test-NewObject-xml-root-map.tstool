@@ -1,0 +1,10 @@
+# Test creating a new object:
+# - use a simple XML input file from a diagrams.net diagram
+StartLog(LogFile="Results/test-NewObject-xml-root-map.tstool.log")
+# Create the object from the XML file.
+NewObject(ObjectID="TestObject",InputFile="Data/test.drawio.xml")
+# Uncomment the following to generate the expected results.
+# WriteObjectToJSON(ObjectID="TestObject",OutputFile="ExpectedResults/test-NewObject-xml-root-map-out.json")
+WriteObjectToJSON(ObjectID="TestObject",OutputFile="Results/test-NewObject-xml-root-map-out.json")
+# Comparison the results with expected.
+CompareFiles(InputFile1="ExpectedResults/test-NewObject-xml-root-map-out.json",InputFile2="Results/test-NewObject-xml-root-map-out.json",IfDifferent="Warn")
