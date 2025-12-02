@@ -1,0 +1,12 @@
+AliasExists=true
+MissingAliasExists=false
+AliasDoesNotExist=false
+MissingAliasDoesNotExist=true
+TSIDExists=true
+MissingTSIDExists=false
+TSIDDoesNotExist=false
+MissingTSIDDoesNotExist=true
+ts1HasData=true
+ts1HasNoData=false
+ts2HasData=false
+ts2HasNoData=true

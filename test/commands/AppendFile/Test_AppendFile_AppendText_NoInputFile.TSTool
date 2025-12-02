@@ -1,0 +1,11 @@
+# Test to append text:
+# - only append the text to output without an input file
+# - ignore the missing input file so that text can still be appended
+StartLog(LogFile="Results/Test_AppendFile_AppendText_NoInputFile.TSTool.log")
+# Remove the output file before the test
+RemoveFile(InputFile="Results/Test_AppendFile_AppendText_NoInputFile_out.txt",IfNotFound="Ignore")
+AppendFile(InputFile="data/NoInputFile.txt",AppendText="Line 1 to append.\nLine 2 to append.",OutputFile="Results/Test_AppendFile_AppendText_NoInputFile_out.txt",IfNotFound="Ignore")
+# Uncomment the following line to regenerate the expected results.
+# CopyFile(InputFile="Results/Test_AppendFile_AppendText_NoInputFile_out.txt",OutputFile="ExpectedResults/Test_AppendFile_AppendText_NoInputFile_out.txt")
+# Compare the results
+CompareFiles(InputFile1="ExpectedResults/Test_AppendFile_AppendText_NoInputFile_out.txt",InputFile2="Results/Test_AppendFile_AppendText_NoInputFile_out.txt",IfDifferent="Warn")
