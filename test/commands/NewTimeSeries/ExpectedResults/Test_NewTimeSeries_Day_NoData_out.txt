@@ -1,0 +1,4 @@
+ts0HasData=true
+ts0HasNoData=false
+ts1HasData=false
+ts1HasNoData=true

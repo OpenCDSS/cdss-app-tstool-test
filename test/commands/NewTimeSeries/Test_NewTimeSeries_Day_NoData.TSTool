@@ -1,0 +1,30 @@
+# Test creating a new day interval time series:
+# - test NoData=True
+# - use an If block to check for no data and output a property
+StartLog(LogFile="Results/Test_NewTimeSeries_Day_NoData.TSTool.log")
+RemoveFile(InputFile="Results/Test_NewTimeSeries_Day_NoData_out.dv",IfNotFound="Ignore")
+NewTimeSeries(Alias="ts0",NewTSID="LocType:ts0...Day",Description="Test time series 1",SetStart="2000-01-01",SetEnd="2001-01-14",Units="CFS",InitialValue="0")
+NewTimeSeries(Alias="ts1",NewTSID="LocType:ts1...Day",Description="Test time series 1",SetStart="2000-01-01",SetEnd="2001-01-14",Units="CFS",NoData="True")
+# Check the time series for no data.
+SetProperty(PropertyName="ts0HasData",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="ts0HasNoData",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="ts1HasData",PropertyType="Boolean",PropertyValue="False")
+SetProperty(PropertyName="ts1HasNoData",PropertyType="Boolean",PropertyValue="False")
+If(Name="If_TS_ts0HasData",TSHasData="ts0")
+    SetProperty(PropertyName="ts0HasData",PropertyType="Boolean",PropertyValue="True")
+EndIf(Name="If_TS_ts0HasData")
+If(Name="If_TS_ts0HasNoData",TSHasNoData="ts0")
+    SetProperty(PropertyName="ts0HasNoData",PropertyType="Boolean",PropertyValue="True")
+EndIf(Name="If_TS_ts0HasNoData")
+If(Name="If_TS_ts1HasData",TSHasData="ts1")
+    SetProperty(PropertyName="ts1HasData",PropertyType="Boolean",PropertyValue="True")
+EndIf(Name="If_TS_ts1HasData")
+If(Name="If_TS_ts1HasNoData",TSHasNoData="ts1")
+    SetProperty(PropertyName="ts1HasNoData",PropertyType="Boolean",PropertyValue="True")
+EndIf(Name="If_TS_ts1HasNoData")
+#
+# Write properties to a file and compare with expected results:
+# - uncomment the next line to create the expected results
+WritePropertiesToFile(OutputFile="ExpectedResults/Test_NewTimeSeries_Day_NoData_out.txt",IncludeProperties="ts0HasData,ts0HasNoData,ts1HasData,ts1HasNoData",SortOrder="Ascending")
+WritePropertiesToFile(OutputFile="Results/Test_NewTimeSeries_Day_NoData_out.txt",IncludeProperties="ts0HasData,ts0HasNoData,ts1HasData,ts1HasNoData",SortOrder="Ascending")
+CompareFiles(InputFile1="ExpectedResults/Test_NewTimeSeries_Day_NoData_out.txt",InputFile2="Results/Test_NewTimeSeries_Day_NoData_out.txt",IfDifferent="Warn")
