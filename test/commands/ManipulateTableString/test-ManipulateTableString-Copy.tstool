@@ -1,0 +1,11 @@
+# Test copying a table's string column data to a string column.
+StartLog(LogFile="Results/test-ManipulateTableString-Copy.tstool.log")
+RemoveFile(InputFile="Results/test-ManipulateTableString-Copy-out.dv",IfNotFound="Ignore")
+# Generate some table data but converting time series to table.
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data/testdata.csv")
+# Manipulate strings in the table.
+ManipulateTableString(TableID="Table1",InputColumn1="String1",Operator="Copy",OutputColumn="StringCopy")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/test-ManipulateTableString-Copy-out.csv")
+# Uncomment the following command to regenerate expected results.
+# CopyFile(InputFile="Results/test-ManipulateTableString-Copy-out.csv",OutputFile="ExpectedResults/test-ManipulateTableString-Copy-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ManipulateTableString-Copy-out.csv",InputFile2="Results/test-ManipulateTableString-Copy-out.csv",IfDifferent="Warn")
