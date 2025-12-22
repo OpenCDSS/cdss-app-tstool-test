@@ -1,0 +1,11 @@
+# Test converting a string to a boolean column in a table
+StartLog(LogFile="Results/test-ManipulateTableString-ToBoolean.tstool.log")
+RemoveFile(InputFile="Results/test-ManipulateTableString-ToBoolean-out.dv",IfNotFound="Ignore")
+# Generate some table data but converting time series to table.
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata2-boolean.csv")
+# Manipulate strings in the table.
+ManipulateTableString(TableID="Table1",InputColumn1="BooleanString",Operator="ToBoolean",OutputColumn="Boolean")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/test-ManipulateTableString-ToBoolean-out.csv")
+# Uncomment the following command to regenerate expected results.
+# CopyFile(InputFile="Results/test-ManipulateTableString-ToBoolean-out.csv",OutputFile="ExpectedResults/test-ManipulateTableString-ToBoolean-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ManipulateTableString-ToBoolean-out.csv",InputFile2="Results/test-ManipulateTableString-ToBoolean-out.csv",IfDifferent="Warn")

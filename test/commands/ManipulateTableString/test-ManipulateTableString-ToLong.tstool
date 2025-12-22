@@ -1,0 +1,12 @@
+# Test converting a string to an integer column in a table
+StartLog(LogFile="Results/test-ManipulateTableString-ToLong.tstool.log")
+RemoveFile(InputFile="Results/test-ManipulateTableString-ToLong-out.dv",IfNotFound="Ignore")
+# Generate some table data but converting time series to table
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data\testdata2.csv")
+# Manipulate strings in the table
+ManipulateTableString(TableID="Table1",InputColumn1="IntegerString",Operator="ToLong",OutputColumn="Long")
+ManipulateTableString(TableID="Table1",InputColumn1="DoubleString",Operator="ToLong",OutputColumn="DoubleAsLong")
+WriteTableToDelimitedFile(TableID="Table1",OutputFile="Results/test-ManipulateTableString-ToLong-out.csv")
+# Uncomment the following command to regenerate expected results.
+# CopyFile(InputFile="Results/test-ManipulateTableString-ToLong-out.csv",OutputFile="ExpectedResults/test-ManipulateTableString-ToLong-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ManipulateTableString-ToLong-out.csv",InputFile2="Results/test-ManipulateTableString-ToLong-out.csv",IfDifferent="Warn")
