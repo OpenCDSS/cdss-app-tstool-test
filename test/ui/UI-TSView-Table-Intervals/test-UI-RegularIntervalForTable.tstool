@@ -1,0 +1,26 @@
+# Test that creates multiple regular time series for use in UI inspection:
+# - this is meant to be manually run as needed
+#@enabled False
+StartLog(LogFile="results/test-UI-RegularIntervalForTable.tstool.log")
+#=========================================
+# Minute - no time zone
+NewPatternTimeSeries(Alias="MyLoc-15Min",NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-03-03 12:00",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+NewPatternTimeSeries(Alias="MyLoc-30Min",NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00",SetEnd="1950-03-03 12:00",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# Minute - with 2 time zones
+NewPatternTimeSeries(Alias="MyLoc-15Min",NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00 MST",SetEnd="1950-03-03 12:00 MST",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+NewPatternTimeSeries(Alias="MyLoc-30Min",NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00 GMT",SetEnd="1950-03-03 12:00 GMT",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# NewPatternTimeSeries(Alias="MyLoc-15Min",NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00 MST",SetEnd="1950-01-03 12:00 MST",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+# NewPatternTimeSeries(Alias="MyLoc-30Min",NewTSID="MyLoc..MyData.15Min",Description="Test data",SetStart="1950-01-01 00:00 GMT",SetEnd="1950-01-03 12:00 GMT",Units="CFS",MissingValue=NaN,PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+#=========================================
+# Hour
+NewPatternTimeSeries(Alias="MyLoc-1Hour",NewTSID="MyLoc..MyData.1Hour",Description="Test data",SetStart="1950-01-01 00",SetEnd="1950-03-03 12",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+NewPatternTimeSeries(Alias="MyLoc-6Hour",NewTSID="MyLoc..MyData.6Hour",Description="Test data",SetStart="1950-01-01 00",SetEnd="1950-03-03 12",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+#=========================================
+# Day
+NewPatternTimeSeries(Alias="MyLoc-Day",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1950-03-03",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+#=========================================
+# Month
+NewPatternTimeSeries(Alias="MyLoc-Month",NewTSID="MyLoc..MyData.Month",Description="Test data",SetStart="1950-01",SetEnd="1953-03",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
+#=========================================
+# Year
+NewPatternTimeSeries(Alias="MyLoc-Year",NewTSID="MyLoc..MyData.Year",Description="Test data",SetStart="1950",SetEnd="1963",Units="CFS",MissingValue="NaN",PatternValues="5,10,12,13,,75",PatternFlags="aa,b,,dd,e")
