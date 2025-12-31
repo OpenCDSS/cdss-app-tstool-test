@@ -1,0 +1,18 @@
+# Test setting embedded properties from a table:
+# - read the table from the file
+# - include embedded properties using the PropertyValue format
+# - copy the DoubleSlash test - all properties should be set including before and after the delimiter
+StartLog(LogFile="Results/test-SetPropertyFromTable-Embedded-PropertyValue.tstool.log")
+RemoveFile(InputFile="Results/test-SetPropertyFromTable-Embedded-PropertyValue-out.csv",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data/testtable-embedded-propertyvalue-properties.csv")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:First*",PropertyName="StringProp1",DecodeEmbeddedProperties="True",EmbeddedPropertyFormat="PropertyValue")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Third*",PropertyName="StringProp3",DecodeEmbeddedProperties="True",EmbeddedPropertyFormat="PropertyValue")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Fourth*",PropertyName="StringProp4",DecodeEmbeddedProperties="True",EmbeddedPropertyFormat="PropertyValue")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Fifth*",PropertyName="StringProp5",DecodeEmbeddedProperties="True",EmbeddedPropertyFormat="PropertyValue")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Sixth*",PropertyName="StringProp6",DecodeEmbeddedProperties="True",EmbeddedPropertyFormat="PropertyValue")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Seventh*",PropertyName="StringProp7",DecodeEmbeddedProperties="True",EmbeddedPropertyFormat="PropertyValue")
+WritePropertiesToFile(OutputFile="Results/test-SetPropertyFromTable-Embedded-PropertyValue-out.txt",IncludeProperties="Embedded*,StringProp*",FileFormat="NameValue",SortOrder="Ascending")
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results/test-SetPropertyFromTable-Embedded-PropertyValue-out.txt",OutputFile="ExpectedResults/test-SetPropertyFromTable-Embedded-PropertyValue-out.txt")
+# Do regression comparison with the original input.
+CompareFiles(InputFile1="ExpectedResults/test-SetPropertyFromTable-Embedded-PropertyValue-out.txt",InputFile2="Results/test-SetPropertyFromTable-Embedded-PropertyValue-out.txt",IfDifferent="Warn")
