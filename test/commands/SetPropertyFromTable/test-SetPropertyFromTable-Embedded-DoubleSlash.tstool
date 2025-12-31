@@ -1,0 +1,17 @@
+# Test setting embedded properties from a table:
+# - read the table from the file
+# - include embedded properties using the DoubleSlash format
+StartLog(LogFile="Results/test-SetPropertyFromTable-Embedded-DoubleSlash.tstool.log")
+RemoveFile(InputFile="Results/test-SetPropertyFromTable-Embedded-DoubleSlash-out.csv",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="Table1",InputFile="Data/testtable-embedded-doubleslash-properties.csv")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:First*",PropertyName="StringProp1",DecodeEmbeddedProperties="True")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Third*",PropertyName="StringProp3",DecodeEmbeddedProperties="True")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Fourth*",PropertyName="StringProp4",DecodeEmbeddedProperties="True")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Fifth*",PropertyName="StringProp5",DecodeEmbeddedProperties="True")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Sixth*",PropertyName="StringProp6",DecodeEmbeddedProperties="True")
+SetPropertyFromTable(TableID="Table1",Column="String2",ColumnIncludeFilters="String:Seventh*",PropertyName="StringProp7",DecodeEmbeddedProperties="True")
+WritePropertiesToFile(OutputFile="Results/test-SetPropertyFromTable-Embedded-DoubleSlash-out.txt",IncludeProperties="Embedded*,StringProp*",FileFormat="NameValue",SortOrder="Ascending")
+# Uncomment the following to generate the expected results.
+# CopyFile(InputFile="Results/test-SetPropertyFromTable-Embedded-DoubleSlash-out.txt",OutputFile="ExpectedResults/test-SetPropertyFromTable-Embedded-DoubleSlash-out.txt")
+# Do regression comparison with the original input.
+CompareFiles(InputFile1="ExpectedResults/test-SetPropertyFromTable-Embedded-DoubleSlash-out.txt",InputFile2="Results/test-SetPropertyFromTable-Embedded-DoubleSlash-out.txt",IfDifferent="Warn")
