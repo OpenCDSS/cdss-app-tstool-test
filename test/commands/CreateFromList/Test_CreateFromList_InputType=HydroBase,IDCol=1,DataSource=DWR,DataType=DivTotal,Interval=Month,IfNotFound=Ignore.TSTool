@@ -1,12 +1,14 @@
+# Test creating time series from a list file:
+# - use HydroBase diversions as the data
+# - as of TSTool 15.2.0, carry forward flags are in the output
 #@testSuite HydroBase
-#@expectedStatus Warning
 StartLog(LogFile="Results/Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore.TSTool.log")
-RemoveFile(InputFile="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",IfNotFound="Ignore")
 # Set the input period since reading from HydroBase and want to control the
 # period so differences are not seen in the results.
 SetInputPeriod(InputStart="1974-11",InputEnd="2005-10")
-CreateFromList(ListFile="Data\Test_CreateFromList_HydroBase.txt",IDCol=1,DataSource="DWR",DataType="DivTotal",Interval="Month",InputType="HydroBase",IfNotFound=Ignore)
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv")
+CreateFromList(ListFile="Data\Test_CreateFromList_HydroBase.txt",IDCol="1",DataSource="DWR",DataType="DivTotal",Interval="Month",InputType="HydroBase",IfNotFound="Ignore")
 WriteDateValue(OutputFile="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv")
-CompareFiles(InputFile1="ExpectedResults\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",InputFile2="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",IfDifferent=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",OutputFile="ExpectedResults\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv")
+CompareFiles(InputFile1="ExpectedResults\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",InputFile2="Results\Test_CreateFromList_InputType=HydroBase,IDCol=1,DataSource=DWR,DataType=DivTotal,Interval=Month,IfNotFound=Ignore_out.dv",IfDifferent="Warn")

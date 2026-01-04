@@ -3,22 +3,23 @@ StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Strea
 # - compare the resulting time series with that retrieved from HydroBase database
 # - the HydroBase database does not have monthly average CFS so need to compute from daily CFS
 # - HydroBase before 2022-03-30 used CFS to AF factor different than HydroBaseWeb so have to scale to test
-#@require datastore HydroBase20200720 version < 20220330
-RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",IfNotFound=Ignore)
+#@enabledif datastore HydroBase version < 20220330
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",IfNotFound="Ignore")
 # Read the same time series from the web service and HydroBase
 SetInputPeriod(InputStart="1949-01",InputEnd="1965-12")
 # ABBREV=PLAKERCO, USGS site ID=06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
 usgs:06754000.DWR.Streamflow-Total.Month~HydroBaseWeb
-06754000.DWR.Streamflow.Month~HydroBase20200720
+# 06754000.DWR.Streamflow.Month~HydroBase20200720
+06754000.DWR.Streamflow.Month~HydroBase
 # Scale the time series because web services uses a different factor to convert cfs to af.
-Scale(TSList=AllMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Total.Month",ScaleValue=1.00025216)
+Scale(TSList="AllMatchingTSID",TSID="usgs:06754000.DWR.Streamflow-Total.Month",ScaleValue="1.00025216")
 # Make sure that enough data are available in the test data, and some missing.
-CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
-CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1=0,IfCriteriaMet=Warn)
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1="10",IfCriteriaMet="Warn")
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria=">",CheckValue1="0",IfCriteriaMet="Warn")
 # Uncomment the following command to regenerate the expected results file.
 # The following does not work because numbers are slightly different and
 # rounding on output produces different values.
 # WriteDateValue(TSList=FirstMatchingTSID,TSID="06754000.USGS.Streamflow-Total.Month",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",Precision=2)
-WriteDateValue(TSList=LastMatchingTSID,TSID="usgs:06754000.DWR.Streamflow-Total.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",Precision=2)
+WriteDateValue(TSList="LastMatchingTSID",TSID="usgs:06754000.DWR.Streamflow-Total.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",Precision="2")
 #CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_Streamflow-Total_Month_out.dv",IfDifferent=Warn)
-CompareTimeSeries(TSID1="06754000.DWR.Streamflow.Month",TSID2="usgs:06754000.DWR.Streamflow-Total.Month",Tolerance=".1",IfDifferent=Warn)
+CompareTimeSeries(TSID1="06754000.DWR.Streamflow.Month",TSID2="usgs:06754000.DWR.Streamflow-Total.Month",Tolerance=".1",TableID="Test_HydroBase_Streamflow_Total_Month",IfDifferent="Warn")

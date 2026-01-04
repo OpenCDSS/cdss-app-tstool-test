@@ -2,4 +2,4 @@
 # - if pattern match line count is > a value, warn
 #@expectedStatus Failure
 StartLog(LogFile="Results/test-CheckFile-PatternMatchLineCount-Escape-GE.TSTool.log")
-CheckFile(InputFile="data\file-5lines-brackets.txt",Statistic="PatternMatchLineCount",SearchPattern="*\[Line\]*",CheckCriteria="!=",CheckValue1=2,IfCriteriaMet=Fail)
+CheckFile(InputFile="data\file-5lines-brackets.txt",Statistic="PatternMatchLineCount",SearchPattern="*\[Line\]*",CheckCriteria="!=",CheckValue1="2",IfCriteriaMet="Fail")

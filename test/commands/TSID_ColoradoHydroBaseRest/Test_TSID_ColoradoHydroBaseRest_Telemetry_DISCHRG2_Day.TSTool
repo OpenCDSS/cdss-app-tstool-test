@@ -1,10 +1,11 @@
-# Test reading an individual Telemetry DISCHRG2 Day time series from ColoradoHydroBaseRest web service using a TSID
+# Test reading an individual Telemetry DISCHRG2 Day time series from ColoradoHydroBaseRest web service using a TSID:
+# - on 2026-01-02 change from METSEWCO
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",IfNotFound="Ignore")
 # Read a short period and visually compare with web service results
 SetInputPeriod(InputStart="2006-11-10",InputEnd="2006-12-10")
-abbrev:METSEWCO.DWR.DISCHRG2.Day~HydroBaseWeb
+abbrev:CLARIVCO.DWR.DISCHRG2.Day~HydroBaseWeb
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",Precision="2")
 # Uncomment the following line to regenerate expected results
-# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",Precision=2)
-WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",IfDifferent=Warn)
+# CopyFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_DISCHRG2_Day_out.dv",IfDifferent="Warn")

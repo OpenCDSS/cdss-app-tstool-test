@@ -1,10 +1,10 @@
 # Test reading an individual Telemetry ELEV Hour time series from ColoradoHydroBaseRest web service using a TSID
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_ELEV_Hour_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_TSID_ColoradoWaterHydroBaseRest_Telemetry_ELEV_Hour_out.dv",IfNotFound="Ignore")
 # Read a short period and visually confirm with web service results
 SetInputPeriod(InputStart="2018-01-01 00",InputEnd="2018-01-03 12")
 abbrev:CHERESCO.DWR.ELEV.Hour~HydroBaseWeb
+WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",Precision="2")
 # Uncomment the following line to regenerate expected results
-# WriteDateValue(OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",Precision=2)
-WriteDateValue(OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",Precision=2)
-CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",IfDifferent=Warn)
+# CopyFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",OutputFile="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv")
+CompareFiles(InputFile1="ExpectedResults/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",InputFile2="Results/Test_TSID_ColoradoHydroBaseRest_Telemetry_ELEV_Hour_out.dv",IfDifferent="Warn")

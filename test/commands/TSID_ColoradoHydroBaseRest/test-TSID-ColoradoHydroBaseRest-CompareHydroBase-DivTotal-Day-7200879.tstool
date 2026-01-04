@@ -1,0 +1,19 @@
+StartLog(LogFile="Results/test-TSID_ColoradoHydroBaseRest-CompareHydroBase-DivTotal-Day-7200879.TSTool.log")
+# Test reading a DivTotal day time series from ColoradoHydroBaseRest web service using a TSID:
+# - compare the resulting time series with that retrieved from HydroBase
+RemoveFile(InputFile="Results/test-TSID_ColoradoHydroBaseRest-CompareHydroBase-DivTotal-Day-out-7200879.dv",IfNotFound="Ignore")
+# Read the same time series from the web service and HydroBase:
+# SetInputPeriod(InputStart="1949-01-01",InputEnd="1952-12-31")
+# SetInputPeriod(InputStart="1948-11-01",InputEnd="1952-10-31")
+7200879.DWR.DivTotal.Day~HydroBase
+7200879.DWR.DivTotal.Day~HydroBaseWeb
+# Make sure that enough data are available in the test data, and some missing
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1="10",IfCriteriaMet="Warn")
+CheckTimeSeriesStatistic(Statistic="MissingCount",CheckCriteria="<=",CheckValue1="2",IfCriteriaMet="Warn")
+# Write the output to allow reviewing.
+WriteDateValue(OutputFile="Results/test-TSID_ColoradoHydroBaseRest-CompareHydroBase-DivTotal-Day-7200879-out.dv",Precision="2")
+# Compare the time series:
+# - use a period from start to a couple of years back,
+#   which allows the full period to be compared.
+# - the CompareFiles command does not work because numbers are slightly different and rounding on output produces different values.
+CompareTimeSeries(Tolerance=".01",AnalysisEnd="2024-10-31",CreateDiffTS="True",IfDifferent="Warn")

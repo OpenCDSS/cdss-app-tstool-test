@@ -1,0 +1,15 @@
+# Test reading monthly streamflow using TSID
+# - period encompasses some missing data
+#@require datastore HydroBase version >= 20220330
+StartLog(LogFile="results/test-TSID-HydroBase-Streamflow.tstool.log")
+RemoveFile(InputFile="results/Test-TSID-HydroBase-Streamflow-Month-out.dv",IfNotFound=Ignore)
+# Set the input period to prevent updates to HydroBase from extending the period
+# and breaking the test.
+SetInputPeriod(InputStart="1912-01",InputEnd="1914-12")
+# 06754000 - SOUTH PLATTE RIVER NEAR KERSEY, CO
+06754000.DWR.Streamflow.Month~HydroBase
+# Uncomment the following command to regenerate expected results.
+# WriteDateValue(OutputFile="expected-results/test-TSID-HydroBase-Streamflow-Month-out.dv",Precision=2)
+WriteDateValue(OutputFile="results/test-TSID-HydroBase-Streamflow-Month-out.dv",Precision=2)
+# Compare the results
+CompareFiles(InputFile1="expected-results/test-TSID-HydroBase-Streamflow-Month-out.dv",InputFile2="results/test-TSID-HydroBase-Streamflow-Month-out.dv",IfDifferent=Warn)
