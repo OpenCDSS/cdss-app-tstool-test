@@ -2,11 +2,13 @@
 # The period is specified to try to freeze the queery so that future database updates
 # don't break the test
 StartLog(LogFile="Results/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv",IfNotFound="Ignore")
 ReadTableFromDataStore(DataStore="HydroBase",SqlFile="Data\SqlFile_DivTotal.sql",TableID="DivTotal")
-# Uncomment to regenerate expected results
-# WriteTableToDelimitedFile(TableID="DivTotal",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv")
+# Use the following to read all the columns.
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_CDSS_AnnualAmt where meas_num =\n(select meas_num from vw_CDSS_StructureStructMeasType\nwhere wd = 1 and id = 501 and meas_type = 'DivTotal' and time_step='Annual')\nand irr_year >= 1970 and irr_year < 1980 order by irr_year",TableID="DivTotal")
 # Generate the results.
 WriteTableToDelimitedFile(TableID="DivTotal",OutputFile="Results/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv")
+# Uncomment to regenerate expected results
+# CopyFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv")
 # Do regression comparison with the expected results
-CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_SqlFile_DivTotal_out.csv",IfDifferent="Warn")

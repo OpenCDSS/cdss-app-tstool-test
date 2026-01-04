@@ -1,0 +1,12 @@
+# Test freeing a object.
+StartLog(LogFile="Results/Test_FreeObject.TSTool.log")
+RemoveFile(InputFile="Results/Test_FreeObject_out.csv",IfNotFound=Ignore)
+NewObject(ObjectID="Object1",InputFile="Data\example1.json")
+NewObject(ObjectID="Object2",InputFile="Data\example2.json")
+NewObject(ObjectID="Object3",InputFile="Data\example3.json")
+# Free the middle object.
+FreeObject(ObjectID="Object2")
+# Check for the existence of the deleted object.
+If(Name="If_Object2Exists",ObjectExists="Object2")
+Message(Message="ObjectID=Object2 exists but should not.  This is an error.",CommandStatus=FAILURE)
+EndIf(Name="If_Object2Exists")

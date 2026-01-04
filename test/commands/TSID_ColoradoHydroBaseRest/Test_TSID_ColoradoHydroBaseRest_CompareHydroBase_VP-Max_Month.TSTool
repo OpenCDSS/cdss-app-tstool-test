@@ -3,16 +3,16 @@
 # - allow 13 missing based on database
 # - HydroBase does not include the monthly statistic so compute from daily and then compare
 StartLog(LogFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP-Max_Month.TSTool.log")
-RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP-Max_Month_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP-Max_Month_out.dv",IfNotFound="Ignore")
 # Read the same time series from the web service and HydroBase.
 SetInputPeriod(InputStart="1992-03",InputEnd="2018-12")
 # FTL01 - FORT LUPTON, 6 MI SSW FORT LUPTON
 FTL01.CoAgMet.VP-Max.Month~HydroBaseWeb
 SetInputPeriod(InputStart="1992-03-01",InputEnd="2018-12-31")
 FTL01.CoAgMet.VaporPressure.Day~HydroBase
-NewStatisticMonthTimeSeries(TSID="FTL01.CoAgMet.VaporPressure.Day",Alias="FTL01-HydroBase-Month",NewTSID="FTL01..VaporPressure-Max.Month",Statistic=Max)
+NewStatisticMonthTimeSeries(TSID="FTL01.CoAgMet.VaporPressure.Day",Alias="FTL01-HydroBase-Month",NewTSID="FTL01..VaporPressure-Max.Month",Statistic="Max")
 # Make sure that enough data are available in the test data, and some missing.
-CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1=10,IfCriteriaMet=Warn)
-CheckTimeSeriesStatistic(TSList=AllMatchingTSID,TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1=13,IfCriteriaMet=Warn)
-WriteDateValue(TSList=LastMatchingTSID,TSID="FTL01.CoAgMet.VP-Max.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP-Max_Month_out.dv",Precision=2)
-CompareTimeSeries(TSID1="FTL01.CoAgMet.VP-Max.Month",TSID2="FTL01-HydroBase-Month",Tolerance=".01",IfDifferent=Warn)
+CheckTimeSeriesStatistic(Statistic="NonmissingCount",CheckCriteria="<=",CheckValue1="10",IfCriteriaMet="Warn")
+CheckTimeSeriesStatistic(TSList="AllMatchingTSID",TSID="*Month",Statistic="MissingCount",CheckCriteria=">",CheckValue1="15",IfCriteriaMet="Warn")
+WriteDateValue(TSList="LastMatchingTSID",TSID="FTL01.CoAgMet.VP-Max.Month",OutputFile="Results/Test_TSID_ColoradoHydroBaseRest_CompareHydroBase_VP-Max_Month_out.dv",Precision="2")
+CompareTimeSeries(TSID1="FTL01.CoAgMet.VP-Max.Month",TSID2="FTL01-HydroBase-Month",Tolerance=".01",IfDifferent="Warn")

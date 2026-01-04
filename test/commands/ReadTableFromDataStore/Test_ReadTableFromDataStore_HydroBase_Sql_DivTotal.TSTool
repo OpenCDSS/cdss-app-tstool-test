@@ -2,11 +2,11 @@
 # The period is specified to try to freeze the queery so that future database updates
 # don't break the test
 StartLog(LogFile="Results/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal.TSTool.log")
-RemoveFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv",IfNotFound=Ignore)
-ReadTableFromDataStore(DataStore="HydroBase",Sql="/* Test reading diversion records */\nselect meas_num, structure_num, quality, irr_year, fdu, ldu, dwc,\nmaxq, maxq_date, nobs, amt_nov, amt_dec\nFROM vw_CDSS_AnnualAmt\nWHERE meas_num =\n  (SELECT meas_num from vw_CDSS_StructureStructMeasType\n  WHERE wd = 1 AND id = 501 AND meas_type = 'DivTotal' AND time_step='Annual')\nAND irr_year >= 1970 AND irr_year < 1980 ORDER BY irr_year",TableID="DivTotal",RowCountProperty="Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal")
-# Uncomment to regenerate expected results
-# WriteTableToDelimitedFile(TableID="DivTotal",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv")
+RemoveFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv",IfNotFound="Ignore")
+ReadTableFromDataStore(DataStore="HydroBase",Sql="/* Test reading diversion records */\nselect meas_num, structure_num, quality, irr_year, fdu, ldu, dwc,\nmaxq, maxq_date, nobs, amt_nov, amt_dec, amt_jan, amt_feb, amt_mar, amt_apr, amt_may, amt_jun, amt_jul, amt_aug, amt_sep, amt_oct\nFROM vw_CDSS_AnnualAmt\nWHERE meas_num =\n  (SELECT meas_num from vw_CDSS_StructureStructMeasType\n  WHERE wd = 1 AND id = 501 AND meas_type = 'DivTotal' AND time_step='Annual')\nAND irr_year >= 1970 AND irr_year < 1980 ORDER BY irr_year",TableID="DivTotal",RowCountProperty="Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal")
 # Generate the results.
 WriteTableToDelimitedFile(TableID="DivTotal",OutputFile="Results/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv")
+# Uncomment to regenerate expected results
+# CopyFile(InputFile="Results/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv",OutputFile="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv")
 # Do regression comparison with the expected results
-CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv",InputFile2="Results/Test_ReadTableFromDataStore_HydroBase_Sql_DivTotal_out.csv",IfDifferent="Warn")

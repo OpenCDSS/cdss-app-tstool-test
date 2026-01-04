@@ -5,21 +5,21 @@
 # @testSuite HydroBase
 #@require datastore HydroBase version >= 20220330
 StartLog(LogFile="Results/Test_FillUsingDiversionComments_6400509_Month.TSTool.log")
-RemoveFile(InputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv",IfNotFound=Ignore)
+RemoveFile(InputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv",IfNotFound="Ignore")
 SetInputPeriod(InputStart="11/30/1949",InputEnd="10/31/2013")
 SetOutputPeriod(OutputStart="11/30/1949",OutputEnd="10/31/2013")
 # 6400509 - TAMARACK DITCH
 # Fill only with diversion comments
-ReadTimeSeries(TSID="6400509.DWR.DivTotal.Month~HydroBase",Alias="%L-DCOnly",IfNotFound=Warn)
-FillUsingDiversionComments(TSList=AllMatchingTSID,TSID="6400509-DCOnly",FillFlag="Auto",FillFlagDescription="Auto",RecalcLimits=True,FillUsingCIU=False)
+ReadTimeSeries(TSID="6400509.DWR.DivTotal.Month~HydroBase",Alias="%L-DCOnly",IfNotFound="Warn")
+FillUsingDiversionComments(TSList="AllMatchingTSID",TSID="6400509-DCOnly",FillFlag="Auto",FillFlagDescription="Auto",RecalcLimits="True",FillUsingCIU="False")
 # Fill with diversion comments and CIU
-ReadTimeSeries(TSID="6400509.DWR.DivTotal.Month~HydroBase",Alias="%L-DCAndCIU",IfNotFound=Warn)
-FillUsingDiversionComments(TSList=AllMatchingTSID,TSID="6400509-DCAndCIU",FillFlag="Auto",FillFlagDescription="Auto",RecalcLimits=True,FillUsingCIU=True,FillUsingCIUFlag="Auto",FillUsingCIUFlagDescription="Auto")
+ReadTimeSeries(TSID="6400509.DWR.DivTotal.Month~HydroBase",Alias="%L-DCAndCIU",IfNotFound="Warn")
+FillUsingDiversionComments(TSList="AllMatchingTSID",TSID="6400509-DCAndCIU",FillFlag="Auto",FillFlagDescription="Auto",RecalcLimits="True",FillUsingCIU="True",FillUsingCIUFlag="Auto",FillUsingCIUFlagDescription="Auto")
 # Read again without any filling
-ReadTimeSeries(TSID="6400509.DWR.DivTotal.Month~HydroBase",Alias="%L-Raw",IfNotFound=Warn)
-# Uncomment the following command to regenerate expected results.
-# WriteDateValue(OutputFile="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_out.dv")
+ReadTimeSeries(TSID="6400509.DWR.DivTotal.Month~HydroBase",Alias="%L-Raw",IfNotFound="Warn")
 WriteDateValue(OutputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv")
+# CopyFile(InputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv",OutputFile="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_out.dv")
+# Uncomment the following command to regenerate expected results.
 # Also write an Excel file to simplify review - only uncomment when troubleshooting because it is slow
 #WriteTimeSeriesToExcel(MissingValue=Blank,OutputFile="Results/Test_FillUsingDiversionComments_6400509_Month_out.xlsx",Worksheet="Monthly Data",ExcelAddress="A1",ValueColumns="%A",Author="TSTool",ColumnComment="%A (%U)",ValueComment="Flag: ${tsdata:flag}")
-CompareFiles(InputFile1="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_out.dv",InputFile2="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv",IfDifferent=Warn)
+CompareFiles(InputFile1="ExpectedResults/Test_FillUsingDiversionComments_6400509_Month_out.dv",InputFile2="Results/Test_FillUsingDiversionComments_6400509_Month_out.dv",IfDifferent="Warn")

@@ -1,7 +1,7 @@
 # Test reading a StateMod daily time series in calendar year format
 StartLog(LogFile="Results/Test_ReadStateMod_Day.TSTool.log")
-TS Alias = NewPatternTimeSeries(NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
+NewPatternTimeSeries(Alias="Alias",NewTSID="MyLoc..MyData.Day",Description="Test data",SetStart="1950-01-01",SetEnd="1951-03-12",Units="CFS",PatternValues="5,10,12,13,75")
 # Uncomment the following command to regenerate the expected results file.
 # WriteStateMod(TSList=AllTS,OutputFile="ExpectedResults\Test_ReadStateMod_Day_out.stm")
 ReadStateMod(InputFile="ExpectedResults\Test_ReadStateMod_Day_out.stm")
-CompareTimeSeries(Precision=3,Tolerance=".001",DiffFlag="X",WarnIfDifferent=True)
+CompareTimeSeries(Precision="3",Tolerance=".001",DiffFlag="X",IfDifferent="Warn")
