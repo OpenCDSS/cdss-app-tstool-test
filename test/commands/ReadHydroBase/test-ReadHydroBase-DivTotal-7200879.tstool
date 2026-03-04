@@ -24,8 +24,11 @@ CompareTimeSeries(CompareSelected2TS="True",Precision="1",IfDifferent="Warn")
 SelectTimeSeries(TSList="AllMatchingTSID",TSID="7200879.DWR.DivTotal.Month",DeselectAllFirst="True")
 CompareTimeSeries(CompareSelected2TS="True",Precision="1",IfDifferent="Warn")
 SelectTimeSeries(TSList="AllMatchingTSID",TSID="7200879.DWR.DivTotal.Day",DeselectAllFirst="True")
-# Some daily values are different by .1 acre-feet, so set the number of allowed differences.
+# Some daily values are different by .1 acre-feet:
+# - set the number of allowed differences for first digit
+# - add another test for 0 digits to check all
 CompareTimeSeries(CompareSelected2TS="True",Precision="1",TableID="Test_Day_Diff_Table",AllowedDiff="90",IfDifferent="Warn")
+CompareTimeSeries(CompareSelected2TS="True",Precision="0",TableID="Test_Day_Diff_Table",IfDifferent="Warn")
 # =========================== Read commands with default filling ============================
 # Read from local HydroBase using ReadHydroBase command:
 # - should fill with carry forward by default
@@ -43,6 +46,7 @@ ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Da
 CompareTimeSeries(TSID1="7200879-Year-Fill",TSID2="7200879-Year-Web-Fill",Precision="1",IfDifferent="Warn")
 CompareTimeSeries(TSID1="7200879-Month-Fill",TSID2="7200879-Month-Web-Fill",Precision="1",IfDifferent="Warn")
 CompareTimeSeries(TSID1="7200879-Day-Fill",TSID2="7200879-Day-Web-Fill",Precision="1",AllowedDiff="90",IfDifferent="Warn")
+CompareTimeSeries(TSID1="7200879-Day-Fill",TSID2="7200879-Day-Web-Fill",Precision="0",IfDifferent="Warn")
 # =========================== Read commands with no filling ============================
 # Read from local HydroBase using ReadTimeSeries command:
 # - should NOT fill with carry forward
@@ -59,6 +63,7 @@ ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Da
 CompareTimeSeries(TSID1="7200879-Year-NoFill",TSID2="7200879-Year-Web-NoFill",Precision="1",IfDifferent="Warn")
 CompareTimeSeries(TSID1="7200879-Month-NoFill",TSID2="7200879-Month-Web-NoFill",Precision="1",IfDifferent="Warn")
 CompareTimeSeries(TSID1="7200879-Day-NoFill",TSID2="7200879-Day-Web-NoFill",Precision="1",AllowedDiff="90",IfDifferent="Warn")
+CompareTimeSeries(TSID1="7200879-Day-NoFill",TSID2="7200879-Day-Web-NoFill",Precision="0",IfDifferent="Warn")
 # ============================== for manual review =======================================
 #
 # Read the annual amount data directly from HydroBase:
