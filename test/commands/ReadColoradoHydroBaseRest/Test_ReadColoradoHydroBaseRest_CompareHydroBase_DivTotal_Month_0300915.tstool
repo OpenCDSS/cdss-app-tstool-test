@@ -9,4 +9,6 @@ StartLog(LogFile="Results/Test_ReadColoradoHydroBaseRest_CompareHydroBase_DivTot
 ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",DataType="DivTotal",Interval="Month",Where1="StructureWDID;Matches;0300915",Alias="%L-WebService")
 ReadHydroBase(DataStore="HydroBase",DataType="DivTotal",Interval="Month",Where1="Structure WDID;Matches;0300915",Alias="%L-Database")
 #
-CompareTimeSeries(TSID1="0300915-WebService",TSID2="0300915-Database",Tolerance=".01",AnalysisEnd="2020-10",IfDifferent=Warn)
+CompareTimeSeries(TSID1="0300915-WebService",TSID2="0300915-Database",Tolerance=".01",AnalysisEnd="2020-10",IfDifferent="Warn")
+# Use the follow for review.
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="SELECT * from vw_CDSS_AnnualAmt where wd = 3 and id = 915 order by IRR_YEAR;",TableID="annual_amt")

@@ -1,0 +1,70 @@
+# Test reading historical diversions to confirm data filling:
+# - the structure was idenified by Wilson Water Group
+# - read day, month, and year interval historical diversion time series for 7200879
+# - read from the database and web services to compare output
+# - historical data start in 1985-11 and contain periods of missing data
+# - daily data have differences of .1 acre feet so allow the differences (DWR has been notified)
+#
+SetInputPeriod(InputStart="1985-11-01",InputEnd="2024-10-31")
+# Read from local HydroBase using TSID:
+# - should fill with carry forward by default
+# 7200879 - SOUTHSIDE CANAL
+7200879.DWR.DivTotal.Year~HydroBase
+7200879.DWR.DivTotal.Month~HydroBase
+7200879.DWR.DivTotal.Day~HydroBase
+#
+# Read the same time series from HydroBase web services:
+# - should fill with carry forward by default
+7200879.DWR.DivTotal.Year~HydroBaseWeb
+7200879.DWR.DivTotal.Month~HydroBaseWeb
+7200879.DWR.DivTotal.Day~HydroBaseWeb
+# ============================== TSID comparisons =======================================
+SelectTimeSeries(TSList="AllMatchingTSID",TSID="7200879.DWR.DivTotal.Year",DeselectAllFirst="True")
+CompareTimeSeries(CompareSelected2TS="True",Precision="1",IfDifferent="Warn")
+SelectTimeSeries(TSList="AllMatchingTSID",TSID="7200879.DWR.DivTotal.Month",DeselectAllFirst="True")
+CompareTimeSeries(CompareSelected2TS="True",Precision="1",IfDifferent="Warn")
+SelectTimeSeries(TSList="AllMatchingTSID",TSID="7200879.DWR.DivTotal.Day",DeselectAllFirst="True")
+# Some daily values are different by .1 acre-feet, so set the number of allowed differences.
+CompareTimeSeries(CompareSelected2TS="True",Precision="1",TableID="Test_Day_Diff_Table",AllowedDiff="90",IfDifferent="Warn")
+# =========================== Read commands with default filling ============================
+# Read from local HydroBase using ReadHydroBase command:
+# - should fill with carry forward by default
+ReadHydroBase(DataStore="HydroBase",TSID="7200879.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="7200879-Year-Fill")
+ReadHydroBase(DataStore="HydroBase",TSID="7200879.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="7200879-Month-Fill")
+ReadHydroBase(DataStore="HydroBase",TSID="7200879.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="7200879-Day-Fill")
+#
+# Read from web services using ReadHydroBaseRest command:
+# - should fill with carry forward by default
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="7200879-Year-Web-Fill")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="7200879-Month-Web-Fill")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="7200879-Day-Web-Fill")
+#
+# Compare the results.
+CompareTimeSeries(TSID1="7200879-Year-Fill",TSID2="7200879-Year-Web-Fill",Precision="1",IfDifferent="Warn")
+CompareTimeSeries(TSID1="7200879-Month-Fill",TSID2="7200879-Month-Web-Fill",Precision="1",IfDifferent="Warn")
+CompareTimeSeries(TSID1="7200879-Day-Fill",TSID2="7200879-Day-Web-Fill",Precision="1",AllowedDiff="90",IfDifferent="Warn")
+# =========================== Read commands with no filling ============================
+# Read from local HydroBase using ReadTimeSeries command:
+# - should NOT fill with carry forward
+ReadHydroBase(DataStore="HydroBase",TSID="7200879.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="7200879-Year-NoFill",FillDivRecordsCarryForward="False")
+ReadHydroBase(DataStore="HydroBase",TSID="7200879.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="7200879-Month-NoFill",FillDivRecordsCarryForward="False")
+ReadHydroBase(DataStore="HydroBase",TSID="7200879.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="7200879-Day-NoFill",FillDivRecordsCarryForward="False")
+# Read from local HydroBase using ReadTimeSeriesRest command:
+# - should NOT fill with carry forward
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="7200879-Year-Web-NoFill",FillDivRecordsCarryForward="False")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="7200879-Month-Web-NoFill",FillDivRecordsCarryForward="False")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="7200879.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="7200879-Day-Web-NoFill",FillDivRecordsCarryForward="False")
+#
+# Compare the results.
+CompareTimeSeries(TSID1="7200879-Year-NoFill",TSID2="7200879-Year-Web-NoFill",Precision="1",IfDifferent="Warn")
+CompareTimeSeries(TSID1="7200879-Month-NoFill",TSID2="7200879-Month-Web-NoFill",Precision="1",IfDifferent="Warn")
+CompareTimeSeries(TSID1="7200879-Day-NoFill",TSID2="7200879-Day-Web-NoFill",Precision="1",AllowedDiff="90",IfDifferent="Warn")
+# ============================== for manual review =======================================
+#
+# Read the annual amount data directly from HydroBase:
+# - tried to call the stored proecure for diversion comments but something is not working (will fix ASAP)
+#ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_cdss_AnnualAmt where wd = 72 and id = 879 order by irr_year",TableID="AnnualAmt_7200879")
+#ReadTableFromDataStore(DataStore="HydroBase",DataStoreFunction="usp_CDSS_AreaCap_Sel_By_Structure_num;1(@structure_num bigint) -> int",FunctionParameters="@structure_num:93130",TableID="DiversionComments_7200879")
+# Use the following to check for null monthly amounts, which would indicate missing data:
+# - comment out otherwise because it is slow
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_cdss_AnnualAmt where amt_nov is null OR amt_dec is null or amt_jan is null or amt_feb is null or amt_mar is null or amt_apr is null or amt_may is null or amt_jun is null or amt_jul is null or amt_aug is null or amt_sep is null or amt_oct is null",TableID="AnnualAmt_null_values")
