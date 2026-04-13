@@ -1,0 +1,77 @@
+StartLog(LogFile="Results/test-ReadHydroBase-DivTotal-5801930.tstool.log")
+# Test reading historical diversions to confirm data filling:
+# - the structure was idenified by Wilson Water Group
+# - this structure does not have a daily time series
+# - read day, month, and year interval historical diversion time series for 5801930
+# - read from the database and web services to compare output
+# - historical data start in 1985-11 and contain periods of missing data
+# - daily data have differences of .1 acre feet so allow the differences (DWR has been notified)
+#
+SetInputPeriod(InputStart="1985-11-01",InputEnd="2024-10-31")
+# Read from local HydroBase using TSID:
+# - should fill with carry forward by default
+# 5801930 - SOUTHSIDE CANAL
+5801930.DWR.DivTotal.Year~HydroBase
+5801930.DWR.DivTotal.Month~HydroBase
+# 5801930.DWR.DivTotal.Day~HydroBase
+#
+# Read the same time series from HydroBase web services:
+# - should fill with carry forward by default
+5801930.DWR.DivTotal.Year~HydroBaseWeb
+5801930.DWR.DivTotal.Month~HydroBaseWeb
+# 5801930.DWR.DivTotal.Day~HydroBaseWeb
+# ============================== TSID comparisons =======================================
+SelectTimeSeries(TSList="AllMatchingTSID",TSID="5801930.DWR.DivTotal.Year",DeselectAllFirst="True")
+CompareTimeSeries(CompareSelected2TS="True",Precision="1",IfDifferent="Warn")
+SelectTimeSeries(TSList="AllMatchingTSID",TSID="5801930.DWR.DivTotal.Month",DeselectAllFirst="True")
+CompareTimeSeries(CompareSelected2TS="True",Precision="1",IfDifferent="Warn")
+# SelectTimeSeries(TSList="AllMatchingTSID",TSID="5801930.DWR.DivTotal.Day",DeselectAllFirst="True")
+# Some daily values are different by .1 acre-feet:
+# - set the number of allowed differences for first digit
+# - add another test for 0 digits to check all
+# CompareTimeSeries(CompareSelected2TS="True",Precision="1",TableID="Test_Day_Diff_Table",AllowedDiff="90",IfDifferent="Warn")
+# CompareTimeSeries(CompareSelected2TS="True",Precision="0",TableID="Test_Day_Diff_Table",IfDifferent="Warn")
+# =========================== Read commands with default filling ============================
+# Read from local HydroBase using ReadHydroBase command:
+# - should fill with carry forward by default
+ReadHydroBase(DataStore="HydroBase",TSID="5801930.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="5801930-Year-Fill")
+ReadHydroBase(DataStore="HydroBase",TSID="5801930.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="5801930-Month-Fill")
+# ReadHydroBase(DataStore="HydroBase",TSID="5801930.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="5801930-Day-Fill")
+#
+# Read from web services using ReadHydroBaseRest command:
+# - should fill with carry forward by default
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="5801930.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="5801930-Year-Web-Fill")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="5801930.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="5801930-Month-Web-Fill")
+# ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="5801930.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="5801930-Day-Web-Fill")
+#
+# Compare the results.
+CompareTimeSeries(TSID1="5801930-Year-Fill",TSID2="5801930-Year-Web-Fill",Precision="1",IfDifferent="Warn")
+CompareTimeSeries(TSID1="5801930-Month-Fill",TSID2="5801930-Month-Web-Fill",Precision="1",IfDifferent="Warn")
+# CompareTimeSeries(TSID1="5801930-Day-Fill",TSID2="5801930-Day-Web-Fill",Precision="1",AllowedDiff="90",IfDifferent="Warn")
+# CompareTimeSeries(TSID1="5801930-Day-Fill",TSID2="5801930-Day-Web-Fill",Precision="0",IfDifferent="Warn")
+# =========================== Read commands with no filling ============================
+# Read from local HydroBase using ReadTimeSeries command:
+# - should NOT fill with carry forward
+ReadHydroBase(DataStore="HydroBase",TSID="5801930.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="5801930-Year-NoFill",FillDivRecordsCarryForward="False")
+ReadHydroBase(DataStore="HydroBase",TSID="5801930.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="5801930-Month-NoFill",FillDivRecordsCarryForward="False")
+# ReadHydroBase(DataStore="HydroBase",TSID="5801930.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="5801930-Day-NoFill",FillDivRecordsCarryForward="False")
+# Read from local HydroBase using ReadTimeSeriesRest command:
+# - should NOT fill with carry forward
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="5801930.DWR.DivTotal.Year~HydroBase",DataType="DivTotal",Interval="Year",Alias="5801930-Year-Web-NoFill",FillDivRecordsCarryForward="False")
+ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="5801930.DWR.DivTotal.Month~HydroBase",DataType="DivTotal",Interval="Month",Alias="5801930-Month-Web-NoFill",FillDivRecordsCarryForward="False")
+# ReadColoradoHydroBaseRest(DataStore="HydroBaseWeb",TSID="5801930.DWR.DivTotal.Day~HydroBase",DataType="DivTotal",Interval="Day",Alias="5801930-Day-Web-NoFill",FillDivRecordsCarryForward="False")
+#
+# Compare the results.
+CompareTimeSeries(TSID1="5801930-Year-NoFill",TSID2="5801930-Year-Web-NoFill",Precision="1",IfDifferent="Warn")
+CompareTimeSeries(TSID1="5801930-Month-NoFill",TSID2="5801930-Month-Web-NoFill",Precision="1",IfDifferent="Warn")
+# CompareTimeSeries(TSID1="5801930-Day-NoFill",TSID2="5801930-Day-Web-NoFill",Precision="1",AllowedDiff="90",IfDifferent="Warn")
+# CompareTimeSeries(TSID1="5801930-Day-NoFill",TSID2="5801930-Day-Web-NoFill",Precision="0",IfDifferent="Warn")
+# ============================== for manual review =======================================
+#
+# Read the annual amount data directly from HydroBase:
+# - tried to call the stored proecure for diversion comments but something is not working (will fix ASAP)
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_cdss_AnnualAmt where wd = 58 and id = 1930 order by irr_year",TableID="AnnualAmt_5801930")
+#ReadTableFromDataStore(DataStore="HydroBase",DataStoreFunction="usp_CDSS_AreaCap_Sel_By_Structure_num;1(@structure_num bigint) -> int",FunctionParameters="@structure_num:93130",TableID="DiversionComments_5801930")
+# Use the following to check for null monthly amounts, which would indicate missing data:
+# - comment out otherwise because it is slow
+# ReadTableFromDataStore(DataStore="HydroBase",Sql="select * from vw_cdss_AnnualAmt where amt_nov is null OR amt_dec is null or amt_jan is null or amt_feb is null or amt_mar is null or amt_apr is null or amt_may is null or amt_jun is null or amt_jul is null or amt_aug is null or amt_sep is null or amt_oct is null",TableID="AnnualAmt_null_values")
