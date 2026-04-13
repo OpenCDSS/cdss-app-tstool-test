@@ -1,3 +1,4 @@
+StartLog(LogFile="results/test-ReadHydroBase-DivTotal-7200879.tstool.log")
 # Test reading historical diversions to confirm data filling:
 # - the structure was idenified by Wilson Water Group
 # - read day, month, and year interval historical diversion time series for 7200879

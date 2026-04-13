@@ -1,0 +1,15 @@
+# Test comparing two time series warn if they are the different
+# - only one value in sequence is different
+# - the time series are different so expect to have warning
+# - process the 2 selected time series
+# - expect to have 10 differences
+#@expectedStatus Warning
+StartLog(LogFile="Results/test-CompareTimeSeries-CompareSelected2TS-different.log")
+SetOutputPeriod(OutputStart="2010-01-01",OutputEnd="2010-03-20")
+NewPatternTimeSeries(Alias="ts1",NewTSID="ts1..flow.Day",Description="Test data 1",Units="cfs",MissingValue="NaN",PatternValues="2,5,2,5,,8,6,10")
+NewPatternTimeSeries(Alias="ts2",NewTSID="ts2..flow.Day",Description="Test data 2",Units="cfs",MissingValue="NaN",PatternValues="2,5,2,5,,8,5,10")
+SelectTimeSeries()
+CompareTimeSeries(CompareSelected2TS="True",CreateDiffTS="True",DiffCountProperty="TestDifferenceCount",IfDifferent="Warn")
+If(Name="If_Differences",Condition="${TestDifferenceCount} != 10")
+    Message(Message="Number of differences (${TestDifferenceCount}) does not match the expected (10).",CommandStatus="FAILURE")
+EndIf(Name="If_Differences")

@@ -1,0 +1,5 @@
+# Examples for documentation.
+# SNOTEL example.
+ReadNrcsAwdb(DataStore="NrcsAwdb",Interval="Day",States="CO",Networks="SNTL",Counties="Larimer",Elements="WTEQ",InputStart="2000-01-01",InputEnd="2000-12-31",Alias="%L-%T")
+# Forecast table example.
+ReadNrcsAwdb(DataStore="NrcsAwdb",Interval="Hour",Stations="07099400",States="CO",Networks="USGS",ReadForecast="True",ForecastTableID="Forecast_Table",ForecastPeriod="APR-SEP",Elements="SRVO")
