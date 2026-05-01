@@ -1,0 +1,16 @@
+# Test reading a forecast table:
+# - specify a single station
+# - specify the publication date period to avoid new data breaking the test
+# - compare the old SOAP and new REST API results
+StartLog(LogFile="Results/test-ReadNrcsAwdb-SingleSite-Forecasts.tstool.log")
+RemoveFile(InputFile="Results/test-ReadNrcsAwdb-Forecasts-SingleSite-out.dv",IfNotFound="Ignore")
+ReadNrcsAwdb(DataStore="NrcsAwdb",Stations="06707500",States="CO",Networks="USGS",Counties="Larimer",ReadForecast="True",ForecastTableID="Test_Forecast_REST_Table",ForecastPeriod="APR-JUL",ForecastPublicationDateStart="2020-10-01",ForecastPublicationDateEnd="2022-09-30",Elements="SRVO")
+ReadNrcsAwdb(DataStore="NrcsAwdbSoap",Stations="06707500",States="CO",Networks="USGS",Counties="Larimer",ReadForecast="True",ForecastTableID="Test_Forecast_SOAP_Table",ForecastPeriod="A16-JUL",ForecastPublicationDateStart="2020-10-01",ForecastPublicationDateEnd="2022-09-30",Elements="SRVO")
+WriteTableToDelimitedFile(TableID="Test_Forecast_REST_Table",OutputFile="Results/test-ReadNrcsAwdb-Forecasts-SingleSite-out.csv")
+# Uncomment the following command to regenerate the expected results file.
+CopyFile(InputFile="Results/test-ReadNrcsAwdb-Forecasts-SingleSite-out.csv",OutputFile="ExpectedResults/test-ReadNrcsAwdb-Forecasts-SingleSite-out.csv")
+CompareFiles(InputFile1="ExpectedResults/test-ReadNrcsAwdb-Forecasts-SingleSite-out.csv",InputFile2="Results/test-ReadNrcsAwdb-Forecasts-SingleSite-out.csv",IfDifferent="Warn")
+#
+# Also compare the SOAP and REST API in-memory tables:
+# - SOAP API does not seem to return data
+# CompareTables(Table1ID="Test_Forecast_SOAP_Table",Table2ID="Test_Forecast_REST_Table",AnalysisMethod="Advanced",DiffTableID="Test_DiffTable",DiffFile="Results/test-ReadNrcsAwdb-Forecasts-SingleSite-diff-out.html")

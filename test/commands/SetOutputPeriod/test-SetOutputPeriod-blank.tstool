@@ -1,0 +1,63 @@
+# Test setting the output period to blank (null properties).
+StartLog(LogFile="Results/test-SetOutputPeriod-blank.TSTool.log")
+RemoveFile(InputFile="Results/test-SetOutputPeriod-blank-out.txt",IfNotFound="Ignore")
+SetOutputPeriod(OutputStart="1900-01-01",OutputEnd="2007-12-31")
+# ============================================
+# Check that the initial output period is not blank.
+# ============================================
+If(Name="If_OutputStart_NotSet_1",PropertyIsNotDefinedOrIsEmpty="OutputStart")
+    Message(Message="The OutputStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputStart_NotSet_1")
+If(Name="If_OutputEnd_NotSet_1",PropertyIsNotDefinedOrIsEmpty="OutputEnd")
+    Message(Message="The OutputEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputEnd_NotSet_1")
+# ============================================
+# Clear the output period.
+# ============================================
+SetOutputPeriod()
+# Check that the output period is blank.
+If(Name="If_OutputStart_Set_1",PropertyIsDefinedAndIsNotEmpty="OutputStart")
+    Message(Message="The OutputStart is set (should not be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputStart_Set_1")
+If(Name="If_OutputEnd_Set_1",PropertyIsDefinedAndIsNotEmpty="OutputEnd")
+    Message(Message="The OutputEnd is set (should not be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputEnd_Set_1")
+# ============================================
+# Change the output start only.
+# ============================================
+#
+# Set the output period to the original again.
+SetOutputPeriod(OutputStart="1900-01-01",OutputEnd="2007-12-31")
+SetOutputPeriod(OutputStart="1901-01-01")
+#
+# Check that the output period is not blank and is as expected.
+If(Name="If_OutputStart_NotSet_2",PropertyIsNotDefinedOrIsEmpty="OutputStart")
+    Message(Message="The OutputStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputStart_NotSet_2")
+If(Name="If_OutputEnd_NotSet_2",PropertyIsNotDefinedOrIsEmpty="OutputEnd")
+    Message(Message="The OutputEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputEnd_NotSet_2")
+If(Name="If_OutputStart_OK_1",Condition="${OutputStart} != 1901-01-01")
+    Message(Message="The OutputStart (${OutputStart}) is not 1901-01-01.",CommandStatus="FAILURE")
+EndIf(Name="If_OutputStart_OK_1")
+If(Name="If_OutputEnd_OK_1",Condition="${OutputEnd} != 2007-12-31")
+    Message(Message="The OutputEnd (${OutputEnd}) is not 2007-12-31.",CommandStatus="FAILURE")
+EndIf(Name="If_OutputEnd_OK_1")
+# ============================================
+# Change the output end only.
+# ============================================
+SetOutputPeriod(OutputEnd="2008-12-31")
+#
+# Check that the output period is not blank and is as expected.
+If(Name="If_OutputStart_NotSet_3",PropertyIsNotDefinedOrIsEmpty="OutputStart")
+    Message(Message="The OutputStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputStart_NotSet_3")
+If(Name="If_OutputEnd_NotSet_3",PropertyIsNotDefinedOrIsEmpty="OutputEnd")
+    Message(Message="The OutputEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_OutputEnd_NotSet_3")
+If(Name="If_OutputStart_OK_2",Condition="${OutputStart} != 1901-01-01")
+    Message(Message="The OutputStart (${OutputStart}) is not 1901-01-01.",CommandStatus="FAILURE")
+EndIf(Name="If_OutputStart_OK_2")
+If(Name="If_OutputEnd_OK_2",Condition="${OutputEnd} != 2008-12-31")
+    Message(Message="The OutputEnd (${OutputEnd}) is not 2008-12-31.",CommandStatus="FAILURE")
+EndIf(Name="If_OutputEnd_OK_2")
