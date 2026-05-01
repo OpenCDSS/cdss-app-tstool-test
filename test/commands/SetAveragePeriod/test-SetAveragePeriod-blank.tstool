@@ -1,0 +1,63 @@
+# Test setting the Average period to blank (null properties).
+StartLog(LogFile="Results/test-SetAveragePeriod-blank.TSTool.log")
+RemoveFile(InputFile="Results/test-SetAveragePeriod-blank-out.txt",IfNotFound="Ignore")
+SetAveragePeriod(AverageStart="1900-01-01",AverageEnd="2007-12-31")
+# ============================================
+# Check that the initial Average period is not blank.
+# ============================================
+If(Name="If_AverageStart_NotSet_1",PropertyIsNotDefinedOrIsEmpty="AverageStart")
+    Message(Message="The AverageStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageStart_NotSet_1")
+If(Name="If_AverageEnd_NotSet_1",PropertyIsNotDefinedOrIsEmpty="AverageEnd")
+    Message(Message="The AverageEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageEnd_NotSet_1")
+# ============================================
+# Clear the Average period.
+# ============================================
+SetAveragePeriod()
+# Check that the Average period is blank.
+If(Name="If_AverageStart_Set_1",PropertyIsDefinedAndIsNotEmpty="AverageStart")
+    Message(Message="The AverageStart is set (should not be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageStart_Set_1")
+If(Name="If_AverageEnd_Set_1",PropertyIsDefinedAndIsNotEmpty="AverageEnd")
+    Message(Message="The AverageEnd is set (should not be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageEnd_Set_1")
+# ============================================
+# Change the Average start only.
+# ============================================
+#
+# Set the Average period to the original again.
+SetAveragePeriod(AverageStart="1900-01-01",AverageEnd="2007-12-31")
+SetAveragePeriod(AverageStart="1901-01-01")
+#
+# Check that the Average period is not blank and is as expected.
+If(Name="If_AverageStart_NotSet_2",PropertyIsNotDefinedOrIsEmpty="AverageStart")
+    Message(Message="The AverageStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageStart_NotSet_2")
+If(Name="If_AverageEnd_NotSet_2",PropertyIsNotDefinedOrIsEmpty="AverageEnd")
+    Message(Message="The AverageEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageEnd_NotSet_2")
+If(Name="If_AverageStart_OK_1",Condition="${AverageStart} != 1901-01-01")
+    Message(Message="The AverageStart (${AverageStart}) is not 1901-01-01.",CommandStatus="FAILURE")
+EndIf(Name="If_AverageStart_OK_1")
+If(Name="If_AverageEnd_OK_1",Condition="${AverageEnd} != 2007-12-31")
+    Message(Message="The AverageEnd (${AverageEnd}) is not 2007-12-31.",CommandStatus="FAILURE")
+EndIf(Name="If_AverageEnd_OK_1")
+# ============================================
+# Change the Average end only.
+# ============================================
+SetAveragePeriod(AverageEnd="2008-12-31")
+#
+# Check that the Average period is not blank and is as expected.
+If(Name="If_AverageStart_NotSet_3",PropertyIsNotDefinedOrIsEmpty="AverageStart")
+    Message(Message="The AverageStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageStart_NotSet_3")
+If(Name="If_AverageEnd_NotSet_3",PropertyIsNotDefinedOrIsEmpty="AverageEnd")
+    Message(Message="The AverageEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_AverageEnd_NotSet_3")
+If(Name="If_AverageStart_OK_2",Condition="${AverageStart} != 1901-01-01")
+    Message(Message="The AverageStart (${AverageStart}) is not 1901-01-01.",CommandStatus="FAILURE")
+EndIf(Name="If_AverageStart_OK_2")
+If(Name="If_AverageEnd_OK_2",Condition="${AverageEnd} != 2008-12-31")
+    Message(Message="The AverageEnd (${AverageEnd}) is not 2008-12-31.",CommandStatus="FAILURE")
+EndIf(Name="If_AverageEnd_OK_2")

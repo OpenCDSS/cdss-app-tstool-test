@@ -1,0 +1,63 @@
+# Test setting the input period to blank (null properties).
+StartLog(LogFile="Results/test-SetInputPeriod-blank.TSTool.log")
+RemoveFile(InputFile="Results/test-SetInputPeriod-blank-out.txt",IfNotFound="Ignore")
+SetInputPeriod(InputStart="1900-01-01",InputEnd="2007-12-31")
+# ============================================
+# Check that the initial input period is not blank.
+# ============================================
+If(Name="If_InputStart_NotSet_1",PropertyIsNotDefinedOrIsEmpty="InputStart")
+    Message(Message="The InputStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputStart_NotSet_1")
+If(Name="If_InputEnd_NotSet_1",PropertyIsNotDefinedOrIsEmpty="InputEnd")
+    Message(Message="The InputEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputEnd_NotSet_1")
+# ============================================
+# Clear the input period.
+# ============================================
+SetInputPeriod()
+# Check that the input period is blank.
+If(Name="If_InputStart_Set_1",PropertyIsDefinedAndIsNotEmpty="InputStart")
+    Message(Message="The InputStart is set (should not be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputStart_Set_1")
+If(Name="If_InputEnd_Set_1",PropertyIsDefinedAndIsNotEmpty="InputEnd")
+    Message(Message="The InputEnd is set (should not be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputEnd_Set_1")
+# ============================================
+# Change the input start only.
+# ============================================
+#
+# Set the input period to the original again.
+SetInputPeriod(InputStart="1900-01-01",InputEnd="2007-12-31")
+SetInputPeriod(InputStart="1901-01-01")
+#
+# Check that the input period is not blank and is as expected.
+If(Name="If_InputStart_NotSet_2",PropertyIsNotDefinedOrIsEmpty="InputStart")
+    Message(Message="The InputStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputStart_NotSet_2")
+If(Name="If_InputEnd_NotSet_2",PropertyIsNotDefinedOrIsEmpty="InputEnd")
+    Message(Message="The InputEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputEnd_NotSet_2")
+If(Name="If_InputStart_OK_1",Condition="${InputStart} != 1901-01-01")
+    Message(Message="The InputStart (${InputStart}) is not 1901-01-01.",CommandStatus="FAILURE")
+EndIf(Name="If_InputStart_OK_1")
+If(Name="If_InputEnd_OK_1",Condition="${InputEnd} != 2007-12-31")
+    Message(Message="The InputEnd (${InputEnd}) is not 2007-12-31.",CommandStatus="FAILURE")
+EndIf(Name="If_InputEnd_OK_1")
+# ============================================
+# Change the input end only.
+# ============================================
+SetInputPeriod(InputEnd="2008-12-31")
+#
+# Check that the input period is not blank and is as expected.
+If(Name="If_InputStart_NotSet_3",PropertyIsNotDefinedOrIsEmpty="InputStart")
+    Message(Message="The InputStart is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputStart_NotSet_3")
+If(Name="If_InputEnd_NotSet_3",PropertyIsNotDefinedOrIsEmpty="InputEnd")
+    Message(Message="The InputEnd is not set (should be set).",CommandStatus="FAILURE")
+EndIf(Name="If_InputEnd_NotSet_3")
+If(Name="If_InputStart_OK_2",Condition="${InputStart} != 1901-01-01")
+    Message(Message="The InputStart (${InputStart}) is not 1901-01-01.",CommandStatus="FAILURE")
+EndIf(Name="If_InputStart_OK_2")
+If(Name="If_InputEnd_OK_2",Condition="${InputEnd} != 2008-12-31")
+    Message(Message="The InputEnd (${InputEnd}) is not 2008-12-31.",CommandStatus="FAILURE")
+EndIf(Name="If_InputEnd_OK_2")

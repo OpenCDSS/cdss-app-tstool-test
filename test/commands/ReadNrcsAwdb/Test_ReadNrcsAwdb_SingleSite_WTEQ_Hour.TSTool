@@ -9,9 +9,9 @@ RemoveFile(InputFile="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv",IfN
 # SetDebugLevel(LogFileLevel=1)
 ReadNrcsAwdb(DataStore="NrcsAwdb",Interval="Hour",Stations="551",States="CO",Networks="SNTL",Elements="WTEQ",InputStart="2000-01-01",InputEnd="2000-07-31",Alias="%L-%T")
 # SetDebugLevel(LogFileLevel=0)
-# Uncomment the following command to regenerate the expected results file.
-# WriteDateValue(OutputFile="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv")
 WriteDateValue(OutputFile="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv",OutputFile="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv")
 # Read the expected results to troubleshoot issues
-ReadDateValue(InputFile="ExpectedResults\Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv",Alias="%l-%T-Expected")
+ReadDateValue(InputFile="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv",Alias="%l-%T-Expected")
 CompareFiles(InputFile1="ExpectedResults/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv",InputFile2="Results/Test_ReadNrcsAwdb_SingleSite_WTEQ_Hour_out.dv",IfDifferent="Warn")
