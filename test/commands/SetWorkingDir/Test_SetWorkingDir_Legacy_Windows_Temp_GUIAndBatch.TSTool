@@ -8,8 +8,8 @@ RemoveFile(InputFile="Results/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch
 SetWorkingDir(WorkingDir="${TempDir}",GUIAndBatch)
 # Uncomment the following two commands to regenerate the expected results file:
 # - replace the specific user name with generic XXX so that the test passes for different users
-WritePropertiesToFile(OutputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",IncludeProperties="WorkingDir",FileFormat=NameValue)
-TextEdit(InputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",SearchFor="Users.*AppData",ReplaceWith="Users/XXX/AppData",OutputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out3.txt")
+#WritePropertiesToFile(OutputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",IncludeProperties="WorkingDir",FileFormat=NameValue)
+#TextEdit(InputFile="${InitialWorkingDir}/ExpectedResults/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out.txt",SearchFor="Users.*AppData",ReplaceWith="Users/XXX/AppData",OutputFile="${InitialWorkingDir}/Results/Test_SetWorkingDir_Legacy_Windows_Temp_GUIAndBatch_out3.txt")
 # Do regression comparison.
 # Generate new output:
 # - replace the specific user name with generic XXX so that the test passes for different users
