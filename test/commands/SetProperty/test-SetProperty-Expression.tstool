@@ -31,7 +31,7 @@ EndIf(Name="If_Integer1")
 # Test String properties.
 SetProperty(PropertyName="Test_String1",PropertyType="String",Expression="STR_SUBSTRING('abcdef',3)")
 SetDebugLevel(LogFileLevel="1")
-If(Name="If_String1",Expression="${Test_String1} != 'def'")
+If(Name="If_String1",Expression="'${Test_String1}' != 'def'")
     Message(Message="The property value (${Test_String1}) is not the expected value 'def'.",CommandStatus="FAILURE")
 EndIf(Name="If_String1")
 SetDebugLevel(ScreenLevel="0",LogFileLevel="0")

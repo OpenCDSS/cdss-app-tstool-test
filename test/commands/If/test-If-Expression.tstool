@@ -3,6 +3,15 @@ StartLog(LogFile="results/test-If-Expression.tstool.log")
 # Test evaluating expressions:
 # - show failures for cases that evaulate incorrectly
 #
+# Boolean property and constant.
+SetProperty(PropertyName="TestBoolean1",PropertyType="Boolean",PropertyValue="true")
+If(Name="If_TestBoolean1_Pass",Expression="${TestBoolean1} == true")
+    Message(Message="The expression ${TestBoolean1} == true evaluated as true (correct).",CommandStatus="NOTIFICATION")
+EndIf(Name="If_TestBoolean1_Pass")
+If(Name="If_TestBoolean1_Fail",Expression="${TestBoolean1} != true")
+    Message(Message="The expression ${TestBoolean1} != true evaluates as true (wrong).",CommandStatus="FAILURE")
+EndIf(Name="If_TestBoolean1_Fail")
+#
 # Integer constants.
 If(Name="If_Test1_Pass",Expression="2 > 1")
     Message(Message="The expression 2 > 1 evaluated as true (correct).",CommandStatus="NOTIFICATION")
@@ -20,6 +29,24 @@ EndIf(Name="If_Test3")
 If(Name="If_Test3",Condition="${Integer2} < ${Integer1}")
     Message(Message="The expression (using properties) evaluated 2 < 1 as true (wrong).",CommandStatus="FAILURE")
 EndIf(Name="If_Test3")
+#
+# Double constants and properties.
+SetProperty(PropertyName="TestDouble2",PropertyType="Double",PropertyValue="2.0")
+If(Name="If_TestDouble1_Pass",Expression="${TestDouble2} > 1.0")
+    Message(Message="The expression ${TestDouble2} > 1.0 evaluated as true (correct).",CommandStatus="NOTIFICATION")
+EndIf(Name="If_TestDouble1_Pass")
+If(Name="If_TestDouble1_Fail",Expression="${TestDouble2} < 1")
+    Message(Message="The expression 2 < 1 evaluates as true (wrong).",CommandStatus="FAILURE")
+EndIf(Name="If_TestDouble1_Fail")
+#
+# Test using string properties.
+SetProperty(PropertyName="TestString1",PropertyType="String",PropertyValue="abcdefg")
+If(Name="If_TestString1",Expression="'${TestString1}' == 'abcdefg'")
+    Message(Message="The expression (using properties) evaluated '${TestSring1}' == 'abcdefg' as true (corect).",CommandStatus="NOTIFICATION")
+EndIf(Name="If_TestString1")
+If(Name="If_TestString2",Expression="'${TestString1}' != 'abcdefg'")
+    Message(Message="The expression (using properties) evaluated '${TestString1}' != 'abcdefg' as true (wrong).",CommandStatus="FAILURE")
+EndIf(Name="If_TestString2")
 #
 # Test using more complex integer math.
 If(Name="If_Complex_Pass",Expression="(2 > 1) && (SQRT(9) > SQRT(4))")
