@@ -1,0 +1,37 @@
+StartLog(LogFile="Results/test-SetProperty-Expression.tstool.log")
+# Test setting properties using an expression:
+# - various examples are run for different output property type
+# - The EvalEx library functionality is not exhaustively tested
+#
+# Test Boolean properties.
+SetProperty(PropertyName="Test_Boolean1",PropertyType="Boolean",Expression="2 > 1")
+If(Name="If_Boolean1",Expression="${Test_Boolean1} != true")
+    Message(Message="The property value (${Test_Boolean1}) is not the expected value of true.",CommandStatus="FAILURE")
+EndIf(Name="If_Boolean1")
+#
+# Test DateTime properties.
+SetProperty(PropertyName="Test_DateTime1",PropertyType="DateTime",Expression="DT_DATE_PARSE('2026-01-01T01:02:03')")
+SetProperty(PropertyName="Test_Now",PropertyType="DateTime",PropertyValue="CurrentToSecond")
+If(Name="If_DateTime1",Condition="${Test_DateTime1} > ${Test_Now}")
+    Message(Message="The property value (${Test_DateTime1}) is greater than now ${Test_Now}, which is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_DateTime1")
+#
+# Test Double properties.
+SetProperty(PropertyName="Test_Double1",PropertyType="Double",Expression="10.5 + 1.1 + SQRT(9.0)")
+If(Name="If_Double1",Expression="${Test_Double1} != 14.6")
+    Message(Message="The property value (${Test_Double1}) is not the expected value of 14.",CommandStatus="FAILURE")
+EndIf(Name="If_Double1")
+#
+# Test Integer properties.
+SetProperty(PropertyName="Test_Integer1",PropertyType="Integer",Expression="10 + 1 + SQRT(9)")
+If(Name="If_Integer1",Expression="${Test_Integer1} != 14")
+    Message(Message="The property value (${Test_Integer1}) is not the expected value of 14.",CommandStatus="FAILURE")
+EndIf(Name="If_Integer1")
+#
+# Test String properties.
+SetProperty(PropertyName="Test_String1",PropertyType="String",Expression="STR_SUBSTRING('abcdef',3)")
+SetDebugLevel(LogFileLevel="1")
+If(Name="If_String1",Expression="${Test_String1} != 'def'")
+    Message(Message="The property value (${Test_String1}) is not the expected value 'def'.",CommandStatus="FAILURE")
+EndIf(Name="If_String1")
+SetDebugLevel(ScreenLevel="0",LogFileLevel="0")

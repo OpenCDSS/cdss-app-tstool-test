@@ -1,0 +1,27 @@
+StartLog(LogFile="results/test-If-Expression.tstool.log")
+#
+# Test evaluating expressions:
+# - show failures for cases that evaulate incorrectly
+#
+# Integer constants.
+If(Name="If_Test1_Pass",Expression="2 > 1")
+    Message(Message="The expression 2 > 1 evaluated as true (correct).",CommandStatus="NOTIFICATION")
+EndIf(Name="If_Test1_Pass")
+If(Name="If_Test1_Fail",Expression="2 < 1")
+    Message(Message="The expression 2 < 1 evaluates as true (wrong).",CommandStatus="FAILURE")
+EndIf(Name="If_Test1_Fail")
+#
+# Test using integer properties.
+SetProperty(PropertyName="Integer1",PropertyType="Integer",PropertyValue="1")
+SetProperty(PropertyName="Integer2",PropertyType="Integer",PropertyValue="2")
+If(Name="If_Test3",Condition="${Integer2} > ${Integer1}")
+    Message(Message="The expression (using properties) evaluated 2 > 1 as true (corect).",CommandStatus="NOTIFICATION")
+EndIf(Name="If_Test3")
+If(Name="If_Test3",Condition="${Integer2} < ${Integer1}")
+    Message(Message="The expression (using properties) evaluated 2 < 1 as true (wrong).",CommandStatus="FAILURE")
+EndIf(Name="If_Test3")
+#
+# Test using more complex integer math.
+If(Name="If_Complex_Pass",Expression="(2 > 1) && (SQRT(9) > SQRT(4))")
+    Message(Message="The expression (2 > 1) && (SQRT(9) > SQRT(4)) as true (correct).",CommandStatus="NOTIFICATION")
+EndIf(Name="If_Complex_Pass")
