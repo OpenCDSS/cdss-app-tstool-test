@@ -1,0 +1,13 @@
+# Test converting a single-column data table to time series
+# - mimics using input from a database query
+# - two time series are included
+# - metadata for time series are specified in a column
+# - description is also specified in a column
+StartLog(LogFile="Results/test-TableToTimeSeries-SingleColumn-MetaColumns-Description.tstool.log")
+RemoveFile(InputFile="Results\test-TableToTimeSeries-SingleColumn-MetaColumns-Description-out.dv",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="SingleColumnData",InputFile="Data/single-column-withmeta-and-description.csv")
+TableToTimeSeries(TableID="SingleColumnData",DateTimeColumn="Date",LocationColumn="Location",DataSourceColumn="DataSource",DataTypeColumn="DataType",ScenarioColumn="Scenario",UnitsColumn="Units",Interval="Day",Alias="%L-%T",ValueColumn="Value",DescriptionColumn="Description")
+WriteDateValue(OutputFile="Results\test-TableToTimeSeries-SingleColumn-MetaColumns-Description-out.dv",Precision="2")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results\test-TableToTimeSeries-SingleColumn-MetaColumns-Description-out.dv",OutputFile="ExpectedResults\test-TableToTimeSeries-SingleColumn-MetaColumns-Description-out.dv")
+CompareFiles(InputFile1="ExpectedResults\test-TableToTimeSeries-SingleColumn-MetaColumns-Description-out.dv",InputFile2="Results\test-TableToTimeSeries-SingleColumn-MetaColumns-Description-out.dv",IfDifferent="Warn")

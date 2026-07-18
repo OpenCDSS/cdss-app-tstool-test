@@ -1,0 +1,10 @@
+# Test data for irrigular minute interval:
+# - used to compute DeltaValue=TimeMinutes
+"Date","Value"
+1999-12-31 00:00,
+1999-12-31 00:01,1.0
+1999-12-31 00:04,2.0
+1999-12-31 00:10,3.0
+1999-12-31 01:00,
+2000-01-01 00:00,
+2000-01-02 00:00,7.0000

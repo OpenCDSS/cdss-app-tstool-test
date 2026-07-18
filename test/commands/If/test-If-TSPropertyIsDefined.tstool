@@ -1,0 +1,76 @@
+# Test If:
+# - TSPropertyIsDefined and other time series property checks
+# - rely on Message command status to validate functionality
+StartLog(LogFile="Results/test-If-TSPropertyIsDefined.tstool.log")
+#
+# Create a time series for the properties.
+NewTimeSeries(Alias="ts1",NewTSID="ts1..Precip.Year",SetStart="2000",SetEnd="2010")
+#
+# Use If statements to test:
+# - if not expected, use the Message command to set a failure status
+# - go through the data alphabetically
+#
+# Boolean.
+#
+If(Name="If_TestBoolean0",TSID="ts1",TSPropertyIsDefined="TestBoolean")
+    Message(Message="TestBoolean is not defined.  This is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestBoolean0")
+SetTimeSeriesProperty(PropertyName="TestBoolean",PropertyType="Boolean",PropertyValue="True")
+If(Name="If_TestBoolean",TSID="ts1",TSPropertyIsDefined="TestBoolean")
+    Message(Message="TestBoolean is defined - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestBoolean")
+If(Name="If_TestBoolean2",TSID="ts1",TSPropertyIsNotDefinedOrIsEmpty="TestBoolean")
+    Message(Message="TestBoolean is not defined.  This is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestBoolean2")
+#
+# DateTime.
+#
+If(Name="If_TestDateTime0",TSID="ts1",TSPropertyIsDefined="TestDateTime")
+    Message(Message="TestDateTime is defined - this is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDateTime0")
+SetTimeSeriesProperty(PropertyName="TestDateTime",PropertyType="DateTime",PropertyValue="2024-01-01")
+If(Name="If_TestDateTime",TSID="ts1",TSPropertyIsDefined="TestNullDateTime")
+    Message(Message="TestDateTime results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestDateTime")
+If(Name="If_TestDateTime2",TSID="ts1",TSPropertyIsNotDefinedOrIsEmpty="TestDateTime")
+    Message(Message="TestDateTime isnot defined - this is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDateTime2")
+#
+# Double.
+#
+If(Name="If_TestDouble0",TSID="ts1",TSPropertyIsDefined="TestDouble")
+    Message(Message="TestDouble is defined - this is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDouble0")
+SetTimeSeriesProperty(PropertyName="TestDouble",PropertyType="Double",PropertyValue="1.0")
+If(Name="If_TestDouble",TSID="ts1",TSPropertyIsDefined="TestDouble")
+    Message(Message="TestDouble results is defined - this is OK.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestDouble")
+If(Name="If_TestDouble2",TSID="ts1",TSPropertyIsNotDefinedOrIsEmpty="TestDouble")
+    Message(Message="TestDouble is not defined - this is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestDouble2")
+#
+# Integer.
+#
+If(Name="If_TestInteger0",TSID="ts1",TSPropertyIsDefined="TestInteger")
+    Message(Message="TestInteger is defined - this is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestInteger0")
+SetTimeSeriesProperty(PropertyName="TestInteger",PropertyType="Integer",PropertyValue="1")
+If(Name="If_TestInteger",TSID="ts1",TSPropertyIsDefined="TestInteger")
+    Message(Message="TestInteger results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestInteger")
+If(Name="If_TestInteger2",TSID="ts1",TSPropertyIsNotDefinedOrIsEmpty="TestInteger")
+    Message(Message="TestInteger is not defined - this is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestInteger2")
+#
+# String.
+#
+If(Name="If_TestString0",TSID="ts1",TSPropertyIsDefined="TestString")
+    Message(Message="TestString is defined - tnis is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestString0")
+SetTimeSeriesProperty(PropertyName="TestString",PropertyType="String",PropertyValue="SomeNonEmptyStringValue")
+If(Name="If_TestString",TSID="ts1",TSPropertyIsDefined="TestString")
+    Message(Message="TestString results in true - test is success.",CommandStatus="SUCCESS")
+EndIf(Name="If_TestString")
+If(Name="If_TestString2",TSID="ts1",TSPropertyIsNotDefinedOrIsEmpty="TestString")
+    Message(Message="TestString is defined - tnis is an error.",CommandStatus="FAILURE")
+EndIf(Name="If_TestString2")

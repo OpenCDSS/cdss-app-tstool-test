@@ -1,0 +1,4 @@
+# Command file to run from test-RunCommands-SharedProperties.tstool:
+# - write properties to a file
+# - should contain only a subset of properties from the calling command file
+WritePropertiesToFile(OutputFile="results/test-RunCommands-SharedProperties-out.txt",IncludeProperties="Test_SharedProperty*",SortOrder="Ascending")

@@ -1,0 +1,13 @@
+# Test data for irrigular monthly interval:
+# - used to compute DeltaValue=TimeMonths
+"Date","Value"
+1999-12,
+2000-01,
+2000-03,7.0000
+2000-04,13.0000
+2000-10,1.0
+2000-12,2.0
+2001-03,2.0
+2001-04,2.0
+2001-07,2.0
+2001-09,2.0

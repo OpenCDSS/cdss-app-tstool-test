@@ -1,0 +1,12 @@
+# Test writing a table to HTML:
+# - use default parameters
+# - but use IncludeDocument=False to only write the table
+StartLog(LogFile="Results/test-WriteTableToHTML-NoDocument.tstool.log")
+RemoveFile(InputFile="Results/test-WriteTableToHTML-NoDocument-out.html",IfNotFound="Ignore")
+ReadTableFromDelimitedFile(TableID="KNN_Aspinall",InputFile="Data\flow_sequence_dataset.csv")
+# Generate the results.
+WriteTableToHTML(TableID="KNN_Aspinall",OutputFile="Results\test-WriteTableToHTML-NoDocument-out.html")
+# Uncomment to regenerate the expected results.
+# CopyFile(InputFile="Results\test-WriteTableToHTML-NoDocument-out.html",OutputFile="ExpectedResults\test-WriteTableToHTML-NoDocument-out.html")
+# Do regression comparison on the results.
+CompareFiles(InputFile1="ExpectedResults/test-WriteTableToHTML-NoDocument-out.html",InputFile2="Results/test-WriteTableToHTML-NoDocument-out.html",IfDifferent="Warn")
