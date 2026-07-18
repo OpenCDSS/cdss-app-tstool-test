@@ -1,0 +1,18 @@
+StartLog(LogFile="Results/test-Delta-IrregDay-DeltaValueTimeDays.tstool.log")
+# Test computing the delta:
+# - IrregDay interval
+# - all defaults
+# - DeltaValue=TimeDays
+RemoveFile(InputFile="Results/test-Delta-IrregDay-DeltaValueTimeDays-out.dv",IfNotFound="Ignore")
+#
+# Read the irregular time series from the file, which includes gaps for IntervalLimit.
+ReadDelimitedFile(InputFile="data\test-IrregDay-ForTimeDelta.csv",Delimiter=",",ColumnNames="Date,Value",DateColumn="Date",ValueColumn="Value",SkipRowsAfterComments="1",LocationID="ts1",Interval="IrregDay")
+#
+# Run the Delta command.
+# SetDebugLevel(LogFileLevel="1")
+Delta(DeltaValue="TimeDays",Alias="%L-delta")
+# SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
+WriteDateValue(OutputFile="Results/test-Delta-IrregDay-DeltaValueTimeDays-out.dv")
+# Uncomment the following command to regenerate expected results.
+# CopyFile(InputFile="Results/test-Delta-IrregDay-DeltaValueTimeDays-out.dv",OutputFile="ExpectedResults/test-Delta-IrregDay-DeltaValueTimeDays-out.dv")
+CompareFiles(InputFile1="ExpectedResults/test-Delta-IrregDay-DeltaValueTimeDays-out.dv",InputFile2="Results/test-Delta-IrregDay-DeltaValueTimeDays-out.dv",IfDifferent="Fail")

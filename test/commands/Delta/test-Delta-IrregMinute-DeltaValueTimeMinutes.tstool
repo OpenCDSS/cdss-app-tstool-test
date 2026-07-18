@@ -1,0 +1,18 @@
+StartLog(LogFile="Results/test-Delta-IrregMinute-DeltaValueTimeMinutes.tstool.log")
+# Test computing the delta:
+# - IrregMinute interval
+# - all defaults
+# - DeltaValue=TimeMinutes
+RemoveFile(InputFile="Results/test-Delta-IrregMinute-DeltaValueTimeMinutes-out.dv",IfNotFound="Ignore")
+#
+# Read the irregular time series from the file, which includes gaps for IntervalLimit.
+ReadDelimitedFile(InputFile="data\test-IrregMinute-ForTimeDelta.csv",Delimiter=",",ColumnNames="Date,Value",DateColumn="Date",ValueColumn="Value",SkipRowsAfterComments="1",LocationID="ts1",Interval="IrregMinute")
+#
+# Run the Delta command.
+# SetDebugLevel(LogFileLevel="1")
+Delta(DeltaValue="TimeMinutes",Alias="%L-delta")
+# SetDebugLevel(ScreenLevel="0",LogFileLevel="0")
+WriteDateValue(OutputFile="Results/test-Delta-IrregMinute-DeltaValueTimeMinutes-out.dv")
+# Uncomment the following command to regenerate expected results.
+# CopyFile(InputFile="Results/test-Delta-IrregMinute-DeltaValueTimeMinutes-out.dv",OutputFile="ExpectedResults/test-Delta-IrregMinute-DeltaValueTimeMinutes-out.dv")
+CompareFiles(InputFile1="ExpectedResults/test-Delta-IrregMinute-DeltaValueTimeMinutes-out.dv",InputFile2="Results/test-Delta-IrregMinute-DeltaValueTimeMinutes-out.dv",IfDifferent="Fail")

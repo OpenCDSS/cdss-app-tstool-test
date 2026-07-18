@@ -1,0 +1,20 @@
+# Test RunCommands with shared properties:
+# - set some properties
+# - then run RunCommands() to print the properties to a file
+# - disable below because not sure if RunCommands in the test suite will work OK since nested RunCommands
+# - run manually to test
+StartLog(LogFile="Results/test-RunCommands-SharedProperties.tstool.log")
+# Remove the previous run's output.
+RemoveFile(InputFile="Results\test-RunCommands-SharedProperties-out.txt")
+# Generate the test output.
+SetProperty(PropertyName="Test_SharedProperty1",PropertyType="String",PropertyValue="Value1")
+SetProperty(PropertyName="Test_SharedProperty2",PropertyType="String",PropertyValue="Value2")
+SetProperty(PropertyName="Test_SharedProperty3",PropertyType="String",PropertyValue="Value3")
+SetProperty(PropertyName="Test_SharedProperty4",PropertyType="String",PropertyValue="Value4")
+SetProperty(PropertyName="Test_SharedProperty5",PropertyType="String",PropertyValue="Value5")
+RunCommands(InputFile="subtest-RunCommands-SharedProperties.tstool",ShareDataStores="DoNotShare",IncludeProperties="Test_SharedProperty*",ExcludeProperties="Test_SharedProperty1,Test_SharedProperty2")
+#
+# Uncomment the following to regenerate the expected results.
+# CopyFile(InputFile="Results\test-RunCommands-SharedProperties-out.txt",OutputFile="ExpectedResults\test-RunCommands-SharedProperties-out.txt")
+# Compare the output with expected.
+CompareFiles(InputFile1="Results\test-RunCommands-SharedProperties-out.txt",InputFile2="ExpectedResults\test-RunCommands-SharedProperties-out.txt",IfDifferent="Fail")
