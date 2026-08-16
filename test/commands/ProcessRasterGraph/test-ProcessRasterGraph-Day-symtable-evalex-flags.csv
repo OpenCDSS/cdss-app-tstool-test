@@ -1,0 +1,11 @@
+# Symbol table for 15 minute streamflow example:
+# - use variables to work with EvalEx expressions
+# - the legend is explicitly provided
+expression,                                         legend, color,   opacity, fillColor, fillOpacity, comment
+(valueismissing),                                   NoData, #ffffff, 1.0,     #ffffff,   1.0,         white
+(flagismissing),                                    NoFlag, #d3d3d3, 1.0,     #d3d3d3,   1.0,         light grey
+(flag == 'C'),                                      C,      #ff0000, 1.0,     #ff0000,   1.0,         red
+(flag == 'c'),                                      c,      #00ff00, 1.0,     #00ff00,   1.0,         green
+(flag == 'E'),                                      E,      #ffa500, 1.0,     #ffa500,   1.0,         orange
+(flag == '*'),                                      *,      #00ffff, 1.0,     #00ffff,   1.0,         cyan
+"(!STR_CONTAINS(flag,'C') && !STR_CONTAINS(flag,'c') && !STR_CONTAINS(flag,'*') && !STR_CONTAINS(flag,E))",  Other,  #0000ff, 1.0,     #0000ff,   1.0,         blue

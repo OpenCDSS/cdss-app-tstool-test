@@ -1,0 +1,15 @@
+StartLog(LogFile="Results/test-ProcessRasterGraph-Hour-multiple.tstool.log")
+# Create a raster graph from an hour time series:
+# - hour interval
+# - multiple time series
+# - default colors
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Hour-multiple-out.png",IfNotFound="Ignore")
+SetInputPeriod(InputStart="2021-07-15 00",InputEnd="2021-08-15 00")
+# CLAFTCCO (0301200) - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+abbrev:CLAFTCCO.DWR.DISCHRG.Hour~HydroBaseWeb
+# CLAFORCO (0302900) - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
+abbrev:CLAFORCO.USGS.DISCHRG.Hour~HydroBaseWeb
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Hour-multiple.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Hour-multiple-out.png")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results/test-ProcessRasterGraph-Hour-multiple-out.png",OutputFile="ExpectedResults/test-ProcessRasterGraph-Hour-multiple-out.png")
+CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-Hour-multiple-out.png",InputFile2="Results\test-ProcessRasterGraph-Hour-multiple-out.png",IfDifferent="Warn")

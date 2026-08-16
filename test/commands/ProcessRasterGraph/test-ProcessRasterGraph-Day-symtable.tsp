@@ -1,5 +1,6 @@
 [Product]
 
+MainTitleString = "test-ProcessRasterGraph-15Minute-multiple-symtable"
 ProductType = "Graph"
 TotalWidth = "600"
 TotalHeight = "400"

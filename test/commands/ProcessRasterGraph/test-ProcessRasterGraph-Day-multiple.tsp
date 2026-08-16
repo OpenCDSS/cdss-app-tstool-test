@@ -1,5 +1,6 @@
 [Product]
 
+MainTitleString = "test-ProcessRasterGraph-Day-multiple"
 ProductType = "Graph"
 TotalWidth = "600"
 TotalHeight = "400"

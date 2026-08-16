@@ -1,0 +1,8 @@
+# Symbol table for 15 minute streamflow example:
+# - use an expression and legend text rather than value minimum and maximum
+expression,                                     legend,    color,   opacity, fillColor, fillOpacity, comment
+(valueismissing),                               NoData,    #ffffff, 1.0,     #ffffff,   1.0,         white
+(flagismissing),                                NoFlag,    #d3d3d3, 1.0,     #d3d3d3,   1.0,         light gray
+(flag == 'Decrease'),                           Decrease,  #ff0000, 1.0,     #ff0000,   1.0,         red
+(flag == 'Increase'),                           Increase,  #00ff00, 1.0,     #00ff00,   1.0,         green
+((flag != 'Decrease') && (flag != 'Increase')), Other,     #ff00ff, 1.0,     #ff00ff,   1.0,         magenta

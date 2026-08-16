@@ -15,7 +15,7 @@ RemoveFile(InputFile="Results/test-ProcessRasterGraph-Month-out.png",IfNotFound=
 ReadTimeSeries(TSID="6403551.DWR.DivTotal.Month~HydroBaseWeb",Alias="Alias",IfNotFound="Warn")
 # ReadTimeSeries(TSID="USC00053005.NOAA.TempMax.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
 # ReadTimeSeries(TSID="USC00053005.NOAA.Precip.Day~HydroBase",Alias="Alias",IfNotFound=Warn)
-# Uncomment the following command to regenerate the expected results file.
-# ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Month.tsp",View=False,OutputFile="ExpectedResults/test-ProcessRasterGraph-Month-out.png")
 ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Month.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Month-out.png")
-# CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-Month-out.png",InputFile2="Results\test-ProcessRasterGraph-Month-out.png",IfDifferent=Warn)
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results/test-ProcessRasterGraph-Month-out.png",OutputFile="ExpectedResults/test-ProcessRasterGraph-Month-out.png")
+CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-Month-out.png",InputFile2="Results\test-ProcessRasterGraph-Month-out.png",IfDifferent="Warn")

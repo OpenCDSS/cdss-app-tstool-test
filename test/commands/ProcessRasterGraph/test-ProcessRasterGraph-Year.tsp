@@ -1,9 +1,9 @@
 [Product]
 
+MainTitleString = "test-ProcessRasterGraph-Year"
 ProductType = "Graph"
 TotalWidth = "900"
 TotalHeight = "150"
-MainTitleString = "test-ProcessRasterGraph-Year"
 
 [SubProduct 1]
 

@@ -1,0 +1,17 @@
+# Create a raster graph from a 15Minute time series:
+# - 15Minute interval
+# - multiple time series
+# - colors from values
+# - specify the symbol table in the product file
+# - use a symbol table with EvalEx expression and values syntax
+StartLog(LogFile="Results/test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values-out.png",IfNotFound="Ignore")
+SetInputPeriod(InputStart="2021-07-01 00:00",InputEnd="2021-07-06 00:00")
+# CLAFTCCO (0301200) - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+abbrev:CLAFTCCO.DWR.DISCHRG.15Min~HydroBaseWeb
+# CLAFORCO (0302900) - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
+abbrev:CLAFORCO.USGS.DISCHRG.15Min~HydroBaseWeb
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values-out.png")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results\test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values-out.png",OutputFile="ExpectedResults\test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values-out.png")
+CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values-out.png",InputFile2="Results\test-ProcessRasterGraph-15Minute-multiple-symtable-evalex-values-out.png",IfDifferent="Warn")
