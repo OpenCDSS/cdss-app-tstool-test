@@ -1,0 +1,14 @@
+# Create a raster graph from a yearly time series:
+# - year interval
+# - multiple time series
+# - default colors
+StartLog(LogFile="Results/test-ProcessRasterGraph-Year-multiple.tstool.log")
+RemoveFile(InputFile="Results/test-ProcessRasterGraph-Yonth-multiple-out.png",IfNotFound="Ignore")
+# ABBREV=CLAFTCCO, USGS site ID=06752000 - CACHE LA POUDRE AT CANYON MOUTH NEAR FORT COLLINS
+usgs:06752000.DWR.Streamflow-Total.Year~HydroBaseWeb
+# ABBREV=CLAFORCO, USGS site ID=06752260 - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
+usgs:06752260.USGS.Streamflow-Total.Year~HydroBaseWeb
+ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-Year-multiple.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-Year-multiple-out.png")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results/test-ProcessRasterGraph-Year-multiple-out.png",OutputFile="ExpectedResults/test-ProcessRasterGraph-Year-multiple-out.png")
+CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-Year-multiple-out.png",InputFile2="Results\test-ProcessRasterGraph-Year-multiple-out.png",IfDifferent="Warn")

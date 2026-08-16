@@ -9,7 +9,7 @@ SetInputPeriod(InputStart="2021-07-01 00:00",InputEnd="2021-07-06 00:00")
 abbrev:CLAFTCCO.DWR.DISCHRG.15Min~HydroBaseWeb
 # CLAFORCO (0302900) - CACHE LA POUDRE RIVER AT FORT COLLINS, CO
 abbrev:CLAFORCO.USGS.DISCHRG.15Min~HydroBaseWeb
-# Uncomment the following command to regenerate the expected results file.
-# ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-15Minute-multiple.tsp",View="False",OutputFile="ExpectedResults/test-ProcessRasterGraph-15Minute-multiple-out.png")
 ProcessRasterGraph(TSProductFile="test-ProcessRasterGraph-15Minute-multiple.tsp",View="False",OutputFile="Results/test-ProcessRasterGraph-15Minute-multiple-out.png")
+# Uncomment the following command to regenerate the expected results file.
+# CopyFile(InputFile="Results/test-ProcessRasterGraph-15Minute-multiple-out.png",OutputFile="ExpectedResults/test-ProcessRasterGraph-15Minute-multiple-out.png")
 CompareFiles(InputFile1="ExpectedResults\test-ProcessRasterGraph-15Minute-multiple-out.png",InputFile2="Results\test-ProcessRasterGraph-15Minute-multiple-out.png",IfDifferent="Warn")
